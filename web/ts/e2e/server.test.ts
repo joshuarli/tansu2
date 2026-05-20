@@ -74,11 +74,83 @@ path = "${vaultTwo}"
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
     await sessionRequest;
-    expect(startupRequests).toEqual([
-      "GET /api/bootstrap",
-      "GET /events?vault=0",
-      "PUT /api/session",
-    ]);
+    expect(startupRequests[0]).toBe("GET /api/bootstrap");
+    expect(startupRequests).toContain("GET /events?vault=0");
+    expect(startupRequests).toContain("PUT /api/session");
+    expect(
+      startupRequests.filter((request) => request.startsWith("GET /api/notes/")).length,
+    ).toBeLessThanOrEqual(3);
+    await page.close();
+  });
+
+  it("locks in modal, search, toolbar, and note management UX", async () => {
+    const page = await browser!.newPage();
+    page.on("dialog", (dialog) => {
+      throw new Error(`unexpected native dialog: ${dialog.type()} ${dialog.message()}`);
+    });
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+    expect(await page.locator(".topbar + .toolbar").count()).toBe(1);
+
+    await page.locator('.sidebar-controls [title="New note"]').click();
+    await page.waitForSelector(".note-dialog-panel");
+    await page.locator(".overlay-backdrop").click({ position: { x: 4, y: 4 } });
+    await page.waitForSelector(".note-dialog-panel", { state: "detached" });
+
+    await page.locator('.sidebar-controls [title="New note"]').click();
+    await page.locator(".note-dialog-panel input").fill("Meeting Notes");
+    await page.locator(".note-dialog-panel .primary-button").click();
+    await page.waitForFunction(
+      () => document.querySelector(".path-label")?.textContent === "meeting-notes.md",
+    );
+
+    await page.locator('.sidebar-controls [title="Search notes"]').click();
+    await page.locator(".search-panel input").fill("alpha");
+    await page.waitForSelector(".search-snippet b");
+    expect(
+      (await page.locator(".search-snippet b").first().textContent())?.toLowerCase(),
+    ).toContain("alpha");
+    expect(await page.locator(".search-score").first().textContent()).toContain("content");
+    await page.locator(".overlay-backdrop").click({ position: { x: 4, y: 4 } });
+    await page.waitForSelector(".search-panel", { state: "detached" });
+
+    await page.locator(".tab.active").click({ button: "right" });
+    await page.waitForSelector(".context-menu");
+    const menuText = await page.locator(".context-menu").textContent();
+    expect(menuText).toContain("Rename");
+    expect(menuText).toContain("Pin");
+    expect(menuText).toContain("Delete");
+
+    await page.locator(".context-menu", { hasText: "Pin" }).getByText("Pin").click();
+    await page.waitForSelector(".context-menu", { state: "detached" });
+    await page.waitForFunction(
+      () =>
+        [...document.querySelectorAll(".sidebar-section")]
+          .find((section) => section.textContent?.includes("Pinned"))
+          ?.textContent?.includes("Meeting Notes") === true,
+    );
+
+    await page.locator(".tab.active").click({ button: "right" });
+    await page.locator(".context-menu", { hasText: "Rename" }).getByText("Rename").click();
+    await page.locator(".note-dialog-panel input").fill("Renamed Note");
+    await page.locator(".note-dialog-panel .primary-button").click();
+    await page.waitForFunction(
+      () => document.querySelector(".path-label")?.textContent === "renamed-note.md",
+    );
+
+    await page.locator(".tab.active").click({ button: "right" });
+    await page.locator(".context-menu", { hasText: "Delete" }).getByText("Delete").click();
+    await page.waitForFunction(() =>
+      document.querySelector(".note-dialog-panel")?.textContent?.includes("renamed-note.md"),
+    );
+    await page.locator(".note-dialog-panel .danger-button").click();
+    await page.waitForSelector(".note-dialog-panel", { state: "detached" });
+    const afterDelete = await fetch(`${baseUrl}/api/bootstrap`, {
+      headers: { "X-Tansu-Vault": "0" },
+    }).then((response) => response.json());
+    expect(
+      afterDelete.notes.some((note: { path: string }) => note.path === "renamed-note.md"),
+    ).toBe(false);
     await page.close();
   });
 

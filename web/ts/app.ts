@@ -52,7 +52,7 @@ import {
   type State,
   type Tab,
 } from "./state.ts";
-import type { ApiErrorResponse } from "./types.generated.ts";
+import type { ApiErrorResponse, NoteMeta } from "./types.generated.ts";
 import { renderApp, renderLoading, renderStatusBar, type ViewActions } from "./view.ts";
 
 export class TansuApp {
@@ -109,11 +109,8 @@ export class TansuApp {
   }
 
   bindGlobalEvents(): void {
-    window.addEventListener("beforeunload", (event) => {
+    window.addEventListener("beforeunload", () => {
       this.syncActiveDraft();
-      if (this.state.tabs.some((tab) => tab.dirty)) {
-        event.preventDefault();
-      }
     });
 
     window.addEventListener("keydown", (event) => {
@@ -144,16 +141,34 @@ export class TansuApp {
         void this.manualSave();
         return;
       }
-      if (event.key === "Escape" && (this.state.commandOpen || this.state.searchOpen)) {
+      if (
+        event.key === "Escape" &&
+        (this.state.commandOpen ||
+          this.state.searchOpen ||
+          this.state.revisionsOpen ||
+          this.state.settingsOpen ||
+          this.state.conflictDraft !== null ||
+          this.state.noteDialog !== null ||
+          this.state.contextMenu !== null)
+      ) {
         event.preventDefault();
-        this.state.commandOpen = false;
-        this.state.searchOpen = false;
-        this.render();
+        this.closeOverlays();
         return;
       }
       if (!inEditor && (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "n") {
         event.preventDefault();
         void this.commandCreate();
+      }
+    });
+
+    window.addEventListener("click", (event) => {
+      if (
+        this.state.contextMenu !== null &&
+        event.target instanceof HTMLElement &&
+        event.target.closest(".context-menu") === null
+      ) {
+        this.state.contextMenu = null;
+        this.render();
       }
     });
   }
@@ -419,86 +434,49 @@ export class TansuApp {
   }
 
   private async commandCreate(): Promise<void> {
-    const path = prompt("Path", "Untitled.md");
-    if (path === null || path.trim() === "") {
-      return;
-    }
-    const response = await createNote(
-      { path, content: `# ${path.replace(/\.md$/i, "")}\n`, source: null },
-      this.state.vault,
-    );
-    if (response.document !== null) {
-      this.state.notes.set(response.meta.noteId, response.meta);
-      this.state.tabs.push(tabFromDocument(response.document));
-      await this.activateTab(response.meta.noteId);
-    }
-  }
-
-  private async commandOpen(): Promise<void> {
-    const query = prompt("Open note", this.state.searchQuery);
-    if (query === null) {
-      return;
-    }
-    const needle = query.trim().toLowerCase();
-    if (needle === "") {
-      this.state.searchOpen = true;
-      this.render();
-      return;
-    }
-    const direct = [...this.state.notes.values()].find(
-      (note) =>
-        note.title.toLowerCase().includes(needle) || note.path.toLowerCase().includes(needle),
-    );
-    if (direct !== undefined) {
-      await this.openInTab(direct.noteId);
-      return;
-    }
-    const [hit] = await searchNotes(query, this.state.vault);
-    if (hit !== undefined) {
-      await this.openInTab(hit.note.noteId);
-    }
-  }
-
-  private async commandRename(): Promise<void> {
-    const tab = activeTab(this.state);
-    if (tab === undefined) {
-      return;
-    }
-    const path = prompt("Path", tab.path);
-    if (path === null || path.trim() === "" || path === tab.path) {
-      return;
-    }
-    const response = await renameNote(tab.noteId, { path }, this.state.vault);
-    tab.title = response.meta.title;
-    tab.path = response.meta.path;
-    if (tab.doc !== null) {
-      tab.doc.meta = response.meta;
-    }
-    this.state.notes.set(response.meta.noteId, response.meta);
+    this.state.noteDialog = { kind: "create", title: "" };
+    this.state.commandOpen = false;
     this.render();
   }
 
-  private async commandDelete(): Promise<void> {
-    const tab = activeTab(this.state);
-    if (tab === undefined || !confirm(`Delete ${tab.path}?`)) {
-      return;
-    }
-    await deleteNote(tab.noteId, this.state.vault);
-    this.state.notes.delete(tab.noteId);
-    this.closeTab(tab.noteId, false);
+  private commandOpen(): void {
+    this.state.searchOpen = true;
+    this.state.commandOpen = false;
+    this.state.searchOverlayQuery = this.state.searchQuery;
+    this.state.searchOverlayHits = this.state.searchHits;
+    this.render();
   }
 
-  private async commandPin(): Promise<void> {
-    const tab = activeTab(this.state);
-    if (tab === undefined) {
+  private commandRename(noteId = this.state.activeNoteId ?? undefined): void {
+    if (noteId === undefined) {
       return;
     }
-    const pinned = !this.state.pinned.has(tab.noteId);
-    await setPinned(tab.noteId, pinned, this.state.vault);
+    const note = this.state.notes.get(noteId);
+    if (note === undefined) {
+      return;
+    }
+    this.state.noteDialog = { kind: "rename", noteId, title: note.title };
+    this.render();
+  }
+
+  private commandDelete(noteId = this.state.activeNoteId ?? undefined): void {
+    if (noteId === undefined || !this.state.notes.has(noteId)) {
+      return;
+    }
+    this.state.noteDialog = { kind: "delete", noteId };
+    this.render();
+  }
+
+  private async commandPin(noteId = this.state.activeNoteId ?? undefined): Promise<void> {
+    if (noteId === undefined) {
+      return;
+    }
+    const pinned = !this.state.pinned.has(noteId);
+    await setPinned(noteId, pinned, this.state.vault);
     if (pinned) {
-      this.state.pinned.add(tab.noteId);
+      this.state.pinned.add(noteId);
     } else {
-      this.state.pinned.delete(tab.noteId);
+      this.state.pinned.delete(noteId);
     }
     this.render();
   }
@@ -555,12 +533,8 @@ export class TansuApp {
     ) {
       return;
     }
-    const value = prompt("Tag", "");
-    const tag = normalizeTag(value ?? "");
-    if (tag === null) {
-      return;
-    }
-    this.updateActiveTags([...new Set([...tab.doc.meta.tags, tag])]);
+    this.state.noteDialog = { kind: "tag", value: "" };
+    this.render();
   }
 
   private updateActiveTags(tags: string[]): void {
@@ -641,7 +615,85 @@ export class TansuApp {
     this.state.revisionsOpen = false;
     this.state.settingsOpen = false;
     this.state.conflictDraft = null;
+    this.state.noteDialog = null;
+    this.state.contextMenu = null;
     this.render();
+  }
+
+  private closeContextMenu(): void {
+    this.state.contextMenu = null;
+    this.render();
+  }
+
+  private openNoteContextMenu(noteId: string, x: number, y: number): void {
+    this.state.contextMenu = { noteId, x, y };
+    this.render();
+  }
+
+  private async submitNoteDialog(value?: string): Promise<void> {
+    const dialog = this.state.noteDialog;
+    if (dialog === null) {
+      return;
+    }
+    if (dialog.kind === "create") {
+      const title = (value ?? "").trim() || "Untitled";
+      const path = uniqueNotePath(title, this.state.notes.values());
+      const response = await createNote(
+        { path, content: `# ${title}\n`, source: null },
+        this.state.vault,
+      );
+      if (response.document !== null) {
+        this.state.notes.set(response.meta.noteId, response.meta);
+        this.state.tabs.push(tabFromDocument(response.document));
+        this.state.noteDialog = null;
+        await this.activateTab(response.meta.noteId);
+      }
+      return;
+    }
+    if (dialog.kind === "rename") {
+      const note = this.state.notes.get(dialog.noteId);
+      const title = (value ?? "").trim();
+      if (note === undefined || title === "" || title === note.title) {
+        this.state.noteDialog = null;
+        this.render();
+        return;
+      }
+      const path = renamedPath(note.path, title, this.state.notes.values(), dialog.noteId);
+      const response = await renameNote(dialog.noteId, { path }, this.state.vault);
+      const tab = tabById(this.state, dialog.noteId);
+      if (tab !== undefined) {
+        tab.title = response.meta.title;
+        tab.path = response.meta.path;
+        if (tab.doc !== null) {
+          tab.doc.meta = response.meta;
+        }
+      }
+      this.state.notes.set(response.meta.noteId, response.meta);
+      this.state.noteDialog = null;
+      this.render();
+      return;
+    }
+    if (dialog.kind === "tag") {
+      const tab = activeTab(this.state);
+      const tag = normalizeTag(value ?? "");
+      if (tab?.doc !== null && tab !== undefined && tag !== null) {
+        this.updateActiveTags([...new Set([...tab.doc.meta.tags, tag])]);
+      }
+      this.state.noteDialog = null;
+      this.render();
+      return;
+    }
+    const noteId = dialog.noteId;
+    this.state.noteDialog = null;
+    this.render();
+    try {
+      await deleteNote(noteId, this.state.vault);
+      this.state.notes.delete(noteId);
+      this.state.pinned.delete(noteId);
+      this.closeTab(noteId, false);
+    } catch {
+      this.notify("Delete failed");
+    }
   }
 
   private async saveSettingsFromModal(settings: {
@@ -754,8 +806,14 @@ export class TansuApp {
       updateSearch: () => void this.updateSearch(),
       updateSearchOverlay: () => void this.updateSearchOverlay(),
       commandCreate: () => void this.commandCreate(),
+      commandRename: (noteId) => this.commandRename(noteId),
+      commandDelete: (noteId) => this.commandDelete(noteId),
+      commandPin: (noteId) => void this.commandPin(noteId),
       commandAddTag: () => void this.commandAddTag(),
       closeOverlays: () => this.closeOverlays(),
+      closeContextMenu: () => this.closeContextMenu(),
+      openNoteContextMenu: (noteId, x, y) => this.openNoteContextMenu(noteId, x, y),
+      submitNoteDialog: (value) => void this.submitNoteDialog(value),
       saveSettings: (settings) => void this.saveSettingsFromModal(settings),
       openRevisions: () => void this.commandRevisions(),
       selectRevision: (eventId) => void this.selectRevision(eventId),
@@ -787,6 +845,49 @@ function saveConflict(
       ? (error.response as ApiErrorResponse | null)
       : null;
   return response?.error.code === "save_conflict" ? response.error : null;
+}
+
+function uniqueNotePath(title: string, notes: Iterable<NoteMeta>): string {
+  const base = slugifyTitle(title);
+  const existing = new Set([...notes].map((note) => note.path.toLowerCase()));
+  for (let i = 1; ; i += 1) {
+    const suffix = i === 1 ? "" : `-${i}`;
+    const path = `${base}${suffix}.md`;
+    if (!existing.has(path.toLowerCase())) {
+      return path;
+    }
+  }
+}
+
+function renamedPath(
+  currentPath: string,
+  title: string,
+  notes: Iterable<NoteMeta>,
+  noteId: string,
+): string {
+  const slash = currentPath.lastIndexOf("/");
+  const dir = slash === -1 ? "" : `${currentPath.slice(0, slash + 1)}`;
+  const base = slugifyTitle(title);
+  const existing = new Set(
+    [...notes].filter((note) => note.noteId !== noteId).map((note) => note.path.toLowerCase()),
+  );
+  for (let i = 1; ; i += 1) {
+    const suffix = i === 1 ? "" : `-${i}`;
+    const path = `${dir}${base}${suffix}.md`;
+    if (!existing.has(path.toLowerCase())) {
+      return path;
+    }
+  }
+}
+
+function slugifyTitle(title: string): string {
+  const slug = title
+    .trim()
+    .toLowerCase()
+    .replace(/['"]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug || "untitled";
 }
 
 export function startApp(root: HTMLElement): void {

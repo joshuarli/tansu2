@@ -30,6 +30,18 @@ export type Command = {
   run: () => void | Promise<void>;
 };
 
+export type NoteDialog =
+  | { kind: "create"; title: string }
+  | { kind: "rename"; noteId: string; title: string }
+  | { kind: "tag"; value: string }
+  | { kind: "delete"; noteId: string };
+
+export type ContextMenuState = {
+  noteId: string;
+  x: number;
+  y: number;
+};
+
 export type State = {
   boot: BootstrapResponse | null;
   vault: number;
@@ -51,6 +63,8 @@ export type State = {
   revisionDocument: RevisionDocument | null;
   conflictDraft: ConflictDraftDocument | null;
   settingsOpen: boolean;
+  noteDialog: NoteDialog | null;
+  contextMenu: ContextMenuState | null;
   notice: string | null;
 };
 
@@ -76,6 +90,8 @@ export function createState(vault: number): State {
     revisionDocument: null,
     conflictDraft: null,
     settingsOpen: false,
+    noteDialog: null,
+    contextMenu: null,
     notice: null,
   };
 }

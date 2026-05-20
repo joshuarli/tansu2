@@ -22,6 +22,7 @@ fn main() {
     push::<SessionState>(&mut output);
     push::<SessionTab>(&mut output);
     push::<SearchStatus>(&mut output);
+    push::<SearchFieldScores>(&mut output);
     push::<SearchHit>(&mut output);
     push::<BootstrapResponse>(&mut output);
     push::<ServerEvent>(&mut output);

@@ -27,7 +27,9 @@ export type SessionTab = { noteId: string, title: string, path: string, cursorOf
 
 export type SearchStatus = { dirty: boolean, degraded: boolean, };
 
-export type SearchHit = { note: NoteMeta, snippet: string, score: number, };
+export type SearchFieldScores = { title: number, headings: number, tags: number, content: number, };
+
+export type SearchHit = { note: NoteMeta, snippet: string, score: number, fieldScores: SearchFieldScores, };
 
 export type BootstrapResponse = { vaults: Array<VaultEntry>, activeVault: number, notes: Array<NoteMeta>, pinnedNoteIds: Array<string>, recentNoteIds: Array<string>, settings: Settings, session: SessionState, searchStatus: SearchStatus, };
 

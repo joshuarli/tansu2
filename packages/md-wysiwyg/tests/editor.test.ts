@@ -474,6 +474,46 @@ describe("createEditor", () => {
     }
   });
 
+  it("HTML paste inserts copied editor fragments with root text nodes", async () => {
+    const handle = createEditor(container);
+    handle.setValue("");
+
+    const clipboardData = {
+      items: [],
+      getData: (type: string) =>
+        type === "text/html" ? "copied from editor" : type === "text/plain" ? "" : "",
+    };
+    const pasteEvent = new ClipboardEvent("paste", {
+      bubbles: true,
+      clipboardData: clipboardData as unknown as DataTransfer,
+    });
+    handle.contentEl.dispatchEvent(pasteEvent);
+
+    await Promise.resolve();
+    expect(handle.getValue()).toBe("copied from editor");
+    handle.destroy();
+  });
+
+  it("HTML paste falls back to plain text when rich serialization is empty", async () => {
+    const handle = createEditor(container);
+    handle.setValue("");
+
+    const clipboardData = {
+      items: [],
+      getData: (type: string) =>
+        type === "text/html" ? '<meta charset="utf-8">' : type === "text/plain" ? "plain" : "",
+    };
+    const pasteEvent = new ClipboardEvent("paste", {
+      bubbles: true,
+      clipboardData: clipboardData as unknown as DataTransfer,
+    });
+    handle.contentEl.dispatchEvent(pasteEvent);
+
+    await Promise.resolve();
+    expect(handle.getValue()).toBe("plain");
+    handle.destroy();
+  });
+
   it("plain-text paste preference ignores HTML when beforeinput indicates no rich text", async () => {
     const handle = createEditor(container);
     handle.setValue("");

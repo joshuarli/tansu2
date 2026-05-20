@@ -156,10 +156,20 @@ pub struct SearchStatus {
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(rename_all = "camelCase")]
+pub struct SearchFieldScores {
+    pub title: f32,
+    pub headings: f32,
+    pub tags: f32,
+    pub content: f32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
 pub struct SearchHit {
     pub note: NoteMeta,
     pub snippet: String,
     pub score: f32,
+    pub field_scores: SearchFieldScores,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]

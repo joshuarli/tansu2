@@ -596,12 +596,13 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     }
 
     const htmlData = clipData.getData("text/html");
+    const plainTextData = clipData.getData("text/plain");
     let pastedText: string;
     if (htmlData && !usePlainTextPaste) {
       const div = htmlToSanitizedContainer(htmlData);
-      pastedText = domToMarkdown(div, { extensions });
+      pastedText = domToMarkdown(div, { extensions }) || plainTextData;
     } else {
-      pastedText = clipData.getData("text/plain");
+      pastedText = plainTextData;
     }
 
     if (pastedText) {

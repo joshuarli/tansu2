@@ -1,6 +1,7 @@
 import { button, el, span } from "./dom.ts";
 import { frontmatterSupportsTags } from "./markdown-tags.ts";
 import { activeTab, type Command, type State, type Tab } from "./state.ts";
+import type { SearchHit } from "./types.generated.ts";
 
 export type ViewActions = {
   render: () => void;
@@ -8,8 +9,14 @@ export type ViewActions = {
   updateSearch: () => void;
   updateSearchOverlay: () => void;
   commandCreate: () => void;
+  commandRename: (noteId?: string) => void;
+  commandDelete: (noteId?: string) => void;
+  commandPin: (noteId?: string) => void;
   commandAddTag: () => void;
   closeOverlays: () => void;
+  closeContextMenu: () => void;
+  openNoteContextMenu: (noteId: string, x: number, y: number) => void;
+  submitNoteDialog: (value?: string) => void;
   saveSettings: (settings: {
     excludedFoldersText: string;
     autosaveDelayMs: number;
@@ -131,6 +138,10 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
       () => actions.activateTab(tab.noteId),
       active ? "tab active" : "tab",
     );
+    tabEl.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+      actions.openNoteContextMenu(tab.noteId, event.clientX, event.clientY);
+    });
     tabEl.append(span(tab.title), span(tab.dirty ? "•" : ""), closeButton(tab.noteId, actions));
     tabs.append(tabEl);
   }
@@ -148,7 +159,7 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
   );
   const active = activeTab(state);
   const title = active === undefined ? "No note selected" : active.path;
-  const topbar = el("div", "topbar", tabs, toolbar);
+  const topbar = el("div", "topbar", tabs);
   const workspace = el("section", "workspace");
   if (active === undefined) {
     workspace.append(emptyState(actions));
@@ -187,7 +198,7 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
       workspace.append(banner);
     }
   }
-  main.append(topbar, workspace, renderStatusBar(state));
+  main.append(topbar, toolbar, workspace, renderStatusBar(state));
   return main;
 }
 
@@ -216,7 +227,7 @@ function renderOverlays(state: State, actions: ViewActions): HTMLElement {
         ),
       );
     }
-    host.append(el("div", "overlay-backdrop"), el("div", "command-panel", input, list));
+    host.append(backdrop(actions), el("div", "command-panel", input, list));
     queueMicrotask(() => input.focus());
   }
   if (state.searchOpen) {
@@ -229,44 +240,47 @@ function renderOverlays(state: State, actions: ViewActions): HTMLElement {
       actions.updateSearchOverlay();
     });
     const list = el("div", "command-list");
-    const hits = state.searchOverlayHits?.map((hit) => hit.note.noteId) ?? [];
-    const ids = state.searchOverlayQuery.trim() === "" ? [...state.notes.keys()] : hits;
-    for (const noteId of ids) {
-      const note = state.notes.get(noteId);
-      if (note === undefined) {
-        continue;
+    if (state.searchOverlayQuery.trim() === "") {
+      for (const noteId of state.notes.keys()) {
+        const note = state.notes.get(noteId);
+        if (note === undefined) {
+          continue;
+        }
+        list.append(searchNoteRow(note.noteId, note.title, note.path, actions));
       }
-      list.append(
-        button(
-          `${note.title}  ${note.path}`,
-          note.path,
-          () => {
-            state.searchOpen = false;
-            actions.openInTab(note.noteId);
-          },
-          "command-row",
-        ),
-      );
+    } else {
+      for (const hit of state.searchOverlayHits ?? []) {
+        list.append(searchHitRow(hit, actions));
+      }
     }
-    host.append(
-      el("div", "overlay-backdrop"),
-      el("div", "command-panel search-panel", input, list),
-    );
+    host.append(backdrop(actions), el("div", "command-panel search-panel", input, list));
     queueMicrotask(() => input.focus());
   }
   if (state.revisionsOpen) {
-    host.append(el("div", "overlay-backdrop"), renderRevisionsPanel(state, actions));
+    host.append(backdrop(actions), renderRevisionsPanel(state, actions));
   }
   if (state.settingsOpen && state.boot !== null) {
-    host.append(el("div", "overlay-backdrop"), renderSettingsPanel(state, actions));
+    host.append(backdrop(actions), renderSettingsPanel(state, actions));
   }
   if (state.conflictDraft !== null) {
-    host.append(el("div", "overlay-backdrop"), renderConflictPanel(state, actions));
+    host.append(backdrop(actions), renderConflictPanel(state, actions));
+  }
+  if (state.noteDialog !== null) {
+    host.append(backdrop(actions), renderNoteDialog(state, actions));
+  }
+  if (state.contextMenu !== null) {
+    host.append(renderContextMenu(state, actions));
   }
   if (state.notice !== null) {
     host.append(el("div", "toast", state.notice));
   }
   return host;
+}
+
+function backdrop(actions: ViewActions): HTMLElement {
+  const element = el("div", "overlay-backdrop");
+  element.addEventListener("click", () => actions.closeOverlays());
+  return element;
 }
 
 function renderRevisionsPanel(state: State, actions: ViewActions): HTMLElement {
@@ -383,6 +397,173 @@ function renderSettingsPanel(state: State, actions: ViewActions): HTMLElement {
   );
 }
 
+function renderNoteDialog(state: State, actions: ViewActions): HTMLElement {
+  const dialog = state.noteDialog;
+  const isDelete = dialog?.kind === "delete";
+  const title =
+    dialog?.kind === "create"
+      ? "New Note"
+      : dialog?.kind === "rename"
+        ? "Rename Note"
+        : dialog?.kind === "tag"
+          ? "Add Tag"
+          : "Delete Note";
+  const inputEl =
+    dialog !== null && dialog.kind !== "delete"
+      ? input(title, dialog.kind === "tag" ? dialog.value : dialog.title)
+      : null;
+  const panel = el(
+    "form",
+    "modal-panel note-dialog-panel",
+    el(
+      "div",
+      "modal-header",
+      span(title),
+      button("×", "Close", () => actions.closeOverlays(), "tab-close"),
+    ),
+  );
+  if (isDelete) {
+    const note = state.notes.get(dialog.noteId);
+    panel.append(
+      el("p", "dialog-copy", `Move ${note?.path ?? "this note"} to trash?`),
+      el(
+        "div",
+        "modal-actions",
+        button("Cancel", "Cancel", () => actions.closeOverlays(), "text-button"),
+        button("Delete", "Delete note", () => actions.submitNoteDialog(), "danger-button"),
+      ),
+    );
+  } else if (inputEl !== null) {
+    panel.append(
+      el("label", "field-label", span(dialog?.kind === "tag" ? "Tag" : "Title"), inputEl),
+      el(
+        "div",
+        "modal-actions",
+        button("Cancel", "Cancel", () => actions.closeOverlays(), "text-button"),
+        button(
+          dialog?.kind === "create" ? "Create" : dialog?.kind === "rename" ? "Rename" : "Add",
+          title,
+          () => actions.submitNoteDialog(inputEl.value),
+          "primary-button",
+        ),
+      ),
+    );
+    panel.addEventListener("submit", (event) => {
+      event.preventDefault();
+      actions.submitNoteDialog(inputEl.value);
+    });
+    queueMicrotask(() => inputEl.focus());
+  }
+  return panel;
+}
+
+function renderContextMenu(state: State, actions: ViewActions): HTMLElement {
+  const menu = el("div", "context-menu");
+  const context = state.contextMenu;
+  if (context === null) {
+    return menu;
+  }
+  menu.style.left = `${context.x}px`;
+  menu.style.top = `${context.y}px`;
+  const pinned = state.pinned.has(context.noteId);
+  menu.append(
+    button(
+      "Rename",
+      "Rename note",
+      () => {
+        actions.commandRename(context.noteId);
+        actions.closeContextMenu();
+      },
+      "context-menu-item",
+    ),
+    button(
+      pinned ? "Unpin" : "Pin",
+      pinned ? "Unpin note" : "Pin note",
+      () => {
+        actions.commandPin(context.noteId);
+        actions.closeContextMenu();
+      },
+      "context-menu-item",
+    ),
+    button(
+      "Delete",
+      "Delete note",
+      () => {
+        actions.commandDelete(context.noteId);
+        actions.closeContextMenu();
+      },
+      "context-menu-item danger",
+    ),
+  );
+  return menu;
+}
+
+function searchNoteRow(
+  noteId: string,
+  title: string,
+  path: string,
+  actions: ViewActions,
+): HTMLElement {
+  const row = button(
+    "",
+    path,
+    () => {
+      actions.closeOverlays();
+      actions.openInTab(noteId);
+    },
+    "command-row search-result-row",
+  );
+  row.append(span(title, "search-result-title"), span(path, "search-result-path"));
+  return row;
+}
+
+function searchHitRow(hit: SearchHit, actions: ViewActions): HTMLElement {
+  const row = searchNoteRow(hit.note.noteId, hit.note.title, hit.note.path, actions);
+  row.append(renderScore(hit), renderSnippet(hit.snippet));
+  return row;
+}
+
+function renderScore(hit: SearchHit): HTMLElement {
+  const scores: Array<[string, number]> = [
+    ["title", hit.fieldScores.title],
+    ["headings", hit.fieldScores.headings],
+    ["tags", hit.fieldScores.tags],
+    ["content", hit.fieldScores.content],
+  ];
+  const parts = scores
+    .filter(([, value]) => value > 0)
+    .map(([name, value]) => `${name}:${value.toPrecision(3)}`);
+  return el(
+    "span",
+    "search-score",
+    `${hit.score.toPrecision(3)}${parts.length > 0 ? ` = ${parts.join(" + ")}` : ""}`,
+  );
+}
+
+function renderSnippet(snippet: string): HTMLElement {
+  const element = el("span", "search-snippet");
+  for (const part of parseHighlightedSnippet(snippet)) {
+    element.append(part.highlight ? el("b", "", part.text) : document.createTextNode(part.text));
+  }
+  return element;
+}
+
+function parseHighlightedSnippet(snippet: string): Array<{ text: string; highlight: boolean }> {
+  const parts = snippet.split(/(<b>|<\/b>)/);
+  const result: Array<{ text: string; highlight: boolean }> = [];
+  let highlight = false;
+  for (const part of parts) {
+    if (part === "<b>") {
+      highlight = true;
+    } else if (part === "</b>") {
+      highlight = false;
+    } else if (part !== "") {
+      result.push({ text: part, highlight });
+    }
+  }
+  return result;
+}
+
 function input(
   title: string,
   value: string,
@@ -465,14 +646,17 @@ function noteList(state: State, ids: string[], actions: ViewActions): HTMLElemen
     if (note === undefined) {
       continue;
     }
-    list.append(
-      button(
-        note.title,
-        note.path,
-        () => actions.openInTab(note.noteId),
-        state.activeNoteId === note.noteId ? "note-row active" : "note-row",
-      ),
+    const row = button(
+      note.title,
+      note.path,
+      () => actions.openInTab(note.noteId),
+      state.activeNoteId === note.noteId ? "note-row active" : "note-row",
     );
+    row.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+      actions.openNoteContextMenu(note.noteId, event.clientX, event.clientY);
+    });
+    list.append(row);
   }
   return list;
 }

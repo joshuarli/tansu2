@@ -8,7 +8,7 @@ use tantivy::query::QueryParser;
 use tantivy::schema::{Field, STORED, STRING, Schema, TEXT, TantivyDocument, Value};
 use tantivy::{Index, Term};
 
-use crate::api_types::{NoteMeta, SearchHit, Settings};
+use crate::api_types::{NoteMeta, SearchFieldScores, SearchHit, Settings};
 use crate::history;
 use crate::paths::visible_path;
 use crate::{Error, Result};
@@ -34,6 +34,7 @@ struct SearchFields {
 #[derive(Debug, Clone)]
 struct SearchDoc {
     content: String,
+    headings: String,
 }
 
 impl SearchIndex {
@@ -105,11 +106,7 @@ impl SearchIndex {
     }
 
     pub fn search(&self, query: &str, settings: &Settings, current: &[NoteMeta]) -> Vec<SearchHit> {
-        let terms = query
-            .split_whitespace()
-            .map(str::to_lowercase)
-            .filter(|term| !term.is_empty())
-            .collect::<Vec<_>>();
+        let terms = tokenize_query(query);
         if terms.is_empty() {
             return Vec::new();
         }
@@ -144,10 +141,12 @@ impl SearchIndex {
             let Some(doc) = self.docs.get(note_id) else {
                 continue;
             };
+            let field_scores = field_scores(current_meta, doc, &terms, settings);
             hits.push(SearchHit {
                 note: (*current_meta).clone(),
                 snippet: snippet(&doc.content, &terms),
                 score: score + recency_score(current_meta.updated_at_ms, settings.recency_boost),
+                field_scores,
             });
         }
         hits.sort_by(|a, b| {
@@ -177,8 +176,13 @@ impl SearchIndex {
         let (headings, stripped) = strip_markdown(content);
         writer.delete_term(Term::from_field_text(self.fields.note_id, &meta.note_id));
         writer.add_document(self.tantivy_doc(&meta, &headings, &stripped))?;
-        self.docs
-            .insert(meta.note_id.clone(), SearchDoc { content: stripped });
+        self.docs.insert(
+            meta.note_id.clone(),
+            SearchDoc {
+                content: stripped,
+                headings,
+            },
+        );
         Ok(())
     }
 
@@ -255,16 +259,87 @@ fn strip_markdown(content: &str) -> (String, String) {
     (headings, stripped)
 }
 
+fn tokenize_query(query: &str) -> Vec<String> {
+    query
+        .split(|ch: char| !ch.is_alphanumeric())
+        .map(str::to_lowercase)
+        .filter(|term| !term.is_empty())
+        .collect()
+}
+
+fn field_scores(
+    meta: &NoteMeta,
+    doc: &SearchDoc,
+    terms: &[String],
+    settings: &Settings,
+) -> SearchFieldScores {
+    SearchFieldScores {
+        title: weighted_matches(&meta.title, terms, settings.search_title_weight),
+        headings: weighted_matches(&doc.headings, terms, settings.search_heading_weight),
+        tags: weighted_matches(&meta.tags.join(" "), terms, settings.search_tag_weight),
+        content: weighted_matches(&doc.content, terms, settings.search_content_weight),
+    }
+}
+
+fn weighted_matches(text: &str, terms: &[String], weight: f32) -> f32 {
+    if weight <= 0.0 {
+        return 0.0;
+    }
+    let mut score = 0.0;
+    for word in WordIter::new(text) {
+        for term in terms {
+            if word.eq_ignore_ascii_case(term) {
+                score += weight;
+            } else if starts_with_ignore_ascii_case(word, term) {
+                score += weight * 0.8;
+            }
+        }
+    }
+    score
+}
+
 fn snippet(content: &str, terms: &[String]) -> String {
-    let lower = content.to_lowercase();
-    let index = terms
-        .iter()
-        .filter_map(|term| lower.find(term))
-        .min()
+    if content.is_empty() {
+        return String::new();
+    }
+    let first_match = WordIter::new(content)
+        .find(|word| terms.iter().any(|term| word_matches_term(word, term)))
+        .and_then(|word| content.find(word))
         .unwrap_or(0);
-    let start = index.saturating_sub(40);
-    let end = (index + 120).min(content.len());
-    content[start..end].trim().to_string()
+    let start = floor_char_boundary(content, first_match.saturating_sub(40));
+    let start = content[..start]
+        .rfind(char::is_whitespace)
+        .map(|index| {
+            index
+                + content[index..]
+                    .chars()
+                    .next()
+                    .map(char::len_utf8)
+                    .unwrap_or(0)
+        })
+        .unwrap_or(0);
+    let end = floor_char_boundary(content, (start + 160).min(content.len()));
+    let end = content[end..]
+        .find(char::is_whitespace)
+        .map(|index| end + index)
+        .unwrap_or(content.len());
+
+    let mut out = String::new();
+    let mut pos = start;
+    for (word_start, word_end) in WordBoundIter::new(&content[start..end]) {
+        let abs_start = start + word_start;
+        let abs_end = start + word_end;
+        let word = &content[abs_start..abs_end];
+        if terms.iter().any(|term| word_matches_term(word, term)) {
+            escape_html_into(&mut out, &content[pos..abs_start]);
+            out.push_str("<b>");
+            escape_html_into(&mut out, word);
+            out.push_str("</b>");
+            pos = abs_end;
+        }
+    }
+    escape_html_into(&mut out, &content[pos..end]);
+    out.trim().to_string()
 }
 
 fn recency_score(updated_at_ms: i64, boost: f32) -> f32 {
@@ -274,4 +349,133 @@ fn recency_score(updated_at_ms: i64, boost: f32) -> f32 {
     let now = crate::catalog::now_ms();
     let age_days = now.saturating_sub(updated_at_ms) as f32 / 86_400_000.0;
     boost / (1.0 + age_days.max(0.0))
+}
+
+fn word_matches_term(word: &str, term: &str) -> bool {
+    word.eq_ignore_ascii_case(term) || starts_with_ignore_ascii_case(word, term)
+}
+
+fn starts_with_ignore_ascii_case(word: &str, term: &str) -> bool {
+    word.len() > term.len()
+        && word
+            .bytes()
+            .zip(term.bytes())
+            .all(|(left, right)| left.eq_ignore_ascii_case(&right))
+}
+
+fn floor_char_boundary(text: &str, mut index: usize) -> usize {
+    while !text.is_char_boundary(index) {
+        index -= 1;
+    }
+    index
+}
+
+struct WordIter<'a> {
+    text: &'a str,
+    inner: WordBoundIter<'a>,
+}
+
+impl<'a> WordIter<'a> {
+    fn new(text: &'a str) -> Self {
+        Self {
+            text,
+            inner: WordBoundIter::new(text),
+        }
+    }
+}
+
+impl<'a> Iterator for WordIter<'a> {
+    type Item = &'a str;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.inner.next().map(|(start, end)| &self.text[start..end])
+    }
+}
+
+struct WordBoundIter<'a> {
+    bytes: &'a [u8],
+    pos: usize,
+}
+
+impl<'a> WordBoundIter<'a> {
+    fn new(text: &'a str) -> Self {
+        Self {
+            bytes: text.as_bytes(),
+            pos: 0,
+        }
+    }
+}
+
+impl Iterator for WordBoundIter<'_> {
+    type Item = (usize, usize);
+
+    fn next(&mut self) -> Option<Self::Item> {
+        while self.pos < self.bytes.len() && !self.bytes[self.pos].is_ascii_alphanumeric() {
+            self.pos += 1;
+        }
+        if self.pos >= self.bytes.len() {
+            return None;
+        }
+        let start = self.pos;
+        while self.pos < self.bytes.len() && self.bytes[self.pos].is_ascii_alphanumeric() {
+            self.pos += 1;
+        }
+        Some((start, self.pos))
+    }
+}
+
+fn escape_html_into(out: &mut String, text: &str) {
+    for ch in text.chars() {
+        match ch {
+            '&' => out.push_str("&amp;"),
+            '<' => out.push_str("&lt;"),
+            '>' => out.push_str("&gt;"),
+            '"' => out.push_str("&quot;"),
+            '\n' => out.push(' '),
+            _ => out.push(ch),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn note(title: &str, tags: &[&str]) -> NoteMeta {
+        NoteMeta {
+            note_id: "note".to_string(),
+            path: "note.md".to_string(),
+            title: title.to_string(),
+            tags: tags.iter().map(|tag| tag.to_string()).collect(),
+            seq: 1,
+            content_hash: "hash".to_string(),
+            updated_at_ms: 1,
+        }
+    }
+
+    #[test]
+    fn snippet_highlights_matches_and_escapes_html() {
+        let terms = tokenize_query("alpha");
+        let rendered = snippet("before <tag> alpha after", &terms);
+        assert_eq!(rendered, "before &lt;tag&gt; <b>alpha</b> after");
+    }
+
+    #[test]
+    fn field_scores_explain_matching_fields() {
+        let settings = Settings::default();
+        let doc = SearchDoc {
+            headings: "Alpha heading".to_string(),
+            content: "alpha body".to_string(),
+        };
+        let scores = field_scores(
+            &note("Alpha title", &["alpha"]),
+            &doc,
+            &["alpha".into()],
+            &settings,
+        );
+        assert!(scores.title > 0.0);
+        assert!(scores.headings > 0.0);
+        assert!(scores.tags > 0.0);
+        assert!(scores.content > 0.0);
+    }
 }
