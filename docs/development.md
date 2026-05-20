@@ -14,6 +14,14 @@ Install dependencies:
 pnpm install
 ```
 
+Playwright browser versions are declared in `package.json` under
+`playwrightBrowsers`. Use the repo wrapper so the install fails if
+`playwright-core` would install a different browser build:
+
+```sh
+pnpm run playwright:install
+```
+
 ## Run
 
 ```sh

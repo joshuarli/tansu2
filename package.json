@@ -10,6 +10,7 @@
     "bundle-dev": "node scripts/build-web.mjs development",
     "format:check": "oxfmt --check --config oxfmt.config.mjs",
     "lint": "oxlint",
+    "playwright:install": "node scripts/install-playwright-browsers.mjs",
     "test": "vitest run",
     "test-e2e": "pnpm run bundle-dev && vitest run --config vitest.e2e.config.ts"
   },
@@ -26,11 +27,33 @@
     "knip": "^6.9.0",
     "oxfmt": "0.43.0",
     "oxlint": "1.58.0",
-    "playwright": "^1.59.1",
+    "playwright": "1.60.0",
     "vitest": "4.1.4"
   },
   "engines": {
     "node": ">=25.9.0"
   },
-  "packageManager": "pnpm@11.0.2"
+  "packageManager": "pnpm@11.0.2",
+  "playwrightBrowsers": {
+    "playwrightVersion": "1.60.0",
+    "install": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "browsers": {
+      "chromium": {
+        "version": "148.0.7778.96",
+        "revision": "1223"
+      },
+      "firefox": {
+        "version": "150.0.2",
+        "revision": "1522"
+      },
+      "webkit": {
+        "version": "26.4",
+        "revision": "2287"
+      }
+    }
+  }
 }

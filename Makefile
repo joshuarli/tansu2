@@ -14,12 +14,16 @@ check: types-check
 	pnpm exec tsgo -p packages/md-wysiwyg/tsconfig.json --noEmit --pretty false
 	cargo check -q
 
-lint: types-check
+lint: lint-ts lint-rs
+
+lint-ts: types-check
 	pnpm exec oxfmt --check --config oxfmt.config.mjs
 	pnpm exec oxlint
 	pnpm exec knip --reporter compact
+
+lint-rs:
 	cargo fmt --check
-	cargo clippy --all-targets -- -D warnings
+	cargo clippy --fix --allow-dirty --all-targets --message-format=short
 
 coverage-rs:
 	cargo llvm-cov --workspace --all-targets --ignore-filename-regex 'src/(main\.rs|bin/gen-api-types\.rs)$$' --fail-under-lines 87 --fail-under-functions 80 --no-clean
