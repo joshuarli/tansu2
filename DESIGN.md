@@ -26,6 +26,31 @@ knowledge-base app.
 9. Replace Solid with simple imperative DOM and explicit state ownership.
 10. Build the integration harness before feature work can drift.
 
+## Implementation Guardrails
+
+These are the failure modes most likely to erode the design during
+implementation. Treat them as architectural guidelines, not style preferences.
+
+- Do not let paths become identity again. APIs, tabs, pins, recents, history,
+  conflict drafts, search results, and restore flows should carry `NoteId` for
+  identity and use paths only as mutable metadata.
+- Keep search indexing and watcher handling out of the content-write hot path.
+  Saving note content to disk, history, and catalog is higher priority than
+  derived search freshness or external-change notification.
+- Keep V1 structured frontmatter tags-only. Do not add arbitrary YAML parsing,
+  imported metadata fields, or unknown-key preservation unless this design is
+  explicitly revised.
+- Keep `packages/md-wysiwyg` as the only editor engine. App code may integrate,
+  configure, and simplify the copied package, but it should not recreate
+  Markdown rendering, contenteditable behavior, selection handling, or DOM to
+  Markdown serialization in parallel.
+- Keep the per-vault operation queue boring. Serialize mutation and
+  reconciliation work until tests prove a specific concurrency optimization is
+  necessary.
+- Keep the integration harness ahead of feature complexity. New storage,
+  reconciliation, API, editor, or vault-isolation behavior should land with real
+  harness coverage rather than relying only on manual browser checks.
+
 ## Non-Goals For V1
 
 These are deliberately excluded from V1 unless this document is revised.
@@ -43,6 +68,10 @@ These are deliberately excluded from V1 unless this document is revised.
 - Broad settings parity with the current app.
 - Automatic server-side filename suffix allocation for create or rename.
 - Revision pruning or compaction.
+- Structured non-tag frontmatter, imported article metadata fields, or arbitrary
+  YAML preservation as app metadata.
+- Fetching, rewriting, cataloging, or versioning remote assets from imported
+  HTML.
 
 HTML import is not deferred. It is part of V1.
 
@@ -86,6 +115,7 @@ The package owns:
 - Undo/redo in browser memory.
 - Markdown formatting operations.
 - Image paste conversion hooks.
+- Rich HTML paste sanitization.
 - Callout and image extensions.
 
 The app must not become a second editor engine. The app integrates the editor,
@@ -101,6 +131,7 @@ Required package adjustments:
 - Preserve source mode and browser-memory undo/redo.
 - Preserve the wiki-image extension for `![[image.webp]]`.
 - Preserve the callout extension if it remains stable.
+- Preserve and adapt the existing pasted-HTML sanitizer.
 - Keep the wiki-link extension available in the package only if it is cheap to
   retain, but do not enable it in the app.
 - Remove or simplify package exports that exist only for the old Solid app if
@@ -148,7 +179,7 @@ way:
 - A hidden file input accepts `.html`, `.htm`, and `text/html`.
 - The client uses Defuddle to parse the document and produce Markdown.
 - Import must fail rather than save raw HTML if Markdown conversion is unavailable.
-- Article metadata becomes frontmatter.
+- Article metadata becomes ordinary Markdown body content, not frontmatter.
 - The result is created through the normal note creation API.
 
 Server storage and history should treat imported notes exactly like any other note.
@@ -313,11 +344,14 @@ event ordering, sync version changes, and current-state/event-log consistency.
 ### Snapshot And Hash Format
 
 History snapshots are full compressed Markdown payloads. Deltas are deferred.
+The payload is canonical Markdown bytes, not whatever line-ending form the editor
+used internally.
 
 Decisions to nail down:
 
-- Snapshot bytes are the exact UTF-8 Markdown bytes accepted by the server.
+- Snapshot bytes are UTF-8 Markdown with canonical CRLF line endings.
 - Hashes are serialized as `sha256:<lowercase-hex>`.
+- Hashes are computed after UTF-8 validation and CRLF normalization.
 - Every content-changing event has a recoverable full snapshot.
 - Snapshot reads verify uncompressed length and content hash.
 - Corrupt or missing snapshots produce typed errors and never trigger blind
@@ -347,6 +381,23 @@ This requires shared helpers for:
 The implementation should avoid scattering save variants. Create, save, restore,
 delete, import, and conflict recovery should share the same content-event write
 path wherever possible.
+
+### Per-Vault Operation Serialization
+
+V1 should prefer predictability over parallelism. Each vault should have one
+mutation queue or mutex for operations that touch SQLite, note files, history
+blobs, session state, settings, pins, watcher reconciliation, or search dirty
+state.
+
+This means create, save, rename, delete, restore, import creation, conflict
+recovery, settings writes, session writes, pin writes, and reconciliation do not
+interleave inside one vault. Different vaults can still operate independently.
+
+Reads can be optimized later. In V1 it is acceptable for reads to take the same
+per-vault lock if that keeps catalog/file consistency obvious.
+
+The queue should be visible in code as a `VaultRuntime` concern, not hidden in
+individual modules. Performance tuning can wait until correctness is proven.
 
 ### Reconciliation Matching
 
@@ -455,6 +506,12 @@ Load-bearing choices:
 - Reindexing excluded folders is a vault-local operation.
 - Search results return current catalog metadata, not stale metadata copied into
   the index when avoidable.
+- Saves, renames, deletes, restores, and imports enqueue search work after the
+  durable write path has completed.
+- Search indexing failure never fails an accepted note write.
+- If indexing fails, the vault records a search-dirty state and retries rebuild
+  work later. The UI may show a quiet degraded-search indicator, but note content
+  remains authoritative.
 
 Search can be rebuilt. It should not become a second metadata database.
 
@@ -589,9 +646,26 @@ clearly changes content:
 - restore revision
 - create note with seed content
 
+### Encoding And Line Endings
+
+V1 is strict about note text:
+
+- Markdown files must be valid UTF-8.
+- Tansu-managed writes use CRLF line endings on disk and in history snapshots.
+- Incoming API content is normalized to CRLF before hashing, snapshotting, and
+  writing visible Markdown files.
+- Frontend editor internals may use LF strings if that is simpler, but hashes and
+  conflict checks always refer to server-canonical CRLF content.
+- Startup scan does not mass-rewrite otherwise valid UTF-8 files only because
+  they use LF or mixed line endings. The next accepted Tansu write normalizes the
+  file to CRLF.
+- Invalid UTF-8 files are marked unresolved with reason `invalid_utf8`, excluded
+  from normal note lists and search, and left untouched on disk.
+
 ### Tags
 
-Tags are parsed from frontmatter:
+Tags are the only structured frontmatter V1 supports. The supported frontmatter
+block is strongly typed and owned by Tansu:
 
 ```markdown
 ---
@@ -601,7 +675,12 @@ tags: [alpha, beta]
 # Note title
 ```
 
-The editor UI should show tags separately but save them back into frontmatter.
+The editor UI should show tags separately and save them back into this tags-only
+frontmatter block.
+
+Supported syntax should stay intentionally small: either inline
+`tags: [alpha, beta]` or a simple list under `tags:`. Tansu should not add a
+general YAML dependency just to support arbitrary metadata in V1.
 
 Tag normalization is intentionally simple:
 
@@ -610,11 +689,12 @@ Tag normalization is intentionally simple:
 - lowercase tags
 - avoid complex tag query syntax in V1
 
-Tag editing must preserve non-tag frontmatter fields. This matters for imported
-HTML notes, which may contain `title`, `date`, `author`, and `description`
-frontmatter. The tag UI is allowed to add, replace, or remove only the `tags`
-field; it must not rebuild the entire frontmatter block from scratch and discard
-unknown keys.
+V1 should not parse arbitrary YAML frontmatter and should not preserve unknown
+frontmatter keys as structured metadata. If a note starts with a frontmatter-like
+block containing keys other than `tags`, Tansu leaves it as document content,
+does not index structured tags from it, and does not rewrite it through the tag
+UI. Tag editing can be disabled for that note until the user manually simplifies
+the leading block.
 
 ### Titles
 
@@ -628,8 +708,8 @@ saves never rename the file when the H1 changes.
 
 HTML import should seed an H1 from the article title when Defuddle produces
 metadata but the imported Markdown body does not already start with an H1. The
-frontmatter `title` field is preserved as imported metadata, but display title
-still follows the H1-then-path rule.
+imported metadata is inserted below the H1 as ordinary Markdown body text.
+Display title still follows the H1-then-path rule.
 
 ### Create And Rename
 
@@ -765,7 +845,8 @@ CREATE TABLE settings (
 
 ### Notes On The Schema
 
-- `content_hash` should be a stable hash of the exact UTF-8 Markdown bytes.
+- `content_hash` should be a stable hash of canonical UTF-8 Markdown bytes with
+  CRLF line endings.
 - `seq` is monotonic per note.
 - `event_id` is monotonic per vault and is used to derive `sync_version`.
 - `path_key` is normalized/case-folded for live path uniqueness.
@@ -845,14 +926,15 @@ Recommended file path:
 .tansu/history/<note-id>/<seq>.lz4
 ```
 
-Snapshot payload is the exact Markdown content bytes after the accepted write.
+Snapshot payload is the canonical Markdown content bytes after the accepted
+write: valid UTF-8 with CRLF line endings.
 
 Compression uses `lz4_flex`. This favors speed and simplicity over maximum
 compression ratio. Restore is rare, so simplicity is more important than storage
 optimization.
 
-Content hashes use SHA-256 over the exact UTF-8 Markdown bytes and are serialized
-with an algorithm prefix:
+Content hashes use SHA-256 over the canonical UTF-8/CRLF Markdown bytes and are
+serialized with an algorithm prefix:
 
 ```text
 sha256:<lowercase-hex>
@@ -954,14 +1036,15 @@ An accepted save:
 1. Validates vault selection.
 2. Resolves note ID to current catalog row.
 3. Rejects deleted notes unless this is an allowed restore/recovery action.
-4. Validates `expected_seq` and `expected_hash`.
-5. Computes new content hash.
-6. If content is unchanged, returns current metadata without writing a new event.
-7. Executes the write-ordering protocol for the event kind.
-8. Updates search index.
+4. Normalizes content to canonical UTF-8/CRLF Markdown.
+5. Validates `expected_seq` and `expected_hash`.
+6. Computes new content hash.
+7. If content is unchanged, returns current metadata without writing a new event.
+8. Executes the write-ordering protocol for the event kind.
 9. Updates recent metadata when appropriate.
 10. Emits a vault-scoped SSE event.
-11. Returns updated note metadata.
+11. Enqueues search indexing work.
+12. Returns updated note metadata.
 
 If the submitted content hash already equals the current canonical content hash,
 the server returns the current document metadata as an idempotent success even
@@ -1008,7 +1091,8 @@ Not required in V1:
 
 The normal invariant after a successful save:
 
-- note row `content_hash` equals the hash of the visible Markdown file
+- note row `content_hash` equals the hash of canonicalized visible Markdown
+  content
 - note row `seq` equals latest committed event seq
 - latest content event has a snapshot blob with the same hash
 - search index eventually reflects the latest note row and content
@@ -1037,7 +1121,7 @@ Content save ordering:
 4. Commit SQLite transaction inserting the event, updating the note row, and
    incrementing `sync_version`.
 5. Rename the Markdown temp file over the visible file.
-6. Update search and emit SSE.
+6. Emit SSE and enqueue search indexing work.
 
 If the server crashes after the SQLite transaction but before the visible file
 rename, startup repair rewrites the visible Markdown file from the latest snapshot.
@@ -1084,7 +1168,7 @@ Delete behavior:
 4. Insert delete event.
 5. Set `deleted_at` on note row.
 6. Remove visible Markdown file.
-7. Remove from search results.
+7. Enqueue search removal work.
 8. Remove from pinned and recent visible lists.
 9. Emit SSE.
 
@@ -1097,7 +1181,7 @@ Restore from history:
 5. Write visible Markdown file.
 6. Clear tombstone if needed.
 7. Append restore event with full snapshot.
-8. Reindex.
+8. Enqueue search indexing work.
 
 ## Rename
 
@@ -1110,7 +1194,7 @@ Rename behavior:
 3. Fail if target path exists.
 4. Insert rename event and update note row path/title in SQLite.
 5. Rename visible file.
-6. Reindex.
+6. Enqueue search indexing work.
 7. Emit SSE.
 
 Rename does not rewrite note content and does not update links because wiki links
@@ -1150,7 +1234,7 @@ Same path, different hash:
 
 - Append external edit event with full snapshot.
 - Update note row.
-- Reindex.
+- Enqueue search indexing work.
 
 Catalog path missing, exact same hash found at one new path:
 
@@ -1170,7 +1254,7 @@ New path not known to catalog:
 
 - Assign new note ID.
 - Append baseline event.
-- Index note.
+- Enqueue search indexing work.
 
 Multiple new paths with the same `path_key`:
 
@@ -1189,11 +1273,13 @@ matches.
 
 ### Watcher Events
 
-Watcher events follow the same rules but can operate incrementally. The watcher
-must ignore server self-writes to avoid duplicate external edit events.
+Watcher events are invalidation signals, not semantic facts. V1 should debounce
+watcher notifications per vault and then run the same reconciliation classifier
+used by startup scan.
 
-If a watcher event is ambiguous, it can schedule a small vault reconciliation pass
-rather than deciding from the raw event alone.
+The watcher must ignore server self-writes to avoid duplicate external edit
+events. It should not try to infer rename, delete, or edit semantics directly
+from raw `notify` events.
 
 ### Unresolved Notes
 
@@ -1205,6 +1291,7 @@ state.
 Examples:
 
 - Multiple existing files have the same case-folded `path_key`.
+- A Markdown file is not valid UTF-8.
 - A live catalog row has no visible file and its latest snapshot is missing or
   corrupt.
 - An interrupted rename leaves the expected old path, expected new path, and an
@@ -1218,9 +1305,9 @@ Behavior:
 - The catalog record keeps its note ID, last known path, sequence, and history
   metadata.
 - `notes.unresolved_reason` records a short stable snake_case reason value such
-  as `path_case_collision`, `missing_snapshot`, `corrupt_snapshot`, or
-  `interrupted_rename_conflict`. The API exposes these values through generated
-  `ts-rs` enums, not handwritten frontend strings.
+  as `path_case_collision`, `invalid_utf8`, `missing_snapshot`,
+  `corrupt_snapshot`, or `interrupted_rename_conflict`. The API exposes these
+  values through generated `ts-rs` enums, not handwritten frontend strings.
 - Unresolved notes are excluded from normal bootstrap note lists, pinned/recent
   lists, and search.
 - Bootstrap may include a `repair_issues` list so the frontend can show a quiet
@@ -1248,6 +1335,9 @@ Index fields:
 
 Search should exclude tombstoned notes.
 Search should also exclude unresolved notes.
+Search candidates should be resolved through the catalog before returning so a
+stale Tantivy document cannot expose a deleted, unresolved, or renamed note as
+current truth.
 
 Search results return current note metadata:
 
@@ -1269,6 +1359,10 @@ V1 should keep query behavior simple:
 - optional fuzzy fallback
 - optional recency boost
 - no tag query language
+
+Indexing runs outside the content-write hot path. If indexing fails after a save,
+the save remains accepted and recoverable. The vault marks search dirty and
+retries rebuild work later.
 
 ## Images
 
@@ -1319,33 +1413,56 @@ HTML import is a frontend feature that creates ordinary notes.
 3. Client reads selected HTML file as text.
 4. Client creates a temporary object URL for base URL resolution.
 5. Client parses the document with `DOMParser`.
-6. Client runs Defuddle with Markdown output enabled.
-7. If Defuddle does not return Markdown, import fails with an alert.
-8. Client builds Markdown frontmatter from article metadata.
-9. Client ensures the imported Markdown body starts with an H1 when article title
+6. Client sanitizes the parsed HTML document using the same safety policy as
+   pasted HTML where practical.
+7. Client runs Defuddle with Markdown output enabled.
+8. If Defuddle does not return Markdown, import fails with an alert.
+9. Client builds a small ordinary Markdown metadata block from article metadata.
+10. Client ensures the imported Markdown body starts with an H1 when article title
    metadata exists and the body has no leading H1.
-10. Client chooses an initial path based on sanitized filename stem.
-11. Client calls normal create API.
-12. If create returns collision, client may choose a new explicit candidate path
+11. Client rejects or strips dangerous raw HTML that survived conversion.
+12. Client chooses an initial path based on sanitized filename stem.
+13. Client calls normal create API.
+14. If create returns collision, client may choose a new explicit candidate path
     such as `stem-1.md` and retry.
-13. Imported note opens as a normal tab.
+15. Imported note opens as a normal tab.
 
-### Frontmatter
+### Imported Metadata
 
-HTML import may write:
+HTML import does not write metadata frontmatter. Metadata becomes ordinary body
+Markdown near the top of the imported note:
 
 ```markdown
----
-title: "Article title"
-date: "Published date"
-author: "Author"
-description: "Description"
----
+# Article title
+
+Source: https://example.com/article
+Author: Author Name
+Published: 2026-05-20
+Description: Short description.
 
 Imported Markdown...
 ```
 
-This frontmatter is user content. The server does not need a special import path.
+This keeps frontmatter strongly typed around tags only. The server does not need
+a special import path.
+
+### Sanitization
+
+HTML sanitization is V1 scope for both pasted content and imported content. The
+copied `md-wysiwyg` package already has a paste sanitizer and those tests should
+carry forward.
+
+The V1 sanitizer should remove or neutralize at least:
+
+- `<script>`, `<style>`, and active embed content
+- event handler attributes
+- `javascript:` URLs
+- `data:text/html` URLs
+- dangerous raw HTML blocks that Defuddle or Markdown conversion would otherwise
+  preserve
+
+Import still saves Markdown, not raw HTML. Sanitization is defense in depth for
+the browser-side conversion pipeline and pasted rich text.
 
 ### Tests
 
@@ -1353,7 +1470,8 @@ HTML import needs both unit and end-to-end coverage:
 
 - conversion saves Markdown, not raw HTML
 - missing Markdown conversion cancels import
-- metadata frontmatter is present
+- metadata body block is present when metadata exists
+- dangerous HTML from import fixtures is stripped or rejected
 - create collision retry is explicit and tested
 - imported note receives normal note ID and baseline/import history event
 
@@ -1412,12 +1530,21 @@ pub struct BootstrapResponse {
     pub vaults: Vec<VaultEntry>,
     pub active_vault: usize,
     pub sync_version: u64,
+    pub search_status: SearchStatus,
     pub session: SessionState,
     pub settings: Settings,
     pub notes: Vec<NoteMeta>,
     pub pinned: Vec<NoteId>,
     pub recent: Vec<NoteId>,
     pub repair_issues: Vec<RepairIssue>,
+}
+
+#[serde(rename_all = "snake_case")]
+pub enum SearchStatus {
+    Ready,
+    Dirty,
+    Rebuilding,
+    Failed { message: String },
 }
 
 pub struct SaveNoteRequest {
@@ -1471,6 +1598,7 @@ pub enum InvalidPathReason {
 #[serde(rename_all = "snake_case")]
 pub enum RepairIssueReason {
     PathCaseCollision,
+    InvalidUtf8,
     MissingSnapshot,
     CorruptSnapshot,
     InterruptedRenameConflict,
@@ -1637,9 +1765,12 @@ Target startup sequence:
 Inactive restored tabs should not fetch content until selected.
 
 Session state is stored per vault in SQLite. It persists open tabs, active tab,
-cursor positions, and the closed-tab reopen stack. It does not persist unsaved
-draft content. The frontend must warn on page unload when any tab has unsaved
-in-memory changes that have not been accepted by the server.
+last accepted cursor positions, and the closed-tab reopen stack. It does not
+persist unsaved draft content. Cursor state is not synced as its own high-rate
+operation; it rides along with autosave/manual save and with tab lifecycle
+session writes such as switch, close, reopen, and vault switch. The frontend must
+warn on page unload when any tab has unsaved in-memory changes that have not been
+accepted by the server.
 
 ### Server Startup Happy Path
 
@@ -1656,14 +1787,17 @@ Startup order:
    - open SQLite with migrations
    - run startup repair
    - run full filesystem reconciliation
-   - build or rebuild search indexes needed for normal queries
+   - load or attempt to rebuild search indexes needed for normal queries
    - load settings, session, pinned, and recent metadata
    - start the file watcher after reconciliation is complete
 6. Bind the HTTP listener only after all configured vaults are ready.
 7. Serve static assets and API requests.
 
 If any configured vault fails to initialize, the server exits with a clear stderr
-message. Serving a subset of configured vaults is deferred.
+message. Serving a subset of configured vaults is deferred. Search indexing
+failure is not a vault initialization failure unless it prevents opening the
+catalog or visible Markdown content safely; the vault can start with
+`search_status` set to dirty or failed.
 
 Because startup blocks until each vault is ready, the frontend does not need a
 `vault_not_ready` API state in V1.
@@ -1772,6 +1906,7 @@ Rules:
 - Active tab content loads at startup.
 - Inactive tab content loads when selected.
 - Switching away captures current editor content and cursor into tab state.
+- Tab switch, close, reopen, and vault switch sync tab/session structure.
 - Dirty tabs can be switched away from.
 - Autosave is debounced per tab.
 - Closing a dirty tab asks for confirmation unless content has already autosaved.
@@ -1793,6 +1928,8 @@ Rules:
 - Skip or retry while an active editor selection is non-collapsed if needed to
   avoid disrupting selection behavior.
 - Uses the normal save API.
+- Includes the current cursor when available so cursor persistence rides along
+  with accepted saves.
 - Every accepted autosave is durable.
 - Autosave bursts are grouped in history UI.
 - Manual save is marked as a visible checkpoint.
@@ -1831,7 +1968,7 @@ The app owns:
 - active note loading
 - save scheduling
 - conflict UI
-- tags/frontmatter integration
+- tags-only frontmatter integration
 - image upload callback
 - revision inspector
 - tiny toolbar commands
@@ -1966,6 +2103,7 @@ Each `VaultRuntime` owns:
 - name
 - index
 - root path
+- per-vault operation queue or mutex
 - catalog connection
 - search index
 - watcher
@@ -1998,7 +2136,10 @@ Acceptable:
 
 - single-threaded request handling initially
 - watcher thread per vault or shared watcher thread
-- blocking startup reconciliation and indexing before the HTTP listener binds
+- blocking startup reconciliation and search index load/rebuild attempt before
+  the HTTP listener binds
+- serialized per-vault mutation operations, even when that is more conservative
+  than strictly necessary
 
 Avoid introducing async runtime unless there is a concrete need.
 
@@ -2110,7 +2251,7 @@ easy by keeping fixtures under versioned test directories.
 - startup repair
 - external reconciliation
 - search scanning and indexing
-- frontmatter tag parsing
+- tags-only frontmatter parsing
 - image path safety
 
 ### Editor Package Coverage
@@ -2152,3 +2293,10 @@ These invariants should be treated as testable design constraints.
 15. Startup reconciliation never guesses identity for ambiguous move+edit cases.
 16. API error codes and reason enums are generated from Rust through `ts-rs`.
 17. Closed-tab restore uses note IDs and never reopens by stale path alone.
+18. Tansu-managed Markdown writes are valid UTF-8 with CRLF line endings.
+19. Search indexing failure never rolls back or rejects an accepted note write.
+20. Watcher notifications trigger reconciliation; raw watcher events are not
+    trusted as semantic edit/rename/delete facts.
+21. V1 structured frontmatter is tags-only.
+22. Pasted and imported HTML pass through a sanitizer before becoming editor DOM
+    or saved Markdown.

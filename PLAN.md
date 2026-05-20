@@ -15,6 +15,26 @@ General rules:
 - Preserve the editor package boundary.
 - Favor tests that prove data integrity over UI polish tests.
 
+Implementation guardrails:
+
+- Any code path that needs note identity must use `NoteId`; paths are mutable
+  metadata and must not become identity through convenience APIs.
+- Content writes must complete durable catalog/history/file work before search
+  indexing, watcher side effects, or UI freshness concerns. Indexing failures
+  must not roll back accepted note writes.
+- Frontmatter remains tags-only in V1. Do not introduce general YAML metadata,
+  imported metadata fields, or unknown-key rewrite logic while implementing a
+  stage.
+- `packages/md-wysiwyg` remains the editor engine. App modules should not grow a
+  parallel Markdown renderer, serializer, selection system, or contenteditable
+  behavior layer.
+- Per-vault mutation and reconciliation work stays serialized unless a later
+  measured bottleneck justifies changing the design.
+- Harness coverage should precede or accompany risky behavior. If a stage changes
+  storage, reconciliation, save semantics, generated API types, editor
+  integration, or vault isolation, add a real integration or focused unit test in
+  that stage.
+
 ## Stage 0: Repository Skeleton And Tooling
 
 Goal: create the minimal project shape without implementing product behavior.
@@ -85,8 +105,9 @@ Deliverables:
 - Path normalization helpers.
 - Static asset serving.
 - Blocking per-vault startup sequence: config, migrations, repair,
-  reconciliation, search index readiness, watcher start.
+  reconciliation, search index load/rebuild attempt, watcher start.
 - `App` struct with vault runtime placeholders.
+- Per-vault operation queue or mutex for serialized mutation work.
 
 Tests:
 
@@ -97,6 +118,7 @@ Tests:
 - path traversal rejection
 - static file serving
 - server does not bind or serve API responses before configured vaults are ready
+- per-vault mutation operations are serialized
 
 Exit criteria:
 
@@ -148,7 +170,8 @@ Deliverables:
 - `sha2` hashing with `sha256:<hex>` serialization.
 - Snapshot write/read helpers.
 - Conflict draft write/read helpers.
-- Hash computation helper for exact Markdown bytes.
+- Hash computation helper for canonical Markdown bytes.
+- UTF-8 validation and CRLF canonicalization helper for Markdown content.
 - Temporary-file and rename helper for blob writes.
 - History metadata helpers in catalog.
 
@@ -156,7 +179,8 @@ Tests:
 
 - snapshot round trip
 - conflict draft round trip
-- hash matches exact bytes
+- hash matches canonical UTF-8/CRLF bytes
+- LF and mixed line endings normalize to the same canonical CRLF hash
 - hash algorithm prefix round trip
 - missing blob error behavior
 - corrupt blob error behavior
@@ -173,7 +197,7 @@ Goal: populate and repair a vault from real files.
 Deliverables:
 
 - Markdown file walker that excludes `.tansu` and excluded folders.
-- Frontmatter tag parser.
+- Strongly typed tags-only frontmatter parser.
 - title extraction from first H1 or filename stem.
 - Baseline event creation for new files.
 - Same-path external edit detection.
@@ -183,6 +207,7 @@ Deliverables:
 - Startup repair for catalog/file/hash mismatches.
 - Interrupted server write repair from latest committed snapshot.
 - Path policy enforcement for `.md`, `.tansu`, traversal, and case collisions.
+- Invalid UTF-8 files become unresolved records without modifying the files.
 
 Tests:
 
@@ -192,7 +217,9 @@ Tests:
 - exact-hash move preserves ID
 - moved-and-edited file does not guess identity
 - deleted file tombstones note
+- unsupported or malformed non-tag frontmatter is left as document content
 - duplicate case-fold paths become one live note plus unresolved records
+- invalid UTF-8 files are marked unresolved and excluded from search
 - missing/corrupt history does not silently discard catalog records
 - interrupted save repairs visible file from latest snapshot
 - `.tansu` files ignored
@@ -231,6 +258,7 @@ Core DTOs:
 - conflict draft metadata
 - settings
 - session state
+- search status
 - search hit
 
 Tests:
@@ -265,6 +293,10 @@ Deliverables:
 - Idempotent stale save response when submitted content already equals current content.
 - Tombstone delete.
 - Write ordering that commits catalog/history before repairing or updating visible files.
+- Save path enqueues search work after the durable write instead of indexing on
+  the hot path.
+- Incoming save content is normalized to canonical CRLF before hashing and
+  writing.
 
 Tests:
 
@@ -273,6 +305,7 @@ Tests:
 - create writes file, note row, and baseline/import event
 - create collision fails
 - save with correct seq/hash succeeds
+- save writes CRLF-normalized UTF-8 Markdown
 - unchanged save does not create redundant event
 - stale save creates conflict draft
 - stale save response has `error.code === "save_conflict"`
@@ -281,6 +314,7 @@ Tests:
 - rename collision fails
 - delete removes file and tombstones note
 - delete does not remove a changed external file during startup repair
+- indexing failure after a save does not fail or roll back the accepted save
 
 Exit criteria:
 
@@ -293,11 +327,13 @@ Goal: restore core navigation data with per-vault isolation.
 Deliverables:
 
 - Tantivy search index per vault.
+- Search dirty/degraded state in catalog or vault metadata.
 - Search endpoint.
 - Settings endpoint.
 - Pin/unpin endpoints.
 - Recent update on note open and save where appropriate.
 - Reindex on excluded folder changes.
+- Search work queue decoupled from note content writes.
 
 Tests:
 
@@ -305,6 +341,8 @@ Tests:
 - search excludes tombstones
 - settings are per vault
 - excluded folder update reindexes
+- indexing failure marks search dirty/degraded without affecting saved content
+- stale index candidates are filtered through current catalog state
 - pinned notes are note ID based
 - recent notes are note ID based
 - pinned/recent do not leak across vaults
@@ -323,8 +361,8 @@ Deliverables:
 - Server self-write filter.
 - `/events?vault=` endpoint.
 - SSE event payloads using note IDs.
-- Incremental reconcile on watcher events.
-- Full reconcile fallback for ambiguous watcher sequences.
+- Debounced watcher invalidation per vault.
+- Reuse the startup reconciliation classifier after watcher invalidation.
 
 Tests:
 
@@ -334,6 +372,7 @@ Tests:
 - external delete emits delete event
 - exact external rename emits rename event
 - server self-write does not duplicate external edit event
+- raw watcher rename events are not trusted as semantic rename decisions
 - two browser tabs on different vaults receive isolated events
 
 Exit criteria:
@@ -378,14 +417,17 @@ Deliverables:
 
 - `md-wysiwyg` package integration.
 - Active editor mount and destroy behavior.
+- Pasted HTML sanitizer carried over and adapted with the copied editor package.
 - Tab state by note ID.
 - Lazy content load for inactive tabs.
 - Cursor capture and restore.
-- Per-vault session persistence for open tabs, active tab, and cursors.
+- Per-vault session persistence for open tabs, active tab, and last accepted
+  cursors.
 - Per-vault closed-tab reopen stack.
 - Before-unload warning for unsaved in-memory drafts.
-- Tag row and frontmatter sync.
-- Preservation of non-tag frontmatter fields.
+- Tag row and strongly typed tags-only frontmatter sync.
+- Unsupported non-tag frontmatter leaves tag editing disabled rather than
+  rewriting unknown metadata.
 - Debounced per-tab autosave.
 - Manual save command.
 - Save conflict UI entry point.
@@ -396,6 +438,8 @@ Tests:
 
 - opening a note loads content into editor
 - switching tabs captures draft and cursor
+- cursor persistence rides on autosave/manual save and tab lifecycle session
+  writes, not high-rate cursor sync
 - inactive tab content is lazy-loaded
 - dirty tab can be switched away from
 - restored inactive tabs do not fetch bodies until selected
@@ -403,12 +447,13 @@ Tests:
 - reopening a closed tab resolves by note ID and focuses an existing tab if open
 - closed-tab stack survives reload and stays vault-scoped
 - deleted or unresolved closed-tab entries are dropped with a quiet notification
-- non-tag frontmatter survives tag edits
+- unsupported non-tag frontmatter is not rewritten by tag edits
 - autosave sends expected seq/hash
 - manual save creates checkpoint
 - stale save surfaces conflict draft
 - tag changes update frontmatter and save
 - toolbar formatting persists through save
+- pasted HTML strips scripts, event handlers, and dangerous URLs
 
 Exit criteria:
 
@@ -505,8 +550,10 @@ Deliverables:
 - Import command in palette.
 - Hidden file input.
 - HTML to Markdown conversion.
-- Frontmatter from article metadata.
+- Body Markdown metadata block from article metadata.
 - Markdown-only safety check.
+- HTML sanitization for imported content, carried over from the existing app
+  where possible.
 - Explicit collision retry in client.
 - Imported note opens after creation.
 - Import history event or baseline event source marked as import.
@@ -518,8 +565,9 @@ Tests:
 - fixture HTML imports as Markdown
 - raw HTML is not saved
 - missing Markdown conversion shows error and creates no note
-- frontmatter contains title/author/date/description when provided
-- import preserves metadata when tags are later edited
+- metadata body block contains title/author/date/description when provided
+- imported metadata is not frontmatter and tags remain strongly typed
+- dangerous imported HTML is stripped or rejected
 - collision retry chooses explicit candidate and server still rejects direct collision
 - imported note is vault-scoped
 
@@ -562,7 +610,8 @@ Deliverables:
 
 - Focused stress tests for the load-bearing structures named in `DESIGN.md`:
   `NoteId`, `path_key`, `note_events`, snapshots, conflict drafts, session
-  state, and generated error types.
+  state, generated error types, CRLF canonicalization, search dirty state, and
+  the per-vault operation queue.
 - Startup repair tests with interrupted write fixtures.
 - Corrupt history blob behavior.
 - Missing visible Markdown behavior.
@@ -581,6 +630,8 @@ Tests:
 - accepted-save retry is idempotent
 - delete restore works after restart
 - exact-hash move after restart preserves note ID
+- save and restore remain accepted when search indexing fails afterward
+- watcher events trigger reconciliation instead of direct semantic decisions
 - closed-tab stack survives restart without persisting dirty drafts
 - generated API error kinds remain exhaustive in frontend handling
 
@@ -620,6 +671,8 @@ Do not implement these until V1 integrity and UI basics are stable:
 - offline cache and write queue
 - history pruning and compaction
 - imported legacy Tansu revisions
+- structured non-tag frontmatter or imported article metadata fields
+- importing, downloading, rewriting, or versioning remote article assets
 - richer file tree
 - richer revision timeline
 - score breakdown UI
