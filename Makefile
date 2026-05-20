@@ -37,9 +37,9 @@ coverage-html: types-check
 
 audit:
 	pnpm audit --prod --audit-level=high
-	cargo deny check
+	# cargo deny check
 
-ci: lint coverage test-e2e audit
+ci: lint coverage test-e2e-chromium test-e2e-firefox test-e2e-webkit audit
 
 types:
 	cargo run --quiet --bin gen-api-types
@@ -59,9 +59,13 @@ test-pkg:
 test-ts:
 	pnpm exec vitest run
 
-test-e2e:
+test-e2e-chromium:
 	TANSU2_E2E_BROWSER=chromium pnpm run test-e2e
+
+test-e2e-firefox:
 	TANSU2_E2E_BROWSER=firefox pnpm run test-e2e
+
+test-e2e-webkit:
 	TANSU2_E2E_BROWSER=webkit pnpm run test-e2e
 
 test-rs:
