@@ -6,6 +6,7 @@ import {
   toggleHeading,
   toggleHighlight,
   toggleItalic,
+  toggleStrikethrough,
   type EditorConfig,
   type EditorHandle,
 } from "@joshuarli98/md-wysiwyg";
@@ -321,6 +322,7 @@ export class TansuApp {
   private async activateTab(noteId: string): Promise<void> {
     this.syncActiveDraft();
     this.state.activeNoteId = noteId;
+    this.touchRecent(noteId);
     this.render();
     await this.ensureActiveLoaded();
   }
@@ -695,6 +697,7 @@ export class TansuApp {
       await deleteNote(noteId, this.state.vault);
       this.state.notes.delete(noteId);
       this.state.pinned.delete(noteId);
+      this.state.recent = this.state.recent.filter((item) => item !== noteId);
       this.closeTab(noteId, false);
     } catch {
       this.notify("Delete failed");
@@ -798,7 +801,18 @@ export class TansuApp {
     }
     this.state.notes.set(response.meta.noteId, response.meta);
     this.state.activeNoteId = response.meta.noteId;
+    this.touchRecent(response.meta.noteId);
     this.render();
+  }
+
+  private touchRecent(noteId: string): void {
+    if (!this.state.notes.has(noteId)) {
+      return;
+    }
+    this.state.recent = [noteId, ...this.state.recent.filter((item) => item !== noteId)].slice(
+      0,
+      50,
+    );
   }
 
   private viewActions(): ViewActions {
@@ -833,6 +847,7 @@ export class TansuApp {
       formatBold: () => this.editor?.applyFormat(toggleBold),
       formatItalic: () => this.editor?.applyFormat(toggleItalic),
       formatHighlight: () => this.editor?.applyFormat(toggleHighlight),
+      formatStrikethrough: () => this.editor?.applyFormat(toggleStrikethrough),
       formatHeading: () => this.editor?.applyFormat((md, start) => toggleHeading(md, start, 1)),
       undo: () => this.editor?.undo(),
       redo: () => this.editor?.redo(),

@@ -123,6 +123,15 @@ describe("real server harness", () => {
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
     expect(await page.locator(".topbar + .toolbar").count()).toBe(1);
+    expect(await page.locator(".section-title", { hasText: "Notes" }).count()).toBe(0);
+    expect(await page.locator('.toolbar [title="Source"] svg').count()).toBe(1);
+    expect(await page.locator('.toolbar [title="Save"] svg').count()).toBe(1);
+    expect(await page.locator('.toolbar [title="Highlight"] svg').count()).toBe(1);
+    expect(await page.locator('.toolbar [title="Strikethrough"] svg').count()).toBe(1);
+    expect(await page.locator('.toolbar [title="Highlight"] svg [fill="#ffe16a"]').count()).toBe(1);
+    expect(
+      await page.evaluate(() => getComputedStyle(document.querySelector(".tabs")!).scrollbarWidth),
+    ).toBe("none");
 
     await page.locator('.sidebar-controls [title="New note"]').click();
     await page.waitForSelector(".note-dialog-panel");

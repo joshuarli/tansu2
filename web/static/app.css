@@ -91,6 +91,13 @@ button {
   color: #4d4f49;
 }
 
+.tool-button svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  overflow: visible;
+}
+
 .icon-button:hover,
 .tool-button:hover,
 .tab-close:hover {
@@ -155,7 +162,9 @@ button {
 .topbar {
   display: flex;
   align-items: center;
+  min-width: 0;
   min-height: 49px;
+  overflow: hidden;
   padding: 7px 12px;
 }
 
@@ -164,6 +173,12 @@ button {
   gap: 4px;
   min-width: 0;
   overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
@@ -639,11 +654,16 @@ button {
   }
 
   .topbar {
-    overflow-x: auto;
+    overflow-x: hidden;
   }
 
   .toolbar {
     overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .toolbar::-webkit-scrollbar {
+    display: none;
   }
 
   .revision-body {

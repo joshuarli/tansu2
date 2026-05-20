@@ -36,6 +36,7 @@ export type ViewActions = {
   formatBold: () => void;
   formatItalic: () => void;
   formatHighlight: () => void;
+  formatStrikethrough: () => void;
   formatHeading: () => void;
   undo: () => void;
   redo: () => void;
@@ -119,11 +120,7 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
 
   sidebar.append(controls, search);
   sidebar.append(section("Pinned", noteList(state, [...state.pinned], actions)));
-  sidebar.append(section("Recent", noteList(state, state.recent, actions)));
-  const pool = state.searchHits?.map((hit) => hit.note.noteId) ?? [...state.notes.keys()];
-  sidebar.append(
-    section(state.searchQuery.trim() === "" ? "Notes" : "Results", noteList(state, pool, actions)),
-  );
+  sidebar.append(section("Recent", noteList(state, recentNoteIds(state), actions)));
   return sidebar;
 }
 
@@ -148,14 +145,15 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
   const toolbar = el(
     "div",
     "toolbar",
-    button("B", "Bold", () => actions.formatBold(), "tool-button"),
-    button("I", "Italic", () => actions.formatItalic(), "tool-button"),
-    button("H", "Highlight", () => actions.formatHighlight(), "tool-button"),
-    button("H1", "Heading", () => actions.formatHeading(), "tool-button"),
-    button("↶", "Undo", () => actions.undo(), "tool-button"),
-    button("↷", "Redo", () => actions.redo(), "tool-button"),
-    button("◇", "Source", () => actions.toggleSourceMode(), "tool-button"),
-    button("✓", "Save", () => actions.manualSave(), "tool-button"),
+    toolButton("bold", "Bold", () => actions.formatBold()),
+    toolButton("italic", "Italic", () => actions.formatItalic()),
+    toolButton("strikethrough", "Strikethrough", () => actions.formatStrikethrough()),
+    toolButton("highlight", "Highlight", () => actions.formatHighlight()),
+    toolButton("heading", "Heading", () => actions.formatHeading()),
+    toolButton("undo", "Undo", () => actions.undo()),
+    toolButton("redo", "Redo", () => actions.redo()),
+    toolButton("code", "Source", () => actions.toggleSourceMode()),
+    toolButton("save", "Save", () => actions.manualSave()),
   );
   const active = activeTab(state);
   const title = active === undefined ? "No note selected" : active.path;
@@ -661,6 +659,11 @@ function noteList(state: State, ids: string[], actions: ViewActions): HTMLElemen
   return list;
 }
 
+function recentNoteIds(state: State): string[] {
+  const ids = new Set(state.recent);
+  return [...state.recent, ...[...state.notes.keys()].filter((noteId) => !ids.has(noteId))];
+}
+
 function section(title: string, body: HTMLElement): HTMLElement {
   return el("section", "sidebar-section", el("h2", "section-title", title), body);
 }
@@ -675,4 +678,90 @@ function closeButton(noteId: string, actions: ViewActions): HTMLElement {
     },
     "tab-close",
   );
+}
+
+type ToolIcon =
+  | "bold"
+  | "italic"
+  | "strikethrough"
+  | "highlight"
+  | "heading"
+  | "undo"
+  | "redo"
+  | "code"
+  | "save";
+
+function toolButton(iconName: ToolIcon, title: string, onClick: (event: MouseEvent) => void) {
+  const element = button("", title, onClick, "tool-button");
+  element.ariaLabel = title;
+  element.append(toolIcon(iconName));
+  return element;
+}
+
+function toolIcon(iconName: ToolIcon): SVGSVGElement {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  for (const child of iconPaths(iconName)) {
+    svg.append(child);
+  }
+  return svg;
+}
+
+function iconPaths(iconName: ToolIcon): SVGElement[] {
+  switch (iconName) {
+    case "bold":
+      return [iconPath("M8 5h5a3 3 0 0 1 0 6H8zM8 11h6a4 4 0 0 1 0 8H8zM8 5v14")];
+    case "italic":
+      return [iconPath("M10 5h7M7 19h7M14 5l-4 14")];
+    case "strikethrough":
+      return [
+        iconPath("M7 7.5A4 4 0 0 1 11 5h5M8 17a5 5 0 0 0 4 2h1.5a3.5 3.5 0 0 0 0-7H6M5 12h14"),
+      ];
+    case "highlight":
+      return [
+        iconShape("path", {
+          d: "M7 18.5h4.5L20 10l-2.8-2.8-11.7 9.3z",
+          fill: "#ffe16a",
+          stroke: "none",
+        }),
+        iconPath("M14 4l6 6-8.5 8.5H7.5l-2-2z", "#d88b18"),
+        iconPath("M5 20h11", "#d88b18"),
+      ];
+    case "heading":
+      return [iconPath("M6 5v14M18 5v14M6 12h12M14 19h7")];
+    case "undo":
+      return [iconPath("M9 7l-5 5 5 5M4 12h10a5 5 0 1 1-3.5 8.5")];
+    case "redo":
+      return [iconPath("M15 7l5 5-5 5M20 12H10a5 5 0 1 0 3.5 8.5")];
+    case "code":
+      return [iconPath("M9 7l-5 5 5 5M15 7l5 5-5 5")];
+    case "save":
+      return [
+        iconShape("rect", { x: "9", y: "15", width: "6", height: "5", fill: "#dfe7f2" }),
+        iconPath("M5 4h12l2 2v14H5zM8 4v6h8V4M8 20v-6h8v6"),
+      ];
+  }
+}
+
+function iconPath(d: string, stroke = "currentColor"): SVGPathElement {
+  return iconShape("path", {
+    d,
+    fill: "none",
+    stroke,
+    "stroke-width": "1.8",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+  }) as SVGPathElement;
+}
+
+function iconShape<K extends keyof SVGElementTagNameMap>(
+  tag: K,
+  attributes: Record<string, string>,
+): SVGElementTagNameMap[K] {
+  const element = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [key, value] of Object.entries(attributes)) {
+    element.setAttribute(key, value);
+  }
+  return element;
 }
