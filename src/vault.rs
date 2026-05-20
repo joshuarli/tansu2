@@ -32,7 +32,15 @@ pub struct VaultRuntime {
     op_lock: Mutex<()>,
     subscribers: Mutex<Vec<Sender<ServerEvent>>>,
     watcher: Mutex<Option<RecommendedWatcher>>,
+    search_tx: Sender<SearchJob>,
+    search_rx: Mutex<Option<Receiver<SearchJob>>>,
     last_self_write_ms: AtomicU64,
+}
+
+enum SearchJob {
+    Upsert(NoteMeta, String),
+    Remove(String),
+    Rebuild,
 }
 
 impl VaultRuntime {
@@ -52,6 +60,7 @@ impl VaultRuntime {
         if search.rebuild(&config.path, &notes).is_err() {
             catalog.set_search_dirty(true, true)?;
         }
+        let (search_tx, search_rx) = mpsc::channel();
         Ok(Self {
             index,
             name: config.name.clone(),
@@ -61,8 +70,27 @@ impl VaultRuntime {
             op_lock: Mutex::new(()),
             subscribers: Mutex::new(Vec::new()),
             watcher: Mutex::new(None),
+            search_tx,
+            search_rx: Mutex::new(Some(search_rx)),
             last_self_write_ms: AtomicU64::new(0),
         })
+    }
+
+    pub fn start_search_worker(self: &Arc<Self>) {
+        let Some(rx) = self
+            .search_rx
+            .lock()
+            .expect("search receiver mutex poisoned")
+            .take()
+        else {
+            return;
+        };
+        let runtime = Arc::clone(self);
+        thread::spawn(move || {
+            while let Ok(job) = rx.recv() {
+                runtime.run_search_job(job);
+            }
+        });
     }
 
     pub fn start_watcher(self: &Arc<Self>) -> Result<()> {
@@ -183,7 +211,7 @@ impl VaultRuntime {
         catalog.touch_recent(&note_id)?;
         let sync_version = catalog.sync_version()?;
         drop(catalog);
-        self.index_after_write(&meta, Some(&content));
+        self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
         self.broadcast(ServerEventKind::NoteChanged, Vec::new());
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
@@ -272,7 +300,7 @@ impl VaultRuntime {
         history::write_visible_atomic(&visible_path(&self.root, &meta.path), &content)?;
         catalog.record_visible_hash(note_id, &submitted_hash)?;
         drop(catalog);
-        self.index_after_write(&meta, Some(&content));
+        self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
         self.broadcast(ServerEventKind::NoteChanged, Vec::new());
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
@@ -325,7 +353,7 @@ impl VaultRuntime {
         let content = read_visible_or_snapshot(&self.root, &meta)?;
         let sync_version = catalog.sync_version()?;
         drop(catalog);
-        self.index_after_write(&meta, Some(&content));
+        self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
         self.broadcast(ServerEventKind::NoteChanged, Vec::new());
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
@@ -351,7 +379,7 @@ impl VaultRuntime {
         }
         let sync_version = catalog.sync_version()?;
         drop(catalog);
-        self.index_after_write(&meta, None);
+        self.enqueue_search(SearchJob::Remove(note_id.to_string()));
         self.broadcast(ServerEventKind::NoteDeleted, vec![note_id.to_string()]);
         Ok(NoteMutationResponse {
             document: None,
@@ -362,9 +390,10 @@ impl VaultRuntime {
 
     pub fn search(&self, query: &str) -> Result<Vec<SearchHit>> {
         let _op = self.lock_op();
-        let catalog = self.lock_catalog();
-        let notes = catalog.live_notes()?;
-        let settings = catalog.settings()?;
+        let (notes, settings) = {
+            let catalog = self.lock_catalog();
+            (catalog.live_notes()?, catalog.settings()?)
+        };
         let search = self.search.lock().expect("search mutex poisoned");
         Ok(search.search(query, &settings, &notes))
     }
@@ -383,16 +412,8 @@ impl VaultRuntime {
         let _op = self.lock_op();
         let mut catalog = self.lock_catalog();
         catalog.save_settings(&settings)?;
-        let notes = catalog.live_notes()?;
-        let result = self
-            .search
-            .lock()
-            .expect("search mutex poisoned")
-            .rebuild(&self.root, &notes);
-        if result.is_err() {
-            catalog.set_search_dirty(true, true)?;
-        }
         drop(catalog);
+        self.enqueue_search(SearchJob::Rebuild);
         self.broadcast(ServerEventKind::SearchChanged, Vec::new());
         Ok(settings)
     }
@@ -414,14 +435,50 @@ impl VaultRuntime {
         self.lock_catalog().search_status()
     }
 
-    fn index_after_write(&self, meta: &NoteMeta, content: Option<&str>) {
-        let mut search = self.search.lock().expect("search mutex poisoned");
-        match content {
-            Some(content) => search.index_note(meta.clone(), content),
-            None => search.remove_note(&meta.note_id),
-        }
+    fn enqueue_search(&self, job: SearchJob) {
         if let Ok(mut catalog) = self.catalog.lock() {
-            let _ = catalog.set_search_dirty(search.dirty, search.degraded);
+            let _ = catalog.set_search_dirty(true, false);
+        }
+        if self.search_tx.send(job).is_err() {
+            if let Ok(mut catalog) = self.catalog.lock() {
+                let _ = catalog.set_search_dirty(true, true);
+            }
+        }
+    }
+
+    fn run_search_job(&self, job: SearchJob) {
+        let result = match job {
+            SearchJob::Upsert(meta, content) => {
+                let mut search = self.search.lock().expect("search mutex poisoned");
+                search.index_note(meta, &content);
+                (search.dirty, search.degraded)
+            }
+            SearchJob::Remove(note_id) => {
+                let mut search = self.search.lock().expect("search mutex poisoned");
+                search.remove_note(&note_id);
+                (search.dirty, search.degraded)
+            }
+            SearchJob::Rebuild => {
+                let notes = match self.catalog.lock() {
+                    Ok(mut catalog) => match catalog.live_notes() {
+                        Ok(notes) => notes,
+                        Err(_) => {
+                            let _ = catalog.set_search_dirty(true, true);
+                            return;
+                        }
+                    },
+                    Err(_) => return,
+                };
+                let mut search = self.search.lock().expect("search mutex poisoned");
+                if search.rebuild(&self.root, &notes).is_err() {
+                    (true, true)
+                } else {
+                    (search.dirty, search.degraded)
+                }
+            }
+        };
+        if let Ok(mut catalog) = self.catalog.lock() {
+            let _ = catalog.set_search_dirty(result.0, result.1);
         }
     }
 
@@ -441,12 +498,8 @@ impl VaultRuntime {
             .map(|note| note.note_id.clone())
             .collect::<std::collections::HashSet<_>>();
         let deleted = before.difference(&after).cloned().collect::<Vec<_>>();
-        let mut search = self.search.lock().expect("search mutex poisoned");
-        if search.rebuild(&self.root, &notes).is_err() {
-            catalog.set_search_dirty(true, true)?;
-        }
-        drop(search);
         drop(catalog);
+        self.enqueue_search(SearchJob::Rebuild);
         self.broadcast(ServerEventKind::VaultChanged, deleted);
         Ok(())
     }

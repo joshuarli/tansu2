@@ -24,6 +24,7 @@ impl App {
             vaults: Arc::new(runtimes),
         };
         for vault in app.vaults.iter() {
+            vault.start_search_worker();
             vault.start_watcher()?;
         }
         Ok(app)
