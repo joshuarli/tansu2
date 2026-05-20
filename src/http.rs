@@ -43,7 +43,7 @@ impl HttpResponse {
         }
     }
 
-    fn bytes(status: u16, content_type: &str, body: Vec<u8>) -> Self {
+    pub fn bytes(status: u16, content_type: &str, body: Vec<u8>) -> Self {
         Self {
             status,
             content_type: content_type.to_string(),

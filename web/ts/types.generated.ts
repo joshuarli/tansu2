@@ -9,13 +9,17 @@ export type NoteDocument = { meta: NoteMeta, content: string, };
 
 export type RevisionMeta = { eventId: number, noteId: string, seq: number, kind: NoteEventKind, source: NoteEventSource, contentHash: string | null, createdAtMs: number, };
 
+export type RevisionDocument = { revision: RevisionMeta, content: string, };
+
 export type NoteEventKind = "baseline" | "create" | "import" | "save" | "rename" | "delete" | "external_edit" | "external_rename" | "external_delete" | "conflict_recovery";
 
 export type NoteEventSource = "user" | "import" | "external" | "repair";
 
 export type ConflictDraftMeta = { draftId: number, noteId: string, baseSeq: number, baseHash: string, contentHash: string, createdAtMs: number, };
 
-export type Settings = { excludedFolders: Array<string>, searchTitleWeight: number, searchHeadingWeight: number, searchTagWeight: number, searchContentWeight: number, recencyBoost: number, };
+export type ConflictDraftDocument = { draft: ConflictDraftMeta, content: string, };
+
+export type Settings = { excludedFolders: Array<string>, searchTitleWeight: number, searchHeadingWeight: number, searchTagWeight: number, searchContentWeight: number, recencyBoost: number, autosaveDelayMs: number, undoStackMax: number, imageWebpQuality: number, };
 
 export type SessionState = { openTabs: Array<SessionTab>, activeNoteId: string | null, closedTabs: Array<SessionTab>, };
 
@@ -38,6 +42,8 @@ export type SaveNoteRequest = { content: string, baseSeq: number, baseHash: stri
 export type RenameNoteRequest = { path: string, };
 
 export type NoteMutationResponse = { document: NoteDocument | null, meta: NoteMeta, syncVersion: number, };
+
+export type ImageUploadResponse = { name: string, markdown: string, };
 
 export type ApiErrorResponse = { error: ApiErrorKind, };
 

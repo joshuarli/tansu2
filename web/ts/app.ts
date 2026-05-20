@@ -6,24 +6,32 @@ import {
   toggleHeading,
   toggleHighlight,
   toggleItalic,
+  type EditorConfig,
   type EditorHandle,
 } from "@joshuarli98/md-wysiwyg";
 
 import {
   activeVault,
+  assetUrl,
   bootstrap,
   connectEvents,
   createNote,
   deleteNote,
+  listRevisions,
+  openConflictDraft,
   openNote,
+  openRevision,
   parseServerEvent,
   renameNote,
+  restoreConflictDraft,
+  restoreRevision,
   saveNote,
   saveSettings,
   saveSession,
   searchNotes,
   setActiveVault,
   setPinned,
+  uploadImage,
 } from "./api.ts";
 import { pickHtmlImport } from "./html-import.ts";
 import {
@@ -54,7 +62,7 @@ export class TansuApp {
   private sessionTimer: number | undefined;
   private events: EventSource | null = null;
   private readonly extensions = [
-    createWikiImageExtension({ resolveUrl: (name) => `/${name}` }),
+    createWikiImageExtension({ resolveUrl: (name) => assetUrl(name, this.state.vault) }),
     createCalloutExtension(),
   ];
 
@@ -81,6 +89,7 @@ export class TansuApp {
         dirty: false,
         saving: false,
         conflict: false,
+        conflictDraftId: null,
         cursorOffset: tab.cursorOffset ?? null,
         sourceMode: tab.sourceMode,
       }));
@@ -203,18 +212,36 @@ export class TansuApp {
     if (tab === undefined || tab.doc === null || mount === null) {
       return;
     }
-    this.editor = createEditor(mount, {
+    const config: EditorConfig = {
       extensions: this.extensions,
       contentClassName: "md-editor-content app-editor",
       sourceClassName: "md-editor-source app-editor-source",
+      onImagePaste: (blob) => this.uploadPastedImage(blob),
       onChange: () => this.captureEditorChange(),
       onSave: () => void this.manualSave(),
-    });
+    };
+    const settings = this.state.boot?.settings;
+    if (settings !== undefined) {
+      config.undoStackMax = settings.undoStackMax;
+      config.typingCheckpointMs = settings.autosaveDelayMs;
+      config.imageWebpQuality = settings.imageWebpQuality;
+    }
+    this.editor = createEditor(mount, config);
     this.editor.setValue(editableMarkdown(tab), tab.cursorOffset ?? undefined);
     if (tab.sourceMode && !this.editor.isSourceMode) {
       this.editor.toggleSourceMode();
     }
     this.editor.focus();
+  }
+
+  private async uploadPastedImage(blob: Blob): Promise<string | null> {
+    try {
+      const uploaded = await uploadImage(blob, this.state.vault);
+      return `<img src="${assetUrl(uploaded.name, this.state.vault)}" alt="${uploaded.name}" data-wiki-image="${uploaded.name}" loading="lazy">`;
+    } catch {
+      this.notify("Image upload failed");
+      return null;
+    }
   }
 
   private destroyEditor(): void {
@@ -331,7 +358,7 @@ export class TansuApp {
       if (tab !== undefined && tab.dirty && !tab.saving) {
         void this.persistTab(tab);
       }
-    }, 900);
+    }, this.state.boot?.settings.autosaveDelayMs ?? 900);
   }
 
   private async persistTab(tab: Tab): Promise<void> {
@@ -360,8 +387,11 @@ export class TansuApp {
       }
       tab.dirty = false;
       tab.conflict = false;
+      tab.conflictDraftId = null;
     } catch (error) {
-      tab.conflict = isSaveConflict(error);
+      const conflict = saveConflict(error);
+      tab.conflict = conflict !== null;
+      tab.conflictDraftId = conflict?.draft.draftId ?? null;
       this.notify(tab.conflict ? "Save conflict" : "Save failed");
     } finally {
       tab.saving = false;
@@ -497,28 +527,23 @@ export class TansuApp {
     }
   }
 
-  private async commandSettings(): Promise<void> {
+  private commandSettings(): void {
     if (this.state.boot === null) {
       return;
     }
-    const current = this.state.boot.settings.excludedFolders.join(", ");
-    const value = prompt("Excluded folders", current);
-    if (value === null) {
-      return;
-    }
-    const settings = {
-      ...this.state.boot.settings,
-      excludedFolders: value
-        .split(",")
-        .map((part) => part.trim())
-        .filter((part) => part !== ""),
-    };
-    this.state.boot.settings = await saveSettings(settings, this.state.vault);
-    this.notify("Settings saved");
+    this.state.settingsOpen = true;
+    this.render();
   }
 
-  private commandRevisions(): void {
-    this.notify("Revisions UI is stage 13");
+  private async commandRevisions(): Promise<void> {
+    const tab = activeTab(this.state);
+    if (tab === undefined) {
+      return;
+    }
+    this.state.revisionsOpen = true;
+    this.state.revisionList = await listRevisions(tab.noteId, this.state.vault);
+    this.state.revisionDocument = null;
+    this.render();
   }
 
   private async commandAddTag(): Promise<void> {
@@ -610,6 +635,115 @@ export class TansuApp {
     }, 2400);
   }
 
+  private closeOverlays(): void {
+    this.state.commandOpen = false;
+    this.state.searchOpen = false;
+    this.state.revisionsOpen = false;
+    this.state.settingsOpen = false;
+    this.state.conflictDraft = null;
+    this.render();
+  }
+
+  private async saveSettingsFromModal(settings: {
+    excludedFoldersText: string;
+    autosaveDelayMs: number;
+    undoStackMax: number;
+    imageWebpQuality: number;
+  }): Promise<void> {
+    if (this.state.boot === null) {
+      return;
+    }
+    this.state.boot.settings = await saveSettings(
+      {
+        ...this.state.boot.settings,
+        excludedFolders: settings.excludedFoldersText
+          .split(",")
+          .map((part) => part.trim())
+          .filter((part) => part !== ""),
+        autosaveDelayMs: Math.max(150, settings.autosaveDelayMs),
+        undoStackMax: Math.max(20, settings.undoStackMax),
+        imageWebpQuality: Math.min(1, Math.max(0.1, settings.imageWebpQuality)),
+      },
+      this.state.vault,
+    );
+    this.editor?.setConfig({
+      undoStackMax: this.state.boot.settings.undoStackMax,
+      typingCheckpointMs: this.state.boot.settings.autosaveDelayMs,
+      imageWebpQuality: this.state.boot.settings.imageWebpQuality,
+    });
+    this.state.settingsOpen = false;
+    this.notify("Settings saved");
+  }
+
+  private async selectRevision(eventId: number): Promise<void> {
+    const tab = activeTab(this.state);
+    if (tab === undefined) {
+      return;
+    }
+    this.syncActiveDraft();
+    this.state.revisionDocument = await openRevision(tab.noteId, eventId, this.state.vault);
+    this.render();
+  }
+
+  private async restoreSelectedRevision(): Promise<void> {
+    const tab = activeTab(this.state);
+    const revision = this.state.revisionDocument;
+    if (tab === undefined || revision === null) {
+      return;
+    }
+    const response = await restoreRevision(tab.noteId, revision.revision.eventId, this.state.vault);
+    this.applyMutationToTab(response);
+    this.state.revisionsOpen = false;
+    this.state.revisionDocument = null;
+    this.notify("Revision restored");
+  }
+
+  private async restoreActiveConflictDraft(): Promise<void> {
+    const tab = activeTab(this.state);
+    if (tab === undefined || tab.conflictDraftId === null) {
+      return;
+    }
+    const response = await restoreConflictDraft(tab.noteId, tab.conflictDraftId, this.state.vault);
+    this.applyMutationToTab(response);
+    this.state.conflictDraft = null;
+    this.notify("Conflict draft restored");
+  }
+
+  private async viewActiveConflictDraft(): Promise<void> {
+    const tab = activeTab(this.state);
+    if (tab === undefined || tab.conflictDraftId === null) {
+      return;
+    }
+    this.state.conflictDraft = await openConflictDraft(
+      tab.noteId,
+      tab.conflictDraftId,
+      this.state.vault,
+    );
+    this.render();
+  }
+
+  private applyMutationToTab(response: Awaited<ReturnType<typeof saveNote>>): void {
+    if (response.document === null) {
+      return;
+    }
+    let tab = tabById(this.state, response.meta.noteId);
+    if (tab === undefined) {
+      tab = tabFromDocument(response.document);
+      this.state.tabs.push(tab);
+    } else {
+      tab.doc = response.document;
+      tab.draft = response.document.content;
+      tab.title = response.document.meta.title;
+      tab.path = response.document.meta.path;
+      tab.dirty = false;
+      tab.conflict = false;
+      tab.conflictDraftId = null;
+    }
+    this.state.notes.set(response.meta.noteId, response.meta);
+    this.state.activeNoteId = response.meta.noteId;
+    this.render();
+  }
+
   private viewActions(): ViewActions {
     return {
       render: () => this.render(),
@@ -621,6 +755,13 @@ export class TansuApp {
       updateSearchOverlay: () => void this.updateSearchOverlay(),
       commandCreate: () => void this.commandCreate(),
       commandAddTag: () => void this.commandAddTag(),
+      closeOverlays: () => this.closeOverlays(),
+      saveSettings: (settings) => void this.saveSettingsFromModal(settings),
+      openRevisions: () => void this.commandRevisions(),
+      selectRevision: (eventId) => void this.selectRevision(eventId),
+      restoreSelectedRevision: () => void this.restoreSelectedRevision(),
+      viewConflictDraft: () => void this.viewActiveConflictDraft(),
+      restoreConflictDraft: () => void this.restoreActiveConflictDraft(),
       filteredCommands: () => this.filteredCommands(),
       activateTab: (noteId) => void this.activateTab(noteId),
       closeTab: (noteId) => this.closeTab(noteId),
@@ -638,12 +779,14 @@ export class TansuApp {
   }
 }
 
-function isSaveConflict(error: unknown): boolean {
+function saveConflict(
+  error: unknown,
+): Extract<ApiErrorResponse["error"], { code: "save_conflict" }> | null {
   const response =
     error instanceof Error && "response" in error
       ? (error.response as ApiErrorResponse | null)
       : null;
-  return response?.error.code === "save_conflict";
+  return response?.error.code === "save_conflict" ? response.error : null;
 }
 
 export function startApp(root: HTMLElement): void {

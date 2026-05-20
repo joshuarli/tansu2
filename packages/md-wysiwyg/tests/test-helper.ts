@@ -20,6 +20,7 @@ export function setupDOM(): () => void {
     "HTMLElement",
     "Node",
     "HTMLInputElement",
+    "HTMLImageElement",
     "HTMLTextAreaElement",
     "HTMLSelectElement",
     "CustomEvent",

@@ -62,6 +62,16 @@ const INDENTABLE_BLOCKS = new Set([
   "TH",
   "CODE",
 ]);
+const IMAGE_RESIZE_EDGE_PX = 14;
+const IMAGE_RESIZE_MIN_WIDTH = 48;
+const IMAGE_RESIZE_MAX_WIDTH = 2400;
+
+type ImageResizeDrag = {
+  image: HTMLImageElement;
+  startX: number;
+  startWidth: number;
+  changed: boolean;
+};
 
 function hasDataTransferType(dataTransfer: DataTransfer, type: string): boolean {
   return [...dataTransfer.types].includes(type);
@@ -224,6 +234,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     restoreSelection: selection.restoreSelectionFromRenderedMarkers,
     ...(cfg.onChange ? { onChange: cfg.onChange } : {}),
   });
+  let imageResizeDrag: ImageResizeDrag | null = null;
 
   // ── Format ──────────────────────────────────────────────────────────────────
 
@@ -624,6 +635,69 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     cfg.onChange?.();
   }
 
+  function isWikiImage(el: EventTarget | null): el is HTMLImageElement {
+    return el instanceof HTMLImageElement && el.dataset["wikiImage"] !== undefined;
+  }
+
+  function imageWidth(image: HTMLImageElement): number {
+    const rectWidth = Math.round(image.getBoundingClientRect().width);
+    const attrWidth = Number(image.getAttribute("width"));
+    const naturalWidth = image.naturalWidth;
+    const width = rectWidth || attrWidth || naturalWidth || 320;
+    return Math.min(IMAGE_RESIZE_MAX_WIDTH, Math.max(IMAGE_RESIZE_MIN_WIDTH, width));
+  }
+
+  function isImageResizePointer(e: PointerEvent, image: HTMLImageElement): boolean {
+    const rect = image.getBoundingClientRect();
+    return (
+      rect.width > 0 &&
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      rect.right - e.clientX <= IMAGE_RESIZE_EDGE_PX
+    );
+  }
+
+  function onImagePointerDown(e: PointerEvent): void {
+    if (_isSourceMode || !isWikiImage(e.target) || !isImageResizePointer(e, e.target)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    undoController.checkpoint();
+    e.target.classList.add("md-image-resizing");
+    imageResizeDrag = {
+      image: e.target,
+      startX: e.clientX,
+      startWidth: imageWidth(e.target),
+      changed: false,
+    };
+  }
+
+  function onDocumentPointerMove(e: PointerEvent): void {
+    if (!imageResizeDrag) return;
+    e.preventDefault();
+    const nextWidth = Math.round(
+      Math.min(
+        IMAGE_RESIZE_MAX_WIDTH,
+        Math.max(
+          IMAGE_RESIZE_MIN_WIDTH,
+          imageResizeDrag.startWidth + e.clientX - imageResizeDrag.startX,
+        ),
+      ),
+    );
+    imageResizeDrag.image.setAttribute("width", String(nextWidth));
+    imageResizeDrag.image.style.width = `${nextWidth}px`;
+    imageResizeDrag.changed ||= nextWidth !== imageResizeDrag.startWidth;
+  }
+
+  function endImageResize(): void {
+    if (!imageResizeDrag) return;
+    const drag = imageResizeDrag;
+    imageResizeDrag = null;
+    drag.image.classList.remove("md-image-resizing");
+    if (!drag.changed) return;
+    undoController.checkpoint();
+    cfg.onChange?.();
+  }
+
   function onSourceKeyDown(e: KeyboardEvent): void {
     const meta = e.metaKey || e.ctrlKey;
     if (meta && e.key === "s") {
@@ -643,6 +717,10 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   contentEl.addEventListener("paste", onContentPaste);
   contentEl.addEventListener("change", onCheckboxEvent);
   contentEl.addEventListener("click", onCheckboxEvent);
+  contentEl.addEventListener("pointerdown", onImagePointerDown);
+  document.addEventListener("pointermove", onDocumentPointerMove);
+  document.addEventListener("pointerup", endImageResize);
+  document.addEventListener("pointercancel", endImageResize);
   sourceEl.addEventListener("input", onSourceInput);
   sourceEl.addEventListener("keydown", onSourceKeyDown);
 
@@ -677,6 +755,10 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     contentEl.removeEventListener("paste", onContentPaste);
     contentEl.removeEventListener("change", onCheckboxEvent);
     contentEl.removeEventListener("click", onCheckboxEvent);
+    contentEl.removeEventListener("pointerdown", onImagePointerDown);
+    document.removeEventListener("pointermove", onDocumentPointerMove);
+    document.removeEventListener("pointerup", endImageResize);
+    document.removeEventListener("pointercancel", endImageResize);
     sourceEl.removeEventListener("input", onSourceInput);
     sourceEl.removeEventListener("keydown", onSourceKeyDown);
     contentEl.remove();

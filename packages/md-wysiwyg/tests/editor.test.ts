@@ -2,6 +2,7 @@
 
 import { createEditor } from "../src/editor.ts";
 import { toggleBold } from "../src/format-ops.ts";
+import { createWikiImageExtension } from "../src/wiki-image.ts";
 import { createWikiLinkExtension } from "../src/wiki-link.ts";
 import { setupDOM } from "./test-helper.ts";
 
@@ -204,6 +205,38 @@ describe("createEditor", () => {
     onChange.mockClear();
     handle.redo();
     expect(onChange).toHaveBeenCalled();
+    handle.destroy();
+  });
+
+  it("resizes wiki images and persists the markdown width", () => {
+    const onChange = vi.fn();
+    const handle = createEditor(container, {
+      extensions: [createWikiImageExtension({ resolveUrl: (name) => `/assets/${name}` })],
+      onChange,
+    });
+    handle.setValue("![[photo.webp|120]]");
+    const image = handle.contentEl.querySelector("img")!;
+    Object.defineProperty(image, "getBoundingClientRect", {
+      value: () => ({
+        bottom: 80,
+        height: 80,
+        left: 0,
+        right: 120,
+        top: 0,
+        width: 120,
+        x: 0,
+        y: 0,
+        toJSON: () => ({}),
+      }),
+    });
+
+    onChange.mockClear();
+    image.dispatchEvent(new MouseEvent("pointerdown", { bubbles: true, clientX: 118 }));
+    document.dispatchEvent(new MouseEvent("pointermove", { bubbles: true, clientX: 168 }));
+    document.dispatchEvent(new MouseEvent("pointerup", { bubbles: true, clientX: 168 }));
+
+    expect(handle.getValue()).toBe("![[photo.webp|170]]");
+    expect(onChange).toHaveBeenCalledTimes(1);
     handle.destroy();
   });
 

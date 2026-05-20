@@ -45,6 +45,13 @@ pub struct RevisionMeta {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+pub struct RevisionDocument {
+    pub revision: RevisionMeta,
+    pub content: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(rename_all = "snake_case")]
 pub enum NoteEventKind {
     Baseline,
@@ -84,6 +91,14 @@ pub struct ConflictDraftMeta {
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(rename_all = "camelCase")]
+pub struct ConflictDraftDocument {
+    pub draft: ConflictDraftMeta,
+    pub content: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[serde(default)]
 pub struct Settings {
     pub excluded_folders: Vec<String>,
     pub search_title_weight: f32,
@@ -91,6 +106,11 @@ pub struct Settings {
     pub search_tag_weight: f32,
     pub search_content_weight: f32,
     pub recency_boost: f32,
+    #[ts(type = "number")]
+    pub autosave_delay_ms: u64,
+    #[ts(type = "number")]
+    pub undo_stack_max: usize,
+    pub image_webp_quality: f32,
 }
 
 impl Default for Settings {
@@ -102,6 +122,9 @@ impl Default for Settings {
             search_tag_weight: 3.0,
             search_content_weight: 1.0,
             recency_boost: 0.1,
+            autosave_delay_ms: 900,
+            undo_stack_max: 200,
+            image_webp_quality: 0.85,
         }
     }
 }
@@ -203,6 +226,13 @@ pub struct NoteMutationResponse {
     pub meta: NoteMeta,
     #[ts(type = "number")]
     pub sync_version: i64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+pub struct ImageUploadResponse {
+    pub name: String,
+    pub markdown: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]

@@ -60,8 +60,25 @@ path = "${vaultTwo}"
     expect(bootstrap.notes[0].title).toBe("Two");
 
     const page = await browser!.newPage();
+    const startupRequests: string[] = [];
+    page.on("request", (request) => {
+      const url = new URL(request.url());
+      if (url.pathname.startsWith("/api/") || url.pathname === "/events") {
+        startupRequests.push(`${request.method()} ${url.pathname}${url.search}`);
+      }
+    });
+    const sessionRequest = page.waitForRequest((request) => {
+      const url = new URL(request.url());
+      return request.method() === "PUT" && url.pathname === "/api/session";
+    });
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
+    await sessionRequest;
+    expect(startupRequests).toEqual([
+      "GET /api/bootstrap",
+      "GET /events?vault=0",
+      "PUT /api/session",
+    ]);
     await page.close();
   });
 
@@ -71,6 +88,20 @@ path = "${vaultTwo}"
     const eventPromise = page.evaluate(() => {
       return new Promise<string>((resolve) => {
         const source = new EventSource("/events?vault=0");
+        source.addEventListener(
+          "open",
+          () => {
+            void fetch("/api/notes", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "X-Tansu-Vault": "0",
+              },
+              body: JSON.stringify({ path: "sse.md", content: "# SSE\n\nbody\n", source: null }),
+            });
+          },
+          { once: true },
+        );
         source.addEventListener("message", (event) => {
           const payload = JSON.parse((event as MessageEvent<string>).data) as {
             kind: string;
@@ -85,14 +116,6 @@ path = "${vaultTwo}"
           }
         });
       });
-    });
-    await fetch(`${baseUrl}/api/notes`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Tansu-Vault": "0",
-      },
-      body: JSON.stringify({ path: "sse.md", content: "# SSE\n\nbody\n", source: null }),
     });
     await expect(eventPromise).resolves.toBe("note_changed");
     await page.close();
@@ -123,6 +146,56 @@ path = "${vaultTwo}"
     await writeFile(join(vaultOnePath, "outside.md"), "# Outside\n\nedit\n", "utf8");
     await expect(eventPromise).resolves.toBe("vault_changed");
     await page.close();
+  });
+
+  it("restores revisions and serves vault-scoped image assets", async () => {
+    const created = await fetch(`${baseUrl}/api/notes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tansu-Vault": "0",
+      },
+      body: JSON.stringify({ path: "recover.md", content: "# Recover\n\nold\n", source: null }),
+    }).then((response) => response.json());
+    await fetch(`${baseUrl}/api/notes/${created.meta.noteId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tansu-Vault": "0",
+      },
+      body: JSON.stringify({
+        content: "# Recover\n\nnew\n",
+        baseSeq: created.meta.seq,
+        baseHash: created.meta.contentHash,
+        checkpoint: true,
+      }),
+    });
+    const revisions = await fetch(`${baseUrl}/api/notes/${created.meta.noteId}/revisions`, {
+      headers: { "X-Tansu-Vault": "0" },
+    }).then((response) => response.json());
+    const oldest = revisions.at(-1);
+    const restored = await fetch(
+      `${baseUrl}/api/notes/${created.meta.noteId}/revisions/${oldest.eventId}/restore`,
+      {
+        method: "POST",
+        headers: { "X-Tansu-Vault": "0" },
+      },
+    ).then((response) => response.json());
+    expect(restored.document.content).toContain("old");
+
+    const uploaded = await fetch(`${baseUrl}/api/images`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "image/webp",
+        "X-Tansu-Vault": "0",
+      },
+      body: new Uint8Array([1, 2, 3]),
+    }).then((response) => response.json());
+    const asset = await fetch(
+      `${baseUrl}/api/assets?name=${encodeURIComponent(uploaded.name)}&vault=0`,
+    );
+    expect(asset.ok).toBe(true);
+    expect(await asset.arrayBuffer()).toHaveProperty("byteLength", 3);
   });
 });
 

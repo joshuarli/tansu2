@@ -1,9 +1,13 @@
 import type {
   BootstrapResponse,
   CreateNoteRequest,
+  ConflictDraftDocument,
+  ImageUploadResponse,
   NoteDocument,
   NoteMutationResponse,
   RenameNoteRequest,
+  RevisionDocument,
+  RevisionMeta,
   SaveNoteRequest,
   SearchHit,
   ServerEvent,
@@ -91,6 +95,54 @@ export function deleteNote(noteId: string, vault = activeVault()): Promise<NoteM
   });
 }
 
+export function listRevisions(noteId: string, vault = activeVault()): Promise<RevisionMeta[]> {
+  return apiFetch<RevisionMeta[]>(`/api/notes/${encodeURIComponent(noteId)}/revisions`, { vault });
+}
+
+export function openRevision(
+  noteId: string,
+  eventId: number,
+  vault = activeVault(),
+): Promise<RevisionDocument> {
+  return apiFetch<RevisionDocument>(
+    `/api/notes/${encodeURIComponent(noteId)}/revisions/${eventId}`,
+    { vault },
+  );
+}
+
+export function restoreRevision(
+  noteId: string,
+  eventId: number,
+  vault = activeVault(),
+): Promise<NoteMutationResponse> {
+  return apiFetch<NoteMutationResponse>(
+    `/api/notes/${encodeURIComponent(noteId)}/revisions/${eventId}/restore`,
+    { method: "POST", vault },
+  );
+}
+
+export function openConflictDraft(
+  noteId: string,
+  draftId: number,
+  vault = activeVault(),
+): Promise<ConflictDraftDocument> {
+  return apiFetch<ConflictDraftDocument>(
+    `/api/notes/${encodeURIComponent(noteId)}/conflicts/${draftId}`,
+    { vault },
+  );
+}
+
+export function restoreConflictDraft(
+  noteId: string,
+  draftId: number,
+  vault = activeVault(),
+): Promise<NoteMutationResponse> {
+  return apiFetch<NoteMutationResponse>(
+    `/api/notes/${encodeURIComponent(noteId)}/conflicts/${draftId}/restore`,
+    { method: "POST", vault },
+  );
+}
+
 export function setPinned(
   noteId: string,
   pinned: boolean,
@@ -120,6 +172,27 @@ export function saveSettings(settings: Settings, vault = activeVault()): Promise
     body: JSON.stringify(settings),
     vault,
   });
+}
+
+export async function uploadImage(blob: Blob, vault = activeVault()): Promise<ImageUploadResponse> {
+  const response = await fetch("/api/images", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "image/webp",
+      "X-Tansu-Vault": String(vault),
+    },
+    body: blob,
+  });
+  const data = (await response.json().catch(() => null)) as ImageUploadResponse;
+  if (!response.ok) {
+    throw new ApiError(`API request failed: ${response.status}`, response.status, data);
+  }
+  return data;
+}
+
+export function assetUrl(name: string, vault = activeVault()): string {
+  return `/api/assets?name=${encodeURIComponent(name)}&vault=${encodeURIComponent(String(vault))}`;
 }
 
 export function activeVault(): number {

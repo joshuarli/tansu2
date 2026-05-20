@@ -13,9 +13,11 @@ fn main() {
     push::<NoteMeta>(&mut output);
     push::<NoteDocument>(&mut output);
     push::<RevisionMeta>(&mut output);
+    push::<RevisionDocument>(&mut output);
     push::<NoteEventKind>(&mut output);
     push::<NoteEventSource>(&mut output);
     push::<ConflictDraftMeta>(&mut output);
+    push::<ConflictDraftDocument>(&mut output);
     push::<Settings>(&mut output);
     push::<SessionState>(&mut output);
     push::<SessionTab>(&mut output);
@@ -28,6 +30,7 @@ fn main() {
     push::<SaveNoteRequest>(&mut output);
     push::<RenameNoteRequest>(&mut output);
     push::<NoteMutationResponse>(&mut output);
+    push::<ImageUploadResponse>(&mut output);
     push::<ApiErrorResponse>(&mut output);
     push::<ApiErrorKind>(&mut output);
     push::<PathValidationReason>(&mut output);

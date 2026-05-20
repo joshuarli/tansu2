@@ -45,6 +45,7 @@ function pickHtmlFile(): Promise<File | null> {
 
 function importedMarkdown(title: string, markdown: string, parsed: ImportedMetadata): string {
   const metadata = [
+    `Title: ${title}`,
     parsed.author ? `Author: ${parsed.author}` : null,
     parsed.site ? `Site: ${parsed.site}` : null,
     parsed.published ? `Published: ${parsed.published}` : null,

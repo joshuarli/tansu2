@@ -4,8 +4,8 @@ use rand::RngCore;
 use rusqlite::{Connection, OptionalExtension, Transaction, params};
 
 use crate::api_types::{
-    ConflictDraftMeta, NoteEventKind, NoteEventSource, NoteMeta, SearchStatus, SessionState,
-    Settings, UnresolvedReason,
+    ConflictDraftMeta, NoteEventKind, NoteEventSource, NoteMeta, RevisionMeta, SearchStatus,
+    SessionState, Settings, UnresolvedReason,
 };
 use crate::{Error, Result};
 
@@ -310,6 +310,29 @@ impl Catalog {
             .map_err(Into::into)
     }
 
+    pub fn revisions(&self, note_id: &str) -> Result<Vec<RevisionMeta>> {
+        let mut stmt = self.conn.prepare(
+            "SELECT event_id, note_id, seq, kind, source, content_hash, created_at_ms FROM note_events WHERE note_id=?1 AND content_hash IS NOT NULL ORDER BY event_id DESC",
+        )?;
+        let rows = stmt.query_map(params![note_id], revision_from_sql)?;
+        let mut revisions = Vec::new();
+        for row in rows {
+            revisions.push(row?);
+        }
+        Ok(revisions)
+    }
+
+    pub fn revision(&self, note_id: &str, event_id: i64) -> Result<Option<RevisionMeta>> {
+        self.conn
+            .query_row(
+                "SELECT event_id, note_id, seq, kind, source, content_hash, created_at_ms FROM note_events WHERE note_id=?1 AND event_id=?2 AND content_hash IS NOT NULL",
+                params![note_id, event_id],
+                revision_from_sql,
+            )
+            .optional()
+            .map_err(Into::into)
+    }
+
     pub fn create_conflict_draft(
         &mut self,
         note_id: &str,
@@ -331,6 +354,30 @@ impl Catalog {
             content_hash: content_hash.to_string(),
             created_at_ms: now,
         })
+    }
+
+    pub fn conflict_draft(
+        &self,
+        note_id: &str,
+        draft_id: i64,
+    ) -> Result<Option<ConflictDraftMeta>> {
+        self.conn
+            .query_row(
+                "SELECT draft_id, note_id, base_seq, base_hash, content_hash, created_at_ms FROM conflict_drafts WHERE note_id=?1 AND draft_id=?2",
+                params![note_id, draft_id],
+                |row| {
+                    Ok(ConflictDraftMeta {
+                        draft_id: row.get(0)?,
+                        note_id: row.get(1)?,
+                        base_seq: row.get(2)?,
+                        base_hash: row.get(3)?,
+                        content_hash: row.get(4)?,
+                        created_at_ms: row.get(5)?,
+                    })
+                },
+            )
+            .optional()
+            .map_err(Into::into)
     }
 
     pub fn touch_recent(&mut self, note_id: &str) -> Result<()> {
@@ -520,6 +567,18 @@ fn row_from_sql(row: &rusqlite::Row<'_>) -> rusqlite::Result<NoteRow> {
     })
 }
 
+fn revision_from_sql(row: &rusqlite::Row<'_>) -> rusqlite::Result<RevisionMeta> {
+    Ok(RevisionMeta {
+        event_id: row.get(0)?,
+        note_id: row.get(1)?,
+        seq: row.get(2)?,
+        kind: note_event_kind(row.get::<_, String>(3)?.as_str()),
+        source: note_event_source(row.get::<_, String>(4)?.as_str()),
+        content_hash: row.get(5)?,
+        created_at_ms: row.get(6)?,
+    })
+}
+
 fn ensure_column(conn: &Connection, table: &str, column: &str, declaration: &str) -> Result<()> {
     let mut stmt = conn.prepare(&format!("PRAGMA table_info({table})"))?;
     let rows = stmt.query_map([], |row| row.get::<_, String>(1))?;
@@ -597,12 +656,38 @@ fn event_kind(kind: NoteEventKind) -> &'static str {
     }
 }
 
+fn note_event_kind(kind: &str) -> NoteEventKind {
+    match kind {
+        "baseline" => NoteEventKind::Baseline,
+        "create" => NoteEventKind::Create,
+        "import" => NoteEventKind::Import,
+        "save" => NoteEventKind::Save,
+        "rename" => NoteEventKind::Rename,
+        "delete" => NoteEventKind::Delete,
+        "external_edit" => NoteEventKind::ExternalEdit,
+        "external_rename" => NoteEventKind::ExternalRename,
+        "external_delete" => NoteEventKind::ExternalDelete,
+        "conflict_recovery" => NoteEventKind::ConflictRecovery,
+        _ => NoteEventKind::Save,
+    }
+}
+
 fn event_source(source: NoteEventSource) -> &'static str {
     match source {
         NoteEventSource::User => "user",
         NoteEventSource::Import => "import",
         NoteEventSource::External => "external",
         NoteEventSource::Repair => "repair",
+    }
+}
+
+fn note_event_source(source: &str) -> NoteEventSource {
+    match source {
+        "user" => NoteEventSource::User,
+        "import" => NoteEventSource::Import,
+        "external" => NoteEventSource::External,
+        "repair" => NoteEventSource::Repair,
+        _ => NoteEventSource::User,
     }
 }
 

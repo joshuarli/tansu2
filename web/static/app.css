@@ -298,6 +298,17 @@ button {
   border-radius: 8px;
 }
 
+.app-editor img[data-wiki-image] {
+  height: auto;
+  cursor: ew-resize;
+}
+
+.app-editor img[data-wiki-image]:hover,
+.app-editor img[data-wiki-image].md-image-resizing {
+  outline: 2px solid #9f927c;
+  outline-offset: 3px;
+}
+
 .statusbar {
   display: flex;
   justify-content: space-between;
@@ -338,7 +349,24 @@ button {
   padding: 6px 12px;
 }
 
+.text-button {
+  min-height: 28px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #4c563f;
+  padding: 4px 8px;
+}
+
+.text-button:hover {
+  background: rgb(82 97 67 / 12%);
+}
+
 .conflict-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   width: min(920px, 100%);
   margin: 14px auto 0;
   border: 1px solid #e0b569;
@@ -375,6 +403,107 @@ button {
   box-shadow: 0 18px 60px rgb(32 33 31 / 18%);
   padding: 8px;
   pointer-events: auto;
+}
+
+.modal-panel {
+  position: absolute;
+  top: 9vh;
+  left: 50%;
+  width: min(760px, calc(100vw - 28px));
+  max-height: min(760px, calc(100vh - 48px));
+  overflow: auto;
+  transform: translateX(-50%);
+  border: 1px solid #d8d7d0;
+  border-radius: 10px;
+  background: #fbfbf8;
+  box-shadow: 0 18px 60px rgb(32 33 31 / 18%);
+  padding: 10px;
+  pointer-events: auto;
+}
+
+.modal-header,
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 36px;
+}
+
+.modal-header {
+  color: #2e302b;
+  font-weight: 650;
+}
+
+.revision-body {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 10px;
+  min-height: 360px;
+  padding: 8px 0;
+}
+
+.revision-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: auto;
+  border-right: 1px solid #e4e2db;
+  padding-right: 8px;
+}
+
+.revision-row {
+  min-height: 32px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #30322d;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.revision-row:hover,
+.revision-row.active {
+  background: #e5e7dc;
+}
+
+.diff-preview {
+  min-height: 300px;
+  overflow: auto;
+  margin: 0;
+  border: 1px solid #e4e2db;
+  border-radius: 8px;
+  background: #fff;
+  color: #242520;
+  padding: 10px;
+  white-space: pre-wrap;
+}
+
+.empty-panel {
+  display: grid;
+  place-items: center;
+  color: #77786f;
+}
+
+.settings-panel {
+  width: min(480px, calc(100vw - 28px));
+}
+
+.field-label {
+  display: grid;
+  gap: 5px;
+  margin: 10px 0;
+  color: #5d5f58;
+  font-size: 13px;
+}
+
+.settings-input {
+  min-height: 34px;
+  border: 1px solid #d8d7d0;
+  border-radius: 8px;
+  background: #fff;
+  color: #22231f;
+  padding: 6px 9px;
 }
 
 .search-panel {
@@ -420,5 +549,16 @@ button {
 
   .toolbar {
     overflow-x: auto;
+  }
+
+  .revision-body {
+    grid-template-columns: 1fr;
+  }
+
+  .revision-list {
+    max-height: 160px;
+    border-right: 0;
+    border-bottom: 1px solid #e4e2db;
+    padding: 0 0 8px;
   }
 }

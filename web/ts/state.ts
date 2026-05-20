@@ -1,7 +1,10 @@
 import type {
   BootstrapResponse,
+  ConflictDraftDocument,
   NoteDocument,
   NoteMeta,
+  RevisionDocument,
+  RevisionMeta,
   SearchHit,
   SessionState,
   SessionTab,
@@ -16,6 +19,7 @@ export type Tab = {
   dirty: boolean;
   saving: boolean;
   conflict: boolean;
+  conflictDraftId: number | null;
   cursorOffset: number | null;
   sourceMode: boolean;
 };
@@ -42,6 +46,11 @@ export type State = {
   searchOverlayHits: SearchHit[] | null;
   commandOpen: boolean;
   commandFilter: string;
+  revisionsOpen: boolean;
+  revisionList: RevisionMeta[] | null;
+  revisionDocument: RevisionDocument | null;
+  conflictDraft: ConflictDraftDocument | null;
+  settingsOpen: boolean;
   notice: string | null;
 };
 
@@ -62,6 +71,11 @@ export function createState(vault: number): State {
     searchOverlayHits: null,
     commandOpen: false,
     commandFilter: "",
+    revisionsOpen: false,
+    revisionList: null,
+    revisionDocument: null,
+    conflictDraft: null,
+    settingsOpen: false,
     notice: null,
   };
 }
@@ -84,6 +98,7 @@ export function tabFromMeta(note: NoteMeta): Tab {
     dirty: false,
     saving: false,
     conflict: false,
+    conflictDraftId: null,
     cursorOffset: null,
     sourceMode: false,
   };
@@ -99,6 +114,7 @@ export function tabFromDocument(document: NoteDocument): Tab {
     dirty: false,
     saving: false,
     conflict: false,
+    conflictDraftId: null,
     cursorOffset: null,
     sourceMode: false,
   };

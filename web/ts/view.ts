@@ -9,6 +9,18 @@ export type ViewActions = {
   updateSearchOverlay: () => void;
   commandCreate: () => void;
   commandAddTag: () => void;
+  closeOverlays: () => void;
+  saveSettings: (settings: {
+    excludedFoldersText: string;
+    autosaveDelayMs: number;
+    undoStackMax: number;
+    imageWebpQuality: number;
+  }) => void;
+  openRevisions: () => void;
+  selectRevision: (eventId: number) => void;
+  restoreSelectedRevision: () => void;
+  viewConflictDraft: () => void;
+  restoreConflictDraft: () => void;
   filteredCommands: () => Command[];
   activateTab: (noteId: string) => void;
   closeTab: (noteId: string) => void;
@@ -153,13 +165,26 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
     mount.id = "editor-mount";
     workspace.append(meta, mount);
     if (active.conflict) {
-      workspace.append(
-        el(
-          "div",
-          "conflict-banner",
-          "Save conflict. Your rejected draft is recoverable on the server.",
+      const banner = el(
+        "div",
+        "conflict-banner",
+        span("Save conflict. Your rejected draft is recoverable on the server."),
+      );
+      banner.append(
+        button(
+          "View draft",
+          "View conflict draft",
+          () => actions.viewConflictDraft(),
+          "text-button",
+        ),
+        button(
+          "Restore draft",
+          "Restore conflict draft",
+          () => actions.restoreConflictDraft(),
+          "text-button",
         ),
       );
+      workspace.append(banner);
     }
   }
   main.append(topbar, workspace, renderStatusBar(state));
@@ -229,10 +254,167 @@ function renderOverlays(state: State, actions: ViewActions): HTMLElement {
     );
     queueMicrotask(() => input.focus());
   }
+  if (state.revisionsOpen) {
+    host.append(el("div", "overlay-backdrop"), renderRevisionsPanel(state, actions));
+  }
+  if (state.settingsOpen && state.boot !== null) {
+    host.append(el("div", "overlay-backdrop"), renderSettingsPanel(state, actions));
+  }
+  if (state.conflictDraft !== null) {
+    host.append(el("div", "overlay-backdrop"), renderConflictPanel(state, actions));
+  }
   if (state.notice !== null) {
     host.append(el("div", "toast", state.notice));
   }
   return host;
+}
+
+function renderRevisionsPanel(state: State, actions: ViewActions): HTMLElement {
+  const list = el("div", "revision-list");
+  for (const revision of state.revisionList ?? []) {
+    list.append(
+      button(
+        `${revision.kind}  seq ${revision.seq}`,
+        `Revision ${revision.eventId}`,
+        () => actions.selectRevision(revision.eventId),
+        state.revisionDocument?.revision.eventId === revision.eventId
+          ? "revision-row active"
+          : "revision-row",
+      ),
+    );
+  }
+  const active = activeTab(state);
+  const current = active?.draft ?? active?.doc?.content ?? "";
+  const preview =
+    state.revisionDocument === null
+      ? el("div", "empty-panel", "Select a revision")
+      : el("pre", "diff-preview", diffPreview(current, state.revisionDocument.content));
+  return el(
+    "div",
+    "modal-panel revisions-panel",
+    el(
+      "div",
+      "modal-header",
+      span("Revisions"),
+      button("×", "Close", () => actions.closeOverlays(), "tab-close"),
+    ),
+    el("div", "revision-body", list, preview),
+    el(
+      "div",
+      "modal-actions",
+      button(
+        "Restore",
+        "Restore selected revision",
+        () => actions.restoreSelectedRevision(),
+        "primary-button",
+      ),
+    ),
+  );
+}
+
+function renderConflictPanel(state: State, actions: ViewActions): HTMLElement {
+  const draft = state.conflictDraft;
+  return el(
+    "div",
+    "modal-panel revisions-panel",
+    el(
+      "div",
+      "modal-header",
+      span("Conflict Draft"),
+      button("×", "Close", () => actions.closeOverlays(), "tab-close"),
+    ),
+    el("pre", "diff-preview", draft?.content ?? ""),
+    el(
+      "div",
+      "modal-actions",
+      button(
+        "Restore Draft",
+        "Restore conflict draft",
+        () => actions.restoreConflictDraft(),
+        "primary-button",
+      ),
+    ),
+  );
+}
+
+function renderSettingsPanel(state: State, actions: ViewActions): HTMLElement {
+  const settings = state.boot!.settings;
+  const excluded = input("Excluded folders", settings.excludedFolders.join(", "));
+  const autosave = input("Autosave delay", String(settings.autosaveDelayMs), "number");
+  const undo = input("Undo stack", String(settings.undoStackMax), "number");
+  const quality = input(
+    "Image quality",
+    String(settings.imageWebpQuality),
+    "number",
+    "0.1",
+    "1",
+    "0.05",
+  );
+  return el(
+    "div",
+    "modal-panel settings-panel",
+    el(
+      "div",
+      "modal-header",
+      span("Settings"),
+      button("×", "Close", () => actions.closeOverlays(), "tab-close"),
+    ),
+    el("label", "field-label", span("Excluded folders"), excluded),
+    el("label", "field-label", span("Autosave delay ms"), autosave),
+    el("label", "field-label", span("Undo stack max"), undo),
+    el("label", "field-label", span("Image WebP quality"), quality),
+    el(
+      "div",
+      "modal-actions",
+      button(
+        "Save",
+        "Save settings",
+        () => {
+          actions.saveSettings({
+            excludedFoldersText: excluded.value,
+            autosaveDelayMs: Number(autosave.value),
+            undoStackMax: Number(undo.value),
+            imageWebpQuality: Number(quality.value),
+          });
+        },
+        "primary-button",
+      ),
+    ),
+  );
+}
+
+function input(
+  title: string,
+  value: string,
+  type = "text",
+  min?: string,
+  max?: string,
+  step?: string,
+): HTMLInputElement {
+  const element = document.createElement("input");
+  element.className = "settings-input";
+  element.title = title;
+  element.type = type;
+  element.value = value;
+  if (min !== undefined) element.min = min;
+  if (max !== undefined) element.max = max;
+  if (step !== undefined) element.step = step;
+  return element;
+}
+
+function diffPreview(current: string, revision: string): string {
+  const currentLines = current.split("\n");
+  const revisionLines = revision.split("\n");
+  const out = ["Revision preview", ""];
+  for (let i = 0; i < Math.max(currentLines.length, revisionLines.length); i += 1) {
+    if (currentLines[i] === revisionLines[i]) {
+      continue;
+    }
+    if (revisionLines[i] !== undefined) out.push(`+ ${revisionLines[i]}`);
+    if (currentLines[i] !== undefined) out.push(`- ${currentLines[i]}`);
+    if (out.length > 80) break;
+  }
+  return out.join("\n");
 }
 
 function emptyState(actions: ViewActions): HTMLElement {

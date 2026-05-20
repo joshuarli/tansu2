@@ -7,16 +7,29 @@ use crate::http::{HttpRequest, HttpResponse};
 use crate::{Error, Result};
 
 pub fn handle_api(app: &App, request: &HttpRequest) -> Result<HttpResponse> {
-    let vault_index = request
-        .headers
-        .iter()
-        .find(|(name, _)| name.eq_ignore_ascii_case("x-tansu-vault"))
-        .and_then(|(_, value)| value.parse::<usize>().ok())
+    let vault_index = query_param(&request.path, "vault")
+        .and_then(|value| value.parse::<usize>().ok())
+        .or_else(|| {
+            request
+                .headers
+                .iter()
+                .find(|(name, _)| name.eq_ignore_ascii_case("x-tansu-vault"))
+                .and_then(|(_, value)| value.parse::<usize>().ok())
+        })
         .unwrap_or(0);
     let vault = app.vault(vault_index)?;
     let path = request.path.as_str();
     match (request.method.as_str(), path) {
         ("GET", "/api/health") => json(200, &serde_json::json!({ "ok": true })),
+        ("GET", _) if path.starts_with("/api/assets") => {
+            let name = query_param(path, "name")
+                .ok_or_else(|| Error::BadRequest("missing asset name".to_string()))?;
+            Ok(HttpResponse::bytes(
+                200,
+                "image/webp",
+                vault.read_asset(&name)?,
+            ))
+        }
         ("GET", "/api/bootstrap") => json(200, &vault.bootstrap(app.vault_entries(), vault_index)?),
         ("PUT", "/api/session") => {
             let body: SessionState = serde_json::from_slice(&request.body)?;
@@ -36,6 +49,7 @@ pub fn handle_api(app: &App, request: &HttpRequest) -> Result<HttpResponse> {
             let body: CreateNoteRequest = serde_json::from_slice(&request.body)?;
             json(201, &vault.create_note(body)?)
         }
+        ("POST", "/api/images") => json(201, &vault.upload_image(&request.body)?),
         _ => handle_note_route(&vault, request),
     }
 }
@@ -50,6 +64,21 @@ fn handle_note_route(
     let parts = rest.split('/').collect::<Vec<_>>();
     match (request.method.as_str(), parts.as_slice()) {
         ("GET", [note_id]) => json(200, &vault.open_note(note_id)?),
+        ("GET", [note_id, "revisions"]) => json(200, &vault.revisions(note_id)?),
+        ("GET", [note_id, "revisions", event_id]) => json(
+            200,
+            &vault.revision_document(note_id, parse_i64(event_id)?)?,
+        ),
+        ("POST", [note_id, "revisions", event_id, "restore"]) => {
+            json(200, &vault.restore_revision(note_id, parse_i64(event_id)?)?)
+        }
+        ("GET", [note_id, "conflicts", draft_id]) => {
+            json(200, &vault.conflict_draft(note_id, parse_i64(draft_id)?)?)
+        }
+        ("POST", [note_id, "conflicts", draft_id, "restore"]) => json(
+            200,
+            &vault.restore_conflict_draft(note_id, parse_i64(draft_id)?)?,
+        ),
         ("PUT", [note_id]) => {
             let body: SaveNoteRequest = serde_json::from_slice(&request.body)?;
             json(200, &vault.save_note(note_id, body)?)
@@ -140,6 +169,12 @@ fn query_param(path: &str, key: &str) -> Option<String> {
         }
     }
     None
+}
+
+fn parse_i64(value: &str) -> Result<i64> {
+    value
+        .parse()
+        .map_err(|_| Error::BadRequest(format!("invalid numeric id {value}")))
 }
 
 fn percent_decode(value: &str) -> String {

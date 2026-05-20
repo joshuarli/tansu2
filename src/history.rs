@@ -171,4 +171,23 @@ mod tests {
         let content = read_snapshot(dir.path(), "note", &hash).unwrap();
         assert_eq!(content, "hello\r\n");
     }
+
+    #[test]
+    fn corrupt_snapshot_is_reported_without_content() {
+        let dir = tempfile::tempdir().unwrap();
+        let hash = write_snapshot(dir.path(), "note", "hello\n").unwrap();
+        let path = dir
+            .path()
+            .join(".tansu")
+            .join("history")
+            .join("snapshots")
+            .join("note")
+            .join(hash_filename(&hash));
+        fs::write(path, b"not lz4").unwrap();
+
+        assert!(matches!(
+            read_snapshot(dir.path(), "note", &hash),
+            Err(Error::Internal(_))
+        ));
+    }
 }

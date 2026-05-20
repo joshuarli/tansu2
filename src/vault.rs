@@ -1,5 +1,5 @@
 use std::fs;
-use std::path::PathBuf;
+use std::path::{Component, Path, PathBuf};
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::mpsc::{self, Receiver, Sender};
 use std::sync::{Arc, Mutex, MutexGuard};
@@ -11,8 +11,9 @@ use rusqlite::ErrorCode;
 
 use crate::api_types::{
     ApiErrorKind, BootstrapResponse, CreateNoteRequest, NoteDocument, NoteEventKind,
-    NoteEventSource, NoteMeta, NoteMutationResponse, RenameNoteRequest, SaveNoteRequest, SearchHit,
-    SearchStatus, ServerEvent, ServerEventKind, SessionState, Settings, VaultEntry,
+    NoteEventSource, NoteMeta, NoteMutationResponse, RenameNoteRequest, RevisionDocument,
+    RevisionMeta, SaveNoteRequest, SearchHit, SearchStatus, ServerEvent, ServerEventKind,
+    SessionState, Settings, VaultEntry,
 };
 use crate::catalog::{Catalog, now_ms};
 use crate::config::VaultConfig;
@@ -435,6 +436,161 @@ impl VaultRuntime {
         self.lock_catalog().search_status()
     }
 
+    pub fn revisions(&self, note_id: &str) -> Result<Vec<RevisionMeta>> {
+        let _op = self.lock_op();
+        if self.lock_catalog().note_row_by_id(note_id)?.is_none() {
+            return Err(Error::NotFound(note_id.to_string()));
+        }
+        self.lock_catalog().revisions(note_id)
+    }
+
+    pub fn revision_document(&self, note_id: &str, event_id: i64) -> Result<RevisionDocument> {
+        let _op = self.lock_op();
+        let catalog = self.lock_catalog();
+        let revision = catalog
+            .revision(note_id, event_id)?
+            .ok_or_else(|| Error::NotFound(format!("revision {event_id}")))?;
+        let hash = revision
+            .content_hash
+            .as_deref()
+            .ok_or_else(|| Error::NotFound(format!("revision {event_id}")))?;
+        let content = history::read_snapshot(&self.root, note_id, hash)?;
+        Ok(RevisionDocument { revision, content })
+    }
+
+    pub fn restore_revision(&self, note_id: &str, event_id: i64) -> Result<NoteMutationResponse> {
+        let _op = self.lock_op();
+        let mut catalog = self.lock_catalog();
+        let current = catalog
+            .note_by_id(note_id)?
+            .ok_or_else(|| Error::NotFound(note_id.to_string()))?;
+        let revision = catalog
+            .revision(note_id, event_id)?
+            .ok_or_else(|| Error::NotFound(format!("revision {event_id}")))?;
+        let hash = revision
+            .content_hash
+            .as_deref()
+            .ok_or_else(|| Error::NotFound(format!("revision {event_id}")))?;
+        let content = history::read_snapshot(&self.root, note_id, hash)?;
+        let parsed = parse_markdown(&current.path, &content);
+        let meta = catalog.update_note_content(
+            note_id,
+            &parsed.title,
+            &parsed.tags,
+            hash,
+            NoteEventKind::Save,
+            NoteEventSource::User,
+        )?;
+        catalog.touch_recent(note_id)?;
+        let sync_version = catalog.sync_version()?;
+        self.mark_self_write();
+        history::write_visible_atomic(&visible_path(&self.root, &meta.path), &content)?;
+        catalog.record_visible_hash(note_id, hash)?;
+        drop(catalog);
+        self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
+        self.broadcast(ServerEventKind::NoteChanged, Vec::new());
+        Ok(NoteMutationResponse {
+            document: Some(NoteDocument {
+                meta: meta.clone(),
+                content,
+            }),
+            meta,
+            sync_version,
+        })
+    }
+
+    pub fn conflict_draft(
+        &self,
+        note_id: &str,
+        draft_id: i64,
+    ) -> Result<crate::api_types::ConflictDraftDocument> {
+        let _op = self.lock_op();
+        let catalog = self.lock_catalog();
+        let draft = catalog
+            .conflict_draft(note_id, draft_id)?
+            .ok_or_else(|| Error::NotFound(format!("conflict draft {draft_id}")))?;
+        let content =
+            history::read_conflict_draft(&self.root, note_id, draft.draft_id, &draft.content_hash)?;
+        Ok(crate::api_types::ConflictDraftDocument { draft, content })
+    }
+
+    pub fn restore_conflict_draft(
+        &self,
+        note_id: &str,
+        draft_id: i64,
+    ) -> Result<NoteMutationResponse> {
+        let _op = self.lock_op();
+        let mut catalog = self.lock_catalog();
+        let current = catalog
+            .note_by_id(note_id)?
+            .ok_or_else(|| Error::NotFound(note_id.to_string()))?;
+        let draft = catalog
+            .conflict_draft(note_id, draft_id)?
+            .ok_or_else(|| Error::NotFound(format!("conflict draft {draft_id}")))?;
+        let content =
+            history::read_conflict_draft(&self.root, note_id, draft.draft_id, &draft.content_hash)?;
+        history::write_snapshot(&self.root, note_id, &content)?;
+        let parsed = parse_markdown(&current.path, &content);
+        let meta = catalog.update_note_content(
+            note_id,
+            &parsed.title,
+            &parsed.tags,
+            &draft.content_hash,
+            NoteEventKind::ConflictRecovery,
+            NoteEventSource::User,
+        )?;
+        catalog.touch_recent(note_id)?;
+        let sync_version = catalog.sync_version()?;
+        self.mark_self_write();
+        history::write_visible_atomic(&visible_path(&self.root, &meta.path), &content)?;
+        catalog.record_visible_hash(note_id, &draft.content_hash)?;
+        drop(catalog);
+        self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
+        self.broadcast(ServerEventKind::NoteChanged, Vec::new());
+        Ok(NoteMutationResponse {
+            document: Some(NoteDocument {
+                meta: meta.clone(),
+                content,
+            }),
+            meta,
+            sync_version,
+        })
+    }
+
+    pub fn upload_image(&self, bytes: &[u8]) -> Result<crate::api_types::ImageUploadResponse> {
+        if bytes.is_empty() {
+            return Err(Error::BadRequest("image body is empty".to_string()));
+        }
+        let name = format!(
+            "assets/image-{}-{}.webp",
+            now_ms(),
+            crate::catalog::generate_note_id()
+        );
+        let path = visible_path(&self.root, &name);
+        if let Some(parent) = path.parent() {
+            fs::create_dir_all(parent)?;
+        }
+        fs::write(&path, bytes)?;
+        Ok(crate::api_types::ImageUploadResponse {
+            markdown: format!("![[{name}]]"),
+            name,
+        })
+    }
+
+    pub fn read_asset(&self, name: &str) -> Result<Vec<u8>> {
+        let path = normalize_asset_path(name)?;
+        if !path.to_string_lossy().starts_with("assets/") {
+            return Err(Error::BadRequest("asset must be under assets/".to_string()));
+        }
+        fs::read(self.root.join(&path)).map_err(|error| {
+            if error.kind() == std::io::ErrorKind::NotFound {
+                Error::NotFound(name.to_string())
+            } else {
+                Error::Io(error)
+            }
+        })
+    }
+
     fn enqueue_search(&self, job: SearchJob) {
         if let Ok(mut catalog) = self.catalog.lock() {
             let _ = catalog.set_search_dirty(true, false);
@@ -555,6 +711,27 @@ fn read_visible_or_snapshot(root: &std::path::Path, meta: &NoteMeta) -> Result<S
     }
 }
 
+fn normalize_asset_path(path: &str) -> Result<PathBuf> {
+    let raw = Path::new(path);
+    if raw.is_absolute() {
+        return Err(Error::BadRequest("asset path must be relative".to_string()));
+    }
+    let mut normalized = PathBuf::new();
+    for component in raw.components() {
+        match component {
+            Component::Normal(part) => normalized.push(part),
+            _ => return Err(Error::BadRequest("invalid asset path".to_string())),
+        }
+    }
+    if normalized
+        .components()
+        .any(|part| part.as_os_str() == ".tansu")
+    {
+        return Err(Error::BadRequest("invalid asset path".to_string()));
+    }
+    Ok(normalized)
+}
+
 fn is_unique_violation(error: &rusqlite::Error) -> bool {
     matches!(
         error,
@@ -631,6 +808,101 @@ mod tests {
         assert_eq!(current.meta.note_id, created.meta.note_id);
         assert_eq!(draft.note_id, created.meta.note_id);
         assert_eq!(draft.base_seq, base_seq);
+    }
+
+    #[test]
+    fn revision_restore_appends_recoverable_event() {
+        let vault = test_vault();
+        let created = vault
+            .create_note(CreateNoteRequest {
+                path: "A.md".to_string(),
+                content: "# A\n\nfirst\n".to_string(),
+                source: None,
+            })
+            .unwrap();
+        vault
+            .save_note(
+                &created.meta.note_id,
+                SaveNoteRequest {
+                    content: "# A\n\nsecond\n".to_string(),
+                    base_seq: created.meta.seq,
+                    base_hash: created.meta.content_hash.clone(),
+                    checkpoint: Some(true),
+                },
+            )
+            .unwrap();
+
+        let revisions = vault.revisions(&created.meta.note_id).unwrap();
+        let oldest = revisions.last().unwrap();
+        let restored = vault
+            .restore_revision(&created.meta.note_id, oldest.event_id)
+            .unwrap();
+
+        assert_eq!(restored.document.unwrap().content, "# A\r\n\r\nfirst\r\n");
+        assert!(vault.revisions(&created.meta.note_id).unwrap().len() >= 3);
+    }
+
+    #[test]
+    fn conflict_draft_can_be_restored_without_losing_current_snapshot() {
+        let vault = test_vault();
+        let created = vault
+            .create_note(CreateNoteRequest {
+                path: "A.md".to_string(),
+                content: "# A\n\nbase\n".to_string(),
+                source: None,
+            })
+            .unwrap();
+        vault
+            .save_note(
+                &created.meta.note_id,
+                SaveNoteRequest {
+                    content: "# A\n\naccepted\n".to_string(),
+                    base_seq: created.meta.seq,
+                    base_hash: created.meta.content_hash.clone(),
+                    checkpoint: None,
+                },
+            )
+            .unwrap();
+        let error = vault
+            .save_note(
+                &created.meta.note_id,
+                SaveNoteRequest {
+                    content: "# A\n\ndraft\n".to_string(),
+                    base_seq: created.meta.seq,
+                    base_hash: created.meta.content_hash,
+                    checkpoint: None,
+                },
+            )
+            .unwrap_err();
+        let Error::Api(ApiErrorKind::SaveConflict { draft, .. }) = error else {
+            panic!("expected conflict");
+        };
+
+        let draft_doc = vault
+            .conflict_draft(&created.meta.note_id, draft.draft_id)
+            .unwrap();
+        assert_eq!(draft_doc.content, "# A\r\n\r\ndraft\r\n");
+        let restored = vault
+            .restore_conflict_draft(&created.meta.note_id, draft.draft_id)
+            .unwrap();
+
+        assert_eq!(restored.document.unwrap().content, "# A\r\n\r\ndraft\r\n");
+        let revisions = vault.revisions(&created.meta.note_id).unwrap();
+        assert!(
+            revisions
+                .iter()
+                .any(|revision| matches!(revision.kind, NoteEventKind::ConflictRecovery))
+        );
+    }
+
+    #[test]
+    fn uploaded_images_are_vault_scoped_assets() {
+        let vault = test_vault();
+        let uploaded = vault.upload_image(b"webp").unwrap();
+
+        assert!(uploaded.name.starts_with("assets/"));
+        assert_eq!(vault.read_asset(&uploaded.name).unwrap(), b"webp");
+        assert!(vault.read_asset("../bad.webp").is_err());
     }
 
     fn test_vault() -> VaultRuntime {
