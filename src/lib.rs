@@ -62,6 +62,18 @@ impl From<rusqlite::Error> for Error {
     }
 }
 
+impl From<notify::Error> for Error {
+    fn from(value: notify::Error) -> Self {
+        Self::Internal(value.to_string())
+    }
+}
+
+impl From<tantivy::TantivyError> for Error {
+    fn from(value: tantivy::TantivyError) -> Self {
+        Self::Internal(value.to_string())
+    }
+}
+
 impl From<toml::de::Error> for Error {
     fn from(value: toml::de::Error) -> Self {
         Self::Toml(value)

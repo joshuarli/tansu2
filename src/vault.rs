@@ -1,15 +1,20 @@
 use std::fs;
 use std::path::PathBuf;
-use std::sync::{Mutex, MutexGuard};
+use std::sync::atomic::{AtomicU64, Ordering};
+use std::sync::mpsc::{self, Receiver, Sender};
+use std::sync::{Arc, Mutex, MutexGuard};
+use std::thread;
+use std::time::Duration;
 
+use notify::{RecommendedWatcher, RecursiveMode, Watcher};
 use rusqlite::ErrorCode;
 
 use crate::api_types::{
     ApiErrorKind, BootstrapResponse, CreateNoteRequest, NoteDocument, NoteEventKind,
     NoteEventSource, NoteMeta, NoteMutationResponse, RenameNoteRequest, SaveNoteRequest, SearchHit,
-    SearchStatus, SessionState, Settings, VaultEntry,
+    SearchStatus, ServerEvent, ServerEventKind, SessionState, Settings, VaultEntry,
 };
-use crate::catalog::Catalog;
+use crate::catalog::{Catalog, now_ms};
 use crate::config::VaultConfig;
 use crate::history;
 use crate::paths::{normalize_note_path, path_key, visible_path};
@@ -25,6 +30,9 @@ pub struct VaultRuntime {
     catalog: Mutex<Catalog>,
     search: Mutex<SearchIndex>,
     op_lock: Mutex<()>,
+    subscribers: Mutex<Vec<Sender<ServerEvent>>>,
+    watcher: Mutex<Option<RecommendedWatcher>>,
+    last_self_write_ms: AtomicU64,
 }
 
 impl VaultRuntime {
@@ -40,7 +48,7 @@ impl VaultRuntime {
         };
         reconcile_vault(&config.path, &mut catalog, &excluded)?;
         let notes = catalog.live_notes()?;
-        let mut search = SearchIndex::default();
+        let mut search = SearchIndex::open(&config.path)?;
         if search.rebuild(&config.path, &notes).is_err() {
             catalog.set_search_dirty(true, true)?;
         }
@@ -51,7 +59,52 @@ impl VaultRuntime {
             catalog: Mutex::new(catalog),
             search: Mutex::new(search),
             op_lock: Mutex::new(()),
+            subscribers: Mutex::new(Vec::new()),
+            watcher: Mutex::new(None),
+            last_self_write_ms: AtomicU64::new(0),
         })
+    }
+
+    pub fn start_watcher(self: &Arc<Self>) -> Result<()> {
+        let root = self.root.clone();
+        let (tx, rx) = mpsc::channel::<()>();
+        let mut watcher =
+            notify::recommended_watcher(move |result: notify::Result<notify::Event>| {
+                if let Ok(event) = result {
+                    if event
+                        .paths
+                        .iter()
+                        .any(|path| path.components().any(|part| part.as_os_str() == ".tansu"))
+                    {
+                        return;
+                    }
+                    let _ = tx.send(());
+                }
+            })?;
+        watcher.watch(&root, RecursiveMode::Recursive)?;
+        *self.watcher.lock().expect("watcher mutex poisoned") = Some(watcher);
+        let runtime = Arc::clone(self);
+        thread::spawn(move || {
+            while rx.recv().is_ok() {
+                while rx.recv_timeout(Duration::from_millis(150)).is_ok() {}
+                if runtime.recent_self_write() {
+                    continue;
+                }
+                let _ = runtime.reconcile_from_watcher();
+            }
+        });
+        Ok(())
+    }
+
+    pub fn subscribe(&self) -> Result<Receiver<ServerEvent>> {
+        let (tx, rx) = mpsc::channel();
+        tx.send(self.server_event(ServerEventKind::Ready, Vec::new())?)
+            .map_err(|error| Error::Internal(error.to_string()))?;
+        self.subscribers
+            .lock()
+            .expect("subscribers mutex poisoned")
+            .push(tx);
+        Ok(rx)
     }
 
     pub fn bootstrap(
@@ -122,6 +175,7 @@ impl VaultRuntime {
             Err(error) => return Err(error),
         };
         history::write_snapshot(&self.root, &note_id, &content)?;
+        self.mark_self_write();
         history::write_visible_atomic(&visible_path(&self.root, &path), &content)?;
         let meta = catalog
             .note_by_id(&note_id)?
@@ -130,6 +184,7 @@ impl VaultRuntime {
         let sync_version = catalog.sync_version()?;
         drop(catalog);
         self.index_after_write(&meta, Some(&content));
+        self.broadcast(ServerEventKind::NoteChanged, Vec::new());
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
                 meta: meta.clone(),
@@ -167,6 +222,7 @@ impl VaultRuntime {
                             &current.note_id,
                             &current.content_hash,
                         )?;
+                        self.mark_self_write();
                         history::write_visible_atomic(&visible, &accepted)?;
                         catalog.record_visible_hash(&current.note_id, &current.content_hash)?;
                     }
@@ -212,10 +268,12 @@ impl VaultRuntime {
         )?;
         catalog.touch_recent(note_id)?;
         let sync_version = catalog.sync_version()?;
+        self.mark_self_write();
         history::write_visible_atomic(&visible_path(&self.root, &meta.path), &content)?;
         catalog.record_visible_hash(note_id, &submitted_hash)?;
         drop(catalog);
         self.index_after_write(&meta, Some(&content));
+        self.broadcast(ServerEventKind::NoteChanged, Vec::new());
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
                 meta: meta.clone(),
@@ -261,12 +319,14 @@ impl VaultRuntime {
             fs::create_dir_all(parent)?;
         }
         if old_visible.exists() {
+            self.mark_self_write();
             fs::rename(old_visible, new_visible)?;
         }
         let content = read_visible_or_snapshot(&self.root, &meta)?;
         let sync_version = catalog.sync_version()?;
         drop(catalog);
         self.index_after_write(&meta, Some(&content));
+        self.broadcast(ServerEventKind::NoteChanged, Vec::new());
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
                 meta: meta.clone(),
@@ -286,11 +346,13 @@ impl VaultRuntime {
         let visible = visible_path(&self.root, &current.path);
         let meta = catalog.tombstone_note(note_id, NoteEventKind::Delete, NoteEventSource::User)?;
         if visible.exists() {
+            self.mark_self_write();
             fs::remove_file(visible)?;
         }
         let sync_version = catalog.sync_version()?;
         drop(catalog);
         self.index_after_write(&meta, None);
+        self.broadcast(ServerEventKind::NoteDeleted, vec![note_id.to_string()]);
         Ok(NoteMutationResponse {
             document: None,
             meta,
@@ -330,6 +392,8 @@ impl VaultRuntime {
         if result.is_err() {
             catalog.set_search_dirty(true, true)?;
         }
+        drop(catalog);
+        self.broadcast(ServerEventKind::SearchChanged, Vec::new());
         Ok(settings)
     }
 
@@ -339,7 +403,10 @@ impl VaultRuntime {
         if catalog.note_by_id(note_id)?.is_none() {
             return Err(Error::NotFound(note_id.to_string()));
         }
-        catalog.set_pin(note_id, pinned)
+        catalog.set_pin(note_id, pinned)?;
+        drop(catalog);
+        self.broadcast(ServerEventKind::VaultChanged, Vec::new());
+        Ok(())
     }
 
     pub fn search_status(&self) -> Result<SearchStatus> {
@@ -356,6 +423,66 @@ impl VaultRuntime {
         if let Ok(mut catalog) = self.catalog.lock() {
             let _ = catalog.set_search_dirty(search.dirty, search.degraded);
         }
+    }
+
+    fn reconcile_from_watcher(&self) -> Result<()> {
+        let _op = self.lock_op();
+        let mut catalog = self.lock_catalog();
+        let before = catalog
+            .live_notes()?
+            .into_iter()
+            .map(|note| note.note_id)
+            .collect::<std::collections::HashSet<_>>();
+        let settings = catalog.settings()?;
+        reconcile_vault(&self.root, &mut catalog, &settings.excluded_folders)?;
+        let notes = catalog.live_notes()?;
+        let after = notes
+            .iter()
+            .map(|note| note.note_id.clone())
+            .collect::<std::collections::HashSet<_>>();
+        let deleted = before.difference(&after).cloned().collect::<Vec<_>>();
+        let mut search = self.search.lock().expect("search mutex poisoned");
+        if search.rebuild(&self.root, &notes).is_err() {
+            catalog.set_search_dirty(true, true)?;
+        }
+        drop(search);
+        drop(catalog);
+        self.broadcast(ServerEventKind::VaultChanged, deleted);
+        Ok(())
+    }
+
+    fn server_event(
+        &self,
+        kind: ServerEventKind,
+        deleted_note_ids: Vec<String>,
+    ) -> Result<ServerEvent> {
+        let catalog = self.lock_catalog();
+        Ok(ServerEvent {
+            kind,
+            vault: self.index,
+            notes: catalog.live_notes()?,
+            deleted_note_ids,
+            search_status: catalog.search_status()?,
+        })
+    }
+
+    fn broadcast(&self, kind: ServerEventKind, deleted_note_ids: Vec<String>) {
+        let Ok(event) = self.server_event(kind, deleted_note_ids) else {
+            return;
+        };
+        let mut subscribers = self.subscribers.lock().expect("subscribers mutex poisoned");
+        subscribers.retain(|tx| tx.send(event.clone()).is_ok());
+    }
+
+    fn mark_self_write(&self) {
+        self.last_self_write_ms
+            .store(now_ms().try_into().unwrap_or(u64::MAX), Ordering::SeqCst);
+    }
+
+    fn recent_self_write(&self) -> bool {
+        let last = self.last_self_write_ms.load(Ordering::SeqCst);
+        let now: u64 = now_ms().try_into().unwrap_or(u64::MAX);
+        now.saturating_sub(last) < 750
     }
 
     fn lock_op(&self) -> MutexGuard<'_, ()> {

@@ -1,7 +1,11 @@
 use std::sync::Arc;
 
+use std::io::Write;
+use std::net::TcpStream;
+
 use crate::api_types::VaultEntry;
 use crate::config::Config;
+use crate::http::HttpRequest;
 use crate::vault::VaultRuntime;
 use crate::{Error, Result};
 
@@ -16,9 +20,13 @@ impl App {
         for (index, vault) in config.vaults.iter().enumerate() {
             runtimes.push(Arc::new(VaultRuntime::open(index, vault)?));
         }
-        Ok(Self {
+        let app = Self {
             vaults: Arc::new(runtimes),
-        })
+        };
+        for vault in app.vaults.iter() {
+            vault.start_watcher()?;
+        }
+        Ok(app)
     }
 
     pub fn vault(&self, index: usize) -> Result<Arc<VaultRuntime>> {
@@ -36,5 +44,29 @@ impl App {
                 name: vault.name.clone(),
             })
             .collect()
+    }
+
+    pub fn handle_events(&self, request: &HttpRequest, stream: &mut TcpStream) -> Result<()> {
+        let vault_index = request
+            .path
+            .split_once('?')
+            .and_then(|(_, query)| {
+                query
+                    .split('&')
+                    .find_map(|pair| pair.split_once("vault=")?.1.parse().ok())
+            })
+            .unwrap_or(0);
+        let vault = self.vault(vault_index)?;
+        let rx = vault.subscribe()?;
+        write!(
+            stream,
+            "HTTP/1.1 200 OK\r\nContent-Type: text/event-stream\r\nCache-Control: no-cache\r\nConnection: close\r\nX-Accel-Buffering: no\r\n\r\n"
+        )?;
+        for event in rx {
+            let json = serde_json::to_string(&event)?;
+            stream.write_all(format!("event: message\ndata: {json}\n\n").as_bytes())?;
+            stream.flush()?;
+        }
+        Ok(())
     }
 }

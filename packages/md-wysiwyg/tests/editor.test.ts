@@ -221,7 +221,6 @@ describe("createEditor", () => {
 
     // After the timer fires, the current content should be checkpointed.
     // We can verify by checking undo works after.
-    const prevValue = handle.getValue();
     handle.undo();
     // undoIndex <= 1 after setValue + debounce push, undo goes back
     expectTypeOf(handle.getValue()).toBeString();

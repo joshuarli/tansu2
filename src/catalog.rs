@@ -400,11 +400,8 @@ impl Catalog {
             })
             .optional()?;
         match value {
-            Some(value) => Ok(serde_json::from_str(&value)?),
-            None => Ok(SessionState {
-                open_note_ids: Vec::new(),
-                active_note_id: None,
-            }),
+            Some(value) => Ok(serde_json::from_str(&value).unwrap_or_else(|_| default_session())),
+            None => Ok(default_session()),
         }
     }
 
@@ -548,6 +545,14 @@ fn collect_strings(
     Ok(out)
 }
 
+fn default_session() -> SessionState {
+    SessionState {
+        open_tabs: Vec::new(),
+        active_note_id: None,
+        closed_tabs: Vec::new(),
+    }
+}
+
 fn advance_sync_tx(tx: &Transaction<'_>) -> Result<()> {
     let value: String = tx.query_row(
         "SELECT value FROM vault_meta WHERE key='sync_version'",
@@ -614,6 +619,7 @@ fn unresolved_reason(reason: UnresolvedReason) -> &'static str {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::api_types::SessionTab;
 
     #[test]
     fn live_path_uniqueness_allows_tombstone_reuse() {
@@ -662,8 +668,15 @@ mod tests {
             vec!["Archive"]
         );
         let session = SessionState {
-            open_note_ids: vec!["n".to_string()],
+            open_tabs: vec![SessionTab {
+                note_id: "n".to_string(),
+                title: "N".to_string(),
+                path: "N.md".to_string(),
+                cursor_offset: Some(0),
+                source_mode: false,
+            }],
             active_note_id: Some("n".to_string()),
+            closed_tabs: Vec::new(),
         };
         catalog.save_session(&session).unwrap();
         assert_eq!(

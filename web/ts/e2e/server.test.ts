@@ -9,6 +9,7 @@ import { chromium, type Browser } from "playwright";
 let server: ChildProcess | undefined;
 let browser: Browser | undefined;
 let baseUrl = "";
+let vaultOnePath = "";
 
 describe("real server harness", () => {
   beforeAll(async () => {
@@ -19,6 +20,7 @@ describe("real server harness", () => {
     await mkdir(join(configHome, "tansu"), { recursive: true });
     await mkdir(vaultOne, { recursive: true });
     await mkdir(vaultTwo, { recursive: true });
+    vaultOnePath = vaultOne;
     await writeFile(join(vaultOne, "one.md"), "# One\n\nalpha", "utf8");
     await writeFile(join(vaultTwo, "two.md"), "# Two\n\nbeta", "utf8");
     await writeFile(
@@ -59,7 +61,67 @@ path = "${vaultTwo}"
 
     const page = await browser!.newPage();
     await page.goto(baseUrl);
-    await page.waitForSelector(".app-shell");
+    await page.waitForSelector(".main");
+    await page.close();
+  });
+
+  it("streams vault-scoped note changes over SSE", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    const eventPromise = page.evaluate(() => {
+      return new Promise<string>((resolve) => {
+        const source = new EventSource("/events?vault=0");
+        source.addEventListener("message", (event) => {
+          const payload = JSON.parse((event as MessageEvent<string>).data) as {
+            kind: string;
+            notes: Array<{ title: string }>;
+          };
+          if (
+            payload.kind === "note_changed" &&
+            payload.notes.some((note) => note.title === "SSE")
+          ) {
+            source.close();
+            resolve(payload.kind);
+          }
+        });
+      });
+    });
+    await fetch(`${baseUrl}/api/notes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tansu-Vault": "0",
+      },
+      body: JSON.stringify({ path: "sse.md", content: "# SSE\n\nbody\n", source: null }),
+    });
+    await expect(eventPromise).resolves.toBe("note_changed");
+    await page.close();
+  });
+
+  it("reconciles external filesystem edits for the active vault", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    const eventPromise = page.evaluate(() => {
+      return new Promise<string>((resolve) => {
+        const source = new EventSource("/events?vault=0");
+        source.addEventListener("message", (event) => {
+          const payload = JSON.parse((event as MessageEvent<string>).data) as {
+            kind: string;
+            notes: Array<{ title: string }>;
+          };
+          if (
+            payload.kind === "vault_changed" &&
+            payload.notes.some((note) => note.title === "Outside")
+          ) {
+            source.close();
+            resolve(payload.kind);
+          }
+        });
+      });
+    });
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    await writeFile(join(vaultOnePath, "outside.md"), "# Outside\n\nedit\n", "utf8");
+    await expect(eventPromise).resolves.toBe("vault_changed");
     await page.close();
   });
 });

@@ -17,13 +17,19 @@ export type ConflictDraftMeta = { draftId: number, noteId: string, baseSeq: numb
 
 export type Settings = { excludedFolders: Array<string>, searchTitleWeight: number, searchHeadingWeight: number, searchTagWeight: number, searchContentWeight: number, recencyBoost: number, };
 
-export type SessionState = { openNoteIds: Array<string>, activeNoteId: string | null, };
+export type SessionState = { openTabs: Array<SessionTab>, activeNoteId: string | null, closedTabs: Array<SessionTab>, };
+
+export type SessionTab = { noteId: string, title: string, path: string, cursorOffset: number | null, sourceMode: boolean, };
 
 export type SearchStatus = { dirty: boolean, degraded: boolean, };
 
 export type SearchHit = { note: NoteMeta, snippet: string, score: number, };
 
 export type BootstrapResponse = { vaults: Array<VaultEntry>, activeVault: number, notes: Array<NoteMeta>, pinnedNoteIds: Array<string>, recentNoteIds: Array<string>, settings: Settings, session: SessionState, searchStatus: SearchStatus, };
+
+export type ServerEvent = { kind: ServerEventKind, vault: number, notes: Array<NoteMeta>, deletedNoteIds: Array<string>, searchStatus: SearchStatus, };
+
+export type ServerEventKind = "ready" | "vault_changed" | "note_changed" | "note_deleted" | "search_changed";
 
 export type CreateNoteRequest = { path: string, content: string, source: NoteEventSource | null, };
 

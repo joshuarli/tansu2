@@ -18,9 +18,12 @@ fn main() {
     push::<ConflictDraftMeta>(&mut output);
     push::<Settings>(&mut output);
     push::<SessionState>(&mut output);
+    push::<SessionTab>(&mut output);
     push::<SearchStatus>(&mut output);
     push::<SearchHit>(&mut output);
     push::<BootstrapResponse>(&mut output);
+    push::<ServerEvent>(&mut output);
+    push::<ServerEventKind>(&mut output);
     push::<CreateNoteRequest>(&mut output);
     push::<SaveNoteRequest>(&mut output);
     push::<RenameNoteRequest>(&mut output);

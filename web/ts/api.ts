@@ -3,8 +3,10 @@ import type {
   CreateNoteRequest,
   NoteDocument,
   NoteMutationResponse,
+  RenameNoteRequest,
   SaveNoteRequest,
   SearchHit,
+  ServerEvent,
   SessionState,
   Settings,
 } from "./types.generated.ts";
@@ -70,6 +72,36 @@ export function saveNote(
   });
 }
 
+export function renameNote(
+  noteId: string,
+  request: RenameNoteRequest,
+  vault = activeVault(),
+): Promise<NoteMutationResponse> {
+  return apiFetch<NoteMutationResponse>(`/api/notes/${encodeURIComponent(noteId)}/rename`, {
+    method: "POST",
+    body: JSON.stringify(request),
+    vault,
+  });
+}
+
+export function deleteNote(noteId: string, vault = activeVault()): Promise<NoteMutationResponse> {
+  return apiFetch<NoteMutationResponse>(`/api/notes/${encodeURIComponent(noteId)}`, {
+    method: "DELETE",
+    vault,
+  });
+}
+
+export function setPinned(
+  noteId: string,
+  pinned: boolean,
+  vault = activeVault(),
+): Promise<{ ok: true }> {
+  return apiFetch<{ ok: true }>(`/api/notes/${encodeURIComponent(noteId)}/pin`, {
+    method: pinned ? "POST" : "DELETE",
+    vault,
+  });
+}
+
 export function searchNotes(query: string, vault = activeVault()): Promise<SearchHit[]> {
   return apiFetch<SearchHit[]>(`/api/search?q=${encodeURIComponent(query)}`, { vault });
 }
@@ -96,4 +128,12 @@ export function activeVault(): number {
 
 export function setActiveVault(index: number): void {
   sessionStorage.setItem("tansu2.activeVault", String(index));
+}
+
+export function connectEvents(vault = activeVault()): EventSource {
+  return new EventSource(`/events?vault=${encodeURIComponent(String(vault))}`);
+}
+
+export function parseServerEvent(event: MessageEvent<string>): ServerEvent {
+  return JSON.parse(event.data) as ServerEvent;
 }

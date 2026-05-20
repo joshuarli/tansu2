@@ -95,6 +95,12 @@ pub fn serve_listener(app: App, listener: TcpListener) -> Result<()> {
 
 fn handle_stream(app: App, mut stream: TcpStream) -> Result<()> {
     let response = match parse_request(&mut stream) {
+        Ok(request) if request.path.starts_with("/events") => {
+            if let Err(error) = app.handle_events(&request, &mut stream) {
+                HttpResponse::text(500, &error.to_string()).write(&mut stream)?;
+            }
+            return Ok(());
+        }
         Ok(request) => route(&app, &request),
         Err(error) => HttpResponse::text(400, &error.to_string()),
     };
@@ -135,7 +141,7 @@ fn parse_request(stream: &mut TcpStream) -> Result<HttpRequest> {
     let mut headers = [httparse::EMPTY_HEADER; 64];
     let mut parsed = httparse::Request::new(&mut headers);
     parsed
-        .parse(&buffer[..header_end])
+        .parse(&buffer[..header_end + 4])
         .map_err(|error| Error::BadRequest(error.to_string()))?;
     let method = parsed
         .method

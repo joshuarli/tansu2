@@ -109,8 +109,19 @@ impl Default for Settings {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(rename_all = "camelCase")]
 pub struct SessionState {
-    pub open_note_ids: Vec<String>,
+    pub open_tabs: Vec<SessionTab>,
     pub active_note_id: Option<String>,
+    pub closed_tabs: Vec<SessionTab>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+pub struct SessionTab {
+    pub note_id: String,
+    pub title: String,
+    pub path: String,
+    pub cursor_offset: Option<usize>,
+    pub source_mode: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
@@ -139,6 +150,26 @@ pub struct BootstrapResponse {
     pub settings: Settings,
     pub session: SessionState,
     pub search_status: SearchStatus,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+pub struct ServerEvent {
+    pub kind: ServerEventKind,
+    pub vault: usize,
+    pub notes: Vec<NoteMeta>,
+    pub deleted_note_ids: Vec<String>,
+    pub search_status: SearchStatus,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "snake_case")]
+pub enum ServerEventKind {
+    Ready,
+    VaultChanged,
+    NoteChanged,
+    NoteDeleted,
+    SearchChanged,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
