@@ -33,6 +33,7 @@ export type ViewActions = {
   closeTab: (noteId: string) => void;
   openInTab: (noteId: string) => void;
   updateActiveTags: (tags: string[]) => void;
+  toggleReadingMode: () => void;
   formatBold: () => void;
   formatItalic: () => void;
   formatHighlight: () => void;
@@ -69,7 +70,7 @@ export function renderStatusBar(state: State): HTMLElement {
 }
 
 function renderSidebar(state: State, actions: ViewActions): HTMLElement {
-  const sidebar = el("aside", "sidebar");
+  const sidebar = el("aside", state.readingMode ? "sidebar reading-sidebar" : "sidebar");
   const vaultSelect = document.createElement("select");
   vaultSelect.className = "vault-select";
   for (const vault of state.boot?.vaults ?? []) {
@@ -125,7 +126,9 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
 }
 
 function renderMain(state: State, actions: ViewActions): HTMLElement {
-  const main = el("main", "main");
+  const active = activeTab(state);
+  const reading = state.readingMode;
+  const main = el("main", reading ? "main reading-mode" : "main");
   const tabs = el("div", "tabs");
   for (const tab of state.tabs) {
     const active = tab.noteId === state.activeNoteId;
@@ -142,37 +145,27 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
     tabEl.append(span(tab.title), span(tab.dirty ? "•" : ""), closeButton(tab.noteId, actions));
     tabs.append(tabEl);
   }
-  const toolbar = el(
-    "div",
-    "toolbar",
-    toolButton("bold", "Bold", () => actions.formatBold()),
-    toolButton("italic", "Italic", () => actions.formatItalic()),
-    toolButton("strikethrough", "Strikethrough", () => actions.formatStrikethrough()),
-    toolButton("highlight", "Highlight", () => actions.formatHighlight()),
-    toolButton("heading", "Heading", () => actions.formatHeading()),
-    toolButton("undo", "Undo", () => actions.undo()),
-    toolButton("redo", "Redo", () => actions.redo()),
-    toolButton("code", "Source", () => actions.toggleSourceMode()),
-    toolButton("save", "Save", () => actions.manualSave()),
-  );
-  const active = activeTab(state);
   const title = active === undefined ? "No note selected" : active.path;
-  const topbar = el("div", "topbar", tabs);
+  const topbar = el("div", "topbar", tabs, topbarActions(active, state, actions));
   const workspace = el("section", "workspace");
   if (active === undefined) {
     workspace.append(emptyState(actions));
   } else if (active.doc === null) {
     workspace.append(el("div", "loading", "Loading"));
   } else {
-    const meta = el(
-      "div",
-      "editor-meta",
-      el("div", "path-label", title),
-      renderTagRow(active, actions),
-    );
     const mount = el("div", "editor-mount");
     mount.id = "editor-mount";
-    workspace.append(meta, mount);
+    if (reading) {
+      workspace.append(mount);
+    } else {
+      const meta = el(
+        "div",
+        "editor-meta",
+        el("div", "path-label", title),
+        renderTagRow(active, actions),
+      );
+      workspace.append(meta, mount);
+    }
     if (active.conflict) {
       const banner = el(
         "div",
@@ -196,8 +189,39 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
       workspace.append(banner);
     }
   }
-  main.append(topbar, toolbar, workspace, renderStatusBar(state));
+  if (!reading) {
+    main.append(topbar, editorToolbar(actions));
+  }
+  main.append(workspace, renderStatusBar(state));
   return main;
+}
+
+function topbarActions(active: Tab | undefined, state: State, actions: ViewActions): HTMLElement {
+  const controls = el("div", "topbar-actions");
+  if (active !== undefined) {
+    controls.append(
+      toolButton(state.readingMode ? "edit" : "read", state.readingMode ? "Edit" : "Read", () =>
+        actions.toggleReadingMode(),
+      ),
+    );
+  }
+  return controls;
+}
+
+function editorToolbar(actions: ViewActions): HTMLElement {
+  return el(
+    "div",
+    "toolbar",
+    toolButton("bold", "Bold", () => actions.formatBold()),
+    toolButton("italic", "Italic", () => actions.formatItalic()),
+    toolButton("strikethrough", "Strikethrough", () => actions.formatStrikethrough()),
+    toolButton("highlight", "Highlight", () => actions.formatHighlight()),
+    toolButton("heading", "Heading", () => actions.formatHeading()),
+    toolButton("undo", "Undo", () => actions.undo()),
+    toolButton("redo", "Redo", () => actions.redo()),
+    toolButton("code", "Source", () => actions.toggleSourceMode()),
+    toolButton("save", "Save", () => actions.manualSave()),
+  );
 }
 
 function renderOverlays(state: State, actions: ViewActions): HTMLElement {
@@ -689,7 +713,9 @@ type ToolIcon =
   | "undo"
   | "redo"
   | "code"
-  | "save";
+  | "save"
+  | "read"
+  | "edit";
 
 function toolButton(iconName: ToolIcon, title: string, onClick: (event: MouseEvent) => void) {
   const element = button("", title, onClick, "tool-button");
@@ -741,6 +767,14 @@ function iconPaths(iconName: ToolIcon): SVGElement[] {
         iconShape("rect", { x: "9", y: "15", width: "6", height: "5", fill: "#dfe7f2" }),
         iconPath("M5 4h12l2 2v14H5zM8 4v6h8V4M8 20v-6h8v6"),
       ];
+    case "read":
+      return [
+        iconPath(
+          "M4 6.5A7 7 0 0 1 11 6h2a7 7 0 0 1 7 7 7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7zM8 9h8M8 13h6M8 17h4",
+        ),
+      ];
+    case "edit":
+      return [iconPath("M5 19h4l10-10-4-4L5 15zM13.5 6.5l4 4M4 22h16")];
   }
 }
 

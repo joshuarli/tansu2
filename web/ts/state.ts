@@ -66,6 +66,7 @@ export type State = {
   noteDialog: NoteDialog | null;
   contextMenu: ContextMenuState | null;
   notice: string | null;
+  readingMode: boolean;
 };
 
 export function createState(vault: number): State {
@@ -93,6 +94,7 @@ export function createState(vault: number): State {
     noteDialog: null,
     contextMenu: null,
     notice: null,
+    readingMode: false,
   };
 }
 

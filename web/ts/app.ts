@@ -121,7 +121,7 @@ export class TansuApp {
       const target = event.target;
       const inEditor =
         target instanceof HTMLElement &&
-        (target.closest(".md-editor-content") !== null ||
+        (target.closest('.md-editor-content[contenteditable="true"]') !== null ||
           target.closest(".md-editor-source") !== null);
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
@@ -143,6 +143,11 @@ export class TansuApp {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "s") {
         event.preventDefault();
         void this.manualSave();
+        return;
+      }
+      if (!inEditor && (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "e") {
+        event.preventDefault();
+        this.toggleReadingMode();
         return;
       }
       if (
@@ -231,9 +236,12 @@ export class TansuApp {
     if (tab === undefined || tab.doc === null || mount === null) {
       return;
     }
+    const reading = this.state.readingMode;
     const config: EditorConfig = {
       extensions: this.extensions,
-      contentClassName: "md-editor-content app-editor",
+      contentClassName: reading
+        ? "md-editor-content app-editor app-reader"
+        : "md-editor-content app-editor",
       sourceClassName: "md-editor-source app-editor-source",
       onImagePaste: (blob) => this.uploadPastedImage(blob),
       onChange: () => this.captureEditorChange(),
@@ -247,7 +255,15 @@ export class TansuApp {
     }
     this.editor = createEditor(mount, config);
     this.editorNoteId = tab.noteId;
-    this.editor.setValue(editableMarkdown(tab), tab.cursorOffset ?? undefined);
+    this.editor.setValue(
+      editableMarkdown(tab),
+      reading ? undefined : (tab.cursorOffset ?? undefined),
+    );
+    if (reading) {
+      this.editor.contentEl.contentEditable = "false";
+      this.editor.contentEl.setAttribute("aria-readonly", "true");
+      return;
+    }
     if (tab.sourceMode && !this.editor.isSourceMode) {
       this.editor.toggleSourceMode();
     }
@@ -295,7 +311,12 @@ export class TansuApp {
   private syncActiveDraft(): void {
     const tab =
       this.editorNoteId === null ? activeTab(this.state) : tabById(this.state, this.editorNoteId);
-    if (tab === undefined || this.editor === null) {
+    if (
+      tab === undefined ||
+      this.state.readingMode ||
+      this.editor === null ||
+      this.editor.contentEl.contentEditable === "false"
+    ) {
       return;
     }
     const current = tab.draft ?? tab.doc?.content ?? "";
@@ -603,6 +624,14 @@ export class TansuApp {
     this.scheduleSessionSave();
   }
 
+  private toggleReadingMode(): void {
+    if (activeTab(this.state) === undefined) {
+      return;
+    }
+    this.state.readingMode = !this.state.readingMode;
+    this.render();
+  }
+
   private filteredCommands(): Command[] {
     const commands: Command[] = [
       { id: "open", label: "Open note", run: () => this.commandOpen() },
@@ -619,6 +648,11 @@ export class TansuApp {
         run: () => this.commandPin(),
       },
       { id: "reopen", label: "Reopen closed tab", run: () => this.commandReopenClosed() },
+      {
+        id: "reading",
+        label: this.state.readingMode ? "Edit mode" : "Reading mode",
+        run: () => this.toggleReadingMode(),
+      },
       {
         id: "search",
         label: "Search notes",
@@ -874,6 +908,7 @@ export class TansuApp {
       closeTab: (noteId) => this.closeTab(noteId),
       openInTab: (noteId) => void this.openInTab(noteId),
       updateActiveTags: (tags) => this.updateActiveTags(tags),
+      toggleReadingMode: () => this.toggleReadingMode(),
       formatBold: () => this.editor?.applyFormat(toggleBold),
       formatItalic: () => this.editor?.applyFormat(toggleItalic),
       formatHighlight: () => this.editor?.applyFormat(toggleHighlight),

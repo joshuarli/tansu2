@@ -58,6 +58,8 @@ const editorMock = vi.hoisted(() => ({
     toggleSourceMode: ReturnType<typeof vi.fn>;
     undo: ReturnType<typeof vi.fn>;
     config: Record<string, unknown>;
+    contentEl: HTMLElement;
+    sourceEl: HTMLTextAreaElement;
   }>,
 }));
 
@@ -79,6 +81,8 @@ vi.mock("@joshuarli98/md-wysiwyg", () => ({
       }),
       undo: vi.fn(),
       config,
+      contentEl: document.createElement("div"),
+      sourceEl: document.createElement("textarea"),
     };
     editorMock.instances.push(instance);
     return instance;
@@ -232,7 +236,7 @@ describe("TansuApp note loading", () => {
     await app.boot();
     const editor = editorMock.instances.at(-1)!;
     editor.getValue.mockReturnValue("# Changed\n");
-    (editor.config.onChange as () => void)();
+    (editor.config["onChange"] as () => void)();
     root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
     await flushAsync();
 
@@ -387,13 +391,13 @@ describe("TansuApp note loading", () => {
     const initialEditor = editorMock.instances.at(-1)!;
     api.uploadImage.mockResolvedValue({ name: "z-images/pasted.webp", markdown: "![[pasted]]" });
     await expect(
-      (initialEditor.config.onImagePaste as (blob: Blob) => Promise<string | null>)(
+      (initialEditor.config["onImagePaste"] as (blob: Blob) => Promise<string | null>)(
         new Blob(["x"]),
       ),
     ).resolves.toContain('data-wiki-image="z-images/pasted.webp"');
     api.uploadImage.mockRejectedValueOnce(new Error("upload failed"));
     await expect(
-      (initialEditor.config.onImagePaste as (blob: Blob) => Promise<string | null>)(
+      (initialEditor.config["onImagePaste"] as (blob: Blob) => Promise<string | null>)(
         new Blob(["x"]),
       ),
     ).resolves.toBeNull();
@@ -435,7 +439,7 @@ describe("TansuApp note loading", () => {
 
     const editor = editorMock.instances.at(-1)!;
     editor.getValue.mockReturnValue("# Changed\n");
-    (editor.config.onChange as () => void)();
+    (editor.config["onChange"] as () => void)();
     vi.advanceTimersByTime(900);
     await flushAsync();
     expect(api.saveNote).toHaveBeenCalledWith(
@@ -501,7 +505,7 @@ describe("TansuApp note loading", () => {
     await app.boot();
     const editor = editorMock.instances.at(-1)!;
     editor.getValue.mockReturnValue("# Changed\n");
-    (editor.config.onChange as () => void)();
+    (editor.config["onChange"] as () => void)();
     root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
     await flushAsync();
     expect(root.textContent).toContain("Save failed");

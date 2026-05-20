@@ -59,6 +59,7 @@ describe("view rendering", () => {
     root.querySelector<HTMLButtonElement>('[title="Add tag"]')!.click();
     root.querySelector<HTMLButtonElement>('[title="View conflict draft"]')!.click();
     root.querySelector<HTMLButtonElement>('[title="Restore conflict draft"]')!.click();
+    root.querySelector<HTMLButtonElement>('[title="Read"]')!.click();
     for (const title of [
       "Bold",
       "Italic",
@@ -85,8 +86,24 @@ describe("view rendering", () => {
     expect(actions.openNoteContextMenu).toHaveBeenCalledWith("n1", 3, 4);
     expect(actions.updateActiveTags).toHaveBeenCalledWith([]);
     expect(actions.commandPin).toHaveBeenCalledWith("n1");
+    expect(actions.toggleReadingMode).toHaveBeenCalled();
     expect(actions.formatBold).toHaveBeenCalled();
     expect(root.textContent).toContain("Save conflict");
+  });
+
+  it("renders reading mode with minimal editing chrome", () => {
+    const state = baseState();
+    state.tabs = [tabFromDocument({ meta: note("n1", "one.md", "One"), content: "# One\n" })];
+    state.activeNoteId = "n1";
+    state.readingMode = true;
+    const actions = actionSpies();
+    const root = render(state, actions);
+
+    expect(root.querySelector(".main")?.className).toContain("reading-mode");
+    expect(root.querySelector(".topbar")).toBeNull();
+    expect(root.querySelector(".toolbar")).toBeNull();
+    expect(root.querySelector(".editor-meta")).toBeNull();
+    expect(root.querySelector('[title="Edit"]')).toBeNull();
   });
 
   it("renders command, search, revision, settings, conflict, dialog, and notice overlays", () => {
@@ -186,7 +203,7 @@ function render(state: State, actions = actionSpies()): HTMLElement {
 
 function actionSpies(): ViewActions & { [K in keyof ViewActions]: ReturnType<typeof vi.fn> } {
   const commands: Command[] = [{ id: "save", label: "Save note", run: vi.fn() }];
-  return {
+  const actions = {
     render: vi.fn(),
     switchVault: vi.fn(),
     updateSearch: vi.fn(),
@@ -211,6 +228,7 @@ function actionSpies(): ViewActions & { [K in keyof ViewActions]: ReturnType<typ
     closeTab: vi.fn(),
     openInTab: vi.fn(),
     updateActiveTags: vi.fn(),
+    toggleReadingMode: vi.fn(),
     formatBold: vi.fn(),
     formatItalic: vi.fn(),
     formatHighlight: vi.fn(),
@@ -221,6 +239,7 @@ function actionSpies(): ViewActions & { [K in keyof ViewActions]: ReturnType<typ
     toggleSourceMode: vi.fn(),
     manualSave: vi.fn(),
   };
+  return actions as unknown as ViewActions & { [K in keyof ViewActions]: ReturnType<typeof vi.fn> };
 }
 
 function baseState(): State {

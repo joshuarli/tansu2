@@ -98,7 +98,7 @@ describe("API client", () => {
       json: async () => {
         throw new Error("not json");
       },
-    } as Response);
+    } as unknown as Response);
 
     await expect(
       saveSession({ openTabs: [], activeNoteId: null, closedTabs: [] }, 1),
