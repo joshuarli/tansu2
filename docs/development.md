@@ -8,6 +8,12 @@ Requirements:
 - Node from `.node-version`
 - `pnpm` from `package.json`
 
+Supported Rust targets:
+
+- `aarch64-apple-darwin`
+- `x86_64-unknown-linux-musl`
+- `aarch64-unknown-linux-musl`
+
 Install dependencies:
 
 ```sh

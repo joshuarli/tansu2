@@ -1,3 +1,4 @@
+use std::fmt::Write as _;
 use std::fs;
 use std::io::{ErrorKind, Write};
 use std::path::{Path, PathBuf};
@@ -25,7 +26,12 @@ pub fn validate_and_canonicalize(bytes: &[u8]) -> Result<String> {
 pub fn content_hash(content: &str) -> String {
     let mut hasher = Sha256::new();
     hasher.update(canonical_markdown_bytes(content));
-    format!("sha256:{:x}", hasher.finalize())
+    let digest = hasher.finalize();
+    let mut hex = String::with_capacity(64);
+    for byte in digest {
+        write!(&mut hex, "{byte:02x}").expect("writing to String cannot fail");
+    }
+    format!("sha256:{hex}")
 }
 
 pub fn write_snapshot(root: &Path, note_id: &str, content: &str) -> Result<String> {

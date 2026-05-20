@@ -1,3 +1,15 @@
+#[cfg(not(any(
+    all(target_os = "macos", target_arch = "aarch64"),
+    all(
+        target_os = "linux",
+        target_env = "musl",
+        any(target_arch = "x86_64", target_arch = "aarch64")
+    )
+)))]
+compile_error!(
+    "tansu2 supports only aarch64-apple-darwin, x86_64-unknown-linux-musl, and aarch64-unknown-linux-musl"
+);
+
 pub mod api;
 pub mod api_types;
 pub mod app;

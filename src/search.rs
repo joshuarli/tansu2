@@ -121,7 +121,8 @@ impl SearchIndex {
             return Vec::new();
         };
         let searcher = reader.searcher();
-        let Ok(top_docs) = searcher.search(&parsed, &TopDocs::with_limit(100)) else {
+        let Ok(top_docs) = searcher.search(&parsed, &TopDocs::with_limit(100).order_by_score())
+        else {
             return Vec::new();
         };
         let mut hits = Vec::new();

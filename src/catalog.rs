@@ -1,6 +1,5 @@
 use std::time::{SystemTime, UNIX_EPOCH};
 
-use rand::RngCore;
 use rusqlite::{Connection, OptionalExtension, Transaction, params};
 
 use crate::api_types::{
@@ -631,7 +630,7 @@ pub fn now_ms() -> i64 {
 
 pub fn generate_note_id() -> String {
     let mut bytes = [0_u8; 16];
-    rand::thread_rng().fill_bytes(&mut bytes);
+    fastrand::fill(&mut bytes);
     bytes.iter().map(|byte| format!("{byte:02x}")).collect()
 }
 
