@@ -63,6 +63,7 @@ export class TansuApp {
   private autosaveTimer: number | undefined;
   private sessionTimer: number | undefined;
   private events: EventSource | null = null;
+  private readonly noteLoads = new Map<string, Promise<void>>();
   private readonly extensions = [
     createWikiImageExtension({ resolveUrl: (name) => assetUrl(name, this.state.vault) }),
     createCalloutExtension(),
@@ -75,6 +76,7 @@ export class TansuApp {
   async boot(): Promise<void> {
     this.destroyEditor();
     this.events?.close();
+    this.noteLoads.clear();
     this.state.vault = activeVault();
     this.state.boot = await bootstrap(this.state.vault);
     this.state.notes = new Map(this.state.boot.notes.map((note) => [note.noteId, note]));
@@ -312,11 +314,39 @@ export class TansuApp {
     if (tab === undefined || tab.doc !== null) {
       return;
     }
-    tab.doc = await openNote(tab.noteId, this.state.vault);
-    tab.title = tab.doc.meta.title;
-    tab.path = tab.doc.meta.path;
-    this.state.notes.set(tab.doc.meta.noteId, tab.doc.meta);
+    const key = this.noteLoadKey(tab.noteId);
+    const existing = this.noteLoads.get(key);
+    if (existing !== undefined) {
+      await existing;
+      return;
+    }
+    const vault = this.state.vault;
+    const load = openNote(tab.noteId, vault).then((document) => {
+      if (this.state.vault !== vault) {
+        return;
+      }
+      const loadedTab = tabById(this.state, document.meta.noteId);
+      if (loadedTab === undefined) {
+        return;
+      }
+      loadedTab.doc = document;
+      loadedTab.title = document.meta.title;
+      loadedTab.path = document.meta.path;
+      this.state.notes.set(document.meta.noteId, document.meta);
+    });
+    this.noteLoads.set(key, load);
+    try {
+      await load;
+    } finally {
+      if (this.noteLoads.get(key) === load) {
+        this.noteLoads.delete(key);
+      }
+    }
     this.render();
+  }
+
+  private noteLoadKey(noteId: string): string {
+    return `${this.state.vault}:${noteId}`;
   }
 
   private async activateTab(noteId: string): Promise<void> {
