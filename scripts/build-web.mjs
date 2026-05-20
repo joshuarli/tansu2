@@ -7,6 +7,7 @@ await esbuild.build({
   bundle: true,
   outfile: "web/static/app.js",
   format: "esm",
+  target: "esnext",
   minify: mode === "production",
   sourcemap: mode !== "production",
   define: {

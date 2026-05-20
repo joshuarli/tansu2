@@ -19,10 +19,10 @@ fn run() -> tansu2::Result<()> {
 fn parse_port() -> u16 {
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
-        if arg == "--port" {
-            if let Some(port) = args.next().and_then(|value| value.parse().ok()) {
-                return port;
-            }
+        if arg == "--port"
+            && let Some(port) = args.next().and_then(|value| value.parse().ok())
+        {
+            return port;
         }
     }
     3000

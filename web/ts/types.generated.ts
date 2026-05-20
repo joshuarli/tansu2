@@ -31,7 +31,7 @@ export type SearchFieldScores = { title: number, headings: number, tags: number,
 
 export type SearchHit = { note: NoteMeta, snippet: string, score: number, fieldScores: SearchFieldScores, };
 
-export type BootstrapResponse = { vaults: Array<VaultEntry>, activeVault: number, notes: Array<NoteMeta>, pinnedNoteIds: Array<string>, recentNoteIds: Array<string>, settings: Settings, session: SessionState, searchStatus: SearchStatus, };
+export type BootstrapResponse = { apiVersion: number, vaults: Array<VaultEntry>, activeVault: number, notes: Array<NoteMeta>, pinnedNoteIds: Array<string>, recentNoteIds: Array<string>, settings: Settings, session: SessionState, searchStatus: SearchStatus, };
 
 export type ServerEvent = { kind: ServerEventKind, vault: number, notes: Array<NoteMeta>, deletedNoteIds: Array<string>, searchStatus: SearchStatus, };
 

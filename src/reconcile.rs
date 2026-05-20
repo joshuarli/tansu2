@@ -3,7 +3,7 @@ use std::fs;
 use std::path::Path;
 
 use crate::api_types::{NoteEventKind, NoteEventSource, UnresolvedReason};
-use crate::catalog::Catalog;
+use crate::catalog::{Catalog, InsertNote};
 use crate::history;
 use crate::paths::{normalize_note_path, path_key};
 use crate::tags::parse_markdown;
@@ -110,16 +110,16 @@ pub fn reconcile_vault(
             continue;
         }
         let parsed = parse_markdown(&file.path, &file.content);
-        let note_id = catalog.insert_note(
-            &file.path,
-            &file.path_key,
-            &parsed.title,
-            &parsed.tags,
-            &file.hash,
-            NoteEventKind::Baseline,
-            NoteEventSource::External,
-            None,
-        )?;
+        let note_id = catalog.insert_note(InsertNote {
+            path: &file.path,
+            path_key: &file.path_key,
+            title: &parsed.title,
+            tags: &parsed.tags,
+            content_hash: &file.hash,
+            kind: NoteEventKind::Baseline,
+            source: NoteEventSource::External,
+            unresolved: None,
+        })?;
         history::write_snapshot(root, &note_id, &file.content)?;
     }
     Ok(())
@@ -234,16 +234,16 @@ fn insert_unresolved(
         return Ok(());
     }
     let parsed = parse_markdown(&record.path, &record.content);
-    let note_id = catalog.insert_note(
-        &record.path,
-        &record.path_key,
-        &parsed.title,
-        &parsed.tags,
-        &record.hash,
-        NoteEventKind::Baseline,
-        NoteEventSource::External,
-        Some(reason),
-    )?;
+    let note_id = catalog.insert_note(InsertNote {
+        path: &record.path,
+        path_key: &record.path_key,
+        title: &parsed.title,
+        tags: &parsed.tags,
+        content_hash: &record.hash,
+        kind: NoteEventKind::Baseline,
+        source: NoteEventSource::External,
+        unresolved: Some(reason),
+    })?;
     if !record.content.is_empty() {
         let _ = history::write_snapshot(root, &note_id, &record.content);
     }

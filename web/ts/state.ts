@@ -30,13 +30,13 @@ export type Command = {
   run: () => void | Promise<void>;
 };
 
-export type NoteDialog =
+type NoteDialog =
   | { kind: "create"; title: string }
   | { kind: "rename"; noteId: string; title: string }
   | { kind: "tag"; value: string }
   | { kind: "delete"; noteId: string };
 
-export type ContextMenuState = {
+type ContextMenuState = {
   noteId: string;
   x: number;
   y: number;

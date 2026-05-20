@@ -115,6 +115,20 @@ pub fn write_visible_atomic(path: &Path, content: &str) -> Result<()> {
     write_atomic(path, &canonical_markdown_bytes(content))
 }
 
+pub fn write_bytes_atomic(path: &Path, bytes: &[u8]) -> Result<()> {
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent)?;
+    }
+    write_atomic(path, bytes)
+}
+
+pub fn sync_parent_dir(path: &Path) -> Result<()> {
+    if let Some(parent) = path.parent() {
+        sync_dir(parent)?;
+    }
+    Ok(())
+}
+
 fn write_compressed_atomic(path: &Path, bytes: &[u8]) -> Result<()> {
     write_atomic(path, &compress_prepend_size(bytes))
 }
@@ -129,12 +143,24 @@ fn write_atomic(path: &Path, bytes: &[u8]) -> Result<()> {
         file.write_all(bytes)?;
         file.sync_all()?;
         fs::rename(&tmp, path)?;
+        sync_parent_dir(path)?;
         Ok(())
     })();
     if result.is_err() {
         let _ = fs::remove_file(&tmp);
     }
     result
+}
+
+#[cfg(unix)]
+fn sync_dir(path: &Path) -> Result<()> {
+    fs::File::open(path)?.sync_all()?;
+    Ok(())
+}
+
+#[cfg(not(unix))]
+fn sync_dir(_path: &Path) -> Result<()> {
+    Ok(())
 }
 
 fn temp_path(path: &Path) -> PathBuf {

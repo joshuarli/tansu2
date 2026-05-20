@@ -15,7 +15,7 @@ import type {
   Settings,
 } from "./types.generated.ts";
 
-export class ApiError extends Error {
+class ApiError extends Error {
   readonly status: number;
   readonly response: unknown;
 
@@ -27,7 +27,7 @@ export class ApiError extends Error {
   }
 }
 
-export async function apiFetch<T>(
+async function apiFetch<T>(
   path: string,
   options: RequestInit & { vault?: number } = {},
 ): Promise<T> {

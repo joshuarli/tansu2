@@ -1,0 +1,9 @@
+{
+  "md-wysiwyg-large-note": {
+    "chars": 44533,
+    "renderMsP95": 250,
+    "serializeMsP95": 250,
+    "editorSetValueMsP95": 500,
+    "editorGetValueMsP95": 250
+  }
+}

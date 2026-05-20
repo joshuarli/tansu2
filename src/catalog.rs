@@ -21,12 +21,31 @@ pub struct Catalog {
     conn: Connection,
 }
 
+pub struct InsertNote<'a> {
+    pub path: &'a str,
+    pub path_key: &'a str,
+    pub title: &'a str,
+    pub tags: &'a [String],
+    pub content_hash: &'a str,
+    pub kind: NoteEventKind,
+    pub source: NoteEventSource,
+    pub unresolved: Option<UnresolvedReason>,
+}
+
 impl Catalog {
     pub fn open(path: &std::path::Path) -> Result<Self> {
         if let Some(parent) = path.parent() {
             std::fs::create_dir_all(parent)?;
         }
         let conn = Connection::open(path)?;
+        conn.execute_batch(
+            "
+            PRAGMA foreign_keys = ON;
+            PRAGMA journal_mode = WAL;
+            PRAGMA synchronous = FULL;
+            PRAGMA busy_timeout = 5000;
+            ",
+        )?;
         let mut catalog = Self { conn };
         catalog.migrate()?;
         Ok(catalog)
@@ -125,31 +144,10 @@ impl Catalog {
         Ok(())
     }
 
-    pub fn insert_note(
-        &mut self,
-        path: &str,
-        path_key: &str,
-        title: &str,
-        tags: &[String],
-        content_hash: &str,
-        kind: NoteEventKind,
-        source: NoteEventSource,
-        unresolved: Option<UnresolvedReason>,
-    ) -> Result<String> {
+    pub fn insert_note(&mut self, note: InsertNote<'_>) -> Result<String> {
         let note_id = generate_note_id();
         let tx = self.conn.transaction()?;
-        insert_note_tx(
-            &tx,
-            &note_id,
-            path,
-            path_key,
-            title,
-            tags,
-            content_hash,
-            kind,
-            source,
-            unresolved,
-        )?;
+        insert_note_tx(&tx, &note_id, note)?;
         advance_sync_tx(&tx)?;
         tx.commit()?;
         Ok(note_id)
@@ -505,36 +503,32 @@ impl Catalog {
     }
 }
 
-fn insert_note_tx(
-    tx: &Transaction<'_>,
-    note_id: &str,
-    path: &str,
-    path_key: &str,
-    title: &str,
-    tags: &[String],
-    content_hash: &str,
-    kind: NoteEventKind,
-    source: NoteEventSource,
-    unresolved: Option<UnresolvedReason>,
-) -> Result<()> {
+fn insert_note_tx(tx: &Transaction<'_>, note_id: &str, note: InsertNote<'_>) -> Result<()> {
     let now = now_ms();
-    let unresolved = unresolved.map(unresolved_reason);
+    let unresolved = note.unresolved.map(unresolved_reason);
     tx.execute(
         "INSERT INTO notes(note_id, path, path_key, title, tags_json, seq, content_hash, visible_hash, updated_at_ms, tombstoned, unresolved_reason) VALUES(?1, ?2, ?3, ?4, ?5, 1, ?6, ?6, ?7, 0, ?8)",
         params![
             note_id,
-            path,
-            path_key,
-            title,
-            serde_json::to_string(tags)?,
-            content_hash,
+            note.path,
+            note.path_key,
+            note.title,
+            serde_json::to_string(note.tags)?,
+            note.content_hash,
             now,
             unresolved
         ],
     )?;
     tx.execute(
         "INSERT INTO note_events(note_id, seq, kind, source, path, content_hash, created_at_ms) VALUES(?1, 1, ?2, ?3, ?4, ?5, ?6)",
-        params![note_id, event_kind(kind), event_source(source), path, content_hash, now],
+        params![
+            note_id,
+            event_kind(note.kind),
+            event_source(note.source),
+            note.path,
+            note.content_hash,
+            now
+        ],
     )?;
     Ok(())
 }
@@ -711,31 +705,31 @@ mod tests {
         let dir = tempfile::tempdir().unwrap();
         let mut catalog = Catalog::open(&dir.path().join("vault.db")).unwrap();
         let first = catalog
-            .insert_note(
-                "A.md",
-                "a.md",
-                "A",
-                &[],
-                "sha256:first",
-                NoteEventKind::Baseline,
-                NoteEventSource::External,
-                None,
-            )
+            .insert_note(InsertNote {
+                path: "A.md",
+                path_key: "a.md",
+                title: "A",
+                tags: &[],
+                content_hash: "sha256:first",
+                kind: NoteEventKind::Baseline,
+                source: NoteEventSource::External,
+                unresolved: None,
+            })
             .unwrap();
         catalog
             .tombstone_note(&first, NoteEventKind::Delete, NoteEventSource::User)
             .unwrap();
         catalog
-            .insert_note(
-                "a.md",
-                "a.md",
-                "a",
-                &[],
-                "sha256:second",
-                NoteEventKind::Create,
-                NoteEventSource::User,
-                None,
-            )
+            .insert_note(InsertNote {
+                path: "a.md",
+                path_key: "a.md",
+                title: "a",
+                tags: &[],
+                content_hash: "sha256:second",
+                kind: NoteEventKind::Create,
+                source: NoteEventSource::User,
+                unresolved: None,
+            })
             .unwrap();
     }
 

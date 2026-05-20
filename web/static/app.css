@@ -39,6 +39,7 @@ button {
   display: grid;
   grid-template-columns: 288px minmax(0, 1fr);
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .sidebar {
@@ -46,6 +47,8 @@ button {
   flex-direction: column;
   gap: 14px;
   min-height: 100vh;
+  min-height: 100dvh;
+  contain: layout paint style;
   border-right: 1px solid #deded8;
   background: #f1f1ed;
   padding: 12px;
@@ -110,6 +113,8 @@ button {
   flex-direction: column;
   gap: 4px;
   min-width: 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 160px;
 }
 
 .section-title {
@@ -156,6 +161,7 @@ button {
   grid-template-rows: auto auto minmax(0, 1fr) auto;
   min-width: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   background: #fbfbf8;
 }
 
@@ -164,6 +170,7 @@ button {
   align-items: center;
   min-width: 0;
   min-height: 49px;
+  contain: layout paint style;
   overflow: hidden;
   padding: 7px 12px;
 }
@@ -212,6 +219,7 @@ button {
   gap: 2px;
   align-items: center;
   min-height: 40px;
+  contain: layout paint style;
   border-top: 1px solid #eeeeea;
   border-bottom: 1px solid #e6e4dd;
   padding: 4px 12px;
@@ -220,7 +228,9 @@ button {
 .workspace {
   min-width: 0;
   overflow: auto;
+  overscroll-behavior: contain;
   padding: 22px 20px 40px;
+  scrollbar-gutter: stable;
 }
 
 .editor-meta,
@@ -400,11 +410,14 @@ button {
   color: #6a4b16;
   padding: 10px 12px;
   font-size: 13px;
+  contain: layout paint style;
 }
 
 .overlay-host {
   position: fixed;
   inset: 0;
+  isolation: isolate;
+  contain: layout paint style;
   pointer-events: none;
 }
 
@@ -427,6 +440,7 @@ button {
   background: #fbfbf8;
   box-shadow: 0 18px 60px rgb(32 33 31 / 18%);
   padding: 8px;
+  contain: layout paint style;
   pointer-events: auto;
 }
 
@@ -443,6 +457,8 @@ button {
   background: #fbfbf8;
   box-shadow: 0 18px 60px rgb(32 33 31 / 18%);
   padding: 10px;
+  contain: layout paint style;
+  scrollbar-gutter: stable;
   pointer-events: auto;
 }
 
@@ -495,6 +511,8 @@ button {
 .diff-preview {
   min-height: 300px;
   overflow: auto;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
   margin: 0;
   border: 1px solid #e4e2db;
   border-radius: 8px;
@@ -550,6 +568,8 @@ button {
   gap: 2px;
   max-height: 360px;
   overflow: auto;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 220px;
   padding-top: 6px;
 }
 
@@ -606,6 +626,7 @@ button {
   background: #fbfbf8;
   box-shadow: 0 14px 36px rgb(32 33 31 / 18%);
   padding: 5px;
+  contain: layout paint style;
   pointer-events: auto;
 }
 
@@ -639,6 +660,7 @@ button {
   box-shadow: 0 12px 30px rgb(32 33 31 / 14%);
   color: #2f302c;
   padding: 9px 12px;
+  contain: layout paint style;
   pointer-events: none;
 }
 

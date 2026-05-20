@@ -175,6 +175,8 @@ pub struct SearchHit {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(rename_all = "camelCase")]
 pub struct BootstrapResponse {
+    #[ts(type = "number")]
+    pub api_version: u32,
     pub vaults: Vec<VaultEntry>,
     pub active_vault: usize,
     pub notes: Vec<NoteMeta>,
@@ -207,6 +209,7 @@ pub enum ServerEventKind {
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(rename_all = "camelCase")]
+#[serde(deny_unknown_fields)]
 pub struct CreateNoteRequest {
     pub path: String,
     pub content: String,
@@ -215,6 +218,7 @@ pub struct CreateNoteRequest {
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(rename_all = "camelCase")]
+#[serde(deny_unknown_fields)]
 pub struct SaveNoteRequest {
     pub content: String,
     #[ts(type = "number")]
@@ -225,6 +229,7 @@ pub struct SaveNoteRequest {
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(rename_all = "camelCase")]
+#[serde(deny_unknown_fields)]
 pub struct RenameNoteRequest {
     pub path: String,
 }
@@ -264,7 +269,7 @@ pub enum ApiErrorKind {
         note_id: String,
     },
     SaveConflict {
-        current: NoteDocument,
+        current: Box<NoteDocument>,
         draft: ConflictDraftMeta,
     },
     UnresolvedNote {

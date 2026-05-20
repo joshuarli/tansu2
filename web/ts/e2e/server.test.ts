@@ -4,12 +4,13 @@ import net from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { chromium, type Browser } from "playwright";
+import { chromium, firefox, webkit, type Browser, type BrowserType } from "playwright";
 
 let server: ChildProcess | undefined;
 let browser: Browser | undefined;
 let baseUrl = "";
 let vaultOnePath = "";
+const e2eBrowser = browserTypeFromEnv();
 
 type TestFixture = {
   configHome: string;
@@ -46,7 +47,7 @@ describe("real server harness", () => {
       stdio: ["ignore", "pipe", "pipe"],
     });
     await waitForReady(`${baseUrl}/api/health`);
-    browser = await chromium.launch();
+    browser = await e2eBrowser.launch();
   });
 
   afterAll(async () => {
@@ -342,6 +343,17 @@ describe("real server harness", () => {
     expect(await asset.arrayBuffer()).toHaveProperty("byteLength", 3);
   });
 });
+
+function browserTypeFromEnv(): BrowserType {
+  switch (process.env["TANSU2_E2E_BROWSER"]) {
+    case "firefox":
+      return firefox;
+    case "webkit":
+      return webkit;
+    default:
+      return chromium;
+  }
+}
 
 async function freePort(): Promise<number> {
   return new Promise((resolve, reject) => {

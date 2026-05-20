@@ -1,6 +1,5 @@
 use std::fs;
 use std::path::{Component, Path, PathBuf};
-use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::mpsc::{self, Receiver, Sender};
 use std::sync::{Arc, Mutex, MutexGuard};
 use std::thread;
@@ -15,7 +14,7 @@ use crate::api_types::{
     RevisionMeta, SaveNoteRequest, SearchHit, SearchStatus, ServerEvent, ServerEventKind,
     SessionState, Settings, VaultEntry,
 };
-use crate::catalog::{Catalog, now_ms};
+use crate::catalog::{Catalog, InsertNote, now_ms};
 use crate::config::VaultConfig;
 use crate::history;
 use crate::paths::{normalize_note_path, path_key, visible_path};
@@ -35,7 +34,6 @@ pub struct VaultRuntime {
     watcher: Mutex<Option<RecommendedWatcher>>,
     search_tx: Sender<SearchJob>,
     search_rx: Mutex<Option<Receiver<SearchJob>>>,
-    last_self_write_ms: AtomicU64,
 }
 
 enum SearchJob {
@@ -73,7 +71,6 @@ impl VaultRuntime {
             watcher: Mutex::new(None),
             search_tx,
             search_rx: Mutex::new(Some(search_rx)),
-            last_self_write_ms: AtomicU64::new(0),
         })
     }
 
@@ -116,9 +113,6 @@ impl VaultRuntime {
         thread::spawn(move || {
             while rx.recv().is_ok() {
                 while rx.recv_timeout(Duration::from_millis(150)).is_ok() {}
-                if runtime.recent_self_write() {
-                    continue;
-                }
                 let _ = runtime.reconcile_from_watcher();
             }
         });
@@ -144,6 +138,7 @@ impl VaultRuntime {
         let _op = self.lock_op();
         let catalog = self.lock_catalog();
         Ok(BootstrapResponse {
+            api_version: crate::api::API_VERSION,
             vaults,
             active_vault,
             notes: catalog.live_notes()?,
@@ -171,7 +166,7 @@ impl VaultRuntime {
         let path = match normalize_note_path(&request.path) {
             Ok(path) => path,
             Err(reason) => {
-                return Err(Error::Api(ApiErrorKind::PathInvalid { reason }));
+                return Err(Error::api(ApiErrorKind::PathInvalid { reason }));
             }
         };
         let key = path_key(&path);
@@ -185,26 +180,25 @@ impl VaultRuntime {
         let hash = history::content_hash(&content);
         let mut catalog = self.lock_catalog();
         if catalog.note_by_path_key(&key)?.is_some() {
-            return Err(Error::Api(ApiErrorKind::PathCollision { path }));
+            return Err(Error::api(ApiErrorKind::PathCollision { path }));
         }
-        let note_id = match catalog.insert_note(
-            &path,
-            &key,
-            &parsed.title,
-            &parsed.tags,
-            &hash,
+        let note_id = match catalog.insert_note(InsertNote {
+            path: &path,
+            path_key: &key,
+            title: &parsed.title,
+            tags: &parsed.tags,
+            content_hash: &hash,
             kind,
             source,
-            None,
-        ) {
+            unresolved: None,
+        }) {
             Ok(note_id) => note_id,
             Err(Error::Sql(error)) if is_unique_violation(&error) => {
-                return Err(Error::Api(ApiErrorKind::PathCollision { path }));
+                return Err(Error::api(ApiErrorKind::PathCollision { path }));
             }
             Err(error) => return Err(error),
         };
         history::write_snapshot(&self.root, &note_id, &content)?;
-        self.mark_self_write();
         history::write_visible_atomic(&visible_path(&self.root, &path), &content)?;
         let meta = catalog
             .note_by_id(&note_id)?
@@ -251,7 +245,6 @@ impl VaultRuntime {
                             &current.note_id,
                             &current.content_hash,
                         )?;
-                        self.mark_self_write();
                         history::write_visible_atomic(&visible, &accepted)?;
                         catalog.record_visible_hash(&current.note_id, &current.content_hash)?;
                     }
@@ -280,8 +273,8 @@ impl VaultRuntime {
                 meta: current.clone(),
                 content: read_visible_or_snapshot(&self.root, &current)?,
             };
-            return Err(Error::Api(ApiErrorKind::SaveConflict {
-                current: current_doc,
+            return Err(Error::api(ApiErrorKind::SaveConflict {
+                current: Box::new(current_doc),
                 draft,
             }));
         }
@@ -297,7 +290,6 @@ impl VaultRuntime {
         )?;
         catalog.touch_recent(note_id)?;
         let sync_version = catalog.sync_version()?;
-        self.mark_self_write();
         history::write_visible_atomic(&visible_path(&self.root, &meta.path), &content)?;
         catalog.record_visible_hash(note_id, &submitted_hash)?;
         drop(catalog);
@@ -322,7 +314,7 @@ impl VaultRuntime {
         let path = match normalize_note_path(&request.path) {
             Ok(path) => path,
             Err(reason) => {
-                return Err(Error::Api(ApiErrorKind::PathInvalid { reason }));
+                return Err(Error::api(ApiErrorKind::PathInvalid { reason }));
             }
         };
         let key = path_key(&path);
@@ -330,17 +322,17 @@ impl VaultRuntime {
         let current = catalog
             .note_by_id(note_id)?
             .ok_or_else(|| Error::NotFound(note_id.to_string()))?;
-        if let Some(existing) = catalog.note_by_path_key(&key)? {
-            if existing.note_id != note_id {
-                return Err(Error::Api(ApiErrorKind::PathCollision { path }));
-            }
+        if let Some(existing) = catalog.note_by_path_key(&key)?
+            && existing.note_id != note_id
+        {
+            return Err(Error::api(ApiErrorKind::PathCollision { path }));
         }
         let old_visible = visible_path(&self.root, &current.path);
         let new_visible = visible_path(&self.root, &path);
         let meta = match catalog.rename_note(note_id, &path, &key) {
             Ok(meta) => meta,
             Err(Error::Sql(error)) if is_unique_violation(&error) => {
-                return Err(Error::Api(ApiErrorKind::PathCollision { path }));
+                return Err(Error::api(ApiErrorKind::PathCollision { path }));
             }
             Err(error) => return Err(error),
         };
@@ -348,8 +340,9 @@ impl VaultRuntime {
             fs::create_dir_all(parent)?;
         }
         if old_visible.exists() {
-            self.mark_self_write();
-            fs::rename(old_visible, new_visible)?;
+            fs::rename(&old_visible, &new_visible)?;
+            history::sync_parent_dir(&old_visible)?;
+            history::sync_parent_dir(&new_visible)?;
         }
         let content = read_visible_or_snapshot(&self.root, &meta)?;
         let sync_version = catalog.sync_version()?;
@@ -375,8 +368,8 @@ impl VaultRuntime {
         let visible = visible_path(&self.root, &current.path);
         let meta = catalog.tombstone_note(note_id, NoteEventKind::Delete, NoteEventSource::User)?;
         if visible.exists() {
-            self.mark_self_write();
-            fs::remove_file(visible)?;
+            fs::remove_file(&visible)?;
+            history::sync_parent_dir(&visible)?;
         }
         let sync_version = catalog.sync_version()?;
         drop(catalog);
@@ -483,7 +476,6 @@ impl VaultRuntime {
         )?;
         catalog.touch_recent(note_id)?;
         let sync_version = catalog.sync_version()?;
-        self.mark_self_write();
         history::write_visible_atomic(&visible_path(&self.root, &meta.path), &content)?;
         catalog.record_visible_hash(note_id, hash)?;
         drop(catalog);
@@ -541,7 +533,6 @@ impl VaultRuntime {
         )?;
         catalog.touch_recent(note_id)?;
         let sync_version = catalog.sync_version()?;
-        self.mark_self_write();
         history::write_visible_atomic(&visible_path(&self.root, &meta.path), &content)?;
         catalog.record_visible_hash(note_id, &draft.content_hash)?;
         drop(catalog);
@@ -570,7 +561,7 @@ impl VaultRuntime {
         if let Some(parent) = path.parent() {
             fs::create_dir_all(parent)?;
         }
-        fs::write(&path, bytes)?;
+        history::write_bytes_atomic(&path, bytes)?;
         Ok(crate::api_types::ImageUploadResponse {
             markdown: format!("![[{name}]]"),
             name,
@@ -597,10 +588,10 @@ impl VaultRuntime {
         if let Ok(mut catalog) = self.catalog.lock() {
             let _ = catalog.set_search_dirty(true, false);
         }
-        if self.search_tx.send(job).is_err() {
-            if let Ok(mut catalog) = self.catalog.lock() {
-                let _ = catalog.set_search_dirty(true, true);
-            }
+        if self.search_tx.send(job).is_err()
+            && let Ok(mut catalog) = self.catalog.lock()
+        {
+            let _ = catalog.set_search_dirty(true, true);
         }
     }
 
@@ -685,17 +676,6 @@ impl VaultRuntime {
         subscribers.retain(|tx| tx.send(event.clone()).is_ok());
     }
 
-    fn mark_self_write(&self) {
-        self.last_self_write_ms
-            .store(now_ms().try_into().unwrap_or(u64::MAX), Ordering::SeqCst);
-    }
-
-    fn recent_self_write(&self) -> bool {
-        let last = self.last_self_write_ms.load(Ordering::SeqCst);
-        let now: u64 = now_ms().try_into().unwrap_or(u64::MAX);
-        now.saturating_sub(last) < 750
-    }
-
     fn lock_op(&self) -> MutexGuard<'_, ()> {
         self.op_lock.lock().expect("vault operation mutex poisoned")
     }
@@ -760,11 +740,14 @@ mod tests {
             })
             .unwrap_err();
 
+        let Error::Api(error) = error else {
+            panic!("expected API error");
+        };
         assert!(matches!(
-            error,
-            Error::Api(ApiErrorKind::PathInvalid {
+            *error,
+            ApiErrorKind::PathInvalid {
                 reason: PathValidationReason::Traversal
-            })
+            }
         ));
     }
 
@@ -804,7 +787,10 @@ mod tests {
             )
             .unwrap_err();
 
-        let Error::Api(ApiErrorKind::SaveConflict { current, draft }) = error else {
+        let Error::Api(error) = error else {
+            panic!("expected save conflict");
+        };
+        let ApiErrorKind::SaveConflict { current, draft } = *error else {
             panic!("expected save conflict");
         };
         assert_eq!(current.meta.note_id, created.meta.note_id);
@@ -876,7 +862,10 @@ mod tests {
                 },
             )
             .unwrap_err();
-        let Error::Api(ApiErrorKind::SaveConflict { draft, .. }) = error else {
+        let Error::Api(error) = error else {
+            panic!("expected conflict");
+        };
+        let ApiErrorKind::SaveConflict { draft, .. } = *error else {
             panic!("expected conflict");
         };
 

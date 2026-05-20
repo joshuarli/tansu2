@@ -8,6 +8,9 @@ use crate::api::{api_error_response, handle_api};
 use crate::app::App;
 use crate::{Error, Result};
 
+const MAX_HEADER_BYTES: usize = 1024 * 1024;
+const MAX_BODY_BYTES: usize = 32 * 1024 * 1024;
+
 #[derive(Debug)]
 pub struct HttpRequest {
     pub method: String,
@@ -63,7 +66,7 @@ impl HttpResponse {
         };
         write!(
             stream,
-            "HTTP/1.1 {} {}\r\nContent-Type: {}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+            "HTTP/1.1 {} {}\r\nContent-Type: {}\r\nContent-Length: {}\r\nConnection: close\r\nX-Content-Type-Options: nosniff\r\nReferrer-Policy: no-referrer\r\nContent-Security-Policy: default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'\r\n\r\n",
             self.status,
             reason,
             self.content_type,
@@ -133,7 +136,7 @@ fn parse_request(stream: &mut TcpStream) -> Result<HttpRequest> {
         if let Some(index) = find_header_end(&buffer) {
             break index;
         }
-        if buffer.len() > 1024 * 1024 {
+        if buffer.len() > MAX_HEADER_BYTES {
             return Err(Error::BadRequest("request headers too large".to_string()));
         }
     };
@@ -151,6 +154,7 @@ fn parse_request(stream: &mut TcpStream) -> Result<HttpRequest> {
         .path
         .ok_or_else(|| Error::BadRequest("missing path".to_string()))?
         .to_string();
+    validate_percent_encoding(&path)?;
     let headers = parsed
         .headers
         .iter()
@@ -166,16 +170,18 @@ fn parse_request(stream: &mut TcpStream) -> Result<HttpRequest> {
         .find(|(name, _)| name.eq_ignore_ascii_case("content-length"))
         .and_then(|(_, value)| value.parse::<usize>().ok())
         .unwrap_or(0);
+    if content_length > MAX_BODY_BYTES {
+        return Err(Error::BadRequest("request body too large".to_string()));
+    }
     let body_start = header_end + 4;
     while buffer.len() < body_start + content_length {
         let read = stream.read(&mut temp)?;
         if read == 0 {
-            break;
+            return Err(Error::BadRequest("incomplete request body".to_string()));
         }
         buffer.extend_from_slice(&temp[..read]);
     }
-    let body =
-        buffer[body_start..body_start + content_length.min(buffer.len() - body_start)].to_vec();
+    let body = buffer[body_start..body_start + content_length].to_vec();
     Ok(HttpRequest {
         method,
         path,
@@ -186,6 +192,25 @@ fn parse_request(stream: &mut TcpStream) -> Result<HttpRequest> {
 
 fn find_header_end(buffer: &[u8]) -> Option<usize> {
     buffer.windows(4).position(|window| window == b"\r\n\r\n")
+}
+
+fn validate_percent_encoding(path: &str) -> Result<()> {
+    let bytes = path.as_bytes();
+    let mut index = 0;
+    while index < bytes.len() {
+        if bytes[index] == b'%' {
+            if index + 2 >= bytes.len()
+                || !bytes[index + 1].is_ascii_hexdigit()
+                || !bytes[index + 2].is_ascii_hexdigit()
+            {
+                return Err(Error::BadRequest("invalid percent encoding".to_string()));
+            }
+            index += 3;
+        } else {
+            index += 1;
+        }
+    }
+    Ok(())
 }
 
 fn serve_static(path: &str) -> Result<HttpResponse> {

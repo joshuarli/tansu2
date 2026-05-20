@@ -8,6 +8,8 @@
   "scripts": {
     "bundle": "node scripts/build-web.mjs production",
     "bundle-dev": "node scripts/build-web.mjs development",
+    "format:check": "oxfmt --check --config oxfmt.config.mjs",
+    "lint": "oxlint",
     "test": "vitest run",
     "test-e2e": "pnpm run bundle-dev && vitest run --config vitest.e2e.config.ts"
   },

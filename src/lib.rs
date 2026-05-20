@@ -17,7 +17,7 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 #[derive(Debug)]
 pub enum Error {
-    Api(ApiErrorKind),
+    Api(Box<ApiErrorKind>),
     BadRequest(String),
     Io(std::io::Error),
     Json(serde_json::Error),
@@ -25,6 +25,12 @@ pub enum Error {
     Toml(toml::de::Error),
     NotFound(String),
     Internal(String),
+}
+
+impl Error {
+    pub fn api(error: ApiErrorKind) -> Self {
+        Self::Api(Box::new(error))
+    }
 }
 
 impl std::fmt::Display for Error {

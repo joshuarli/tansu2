@@ -6,8 +6,10 @@ use crate::app::App;
 use crate::http::{HttpRequest, HttpResponse};
 use crate::{Error, Result};
 
+pub const API_VERSION: u32 = 1;
+
 pub fn handle_api(app: &App, request: &HttpRequest) -> Result<HttpResponse> {
-    let vault_index = query_param(&request.path, "vault")
+    let vault_index = query_param(&request.path, "vault")?
         .and_then(|value| value.parse::<usize>().ok())
         .or_else(|| {
             request
@@ -20,9 +22,12 @@ pub fn handle_api(app: &App, request: &HttpRequest) -> Result<HttpResponse> {
     let vault = app.vault(vault_index)?;
     let path = request.path.as_str();
     match (request.method.as_str(), path) {
-        ("GET", "/api/health") => json(200, &serde_json::json!({ "ok": true })),
+        ("GET", "/api/health") => json(
+            200,
+            &serde_json::json!({ "ok": true, "apiVersion": API_VERSION }),
+        ),
         ("GET", _) if path.starts_with("/api/assets") => {
-            let name = query_param(path, "name")
+            let name = query_param(path, "name")?
                 .ok_or_else(|| Error::BadRequest("missing asset name".to_string()))?;
             Ok(HttpResponse::bytes(
                 200,
@@ -42,7 +47,7 @@ pub fn handle_api(app: &App, request: &HttpRequest) -> Result<HttpResponse> {
             json(200, &vault.save_settings(body)?)
         }
         ("GET", _) if path.starts_with("/api/search") => {
-            let query = query_param(path, "q").unwrap_or_default();
+            let query = query_param(path, "q")?.unwrap_or_default();
             json(200, &vault.search(&query)?)
         }
         ("POST", "/api/notes") => {
@@ -102,10 +107,11 @@ fn handle_note_route(
 
 pub fn api_error_response(error: Error) -> HttpResponse {
     match error {
-        Error::Api(error) => {
-            HttpResponse::json(api_error_status(&error), &ApiErrorResponse { error })
-                .unwrap_or_else(internal_error)
-        }
+        Error::Api(error) => HttpResponse::json(
+            api_error_status(&error),
+            &ApiErrorResponse { error: *error },
+        )
+        .unwrap_or_else(internal_error),
         Error::NotFound(note_id) => HttpResponse::json(
             404,
             &ApiErrorResponse {
@@ -160,15 +166,17 @@ fn json<T: serde::Serialize>(status: u16, value: &T) -> Result<HttpResponse> {
     Ok(HttpResponse::json(status, value)?)
 }
 
-fn query_param(path: &str, key: &str) -> Option<String> {
-    let query = path.split_once('?')?.1;
+fn query_param(path: &str, key: &str) -> Result<Option<String>> {
+    let Some(query) = path.split_once('?').map(|(_, query)| query) else {
+        return Ok(None);
+    };
     for pair in query.split('&') {
         let (name, value) = pair.split_once('=').unwrap_or((pair, ""));
         if name == key {
-            return Some(percent_decode(value));
+            return percent_decode(value).map(Some);
         }
     }
-    None
+    Ok(None)
 }
 
 fn parse_i64(value: &str) -> Result<i64> {
@@ -177,23 +185,23 @@ fn parse_i64(value: &str) -> Result<i64> {
         .map_err(|_| Error::BadRequest(format!("invalid numeric id {value}")))
 }
 
-fn percent_decode(value: &str) -> String {
+fn percent_decode(value: &str) -> Result<String> {
     let mut out = String::new();
     let mut chars = value.as_bytes().iter().copied();
     while let Some(byte) = chars.next() {
         if byte == b'%' {
             let hi = chars.next();
             let lo = chars.next();
-            if let (Some(hi), Some(lo)) = (hi, lo) {
-                if let Ok(hex) = std::str::from_utf8(&[hi, lo]) {
-                    if let Ok(decoded) = u8::from_str_radix(hex, 16) {
-                        out.push(decoded as char);
-                        continue;
-                    }
-                }
+            if let (Some(hi), Some(lo)) = (hi, lo)
+                && let Ok(hex) = std::str::from_utf8(&[hi, lo])
+                && let Ok(decoded) = u8::from_str_radix(hex, 16)
+            {
+                out.push(decoded as char);
+                continue;
             }
+            return Err(Error::BadRequest("invalid percent encoding".to_string()));
         }
         out.push(if byte == b'+' { ' ' } else { byte as char });
     }
-    out
+    Ok(out)
 }

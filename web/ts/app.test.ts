@@ -102,6 +102,7 @@ function noteMeta(noteId: string, path: string, title: string): NoteMeta {
 
 function bootstrapResponse(notes: NoteMeta[]): BootstrapResponse {
   return {
+    apiVersion: 1,
     vaults: [{ index: 0, name: "Test" }],
     activeVault: 0,
     notes,

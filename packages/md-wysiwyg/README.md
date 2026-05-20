@@ -104,7 +104,7 @@ See [docs/extensions.md](docs/extensions.md) for the full `MarkdownExtension` in
 
 ## Requirements
 
-- ES2022+ runtime (`structuredClone`, `Array.at`, etc.)
+- Latest evergreen browser runtime (`structuredClone`, `Array.at`, etc.)
 - DOM environment (browser or compatible, e.g. happy-dom)
 - No runtime dependencies
 

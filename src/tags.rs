@@ -52,14 +52,12 @@ fn parse_tags_frontmatter(content: &str) -> (Vec<String>, bool) {
             }
             continue;
         }
-        if in_tags_list {
-            if let Some(tag) = trimmed.strip_prefix('-') {
-                let tag = tag.trim().trim_matches('"').trim_matches('\'');
-                if !tag.is_empty() {
-                    tags.push(tag.to_string());
-                }
-                continue;
+        if in_tags_list && let Some(tag) = trimmed.strip_prefix('-') {
+            let tag = tag.trim().trim_matches('"').trim_matches('\'');
+            if !tag.is_empty() {
+                tags.push(tag.to_string());
             }
+            continue;
         }
         return (Vec::new(), false);
     }
