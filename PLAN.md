@@ -26,13 +26,18 @@ Deliverables:
 - Static HTML and CSS bundle path under `web/`.
 - `package.json`, workspace config, TypeScript config, Vitest config, and build script.
 - Basic `Makefile` or equivalent commands for type generation, checks, tests, and dev run.
-- Empty or minimal `packages/md-wysiwyg` integration path.
+- Copy current `packages/md-wysiwyg` into this repo as an in-repo workspace package.
+- Wire the frontend to consume the local workspace editor package.
+- Document in the package README or local notes that `md-wysiwyg` is copied code
+  that may be freely changed for `tansu2`; public package compatibility is not a
+  V1 goal.
 
 Tests:
 
 - `cargo check`
 - frontend type check
 - frontend bundle in development mode
+- copied `packages/md-wysiwyg` tests run in isolation
 
 Exit criteria:
 
@@ -51,14 +56,15 @@ Deliverables:
 - Two mock vaults in every test run.
 - Fixture helper for Markdown files and real image files.
 - Free-port server startup.
-- Server readiness wait.
+- Server readiness wait after blocking vault initialization completes.
 - Browser setup and teardown.
 - Shared helpers for vault headers and bootstrap calls.
 
 Tests:
 
 - Server starts with two empty seeded vaults.
-- `GET /api/bootstrap` placeholder or health endpoint responds.
+- `GET /api/bootstrap` placeholder or health endpoint responds only after both
+  fixture vaults have initialized.
 - Static app loads in Playwright.
 - Vault headers are passed by helper functions.
 
@@ -78,6 +84,8 @@ Deliverables:
 - JSON response helpers.
 - Path normalization helpers.
 - Static asset serving.
+- Blocking per-vault startup sequence: config, migrations, repair,
+  reconciliation, search index readiness, watcher start.
 - `App` struct with vault runtime placeholders.
 
 Tests:
@@ -88,6 +96,7 @@ Tests:
 - nested vault rejection
 - path traversal rejection
 - static file serving
+- server does not bind or serve API responses before configured vaults are ready
 
 Exit criteria:
 
@@ -100,10 +109,15 @@ Goal: create the durable metadata foundation.
 Deliverables:
 
 - `rusqlite` dependency.
+- `rusqlite` configured with the `bundled` feature.
 - `.tansu/vault.db` creation per vault.
 - Migration system.
-- Initial schema for notes, note events, conflict drafts, pins, recent, session,
-  settings, and schema migrations.
+- Initial schema for vault metadata, notes, note events, conflict drafts, pins,
+  recent, session, settings, and schema migrations.
+- Live-note partial uniqueness on normalized `path_key`.
+- Per-vault monotonic `event_id` and `sync_version`.
+- Unresolved-note state for catalog/file/history inconsistencies that cannot be
+  repaired automatically.
 - Catalog API with explicit transactions.
 - `NoteId` generation.
 
@@ -113,8 +127,11 @@ Tests:
 - idempotent migrations
 - migration version recording
 - note insert/update/read
-- unique path enforcement
+- live path uniqueness and tombstone path reuse
+- path case-folding behavior
+- first-scan case-fold collisions preserve files and mark non-primary notes unresolved
 - tombstone field behavior
+- unresolved notes are excluded from ordinary lists and search
 - settings/session basic read/write
 
 Exit criteria:
@@ -128,6 +145,7 @@ Goal: implement compressed full snapshots and conflict drafts.
 Deliverables:
 
 - `lz4_flex` dependency.
+- `sha2` hashing with `sha256:<hex>` serialization.
 - Snapshot write/read helpers.
 - Conflict draft write/read helpers.
 - Hash computation helper for exact Markdown bytes.
@@ -139,6 +157,7 @@ Tests:
 - snapshot round trip
 - conflict draft round trip
 - hash matches exact bytes
+- hash algorithm prefix round trip
 - missing blob error behavior
 - corrupt blob error behavior
 - temp write cleanup behavior where feasible
@@ -162,6 +181,8 @@ Deliverables:
 - External delete tombstone handling.
 - Ambiguous move+edit policy as delete plus new note.
 - Startup repair for catalog/file/hash mismatches.
+- Interrupted server write repair from latest committed snapshot.
+- Path policy enforcement for `.md`, `.tansu`, traversal, and case collisions.
 
 Tests:
 
@@ -171,6 +192,9 @@ Tests:
 - exact-hash move preserves ID
 - moved-and-edited file does not guess identity
 - deleted file tombstones note
+- duplicate case-fold paths become one live note plus unresolved records
+- missing/corrupt history does not silently discard catalog records
+- interrupted save repairs visible file from latest snapshot
 - `.tansu` files ignored
 - excluded folders ignored
 
@@ -189,6 +213,9 @@ Deliverables:
 - Generated TypeScript output.
 - Type drift check command.
 - API error shape for typed frontend handling.
+- Exact `ApiErrorResponse` envelope and `ApiErrorKind` discriminated union.
+- Error reason enums generated with `ts-rs`, including path validation and
+  unresolved/repair reasons.
 
 Core DTOs:
 
@@ -211,6 +238,9 @@ Tests:
 - generation succeeds
 - check mode fails on drift
 - representative optional fields serialize as expected
+- error envelope serializes with stable snake_case `error.code`
+- frontend API wrapper imports generated error types rather than declaring
+  handwritten error-code unions
 
 Exit criteria:
 
@@ -228,10 +258,13 @@ Deliverables:
 - `PUT /api/notes/:id`.
 - `POST /api/notes/:id/rename`.
 - `DELETE /api/notes/:id`.
-- Session update endpoint if needed by bootstrap tests.
+- `PUT /api/session`.
 - Path collision errors.
 - Save conflict response with conflict draft.
+- Save conflict uses the standard `409` API error envelope.
+- Idempotent stale save response when submitted content already equals current content.
 - Tombstone delete.
+- Write ordering that commits catalog/history before repairing or updating visible files.
 
 Tests:
 
@@ -242,9 +275,12 @@ Tests:
 - save with correct seq/hash succeeds
 - unchanged save does not create redundant event
 - stale save creates conflict draft
+- stale save response has `error.code === "save_conflict"`
+- retrying an already accepted save returns success rather than a conflict draft
 - rename preserves note ID
 - rename collision fails
 - delete removes file and tombstones note
+- delete does not remove a changed external file during startup repair
 
 Exit criteria:
 
@@ -316,12 +352,15 @@ Deliverables:
 - DOM helpers for mounting and cleanup.
 - Root layout: sidebar, tabs, editor area, overlays host.
 - Bootstrap loading flow.
+- Documented app entrypoint happy path in `main.ts`.
 - Vault selection via `sessionStorage`.
 - SSE lifecycle.
 
 Tests:
 
 - bootstrap called once on load
+- startup renders shell before active note content is mounted
+- no inactive tab bodies are fetched during startup
 - generated types compile in API wrapper
 - app renders vault/sidebar/tabs placeholders
 - switching vault updates session storage and fetches new bootstrap
@@ -342,7 +381,11 @@ Deliverables:
 - Tab state by note ID.
 - Lazy content load for inactive tabs.
 - Cursor capture and restore.
+- Per-vault session persistence for open tabs, active tab, and cursors.
+- Per-vault closed-tab reopen stack.
+- Before-unload warning for unsaved in-memory drafts.
 - Tag row and frontmatter sync.
+- Preservation of non-tag frontmatter fields.
 - Debounced per-tab autosave.
 - Manual save command.
 - Save conflict UI entry point.
@@ -355,6 +398,12 @@ Tests:
 - switching tabs captures draft and cursor
 - inactive tab content is lazy-loaded
 - dirty tab can be switched away from
+- restored inactive tabs do not fetch bodies until selected
+- closing a tab pushes a bounded reopen entry
+- reopening a closed tab resolves by note ID and focuses an existing tab if open
+- closed-tab stack survives reload and stays vault-scoped
+- deleted or unresolved closed-tab entries are dropped with a quiet notification
+- non-tag frontmatter survives tag edits
 - autosave sends expected seq/hash
 - manual save creates checkpoint
 - stale save surfaces conflict draft
@@ -374,8 +423,8 @@ Deliverables:
 - Sidebar with vault switcher, search/filter, pinned, and recent.
 - Search overlay for full-text search.
 - Command palette.
-- Commands for open, create, save, rename, delete, pin/unpin, import HTML,
-  revisions, settings, and source mode.
+- Commands for open, create, save, rename, delete, pin/unpin, reopen closed tab,
+  import HTML, revisions, settings, and source mode.
 - Keyboard navigation and focus restore.
 
 Tests:
@@ -386,6 +435,8 @@ Tests:
 - command palette can create and open notes
 - rename command handles collision
 - delete command tombstones note
+- command palette exposes HTML import
+- command palette exposes reopen closed tab
 - keyboard shortcuts do not interfere with editor text input
 
 Exit criteria:
@@ -459,6 +510,8 @@ Deliverables:
 - Explicit collision retry in client.
 - Imported note opens after creation.
 - Import history event or baseline event source marked as import.
+- Leading H1 is seeded from article title when imported Markdown lacks one.
+- Remote assets emitted by Defuddle are left as remote Markdown references.
 
 Tests:
 
@@ -466,6 +519,7 @@ Tests:
 - raw HTML is not saved
 - missing Markdown conversion shows error and creates no note
 - frontmatter contains title/author/date/description when provided
+- import preserves metadata when tags are later edited
 - collision retry chooses explicit candidate and server still rejects direct collision
 - imported note is vault-scoped
 
@@ -492,6 +546,7 @@ Tests:
 - changing autosave delay affects scheduler
 - changing undo stack max updates editor config
 - changing excluded folders reindexes
+- V1 exposes no theme/appearance customization controls
 - mobile/narrow viewport does not overlap text
 - Playwright screenshot sanity checks for main states
 
@@ -505,6 +560,9 @@ Goal: stress the model before declaring V1 architecture stable.
 
 Deliverables:
 
+- Focused stress tests for the load-bearing structures named in `DESIGN.md`:
+  `NoteId`, `path_key`, `note_events`, snapshots, conflict drafts, session
+  state, and generated error types.
 - Startup repair tests with interrupted write fixtures.
 - Corrupt history blob behavior.
 - Missing visible Markdown behavior.
@@ -518,9 +576,13 @@ Tests:
 - DB committed but Markdown file old repairs from latest snapshot or records safe state
 - snapshot exists but event incomplete is handled conservatively
 - corrupt blob never overwrites visible note
+- tombstone with changed visible file preserves changed file as a new note
 - stale save never destroys canonical content
+- accepted-save retry is idempotent
 - delete restore works after restart
 - exact-hash move after restart preserves note ID
+- closed-tab stack survives restart without persisting dirty drafts
+- generated API error kinds remain exhaustive in frontend handling
 
 Exit criteria:
 
@@ -564,4 +626,3 @@ Do not implement these until V1 integrity and UI basics are stable:
 - advanced settings
 - wiki links and backlinks if ever needed again
 - asset cataloging, integrity checks, garbage collection, or asset versioning
-
