@@ -2,3 +2,32 @@ packages:
   - "packages/*"
 allowBuilds:
   esbuild: true
+supportedArchitectures:
+  os:
+    - darwin
+    - linux
+  cpu:
+    - x64
+    - arm64
+  libc:
+    - musl
+ignoredOptionalDependencies:
+  - "@esbuild/linux-arm"
+  - "*aix*"
+  - "*android*"
+  - "*freebsd*"
+  - "*linux-*-gnu*"
+  - "*linux-arm-*"
+  - "*linux-ia32*"
+  - "*linux-loong64*"
+  - "*linux-mips64el*"
+  - "*linux-ppc64*"
+  - "*linux-s390x*"
+  - "*netbsd*"
+  - "*openbsd*"
+  - "*openharmony*"
+  - "*riscv64*"
+  - "*sunos*"
+  - "*wasm32*"
+  - "*win32*"
+  - "@typescript/native-preview-linux-arm"
