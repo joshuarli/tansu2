@@ -8,12 +8,12 @@ fastrand = "2.4"
 httparse = "1.10"
 lz4_flex = "0.13"
 pulldown-cmark = { version = "0.13", default-features = false }
-rusqlite = { version = "0.39", features = ["bundled"] }
+rusqlite = { version = "0.39", features = ["modern_sqlite"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 sha2 = "0.11"
 tantivy = { version = "0.26", default-features = false, features = ["mmap", "lz4-compression"] }
-toml = { version = "1.1.2+spec-1.1.0", default-features = false, features = ["parse", "serde"] }
+toml = { version = "1.1.2", default-features = false, features = ["parse", "serde"] }
 ts-rs = "12.0"
 
 [dev-dependencies]
@@ -22,7 +22,7 @@ tempfile = "3.27"
 [target.'cfg(target_os = "macos")'.dependencies]
 notify = { version = "8.2", default-features = false, features = ["macos_fsevent"] }
 
-[target.'cfg(target_os = "linux")'.dependencies]
+[target.'cfg(all(target_os = "linux", target_env = "musl"))'.dependencies]
 notify = { version = "8.2", default-features = false }
 
 [profile.dev]
@@ -32,6 +32,13 @@ split-debuginfo = "unpacked"
 [profile.dev.package."*"]
 opt-level = 2
 
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
 [[bin]]
 name = "tansu2"
 path = "src/main.rs"
@@ -39,3 +46,4 @@ path = "src/main.rs"
 [[bin]]
 name = "gen-api-types"
 path = "src/bin/gen-api-types.rs"
+

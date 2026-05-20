@@ -75,6 +75,9 @@ test-e2e-webkit:
 test-rs:
 	cargo test -q
 
+build-linux-musl-docker:
+	docker build --platform $${PLATFORM:-linux/amd64} -f docker/linux-musl.Dockerfile --build-arg TARGET=$${TARGET:-x86_64-unknown-linux-musl} --build-arg CARGO_PROFILE=$${CARGO_PROFILE:-release} --output type=local,dest=dist .
+
 bench:
 	node bench/integrated-bench.mjs --browser=chromium --warmups=2 --runs=5
 	cd packages/md-wysiwyg && MD_WYSIWYG_BENCH=1 pnpm exec vitest run tests/large-note-bench.test.ts
