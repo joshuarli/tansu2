@@ -1,5 +1,5 @@
-import { spawn, type ChildProcess } from "node:child_process";
-import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
+import { execFileSync, spawn, type ChildProcess } from "node:child_process";
+import { mkdtemp, writeFile } from "node:fs/promises";
 import net from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -11,35 +11,38 @@ let browser: Browser | undefined;
 let baseUrl = "";
 let vaultOnePath = "";
 
+type TestFixture = {
+  configHome: string;
+  vaultOne: string;
+  vaultTwo: string;
+};
+
+type TestNoteMeta = {
+  noteId: string;
+  path: string;
+  title: string;
+};
+
+type TestNoteDocument = {
+  meta: TestNoteMeta;
+  content: string;
+};
+
 describe("real server harness", () => {
   beforeAll(async () => {
     const root = await mkdtemp(join(tmpdir(), "tansu2-e2e-"));
-    const configHome = join(root, "config");
-    const vaultOne = join(root, "vault-one");
-    const vaultTwo = join(root, "vault-two");
-    await mkdir(join(configHome, "tansu"), { recursive: true });
-    await mkdir(vaultOne, { recursive: true });
-    await mkdir(vaultTwo, { recursive: true });
-    vaultOnePath = vaultOne;
-    await writeFile(join(vaultOne, "one.md"), "# One\n\nalpha", "utf8");
-    await writeFile(join(vaultTwo, "two.md"), "# Two\n\nbeta", "utf8");
-    await writeFile(
-      join(configHome, "tansu", "config.toml"),
-      `[[vaults]]
-name = "One"
-path = "${vaultOne}"
-
-[[vaults]]
-name = "Two"
-path = "${vaultTwo}"
-`,
-      "utf8",
-    );
+    const fixture = JSON.parse(
+      execFileSync(process.execPath, ["scripts/test-fixture.mjs", root], {
+        cwd: process.cwd(),
+        encoding: "utf8",
+      }),
+    ) as TestFixture;
+    vaultOnePath = fixture.vaultOne;
     const port = await freePort();
     baseUrl = `http://127.0.0.1:${port}`;
     server = spawn("cargo", ["run", "--quiet", "--bin", "tansu2", "--", "--port", String(port)], {
       cwd: process.cwd(),
-      env: { ...process.env, XDG_CONFIG_HOME: configHome },
+      env: { ...process.env, XDG_CONFIG_HOME: fixture.configHome },
       stdio: ["ignore", "pipe", "pipe"],
     });
     await waitForReady(`${baseUrl}/api/health`);
@@ -58,6 +61,33 @@ path = "${vaultTwo}"
     expect(bootstrap.vaults).toHaveLength(2);
     expect(bootstrap.activeVault).toBe(1);
     expect(bootstrap.notes[0].title).toBe("Two");
+    const vaultOneBootstrap = await fetch(`${baseUrl}/api/bootstrap`, {
+      headers: { "X-Tansu-Vault": "0" },
+    }).then((response) => response.json() as Promise<{ notes: TestNoteMeta[] }>);
+    const notesByPath = new Map(vaultOneBootstrap.notes.map((note) => [note.path, note]));
+    expect([...notesByPath.keys()]).toEqual(
+      expect.arrayContaining(["one.md", "search.md", "visual.md"]),
+    );
+    const seededDocuments = new Map<string, string>();
+    for (const path of ["one.md", "search.md", "visual.md"]) {
+      const note = notesByPath.get(path);
+      if (note === undefined) {
+        throw new Error(`missing seeded note: ${path}`);
+      }
+      const document = await fetch(`${baseUrl}/api/notes/${encodeURIComponent(note.noteId)}`, {
+        headers: { "X-Tansu-Vault": "0" },
+      }).then((response) => response.json() as Promise<TestNoteDocument>);
+      seededDocuments.set(note.path, document.content);
+    }
+    expect(new Set(seededDocuments.values()).size).toBe(3);
+    expect(seededDocuments.get("one.md")).toContain("# One");
+    expect(seededDocuments.get("search.md")).toContain("# Search Fixture");
+    expect(seededDocuments.get("visual.md")).toContain("![[z-images/sample.webp|132]]");
+    const sample = await fetch(
+      `${baseUrl}/api/assets?name=${encodeURIComponent("z-images/sample.webp")}&vault=0`,
+    );
+    expect(sample.ok).toBe(true);
+    expect((await sample.arrayBuffer()).byteLength).toBeGreaterThan(0);
 
     const page = await browser!.newPage();
     const startupRequests: string[] = [];
@@ -80,6 +110,8 @@ path = "${vaultTwo}"
     expect(
       startupRequests.filter((request) => request.startsWith("GET /api/notes/")).length,
     ).toBeLessThanOrEqual(3);
+    await page.locator(".note-row", { hasText: "Visual Checkseeded note" }).first().click();
+    await page.waitForSelector('.app-editor img[data-wiki-image="z-images/sample.webp"]');
     await page.close();
   });
 
@@ -151,6 +183,37 @@ path = "${vaultTwo}"
     expect(
       afterDelete.notes.some((note: { path: string }) => note.path === "renamed-note.md"),
     ).toBe(false);
+    await page.close();
+  });
+
+  it("keeps note bodies isolated when switching notes before saving", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+    const searchBefore = await openSeededDocument("search.md");
+
+    await page.locator('.note-row[title="one.md"]').first().click();
+    await page.waitForFunction(
+      () => document.querySelector(".path-label")?.textContent === "one.md",
+    );
+    await page.waitForFunction(() =>
+      document.querySelector(".app-editor")?.textContent?.includes("alpha"),
+    );
+
+    await page.locator('.note-row[title="search.md"]').first().click();
+    await page.waitForFunction(
+      () => document.querySelector(".path-label")?.textContent === "search.md",
+    );
+    await page.waitForFunction(() =>
+      document.querySelector(".app-editor")?.textContent?.includes("Search Fixture"),
+    );
+    await page.locator('.toolbar [title="Save"]').click();
+    await page.waitForTimeout(500);
+
+    const searchAfter = await openSeededDocument("search.md");
+    expect(searchAfter.content).toBe(searchBefore.content);
+    expect(searchAfter.content).toContain("# Search Fixture");
+    expect(searchAfter.content).not.toBe("# One\n\nalpha\n");
     await page.close();
   });
 
@@ -302,4 +365,17 @@ async function waitForReady(url: string): Promise<void> {
     await new Promise((resolve) => setTimeout(resolve, 100));
   }
   throw new Error(`server did not become ready: ${url}`);
+}
+
+async function openSeededDocument(path: string): Promise<TestNoteDocument> {
+  const bootstrap = await fetch(`${baseUrl}/api/bootstrap`, {
+    headers: { "X-Tansu-Vault": "0" },
+  }).then((response) => response.json() as Promise<{ notes: TestNoteMeta[] }>);
+  const note = bootstrap.notes.find((item) => item.path === path);
+  if (note === undefined) {
+    throw new Error(`missing seeded note: ${path}`);
+  }
+  return fetch(`${baseUrl}/api/notes/${encodeURIComponent(note.noteId)}`, {
+    headers: { "X-Tansu-Vault": "0" },
+  }).then((response) => response.json() as Promise<TestNoteDocument>);
 }

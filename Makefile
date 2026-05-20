@@ -1,8 +1,13 @@
 NAME := tansu2
+DEV_DIR := $(CURDIR)/.dev
+DEV_CONFIG_HOME := $(DEV_DIR)/config
 
-dev: types
+dev: types dev-config
 	pnpm run bundle-dev
-	cargo run --bin $(NAME) -- --port 3000
+	XDG_CONFIG_HOME="$(DEV_CONFIG_HOME)" cargo run --bin $(NAME) -- --port 3000
+
+dev-config:
+	node scripts/test-fixture.mjs "$(DEV_DIR)"
 
 check: types-check
 	tsgo --noEmit --pretty false
@@ -32,3 +37,5 @@ test-e2e:
 
 test-rs:
 	cargo test -q
+
+.PHONY: dev dev-config check types types-check ts test test-pkg test-ts test-e2e test-rs

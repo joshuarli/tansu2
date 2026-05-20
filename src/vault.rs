@@ -562,7 +562,7 @@ impl VaultRuntime {
             return Err(Error::BadRequest("image body is empty".to_string()));
         }
         let name = format!(
-            "assets/image-{}-{}.webp",
+            "z-images/image-{}-{}.webp",
             now_ms(),
             crate::catalog::generate_note_id()
         );
@@ -579,8 +579,10 @@ impl VaultRuntime {
 
     pub fn read_asset(&self, name: &str) -> Result<Vec<u8>> {
         let path = normalize_asset_path(name)?;
-        if !path.to_string_lossy().starts_with("assets/") {
-            return Err(Error::BadRequest("asset must be under assets/".to_string()));
+        if !path.to_string_lossy().starts_with("z-images/") {
+            return Err(Error::BadRequest(
+                "asset must be under z-images/".to_string(),
+            ));
         }
         fs::read(self.root.join(&path)).map_err(|error| {
             if error.kind() == std::io::ErrorKind::NotFound {
@@ -900,7 +902,7 @@ mod tests {
         let vault = test_vault();
         let uploaded = vault.upload_image(b"webp").unwrap();
 
-        assert!(uploaded.name.starts_with("assets/"));
+        assert!(uploaded.name.starts_with("z-images/"));
         assert_eq!(vault.read_asset(&uploaded.name).unwrap(), b"webp");
         assert!(vault.read_asset("../bad.webp").is_err());
     }

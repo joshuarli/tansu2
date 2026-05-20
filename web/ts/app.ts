@@ -58,6 +58,7 @@ import { renderApp, renderLoading, renderStatusBar, type ViewActions } from "./v
 export class TansuApp {
   private readonly state: State;
   private editor: EditorHandle | null = null;
+  private editorNoteId: string | null = null;
   private autosaveTimer: number | undefined;
   private sessionTimer: number | undefined;
   private events: EventSource | null = null;
@@ -242,6 +243,7 @@ export class TansuApp {
       config.imageWebpQuality = settings.imageWebpQuality;
     }
     this.editor = createEditor(mount, config);
+    this.editorNoteId = tab.noteId;
     this.editor.setValue(editableMarkdown(tab), tab.cursorOffset ?? undefined);
     if (tab.sourceMode && !this.editor.isSourceMode) {
       this.editor.toggleSourceMode();
@@ -264,10 +266,12 @@ export class TansuApp {
       this.editor.destroy();
       this.editor = null;
     }
+    this.editorNoteId = null;
   }
 
   private captureEditorChange(): void {
-    const active = activeTab(this.state);
+    const active =
+      this.editorNoteId === null ? activeTab(this.state) : tabById(this.state, this.editorNoteId);
     if (active === undefined || this.editor === null) {
       return;
     }
@@ -286,7 +290,8 @@ export class TansuApp {
   }
 
   private syncActiveDraft(): void {
-    const tab = activeTab(this.state);
+    const tab =
+      this.editorNoteId === null ? activeTab(this.state) : tabById(this.state, this.editorNoteId);
     if (tab === undefined || this.editor === null) {
       return;
     }

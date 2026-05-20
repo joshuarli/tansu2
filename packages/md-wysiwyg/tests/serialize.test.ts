@@ -172,6 +172,19 @@ describe("serialize", () => {
     );
   });
 
+  it("typed text inside a former blank paragraph is preserved", () => {
+    expect(
+      domToMarkdown(
+        html(
+          '<h1>Visual Checkseeded note</h1><p data-md-blank="true">Inserted in blank line</p><p>This seeded note checks the editor layout, tabs, and quiet chrome.</p><p><img data-wiki-image="z-images/sample.webp" src="/api/assets?name=z-images%2Fsample.webp&amp;vault=0" alt="z-images/sample.webp" width="132"></p>',
+        ),
+        wikiImageOpts,
+      ),
+    ).toBe(
+      "# Visual Checkseeded note\nInserted in blank line\nThis seeded note checks the editor layout, tabs, and quiet chrome.\n![[z-images/sample.webp|132]]",
+    );
+  });
+
   it("heading continuation paragraph ignores leading placeholder break", () => {
     expect(domToMarkdown(html("<h1>Title</h1><p><br>Body</p>"))).toBe("# Title\nBody");
   });

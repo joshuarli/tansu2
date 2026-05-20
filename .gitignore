@@ -5,3 +5,4 @@ web/static/app.js.map
 bindings
 .env
 coverage/
+.dev/
