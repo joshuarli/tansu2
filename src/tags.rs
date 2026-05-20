@@ -1,0 +1,100 @@
+use crate::paths::title_from_path;
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ParsedMarkdown {
+    pub tags: Vec<String>,
+    pub title: String,
+    pub frontmatter_supported: bool,
+}
+
+pub fn parse_markdown(path: &str, content: &str) -> ParsedMarkdown {
+    let (tags, supported) = parse_tags_frontmatter(content);
+    ParsedMarkdown {
+        tags,
+        title: extract_title(path, content),
+        frontmatter_supported: supported,
+    }
+}
+
+fn parse_tags_frontmatter(content: &str) -> (Vec<String>, bool) {
+    let mut lines = content.lines();
+    if lines.next() != Some("---") {
+        return (Vec::new(), true);
+    }
+    let mut tags = Vec::new();
+    let mut in_tags_list = false;
+    for line in lines {
+        if line == "---" {
+            return (tags, true);
+        }
+        let trimmed = line.trim();
+        if trimmed.is_empty() {
+            continue;
+        }
+        if let Some(rest) = trimmed.strip_prefix("tags:") {
+            in_tags_list = true;
+            let rest = rest.trim();
+            if rest.starts_with('[') && rest.ends_with(']') {
+                tags.extend(
+                    rest.trim_matches(['[', ']'])
+                        .split(',')
+                        .map(|tag| tag.trim().trim_matches('"').trim_matches('\''))
+                        .filter(|tag| !tag.is_empty())
+                        .map(ToOwned::to_owned),
+                );
+            } else if !rest.is_empty() {
+                tags.extend(
+                    rest.split(',')
+                        .map(str::trim)
+                        .filter(|tag| !tag.is_empty())
+                        .map(ToOwned::to_owned),
+                );
+            }
+            continue;
+        }
+        if in_tags_list {
+            if let Some(tag) = trimmed.strip_prefix('-') {
+                let tag = tag.trim().trim_matches('"').trim_matches('\'');
+                if !tag.is_empty() {
+                    tags.push(tag.to_string());
+                }
+                continue;
+            }
+        }
+        return (Vec::new(), false);
+    }
+    (Vec::new(), false)
+}
+
+pub fn extract_title(path: &str, content: &str) -> String {
+    for line in content.lines() {
+        if let Some(title) = line.trim_start().strip_prefix("# ") {
+            let title = title.trim();
+            if !title.is_empty() {
+                return title.to_string();
+            }
+        }
+    }
+    title_from_path(path)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn parses_tags_only_frontmatter() {
+        let parsed = parse_markdown("x.md", "---\ntags: [one, two]\n---\n# Title\n");
+        assert_eq!(parsed.tags, vec!["one", "two"]);
+        assert_eq!(parsed.title, "Title");
+        assert!(parsed.frontmatter_supported);
+    }
+
+    #[test]
+    fn leaves_non_tag_frontmatter_as_content() {
+        let parsed = parse_markdown("x.md", "---\nauthor: Jane\n---\n# Title\n");
+        assert!(parsed.tags.is_empty());
+        assert!(!parsed.frontmatter_supported);
+        assert_eq!(parsed.title, "Title");
+    }
+}
