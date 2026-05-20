@@ -146,4 +146,29 @@ mod tests {
         .unwrap_err();
         assert!(error.to_string().contains("nested vaults"));
     }
+
+    #[test]
+    fn parses_excluded_folders_and_rejects_empty_vault_list() {
+        let config = parse_config(
+            "[[vaults]]\nname='Main'\npath='/tmp/notes'\nexcluded_folders=['tmp','.cache']\n",
+        )
+        .unwrap();
+        assert_eq!(config.vaults[0].excluded_folders, vec!["tmp", ".cache"]);
+
+        let error = parse_config("vaults=[]").unwrap_err();
+        assert!(error.to_string().contains("at least one vault"));
+    }
+
+    #[test]
+    fn load_config_reports_missing_files_and_keeps_sibling_vaults() {
+        let root = tempfile::tempdir().unwrap();
+        let missing = load_config_from_path(&root.path().join("missing.toml")).unwrap_err();
+        assert!(missing.to_string().contains("missing config"));
+
+        let config = parse_config(
+            "[[vaults]]\nname='A'\npath='/tmp/a/../a-one'\n[[vaults]]\nname='B'\npath='/tmp/a-two'\n",
+        )
+        .unwrap();
+        assert_eq!(config.vaults.len(), 2);
+    }
 }

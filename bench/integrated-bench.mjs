@@ -1,0 +1,489 @@
+import { execFileSync, spawn } from "node:child_process";
+import { cp, mkdir, mkdtemp, readdir, stat, writeFile } from "node:fs/promises";
+import net from "node:net";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { chromium, firefox, webkit } from "playwright";
+
+const REPO_ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
+const BENCH_DIR = join(REPO_ROOT, "bench");
+const RESULTS_DIR = join(BENCH_DIR, "results");
+const SAMPLE_IMAGE = join(
+  REPO_ROOT,
+  "tests",
+  "fixtures",
+  "test-vaults",
+  "vault-one",
+  "z-images",
+  "sample.webp",
+);
+
+const args = parseArgs(process.argv.slice(2));
+const warmups = Number(args.warmups ?? 2);
+const runs = Number(args.runs ?? 5);
+const browsers = String(args.browser ?? "chromium")
+  .split(",")
+  .filter(Boolean);
+const checkBudgets = args["check-budgets"] !== "false" && args.calibrate !== "true";
+
+const browserTypes = { chromium, firefox, webkit };
+
+async function main() {
+  execFileSync("pnpm", ["run", "bundle"], { cwd: REPO_ROOT, stdio: "inherit" });
+  await mkdir(RESULTS_DIR, { recursive: true });
+
+  const root = await mkdtemp(join(tmpdir(), "tansu2-bench-"));
+  const fixture = await createBenchmarkFixture(root);
+  const port = await freePort();
+  const baseUrl = `http://127.0.0.1:${port}`;
+  const serverStart = performance.now();
+  const server = spawn(
+    "cargo",
+    ["run", "--quiet", "--bin", "tansu2", "--", "--port", String(port)],
+    {
+      cwd: REPO_ROOT,
+      env: { ...process.env, XDG_CONFIG_HOME: fixture.configHome },
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+
+  const results = {
+    generatedAt: new Date().toISOString(),
+    config: { warmups, runs, browsers },
+    metrics: {},
+  };
+
+  try {
+    await waitForReady(`${baseUrl}/api/health`);
+    results.metrics.coldStartup = [performance.now() - serverStart];
+
+    for (const name of browsers) {
+      const type = browserTypes[name];
+      if (type === undefined) {
+        throw new Error(`unknown browser: ${name}`);
+      }
+      const browser = await type.launch();
+      try {
+        results.metrics[name] = await runBrowserBenchmarks(browser, baseUrl, fixture);
+      } finally {
+        await browser.close();
+      }
+    }
+
+    results.metrics.productionBundleBytes = [
+      await fileSize(join(REPO_ROOT, "web", "static", "app.js")),
+    ];
+    results.metrics.catalogBytes = [await directorySize(join(fixture.mediumVault, ".tansu"))];
+    const rss = server.pid === undefined ? null : rssBytes(server.pid);
+    if (rss !== null) {
+      results.metrics.serverRssBytes = [rss];
+    }
+
+    const summary = summarizeResults(results);
+    if (checkBudgets) {
+      checkBudget(summary, await readBudgets());
+    }
+    const output = join(RESULTS_DIR, `integrated-${Date.now()}.json`);
+    await writeFile(output, `${JSON.stringify({ summary, raw: results }, null, 2)}\n`, "utf8");
+    printSummary(summary, output);
+  } finally {
+    server.kill();
+  }
+}
+
+async function runBrowserBenchmarks(browser, baseUrl, fixture) {
+  const page = await browser.newPage();
+  const out = {};
+  try {
+    const bootstrap = await fetchJson(`${baseUrl}/api/bootstrap`, { vault: 1 });
+    const first = bootstrap.notes[0];
+    const second = bootstrap.notes[1] ?? first;
+
+    out.warmStartup = await measure(async () => {
+      await fetchJson(`${baseUrl}/api/health`);
+    });
+    out.bootstrap = await measure(async () => {
+      await fetchJson(`${baseUrl}/api/bootstrap`, { vault: 1 });
+    });
+    out.firstEditorInteractive = await measure(async () => {
+      await page.goto(baseUrl);
+      await page.waitForSelector(".main");
+      await page.locator(".note-row").first().click();
+      await page.waitForSelector(".app-editor");
+    });
+    out.openNote = await measure(async () => {
+      await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, { vault: 1 });
+    });
+    out.switchNote = await measure(async () => {
+      await page
+        .locator(`.note-row[title="${cssEscape(second.path)}"]`)
+        .first()
+        .click();
+      await page.waitForFunction(
+        (path) => document.querySelector(".path-label")?.textContent === path,
+        second.path,
+      );
+    });
+    out.editSave = await measure(async () => {
+      const document = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
+        vault: 1,
+      });
+      await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
+        method: "PUT",
+        vault: 1,
+        body: {
+          content: `${document.content}\nbench ${Date.now()}\n`,
+          baseSeq: document.meta.seq,
+          baseHash: document.meta.contentHash,
+          checkpoint: false,
+        },
+      });
+    });
+    out.search = await measure(async () => {
+      await fetchJson(`${baseUrl}/api/search?q=alpha`, { vault: 1 });
+    });
+    out.conflictRestore = await measure(async () => {
+      const document = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
+        vault: 1,
+      });
+      await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
+        method: "PUT",
+        vault: 1,
+        body: {
+          content: `${document.content}\ncurrent ${Date.now()}\n`,
+          baseSeq: document.meta.seq,
+          baseHash: document.meta.contentHash,
+          checkpoint: false,
+        },
+      });
+      const conflict = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
+        method: "PUT",
+        vault: 1,
+        allowError: true,
+        body: {
+          content: `${document.content}\nstale ${Date.now()}\n`,
+          baseSeq: document.meta.seq,
+          baseHash: document.meta.contentHash,
+          checkpoint: false,
+        },
+      });
+      const draftId = conflict.error.draft.draftId;
+      await fetchJson(
+        `${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}/conflicts/${draftId}/restore`,
+        {
+          method: "POST",
+          vault: 1,
+        },
+      );
+    });
+    out.ssePropagation = await measure(async () => {
+      await page.evaluate(() => {
+        return new Promise((resolve, reject) => {
+          const source = new EventSource("/events?vault=1");
+          const timer = setTimeout(() => {
+            source.close();
+            reject(new Error("SSE timeout"));
+          }, 5000);
+          source.addEventListener("open", () => {
+            void fetch("/api/notes", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "X-Tansu-Vault": "1" },
+              body: JSON.stringify({
+                path: `sse-${Date.now()}.md`,
+                content: "# SSE\n\nbench\n",
+                source: null,
+              }),
+            });
+          });
+          source.addEventListener("message", (event) => {
+            const payload = JSON.parse(event.data);
+            if (payload.kind === "note_changed") {
+              clearTimeout(timer);
+              source.close();
+              resolve(null);
+            }
+          });
+        });
+      });
+    });
+    out.watcherExternalEdit = await measure(async () => {
+      const path = join(fixture.mediumVault, "external-bench.md");
+      await writeFile(path, `# External\n\n${Date.now()}\n`, "utf8");
+      await poll(async () => {
+        const latest = await fetchJson(`${baseUrl}/api/bootstrap`, { vault: 1 });
+        return latest.notes.some((note) => note.path === "external-bench.md");
+      });
+    });
+    out.imagePath = await measure(async () => {
+      const response = await fetch(
+        `${baseUrl}/api/assets?name=${encodeURIComponent("z-images/sample.webp")}&vault=4`,
+      );
+      if (!response.ok) {
+        throw new Error(`asset request failed: ${response.status}`);
+      }
+      const blob = await response.blob();
+      const upload = await fetch(`${baseUrl}/api/images`, {
+        method: "POST",
+        headers: { "Content-Type": "image/webp", "X-Tansu-Vault": "4" },
+        body: blob,
+      });
+      if (!upload.ok) {
+        throw new Error(`image upload failed: ${upload.status}`);
+      }
+    });
+    out.revisionRestore = await measure(async () => {
+      const document = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
+        vault: 1,
+      });
+      const saved = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
+        method: "PUT",
+        vault: 1,
+        body: {
+          content: `${document.content}\nrevision ${Date.now()}\n`,
+          baseSeq: document.meta.seq,
+          baseHash: document.meta.contentHash,
+          checkpoint: true,
+        },
+      });
+      const revisions = await fetchJson(
+        `${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}/revisions`,
+        { vault: 1 },
+      );
+      const revision = revisions.find((item) => item.eventId > 0) ?? revisions[0];
+      await fetchJson(
+        `${baseUrl}/api/notes/${encodeURIComponent(saved.meta.noteId)}/revisions/${revision.eventId}/restore`,
+        {
+          method: "POST",
+          vault: 1,
+        },
+      );
+    });
+    return out;
+  } finally {
+    await page.close();
+  }
+}
+
+async function measure(fn) {
+  for (let i = 0; i < warmups; i += 1) {
+    await fn();
+  }
+  const values = [];
+  for (let i = 0; i < runs; i += 1) {
+    const start = performance.now();
+    await fn();
+    values.push(performance.now() - start);
+  }
+  return values;
+}
+
+async function createBenchmarkFixture(root) {
+  const configHome = join(root, "config");
+  await mkdir(join(configHome, "tansu"), { recursive: true });
+  const profiles = [
+    ["small", 12, 20],
+    ["medium", 120, 60],
+    ["large", 600, 90],
+    ["pathological", 40, 400],
+    ["asset-heavy", 80, 40],
+  ];
+  const vaults = [];
+  for (const [name, count, lines] of profiles) {
+    const vault = join(root, name);
+    await mkdir(vault, { recursive: true });
+    if (name === "asset-heavy") {
+      await mkdir(join(vault, "z-images"), { recursive: true });
+      await cp(SAMPLE_IMAGE, join(vault, "z-images", "sample.webp"));
+    }
+    for (let i = 0; i < count; i += 1) {
+      const content = noteContent(name, i, lines);
+      await writeFile(join(vault, `note-${String(i).padStart(4, "0")}.md`), content, "utf8");
+    }
+    vaults.push({ name, path: vault });
+  }
+  await writeFile(
+    join(configHome, "tansu", "config.toml"),
+    vaults
+      .map((vault) => `[[vaults]]\nname = "${vault.name}"\npath = "${vault.path}"\n`)
+      .join("\n"),
+    "utf8",
+  );
+  return {
+    configHome,
+    mediumVault: vaults[1].path,
+  };
+}
+
+function noteContent(profile, index, lines) {
+  const tags = index % 5 === 0 ? "---\ntags:\n  - bench\n  - alpha\n---\n\n" : "";
+  const image = profile === "asset-heavy" ? "\n![[z-images/sample.webp|132]]\n" : "";
+  const body = Array.from({ length: lines }, (_, line) => {
+    const token = line % 9 === 0 ? "alpha" : line % 13 === 0 ? "[[note-0001]]" : "body";
+    return `- ${profile} note ${index} line ${line} ${token}`;
+  }).join("\n");
+  return `${tags}# ${profile} ${index}\n\n${body}${image}\n`;
+}
+
+async function fetchJson(url, options = {}) {
+  const headers = new Headers(options.headers);
+  headers.set("Accept", "application/json");
+  if (options.vault !== undefined) {
+    headers.set("X-Tansu-Vault", String(options.vault));
+  }
+  let body;
+  if (options.body !== undefined) {
+    headers.set("Content-Type", "application/json");
+    body = JSON.stringify(options.body);
+  }
+  const response = await fetch(url, { method: options.method ?? "GET", headers, body });
+  const data = await response.json();
+  if (!response.ok && !options.allowError) {
+    throw new Error(`request failed: ${response.status} ${JSON.stringify(data)}`);
+  }
+  return data;
+}
+
+async function waitForReady(url) {
+  await poll(async () => {
+    try {
+      const response = await fetch(url);
+      return response.ok;
+    } catch {
+      return false;
+    }
+  }, 30_000);
+}
+
+async function poll(fn, timeoutMs = 10_000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    if (await fn()) {
+      return;
+    }
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  throw new Error("timed out waiting for condition");
+}
+
+async function freePort() {
+  return await new Promise((resolve, reject) => {
+    const server = net.createServer();
+    server.listen(0, "127.0.0.1", () => {
+      const address = server.address();
+      server.close(() => {
+        if (address && typeof address === "object") {
+          resolve(address.port);
+        } else {
+          reject(new Error("missing server address"));
+        }
+      });
+    });
+    server.on("error", reject);
+  });
+}
+
+function summarizeResults(results) {
+  const out = {};
+  flattenMetrics(results.metrics, [], out);
+  return out;
+}
+
+function flattenMetrics(value, path, out) {
+  if (Array.isArray(value)) {
+    const sorted = [...value].sort((a, b) => a - b);
+    out[path.join(".")] = {
+      medianMs: percentile(sorted, 0.5),
+      p95Ms: percentile(sorted, 0.95),
+    };
+    return;
+  }
+  for (const [key, child] of Object.entries(value)) {
+    flattenMetrics(child, [...path, key], out);
+  }
+}
+
+function percentile(sorted, p) {
+  if (sorted.length === 0) return 0;
+  const index = Math.min(sorted.length - 1, Math.ceil(sorted.length * p) - 1);
+  return Math.round(sorted[index] * 100) / 100;
+}
+
+async function readBudgets() {
+  const text = await import("node:fs/promises").then((fs) =>
+    fs.readFile(join(BENCH_DIR, "budgets.json"), "utf8"),
+  );
+  return JSON.parse(text).integrated ?? {};
+}
+
+function checkBudget(summary, budgets) {
+  const failures = [];
+  for (const [metric, budget] of Object.entries(budgets)) {
+    const value = summary[metric];
+    if (value === undefined) continue;
+    if (budget.medianMs !== undefined && value.medianMs > budget.medianMs) {
+      failures.push(`${metric} median ${value.medianMs}ms > ${budget.medianMs}ms`);
+    }
+    if (budget.p95Ms !== undefined && value.p95Ms > budget.p95Ms) {
+      failures.push(`${metric} p95 ${value.p95Ms}ms > ${budget.p95Ms}ms`);
+    }
+    if (budget.maxBytes !== undefined && value.p95Ms > budget.maxBytes) {
+      failures.push(`${metric} ${value.p95Ms} bytes > ${budget.maxBytes} bytes`);
+    }
+  }
+  if (failures.length > 0) {
+    throw new Error(`benchmark budgets failed:\n${failures.join("\n")}`);
+  }
+}
+
+function printSummary(summary, output) {
+  console.log(`benchmark results: ${output}`);
+  for (const [metric, value] of Object.entries(summary)) {
+    const unit = metric.endsWith("Bytes") ? "bytes" : "ms";
+    console.log(`${metric}: median=${value.medianMs} ${unit} p95=${value.p95Ms} ${unit}`);
+  }
+}
+
+async function fileSize(path) {
+  return (await stat(path)).size;
+}
+
+async function directorySize(path) {
+  let total = 0;
+  for (const entry of await readdir(path, { withFileTypes: true })) {
+    const child = join(path, entry.name);
+    if (entry.isDirectory()) {
+      total += await directorySize(child);
+    } else {
+      total += (await stat(child)).size;
+    }
+  }
+  return total;
+}
+
+function rssBytes(pid) {
+  try {
+    const output = execFileSync("ps", ["-o", "rss=", "-p", String(pid)], {
+      encoding: "utf8",
+    }).trim();
+    return Number(output) * 1024;
+  } catch {
+    return null;
+  }
+}
+
+function cssEscape(value) {
+  return value.replaceAll("\\", "\\\\").replaceAll('"', '\\"');
+}
+
+function parseArgs(values) {
+  const parsed = {};
+  for (const arg of values) {
+    const [key, value = "true"] = arg.replace(/^--/, "").split("=");
+    parsed[key] = value;
+  }
+  return parsed;
+}
+
+await main();

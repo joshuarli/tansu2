@@ -18,7 +18,16 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       include: ["web/ts/**/*.ts"],
-      exclude: ["web/ts/e2e/**", "web/ts/**/*.test.ts", "web/ts/types.generated.ts"],
+      exclude: [
+        "web/ts/e2e/**",
+        "web/ts/**/*.test.ts",
+        "web/ts/main.ts",
+        "web/ts/types.generated.ts",
+      ],
+      thresholds: {
+        lines: 90,
+        functions: 85,
+      },
     },
   },
 });

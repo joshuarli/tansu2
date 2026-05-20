@@ -95,4 +95,29 @@ mod tests {
         assert!(!parsed.frontmatter_supported);
         assert_eq!(parsed.title, "Title");
     }
+
+    #[test]
+    fn parses_tag_scalars_lists_quotes_and_fallback_titles() {
+        assert_eq!(
+            parse_markdown("daily note.md", "---\ntags: alpha, beta\n---\nbody\n").tags,
+            vec!["alpha", "beta"]
+        );
+        assert_eq!(
+            parse_markdown("x.md", "---\ntags:\n  - 'alpha'\n  - \"beta\"\n---\n").tags,
+            vec!["alpha", "beta"]
+        );
+        assert_eq!(parse_markdown("daily note.md", "body").title, "daily note");
+        assert_eq!(extract_title("x.md", "#   \n## ignored\n"), "x");
+    }
+
+    #[test]
+    fn rejects_unclosed_or_mixed_frontmatter() {
+        let unclosed = parse_markdown("x.md", "---\ntags: [alpha]\n# Body\n");
+        assert!(!unclosed.frontmatter_supported);
+        assert!(unclosed.tags.is_empty());
+
+        let mixed = parse_markdown("x.md", "---\ntags:\n  - alpha\nauthor: Jane\n---\n");
+        assert!(!mixed.frontmatter_supported);
+        assert!(mixed.tags.is_empty());
+    }
 }

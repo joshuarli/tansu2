@@ -21,15 +21,25 @@ lint: types-check
 	cargo fmt --check
 	cargo clippy --all-targets -- -D warnings
 
-coverage: types-check
+coverage-rs:
+	cargo llvm-cov --workspace --all-targets --ignore-filename-regex 'src/(main\.rs|bin/gen-api-types\.rs)$$' --fail-under-lines 87 --fail-under-functions 80 --no-clean
+
+coverage-ts: types-check
 	pnpm exec vitest run --coverage
 	cd packages/md-wysiwyg && pnpm exec vitest run --coverage
+
+coverage: coverage-rs coverage-ts
+
+coverage-html: types-check
+	cargo llvm-cov --workspace --all-targets --ignore-filename-regex 'src/(main\.rs|bin/gen-api-types\.rs)$$' --html --no-clean
+	pnpm exec vitest run --coverage --coverage.reporter=html
+	cd packages/md-wysiwyg && pnpm exec vitest run --coverage --coverage.reporter=html
 
 audit:
 	pnpm audit --prod --audit-level=high
 	cargo deny check
 
-ci: lint test test-e2e audit
+ci: lint coverage test-e2e audit
 
 types:
 	cargo run --quiet --bin gen-api-types
@@ -58,8 +68,11 @@ test-rs:
 	cargo test -q
 
 bench:
+	node bench/integrated-bench.mjs --browser=chromium --warmups=2 --runs=5
 	cd packages/md-wysiwyg && MD_WYSIWYG_BENCH=1 pnpm exec vitest run tests/large-note-bench.test.ts
 
-bench-full: bench
+bench-full:
+	node bench/integrated-bench.mjs --browser=chromium,firefox,webkit --warmups=5 --runs=20
+	cd packages/md-wysiwyg && MD_WYSIWYG_BENCH=1 pnpm exec vitest run tests/large-note-bench.test.ts
 
-.PHONY: audit bench bench-full ci coverage dev dev-config check lint types types-check ts test test-pkg test-ts test-e2e test-rs
+.PHONY: audit bench bench-full ci coverage coverage-html coverage-rs coverage-ts dev dev-config check lint types types-check ts test test-pkg test-ts test-e2e test-rs

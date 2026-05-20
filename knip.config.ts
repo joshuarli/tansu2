@@ -3,6 +3,7 @@ import type { KnipConfig } from "knip";
 const config: KnipConfig = {
   entry: [
     "web/ts/main.ts",
+    "bench/*.mjs",
     "scripts/*.mjs",
     "*.config.{mjs,ts}",
     "packages/md-wysiwyg/src/index.ts",
@@ -10,6 +11,7 @@ const config: KnipConfig = {
   ],
   project: [
     "web/ts/**/*.ts",
+    "bench/*.mjs",
     "scripts/*.mjs",
     "*.config.{mjs,ts}",
     "packages/md-wysiwyg/src/**/*.ts",

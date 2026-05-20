@@ -6,3 +6,4 @@ bindings
 .env
 coverage/
 .dev/
+bench/results/

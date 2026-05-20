@@ -1,9 +1,27 @@
 {
   "md-wysiwyg-large-note": {
-    "chars": 44533,
-    "renderMsP95": 250,
-    "serializeMsP95": 250,
-    "editorSetValueMsP95": 500,
-    "editorGetValueMsP95": 250
+    "chars": 43959,
+    "renderMsP95": 25,
+    "serializeMsP95": 75,
+    "editorSetValueMsP95": 150,
+    "editorGetValueMsP95": 40
+  },
+  "integrated": {
+    "coldStartup": { "medianMs": 30000, "p95Ms": 30000 },
+    "chromium.warmStartup": { "medianMs": 1000, "p95Ms": 2000 },
+    "chromium.bootstrap": { "medianMs": 2000, "p95Ms": 5000 },
+    "chromium.firstEditorInteractive": { "medianMs": 5000, "p95Ms": 10000 },
+    "chromium.openNote": { "medianMs": 1000, "p95Ms": 3000 },
+    "chromium.switchNote": { "medianMs": 2000, "p95Ms": 5000 },
+    "chromium.editSave": { "medianMs": 2000, "p95Ms": 5000 },
+    "chromium.search": { "medianMs": 2000, "p95Ms": 5000 },
+    "chromium.conflictRestore": { "medianMs": 3000, "p95Ms": 8000 },
+    "chromium.ssePropagation": { "medianMs": 3000, "p95Ms": 8000 },
+    "chromium.watcherExternalEdit": { "medianMs": 5000, "p95Ms": 10000 },
+    "chromium.imagePath": { "medianMs": 2000, "p95Ms": 5000 },
+    "chromium.revisionRestore": { "medianMs": 3000, "p95Ms": 8000 },
+    "productionBundleBytes": { "maxBytes": 1500000 },
+    "catalogBytes": { "maxBytes": 200000000 },
+    "serverRssBytes": { "maxBytes": 800000000 }
   }
 }

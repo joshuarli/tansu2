@@ -31,6 +31,7 @@ Use these first:
 ```sh
 make check
 make test
+make coverage
 make test-e2e
 ```
 
@@ -48,6 +49,14 @@ pnpm run test
 cd packages/md-wysiwyg && pnpm exec vitest run
 pnpm run test-e2e
 ```
+
+Coverage gates are enforced by `make coverage`: Rust uses `cargo llvm-cov`,
+the app TypeScript suite uses Vitest/V8, and the editor package uses
+Vitest/V8. App and editor TypeScript are gated at 90% lines and 85% functions.
+Rust is currently gated at 87% lines and 80% functions after excluding only
+binary entrypoint glue; the remaining gap is concentrated in long-running
+server/app wiring and vault internals that need broader behavior tests before
+raising the gate to 90%/85%.
 
 Do not run release builds unless explicitly requested.
 

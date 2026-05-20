@@ -54,6 +54,21 @@ impl HttpResponse {
         }
     }
 
+    #[cfg(test)]
+    pub(crate) fn status(&self) -> u16 {
+        self.status
+    }
+
+    #[cfg(test)]
+    pub(crate) fn content_type(&self) -> &str {
+        &self.content_type
+    }
+
+    #[cfg(test)]
+    pub(crate) fn body(&self) -> &[u8] {
+        &self.body
+    }
+
     fn write(self, stream: &mut TcpStream) -> std::io::Result<()> {
         let reason = match self.status {
             200 => "OK",
@@ -244,4 +259,88 @@ fn serve_static(path: &str) -> Result<HttpResponse> {
         _ => "application/octet-stream",
     };
     Ok(HttpResponse::bytes(200, content_type, body))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::io::{Read, Write};
+
+    #[test]
+    fn parses_request_headers_body_and_percent_encoding() {
+        let request = parse_raw_request(
+            b"POST /api/notes/n%201 HTTP/1.1\r\nHost: localhost\r\nContent-Length: 7\r\nX-Tansu-Vault: 2\r\n\r\npayload",
+        )
+        .unwrap();
+
+        assert_eq!(request.method, "POST");
+        assert_eq!(request.path, "/api/notes/n%201");
+        assert_eq!(request.body, b"payload");
+        assert!(
+            request.headers.iter().any(|(name, value)| {
+                name.eq_ignore_ascii_case("x-tansu-vault") && value == "2"
+            })
+        );
+    }
+
+    #[test]
+    fn rejects_invalid_percent_encoding_and_large_bodies() {
+        let invalid = parse_raw_request(b"GET /api/search?q=%xx HTTP/1.1\r\nHost: local\r\n\r\n")
+            .unwrap_err();
+        assert!(invalid.to_string().contains("invalid percent encoding"));
+
+        let large =
+            parse_raw_request(b"POST /api/notes HTTP/1.1\r\nContent-Length: 33554433\r\n\r\n")
+                .unwrap_err();
+        assert!(large.to_string().contains("request body too large"));
+    }
+
+    #[test]
+    fn serves_static_files_with_mime_types_and_rejects_traversal() {
+        let html = serve_static("/").unwrap();
+        assert_eq!(html.status(), 200);
+        assert_eq!(html.content_type(), "text/html; charset=utf-8");
+        assert!(!html.body().is_empty());
+
+        let css = serve_static("/static/app.css?cache=1").unwrap();
+        assert_eq!(css.content_type(), "text/css; charset=utf-8");
+
+        let missing = serve_static("/../Cargo.toml").unwrap_err();
+        assert!(matches!(missing, Error::NotFound(_)));
+    }
+
+    #[test]
+    fn writes_security_headers_and_reason_phrase() {
+        let listener = TcpListener::bind(("127.0.0.1", 0)).unwrap();
+        let address = listener.local_addr().unwrap();
+        let handle = thread::spawn(move || {
+            let (mut stream, _) = listener.accept().unwrap();
+            HttpResponse::text(409, "conflict")
+                .write(&mut stream)
+                .unwrap();
+        });
+        let mut client = TcpStream::connect(address).unwrap();
+        let mut response = String::new();
+        client.read_to_string(&mut response).unwrap();
+        handle.join().unwrap();
+
+        assert!(response.starts_with("HTTP/1.1 409 Conflict"));
+        assert!(response.contains("X-Content-Type-Options: nosniff"));
+        assert!(response.contains("Content-Security-Policy: default-src 'self'"));
+        assert!(response.ends_with("conflict"));
+    }
+
+    fn parse_raw_request(bytes: &[u8]) -> Result<HttpRequest> {
+        let listener = TcpListener::bind(("127.0.0.1", 0))?;
+        let address = listener.local_addr()?;
+        let bytes = bytes.to_vec();
+        let handle = thread::spawn(move || {
+            let mut client = TcpStream::connect(address).unwrap();
+            client.write_all(&bytes).unwrap();
+        });
+        let (mut server, _) = listener.accept()?;
+        let request = parse_request(&mut server);
+        handle.join().unwrap();
+        request
+    }
 }

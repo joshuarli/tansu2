@@ -574,4 +574,129 @@ describe("createEditor", () => {
     expect(handle.getValue()).toContain("second");
     handle.destroy();
   });
+
+  it("source mode handles save and tab indentation shortcuts", () => {
+    const onSave = vi.fn();
+    const onChange = vi.fn();
+    const handle = createEditor(container, { onSave, onChange, indentUnit: "  " });
+    handle.setValue("one\ntwo");
+    handle.toggleSourceMode();
+    handle.sourceEl.selectionStart = 0;
+    handle.sourceEl.selectionEnd = 0;
+    handle.sourceEl.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true }));
+    expect(handle.sourceEl.value).toBe("  one\ntwo");
+    expect(onChange).toHaveBeenCalledTimes(1);
+
+    handle.sourceEl.selectionStart = 0;
+    handle.sourceEl.selectionEnd = handle.sourceEl.value.length;
+    handle.sourceEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Tab", shiftKey: true, bubbles: true }),
+    );
+    expect(handle.sourceEl.value).toBe("one\ntwo");
+
+    handle.sourceEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "s", metaKey: true, bubbles: true }),
+    );
+    expect(onSave).toHaveBeenCalledTimes(1);
+    handle.destroy();
+  });
+
+  it("content mode handles formatting and save shortcuts", () => {
+    const onSave = vi.fn();
+    const handle = createEditor(container, { onSave });
+    handle.setValue("hello");
+    const textNode = handle.contentEl.querySelector("p")!.firstChild!;
+    const range = document.createRange();
+    range.setStart(textNode, 0);
+    range.setEnd(textNode, 5);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    handle.contentEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "b", metaKey: true, bubbles: true }),
+    );
+    expect(handle.getValue()).toBe("**hello**");
+    handle.contentEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "s", metaKey: true, bubbles: true }),
+    );
+    expect(onSave).toHaveBeenCalledTimes(1);
+    handle.destroy();
+  });
+
+  it("enter at the end of a heading creates a paragraph continuation", () => {
+    const onChange = vi.fn();
+    const handle = createEditor(container, { onChange });
+    handle.setValue("# Heading");
+    const heading = handle.contentEl.querySelector("h1")!;
+    const range = document.createRange();
+    range.selectNodeContents(heading);
+    range.collapse(false);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    handle.contentEl.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    expect(handle.contentEl.querySelector(".md-heading-continuation")).not.toBeNull();
+    expect(onChange).toHaveBeenCalled();
+    handle.destroy();
+  });
+
+  it("removes an empty top-level task item on backspace", () => {
+    const onChange = vi.fn();
+    const handle = createEditor(container, { onChange });
+    handle.setValue("- [ ] ");
+    const item = handle.contentEl.querySelector("li")!;
+    const range = document.createRange();
+    range.selectNodeContents(item);
+    range.collapse(true);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    handle.contentEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Backspace", bubbles: true }),
+    );
+    expect(handle.contentEl.querySelector("ul")).toBeNull();
+    expect(onChange).toHaveBeenCalled();
+    handle.destroy();
+  });
+
+  it("ignores image resize drags away from the resize edge and unchanged drags", () => {
+    const onChange = vi.fn();
+    const handle = createEditor(container, {
+      extensions: [createWikiImageExtension({ resolveUrl: (name) => `/assets/${name}` })],
+      onChange,
+    });
+    handle.setValue("![[photo.webp|120]]");
+    const image = handle.contentEl.querySelector("img")!;
+    Object.defineProperty(image, "getBoundingClientRect", {
+      value: () => ({
+        bottom: 80,
+        height: 80,
+        left: 0,
+        right: 120,
+        top: 0,
+        width: 120,
+        x: 0,
+        y: 0,
+        toJSON: () => ({}),
+      }),
+    });
+
+    image.dispatchEvent(new MouseEvent("pointerdown", { bubbles: true, clientX: 20 }));
+    document.dispatchEvent(new MouseEvent("pointermove", { bubbles: true, clientX: 80 }));
+    expect(image.getAttribute("width")).toBe("120");
+
+    image.dispatchEvent(new MouseEvent("pointerdown", { bubbles: true, clientX: 118 }));
+    document.dispatchEvent(new MouseEvent("pointermove", { bubbles: true, clientX: 118 }));
+    document.dispatchEvent(new MouseEvent("pointercancel", { bubbles: true, clientX: 118 }));
+    expect(onChange).not.toHaveBeenCalled();
+    handle.destroy();
+  });
+
+  it("setConfig updates classes and later editor behavior", () => {
+    const handle = createEditor(container);
+    handle.setConfig({ contentClassName: "custom-content", sourceClassName: "custom-source" });
+    expect(handle.contentEl.className).toBe("custom-content");
+    expect(handle.sourceEl.className).toBe("custom-source");
+    handle.destroy();
+  });
 });
