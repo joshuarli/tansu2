@@ -10,8 +10,8 @@ dev-config:
 	node scripts/test-fixture.mjs "$(DEV_DIR)"
 
 check: types-check
-	tsgo --noEmit --pretty false
-	tsgo -p packages/md-wysiwyg/tsconfig.json --noEmit --pretty false
+	pnpm exec tsgo --noEmit --pretty false
+	pnpm exec tsgo -p packages/md-wysiwyg/tsconfig.json --noEmit --pretty false
 	cargo check -q
 
 types:
@@ -22,18 +22,18 @@ types-check:
 
 ts: types
 	pnpm run bundle-dev
-	tsgo --noEmit --pretty false
+	pnpm exec tsgo --noEmit --pretty false
 
 test: types-check test-pkg test-ts test-rs
 
 test-pkg:
-	cd packages/md-wysiwyg && vitest run
+	cd packages/md-wysiwyg && pnpm exec vitest run
 
 test-ts:
-	vitest run
+	pnpm exec vitest run
 
 test-e2e:
-	vitest run --config vitest.e2e.config.ts
+	pnpm run test-e2e
 
 test-rs:
 	cargo test -q
