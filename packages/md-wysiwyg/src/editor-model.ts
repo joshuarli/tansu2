@@ -341,6 +341,16 @@ export function replaceLineText(
   };
 }
 
+export function replaceLine(state: EditorState, lineIndex: number, text: string): TransactionResult {
+  if (lineIndex < 0 || lineIndex >= state.doc.lines.length) {
+    return unchanged(state);
+  }
+  const line = state.doc.lines[lineIndex]!;
+  const start = positionToOffset(state.doc, { line: lineIndex, column: 0 });
+  const end = positionToOffset(state.doc, { line: lineIndex, column: line.text.length });
+  return replaceRange(state, start, end, text);
+}
+
 function replaceRange(
   state: EditorState,
   start: number,

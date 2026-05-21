@@ -70,8 +70,12 @@ function annotateLineElement(el: HTMLElement, doc: EditorDoc, line: number): voi
   const listMatch = text.match(/^([ \t]*([-*+]|\d+\.)(?: \[[ xX]\])?\s)(.*)$/);
   const headingMatch = text.match(/^(#{1,6}\s+)(.*)$/);
   const taskMatch = text.match(/^([ \t]*\[[ xX]\]\s+)(.*)$/);
+  const quoteMatch = text.match(/^(>\s?)(.*)$/);
   const contentStart =
-    listMatch?.[1]?.length ?? headingMatch?.[1]?.length ?? taskMatch?.[1]?.length;
+    listMatch?.[1]?.length ??
+    headingMatch?.[1]?.length ??
+    taskMatch?.[1]?.length ??
+    quoteMatch?.[1]?.length;
   if (contentStart !== undefined) {
     el.dataset["mdLineContentStart"] = String(contentStart);
   } else {

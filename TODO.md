@@ -27,15 +27,15 @@ not only saved Markdown, DOM text, or sentinel counts.
 Goal: structural editing should be model-owned and acceptance-tested across the
 Markdown surface the app exposes.
 
-- [ ] Enter at start, middle, and end of a paragraph has model and cursor
+- [x] Enter at start, middle, and end of a paragraph has model and cursor
   acceptance coverage.
-- [ ] Backspace/Delete behavior across normal and blank lines has browser
+- [x] Backspace/Delete behavior across normal and blank lines has browser
   acceptance coverage.
-- [ ] Block input transforms are complete for headings, unordered/ordered lists,
+- [x] Block input transforms are complete for headings, unordered/ordered lists,
   tasks, blockquotes, code fences, and horizontal rules.
-- [ ] Block transforms have browser acceptance coverage proving model Markdown
+- [x] Block transforms have browser acceptance coverage proving model Markdown
   and visible cursor placement.
-- [ ] Paste of multiline plain text and sanitized HTML preserves blank lines in
+- [x] Paste of multiline plain text and sanitized HTML preserves blank lines in
   browser acceptance.
 
 ## Tranche 3: Markdown Surface And Extensions

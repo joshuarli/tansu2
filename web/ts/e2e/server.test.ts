@@ -455,6 +455,221 @@ describe("real server harness", () => {
     await page.close();
   });
 
+  it("handles Enter at paragraph start, middle, and end through model transactions", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await createNote(page, "Enter Positions");
+    await page.keyboard.type("foo");
+    await placeCursorInTextBlock(page, "foo", 0);
+    await page.keyboard.press("Enter");
+    await expect.poll(() => activeCursorBlankLayout(page, "Enter Positions")).toMatchObject({
+      visibleBlankCountAfterText: 1,
+      cursorHasLineBox: true,
+      cursorIsAfterBlankLine: true,
+    });
+
+    await placeCursorInTextBlock(page, "foo", 1);
+    await page.keyboard.press("Enter");
+    await expect.poll(() => visibleParagraphLayout(page, "f", "oo", 0)).toMatchObject({
+      blankCount: 0,
+      ordered: true,
+      blankHasLineBox: true,
+      gapLooksLikeBlankLine: true,
+    });
+
+    await placeCursorInTextBlock(page, "oo", 2);
+    await page.keyboard.press("Enter");
+    await expect.poll(() => activeCursorBlankLayout(page, "oo")).toMatchObject({
+      visibleBlankCountAfterText: 0,
+      cursorHasLineBox: true,
+      cursorIsAfterBlankLine: false,
+    });
+
+    await waitForNoteSave(page);
+    const saved = await openSeededDocument("enter-positions.md");
+    expect(saved.content).toBe("# Enter Positions\r\n\r\nf\r\noo\r\n");
+    await page.close();
+  });
+
+  it("handles Backspace and Delete across text and blank-line boundaries", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await createNote(page, "Delete Boundaries");
+    await page.keyboard.type("abc");
+    await placeCursorInTextBlock(page, "abc", 2);
+    await page.keyboard.press("Backspace");
+    await expect.poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? "")).toContain(
+      "ac",
+    );
+    await page.keyboard.press("Delete");
+    await expect.poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? "")).not.toContain(
+      "ac",
+    );
+
+    await createNote(page, "Delete Boundaries Blank");
+    await page.keyboard.type("foo");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("bar");
+    await placeCursorInTextBlock(page, "bar", 0);
+    await page.keyboard.press("Backspace");
+    await expect.poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? "")).not.toContain(
+      "foo\n\nbar",
+    );
+
+    await placeCursorInTextBlock(page, "foo", 3);
+    await page.keyboard.press("Enter");
+    await placeCursorInTextBlock(page, "foo", 3);
+    await page.keyboard.press("Delete");
+    await expect.poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? "")).not.toContain(
+      "foo\n\nbar",
+    );
+
+    await expectSavedContent("delete-boundaries-blank.md", "# Delete Boundaries Blank\r\nfoo\r\nbar");
+    await page.close();
+  });
+
+  it("applies visual block input syntax through model-backed rendering", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await createNote(page, "Heading Syntax");
+    await page.keyboard.type("# Heading");
+    await expect.poll(() => blockSyntaxSummary(page)).toMatchObject({ headings: 2 });
+    await expect.poll(() => activeCursorHost(page)).toMatchObject({
+      tagName: "H1",
+      text: "Heading",
+      cursorAtEnd: true,
+    });
+    await expectSavedContent("heading-syntax.md", "# Heading Syntax\r\n# Heading");
+    await page.close();
+
+    const listPage = await browser!.newPage();
+    await listPage.goto(baseUrl);
+    await listPage.waitForSelector(".main");
+    await createNote(listPage, "List Syntax");
+    await listPage.keyboard.type("- item");
+    await expect.poll(() => blockSyntaxSummary(listPage)).toMatchObject({ unorderedItems: 1 });
+    await expect.poll(() => activeCursorHost(listPage)).toMatchObject({
+      tagName: "LI",
+      text: "item",
+      cursorAtEnd: true,
+      inUnorderedList: true,
+    });
+    await expectSavedContent("list-syntax.md", "# List Syntax\r\n- item");
+    await listPage.close();
+
+    const orderedPage = await browser!.newPage();
+    await orderedPage.goto(baseUrl);
+    await orderedPage.waitForSelector(".main");
+    await createNote(orderedPage, "Ordered Syntax");
+    await orderedPage.keyboard.type("1. ordered");
+    await expect.poll(() => blockSyntaxSummary(orderedPage)).toMatchObject({ orderedItems: 1 });
+    await expect.poll(() => activeCursorHost(orderedPage)).toMatchObject({
+      tagName: "LI",
+      text: "ordered",
+      cursorAtEnd: true,
+      inOrderedList: true,
+    });
+    await expectSavedContent("ordered-syntax.md", "# Ordered Syntax\r\n1. ordered");
+    await orderedPage.close();
+
+    const taskPage = await browser!.newPage();
+    await taskPage.goto(baseUrl);
+    await taskPage.waitForSelector(".main");
+    await createNote(taskPage, "Task Syntax");
+    await taskPage.keyboard.type("[ ] task");
+    await expect.poll(() => blockSyntaxSummary(taskPage)).toMatchObject({ taskItems: 1 });
+    await expect.poll(() => activeCursorHost(taskPage)).toMatchObject({
+      tagName: "LI",
+      text: "task",
+      cursorAtEnd: true,
+      inTaskList: true,
+    });
+    await expectSavedContent("task-syntax.md", "# Task Syntax\r\n[ ] task");
+    await taskPage.close();
+
+    const quotePage = await browser!.newPage();
+    await quotePage.goto(baseUrl);
+    await quotePage.waitForSelector(".main");
+    await createNote(quotePage, "Quote Syntax");
+    await quotePage.keyboard.type("> quote");
+    await expect.poll(() => blockSyntaxSummary(quotePage)).toMatchObject({ blockquotes: 1 });
+    await expect.poll(() => activeCursorHost(quotePage)).toMatchObject({
+      tagName: "P",
+      text: "quote",
+      cursorAtEnd: true,
+      inBlockquote: true,
+    });
+    await expectSavedContent("quote-syntax.md", "# Quote Syntax\r\n> quote");
+    await quotePage.close();
+
+    const hrPage = await browser!.newPage();
+    await hrPage.goto(baseUrl);
+    await hrPage.waitForSelector(".main");
+    await createNote(hrPage, "Hr Syntax");
+    await hrPage.keyboard.type("---");
+    await hrPage.keyboard.press("Enter");
+    await expect.poll(() => blockSyntaxSummary(hrPage)).toMatchObject({ hrs: 1 });
+    await expect.poll(() => activeCursorHost(hrPage)).toMatchObject({
+      tagName: "P",
+      text: "",
+      cursorAtEnd: true,
+      previousTagName: "HR",
+    });
+    await expectSavedContent("hr-syntax.md", "# Hr Syntax\r\n---\r\n");
+    await hrPage.close();
+
+    const codePage = await browser!.newPage();
+    await codePage.goto(baseUrl);
+    await codePage.waitForSelector(".main");
+    await createNote(codePage, "Code Syntax");
+    await codePage.keyboard.type("```");
+    await codePage.keyboard.press("Enter");
+    await expect.poll(() => blockSyntaxSummary(codePage)).toMatchObject({ codeBlocks: 1 });
+    await expect.poll(() => activeCursorHost(codePage)).toMatchObject({
+      tagName: "PRE",
+      text: "",
+      cursorAtEnd: true,
+      inCodeBlock: true,
+    });
+    await expectSavedContent("code-syntax.md", "# Code Syntax\r\n```\r\n");
+    await codePage.close();
+  });
+
+  it("preserves blank lines when pasting multiline plain text and sanitized HTML", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await createNote(page, "Paste Blanks");
+    await pastePlainText(page, "one\n\nthree");
+    await page.keyboard.press("Enter");
+    await pasteHtml(page, "<p>four</p><p><br></p><p>six</p>", "four\n\nsix");
+
+    await expect.poll(() => visibleParagraphLayout(page, "one", "three", 1)).toMatchObject({
+      blankCount: 1,
+      ordered: true,
+      blankHasLineBox: true,
+      gapLooksLikeBlankLine: true,
+    });
+    await expect.poll(() => visibleParagraphLayout(page, "four", "six", 1)).toMatchObject({
+      blankCount: 1,
+      ordered: true,
+      blankHasLineBox: true,
+      gapLooksLikeBlankLine: true,
+    });
+    await waitForNoteSave(page);
+    const saved = await openSeededDocument("paste-blanks.md");
+    expect(saved.content).toBe("# Paste Blanks\r\none\r\n\r\nthree\r\nfour\r\n\r\nsix");
+    await page.close();
+  });
+
   it("keeps rapid typing responsive in a large visual note", async () => {
     const content =
       "# Stress\n\n" +
@@ -678,6 +893,163 @@ async function openSeededDocument(path: string): Promise<TestNoteDocument> {
   }).then((response) => response.json() as Promise<TestNoteDocument>);
 }
 
+async function createNote(page: Page, title: string): Promise<void> {
+  await page.locator('.sidebar-controls [title="New note"]').click();
+  await page.locator(".note-dialog-panel input").fill(title);
+  await page.locator(".note-dialog-panel .primary-button").click();
+  await page.waitForFunction(
+    (expected) => document.querySelector(".tab.active")?.textContent?.includes(expected),
+    title,
+  );
+  await expect
+    .poll(() =>
+      page.locator(".app-editor").evaluate((editor) => {
+        const anchor = getSelection()?.anchorNode;
+        const element = anchor instanceof Element ? anchor : anchor?.parentElement;
+        return element?.closest("p")?.parentElement === editor;
+      }),
+    )
+    .toBe(true);
+}
+
+async function waitForNoteSave(page: Page): Promise<void> {
+  await page.waitForResponse(
+    (response) =>
+      response.request().method() === "PUT" &&
+      new URL(response.url()).pathname.startsWith("/api/notes/") &&
+      response.status() === 200,
+  );
+}
+
+async function expectSavedContent(path: string, content: string): Promise<void> {
+  await expect.poll(async () => (await openSeededDocument(path)).content).toBe(content);
+}
+
+async function placeCursorInTextBlock(page: Page, text: string, offset: number): Promise<void> {
+  await page.locator(".app-editor").evaluate(
+    (editor, args) => {
+      const host = [...editor.querySelectorAll<HTMLElement>("[data-md-line-index]")].find(
+        (candidate) =>
+          candidate.dataset["mdBlank"] !== "true" && candidate.textContent === args.text,
+      );
+      if (!host) {
+        throw new Error(`missing text block: ${args.text}`);
+      }
+      const textNode = [...host.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
+      if (!textNode) {
+        throw new Error(`missing text node: ${args.text}`);
+      }
+      const range = document.createRange();
+      range.setStart(textNode, Math.min(args.offset, textNode.textContent?.length ?? 0));
+      range.collapse(true);
+      const selection = getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+      (editor as HTMLElement).focus();
+    },
+    { text, offset },
+  );
+}
+
+async function pastePlainText(page: Page, text: string): Promise<void> {
+  await page.locator(".app-editor").evaluate((editor, pasted) => {
+    const data = new DataTransfer();
+    data.setData("text/plain", pasted);
+    const event = new Event("paste", { bubbles: true, cancelable: true });
+    Object.defineProperty(event, "clipboardData", { value: data });
+    editor.dispatchEvent(event);
+  }, text);
+}
+
+async function pasteHtml(page: Page, html: string, fallbackText: string): Promise<void> {
+  await page.locator(".app-editor").evaluate(
+    (editor, dataInput) => {
+      const data = new DataTransfer();
+      data.setData("text/html", dataInput.html);
+      data.setData("text/plain", dataInput.fallbackText);
+      const event = new Event("paste", { bubbles: true, cancelable: true });
+      Object.defineProperty(event, "clipboardData", { value: data });
+      editor.dispatchEvent(event);
+    },
+    { html, fallbackText },
+  );
+}
+
+async function blockSyntaxSummary(page: Page): Promise<{
+  headings: number;
+  unorderedItems: number;
+  orderedItems: number;
+  taskItems: number;
+  blockquotes: number;
+  hrs: number;
+  codeBlocks: number;
+}> {
+  return page.locator(".app-editor").evaluate((editor) => ({
+    headings: editor.querySelectorAll("h1").length,
+    unorderedItems: editor.querySelectorAll("ul:not(.task-list) > li").length,
+    orderedItems: editor.querySelectorAll("ol > li").length,
+    taskItems: editor.querySelectorAll(".task-item").length,
+    blockquotes: editor.querySelectorAll("blockquote").length,
+    hrs: editor.querySelectorAll("hr").length,
+    codeBlocks: editor.querySelectorAll("pre code").length,
+  }));
+}
+
+async function activeCursorHost(page: Page): Promise<{
+  tagName: string;
+  text: string;
+  cursorAtEnd: boolean;
+  inUnorderedList: boolean;
+  inOrderedList: boolean;
+  inTaskList: boolean;
+  inBlockquote: boolean;
+  inCodeBlock: boolean;
+  previousTagName: string;
+}> {
+  return page.locator(".app-editor").evaluate(() => {
+    const selection = getSelection();
+    const anchor = selection?.anchorNode;
+    const anchorElement = anchor instanceof Element ? anchor : anchor?.parentElement;
+    const host = anchorElement?.closest("li, h1, h2, h3, h4, h5, h6, p, code, pre");
+    if (!(host instanceof HTMLElement)) {
+      return {
+        tagName: "",
+        text: "",
+        cursorAtEnd: false,
+        inUnorderedList: false,
+        inOrderedList: false,
+        inTaskList: false,
+        inBlockquote: false,
+        inCodeBlock: false,
+        previousTagName: "",
+      };
+    }
+    const clone = host.cloneNode(true) as HTMLElement;
+    for (const control of clone.querySelectorAll("button,input")) {
+      control.remove();
+    }
+    const text = (clone.textContent ?? "").replaceAll("​", "").replace(/^\u00A0/, "");
+    const cursorAtEnd =
+      anchor !== null &&
+      anchor !== undefined &&
+      anchor.nodeType === Node.TEXT_NODE &&
+      selection?.anchorOffset === (anchor.textContent ?? "").length;
+    return {
+      tagName: host.tagName,
+      text,
+      cursorAtEnd: text === "" || cursorAtEnd,
+      inUnorderedList:
+        host.tagName === "LI" &&
+        host.closest("ul:not(.task-list)") instanceof HTMLUListElement,
+      inOrderedList: host.tagName === "LI" && host.closest("ol") instanceof HTMLOListElement,
+      inTaskList: host.tagName === "LI" && host.closest(".task-list") instanceof HTMLUListElement,
+      inBlockquote: host.closest("blockquote") instanceof HTMLQuoteElement,
+      inCodeBlock: host.closest("pre") instanceof HTMLPreElement,
+      previousTagName: host.previousElementSibling?.tagName ?? "",
+    };
+  });
+}
+
 async function visibleParagraphLayout(
   page: Page,
   beforeText: string,
@@ -709,6 +1081,16 @@ async function visibleParagraphLayout(
               .slice(beforeIndex + 1, afterIndex)
               .filter((child) => child.dataset["mdBlank"] === "true" && !child.hidden);
       const blank = blanks[labels.expectedBlankCount - 1];
+      if (labels.expectedBlankCount === 0 && before && after) {
+        const beforeRect = before.getBoundingClientRect();
+        const afterRect = after.getBoundingClientRect();
+        return {
+          blankCount: blanks.length,
+          ordered: beforeRect.bottom <= afterRect.top,
+          blankHasLineBox: true,
+          gapLooksLikeBlankLine: true,
+        };
+      }
       if (!before || !blank || !after) {
         return {
           blankCount: blanks.length,

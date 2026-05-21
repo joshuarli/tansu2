@@ -14,6 +14,7 @@ import {
   markdownToDoc,
   normalizeMarkdownNewlines,
   offsetsToSelection,
+  replaceLine,
   replaceLineText,
   replaceSelection as modelReplaceSelection,
   selectionToOffsets as modelSelectionToOffsets,
@@ -734,7 +735,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       blockKind !== "paragraph" &&
       blockKind !== "blank" &&
       blockKind !== "heading" &&
-      blockKind !== "list"
+      blockKind !== "list" &&
+      blockKind !== "blockquote"
     ) {
       return false;
     }
@@ -742,6 +744,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       (child) =>
         child instanceof HTMLElement &&
         child.tagName !== "BR" &&
+        child.tagName !== "INPUT" &&
         child.tagName !== "BUTTON" &&
         child.className !== "md-block-handle",
     );
@@ -802,6 +805,67 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     return result.changed || result.renderHint.kind === "none";
   }
 
+  function replaceEmptySelectedLineInput(text: string): boolean {
+    if (state.selection.kind !== "text") {
+      return false;
+    }
+    const { anchor, focus } = state.selection;
+    if (anchor.line !== focus.line || anchor.column !== focus.column) {
+      return false;
+    }
+    if (state.doc.lines[anchor.line]?.text !== "") {
+      return false;
+    }
+    if (shouldKeepMarkerInputPlain(text)) {
+      const line = anchor.line;
+      const result = replaceLineText(state, line, text);
+      state = result.state;
+      renderPlainLineHost(line, text);
+      undoController.scheduleTypingCheckpoint();
+      cfg.onChange?.();
+      return true;
+    }
+    return commitStructuralTransaction(replaceLineText(state, anchor.line, text));
+  }
+
+  function shouldKeepMarkerInputPlain(text: string): boolean {
+    return /^[-*+>]$/.test(text);
+  }
+
+  function renderPlainLineHost(lineIndex: number, text: string): void {
+    const line = state.doc.lines[lineIndex];
+    const host = line ? domMap.lineToElement.get(line.id) : null;
+    if (!line || !host) {
+      renderCurrentModel();
+      return;
+    }
+    const handle = hostDirectHandle(host);
+    for (const child of Array.from(host.childNodes)) {
+      if (child !== handle) {
+        child.remove();
+      }
+    }
+    const textNode = document.createTextNode(text);
+    if (handle) {
+      host.insertBefore(textNode, handle);
+    } else {
+      host.append(textNode);
+    }
+    host.hidden = false;
+    delete host.dataset["mdBlank"];
+    delete host.dataset["mdLineContentStart"];
+    host.dataset["mdLineId"] = line.id;
+    host.dataset["mdLineIndex"] = String(lineIndex);
+    host.dataset["mdBlockKind"] = "paragraph";
+    const range = document.createRange();
+    range.setStart(textNode, text.length);
+    range.collapse(true);
+    const sel = window.getSelection();
+    sel?.removeAllRanges();
+    sel?.addRange(range);
+    updateActiveBlankVisibility();
+  }
+
   function shouldRenderModelBlockInputTransform(): boolean {
     if (state.selection.kind !== "text") return false;
     const { anchor, focus } = state.selection;
@@ -834,6 +898,34 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       renderCurrentModel();
     }
     return true;
+  }
+
+  function blockTransformTextAfterInsert(data: string): string | null {
+    if (data !== " " && data !== "\u00A0") {
+      return null;
+    }
+    if (state.selection.kind !== "text") {
+      return null;
+    }
+    const { anchor, focus } = state.selection;
+    if (anchor.line !== focus.line || anchor.column !== focus.column) {
+      return null;
+    }
+    const line = state.doc.lines[anchor.line]?.text;
+    if (line === undefined || anchor.column !== line.length) {
+      return null;
+    }
+    if (
+      /^#{1,6}$/.test(line) ||
+      /^[-*]$/.test(line) ||
+      /^\d+\.$/.test(line) ||
+      /^>$/.test(line) ||
+      /^\[([ xX])\]$/.test(line) ||
+      /^```[^ \u00A0]*$/.test(line)
+    ) {
+      return `${line}${data}`;
+    }
+    return null;
   }
 
   // ── getValue / setValue ─────────────────────────────────────────────────────
@@ -982,12 +1074,17 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   }
 
   function ensureEmptyParagraphPlaceholder(block: HTMLElement): void {
-    if (
-      (block.tagName === "P" || block.tagName === "DIV") &&
-      block.dataset["mdBlank"] !== "true" &&
-      !block.hasChildNodes()
-    ) {
-      block.append(document.createElement("br"));
+    if (block.dataset["mdBlank"] === "true") {
+      return;
+    }
+    const handle = hostDirectHandle(block);
+    const hasEditableContent = Array.from(block.childNodes).some((child) => {
+      if (child === handle) return false;
+      if (child.nodeName === "BR") return true;
+      return (child.textContent ?? "").replaceAll("​", "") !== "";
+    });
+    if (!hasEditableContent) {
+      block.insertBefore(document.createElement("br"), handle);
     }
   }
 
@@ -1393,11 +1490,40 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       applyFormat(toggleHighlight);
       return;
     }
+    if (e.key === " " || e.key === "\u00A0") {
+      const text = blockTransformTextAfterInsert(e.key);
+      if (text !== null && state.selection.kind === "text") {
+        e.preventDefault();
+        const line = state.selection.anchor.line;
+        undoController.checkpoint();
+        const result = replaceLineText(state, line, text, text.length);
+        state = result.state;
+        renderModelAfterInputTransform();
+        undoController.scheduleTypingCheckpoint();
+        cfg.onChange?.();
+        return;
+      }
+    }
     if (handleArrowThroughBlankLines(e)) {
       arrowNavigationHandled = true;
       return;
     }
     if (e.key === "Backspace" && handleEmptyListItemBackspace(e)) return;
+    if (e.key === "Backspace") {
+      if (
+        syncSelectionFromDomMetadata() &&
+        commitStructuralTransaction(modelDeleteBackward(state))
+      ) {
+        e.preventDefault();
+        return;
+      }
+    }
+    if (e.key === "Delete") {
+      if (syncSelectionFromDomMetadata() && commitStructuralTransaction(modelDeleteForward(state))) {
+        e.preventDefault();
+        return;
+      }
+    }
     if (e.key === "Enter" && !e.shiftKey) {
       if (handleModelEnter()) {
         suppressNextInsertParagraph = true;
@@ -1410,14 +1536,14 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     }
   }
 
-  function onDocumentArrowKey(e: KeyboardEvent): void {
+  function onDocumentEditingKey(e: KeyboardEvent): void {
     if (e.type === "keydown") {
       arrowNavigationHandled = false;
     } else if (arrowNavigationHandled) {
       arrowNavigationHandled = false;
       return;
     }
-    if (e.defaultPrevented || _isSourceMode || (e.key !== "ArrowUp" && e.key !== "ArrowDown")) {
+    if (e.defaultPrevented || _isSourceMode) {
       return;
     }
     const active = document.activeElement;
@@ -1430,6 +1556,19 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     }
     const anchor = window.getSelection()?.anchorNode;
     if (anchor === null || anchor === undefined || !contentEl.contains(anchor)) {
+      return;
+    }
+    if (e.type === "keydown" && (e.key === "Backspace" || e.key === "Delete")) {
+      const result =
+        e.key === "Backspace"
+          ? syncSelectionFromDomMetadata() && commitStructuralTransaction(modelDeleteBackward(state))
+          : syncSelectionFromDomMetadata() && commitStructuralTransaction(modelDeleteForward(state));
+      if (result) {
+        e.preventDefault();
+      }
+      return;
+    }
+    if (e.key !== "ArrowUp" && e.key !== "ArrowDown") {
       return;
     }
     if (handleArrowThroughBlankLines(e)) {
@@ -1514,6 +1653,9 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
     if (pastedText) {
       if (!replaceBlockSelection(pastedText)) {
+        if (replaceEmptySelectedLine(pastedText)) {
+          return;
+        }
         const selectionOverride = getBlockPasteSelectionOverride(pastedText);
         if (selectionOverride !== undefined || !syncSelectionFromDomMetadata()) {
           transactions.replaceSelection(pastedText, selectionOverride);
@@ -1522,6 +1664,21 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         }
       }
     }
+  }
+
+  function replaceEmptySelectedLine(text: string): boolean {
+    syncSelectionFromDomMetadata();
+    if (state.selection.kind !== "text") {
+      return false;
+    }
+    const { anchor, focus } = state.selection;
+    if (anchor.line !== focus.line || anchor.column !== focus.column) {
+      return false;
+    }
+    if (state.doc.lines[anchor.line]?.text !== "") {
+      return false;
+    }
+    return commitStructuralTransaction(replaceLine(state, anchor.line, text));
   }
 
   function onBeforeInput(e: InputEvent): void {
@@ -1554,8 +1711,22 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       state.doc.lines[state.selection.anchor.line]?.text === ""
     ) {
       e.preventDefault();
-      commitStructuralTransaction(replaceLineText(state, state.selection.anchor.line, e.data));
+      replaceEmptySelectedLineInput(e.data);
       return;
+    }
+    if (e.inputType === "insertText" && e.data !== null) {
+      const text = blockTransformTextAfterInsert(e.data);
+      if (text !== null && state.selection.kind === "text") {
+        e.preventDefault();
+        const line = state.selection.anchor.line;
+        undoController.checkpoint();
+        const result = replaceLineText(state, line, text, text.length);
+        state = result.state;
+        renderModelAfterInputTransform();
+        undoController.scheduleTypingCheckpoint();
+        cfg.onChange?.();
+        return;
+      }
     }
     if (e.inputType === "insertParagraph") {
       if (suppressNextInsertParagraph) {
@@ -1762,8 +1933,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   contentEl.addEventListener("click", onCheckboxEvent);
   contentEl.addEventListener("pointerdown", onContentPointerDown);
   contentEl.addEventListener("pointerdown", onImagePointerDown);
-  window.addEventListener("keydown", onDocumentArrowKey, true);
-  window.addEventListener("keyup", onDocumentArrowKey, true);
+  window.addEventListener("keydown", onDocumentEditingKey, true);
+  window.addEventListener("keyup", onDocumentEditingKey, true);
   document.addEventListener("pointermove", onDocumentPointerMove);
   document.addEventListener("pointerup", endImageResize);
   document.addEventListener("pointercancel", endImageResize);
@@ -1828,8 +1999,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     contentEl.removeEventListener("click", onCheckboxEvent);
     contentEl.removeEventListener("pointerdown", onContentPointerDown);
     contentEl.removeEventListener("pointerdown", onImagePointerDown);
-    window.removeEventListener("keydown", onDocumentArrowKey, true);
-    window.removeEventListener("keyup", onDocumentArrowKey, true);
+    window.removeEventListener("keydown", onDocumentEditingKey, true);
+    window.removeEventListener("keyup", onDocumentEditingKey, true);
     document.removeEventListener("pointermove", onDocumentPointerMove);
     document.removeEventListener("pointerup", endImageResize);
     document.removeEventListener("pointercancel", endImageResize);
