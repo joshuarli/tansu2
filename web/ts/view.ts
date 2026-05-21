@@ -73,7 +73,8 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
   const sidebar = el("aside", state.readingMode ? "sidebar reading-sidebar" : "sidebar");
   const vaultSelect = document.createElement("select");
   vaultSelect.className = "vault-select";
-  for (const vault of state.boot?.vaults ?? []) {
+  const vaults = state.boot?.vaults ?? [];
+  for (const vault of vaults) {
     const option = document.createElement("option");
     option.value = String(vault.index);
     option.textContent = vault.name;
@@ -85,7 +86,31 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
     vaultLabel.textContent = vaultSelect.selectedOptions[0]?.textContent ?? "";
     actions.switchVault(Number(vaultSelect.value));
   });
-  const vaultControl = el("div", "vault-control", vaultLabel, vaultSelect);
+  const vaultOptions = el("div", "vault-options");
+  const vaultControl = el("div", "vault-control", vaultLabel, vaultSelect, vaultOptions);
+  for (const vault of vaults) {
+    if (vault.index === state.vault) {
+      continue;
+    }
+    const option = button(
+      vault.name,
+      vault.name,
+      (event) => {
+        event.stopPropagation();
+        closeVaultOptions(vaultControl);
+        if (vault.index !== Number(vaultSelect.value)) {
+          vaultSelect.value = String(vault.index);
+          vaultLabel.textContent = vault.name;
+          actions.switchVault(vault.index);
+        }
+      },
+      vault.index === state.vault ? "vault-option active" : "vault-option",
+    );
+    vaultOptions.append(option);
+  }
+  vaultControl.style.setProperty("--vault-option-count", String(vaultOptions.childElementCount));
+  vaultControl.setAttribute("aria-expanded", "false");
+  vaultControl.addEventListener("click", () => toggleVaultOptions(vaultControl));
 
   const search = document.createElement("input");
   search.className = "search-input";
@@ -131,6 +156,48 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
   return sidebar;
 }
 
+const vaultOptionClosers = new WeakMap<HTMLElement, () => void>();
+
+function toggleVaultOptions(vaultControl: HTMLElement): void {
+  if (vaultControl.classList.contains("open")) {
+    closeVaultOptions(vaultControl);
+    return;
+  }
+  openVaultOptions(vaultControl);
+}
+
+function openVaultOptions(vaultControl: HTMLElement): void {
+  if (vaultOptionClosers.has(vaultControl)) {
+    return;
+  }
+  const onPointerDown = (event: PointerEvent) => {
+    if (!(event.target instanceof Node) || !vaultControl.contains(event.target)) {
+      closeVaultOptions(vaultControl);
+    }
+  };
+  const onKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      closeVaultOptions(vaultControl);
+    }
+  };
+  const cleanup = () => {
+    window.removeEventListener("pointerdown", onPointerDown, true);
+    window.removeEventListener("keydown", onKeyDown, true);
+  };
+  vaultOptionClosers.set(vaultControl, cleanup);
+  vaultControl.classList.add("open");
+  vaultControl.setAttribute("aria-expanded", "true");
+  window.addEventListener("pointerdown", onPointerDown, true);
+  window.addEventListener("keydown", onKeyDown, true);
+}
+
+function closeVaultOptions(vaultControl: HTMLElement): void {
+  vaultControl.classList.remove("open");
+  vaultControl.setAttribute("aria-expanded", "false");
+  vaultOptionClosers.get(vaultControl)?.();
+  vaultOptionClosers.delete(vaultControl);
+}
+
 function renderMain(state: State, actions: ViewActions): HTMLElement {
   const active = activeTab(state);
   const reading = state.readingMode;
@@ -148,7 +215,15 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
       event.preventDefault();
       actions.openNoteContextMenu(tab.noteId, event.clientX, event.clientY);
     });
-    tabEl.append(span(tab.title), span(tab.dirty ? "•" : ""), closeButton(tab.noteId, actions));
+    const closeHint = span("x to close", "tab-close-tooltip");
+    closeHint.setAttribute("aria-hidden", "true");
+    const hideCloseHint = bindTabCloseHint(tabEl, closeHint, tab.noteId, actions);
+    tabEl.append(
+      span(tab.title),
+      span(tab.dirty ? "•" : ""),
+      closeButton(tab.noteId, actions, hideCloseHint),
+      closeHint,
+    );
     tabs.append(tabEl);
   }
   const topbar = el("div", "topbar", tabs);
@@ -684,16 +759,71 @@ function section(title: string, body: HTMLElement): HTMLElement {
   return el("section", "sidebar-section", el("h2", "section-title", title), body);
 }
 
-function closeButton(noteId: string, actions: ViewActions): HTMLElement {
+function closeButton(noteId: string, actions: ViewActions, beforeClose?: () => void): HTMLElement {
   return button(
     "×",
     "Close",
     (event) => {
       event.stopPropagation();
+      beforeClose?.();
       actions.closeTab(noteId);
     },
     "tab-close",
   );
+}
+
+function bindTabCloseHint(
+  tabEl: HTMLButtonElement,
+  closeHint: HTMLElement,
+  noteId: string,
+  actions: ViewActions,
+): () => void {
+  let observer: MutationObserver | null = null;
+  function positionHint(event: MouseEvent) {
+    closeHint.style.left = `${event.clientX}px`;
+    closeHint.style.top = `${event.clientY}px`;
+  }
+  function stopCloseShortcut() {
+    window.removeEventListener("keydown", closeOnX, { capture: true });
+  }
+  function hideCloseHint() {
+    closeHint.classList.remove("visible");
+    closeHint.remove();
+    stopCloseShortcut();
+    observer?.disconnect();
+    observer = null;
+  }
+  function closeOnX(event: KeyboardEvent) {
+    if (
+      event.key.toLowerCase() !== "x" ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.altKey ||
+      event.isComposing
+    ) {
+      return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    hideCloseHint();
+    actions.closeTab(noteId);
+  }
+  tabEl.addEventListener("mouseenter", (event) => {
+    document.body.append(closeHint);
+    positionHint(event);
+    closeHint.classList.add("visible");
+    window.addEventListener("keydown", closeOnX, { capture: true });
+    observer?.disconnect();
+    observer = new MutationObserver(() => {
+      if (!tabEl.isConnected) {
+        hideCloseHint();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+  tabEl.addEventListener("mousemove", positionHint);
+  tabEl.addEventListener("mouseleave", hideCloseHint);
+  return hideCloseHint;
 }
 
 type ToolIcon =

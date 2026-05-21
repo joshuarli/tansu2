@@ -91,6 +91,28 @@ describe("view rendering", () => {
     expect(root.textContent).toContain("Save conflict");
   });
 
+  it("opens a custom animated vault menu", () => {
+    const state = baseState();
+    state.boot!.vaults = [
+      { index: 0, name: "Main" },
+      { index: 1, name: "Work" },
+    ];
+    const actions = actionSpies();
+    const root = render(state, actions);
+    const vaultControl = root.querySelector<HTMLElement>(".vault-control")!;
+    const vaultOptions = root.querySelectorAll<HTMLButtonElement>(".vault-option");
+
+    vaultControl.click();
+    expect(vaultControl.classList.contains("open")).toBe(true);
+    expect(vaultControl.getAttribute("aria-expanded")).toBe("true");
+    expect([...vaultOptions].map((option) => option.textContent)).toEqual(["Work"]);
+
+    vaultOptions[0]!.click();
+    expect(actions.switchVault).toHaveBeenCalledWith(1);
+    expect(root.querySelector<HTMLElement>(".vault-label")!.textContent).toBe("Work");
+    expect(vaultControl.classList.contains("open")).toBe(false);
+  });
+
   it("renders reading mode with minimal editing chrome", () => {
     const state = baseState();
     state.tabs = [tabFromDocument({ meta: note("n1", "one.md", "One"), content: "# One\n" })];
@@ -106,6 +128,55 @@ describe("view rendering", () => {
     expect(root.querySelector(".tag-row")).not.toBeNull();
     root.querySelector<HTMLButtonElement>('[title="Read"]')!.click();
     expect(actions.toggleReadingMode).toHaveBeenCalled();
+  });
+
+  it("shows tab close hint and captures x before editor key handlers", () => {
+    const state = baseState();
+    state.tabs = [tabFromDocument({ meta: note("n1", "one.md", "One"), content: "# One\n" })];
+    state.activeNoteId = "n1";
+    const actions = actionSpies();
+    const root = render(state, actions);
+    document.body.append(root);
+    const editorKeydown = vi.fn();
+    const editor = document.createElement("div");
+    editor.className = "md-editor-content";
+    editor.contentEditable = "true";
+    editor.addEventListener("keydown", editorKeydown);
+    document.body.append(editor);
+
+    try {
+      const tab = root.querySelector<HTMLButtonElement>(".tab")!;
+      const hint = root.querySelector<HTMLElement>(".tab-close-tooltip")!;
+      tab.dispatchEvent(new MouseEvent("mouseenter", { clientX: 112, clientY: 18 }));
+      expect(hint.classList.contains("visible")).toBe(true);
+      expect(hint.parentElement).toBe(document.body);
+      expect(hint.style.left).toBe("112px");
+      expect(hint.style.top).toBe("18px");
+
+      tab.dispatchEvent(new MouseEvent("mousemove", { clientX: 121, clientY: 34 }));
+      expect(hint.style.left).toBe("121px");
+      expect(hint.style.top).toBe("34px");
+
+      root.querySelector<HTMLButtonElement>(".tab-close")!.click();
+      expect(actions.closeTab).toHaveBeenCalledWith("n1");
+      expect(hint.parentElement).toBeNull();
+      expect(hint.classList.contains("visible")).toBe(false);
+      actions.closeTab.mockClear();
+
+      tab.dispatchEvent(new MouseEvent("mouseenter", { clientX: 112, clientY: 18 }));
+      const closeEvent = new KeyboardEvent("keydown", {
+        key: "x",
+        bubbles: true,
+        cancelable: true,
+      });
+      editor.dispatchEvent(closeEvent);
+      expect(actions.closeTab).toHaveBeenCalledWith("n1");
+      expect(closeEvent.defaultPrevented).toBe(true);
+      expect(editorKeydown).not.toHaveBeenCalled();
+    } finally {
+      root.remove();
+      editor.remove();
+    }
   });
 
   it("renders command, search, revision, settings, conflict, dialog, and notice overlays", () => {

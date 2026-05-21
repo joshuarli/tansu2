@@ -109,24 +109,31 @@ button {
 
 .vault-control {
   position: relative;
-  display: flex;
-  align-items: center;
-  height: var(--chrome-control-height);
   min-height: var(--chrome-control-height);
   min-width: 0;
+  cursor: default;
 }
 
 .vault-control::after {
   position: absolute;
-  top: 50%;
+  top: calc(var(--chrome-control-height) / 2);
   right: 9px;
   width: 7px;
   height: 7px;
   transform: translateY(-65%) rotate(45deg);
+  transform-origin: center;
   border-right: 1.5px solid var(--color-text-muted);
   border-bottom: 1.5px solid var(--color-text-muted);
   content: "";
   pointer-events: none;
+  transition:
+    transform 170ms ease,
+    border-color 170ms ease;
+}
+
+.vault-control.open::after {
+  transform: translateY(-35%) rotate(225deg);
+  border-color: var(--color-text);
 }
 
 .search-input,
@@ -148,8 +155,11 @@ button {
 }
 
 .vault-label {
+  display: block;
   width: 100%;
+  height: var(--chrome-line-height);
   min-width: 0;
+  margin: calc((var(--chrome-control-height) - var(--chrome-line-height)) / 2) 0;
   overflow: hidden;
   padding: 0 28px 0 7px;
   color: var(--color-text);
@@ -162,13 +172,55 @@ button {
 
 .vault-select {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: var(--chrome-control-height);
   appearance: none;
   border: 0;
   opacity: 0;
   outline: none;
+  pointer-events: none;
+}
+
+.vault-options {
+  display: grid;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition:
+    max-height 180ms ease,
+    opacity 140ms ease,
+    transform 180ms ease;
+}
+
+.vault-control.open .vault-options {
+  max-height: min(240px, calc(var(--vault-option-count) * 34px));
+  overflow-y: hidden;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(2px);
+}
+
+.vault-option {
+  width: 100%;
+  min-height: 34px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 5px 7px;
+  text-align: left;
+  transition:
+    color 160ms ease,
+    opacity 160ms ease;
+}
+
+.vault-option:hover,
+.vault-option.active {
+  color: var(--color-text);
 }
 
 .search-input::placeholder {
@@ -300,6 +352,7 @@ button {
 }
 
 .tab {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(64px, 1fr) 10px 22px;
   gap: 5px;
@@ -327,6 +380,27 @@ button {
   background: transparent;
   color: var(--color-text);
   font-weight: 520;
+}
+
+.tab-close-tooltip {
+  position: fixed;
+  z-index: 2147483647;
+  transform: translate(10px, 12px);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: color-mix(in srgb, var(--color-text) 92%, transparent);
+  color: var(--color-text-inverted);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  opacity: 0;
+  padding: 5px 6px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.tab-close-tooltip.visible {
+  opacity: 1;
 }
 
 .toolbar {
