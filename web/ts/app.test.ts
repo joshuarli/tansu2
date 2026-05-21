@@ -50,6 +50,7 @@ const editorMock = vi.hoisted(() => ({
     destroy: ReturnType<typeof vi.fn>;
     focus: ReturnType<typeof vi.fn>;
     getCursorOffset: ReturnType<typeof vi.fn>;
+    getSnapshot: ReturnType<typeof vi.fn>;
     getValue: ReturnType<typeof vi.fn>;
     isSourceMode: boolean;
     redo: ReturnType<typeof vi.fn>;
@@ -71,6 +72,13 @@ vi.mock("@joshuarli98/md-wysiwyg", () => ({
       destroy: vi.fn(),
       focus: vi.fn(),
       getCursorOffset: vi.fn(() => null),
+      getSnapshot: vi.fn(() => ({
+        markdown: "# One",
+        cursorOffset: -1,
+        selection: null,
+        revision: 0,
+        sourceMode: false,
+      })),
       getValue: vi.fn(() => "# One"),
       isSourceMode: false,
       redo: vi.fn(),
@@ -239,7 +247,13 @@ describe("TansuApp note loading", () => {
     const app = new TansuApp(root);
     await app.boot();
     const editor = editorMock.instances.at(-1)!;
-    editor.getValue.mockReturnValue("# Changed\n");
+    editor.getSnapshot.mockReturnValue({
+      markdown: "# Changed\n",
+      cursorOffset: -1,
+      selection: null,
+      revision: 1,
+      sourceMode: false,
+    });
     (editor.config["onChange"] as () => void)();
     root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
     await flushAsync();
@@ -295,14 +309,17 @@ describe("TansuApp note loading", () => {
     const editor = editorMock.instances.at(-1)!;
     editor.getValue.mockClear();
     editor.getCursorOffset.mockClear();
+    editor.getSnapshot.mockClear();
 
     (editor.config["onChange"] as () => void)();
 
     expect(editor.getValue).not.toHaveBeenCalled();
     expect(editor.getCursorOffset).not.toHaveBeenCalled();
+    expect(editor.getSnapshot).not.toHaveBeenCalled();
     vi.advanceTimersByTime(150);
-    expect(editor.getValue).toHaveBeenCalledTimes(1);
-    expect(editor.getCursorOffset).toHaveBeenCalledTimes(1);
+    expect(editor.getValue).not.toHaveBeenCalled();
+    expect(editor.getCursorOffset).not.toHaveBeenCalled();
+    expect(editor.getSnapshot).toHaveBeenCalledTimes(1);
   });
 
   it("opens revisions, restores conflict drafts, saves settings, and updates tags", async () => {
@@ -471,7 +488,13 @@ describe("TansuApp note loading", () => {
     expect(root.querySelector(".search-panel")).toBeNull();
 
     const editor = editorMock.instances.at(-1)!;
-    editor.getValue.mockReturnValue("# Changed\n");
+    editor.getSnapshot.mockReturnValue({
+      markdown: "# Changed\n",
+      cursorOffset: -1,
+      selection: null,
+      revision: 1,
+      sourceMode: false,
+    });
     (editor.config["onChange"] as () => void)();
     vi.advanceTimersByTime(900);
     await flushAsync();
@@ -537,7 +560,13 @@ describe("TansuApp note loading", () => {
     const app = new TansuApp(root);
     await app.boot();
     const editor = editorMock.instances.at(-1)!;
-    editor.getValue.mockReturnValue("# Changed\n");
+    editor.getSnapshot.mockReturnValue({
+      markdown: "# Changed\n",
+      cursorOffset: -1,
+      selection: null,
+      revision: 1,
+      sourceMode: false,
+    });
     (editor.config["onChange"] as () => void)();
     root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
     await flushAsync();

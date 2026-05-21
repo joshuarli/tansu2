@@ -323,14 +323,15 @@ export class TansuApp {
       return;
     }
     const current = active.draft ?? active.doc?.content ?? "";
-    const editorValue = this.editor.getValue();
+    const snapshot = this.editor.getSnapshot();
+    const editorValue = snapshot.markdown;
     active.draft =
       active.doc !== null && frontmatterSupportsTags(current)
         ? setMarkdownTags(editorValue, active.doc.meta.tags)
         : editorValue;
     active.dirty = active.draft !== active.doc?.content;
-    active.cursorOffset = this.editor.getCursorOffset();
-    active.sourceMode = this.editor.isSourceMode;
+    active.cursorOffset = snapshot.cursorOffset >= 0 ? snapshot.cursorOffset : null;
+    active.sourceMode = snapshot.sourceMode;
     if (renderStatus) {
       this.renderStatusOnly();
     }
@@ -350,13 +351,14 @@ export class TansuApp {
       return;
     }
     const current = tab.draft ?? tab.doc?.content ?? "";
-    const editorValue = this.editor.getValue();
+    const snapshot = this.editor.getSnapshot();
+    const editorValue = snapshot.markdown;
     tab.draft =
       tab.doc !== null && frontmatterSupportsTags(current)
         ? setMarkdownTags(editorValue, tab.doc.meta.tags)
         : editorValue;
-    tab.cursorOffset = this.editor.getCursorOffset();
-    tab.sourceMode = this.editor.isSourceMode;
+    tab.cursorOffset = snapshot.cursorOffset >= 0 ? snapshot.cursorOffset : null;
+    tab.sourceMode = snapshot.sourceMode;
     tab.dirty = tab.doc !== null && tab.draft !== tab.doc.content;
   }
 

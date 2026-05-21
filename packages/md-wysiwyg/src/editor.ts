@@ -3,8 +3,26 @@
 /// the render/serialize/transform modules; callers configure extensions and callbacks.
 
 import { LIST_INDENT_SPACES } from "./constants.js";
+import {
+  createTextSelection,
+  deleteBackward as modelDeleteBackward,
+  deleteEmptyListItemBackward as modelDeleteEmptyListItemBackward,
+  deleteForward as modelDeleteForward,
+  docToMarkdown,
+  insertListParagraph as modelInsertListParagraph,
+  insertParagraph as modelInsertParagraph,
+  markdownToDoc,
+  normalizeMarkdownNewlines,
+  offsetsToSelection,
+  replaceLineText,
+  replaceSelection as modelReplaceSelection,
+  selectionToOffsets as modelSelectionToOffsets,
+  type EditorState,
+  type LogicalPosition,
+  type TransactionResult,
+} from "./editor-model.js";
 import { normalizeEditableContent } from "./editor-normalize.js";
-import { createEditorRenderer } from "./editor-renderer.js";
+import { annotateEditorDom, createEditorRenderer } from "./editor-renderer.js";
 import {
   createEditorSelectionController,
   isRangeAtStartOfBlock,
@@ -165,6 +183,7 @@ export type EditorConfig = {
 
 export type EditorHandle = {
   getValue(): string;
+  getSnapshot(): EditorSnapshot;
   setValue(md: string, cursorOffset?: number): void;
   getSelectionOffsets(): { start: number; end: number } | null;
   getCursorOffset(): number;
@@ -178,6 +197,14 @@ export type EditorHandle = {
   readonly contentEl: HTMLElement;
   readonly sourceEl: HTMLTextAreaElement;
   destroy(): void;
+};
+
+export type EditorSnapshot = {
+  markdown: string;
+  cursorOffset: number;
+  selection: { start: number; end: number } | null;
+  revision: number;
+  sourceMode: boolean;
 };
 
 export function createEditor(container: HTMLElement, config: EditorConfig = {}): EditorHandle {
@@ -197,18 +224,405 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   const renderer = createEditorRenderer(contentEl, extensions);
   const selection = createEditorSelectionController(contentEl, extensions);
   let suppressNextInsertParagraph = false;
+  let state: EditorState = (() => {
+    const doc = markdownToDoc("");
+    return {
+      doc,
+      selection: createTextSelection(doc, 0),
+      revision: 0,
+      composing: false,
+      sourceMode: false,
+    };
+  })();
+
+  function currentMarkdown(): string {
+    return docToMarkdown(state.doc);
+  }
+
+  function setModelMarkdown(
+    md: string,
+    selectionOffsets?: SelectionOffsets,
+    sourceMode = _isSourceMode,
+  ): void {
+    const doc = markdownToDoc(md);
+    state = {
+      ...state,
+      doc,
+      selection:
+        selectionOffsets === undefined
+          ? createTextSelection(doc, 0)
+          : offsetsToSelection(doc, selectionOffsets.start, selectionOffsets.end),
+      revision: state.revision + 1,
+      sourceMode,
+    };
+  }
+
+  function setModelSelection(selectionOffsets: SelectionOffsets | null): void {
+    if (selectionOffsets === null) return;
+    state = {
+      ...state,
+      selection: offsetsToSelection(state.doc, selectionOffsets.start, selectionOffsets.end),
+    };
+  }
+
+  function syncModelFromDom(): void {
+    if (_isSourceMode) return;
+    const md = domToMarkdown(contentEl, { extensions });
+    const offsets = selection.getSelectionOffsets();
+    if (md !== currentMarkdown()) {
+      setModelMarkdown(md, offsets ?? undefined);
+    } else {
+      setModelSelection(offsets);
+    }
+  }
+
+  function syncModelFromSource(): void {
+    const md = normalizeMarkdownNewlines(sourceEl.value);
+    const offsets = { start: sourceEl.selectionStart, end: sourceEl.selectionEnd };
+    if (md !== currentMarkdown()) {
+      setModelMarkdown(md, offsets, true);
+    } else {
+      setModelSelection(offsets);
+      state = { ...state, sourceMode: true };
+    }
+  }
+
+  function renderSelectionAndModel(md: string, selStart: number, selEnd: number): void {
+    const normalized = normalizeMarkdownNewlines(md);
+    setModelMarkdown(normalized, { start: selStart, end: selEnd });
+    renderer.renderWithSelection(normalized, selStart, selEnd);
+    annotateEditorDom(contentEl, state.doc);
+  }
+
+  function commitTransaction(result: TransactionResult, notify = true): boolean {
+    if (!result.changed) return false;
+    state = result.state;
+    const offsets = modelSelectionToOffsets(state.doc, state.selection);
+    const md = currentMarkdown();
+    renderer.renderWithSelection(md, offsets?.start ?? 0, offsets?.end ?? offsets?.start ?? 0);
+    annotateEditorDom(contentEl, state.doc);
+    selection.restoreSelectionFromRenderedMarkers();
+    updateActiveBlankVisibility();
+    if (notify) {
+      undoController.scheduleTypingCheckpoint();
+      cfg.onChange?.();
+    }
+    return true;
+  }
+
+  function commitStructuralTransaction(result: TransactionResult): boolean {
+    if (!result.changed) return false;
+    undoController.checkpoint();
+    return commitTransaction(result);
+  }
+
+  function currentSelectionOffsets(): SelectionOffsets | null {
+    if (_isSourceMode) {
+      return { start: sourceEl.selectionStart, end: sourceEl.selectionEnd };
+    }
+    return modelSelectionToOffsets(state.doc, state.selection);
+  }
+
+  function getBlockHandle(target: EventTarget | null): HTMLElement | null {
+    const node = target instanceof Element ? target : null;
+    const handle = node?.closest("[data-md-block-handle]");
+    return handle instanceof HTMLElement && contentEl.contains(handle) ? handle : null;
+  }
+
+  function renderBlockSelectionClasses(): void {
+    for (const el of contentEl.querySelectorAll("[data-md-block-id]")) {
+      el.classList.remove("md-block-selected");
+      el.removeAttribute("aria-selected");
+    }
+    if (state.selection.kind !== "block") return;
+    const anchor = state.doc.blocks.byId.get(state.selection.anchorBlockId);
+    const focus = state.doc.blocks.byId.get(state.selection.focusBlockId);
+    if (!anchor || !focus) return;
+    const startLine = Math.min(anchor.startLine, focus.startLine);
+    const endLine = Math.max(anchor.startLine, focus.startLine);
+    for (const block of state.doc.blocks.blocks) {
+      if (block.startLine < startLine || block.startLine > endLine) {
+        continue;
+      }
+      for (const el of contentEl.querySelectorAll(`[data-md-block-id="${block.id}"]`)) {
+        el.classList.add("md-block-selected");
+        el.setAttribute("aria-selected", "true");
+      }
+    }
+  }
+
+  function selectBlock(blockId: string, extend: boolean): void {
+    const anchor =
+      extend && state.selection.kind === "block" ? state.selection.anchorBlockId : blockId;
+    state = {
+      ...state,
+      selection: {
+        kind: "block",
+        anchorBlockId: anchor,
+        focusBlockId: blockId,
+      },
+    };
+    window.getSelection()?.removeAllRanges();
+    renderBlockSelectionClasses();
+  }
+
+  function selectedBlockOffsets(): SelectionOffsets | null {
+    return state.selection.kind === "block"
+      ? modelSelectionToOffsets(state.doc, state.selection)
+      : null;
+  }
+
+  function replaceBlockSelection(text: string): boolean {
+    const offsets = selectedBlockOffsets();
+    if (!offsets) return false;
+    const md = currentMarkdown();
+    const normalized = normalizeMarkdownNewlines(text);
+    undoController.pushUndo(md, offsets.start, offsets.end);
+    const nextMd = md.slice(0, offsets.start) + normalized + md.slice(offsets.end);
+    const cursor = offsets.start + normalized.length;
+    renderSelectionAndModel(nextMd, cursor, cursor);
+    selection.restoreSelectionFromRenderedMarkers();
+    updateActiveBlankVisibility();
+    cfg.onChange?.();
+    return true;
+  }
+
+  function copyBlockSelection(e: ClipboardEvent): boolean {
+    const offsets = selectedBlockOffsets();
+    if (!offsets || !e.clipboardData) return false;
+    const md = currentMarkdown();
+    e.preventDefault();
+    e.clipboardData.setData("text/plain", md.slice(offsets.start, offsets.end));
+    return true;
+  }
+
+  function lineHostForNode(node: Node | null): HTMLElement | null {
+    const el = node instanceof Element ? node : node?.parentElement;
+    const host = el?.closest("[data-md-line-index]");
+    return host instanceof HTMLElement && contentEl.contains(host) ? host : null;
+  }
+
+  function logicalPositionFromDom(node: Node | null, offset: number): LogicalPosition | null {
+    const host = lineHostForNode(node);
+    if (!host) return null;
+    const lineIndex = Number(host.dataset["mdLineIndex"]);
+    if (!Number.isInteger(lineIndex) || lineIndex < 0 || lineIndex >= state.doc.lines.length) {
+      return null;
+    }
+    const hostTextLength = (host.textContent ?? "").replaceAll("​", "").length;
+    const maxColumn = Math.max(hostTextLength, state.doc.lines[lineIndex]!.text.length);
+    const sourceColumn = sourceColumnFromDom(host, node, offset);
+    if (sourceColumn !== null) {
+      return {
+        line: lineIndex,
+        column: Math.min(sourceColumn, maxColumn),
+      };
+    }
+    const lineContentStart = Number(host.dataset["mdLineContentStart"]);
+    const range = document.createRange();
+    range.selectNodeContents(host);
+    try {
+      range.setEnd(node ?? host, offset);
+    } catch {
+      return null;
+    }
+    const visualColumn = range.toString().replaceAll("​", "").length;
+    const column = Number.isFinite(lineContentStart)
+      ? lineContentStart + visualColumn
+      : visualColumn;
+    return {
+      line: lineIndex,
+      column: Math.min(column, maxColumn),
+    };
+  }
+
+  function sourceColumnFromDom(
+    host: HTMLElement,
+    node: Node | null,
+    offset: number,
+  ): number | null {
+    if (node === null) return null;
+    if (node.nodeType === Node.TEXT_NODE) {
+      const parent = node.parentElement;
+      const sourceElement = parent?.closest("[data-md-content-start]");
+      if (sourceElement instanceof HTMLElement && host.contains(sourceElement)) {
+        const contentStart = Number(sourceElement.dataset["mdContentStart"]);
+        if (!Number.isFinite(contentStart)) return null;
+        const range = document.createRange();
+        range.selectNodeContents(sourceElement);
+        try {
+          range.setEnd(node, offset);
+        } catch {
+          return null;
+        }
+        if (sourceElement.dataset["mdAtomicSource"] === "true") {
+          const contentEnd = sourceBoundary(sourceElement, "mdContentEnd");
+          return range.toString().replaceAll("​", "").length === 0 || contentEnd === null
+            ? contentStart
+            : contentEnd;
+        }
+        return contentStart + range.toString().replaceAll("​", "").length;
+      }
+      return null;
+    }
+    if (!(node instanceof HTMLElement)) return null;
+
+    const children = [...node.childNodes];
+    const before = children[offset - 1];
+    if (before instanceof HTMLElement) {
+      const end = sourceBoundary(before, "mdSourceEnd");
+      if (end !== null) return end;
+    }
+    const after = children[offset];
+    if (after instanceof HTMLElement) {
+      const start = sourceBoundary(after, "mdSourceStart");
+      if (start !== null) return start;
+    }
+    if (node !== host) {
+      const sourceElement = node.closest("[data-md-content-start]");
+      if (sourceElement instanceof HTMLElement && host.contains(sourceElement)) {
+        const contentStart = sourceBoundary(sourceElement, "mdContentStart");
+        const contentEnd = sourceBoundary(sourceElement, "mdContentEnd");
+        if (offset === 0 && contentStart !== null) return contentStart;
+        if (offset >= node.childNodes.length && contentEnd !== null) return contentEnd;
+      }
+    }
+    return null;
+  }
+
+  function sourceBoundary(el: HTMLElement, key: string): number | null {
+    const value = el.dataset[key];
+    if (value === undefined) return null;
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  function syncSelectionFromDomMetadata(): boolean {
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0) return false;
+    const range = sel.getRangeAt(0);
+    if (!contentEl.contains(range.startContainer) || !contentEl.contains(range.endContainer)) {
+      return false;
+    }
+    const anchor = logicalPositionFromDom(range.startContainer, range.startOffset);
+    const focus = logicalPositionFromDom(range.endContainer, range.endOffset);
+    if (!anchor || !focus) return false;
+    state = {
+      ...state,
+      selection: { kind: "text", anchor, focus },
+    };
+    return true;
+  }
+
+  function syncActiveLineFromDom(): boolean {
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0) return false;
+    const range = sel.getRangeAt(0);
+    const host = lineHostForNode(range.startContainer);
+    if (!host || !contentEl.contains(range.startContainer)) return false;
+    const block = host.closest("[data-md-block-kind]");
+    const blockKind = block instanceof HTMLElement ? block.dataset["mdBlockKind"] : undefined;
+    if (blockKind !== "paragraph" && blockKind !== "blank") return false;
+    const hasRichInline = [...host.children].some(
+      (child) =>
+        child instanceof HTMLElement &&
+        child.tagName !== "BR" &&
+        child.tagName !== "BUTTON" &&
+        child.className !== "md-block-handle",
+    );
+    if (hasRichInline) return false;
+    const lineIndex = Number(host.dataset["mdLineIndex"]);
+    if (!Number.isInteger(lineIndex)) return false;
+    const text = (host.textContent ?? "").replaceAll("​", "");
+    const pos = logicalPositionFromDom(range.startContainer, range.startOffset);
+    const result = replaceLineText(state, lineIndex, text, pos?.column ?? text.length);
+    state = result.state;
+    return result.changed || result.renderHint.kind === "none";
+  }
+
+  function shouldRenderModelBlockInputTransform(): boolean {
+    if (state.selection.kind !== "text") return false;
+    const { anchor, focus } = state.selection;
+    if (anchor.line !== focus.line || anchor.column !== focus.column) return false;
+    const text = state.doc.lines[anchor.line]?.text ?? "";
+    return (
+      /^#{1,6}[ \u00A0]$/.test(text) ||
+      /^[-*][ \u00A0]$/.test(text) ||
+      /^\d+\.[ \u00A0]$/.test(text) ||
+      /^\[([ xX])\][ \u00A0]$/.test(text) ||
+      /^>[ \u00A0]$/.test(text) ||
+      /^```[^ \u00A0]*[ \u00A0]$/.test(text)
+    );
+  }
+
+  function renderModelAfterInputTransform(): boolean {
+    if (!shouldRenderModelBlockInputTransform()) return false;
+    const offsets = modelSelectionToOffsets(state.doc, state.selection);
+    renderer.renderWithSelection(
+      currentMarkdown(),
+      offsets?.start ?? 0,
+      offsets?.end ?? offsets?.start ?? 0,
+    );
+    annotateEditorDom(contentEl, state.doc);
+    selection.restoreSelectionFromRenderedMarkers();
+    updateActiveBlankVisibility();
+    return true;
+  }
 
   // ── getValue / setValue ─────────────────────────────────────────────────────
 
   function getValue(): string {
-    return _isSourceMode ? sourceEl.value : domToMarkdown(contentEl, { extensions });
+    return _isSourceMode ? normalizeMarkdownNewlines(sourceEl.value) : currentMarkdown();
+  }
+
+  function getSnapshot(): EditorSnapshot {
+    if (_isSourceMode) {
+      syncModelFromSource();
+    } else if (state.selection.kind !== "block") {
+      syncSelectionFromDomMetadata();
+    }
+    const offsets = currentSelectionOffsets();
+    return {
+      markdown: currentMarkdown(),
+      cursorOffset: offsets?.start ?? -1,
+      selection: offsets,
+      revision: state.revision,
+      sourceMode: _isSourceMode,
+    };
+  }
+
+  function getSelectionOffsets(): SelectionOffsets | null {
+    if (_isSourceMode) {
+      return { start: sourceEl.selectionStart, end: sourceEl.selectionEnd };
+    }
+    if (state.selection.kind === "block") {
+      return modelSelectionToOffsets(state.doc, state.selection);
+    }
+    if (syncSelectionFromDomMetadata()) {
+      return modelSelectionToOffsets(state.doc, state.selection);
+    }
+    const offsets = selection.getSelectionOffsets();
+    setModelSelection(offsets);
+    return offsets;
+  }
+
+  function getCursorOffset(): number {
+    const offsets = getSelectionOffsets();
+    return offsets?.start ?? -1;
   }
 
   function setValue(md: string, cursorOffset?: number): void {
+    const normalized = normalizeMarkdownNewlines(md);
+    const selectionOffsets =
+      cursorOffset === undefined
+        ? { start: 0, end: 0 }
+        : { start: cursorOffset, end: cursorOffset };
+    setModelMarkdown(normalized, selectionOffsets);
     if (_isSourceMode) {
-      sourceEl.value = md;
+      sourceEl.value = normalized;
     } else if (cursorOffset !== undefined) {
-      renderer.renderWithCursor(md, cursorOffset);
+      renderer.renderWithCursor(normalized, cursorOffset);
+      annotateEditorDom(contentEl, state.doc);
       selection.restoreCursorMarker();
       const activeBlock = getIndentableBlock(window.getSelection()?.anchorNode ?? contentEl);
       if (activeBlock && isEmptyParagraphBlock(activeBlock)) {
@@ -216,17 +630,20 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         placeCursorAtBlockStart(activeBlock);
       }
       updateActiveBlankVisibility();
+      setModelSelection(selection.getSelectionOffsets());
     } else {
-      renderer.render(md);
+      renderer.render(normalized);
+      annotateEditorDom(contentEl, state.doc);
     }
     const sel = selection.getSelectionOffsets();
-    undoController.pushUndo(md, sel?.start ?? 0, sel?.end ?? 0);
+    setModelSelection(sel);
+    undoController.pushUndo(normalized, sel?.start ?? 0, sel?.end ?? 0);
   }
 
   const undoController = createEditorUndoController({
     getValue,
-    getSelectionOffsets: selection.getSelectionOffsets,
-    renderSelection: renderer.renderWithSelection,
+    getSelectionOffsets,
+    renderSelection: renderSelectionAndModel,
     restoreSelection: selection.restoreSelectionFromRenderedMarkers,
     getUndoStackMax: () => cfg.undoStackMax ?? 200,
     getTypingCheckpointMs: () => cfg.typingCheckpointMs ?? 1000,
@@ -235,10 +652,10 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   const transactions = createSelectionTransactionController({
     getValue,
-    getSelectionOffsets: selection.getSelectionOffsets,
+    getSelectionOffsets,
     pushUndo: undoController.pushUndo,
     checkpoint: undoController.checkpoint,
-    renderSelection: renderer.renderWithSelection,
+    renderSelection: renderSelectionAndModel,
     restoreSelection: selection.restoreSelectionFromRenderedMarkers,
     ...(cfg.onChange ? { onChange: cfg.onChange } : {}),
   });
@@ -443,7 +860,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     const previous = getPrevElementSibling(item);
     const next = getNextElementSibling(item);
     item.remove();
-    if (parentList.children.length === 0) {
+    if (parentList.querySelector(":scope > li") === null) {
       const p = document.createElement("p");
       p.append(document.createElement("br"));
       parentList.replaceWith(p);
@@ -540,12 +957,20 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       if (!offsets) return false;
       undoController.pushUndo(md, offsets.start, offsets.end);
       const { md: newMd, selStart, selEnd } = shiftIndent(md, offsets.start, offsets.end, true);
-      renderer.renderWithSelection(newMd, selStart, selEnd);
+      renderSelectionAndModel(newMd, selStart, selEnd);
       selection.restoreSelectionFromRenderedMarkers();
     } else {
+      syncSelectionFromDomMetadata();
+      if (commitStructuralTransaction(modelDeleteEmptyListItemBackward(state))) {
+        return true;
+      }
       removeEmptyTopLevelListItem(listItem);
+      syncModelFromDom();
     }
     normalizeEditableContent(contentEl, { preserveActiveEmptyBlock: true });
+    if (!syncSelectionFromDomMetadata()) {
+      syncModelFromDom();
+    }
     cfg.onChange?.();
     return true;
   }
@@ -572,6 +997,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     paragraph.append(document.createElement("br"));
     heading.after(paragraph);
     placeCursorAtBlockStart(paragraph);
+    syncModelFromDom();
     cfg.onChange?.();
     return true;
   }
@@ -605,6 +1031,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     block.replaceWith(blank, next);
     placeCursorAtBlockStart(next);
     updateActiveBlankVisibility();
+    syncModelFromDom();
     cfg.onChange?.();
     return true;
   }
@@ -655,7 +1082,10 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     const next = activeBlock.nextElementSibling;
     if (e.key === "ArrowUp" && isBlankLineElement(previous)) {
       e.preventDefault();
-      moveCursorIntoBlankLine(previous, isEmptyParagraphBlock(activeBlock) ? activeBlock : undefined);
+      moveCursorIntoBlankLine(
+        previous,
+        isEmptyParagraphBlock(activeBlock) ? activeBlock : undefined,
+      );
       return true;
     }
     if (e.key === "ArrowDown" && isBlankLineElement(next)) {
@@ -719,6 +1149,30 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function onKeyDown(e: KeyboardEvent): void {
     const meta = e.metaKey || e.ctrlKey;
+    if (state.selection.kind === "block") {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        const block = state.doc.blocks.byId.get(state.selection.anchorBlockId);
+        const offset = block ? state.doc.lineStarts[block.startLine]! : 0;
+        state = { ...state, selection: offsetsToSelection(state.doc, offset, offset) };
+        renderBlockSelectionClasses();
+        renderer.renderWithSelection(currentMarkdown(), offset, offset);
+        annotateEditorDom(contentEl, state.doc);
+        selection.restoreSelectionFromRenderedMarkers();
+        updateActiveBlankVisibility();
+        return;
+      }
+      if (e.key === "Backspace" || e.key === "Delete") {
+        e.preventDefault();
+        replaceBlockSelection("");
+        return;
+      }
+      if (e.key.length === 1 && !meta && !e.altKey) {
+        e.preventDefault();
+        replaceBlockSelection(e.key);
+        return;
+      }
+    }
     if (meta && e.key === "s") {
       e.preventDefault();
       e.stopPropagation();
@@ -780,7 +1234,9 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   }
 
   function onInput(): void {
-    if (checkBlockInputTransform(contentEl)) {
+    if (state.composing) {
+      syncActiveLineFromDom();
+      undoController.scheduleTypingCheckpoint();
       cfg.onChange?.();
       return;
     }
@@ -793,6 +1249,20 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       placeCursorNearBlankLine(blankBlock);
     }
     updateActiveBlankVisibility();
+    const lineSynced = syncActiveLineFromDom();
+    if (lineSynced && renderModelAfterInputTransform()) {
+      undoController.scheduleTypingCheckpoint();
+      cfg.onChange?.();
+      return;
+    }
+    if (!lineSynced) {
+      if (checkBlockInputTransform(contentEl)) {
+        syncModelFromDom();
+        cfg.onChange?.();
+        return;
+      }
+      syncModelFromDom();
+    }
     undoController.scheduleTypingCheckpoint();
     cfg.onChange?.();
   }
@@ -819,8 +1289,15 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         bitmap.close();
         const html = await cfg.onImagePaste(blob);
         if (html) {
-          document.execCommand("insertHTML", false, html);
-          cfg.onChange?.();
+          const div = htmlToSanitizedContainer(html);
+          const imageMarkdown = domToMarkdown(div, { extensions }) || html;
+          if (!replaceBlockSelection(imageMarkdown)) {
+            if (syncSelectionFromDomMetadata()) {
+              commitStructuralTransaction(modelReplaceSelection(state, imageMarkdown));
+            } else {
+              transactions.replaceSelection(imageMarkdown);
+            }
+          }
         }
       }
       return;
@@ -837,11 +1314,38 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     }
 
     if (pastedText) {
-      transactions.replaceSelection(pastedText, getBlockPasteSelectionOverride(pastedText));
+      if (!replaceBlockSelection(pastedText)) {
+        const selectionOverride = getBlockPasteSelectionOverride(pastedText);
+        if (selectionOverride !== undefined || !syncSelectionFromDomMetadata()) {
+          transactions.replaceSelection(pastedText, selectionOverride);
+        } else {
+          commitStructuralTransaction(modelReplaceSelection(state, pastedText));
+        }
+      }
     }
   }
 
   function onBeforeInput(e: InputEvent): void {
+    if (state.composing) {
+      return;
+    }
+    if (state.selection.kind === "block") {
+      if (e.inputType === "insertText" && e.data !== null) {
+        e.preventDefault();
+        replaceBlockSelection(e.data);
+        return;
+      }
+      if (e.inputType === "insertParagraph") {
+        e.preventDefault();
+        replaceBlockSelection("");
+        return;
+      }
+      if (e.inputType === "deleteContentBackward" || e.inputType === "deleteContentForward") {
+        e.preventDefault();
+        replaceBlockSelection("");
+        return;
+      }
+    }
     if (e.inputType === "insertParagraph") {
       if (suppressNextInsertParagraph) {
         suppressNextInsertParagraph = false;
@@ -853,6 +1357,38 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         return;
       }
       if (handleEmptyParagraphEnter()) {
+        e.preventDefault();
+        return;
+      }
+      if (
+        syncSelectionFromDomMetadata() &&
+        commitStructuralTransaction(modelInsertListParagraph(state))
+      ) {
+        e.preventDefault();
+        return;
+      }
+      if (
+        syncSelectionFromDomMetadata() &&
+        commitStructuralTransaction(modelInsertParagraph(state))
+      ) {
+        e.preventDefault();
+        return;
+      }
+    }
+    if (e.inputType === "deleteContentBackward") {
+      if (
+        syncSelectionFromDomMetadata() &&
+        commitStructuralTransaction(modelDeleteBackward(state))
+      ) {
+        e.preventDefault();
+        return;
+      }
+    }
+    if (e.inputType === "deleteContentForward") {
+      if (
+        syncSelectionFromDomMetadata() &&
+        commitStructuralTransaction(modelDeleteForward(state))
+      ) {
         e.preventDefault();
         return;
       }
@@ -883,7 +1419,49 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     void onPaste(e);
   }
 
+  function onContentCopy(e: ClipboardEvent): void {
+    copyBlockSelection(e);
+  }
+
+  function onContentCut(e: ClipboardEvent): void {
+    if (copyBlockSelection(e)) {
+      replaceBlockSelection("");
+    }
+  }
+
+  function onContentSelectionCommit(): void {
+    if (_isSourceMode || state.selection.kind === "block") return;
+    if (!syncSelectionFromDomMetadata()) {
+      setModelSelection(selection.getSelectionOffsets());
+    }
+  }
+
+  function onCompositionStart(): void {
+    state = { ...state, composing: true };
+  }
+
+  function onCompositionEnd(): void {
+    state = { ...state, composing: false };
+    if (!syncActiveLineFromDom()) {
+      syncModelFromDom();
+    }
+    checkInlineTransform();
+    if (!syncActiveLineFromDom()) {
+      syncModelFromDom();
+    }
+    cfg.onChange?.();
+  }
+
   function onContentPointerDown(e: PointerEvent): void {
+    const handle = getBlockHandle(e.target);
+    if (handle) {
+      e.preventDefault();
+      const blockId = handle.dataset["mdBlockHandle"];
+      if (blockId) {
+        selectBlock(blockId, e.shiftKey);
+      }
+      return;
+    }
     const blank = getBlankLineBlock(e.target instanceof Node ? e.target : null);
     if (!blank) return;
     e.preventDefault();
@@ -891,6 +1469,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   }
 
   function onSourceInput(): void {
+    syncModelFromSource();
     cfg.onChange?.();
   }
 
@@ -953,6 +1532,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     imageResizeDrag = null;
     drag.image.classList.remove("md-image-resizing");
     if (!drag.changed) return;
+    syncModelFromDom();
     undoController.checkpoint();
     cfg.onChange?.();
   }
@@ -973,7 +1553,13 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   contentEl.addEventListener("keydown", onKeyDown);
   contentEl.addEventListener("beforeinput", onBeforeInput);
   contentEl.addEventListener("input", onInput);
+  contentEl.addEventListener("compositionstart", onCompositionStart);
+  contentEl.addEventListener("compositionend", onCompositionEnd);
+  contentEl.addEventListener("keyup", onContentSelectionCommit);
+  contentEl.addEventListener("mouseup", onContentSelectionCommit);
   contentEl.addEventListener("paste", onContentPaste);
+  contentEl.addEventListener("copy", onContentCopy);
+  contentEl.addEventListener("cut", onContentCut);
   contentEl.addEventListener("change", onCheckboxEvent);
   contentEl.addEventListener("click", onCheckboxEvent);
   contentEl.addEventListener("pointerdown", onContentPointerDown);
@@ -988,16 +1574,30 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function toggleSourceMode(): void {
     if (_isSourceMode) {
-      const md = sourceEl.value;
-      renderer.render(md);
+      syncModelFromSource();
+      const md = currentMarkdown();
+      const selStart = sourceEl.selectionStart;
+      const selEnd = sourceEl.selectionEnd;
+      renderer.renderWithSelection(md, selStart, selEnd);
+      annotateEditorDom(contentEl, state.doc);
       _isSourceMode = false;
+      state = { ...state, sourceMode: false };
       sourceEl.style.display = "none";
       contentEl.style.display = "";
+      selection.restoreSelectionFromRenderedMarkers();
+      updateActiveBlankVisibility();
     } else {
-      sourceEl.value = getValue();
+      syncModelFromDom();
+      const offsets = currentSelectionOffsets();
+      sourceEl.value = currentMarkdown();
       _isSourceMode = true;
+      state = { ...state, sourceMode: true };
       contentEl.style.display = "none";
       sourceEl.style.display = "";
+      const start = offsets?.start ?? 0;
+      const end = offsets?.end ?? start;
+      sourceEl.focus();
+      sourceEl.setSelectionRange(start, end);
     }
   }
 
@@ -1012,7 +1612,13 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     contentEl.removeEventListener("keydown", onKeyDown);
     contentEl.removeEventListener("beforeinput", onBeforeInput);
     contentEl.removeEventListener("input", onInput);
+    contentEl.removeEventListener("compositionstart", onCompositionStart);
+    contentEl.removeEventListener("compositionend", onCompositionEnd);
+    contentEl.removeEventListener("keyup", onContentSelectionCommit);
+    contentEl.removeEventListener("mouseup", onContentSelectionCommit);
     contentEl.removeEventListener("paste", onContentPaste);
+    contentEl.removeEventListener("copy", onContentCopy);
+    contentEl.removeEventListener("cut", onContentCut);
     contentEl.removeEventListener("change", onCheckboxEvent);
     contentEl.removeEventListener("click", onCheckboxEvent);
     contentEl.removeEventListener("pointerdown", onContentPointerDown);
@@ -1028,9 +1634,10 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   return {
     getValue,
+    getSnapshot,
     setValue,
-    getSelectionOffsets: selection.getSelectionOffsets,
-    getCursorOffset: selection.getCursorOffset,
+    getSelectionOffsets,
+    getCursorOffset,
     applyFormat,
     undo,
     redo,

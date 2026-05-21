@@ -279,7 +279,11 @@ function findClosing(text: string, delim: string, start: number): number {
   return -1;
 }
 
-function createRenderer(extensions: MarkdownExtension[]) {
+function sourceAttrs(start: number, end: number, contentStart = start, contentEnd = end): string {
+  return ` data-md-source-start="${start}" data-md-source-end="${end}" data-md-content-start="${contentStart}" data-md-content-end="${contentEnd}"`;
+}
+
+function createRenderer(extensions: MarkdownExtension[], editorSourceSpans = false) {
   function renderLines(lines: string[]): string {
     const blocks = parseBlocks(lines);
     return blocks.map(renderBlock).join("\n");
@@ -363,7 +367,7 @@ function createRenderer(extensions: MarkdownExtension[]) {
 
   /// Inline rendering: handles bold, italic, strikethrough, code, highlight,
   /// wiki-links, wiki-images, links, images, and escaped characters.
-  function inline(text: string): string {
+  function inline(text: string, baseOffset = 0): string {
     let out = "";
     let i = 0;
     const len = text.length;
@@ -403,7 +407,15 @@ function createRenderer(extensions: MarkdownExtension[]) {
       if (ch === "`") {
         const end = text.indexOf("`", i + 1);
         if (end !== -1) {
-          out += `<code>${escapeHtml(text.slice(i + 1, end))}</code>`;
+          const attrs = editorSourceSpans
+            ? sourceAttrs(
+                baseOffset + i,
+                baseOffset + end + 1,
+                baseOffset + i + 1,
+                baseOffset + end,
+              )
+            : "";
+          out += `<code${attrs}>${escapeHtml(text.slice(i + 1, end))}</code>`;
           i = end + 1;
           continue;
         }
@@ -413,7 +425,10 @@ function createRenderer(extensions: MarkdownExtension[]) {
       if (ch === "!" && text[i + 1] === "[") {
         const m = text.slice(i).match(/^!\[([^\]]*)\]\(([^)]+)\)/);
         if (m) {
-          out += `<img src="${escapeHtml(m[2]!)}" alt="${escapeHtml(m[1]!)}">`;
+          const attrs = editorSourceSpans
+            ? sourceAttrs(baseOffset + i, baseOffset + i + m[0].length)
+            : "";
+          out += `<img${attrs} src="${escapeHtml(m[2]!)}" alt="${escapeHtml(m[1]!)}">`;
           i += m[0].length;
           continue;
         }
@@ -423,7 +438,16 @@ function createRenderer(extensions: MarkdownExtension[]) {
       if (ch === "[") {
         const m = text.slice(i).match(/^\[([^\]]*)\]\(([^)]+)\)/);
         if (m) {
-          out += `<a href="${escapeHtml(m[2]!)}">${inline(m[1]!)}</a>`;
+          const textStart = baseOffset + i + 1;
+          const attrs = editorSourceSpans
+            ? sourceAttrs(
+                baseOffset + i,
+                baseOffset + i + m[0].length,
+                textStart,
+                textStart + m[1]!.length,
+              )
+            : "";
+          out += `<a${attrs} href="${escapeHtml(m[2]!)}">${inline(m[1]!, textStart)}</a>`;
           i += m[0].length;
           continue;
         }
@@ -433,7 +457,15 @@ function createRenderer(extensions: MarkdownExtension[]) {
       if (ch === "=" && text[i + 1] === "=") {
         const end = text.indexOf("==", i + 2);
         if (end !== -1) {
-          out += `<mark>${inline(text.slice(i + 2, end))}</mark>`;
+          const attrs = editorSourceSpans
+            ? sourceAttrs(
+                baseOffset + i,
+                baseOffset + end + 2,
+                baseOffset + i + 2,
+                baseOffset + end,
+              )
+            : "";
+          out += `<mark${attrs}>${inline(text.slice(i + 2, end), baseOffset + i + 2)}</mark>`;
           i = end + 2;
           continue;
         }
@@ -443,7 +475,15 @@ function createRenderer(extensions: MarkdownExtension[]) {
       if (ch === "~" && text[i + 1] === "~") {
         const end = text.indexOf("~~", i + 2);
         if (end !== -1) {
-          out += `<del>${inline(text.slice(i + 2, end))}</del>`;
+          const attrs = editorSourceSpans
+            ? sourceAttrs(
+                baseOffset + i,
+                baseOffset + end + 2,
+                baseOffset + i + 2,
+                baseOffset + end,
+              )
+            : "";
+          out += `<del${attrs}>${inline(text.slice(i + 2, end), baseOffset + i + 2)}</del>`;
           i = end + 2;
           continue;
         }
@@ -453,7 +493,15 @@ function createRenderer(extensions: MarkdownExtension[]) {
       if (ch === "*" && text[i + 1] === "*") {
         const end = text.indexOf("**", i + 2);
         if (end !== -1) {
-          out += `<strong>${inline(text.slice(i + 2, end))}</strong>`;
+          const attrs = editorSourceSpans
+            ? sourceAttrs(
+                baseOffset + i,
+                baseOffset + end + 2,
+                baseOffset + i + 2,
+                baseOffset + end,
+              )
+            : "";
+          out += `<strong${attrs}>${inline(text.slice(i + 2, end), baseOffset + i + 2)}</strong>`;
           i = end + 2;
           continue;
         }
@@ -463,7 +511,15 @@ function createRenderer(extensions: MarkdownExtension[]) {
       if (ch === "*") {
         const end = findClosing(text, "*", i + 1);
         if (end !== -1) {
-          out += `<em>${inline(text.slice(i + 1, end))}</em>`;
+          const attrs = editorSourceSpans
+            ? sourceAttrs(
+                baseOffset + i,
+                baseOffset + end + 1,
+                baseOffset + i + 1,
+                baseOffset + end,
+              )
+            : "";
+          out += `<em${attrs}>${inline(text.slice(i + 1, end), baseOffset + i + 1)}</em>`;
           i = end + 1;
           continue;
         }
@@ -482,7 +538,8 @@ function createRenderer(extensions: MarkdownExtension[]) {
           end--;
         }
         const url = text.slice(i, end);
-        out += `<a href="${escapeHtml(url)}">${escapeHtml(url)}</a>`;
+        const attrs = editorSourceSpans ? sourceAttrs(baseOffset + i, baseOffset + end) : "";
+        out += `<a${attrs} href="${escapeHtml(url)}">${escapeHtml(url)}</a>`;
         i = end;
         continue;
       }
@@ -522,7 +579,14 @@ function createRenderer(extensions: MarkdownExtension[]) {
       for (const ext of extensions) {
         const result = ext.renderInline?.(text, i);
         if (result) {
-          out += result.html;
+          out += editorSourceSpans
+            ? `<span${sourceAttrs(
+                baseOffset + i,
+                baseOffset + i + result.consumed,
+                baseOffset + i,
+                baseOffset + i + result.consumed,
+              )} data-md-atomic-source="true">${result.html}</span>`
+            : result.html;
           i += result.consumed;
           claimed = true;
           break;
@@ -586,4 +650,29 @@ export function renderMarkdownWithSelection(
   opts?: RenderOpts,
 ): string {
   return createRenderer(opts?.extensions ?? []).renderMarkdownWithSelection(src, selStart, selEnd);
+}
+
+export function renderEditorMarkdown(src: string, opts?: RenderOpts): string {
+  return createRenderer(opts?.extensions ?? [], true).renderMarkdown(src);
+}
+
+export function renderEditorMarkdownWithCursor(
+  src: string,
+  offset: number,
+  opts?: RenderOpts,
+): string {
+  return createRenderer(opts?.extensions ?? [], true).renderMarkdownWithCursor(src, offset);
+}
+
+export function renderEditorMarkdownWithSelection(
+  src: string,
+  selStart: number,
+  selEnd: number,
+  opts?: RenderOpts,
+): string {
+  return createRenderer(opts?.extensions ?? [], true).renderMarkdownWithSelection(
+    src,
+    selStart,
+    selEnd,
+  );
 }

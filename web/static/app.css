@@ -525,6 +525,7 @@ button {
 .app-editor h1,
 .app-editor h2,
 .app-editor h3 {
+  position: relative;
   margin: 2.2em 0 0.55em;
   color: var(--md-color-text);
   font-weight: 560;
@@ -553,6 +554,7 @@ button {
 .app-editor h4,
 .app-editor h5,
 .app-editor h6 {
+  position: relative;
   margin: 1.8em 0 0.45em;
   color: var(--md-color-text);
   font-size: 1em;
@@ -566,8 +568,46 @@ button {
 .app-editor blockquote,
 .app-editor pre,
 .app-editor table {
+  position: relative;
   margin-top: 0;
   margin-bottom: 1em;
+}
+
+.app-editor [data-md-block-id].md-block-selected {
+  outline: 1px solid color-mix(in srgb, var(--color-accent) 52%, transparent);
+  outline-offset: 3px;
+  background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+}
+
+.app-editor .md-block-handle {
+  position: absolute;
+  left: -24px;
+  top: 0.42em;
+  width: 16px;
+  height: 22px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  opacity: 0;
+}
+
+.app-editor .md-block-handle::before {
+  content: "...";
+  display: block;
+  line-height: 20px;
+}
+
+.app-editor [data-md-block-id]:hover > .md-block-handle,
+.app-editor .md-block-handle:focus-visible,
+.app-editor [data-md-block-id].md-block-selected > .md-block-handle {
+  opacity: 1;
+}
+
+.app-editor .md-block-handle:hover,
+.app-editor .md-block-handle:focus-visible {
+  background: var(--color-bg-hover);
 }
 
 .app-editor a {

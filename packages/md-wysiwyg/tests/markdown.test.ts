@@ -3,7 +3,7 @@ import {
   createWikiImageExtension,
   createCalloutExtension,
 } from "../src/index.ts";
-import { renderMarkdown } from "../src/markdown.ts";
+import { renderEditorMarkdown, renderMarkdown } from "../src/markdown.ts";
 
 const wikiLinkOpts = { extensions: [createWikiLinkExtension()] };
 const wikiImageOpts = {
@@ -46,6 +46,15 @@ describe("paragraphs", () => {
 describe("inline formatting", () => {
   it("bold", () => {
     expect(renderMarkdown("**bold**")).toContain("<strong>bold</strong>");
+  });
+
+  it("editor render includes inline source spans without changing public render", () => {
+    expect(renderMarkdown("**bold**")).toContain("<strong>bold</strong>");
+    const html = renderEditorMarkdown("**bold**");
+    expect(html).toContain('data-md-source-start="0"');
+    expect(html).toContain('data-md-content-start="2"');
+    expect(html).toContain('data-md-content-end="6"');
+    expect(html).toContain('data-md-source-end="8"');
   });
   it("italic", () => {
     expect(renderMarkdown("*italic*")).toContain("<em>italic</em>");

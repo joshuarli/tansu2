@@ -1,15 +1,123 @@
+import type { EditorBlock, EditorDoc } from "./editor-model.js";
 import type { MarkdownExtension } from "./extension.js";
 import {
-  renderMarkdown,
-  renderMarkdownWithCursor,
-  renderMarkdownWithSelection,
+  renderEditorMarkdown,
+  renderEditorMarkdownWithCursor,
+  renderEditorMarkdownWithSelection,
 } from "./markdown.js";
+
+export type DomMap = {
+  lineToElement: Map<string, HTMLElement>;
+  blockToElement: Map<string, HTMLElement>;
+};
 
 type EditorRenderer = {
   render(md: string): void;
   renderWithCursor(md: string, offset: number): void;
   renderWithSelection(md: string, selStart: number, selEnd: number): void;
 };
+
+export function annotateEditorDom(root: HTMLElement, doc: EditorDoc): DomMap {
+  const lineToElement = new Map<string, HTMLElement>();
+  const blockToElement = new Map<string, HTMLElement>();
+  const children = [...root.children].filter(
+    (child): child is HTMLElement => child instanceof HTMLElement,
+  );
+  let childIndex = 0;
+
+  for (const block of doc.blocks.blocks) {
+    const lineCount = block.endLine - block.startLine;
+    const oneElementPerLine = block.kind === "paragraph" || block.kind === "blank";
+    const consumed = oneElementPerLine ? lineCount : 1;
+    const blockElements = children.slice(childIndex, childIndex + consumed);
+    childIndex += consumed;
+    if (blockElements.length === 0) {
+      continue;
+    }
+
+    for (const el of blockElements) {
+      annotateBlockElement(el, block);
+    }
+    blockToElement.set(block.id, blockElements[0]!);
+    ensureBlockHandle(blockElements[0]!, block.id);
+
+    if (oneElementPerLine) {
+      for (let line = block.startLine; line < block.endLine; line++) {
+        const el = blockElements[line - block.startLine];
+        if (el) {
+          annotateLineElement(el, doc, line);
+          lineToElement.set(doc.lines[line]!.id, el);
+        }
+      }
+      continue;
+    }
+
+    const lineHosts = findLineHosts(blockElements[0]!, block);
+    for (let line = block.startLine; line < block.endLine; line++) {
+      const host = lineHosts[line - block.startLine] ?? blockElements[0]!;
+      annotateLineElement(host, doc, line);
+      lineToElement.set(doc.lines[line]!.id, host);
+    }
+  }
+
+  return { lineToElement, blockToElement };
+}
+
+function annotateBlockElement(el: HTMLElement, block: EditorBlock): void {
+  el.dataset["mdBlockId"] = block.id;
+  el.dataset["mdBlockKind"] = block.kind;
+}
+
+function annotateLineElement(el: HTMLElement, doc: EditorDoc, line: number): void {
+  el.dataset["mdLineId"] = doc.lines[line]!.id;
+  el.dataset["mdLineIndex"] = String(line);
+  const listMatch = doc.lines[line]!.text.match(/^([ \t]*([-*+]|\d+\.)(?: \[[ xX]\])?\s)(.*)$/);
+  if (listMatch) {
+    el.dataset["mdLineContentStart"] = String(listMatch[1]!.length);
+  } else {
+    delete el.dataset["mdLineContentStart"];
+  }
+}
+
+function ensureBlockHandle(el: HTMLElement, blockId: string): void {
+  const existing = el.querySelector(":scope > .md-block-handle");
+  if (existing instanceof HTMLElement) {
+    existing.dataset["mdBlockHandle"] = blockId;
+    return;
+  }
+  const handle = document.createElement("button");
+  handle.type = "button";
+  handle.className = "md-block-handle";
+  handle.contentEditable = "false";
+  handle.tabIndex = 0;
+  handle.ariaLabel = "Select block";
+  handle.dataset["mdBlockHandle"] = blockId;
+  el.append(handle);
+}
+
+function findLineHosts(el: HTMLElement, block: EditorBlock): HTMLElement[] {
+  if (block.kind === "list") {
+    return Array.from<Element, HTMLElement | null>(el.querySelectorAll("li"), (child) =>
+      child instanceof HTMLElement ? child : null,
+    ).filter((child): child is HTMLElement => child !== null);
+  }
+  if (block.kind === "code") {
+    const code = el.querySelector("code");
+    return code instanceof HTMLElement ? [code] : [el];
+  }
+  if (block.kind === "table") {
+    return Array.from<Element, HTMLElement | null>(el.querySelectorAll("tr"), (child) =>
+      child instanceof HTMLElement ? child : null,
+    ).filter((child): child is HTMLElement => child !== null);
+  }
+  if (block.kind === "blockquote") {
+    const children = [...el.children].filter(
+      (child): child is HTMLElement => child instanceof HTMLElement,
+    );
+    return children.length > 0 ? children : [el];
+  }
+  return [el];
+}
 
 export function createEditorRenderer(
   contentEl: HTMLElement,
@@ -19,13 +127,13 @@ export function createEditorRenderer(
 
   return {
     render(md) {
-      contentEl.innerHTML = renderMarkdown(md, renderOpts);
+      contentEl.innerHTML = renderEditorMarkdown(md, renderOpts);
     },
     renderWithCursor(md, offset) {
-      contentEl.innerHTML = renderMarkdownWithCursor(md, offset, renderOpts);
+      contentEl.innerHTML = renderEditorMarkdownWithCursor(md, offset, renderOpts);
     },
     renderWithSelection(md, selStart, selEnd) {
-      contentEl.innerHTML = renderMarkdownWithSelection(md, selStart, selEnd, renderOpts);
+      contentEl.innerHTML = renderEditorMarkdownWithSelection(md, selStart, selEnd, renderOpts);
     },
   };
 }

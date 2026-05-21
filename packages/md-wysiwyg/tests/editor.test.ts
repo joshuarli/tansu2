@@ -67,7 +67,7 @@ describe("createEditor", () => {
   it("setValue renders HTML into contentEl", () => {
     const handle = createEditor(container);
     handle.setValue("# Heading");
-    expect(handle.contentEl.innerHTML).toContain("<h1>");
+    expect(handle.contentEl.querySelector("h1")).toBeInstanceOf(HTMLHeadingElement);
     handle.destroy();
   });
 
@@ -85,6 +85,108 @@ describe("createEditor", () => {
     expect(handle.getValue()).toBe("first");
     handle.setValue("second");
     expect(handle.getValue()).toBe("second");
+    handle.destroy();
+  });
+
+  it("getSnapshot returns model markdown and revision state", () => {
+    const handle = createEditor(container);
+    handle.setValue("foo\n\nbar", 3);
+
+    const snapshot = handle.getSnapshot();
+
+    expect(snapshot.markdown).toBe("foo\n\nbar");
+    expect(snapshot.cursorOffset).toBe(3);
+    expect(snapshot.selection).toEqual({ start: 3, end: 3 });
+    expect(snapshot.revision).toBeGreaterThan(0);
+    expect(snapshot.sourceMode).toBe(false);
+    handle.destroy();
+  });
+
+  it("getSnapshot maps inline formatted DOM positions through source spans", () => {
+    const handle = createEditor(container);
+    handle.setValue("**bold**");
+    const strong = handle.contentEl.querySelector("strong")!;
+    const textNode = strong.firstChild!;
+    const range = document.createRange();
+    range.setStart(textNode, 0);
+    range.setEnd(textNode, 0);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+    expect(handle.getSnapshot().cursorOffset).toBe(2);
+
+    range.setStart(textNode, 4);
+    range.setEnd(textNode, 4);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+    expect(handle.getSnapshot().cursorOffset).toBe(6);
+
+    range.setStartAfter(strong);
+    range.collapse(true);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+    expect(handle.getSnapshot().cursorOffset).toBe(8);
+    handle.destroy();
+  });
+
+  it("getSnapshot treats extension inline output as an atomic source span", () => {
+    const handle = createEditor(container, { extensions: [createWikiLinkExtension()] });
+    handle.setValue("[[target|display]]");
+    const link = handle.contentEl.querySelector(".wiki-link")!;
+    const textNode = link.firstChild!;
+    const range = document.createRange();
+    range.setStart(textNode, 0);
+    range.setEnd(textNode, 0);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+    expect(handle.getSnapshot().cursorOffset).toBe(0);
+
+    range.setStart(textNode, textNode.textContent!.length);
+    range.setEnd(textNode, textNode.textContent!.length);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+    expect(handle.getSnapshot().cursorOffset).toBe("[[target|display]]".length);
+    handle.destroy();
+  });
+
+  it("renders model block and line metadata with gutter handles", () => {
+    const handle = createEditor(container);
+    handle.setValue("# Heading\n\nbody");
+
+    const heading = handle.contentEl.querySelector("h1")!;
+    const paragraph = handle.contentEl.querySelector("p:not([data-md-blank])")!;
+
+    expect(heading.dataset["mdBlockKind"]).toBe("heading");
+    expect(heading.dataset["mdLineIndex"]).toBe("0");
+    expect(heading.querySelector(".md-block-handle")).toBeInstanceOf(HTMLButtonElement);
+    expect(paragraph.dataset["mdBlockKind"]).toBe("paragraph");
+    expect(paragraph.dataset["mdLineIndex"]).toBe("2");
+    handle.destroy();
+  });
+
+  it("clicking a gutter handle selects, copies, and deletes a block source span", () => {
+    const onChange = vi.fn();
+    const handle = createEditor(container, { onChange });
+    handle.setValue("alpha\n\nbeta");
+
+    const firstHandle = handle.contentEl.querySelector(".md-block-handle")!;
+    firstHandle.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true, cancelable: true }));
+
+    expect(handle.contentEl.querySelector("[data-md-block-id]")!.classList).toContain(
+      "md-block-selected",
+    );
+    expect(handle.getSnapshot().selection).toEqual({ start: 0, end: 6 });
+
+    const clipboard = new DataTransfer();
+    handle.contentEl.dispatchEvent(
+      new ClipboardEvent("copy", { bubbles: true, cancelable: true, clipboardData: clipboard }),
+    );
+    expect(clipboard.getData("text/plain")).toBe("alpha\n");
+
+    handle.contentEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Delete", bubbles: true, cancelable: true }),
+    );
+    expect(handle.getValue()).toBe("\nbeta");
+    expect(onChange).toHaveBeenCalled();
     handle.destroy();
   });
 
@@ -147,6 +249,183 @@ describe("createEditor", () => {
     );
     expect(handle.getValue()).toBe("# Foo\n\n\n");
     expect(handle.contentEl.querySelectorAll('[data-md-blank="true"]')).toHaveLength(2);
+    handle.destroy();
+  });
+
+  it("native paragraph input reconciles only the active plain line into the model", () => {
+    const handle = createEditor(container);
+    handle.setValue("hello\nworld");
+    const paragraph = handle.contentEl.querySelector("p")!;
+    const textNode = paragraph.firstChild!;
+    textNode.textContent = "hello!";
+    const range = document.createRange();
+    range.setStart(textNode, 6);
+    range.setEnd(textNode, 6);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    handle.contentEl.dispatchEvent(
+      new InputEvent("input", { bubbles: true, inputType: "insertText" }),
+    );
+
+    expect(handle.getValue()).toBe("hello!\nworld");
+    expect(handle.contentEl.querySelector("p")).toBe(paragraph);
+    handle.destroy();
+  });
+
+  it("space-triggered heading transform rerenders from model markdown", () => {
+    const handle = createEditor(container);
+    handle.setValue("x");
+    const paragraph = handle.contentEl.querySelector("p")!;
+    paragraph.textContent = "# ";
+    const textNode = paragraph.firstChild!;
+    const range = document.createRange();
+    range.setStart(textNode, 2);
+    range.setEnd(textNode, 2);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    handle.contentEl.dispatchEvent(
+      new InputEvent("input", { bubbles: true, inputType: "insertText" }),
+    );
+
+    expect(handle.getValue()).toBe("# ");
+    expect(handle.contentEl.querySelector("h1")).not.toBeNull();
+    handle.destroy();
+  });
+
+  it("space-triggered list transform rerenders from model markdown", () => {
+    const handle = createEditor(container);
+    handle.setValue("x");
+    const paragraph = handle.contentEl.querySelector("p")!;
+    paragraph.textContent = "- ";
+    const textNode = paragraph.firstChild!;
+    const range = document.createRange();
+    range.setStart(textNode, 2);
+    range.setEnd(textNode, 2);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    handle.contentEl.dispatchEvent(
+      new InputEvent("input", { bubbles: true, inputType: "insertText" }),
+    );
+
+    expect(handle.getValue()).toBe("- ");
+    expect(handle.contentEl.querySelector("ul li")).not.toBeNull();
+    handle.destroy();
+  });
+
+  it("beforeinput insertParagraph uses a model transaction", () => {
+    const handle = createEditor(container);
+    handle.setValue("foo");
+    const textNode = handle.contentEl.querySelector("p")!.firstChild!;
+    const range = document.createRange();
+    range.setStart(textNode, 3);
+    range.setEnd(textNode, 3);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    const event = new InputEvent("beforeinput", {
+      bubbles: true,
+      cancelable: true,
+      inputType: "insertParagraph",
+    });
+    const dispatched = handle.contentEl.dispatchEvent(event);
+
+    expect(dispatched).toBe(false);
+    expect(event.defaultPrevented).toBe(true);
+    expect(handle.getValue()).toBe("foo\n");
+    handle.destroy();
+  });
+
+  it("beforeinput insertParagraph continues a rendered list item through the model", () => {
+    const handle = createEditor(container);
+    handle.setValue("- foo");
+    const listItem = handle.contentEl.querySelector("li")!;
+    const textNode = listItem.firstChild!;
+    const range = document.createRange();
+    range.setStart(textNode, 3);
+    range.setEnd(textNode, 3);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    const event = new InputEvent("beforeinput", {
+      bubbles: true,
+      cancelable: true,
+      inputType: "insertParagraph",
+    });
+    handle.contentEl.dispatchEvent(event);
+
+    expect(event.defaultPrevented).toBe(true);
+    expect(handle.getValue()).toBe("- foo\n- ");
+    expect(handle.contentEl.querySelectorAll("li")).toHaveLength(2);
+    handle.destroy();
+  });
+
+  it("beforeinput insertParagraph exits an empty rendered list item through the model", () => {
+    const handle = createEditor(container);
+    handle.setValue("- ");
+    const listItem = handle.contentEl.querySelector("li")!;
+    const range = document.createRange();
+    range.selectNodeContents(listItem);
+    range.collapse(false);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    const event = new InputEvent("beforeinput", {
+      bubbles: true,
+      cancelable: true,
+      inputType: "insertParagraph",
+    });
+    handle.contentEl.dispatchEvent(event);
+
+    expect(event.defaultPrevented).toBe(true);
+    expect(handle.getValue()).toBe("");
+    expect(handle.contentEl.querySelector("ul")).toBeNull();
+    handle.destroy();
+  });
+
+  it("beforeinput deleteContentBackward removes one blank boundary through the model", () => {
+    const handle = createEditor(container);
+    handle.setValue("foo\n\n\nbar", 6);
+
+    const event = new InputEvent("beforeinput", {
+      bubbles: true,
+      cancelable: true,
+      inputType: "deleteContentBackward",
+    });
+    const dispatched = handle.contentEl.dispatchEvent(event);
+
+    expect(dispatched).toBe(false);
+    expect(event.defaultPrevented).toBe(true);
+    expect(handle.getValue()).toBe("foo\n\nbar");
+    handle.destroy();
+  });
+
+  it("composition input updates the model without replacing the active host", () => {
+    const onChange = vi.fn();
+    const handle = createEditor(container, { onChange });
+    handle.setValue("hello");
+    const paragraph = handle.contentEl.querySelector("p")!;
+    const textNode = paragraph.firstChild!;
+    const range = document.createRange();
+    range.setStart(textNode, 5);
+    range.setEnd(textNode, 5);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    handle.contentEl.dispatchEvent(new CompositionEvent("compositionstart", { bubbles: true }));
+    textNode.textContent = "hello文";
+    range.setStart(textNode, 6);
+    range.setEnd(textNode, 6);
+    handle.contentEl.dispatchEvent(
+      new InputEvent("input", { bubbles: true, inputType: "insertCompositionText" }),
+    );
+    handle.contentEl.dispatchEvent(new CompositionEvent("compositionend", { bubbles: true }));
+
+    expect(handle.getValue()).toBe("hello文");
+    expect(handle.contentEl.querySelector("p")).toBe(paragraph);
+    expect(onChange).toHaveBeenCalled();
     handle.destroy();
   });
 
@@ -612,6 +891,56 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
+  it("image paste converts uploaded HTML to markdown through the model", async () => {
+    const originalCreateImageBitmap = globalThis.createImageBitmap;
+    const originalOffscreenCanvas = globalThis.OffscreenCanvas;
+    globalThis.createImageBitmap = vi.fn(async () => ({
+      width: 10,
+      height: 10,
+      close: vi.fn(),
+    })) as unknown as typeof createImageBitmap;
+    globalThis.OffscreenCanvas = vi.fn(function OffscreenCanvas() {
+      return {
+        getContext: () => ({ drawImage: vi.fn() }),
+        convertToBlob: async () => new Blob(["webp"], { type: "image/webp" }),
+      };
+    }) as unknown as typeof OffscreenCanvas;
+
+    try {
+      const handle = createEditor(container, {
+        onImagePaste: vi.fn(async () => '<img src="/photo.png" alt="photo">'),
+      });
+      handle.setValue("before ");
+      const textNode = handle.contentEl.querySelector("p")!.firstChild!;
+      const range = document.createRange();
+      range.setStart(textNode, 7);
+      range.setEnd(textNode, 7);
+      window.getSelection()!.removeAllRanges();
+      window.getSelection()!.addRange(range);
+
+      const file = new File(["image"], "photo.png", { type: "image/png" });
+      const clipboardData = {
+        items: [{ type: "image/png", getAsFile: () => file }],
+        getData: () => "",
+      };
+      handle.contentEl.dispatchEvent(
+        new ClipboardEvent("paste", {
+          bubbles: true,
+          clipboardData: clipboardData as unknown as DataTransfer,
+        }),
+      );
+      await Promise.resolve();
+      await Promise.resolve();
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      expect(handle.getValue()).toBe("before ![photo](/photo.png)");
+      handle.destroy();
+    } finally {
+      globalThis.createImageBitmap = originalCreateImageBitmap;
+      globalThis.OffscreenCanvas = originalOffscreenCanvas;
+    }
+  });
+
   // ── Keydown: undo/redo ────────────────────────────────────────────────────
 
   it("Ctrl+Z keydown triggers undo", () => {
@@ -717,6 +1046,7 @@ describe("createEditor", () => {
       new KeyboardEvent("keydown", { key: "Backspace", bubbles: true }),
     );
     expect(handle.contentEl.querySelector("ul")).toBeNull();
+    expect(handle.getValue()).toBe("");
     expect(onChange).toHaveBeenCalled();
     handle.destroy();
   });

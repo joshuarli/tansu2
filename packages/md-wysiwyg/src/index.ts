@@ -41,4 +41,4 @@ export {
 } from "./format-ops.js";
 export type { FormatResult } from "./format-ops.js";
 export { createEditor } from "./editor.js";
-export type { EditorConfig, EditorHandle } from "./editor.js";
+export type { EditorConfig, EditorHandle, EditorSnapshot } from "./editor.js";
