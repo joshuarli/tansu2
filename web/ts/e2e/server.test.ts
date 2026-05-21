@@ -268,21 +268,24 @@ describe("real server harness", () => {
         }),
       )
       .toBe(true);
+    const saveResponse = page.waitForResponse(
+      (response) =>
+        response.request().method() === "PUT" &&
+        new URL(response.url()).pathname.startsWith("/api/notes/") &&
+        response.status() === 200,
+    );
     await page.keyboard.press("Enter");
     await page.keyboard.type("bar");
 
-    await expect
-      .poll(() =>
-        page
-          .locator(".app-editor")
-          .evaluate((editor) =>
-            [...editor.querySelectorAll("p")].some((paragraph) => paragraph.textContent === "bar"),
-          ),
-      )
-      .toBe(true);
-    await expect
-      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
-      .toContain("bar");
+    await expect.poll(() => visibleParagraphLayout(page, "Immediate Cursor", "bar", 1)).toMatchObject({
+      blankCount: 1,
+      ordered: true,
+      blankHasLineBox: true,
+      gapLooksLikeBlankLine: true,
+    });
+    await saveResponse;
+    const saved = await openSeededDocument("immediate-cursor.md");
+    expect(saved.content).toBe("# Immediate Cursor\r\n\r\nbar");
     await page.close();
   });
 
@@ -299,18 +302,11 @@ describe("real server harness", () => {
     );
     await page.keyboard.press("Enter");
     await page.keyboard.press("Enter");
-    await expect
-      .poll(() =>
-        page
-          .locator(".app-editor")
-          .evaluate(
-            (editor) =>
-              [...editor.querySelectorAll<HTMLElement>('[data-md-blank="true"]')].filter(
-                (blank) => !blank.hidden,
-              ).length,
-          ),
-      )
-      .toBe(3);
+    await expect.poll(() => activeCursorBlankLayout(page, "Blank Lines")).toMatchObject({
+      visibleBlankCountAfterText: 3,
+      cursorHasLineBox: true,
+      cursorIsAfterBlankLine: true,
+    });
     await page.waitForResponse(
       (response) =>
         response.request().method() === "PUT" &&
@@ -418,36 +414,44 @@ describe("real server harness", () => {
     await page.keyboard.type("bar");
     await page.keyboard.press("ArrowUp");
 
-    await expect
-      .poll(() =>
-        page.locator(".app-editor").evaluate((editor) => {
-          const anchor = getSelection()?.anchorNode;
-          const active = anchor instanceof Element ? anchor : anchor?.parentElement;
-          const activeBlock = active?.closest("p");
-          const children = [...editor.children];
-          return {
-            activeIndex:
-              activeBlock === null || activeBlock === undefined
-                ? -1
-                : children.indexOf(activeBlock),
-            blocks: children.map((child) => ({
-              blank: (child as HTMLElement).dataset["mdBlank"] === "true",
-              hidden: (child as HTMLElement).hidden,
-              text: child.textContent ?? "",
-            })),
-          };
-        }),
-      )
-      .toEqual({
-        activeIndex: 3,
-        blocks: [
-          { blank: false, hidden: false, text: "Arrow Blanks" },
-          { blank: false, hidden: false, text: "foo" },
-          { blank: true, hidden: false, text: "" },
-          { blank: false, hidden: false, text: "" },
-          { blank: false, hidden: false, text: "bar" },
-        ],
-      });
+    await expect.poll(() => activeCursorBetweenParagraphsLayout(page, "foo", "bar")).toMatchObject({
+      visibleLaneCount: 2,
+      cursorVisibleLaneOrdinal: 2,
+      cursorHasLineBox: true,
+      cursorIsBetweenTextBlocks: true,
+    });
+    await page.close();
+  });
+
+  it("source mode round trip preserves repeated blank-line geometry and markdown", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await page.locator('.sidebar-controls [title="New note"]').click();
+    await page.locator(".note-dialog-panel input").fill("Source Round Trip");
+    await page.locator(".note-dialog-panel .primary-button").click();
+    await page.waitForFunction(() =>
+      document.querySelector(".tab.active")?.textContent?.includes("Source Round Trip"),
+    );
+    await page.keyboard.type("foo");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("bar");
+
+    await page.locator('.toolbar [title="Source"]').click();
+    await expect.poll(() => page.locator(".app-editor-source").inputValue()).toBe(
+      "# Source Round Trip\nfoo\n\n\nbar",
+    );
+    await page.locator('.toolbar [title="Source"]').click();
+
+    await expect.poll(() => visibleParagraphLayout(page, "foo", "bar", 2)).toMatchObject({
+      blankCount: 2,
+      ordered: true,
+      blankHasLineBox: true,
+      gapLooksLikeBlankLine: true,
+    });
     await page.close();
   });
 
@@ -770,4 +774,68 @@ async function activeCursorBlankLayout(
       cursorIsAfterBlankLine: cursorRect.top - beforeRect.bottom >= minimumLine * 2,
     };
   }, beforeText);
+}
+
+async function activeCursorBetweenParagraphsLayout(
+  page: Page,
+  beforeText: string,
+  afterText: string,
+): Promise<{
+  visibleLaneCount: number;
+  cursorVisibleLaneOrdinal: number;
+  cursorHasLineBox: boolean;
+  cursorIsBetweenTextBlocks: boolean;
+}> {
+  return page.locator(".app-editor").evaluate(
+    (editor, labels) => {
+      const children = [...editor.children].filter(
+        (child): child is HTMLElement => child instanceof HTMLElement,
+      );
+      const before = children.find(
+        (child) => child.dataset["mdBlank"] !== "true" && child.textContent === labels.beforeText,
+      );
+      const after = children.find(
+        (child) => child.dataset["mdBlank"] !== "true" && child.textContent === labels.afterText,
+      );
+      const selection = getSelection();
+      const anchor = selection?.anchorNode;
+      const anchorElement = anchor instanceof Element ? anchor : anchor?.parentElement;
+      const cursorHost =
+        anchorElement?.closest("[data-md-line-index]") ?? anchorElement?.closest("p");
+      if (
+        !(before instanceof HTMLElement) ||
+        !(after instanceof HTMLElement) ||
+        !(cursorHost instanceof HTMLElement)
+      ) {
+        return {
+          visibleLaneCount: 0,
+          cursorVisibleLaneOrdinal: 0,
+          cursorHasLineBox: false,
+          cursorIsBetweenTextBlocks: false,
+        };
+      }
+
+      const beforeIndex = children.indexOf(before);
+      const afterIndex = children.indexOf(after);
+      const lanes = children.slice(beforeIndex + 1, afterIndex).filter((child) => {
+        if (child.hidden) return false;
+        if (child.dataset["mdBlank"] === "true") return true;
+        return child === cursorHost && (child.textContent ?? "") === "";
+      });
+      const cursorOrdinal = lanes.indexOf(cursorHost) + 1;
+      const beforeRect = before.getBoundingClientRect();
+      const afterRect = after.getBoundingClientRect();
+      const cursorRect = cursorHost.getBoundingClientRect();
+      const lineHeight = Number.parseFloat(getComputedStyle(editor).lineHeight);
+      const minimumLine = Number.isFinite(lineHeight) ? lineHeight * 0.6 : 12;
+      return {
+        visibleLaneCount: lanes.length,
+        cursorVisibleLaneOrdinal: cursorOrdinal,
+        cursorHasLineBox: cursorRect.height >= minimumLine,
+        cursorIsBetweenTextBlocks:
+          beforeRect.bottom <= cursorRect.top && cursorRect.bottom <= afterRect.top,
+      };
+    },
+    { beforeText, afterText },
+  );
 }

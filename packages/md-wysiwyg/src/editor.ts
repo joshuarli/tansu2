@@ -225,6 +225,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   const selection = createEditorSelectionController(contentEl);
   let domMap: DomMap = { lineToElement: new Map(), blockToElement: new Map() };
   let suppressNextInsertParagraph = false;
+  let arrowNavigationHandled = false;
   let state: EditorState = (() => {
     const doc = markdownToDoc("");
     return {
@@ -1331,6 +1332,9 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   // ── Event handlers ──────────────────────────────────────────────────────────
 
   function onKeyDown(e: KeyboardEvent): void {
+    if (e.defaultPrevented) {
+      return;
+    }
     const meta = e.metaKey || e.ctrlKey;
     if (state.selection.kind === "block") {
       if (e.key === "Escape") {
@@ -1389,7 +1393,10 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       applyFormat(toggleHighlight);
       return;
     }
-    if (handleArrowThroughBlankLines(e)) return;
+    if (handleArrowThroughBlankLines(e)) {
+      arrowNavigationHandled = true;
+      return;
+    }
     if (e.key === "Backspace" && handleEmptyListItemBackspace(e)) return;
     if (e.key === "Enter" && !e.shiftKey) {
       if (handleModelEnter()) {
@@ -1400,6 +1407,36 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         e.preventDefault();
         return;
       }
+    }
+  }
+
+  function onDocumentArrowKey(e: KeyboardEvent): void {
+    if (e.type === "keydown") {
+      arrowNavigationHandled = false;
+    } else if (arrowNavigationHandled) {
+      arrowNavigationHandled = false;
+      return;
+    }
+    if (e.defaultPrevented || _isSourceMode || (e.key !== "ArrowUp" && e.key !== "ArrowDown")) {
+      return;
+    }
+    const active = document.activeElement;
+    if (
+      active instanceof HTMLInputElement ||
+      active instanceof HTMLTextAreaElement ||
+      active instanceof HTMLSelectElement
+    ) {
+      return;
+    }
+    const anchor = window.getSelection()?.anchorNode;
+    if (anchor === null || anchor === undefined || !contentEl.contains(anchor)) {
+      return;
+    }
+    if (handleArrowThroughBlankLines(e)) {
+      arrowNavigationHandled = true;
+    }
+    if (e.type === "keyup") {
+      arrowNavigationHandled = false;
     }
   }
 
@@ -1725,6 +1762,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   contentEl.addEventListener("click", onCheckboxEvent);
   contentEl.addEventListener("pointerdown", onContentPointerDown);
   contentEl.addEventListener("pointerdown", onImagePointerDown);
+  window.addEventListener("keydown", onDocumentArrowKey, true);
+  window.addEventListener("keyup", onDocumentArrowKey, true);
   document.addEventListener("pointermove", onDocumentPointerMove);
   document.addEventListener("pointerup", endImageResize);
   document.addEventListener("pointercancel", endImageResize);
@@ -1789,6 +1828,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     contentEl.removeEventListener("click", onCheckboxEvent);
     contentEl.removeEventListener("pointerdown", onContentPointerDown);
     contentEl.removeEventListener("pointerdown", onImagePointerDown);
+    window.removeEventListener("keydown", onDocumentArrowKey, true);
+    window.removeEventListener("keyup", onDocumentArrowKey, true);
     document.removeEventListener("pointermove", onDocumentPointerMove);
     document.removeEventListener("pointerup", endImageResize);
     document.removeEventListener("pointercancel", endImageResize);
