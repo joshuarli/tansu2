@@ -9,9 +9,9 @@ import { highlightCode } from "./highlight.js";
 import { escapeHtml, CURSOR_SENTINEL, SEL_START_SENTINEL, SEL_END_SENTINEL } from "./util.js";
 
 type Block =
-  | { type: "heading"; level: number; text: string }
+  | { type: "heading"; level: number; text: string; sourceStart: number }
   | { type: "paragraph"; text: string }
-  | { type: "task"; text: string; checked: boolean }
+  | { type: "task"; text: string; checked: boolean; sourceStart: number }
   | { type: "blank" }
   | { type: "code"; lang: string; text: string }
   | { type: "hr" }
@@ -22,6 +22,7 @@ type Block =
 type ListItem = {
   text: string;
   checked: boolean | null; // null = not a task item
+  sourceStart: number;
   nested?: ListNode[];
 };
 
@@ -71,7 +72,12 @@ function parseBlocks(lines: string[]): Block[] {
     // Heading
     const headingMatch = line.match(new RegExp(`^(#{1,${MAX_HEADING_LEVEL}})\\s+(.*)`));
     if (headingMatch) {
-      blocks.push({ type: "heading", level: headingMatch[1]!.length, text: headingMatch[2]! });
+      blocks.push({
+        type: "heading",
+        level: headingMatch[1]!.length,
+        text: headingMatch[2]!,
+        sourceStart: headingMatch[1]!.length + 1,
+      });
       i++;
       continue;
     }
@@ -112,7 +118,12 @@ function parseBlocks(lines: string[]): Block[] {
     // Bare task item: "[ ] foo" or "[x] foo"
     const taskStart = parseTaskLine(line);
     if (taskStart) {
-      blocks.push({ type: "task", checked: taskStart.checked, text: taskStart.text });
+      blocks.push({
+        type: "task",
+        checked: taskStart.checked,
+        text: taskStart.text,
+        sourceStart: taskStart.sourceStart,
+      });
       i++;
       continue;
     }
@@ -203,16 +214,20 @@ function parseList(
       break;
     }
 
-    items.push({ text: parsed.text, checked: parsed.checked });
+    items.push({ text: parsed.text, checked: parsed.checked, sourceStart: parsed.sourceStart });
     i++;
   }
 
   return { list: { ordered: first.ordered, items }, nextIndex: i };
 }
 
-function parseListLine(
-  line: string,
-): { indent: number; ordered: boolean; text: string; checked: boolean | null } | null {
+function parseListLine(line: string): {
+  indent: number;
+  ordered: boolean;
+  text: string;
+  checked: boolean | null;
+  sourceStart: number;
+} | null {
   const match = line.match(/^([ \t]*)([-*+]|\d+\.)(?:\s(.*))?$/);
   if (!match) {
     return null;
@@ -220,10 +235,12 @@ function parseListLine(
 
   let text = match[3] ?? "";
   let checked: boolean | null = null;
+  let sourceStart = match[0].length - text.length;
   const taskMatch = text.match(/^\[([ xX])\]\s(.*)/);
   if (taskMatch) {
     checked = taskMatch[1] !== " ";
     text = taskMatch[2]!;
+    sourceStart = match[0].length - text.length;
   }
 
   return {
@@ -231,17 +248,21 @@ function parseListLine(
     ordered: /\d+\./.test(match[2]!),
     text,
     checked,
+    sourceStart,
   };
 }
 
-function parseTaskLine(line: string): { checked: boolean; text: string } | null {
-  const match = line.match(/^[ \t]*\[([ xX])\]\s(.*)$/);
+function parseTaskLine(
+  line: string,
+): { checked: boolean; text: string; sourceStart: number } | null {
+  const match = line.match(/^([ \t]*)\[([ xX])\]\s(.*)$/);
   if (!match) {
     return null;
   }
   return {
-    checked: match[1] !== " ",
-    text: match[2]!,
+    checked: match[2] !== " ",
+    text: match[3]!,
+    sourceStart: match[0].length - match[3]!.length,
   };
 }
 
@@ -308,8 +329,11 @@ function createRenderer(extensions: MarkdownExtension[], editorSourceSpans = fal
         const itemCls = item.checked !== null ? ' class="task-item"' : "";
         const textHtml =
           item.checked !== null
-            ? `<input type="checkbox"${item.checked ? " checked" : ""}>&nbsp;${inline(item.text)}`
-            : inline(item.text);
+            ? `<input type="checkbox"${item.checked ? " checked" : ""}>&nbsp;${inline(
+                item.text,
+                item.sourceStart,
+              )}`
+            : inline(item.text, item.sourceStart);
         const nestedHtml = item.nested?.map(renderListNode).join("\n") ?? "";
         const contentHtml = textHtml || nestedHtml ? textHtml : "<br>";
         return nestedHtml
@@ -323,7 +347,7 @@ function createRenderer(extensions: MarkdownExtension[], editorSourceSpans = fal
   function renderBlock(block: Block): string {
     switch (block.type) {
       case "heading": {
-        return `<h${block.level}>${inline(block.text)}</h${block.level}>`;
+        return `<h${block.level}>${inline(block.text, block.sourceStart)}</h${block.level}>`;
       }
       case "paragraph": {
         return `<p>${inline(block.text)}</p>`;
@@ -331,7 +355,7 @@ function createRenderer(extensions: MarkdownExtension[], editorSourceSpans = fal
       case "task": {
         return `<ul class="task-list">\n<li class="task-item"><input type="checkbox"${
           block.checked ? " checked" : ""
-        }>&nbsp;${block.text === "" ? "<br>" : inline(block.text)}</li>\n</ul>`;
+        }>&nbsp;${block.text === "" ? "<br>" : inline(block.text, block.sourceStart)}</li>\n</ul>`;
       }
       case "blank": {
         return '<p data-md-blank="true" hidden></p>';

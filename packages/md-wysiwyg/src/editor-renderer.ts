@@ -1,10 +1,6 @@
 import type { EditorBlock, EditorDoc } from "./editor-model.js";
 import type { MarkdownExtension } from "./extension.js";
-import {
-  renderEditorMarkdown,
-  renderEditorMarkdownWithCursor,
-  renderEditorMarkdownWithSelection,
-} from "./markdown.js";
+import { renderEditorMarkdown } from "./markdown.js";
 
 export type DomMap = {
   lineToElement: Map<string, HTMLElement>;
@@ -13,8 +9,7 @@ export type DomMap = {
 
 type EditorRenderer = {
   render(md: string): void;
-  renderWithCursor(md: string, offset: number): void;
-  renderWithSelection(md: string, selStart: number, selEnd: number): void;
+  renderFragment(md: string): HTMLElement[];
 };
 
 export function annotateEditorDom(root: HTMLElement, doc: EditorDoc): DomMap {
@@ -71,9 +66,14 @@ function annotateBlockElement(el: HTMLElement, block: EditorBlock): void {
 function annotateLineElement(el: HTMLElement, doc: EditorDoc, line: number): void {
   el.dataset["mdLineId"] = doc.lines[line]!.id;
   el.dataset["mdLineIndex"] = String(line);
-  const listMatch = doc.lines[line]!.text.match(/^([ \t]*([-*+]|\d+\.)(?: \[[ xX]\])?\s)(.*)$/);
-  if (listMatch) {
-    el.dataset["mdLineContentStart"] = String(listMatch[1]!.length);
+  const text = doc.lines[line]!.text;
+  const listMatch = text.match(/^([ \t]*([-*+]|\d+\.)(?: \[[ xX]\])?\s)(.*)$/);
+  const headingMatch = text.match(/^(#{1,6}\s+)(.*)$/);
+  const taskMatch = text.match(/^([ \t]*\[[ xX]\]\s+)(.*)$/);
+  const contentStart =
+    listMatch?.[1]?.length ?? headingMatch?.[1]?.length ?? taskMatch?.[1]?.length;
+  if (contentStart !== undefined) {
+    el.dataset["mdLineContentStart"] = String(contentStart);
   } else {
     delete el.dataset["mdLineContentStart"];
   }
@@ -129,11 +129,12 @@ export function createEditorRenderer(
     render(md) {
       contentEl.innerHTML = renderEditorMarkdown(md, renderOpts);
     },
-    renderWithCursor(md, offset) {
-      contentEl.innerHTML = renderEditorMarkdownWithCursor(md, offset, renderOpts);
-    },
-    renderWithSelection(md, selStart, selEnd) {
-      contentEl.innerHTML = renderEditorMarkdownWithSelection(md, selStart, selEnd, renderOpts);
+    renderFragment(md) {
+      const fragmentHost = contentEl.ownerDocument.createElement("div");
+      fragmentHost.innerHTML = renderEditorMarkdown(md, renderOpts);
+      return [...fragmentHost.children].filter(
+        (child): child is HTMLElement => child instanceof HTMLElement,
+      );
     },
   };
 }

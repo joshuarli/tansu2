@@ -20,13 +20,17 @@ import {
 describe("editor model", () => {
   it.each([
     ["", [""]],
+    ["\n", ["", ""]],
+    ["\n\n", ["", "", ""]],
     ["foo", ["foo"]],
     ["foo\n", ["foo", ""]],
     ["foo\n\n", ["foo", "", ""]],
+    ["foo\nbar", ["foo", "bar"]],
     ["foo\n\nbar", ["foo", "", "bar"]],
     ["foo\n\n\nbar", ["foo", "", "", "bar"]],
     ["\nfoo", ["", "foo"]],
     ["\n\nfoo", ["", "", "foo"]],
+    ["foo\n\nbar\n\n", ["foo", "", "bar", "", ""]],
   ])("preserves markdown lines for %j", (md, expectedLines) => {
     const doc = markdownToDoc(md);
     expect(doc.lines.map((line) => line.text)).toEqual(expectedLines);
@@ -83,6 +87,7 @@ describe("editor model", () => {
         "",
         "- one",
         "  - nested",
+        "- [x] done",
         "",
         "```ts",
         "const x = 1;",
@@ -91,6 +96,11 @@ describe("editor model", () => {
         "| A |",
         "| - |",
         "| B |",
+        "",
+        "> [!note]",
+        "> callout",
+        "",
+        "[ ] bare task",
       ].join("\n"),
     );
 
@@ -104,10 +114,14 @@ describe("editor model", () => {
       "code",
       "blank",
       "table",
+      "blank",
+      "blockquote",
+      "blank",
+      "list",
     ]);
     expect(doc.blocks.byLine[4]?.role).toBe("blank");
     expect(doc.blocks.byLine[6]?.role).toBe("continuation");
-    expect(doc.blocks.byLine[10]?.role).toBe("continuation");
+    expect(doc.blocks.byLine[11]?.role).toBe("continuation");
   });
 
   it("converts block selections to source spans", () => {

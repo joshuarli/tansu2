@@ -468,9 +468,8 @@ Selection restoration should use this map:
 - Resolve logical line id and column to a DOM text leaf and DOM offset.
 - If the logical line is blank and selected, render or find the active blank
   cursor host.
-- If the logical line is hidden/collapsed because it is a single blank
-  separator, create a temporary selected cursor host only while the cursor is on
-  that line.
+- If a leading or trailing logical blank line is hidden, create a selected
+  cursor host while the cursor is on that line.
 - If the target text leaf no longer exists, clamp to the nearest valid logical
   position.
 
@@ -519,9 +518,8 @@ Blank lines are the motivating case and need explicit rules.
 
 Use hybrid blank-line lanes:
 
-- A single blank separator between content blocks may be visually collapsed.
-- A run of two or more blank lines between content blocks renders visible
-  noneditable lanes for the repeated spacing.
+- Blank separators between content blocks render visible noneditable lanes,
+  including the single separator in `foo\n\nbar`.
 - A blank line at the active cursor position always renders a cursor host.
 - Leading and trailing repeated blank lines render consistently with middle
   repeated blank lines.
@@ -970,11 +968,11 @@ Existing modules to adapt:
 - `editor-transactions.ts`
   - Either retire or adapt to model transactions.
 
-- `transforms.ts`
-  - Replace DOM replacement transforms with model block transforms.
+- Block transforms now live in the model/render pipeline rather than a DOM
+  replacement module.
 
-- `inline-transforms.ts`
-  - Replace DOM mutation transforms with model inline transforms.
+- `inline-patterns.ts`
+  - Keep pure inline trigger detection for model-backed input transforms.
 
 - `serialize.ts`
   - Keep for standalone `domToMarkdown` and import/paste fallback.
@@ -1017,7 +1015,6 @@ The design is intentionally less certain in the detailed mechanics of:
 - Source-aware inline cursor mapping.
 - Hybrid native typing reconciliation.
 - Extension source-span support.
-- Partial rendering.
 - The exact DOM wrapper shape for block gutters and blank lanes.
 
 Those uncertain pieces should not be implemented on faith. The rewrite should
@@ -1483,6 +1480,8 @@ Preserve current regressions:
 Add browser workflows:
 
 - New note creation places cursor on the line after the H1.
+- Type `foo`, Enter twice, type `bar`, autosave, reload, content remains
+  `# Title\r\nfoo\r\n\r\nbar`.
 - Type `foo`, Enter three times, type `bar`, autosave, reload, content remains
   `# Title\r\nfoo\r\n\r\n\r\nbar`.
 - Put cursor after `bar`, ArrowUp once, type `x`; `x` appears on the expected
@@ -1527,6 +1526,8 @@ The rewrite is complete when:
 - Arrow navigation visits visible blank lanes in logical order.
 - New notes place the cursor on the line after the H1.
 - Ordinary typing in a large note is effectively latency-free.
+- Single-line inline and block input transforms range-render only the affected
+  modeled line when the surrounding block can be safely isolated.
 - Whole-block gutter selection works for the main Markdown block kinds.
 - Browser DOM mutations cannot create untracked document state.
 - Documentation describes the model-owned architecture.

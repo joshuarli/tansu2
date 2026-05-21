@@ -1,6 +1,6 @@
 /// WYSIWYG editor wiring layer. Creates DOM, manages undo stack, routes keyboard
 /// events, and handles image paste. All markdown-specific behavior is delegated to
-/// the render/serialize/transform modules; callers configure extensions and callbacks.
+/// model, render, and serialize modules; callers configure extensions and callbacks.
 
 import { LIST_INDENT_SPACES } from "./constants.js";
 import {
@@ -18,11 +18,12 @@ import {
   replaceSelection as modelReplaceSelection,
   selectionToOffsets as modelSelectionToOffsets,
   type EditorState,
+  type RenderHint,
   type LogicalPosition,
   type TransactionResult,
 } from "./editor-model.js";
 import { normalizeEditableContent } from "./editor-normalize.js";
-import { annotateEditorDom, createEditorRenderer } from "./editor-renderer.js";
+import { annotateEditorDom, createEditorRenderer, type DomMap } from "./editor-renderer.js";
 import {
   createEditorSelectionController,
   isRangeAtStartOfBlock,
@@ -38,9 +39,8 @@ import {
   toggleItalic,
   type FormatResult,
 } from "./format-ops.js";
-import { checkInlineTransform } from "./inline-transforms.js";
+import { matchPattern, patterns as inlineTransformPatterns } from "./inline-patterns.js";
 import { domToMarkdown } from "./serialize.js";
-import { checkBlockInputTransform, handleBlockTransform } from "./transforms.js";
 
 const DISALLOWED_PASTE_TAGS = new Set([
   "BASE",
@@ -222,7 +222,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   let _isSourceMode = false;
   const renderer = createEditorRenderer(contentEl, extensions);
-  const selection = createEditorSelectionController(contentEl, extensions);
+  const selection = createEditorSelectionController(contentEl);
+  let domMap: DomMap = { lineToElement: new Map(), blockToElement: new Map() };
   let suppressNextInsertParagraph = false;
   let state: EditorState = (() => {
     const doc = markdownToDoc("");
@@ -265,17 +266,6 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     };
   }
 
-  function syncModelFromDom(): void {
-    if (_isSourceMode) return;
-    const md = domToMarkdown(contentEl, { extensions });
-    const offsets = selection.getSelectionOffsets();
-    if (md !== currentMarkdown()) {
-      setModelMarkdown(md, offsets ?? undefined);
-    } else {
-      setModelSelection(offsets);
-    }
-  }
-
   function syncModelFromSource(): void {
     const md = normalizeMarkdownNewlines(sourceEl.value);
     const offsets = { start: sourceEl.selectionStart, end: sourceEl.selectionEnd };
@@ -287,22 +277,78 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     }
   }
 
+  function annotateCurrentDom(): void {
+    domMap = annotateEditorDom(contentEl, state.doc);
+  }
+
+  function renderCurrentModel(): void {
+    renderer.render(currentMarkdown());
+    annotateCurrentDom();
+    restoreDomSelectionFromModel();
+    updateActiveBlankVisibility();
+  }
+
+  function renderModelHint(hint: RenderHint): boolean {
+    return hint.kind === "lines" && renderLineRangeFromModel(hint.startLine, hint.endLine);
+  }
+
+  function renderLineRangeFromModel(startLine: number, endLine: number): boolean {
+    if (endLine !== startLine + 1) {
+      return false;
+    }
+    const line = state.doc.lines[startLine];
+    if (!line) {
+      return false;
+    }
+    const blockRef = state.doc.blocks.byLine[startLine];
+    const block = blockRef ? state.doc.blocks.byId.get(blockRef.blockId) : null;
+    if (!block) {
+      return false;
+    }
+    if (block.kind === "code" || block.kind === "table" || block.kind === "blockquote") {
+      return false;
+    }
+    if (
+      block.kind !== "paragraph" &&
+      block.kind !== "blank" &&
+      block.endLine !== block.startLine + 1
+    ) {
+      return false;
+    }
+    const oldLineHost = domMap.lineToElement.get(line.id);
+    if (!oldLineHost) {
+      return false;
+    }
+    const oldBlockRoot = oldLineHost.closest("[data-md-block-id]");
+    if (!(oldBlockRoot instanceof HTMLElement) || oldBlockRoot.parentElement !== contentEl) {
+      return false;
+    }
+    if (oldBlockRoot.querySelectorAll("[data-md-line-index]").length > 1) {
+      return false;
+    }
+    const replacement = renderer.renderFragment(line.text);
+    if (replacement.length !== 1) {
+      return false;
+    }
+    oldBlockRoot.replaceWith(replacement[0]!);
+    annotateCurrentDom();
+    restoreDomSelectionFromModel();
+    updateActiveBlankVisibility();
+    return true;
+  }
+
   function renderSelectionAndModel(md: string, selStart: number, selEnd: number): void {
     const normalized = normalizeMarkdownNewlines(md);
     setModelMarkdown(normalized, { start: selStart, end: selEnd });
-    renderer.renderWithSelection(normalized, selStart, selEnd);
-    annotateEditorDom(contentEl, state.doc);
+    renderCurrentModel();
   }
 
   function commitTransaction(result: TransactionResult, notify = true): boolean {
     if (!result.changed) return false;
     state = result.state;
-    const offsets = modelSelectionToOffsets(state.doc, state.selection);
-    const md = currentMarkdown();
-    renderer.renderWithSelection(md, offsets?.start ?? 0, offsets?.end ?? offsets?.start ?? 0);
-    annotateEditorDom(contentEl, state.doc);
-    selection.restoreSelectionFromRenderedMarkers();
-    updateActiveBlankVisibility();
+    if (!renderModelHint(result.renderHint)) {
+      renderCurrentModel();
+    }
     if (notify) {
       undoController.scheduleTypingCheckpoint();
       cfg.onChange?.();
@@ -321,6 +367,162 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       return { start: sourceEl.selectionStart, end: sourceEl.selectionEnd };
     }
     return modelSelectionToOffsets(state.doc, state.selection);
+  }
+
+  function restoreDomSelectionFromModel(): void {
+    renderBlockSelectionClasses();
+    if (_isSourceMode || state.selection.kind !== "text") {
+      window.getSelection()?.removeAllRanges();
+      return;
+    }
+    const anchorPoint = domPointForPosition(state.selection.anchor);
+    const focusPoint = domPointForPosition(state.selection.focus);
+    if (!anchorPoint || !focusPoint) {
+      selection.placeCursorAtEnd();
+      syncSelectionFromDomMetadata();
+      return;
+    }
+    const sel = window.getSelection();
+    if (!sel) return;
+    try {
+      sel.removeAllRanges();
+      if (typeof sel.setBaseAndExtent === "function") {
+        sel.setBaseAndExtent(
+          anchorPoint.node,
+          anchorPoint.offset,
+          focusPoint.node,
+          focusPoint.offset,
+        );
+      } else {
+        const range = document.createRange();
+        const ordered = comparePositions(state.selection.anchor, state.selection.focus) <= 0;
+        const start = ordered ? anchorPoint : focusPoint;
+        const end = ordered ? focusPoint : anchorPoint;
+        range.setStart(start.node, start.offset);
+        range.setEnd(end.node, end.offset);
+        sel.addRange(range);
+      }
+    } catch {
+      selection.placeCursorAtEnd();
+    }
+    syncSelectionFromDomMetadata();
+  }
+
+  function comparePositions(a: LogicalPosition, b: LogicalPosition): number {
+    return a.line === b.line ? a.column - b.column : a.line - b.line;
+  }
+
+  function domPointForPosition(pos: LogicalPosition): { node: Node; offset: number } | null {
+    const line = state.doc.lines[pos.line];
+    if (!line) return null;
+    const host = domMap.lineToElement.get(line.id);
+    if (!host) return null;
+    const clampedColumn = Math.min(Math.max(0, pos.column), line.text.length);
+    if (line.text === "" || (host.textContent ?? "").replaceAll("​", "") === "") {
+      if (isBlankLineElement(host)) {
+        showActiveBlankLine(host);
+      }
+      ensureEmptyParagraphPlaceholder(host);
+      return { node: host, offset: 0 };
+    }
+
+    const sourcePoint = domPointFromSourceSpan(host, clampedColumn);
+    if (sourcePoint) return sourcePoint;
+
+    const lineContentStart = Number(host.dataset["mdLineContentStart"]);
+    let visualOffset = Number.isFinite(lineContentStart)
+      ? Math.max(0, clampedColumn - lineContentStart)
+      : clampedColumn;
+    const hostText = hostTextWithoutControls(host);
+    if (hostText.startsWith("\u00A0")) {
+      visualOffset += 1;
+    }
+    return domPointFromVisualOffset(host, visualOffset);
+  }
+
+  function domPointFromSourceSpan(
+    host: HTMLElement,
+    column: number,
+  ): { node: Node; offset: number } | null {
+    const candidates = [...host.querySelectorAll<HTMLElement>("[data-md-content-start]")].filter(
+      (el) => {
+        const contentStart = sourceBoundary(el, "mdContentStart");
+        const contentEnd = sourceBoundary(el, "mdContentEnd");
+        const sourceStart = sourceBoundary(el, "mdSourceStart");
+        const sourceEnd = sourceBoundary(el, "mdSourceEnd");
+        return (
+          contentStart !== null &&
+          contentEnd !== null &&
+          sourceStart !== null &&
+          sourceEnd !== null &&
+          column >= sourceStart &&
+          column <= sourceEnd
+        );
+      },
+    );
+    candidates.sort((a, b) => (a.textContent ?? "").length - (b.textContent ?? "").length);
+    const el = candidates[0];
+    if (!el) return null;
+    const contentStart = sourceBoundary(el, "mdContentStart")!;
+    const contentEnd = sourceBoundary(el, "mdContentEnd")!;
+    if (column <= contentStart) {
+      return { node: el.parentNode ?? host, offset: childOffset(el) };
+    }
+    if (column >= contentEnd) {
+      return { node: el.parentNode ?? host, offset: childOffset(el) + 1 };
+    }
+    return domPointFromVisualOffset(el, column - contentStart);
+  }
+
+  function domPointFromVisualOffset(
+    root: HTMLElement,
+    visualOffset: number,
+  ): {
+    node: Node;
+    offset: number;
+  } {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const parent = node.parentElement;
+        if (parent?.closest("button,input")) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+    let remaining = Math.max(0, visualOffset);
+    let current = walker.nextNode();
+    while (current) {
+      const text = (current.textContent ?? "").replaceAll("​", "");
+      if (remaining <= text.length) {
+        return { node: current, offset: remaining };
+      }
+      remaining -= text.length;
+      current = walker.nextNode();
+    }
+    const handle = hostDirectHandle(root);
+    return { node: root, offset: handle ? childOffset(handle) : root.childNodes.length };
+  }
+
+  function hostTextWithoutControls(host: HTMLElement): string {
+    const clone = host.cloneNode(true) as HTMLElement;
+    for (const control of clone.querySelectorAll("button,input")) {
+      control.remove();
+    }
+    return (clone.textContent ?? "").replaceAll("​", "");
+  }
+
+  function hostDirectHandle(host: HTMLElement): HTMLElement | null {
+    const handle = host.querySelector(":scope > .md-block-handle");
+    return handle instanceof HTMLElement ? handle : null;
+  }
+
+  function childOffset(node: Node): number {
+    let offset = 0;
+    let current = node.previousSibling;
+    while (current) {
+      offset++;
+      current = current.previousSibling;
+    }
+    return offset;
   }
 
   function getBlockHandle(target: EventTarget | null): HTMLElement | null {
@@ -381,10 +583,15 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     const nextMd = md.slice(0, offsets.start) + normalized + md.slice(offsets.end);
     const cursor = offsets.start + normalized.length;
     renderSelectionAndModel(nextMd, cursor, cursor);
-    selection.restoreSelectionFromRenderedMarkers();
-    updateActiveBlankVisibility();
     cfg.onChange?.();
     return true;
+  }
+
+  function replaceMarkdownRange(start: number, end: number, text: string): void {
+    const md = currentMarkdown();
+    const normalized = normalizeMarkdownNewlines(text);
+    const cursor = start + normalized.length;
+    renderSelectionAndModel(md.slice(0, start) + normalized + md.slice(end), cursor, cursor);
   }
 
   function copyBlockSelection(e: ClipboardEvent): boolean {
@@ -522,7 +729,14 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     if (!host || !contentEl.contains(range.startContainer)) return false;
     const block = host.closest("[data-md-block-kind]");
     const blockKind = block instanceof HTMLElement ? block.dataset["mdBlockKind"] : undefined;
-    if (blockKind !== "paragraph" && blockKind !== "blank") return false;
+    if (
+      blockKind !== "paragraph" &&
+      blockKind !== "blank" &&
+      blockKind !== "heading" &&
+      blockKind !== "list"
+    ) {
+      return false;
+    }
     const hasRichInline = [...host.children].some(
       (child) =>
         child instanceof HTMLElement &&
@@ -530,12 +744,59 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         child.tagName !== "BUTTON" &&
         child.className !== "md-block-handle",
     );
-    if (hasRichInline) return false;
     const lineIndex = Number(host.dataset["mdLineIndex"]);
     if (!Number.isInteger(lineIndex)) return false;
-    const text = (host.textContent ?? "").replaceAll("​", "");
+    if (hasRichInline) {
+      return syncActiveSourceSpanFromDom(host, lineIndex, range);
+    }
+    const text = lineTextFromHost(host, lineIndex);
     const pos = logicalPositionFromDom(range.startContainer, range.startOffset);
     const result = replaceLineText(state, lineIndex, text, pos?.column ?? text.length);
+    state = result.state;
+    return result.changed || result.renderHint.kind === "none";
+  }
+
+  function lineTextFromHost(host: HTMLElement, lineIndex: number): string {
+    const visualText = (host.textContent ?? "").replaceAll("​", "").replace(/^\u00A0/, "");
+    const lineContentStart = Number(host.dataset["mdLineContentStart"]);
+    if (!Number.isFinite(lineContentStart) || lineContentStart <= 0) {
+      return visualText;
+    }
+    return state.doc.lines[lineIndex]!.text.slice(0, lineContentStart) + visualText;
+  }
+
+  function syncActiveSourceSpanFromDom(
+    host: HTMLElement,
+    lineIndex: number,
+    range: Range,
+  ): boolean {
+    const node =
+      range.startContainer instanceof Element
+        ? range.startContainer
+        : range.startContainer.parentElement;
+    const sourceElement = node?.closest("[data-md-content-start]");
+    if (
+      !(sourceElement instanceof HTMLElement) ||
+      !host.contains(sourceElement) ||
+      sourceElement.dataset["mdAtomicSource"] === "true"
+    ) {
+      return false;
+    }
+    const contentStart = sourceBoundary(sourceElement, "mdContentStart");
+    const contentEnd = sourceBoundary(sourceElement, "mdContentEnd");
+    if (contentStart === null || contentEnd === null) {
+      return false;
+    }
+    const content = (sourceElement.textContent ?? "").replaceAll("​", "");
+    const line = state.doc.lines[lineIndex]!.text;
+    const text = line.slice(0, contentStart) + content + line.slice(contentEnd);
+    const pos = logicalPositionFromDom(range.startContainer, range.startOffset);
+    const result = replaceLineText(
+      state,
+      lineIndex,
+      text,
+      pos?.column ?? contentStart + content.length,
+    );
     state = result.state;
     return result.changed || result.renderHint.kind === "none";
   }
@@ -555,17 +816,22 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     );
   }
 
+  function shouldRenderModelInlineInputTransform(): boolean {
+    if (state.selection.kind !== "text") return false;
+    const { anchor, focus } = state.selection;
+    if (anchor.line !== focus.line || anchor.column !== focus.column) return false;
+    const text = state.doc.lines[anchor.line]?.text ?? "";
+    return inlineTransformPatterns.some((pattern) => matchPattern(text, anchor.column, pattern));
+  }
+
   function renderModelAfterInputTransform(): boolean {
-    if (!shouldRenderModelBlockInputTransform()) return false;
-    const offsets = modelSelectionToOffsets(state.doc, state.selection);
-    renderer.renderWithSelection(
-      currentMarkdown(),
-      offsets?.start ?? 0,
-      offsets?.end ?? offsets?.start ?? 0,
-    );
-    annotateEditorDom(contentEl, state.doc);
-    selection.restoreSelectionFromRenderedMarkers();
-    updateActiveBlankVisibility();
+    if (!shouldRenderModelBlockInputTransform() && !shouldRenderModelInlineInputTransform()) {
+      return false;
+    }
+    const line = state.selection.kind === "text" ? state.selection.anchor.line : -1;
+    if (!renderLineRangeFromModel(line, line + 1)) {
+      renderCurrentModel();
+    }
     return true;
   }
 
@@ -601,9 +867,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     if (syncSelectionFromDomMetadata()) {
       return modelSelectionToOffsets(state.doc, state.selection);
     }
-    const offsets = selection.getSelectionOffsets();
-    setModelSelection(offsets);
-    return offsets;
+    return modelSelectionToOffsets(state.doc, state.selection);
   }
 
   function getCursorOffset(): number {
@@ -620,22 +884,12 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     setModelMarkdown(normalized, selectionOffsets);
     if (_isSourceMode) {
       sourceEl.value = normalized;
-    } else if (cursorOffset !== undefined) {
-      renderer.renderWithCursor(normalized, cursorOffset);
-      annotateEditorDom(contentEl, state.doc);
-      selection.restoreCursorMarker();
-      const activeBlock = getIndentableBlock(window.getSelection()?.anchorNode ?? contentEl);
-      if (activeBlock && isEmptyParagraphBlock(activeBlock)) {
-        ensureEmptyParagraphPlaceholder(activeBlock);
-        placeCursorAtBlockStart(activeBlock);
-      }
-      updateActiveBlankVisibility();
-      setModelSelection(selection.getSelectionOffsets());
     } else {
-      renderer.render(normalized);
-      annotateEditorDom(contentEl, state.doc);
+      renderCurrentModel();
     }
-    const sel = selection.getSelectionOffsets();
+    const sel = syncSelectionFromDomMetadata()
+      ? modelSelectionToOffsets(state.doc, state.selection)
+      : currentSelectionOffsets();
     setModelSelection(sel);
     undoController.pushUndo(normalized, sel?.start ?? 0, sel?.end ?? 0);
   }
@@ -644,7 +898,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     getValue,
     getSelectionOffsets,
     renderSelection: renderSelectionAndModel,
-    restoreSelection: selection.restoreSelectionFromRenderedMarkers,
+    restoreSelection: restoreDomSelectionFromModel,
     getUndoStackMax: () => cfg.undoStackMax ?? 200,
     getTypingCheckpointMs: () => cfg.typingCheckpointMs ?? 1000,
     ...(cfg.onChange ? { onChange: cfg.onChange } : {}),
@@ -656,7 +910,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     pushUndo: undoController.pushUndo,
     checkpoint: undoController.checkpoint,
     renderSelection: renderSelectionAndModel,
-    restoreSelection: selection.restoreSelectionFromRenderedMarkers,
+    restoreSelection: restoreDomSelectionFromModel,
     ...(cfg.onChange ? { onChange: cfg.onChange } : {}),
   });
   let imageResizeDrag: ImageResizeDrag | null = null;
@@ -757,6 +1011,10 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     return el instanceof HTMLElement && el.dataset["mdBlank"] === "true";
   }
 
+  function isVisibleContentBlock(el: Element | null): boolean {
+    return el instanceof HTMLElement && el.dataset["mdBlank"] !== "true";
+  }
+
   function hideBlankLine(blank: HTMLElement): void {
     blank.hidden = true;
     blank.contentEditable = "false";
@@ -765,16 +1023,26 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   function showBlankLine(blank: HTMLElement): void {
     blank.hidden = false;
     blank.contentEditable = "false";
-    if (!blank.hasChildNodes()) {
-      blank.append(document.createElement("br"));
+    if (!blank.querySelector("br") && (blank.textContent ?? "") === "") {
+      blank.prepend(document.createElement("br"));
     }
   }
 
-  function isVisibleContentBlock(el: Element | null): boolean {
-    return el instanceof HTMLElement && el.dataset["mdBlank"] !== "true";
+  function showActiveBlankLine(blank: HTMLElement): void {
+    const hasAdjacentBlank =
+      isBlankLineElement(blank.previousElementSibling) ||
+      isBlankLineElement(blank.nextElementSibling);
+    if (!hasAdjacentBlank) {
+      delete blank.dataset["mdBlank"];
+    }
+    blank.hidden = false;
+    blank.contentEditable = "true";
+    if (!blank.querySelector("br") && (blank.textContent ?? "") === "") {
+      blank.prepend(document.createElement("br"));
+    }
   }
 
-  function showMultiBlankRunsBetweenContent(): void {
+  function showRepeatedBlankRuns(): void {
     const children = [...contentEl.children];
     let i = 0;
     while (i < children.length) {
@@ -788,14 +1056,15 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         i++;
       }
       const blanks = children.slice(start, i).filter(isBlankLineElement);
-      if (
-        blanks.length > 1 &&
+      const visibleBlanks =
         isVisibleContentBlock(children[start - 1] ?? null) &&
         isVisibleContentBlock(children[i] ?? null)
-      ) {
-        for (const blank of blanks) {
-          showBlankLine(blank);
-        }
+          ? blanks
+          : blanks.length > 1
+            ? blanks
+            : blanks.slice(1);
+      for (const blank of visibleBlanks) {
+        showBlankLine(blank);
       }
     }
   }
@@ -806,7 +1075,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         hideBlankLine(blank);
       }
     }
-    showMultiBlankRunsBetweenContent();
+    showRepeatedBlankRuns();
 
     const sel = window.getSelection();
     const anchorNode = sel?.anchorNode;
@@ -815,16 +1084,22 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       return;
     }
 
+    if (isBlankLineElement(activeBlock)) {
+      showActiveBlankLine(activeBlock);
+      return;
+    }
+
     if (!isEmptyParagraphBlock(activeBlock)) {
       return;
     }
 
-    let previous = activeBlock.previousElementSibling;
+    const paragraphBlock = activeBlock as HTMLElement;
+    let previous = paragraphBlock.previousElementSibling;
     while (isBlankLineElement(previous)) {
       showBlankLine(previous);
       previous = previous.previousElementSibling;
     }
-    let next = activeBlock.nextElementSibling;
+    let next = paragraphBlock.nextElementSibling;
     while (isBlankLineElement(next)) {
       showBlankLine(next);
       next = next.nextElementSibling;
@@ -833,7 +1108,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function selectionStartsInBlankLine(): boolean {
     const sel = window.getSelection();
-    return !!sel?.anchorNode && getBlankLineBlock(sel.anchorNode) !== null;
+    const blank = sel?.anchorNode ? getBlankLineBlock(sel.anchorNode) : null;
+    return blank !== null && blank.contentEditable !== "true";
   }
 
   function placeCursorNearBlankLine(blank: HTMLElement): void {
@@ -848,34 +1124,6 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       return;
     }
     selection.placeCursorAtEnd();
-  }
-
-  function removeEmptyTopLevelListItem(item: HTMLElement): void {
-    const parentList = item.parentElement;
-    if (
-      !(parentList instanceof HTMLElement) ||
-      (parentList.tagName !== "UL" && parentList.tagName !== "OL")
-    )
-      return;
-    const previous = getPrevElementSibling(item);
-    const next = getNextElementSibling(item);
-    item.remove();
-    if (parentList.querySelector(":scope > li") === null) {
-      const p = document.createElement("p");
-      p.append(document.createElement("br"));
-      parentList.replaceWith(p);
-      placeCursorAtBlockStart(p);
-      return;
-    }
-    if (previous) {
-      placeCursorAtBlockEnd(previous);
-      return;
-    }
-    if (next) {
-      placeCursorAtBlockStart(next);
-      return;
-    }
-    placeCursorAtBlockEnd(parentList);
   }
 
   function isIndentableBlock(el: HTMLElement): boolean {
@@ -896,14 +1144,6 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   function getListItemBlock(node: Node): HTMLElement | null {
     const block = getIndentableBlock(node);
     return block && isListItemBlock(block) ? block : null;
-  }
-
-  function getHeadingBlock(node: Node): HTMLElement | null {
-    const block = getIndentableBlock(node);
-    if (!block) {
-      return null;
-    }
-    return /^H[1-6]$/.test(block.tagName) ? block : null;
   }
 
   function getStructuralPasteBoundaryBlock(node: Node): HTMLElement | null {
@@ -933,7 +1173,9 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     if (!block || !isRangeAtStartOfBlock(range, block)) {
       return undefined;
     }
-    const offsets = selection.getSelectionOffsets();
+    const offsets = syncSelectionFromDomMetadata()
+      ? modelSelectionToOffsets(state.doc, state.selection)
+      : null;
     if (!offsets) {
       return undefined;
     }
@@ -953,51 +1195,22 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     e.preventDefault();
     if (isNestedListItem(listItem)) {
       const md = getValue();
-      const offsets = selection.getSelectionOffsets();
+      const offsets = syncSelectionFromDomMetadata()
+        ? modelSelectionToOffsets(state.doc, state.selection)
+        : null;
       if (!offsets) return false;
       undoController.pushUndo(md, offsets.start, offsets.end);
       const { md: newMd, selStart, selEnd } = shiftIndent(md, offsets.start, offsets.end, true);
       renderSelectionAndModel(newMd, selStart, selEnd);
-      selection.restoreSelectionFromRenderedMarkers();
     } else {
       syncSelectionFromDomMetadata();
       if (commitStructuralTransaction(modelDeleteEmptyListItemBackward(state))) {
         return true;
       }
-      removeEmptyTopLevelListItem(listItem);
-      syncModelFromDom();
+      return false;
     }
     normalizeEditableContent(contentEl, { preserveActiveEmptyBlock: true });
-    if (!syncSelectionFromDomMetadata()) {
-      syncModelFromDom();
-    }
-    cfg.onChange?.();
-    return true;
-  }
-
-  function handleHeadingEnter(): boolean {
-    const sel = window.getSelection();
-    if (!sel || sel.rangeCount === 0 || !sel.isCollapsed) {
-      return false;
-    }
-    const anchorNode = sel.anchorNode;
-    if (!anchorNode) {
-      return false;
-    }
-    const range = sel.getRangeAt(0);
-
-    const heading = getHeadingBlock(anchorNode);
-    if (!heading || !isRangeAtEndOfBlock(range, heading)) {
-      return false;
-    }
-
-    trimTrailingPlaceholderBreaks(heading);
-    const paragraph = document.createElement("p");
-    paragraph.className = "md-heading-continuation";
-    paragraph.append(document.createElement("br"));
-    heading.after(paragraph);
-    placeCursorAtBlockStart(paragraph);
-    syncModelFromDom();
+    syncSelectionFromDomMetadata();
     cfg.onChange?.();
     return true;
   }
@@ -1009,31 +1222,14 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     return (block.textContent ?? "").replaceAll("​", "").trim() === "";
   }
 
-  function handleEmptyParagraphEnter(): boolean {
-    const sel = window.getSelection();
-    if (!sel || sel.rangeCount === 0 || !sel.isCollapsed) {
+  function handleModelEnter(): boolean {
+    if (!syncSelectionFromDomMetadata()) {
       return false;
     }
-    const anchorNode = sel.anchorNode;
-    if (!anchorNode) {
-      return false;
-    }
-    const block = getIndentableBlock(anchorNode);
-    if (!block || !isEmptyParagraphBlock(block)) {
-      return false;
-    }
-
-    const blank = document.createElement("p");
-    blank.dataset["mdBlank"] = "true";
-    showBlankLine(blank);
-    const next = document.createElement("p");
-    next.append(document.createElement("br"));
-    block.replaceWith(blank, next);
-    placeCursorAtBlockStart(next);
-    updateActiveBlankVisibility();
-    syncModelFromDom();
-    cfg.onChange?.();
-    return true;
+    return (
+      commitStructuralTransaction(modelInsertListParagraph(state)) ||
+      commitStructuralTransaction(modelInsertParagraph(state))
+    );
   }
 
   function createBlankLineSpacer(): HTMLElement {
@@ -1096,19 +1292,6 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     return false;
   }
 
-  function isRangeAtEndOfBlock(range: Range, block: HTMLElement): boolean {
-    const after = range.cloneRange();
-    after.selectNodeContents(block);
-    after.setStart(range.endContainer, range.endOffset);
-    return after.toString().replaceAll("​", "") === "";
-  }
-
-  function trimTrailingPlaceholderBreaks(block: HTMLElement): void {
-    while (block.lastChild instanceof HTMLBRElement) {
-      block.lastChild.remove();
-    }
-  }
-
   // ── Source mode Tab key ─────────────────────────────────────────────────────
 
   function dedentLine(line: string): string {
@@ -1155,11 +1338,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         const block = state.doc.blocks.byId.get(state.selection.anchorBlockId);
         const offset = block ? state.doc.lineStarts[block.startLine]! : 0;
         state = { ...state, selection: offsetsToSelection(state.doc, offset, offset) };
-        renderBlockSelectionClasses();
-        renderer.renderWithSelection(currentMarkdown(), offset, offset);
-        annotateEditorDom(contentEl, state.doc);
-        selection.restoreSelectionFromRenderedMarkers();
-        updateActiveBlankVisibility();
+        renderCurrentModel();
         return;
       }
       if (e.key === "Backspace" || e.key === "Delete") {
@@ -1213,7 +1392,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     if (handleArrowThroughBlankLines(e)) return;
     if (e.key === "Backspace" && handleEmptyListItemBackspace(e)) return;
     if (e.key === "Enter" && !e.shiftKey) {
-      if (handleHeadingEnter()) {
+      if (handleModelEnter()) {
         suppressNextInsertParagraph = true;
         window.setTimeout(() => {
           suppressNextInsertParagraph = false;
@@ -1221,15 +1400,6 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         e.preventDefault();
         return;
       }
-      if (handleEmptyParagraphEnter()) {
-        suppressNextInsertParagraph = true;
-        window.setTimeout(() => {
-          suppressNextInsertParagraph = false;
-        }, 0);
-        e.preventDefault();
-        return;
-      }
-      handleBlockTransform(e, contentEl, () => cfg.onChange?.());
     }
   }
 
@@ -1240,7 +1410,6 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       cfg.onChange?.();
       return;
     }
-    checkInlineTransform();
     const activeBlock = getIndentableBlock(window.getSelection()?.anchorNode ?? contentEl);
     normalizeEditableContent(activeBlock ?? contentEl, { preserveActiveEmptyBlock: true });
     const blank = window.getSelection()?.anchorNode;
@@ -1255,14 +1424,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       cfg.onChange?.();
       return;
     }
-    if (!lineSynced) {
-      if (checkBlockInputTransform(contentEl)) {
-        syncModelFromDom();
-        cfg.onChange?.();
-        return;
-      }
-      syncModelFromDom();
-    }
+    if (!lineSynced) syncSelectionFromDomMetadata();
     undoController.scheduleTypingCheckpoint();
     cfg.onChange?.();
   }
@@ -1346,31 +1508,25 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         return;
       }
     }
+    if (
+      e.inputType === "insertText" &&
+      e.data !== null &&
+      state.selection.kind === "text" &&
+      state.selection.anchor.line === state.selection.focus.line &&
+      state.selection.anchor.column === state.selection.focus.column &&
+      state.doc.lines[state.selection.anchor.line]?.text === ""
+    ) {
+      e.preventDefault();
+      commitStructuralTransaction(replaceLineText(state, state.selection.anchor.line, e.data));
+      return;
+    }
     if (e.inputType === "insertParagraph") {
       if (suppressNextInsertParagraph) {
         suppressNextInsertParagraph = false;
         e.preventDefault();
         return;
       }
-      if (handleHeadingEnter()) {
-        e.preventDefault();
-        return;
-      }
-      if (handleEmptyParagraphEnter()) {
-        e.preventDefault();
-        return;
-      }
-      if (
-        syncSelectionFromDomMetadata() &&
-        commitStructuralTransaction(modelInsertListParagraph(state))
-      ) {
-        e.preventDefault();
-        return;
-      }
-      if (
-        syncSelectionFromDomMetadata() &&
-        commitStructuralTransaction(modelInsertParagraph(state))
-      ) {
+      if (handleModelEnter()) {
         e.preventDefault();
         return;
       }
@@ -1431,9 +1587,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function onContentSelectionCommit(): void {
     if (_isSourceMode || state.selection.kind === "block") return;
-    if (!syncSelectionFromDomMetadata()) {
-      setModelSelection(selection.getSelectionOffsets());
-    }
+    syncSelectionFromDomMetadata();
   }
 
   function onCompositionStart(): void {
@@ -1442,13 +1596,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function onCompositionEnd(): void {
     state = { ...state, composing: false };
-    if (!syncActiveLineFromDom()) {
-      syncModelFromDom();
-    }
-    checkInlineTransform();
-    if (!syncActiveLineFromDom()) {
-      syncModelFromDom();
-    }
+    syncActiveLineFromDom();
+    renderModelAfterInputTransform();
     cfg.onChange?.();
   }
 
@@ -1532,7 +1681,19 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     imageResizeDrag = null;
     drag.image.classList.remove("md-image-resizing");
     if (!drag.changed) return;
-    syncModelFromDom();
+    const sourceElement = drag.image.closest("[data-md-source-start]");
+    const sourceStart =
+      sourceElement instanceof HTMLElement ? sourceBoundary(sourceElement, "mdSourceStart") : null;
+    const sourceEnd =
+      sourceElement instanceof HTMLElement ? sourceBoundary(sourceElement, "mdSourceEnd") : null;
+    if (sourceStart === null || sourceEnd === null || !drag.image.dataset["wikiImage"]) {
+      return;
+    }
+    replaceMarkdownRange(
+      sourceStart,
+      sourceEnd,
+      `![[${drag.image.dataset["wikiImage"]}|${drag.image.getAttribute("width") ?? imageWidth(drag.image)}]]`,
+    );
     undoController.checkpoint();
     cfg.onChange?.();
   }
@@ -1575,19 +1736,15 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   function toggleSourceMode(): void {
     if (_isSourceMode) {
       syncModelFromSource();
-      const md = currentMarkdown();
-      const selStart = sourceEl.selectionStart;
-      const selEnd = sourceEl.selectionEnd;
-      renderer.renderWithSelection(md, selStart, selEnd);
-      annotateEditorDom(contentEl, state.doc);
       _isSourceMode = false;
       state = { ...state, sourceMode: false };
       sourceEl.style.display = "none";
       contentEl.style.display = "";
-      selection.restoreSelectionFromRenderedMarkers();
-      updateActiveBlankVisibility();
+      renderCurrentModel();
     } else {
-      syncModelFromDom();
+      if (!syncActiveLineFromDom()) {
+        syncSelectionFromDomMetadata();
+      }
       const offsets = currentSelectionOffsets();
       sourceEl.value = currentMarkdown();
       _isSourceMode = true;
@@ -1605,6 +1762,15 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     cfg = { ...cfg, ...partial };
     if (partial.contentClassName !== undefined) contentEl.className = partial.contentClassName;
     if (partial.sourceClassName !== undefined) sourceEl.className = partial.sourceClassName;
+  }
+
+  function focus(): void {
+    if (_isSourceMode) {
+      sourceEl.focus();
+      return;
+    }
+    contentEl.focus();
+    restoreDomSelectionFromModel();
   }
 
   function destroy(): void {
@@ -1642,7 +1808,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     undo,
     redo,
     toggleSourceMode,
-    focus: () => contentEl.focus(),
+    focus,
     setConfig,
     get isSourceMode() {
       return _isSourceMode;

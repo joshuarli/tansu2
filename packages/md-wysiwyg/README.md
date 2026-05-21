@@ -98,8 +98,6 @@ See [docs/extensions.md](docs/extensions.md) for the full `MarkdownExtension` in
 - **`computeDiff(a, b)` / `renderDiff(hunks)`** — line-based diff with compact HTML rendering.
 - **`merge3(base, ours, theirs)`** — line-based 3-way merge; returns `null` on conflict.
 - **`toggleBold` / `toggleItalic` / `toggleHeading` / `shiftIndent` / …** — pure source-text format operations (`FormatResult = { md, selStart, selEnd }`).
-- **`checkBlockInputTransform(el)` / `handleBlockTransform(e, el, cb)`** — block-level WYSIWYG transforms (Enter → heading, space → list marker, etc.).
-- **`checkInlineTransform()`** — inline transforms triggered by closing delimiters.
 - **`escapeHtml(s)` / `stemFromPath(path)` / …** — utilities.
 
 ## Requirements
@@ -110,5 +108,5 @@ See [docs/extensions.md](docs/extensions.md) for the full `MarkdownExtension` in
 
 ## Docs
 
-- [docs/architecture.md](docs/architecture.md) — line-based DOM model, cursor preservation, block/inline transforms, and editor wiring.
+- [docs/architecture.md](docs/architecture.md) — model-owned visual editor state, logical selection, snapshots, blank lanes, and editor wiring.
 - [docs/extensions.md](docs/extensions.md) — `MarkdownExtension` interface and built-in extensions.

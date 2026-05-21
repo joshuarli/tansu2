@@ -525,7 +525,7 @@ function deriveBlockIndex(lines: readonly EditorLine[]): BlockIndex {
 }
 
 function isListStart(line: string): boolean {
-  return /^[ \t]*([-*+]|\d+\.)(?:\s|$)/.test(line);
+  return /^[ \t]*([-*+]|\d+\.)(?:\s|$)/.test(line) || /^[ \t]*\[[ xX]\](?:\s|$)/.test(line);
 }
 
 function isTableStart(lines: readonly EditorLine[], index: number): boolean {

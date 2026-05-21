@@ -79,6 +79,17 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
+  it("setValue places a cursor after an H1 trailing newline in an editable paragraph", () => {
+    const handle = createEditor(container);
+    handle.setValue("# Title\n", "# Title\n".length);
+
+    const sel = window.getSelection()!;
+    expect(sel.anchorNode).not.toBeNull();
+    expect(handle.contentEl.querySelector("h1")!.contains(sel.anchorNode)).toBe(false);
+    expect(handle.contentEl.querySelector("h1 + p")).not.toBeNull();
+    handle.destroy();
+  });
+
   it("multiple setValue calls each update getValue", () => {
     const handle = createEditor(container);
     handle.setValue("first");
@@ -125,6 +136,28 @@ describe("createEditor", () => {
     window.getSelection()!.removeAllRanges();
     window.getSelection()!.addRange(range);
     expect(handle.getSnapshot().cursorOffset).toBe(8);
+    handle.destroy();
+  });
+
+  it("getSnapshot maps heading and list inline positions through line-relative source spans", () => {
+    const handle = createEditor(container);
+    handle.setValue("# **Head**\n- **Item**");
+
+    const headingText = handle.contentEl.querySelector("h1 strong")!.firstChild!;
+    const headingRange = document.createRange();
+    headingRange.setStart(headingText, 0);
+    headingRange.setEnd(headingText, 0);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(headingRange);
+    expect(handle.getSnapshot().cursorOffset).toBe("# **".length);
+
+    const itemText = handle.contentEl.querySelector("li strong")!.firstChild!;
+    const itemRange = document.createRange();
+    itemRange.setStart(itemText, 0);
+    itemRange.setEnd(itemText, 0);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(itemRange);
+    expect(handle.getSnapshot().cursorOffset).toBe("# **Head**\n- **".length);
     handle.destroy();
   });
 
@@ -190,12 +223,12 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
-  it("renders blank lines as hidden sentinels", () => {
+  it("renders blank lines between content blocks as visible lanes", () => {
     const handle = createEditor(container);
     handle.setValue("foo\n\nbar");
     const blank = handle.contentEl.querySelector('[data-md-blank="true"]');
     expect(blank).toBeInstanceOf(HTMLElement);
-    expect((blank as HTMLElement).hidden).toBe(true);
+    expect((blank as HTMLElement).hidden).toBe(false);
     handle.destroy();
   });
 
@@ -248,7 +281,7 @@ describe("createEditor", () => {
       new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true }),
     );
     expect(handle.getValue()).toBe("# Foo\n\n\n");
-    expect(handle.contentEl.querySelectorAll('[data-md-blank="true"]')).toHaveLength(2);
+    expect(handle.contentEl.querySelectorAll('[data-md-blank="true"]')).toHaveLength(3);
     handle.destroy();
   });
 
@@ -273,10 +306,36 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
+  it("completed inline markdown rerenders from model markdown", () => {
+    const handle = createEditor(container);
+    handle.setValue("x\nkeep");
+    const paragraphs = [...handle.contentEl.querySelectorAll("p")];
+    const paragraph = paragraphs[0]!;
+    const preserved = paragraphs[1]!;
+    paragraph.textContent = "**hello**";
+    const textNode = paragraph.firstChild!;
+    const range = document.createRange();
+    range.setStart(textNode, 9);
+    range.setEnd(textNode, 9);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    handle.contentEl.dispatchEvent(
+      new InputEvent("input", { bubbles: true, inputType: "insertText" }),
+    );
+
+    expect(handle.getValue()).toBe("**hello**\nkeep");
+    expect(handle.contentEl.querySelector("strong")?.textContent).toBe("hello");
+    expect([...handle.contentEl.querySelectorAll("p")].at(-1)).toBe(preserved);
+    handle.destroy();
+  });
+
   it("space-triggered heading transform rerenders from model markdown", () => {
     const handle = createEditor(container);
-    handle.setValue("x");
-    const paragraph = handle.contentEl.querySelector("p")!;
+    handle.setValue("x\nkeep");
+    const paragraphs = [...handle.contentEl.querySelectorAll("p")];
+    const paragraph = paragraphs[0]!;
+    const preserved = paragraphs[1]!;
     paragraph.textContent = "# ";
     const textNode = paragraph.firstChild!;
     const range = document.createRange();
@@ -289,15 +348,18 @@ describe("createEditor", () => {
       new InputEvent("input", { bubbles: true, inputType: "insertText" }),
     );
 
-    expect(handle.getValue()).toBe("# ");
+    expect(handle.getValue()).toBe("# \nkeep");
     expect(handle.contentEl.querySelector("h1")).not.toBeNull();
+    expect(handle.contentEl.querySelector("p")).toBe(preserved);
     handle.destroy();
   });
 
   it("space-triggered list transform rerenders from model markdown", () => {
     const handle = createEditor(container);
-    handle.setValue("x");
-    const paragraph = handle.contentEl.querySelector("p")!;
+    handle.setValue("x\nkeep");
+    const paragraphs = [...handle.contentEl.querySelectorAll("p")];
+    const paragraph = paragraphs[0]!;
+    const preserved = paragraphs[1]!;
     paragraph.textContent = "- ";
     const textNode = paragraph.firstChild!;
     const range = document.createRange();
@@ -310,8 +372,9 @@ describe("createEditor", () => {
       new InputEvent("input", { bubbles: true, inputType: "insertText" }),
     );
 
-    expect(handle.getValue()).toBe("- ");
+    expect(handle.getValue()).toBe("- \nkeep");
     expect(handle.contentEl.querySelector("ul li")).not.toBeNull();
+    expect(handle.contentEl.querySelector("p")).toBe(preserved);
     handle.destroy();
   });
 
@@ -1014,7 +1077,7 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
-  it("enter at the end of a heading creates a paragraph continuation", () => {
+  it("enter at the end of a heading creates a model paragraph boundary", () => {
     const onChange = vi.fn();
     const handle = createEditor(container, { onChange });
     handle.setValue("# Heading");
@@ -1026,7 +1089,8 @@ describe("createEditor", () => {
     window.getSelection()!.addRange(range);
 
     handle.contentEl.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
-    expect(handle.contentEl.querySelector(".md-heading-continuation")).not.toBeNull();
+    expect(handle.getValue()).toBe("# Heading\n");
+    expect(handle.contentEl.querySelector("h1 + p")).not.toBeNull();
     expect(onChange).toHaveBeenCalled();
     handle.destroy();
   });

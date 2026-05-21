@@ -322,6 +322,44 @@ describe("TansuApp note loading", () => {
     expect(editor.getSnapshot).toHaveBeenCalledTimes(1);
   });
 
+  it("does not save session on every editor change while typing", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    api.openNote.mockResolvedValue({ meta: note, content: "# One\n" });
+    api.saveSession.mockResolvedValue({ ok: true });
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    const editor = editorMock.instances.at(-1)!;
+    editor.getSnapshot.mockReturnValue({
+      markdown: "# Changed\n",
+      cursorOffset: 10,
+      selection: { start: 10, end: 10 },
+      revision: 1,
+      sourceMode: false,
+    });
+
+    for (let i = 0; i < 5; i++) {
+      (editor.config["onChange"] as () => void)();
+      vi.advanceTimersByTime(500);
+      await flushAsync();
+    }
+    expect(api.saveSession).not.toHaveBeenCalled();
+
+    vi.advanceTimersByTime(3000);
+    await flushAsync();
+    expect(api.saveSession).toHaveBeenCalledTimes(1);
+  });
+
   it("opens revisions, restores conflict drafts, saves settings, and updates tags", async () => {
     const note = noteMeta("note-1", "one.md", "One", ["alpha"]);
     api.bootstrap.mockResolvedValue(
@@ -503,7 +541,7 @@ describe("TansuApp note loading", () => {
       { content: "# Changed\n", baseSeq: 1, baseHash: "hash", checkpoint: false },
       0,
     );
-    vi.advanceTimersByTime(250);
+    vi.advanceTimersByTime(3000);
     await flushAsync();
     expect(api.saveSession).toHaveBeenCalled();
 

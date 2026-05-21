@@ -56,6 +56,9 @@ import {
 import type { ApiErrorResponse, NoteMeta } from "./types.generated.ts";
 import { renderApp, renderLoading, renderStatusBar, type ViewActions } from "./view.ts";
 
+const SESSION_SAVE_DELAY_MS = 250;
+const EDITOR_SESSION_SAVE_DELAY_MS = 3000;
+
 export class TansuApp {
   private readonly state: State;
   private editor: EditorHandle | null = null;
@@ -303,7 +306,7 @@ export class TansuApp {
       this.captureEditorChange();
     }, 150);
     this.scheduleAutosave();
-    this.scheduleSessionSave();
+    this.scheduleEditorSessionSave();
     this.renderStatusOnly();
   }
 
@@ -509,7 +512,15 @@ export class TansuApp {
     window.clearTimeout(this.sessionTimer);
     this.sessionTimer = window.setTimeout(() => {
       void saveSession(sessionFromState(this.state), this.state.vault);
-    }, 250);
+    }, SESSION_SAVE_DELAY_MS);
+  }
+
+  private scheduleEditorSessionSave(): void {
+    window.clearTimeout(this.sessionTimer);
+    this.sessionTimer = window.setTimeout(() => {
+      this.syncActiveDraft();
+      void saveSession(sessionFromState(this.state), this.state.vault);
+    }, EDITOR_SESSION_SAVE_DELAY_MS);
   }
 
   private async updateSearch(): Promise<void> {

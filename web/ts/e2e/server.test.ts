@@ -4,7 +4,7 @@ import net from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { chromium, firefox, webkit, type Browser, type BrowserType } from "playwright";
+import { chromium, firefox, webkit, type Browser, type BrowserType, type Page } from "playwright";
 
 let server: ChildProcess | undefined;
 let browser: Browser | undefined;
@@ -272,8 +272,14 @@ describe("real server harness", () => {
     await page.keyboard.type("bar");
 
     await expect
-      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.innerHTML))
-      .toContain("<p>bar</p>");
+      .poll(() =>
+        page
+          .locator(".app-editor")
+          .evaluate((editor) =>
+            [...editor.querySelectorAll("p")].some((paragraph) => paragraph.textContent === "bar"),
+          ),
+      )
+      .toBe(true);
     await expect
       .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
       .toContain("bar");
@@ -295,14 +301,16 @@ describe("real server harness", () => {
     await page.keyboard.press("Enter");
     await expect
       .poll(() =>
-        page.locator(".app-editor").evaluate(
-          (editor) =>
-            [...editor.querySelectorAll<HTMLElement>('[data-md-blank="true"]')].filter(
-              (blank) => !blank.hidden,
-            ).length,
-        ),
+        page
+          .locator(".app-editor")
+          .evaluate(
+            (editor) =>
+              [...editor.querySelectorAll<HTMLElement>('[data-md-blank="true"]')].filter(
+                (blank) => !blank.hidden,
+              ).length,
+          ),
       )
-      .toBe(2);
+      .toBe(3);
     await page.waitForResponse(
       (response) =>
         response.request().method() === "PUT" &&
@@ -342,19 +350,14 @@ describe("real server harness", () => {
     await page.keyboard.type("foo");
     await page.keyboard.press("Enter");
     await page.keyboard.press("Enter");
-    await page.keyboard.press("Enter");
     await page.keyboard.type("bar");
 
-    await expect
-      .poll(() =>
-        page.locator(".app-editor").evaluate(
-          (editor) =>
-            [...editor.querySelectorAll<HTMLElement>('[data-md-blank="true"]')].filter(
-              (blank) => !blank.hidden,
-            ).length,
-        ),
-      )
-      .toBe(2);
+    await expect.poll(() => visibleParagraphLayout(page, "foo", "bar", 1)).toMatchObject({
+      blankCount: 1,
+      ordered: true,
+      blankHasLineBox: true,
+      gapLooksLikeBlankLine: true,
+    });
     await page.waitForResponse(
       (response) =>
         response.request().method() === "PUT" &&
@@ -363,18 +366,37 @@ describe("real server harness", () => {
     );
 
     const saved = await openSeededDocument("collapse-repro.md");
-    expect(saved.content).toBe("# Collapse Repro\r\nfoo\r\n\r\n\r\nbar");
+    expect(saved.content).toBe("# Collapse Repro\r\nfoo\r\n\r\nbar");
     await page.keyboard.press("Enter");
-    await expect
-      .poll(() =>
-        page.locator(".app-editor").evaluate(
-          (editor) =>
-            [...editor.querySelectorAll<HTMLElement>('[data-md-blank="true"]')].filter(
-              (blank) => !blank.hidden,
-            ).length,
-        ),
-      )
-      .toBe(2);
+    await expect.poll(() => visibleParagraphLayout(page, "foo", "bar", 1)).toMatchObject({
+      blankCount: 1,
+      ordered: true,
+      blankHasLineBox: true,
+      gapLooksLikeBlankLine: true,
+    });
+    await page.close();
+  });
+
+  it("places the visual cursor after a real blank line when pressing Enter twice", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await page.locator('.sidebar-controls [title="New note"]').click();
+    await page.locator(".note-dialog-panel input").fill("Cursor Gap");
+    await page.locator(".note-dialog-panel .primary-button").click();
+    await page.waitForFunction(() =>
+      document.querySelector(".tab.active")?.textContent?.includes("Cursor Gap"),
+    );
+    await page.keyboard.type("foo");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+
+    await expect.poll(() => activeCursorBlankLayout(page, "foo")).toMatchObject({
+      visibleBlankCountAfterText: 2,
+      cursorHasLineBox: true,
+      cursorIsAfterBlankLine: true,
+    });
     await page.close();
   });
 
@@ -404,7 +426,10 @@ describe("real server harness", () => {
           const activeBlock = active?.closest("p");
           const children = [...editor.children];
           return {
-            activeIndex: activeBlock === null || activeBlock === undefined ? -1 : children.indexOf(activeBlock),
+            activeIndex:
+              activeBlock === null || activeBlock === undefined
+                ? -1
+                : children.indexOf(activeBlock),
             blocks: children.map((child) => ({
               blank: (child as HTMLElement).dataset["mdBlank"] === "true",
               hidden: (child as HTMLElement).hidden,
@@ -429,9 +454,10 @@ describe("real server harness", () => {
   it("keeps rapid typing responsive in a large visual note", async () => {
     const content =
       "# Stress\n\n" +
-      Array.from({ length: 500 }, (_, i) => `paragraph ${i} with enough text to make DOM walks expensive`).join(
-        "\n",
-      );
+      Array.from(
+        { length: 500 },
+        (_, i) => `paragraph ${i} with enough text to make DOM walks expensive`,
+      ).join("\n");
     await fetch(`${baseUrl}/api/notes`, {
       method: "POST",
       headers: {
@@ -646,4 +672,102 @@ async function openSeededDocument(path: string): Promise<TestNoteDocument> {
   return fetch(`${baseUrl}/api/notes/${encodeURIComponent(note.noteId)}`, {
     headers: { "X-Tansu-Vault": "0" },
   }).then((response) => response.json() as Promise<TestNoteDocument>);
+}
+
+async function visibleParagraphLayout(
+  page: Page,
+  beforeText: string,
+  afterText: string,
+  expectedBlankCount: number,
+): Promise<{
+  blankCount: number;
+  ordered: boolean;
+  blankHasLineBox: boolean;
+  gapLooksLikeBlankLine: boolean;
+}> {
+  return page.locator(".app-editor").evaluate(
+    (editor, labels) => {
+      const children = [...editor.children].filter(
+        (child): child is HTMLElement => child instanceof HTMLElement,
+      );
+      const before = children.find(
+        (child) => child.dataset["mdBlank"] !== "true" && child.textContent === labels.beforeText,
+      );
+      const after = children.find(
+        (child) => child.dataset["mdBlank"] !== "true" && child.textContent === labels.afterText,
+      );
+      const beforeIndex = before === undefined ? -1 : children.indexOf(before);
+      const afterIndex = after === undefined ? -1 : children.indexOf(after);
+      const blanks =
+        beforeIndex === -1 || afterIndex === -1
+          ? []
+          : children
+              .slice(beforeIndex + 1, afterIndex)
+              .filter((child) => child.dataset["mdBlank"] === "true" && !child.hidden);
+      const blank = blanks[labels.expectedBlankCount - 1];
+      if (!before || !blank || !after) {
+        return {
+          blankCount: blanks.length,
+          ordered: false,
+          blankHasLineBox: false,
+          gapLooksLikeBlankLine: false,
+        };
+      }
+
+      const beforeRect = before.getBoundingClientRect();
+      const blankRect = blank.getBoundingClientRect();
+      const afterRect = after.getBoundingClientRect();
+      const lineHeight = Number.parseFloat(getComputedStyle(editor).lineHeight);
+      const minimumLine = Number.isFinite(lineHeight) ? lineHeight * 0.6 : 12;
+      return {
+        blankCount: blanks.length,
+        ordered: beforeRect.bottom <= blankRect.top && blankRect.bottom <= afterRect.top,
+        blankHasLineBox: blankRect.height >= minimumLine,
+        gapLooksLikeBlankLine: afterRect.top - beforeRect.bottom >= minimumLine,
+      };
+    },
+    { beforeText, afterText, expectedBlankCount },
+  );
+}
+
+async function activeCursorBlankLayout(
+  page: Page,
+  beforeText: string,
+): Promise<{
+  visibleBlankCountAfterText: number;
+  cursorHasLineBox: boolean;
+  cursorIsAfterBlankLine: boolean;
+}> {
+  return page.locator(".app-editor").evaluate((editor, text) => {
+    const children = [...editor.children].filter(
+      (child): child is HTMLElement => child instanceof HTMLElement,
+    );
+    const before = children.find(
+      (child) => child.dataset["mdBlank"] !== "true" && child.textContent === text,
+    );
+    const selection = getSelection();
+    const anchor = selection?.anchorNode;
+    const anchorElement = anchor instanceof Element ? anchor : anchor?.parentElement;
+    const cursorHost = anchorElement?.closest("[data-md-line-index]");
+    if (!(before instanceof HTMLElement) || !(cursorHost instanceof HTMLElement)) {
+      return {
+        visibleBlankCountAfterText: 0,
+        cursorHasLineBox: false,
+        cursorIsAfterBlankLine: false,
+      };
+    }
+    const afterTextChildren = children.slice(children.indexOf(before) + 1);
+    const visibleBlanks = afterTextChildren.filter(
+      (child) => child.dataset["mdBlank"] === "true" && !child.hidden,
+    );
+    const cursorRect = cursorHost.getBoundingClientRect();
+    const beforeRect = before.getBoundingClientRect();
+    const lineHeight = Number.parseFloat(getComputedStyle(editor).lineHeight);
+    const minimumLine = Number.isFinite(lineHeight) ? lineHeight * 0.6 : 12;
+    return {
+      visibleBlankCountAfterText: visibleBlanks.length,
+      cursorHasLineBox: cursorRect.height >= minimumLine,
+      cursorIsAfterBlankLine: cursorRect.top - beforeRect.bottom >= minimumLine * 2,
+    };
+  }, beforeText);
 }
