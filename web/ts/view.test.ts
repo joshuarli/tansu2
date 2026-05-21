@@ -102,8 +102,10 @@ describe("view rendering", () => {
     expect(root.querySelector(".main")?.className).toContain("reading-mode");
     expect(root.querySelector(".topbar")).toBeNull();
     expect(root.querySelector(".toolbar")).toBeNull();
-    expect(root.querySelector(".editor-meta")).toBeNull();
-    expect(root.querySelector('[title="Edit"]')).toBeNull();
+    expect(root.querySelector(".editor-meta")).not.toBeNull();
+    expect(root.querySelector(".tag-row")).not.toBeNull();
+    root.querySelector<HTMLButtonElement>('[title="Read"]')!.click();
+    expect(actions.toggleReadingMode).toHaveBeenCalled();
   });
 
   it("renders command, search, revision, settings, conflict, dialog, and notice overlays", () => {

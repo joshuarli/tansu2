@@ -80,9 +80,12 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
     option.selected = vault.index === state.vault;
     vaultSelect.append(option);
   }
+  const vaultLabel = span(vaultSelect.selectedOptions[0]?.textContent ?? "", "vault-label");
   vaultSelect.addEventListener("change", () => {
+    vaultLabel.textContent = vaultSelect.selectedOptions[0]?.textContent ?? "";
     actions.switchVault(Number(vaultSelect.value));
   });
+  const vaultControl = el("div", "vault-control", vaultLabel, vaultSelect);
 
   const search = document.createElement("input");
   search.className = "search-input";
@@ -107,6 +110,9 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
     "icon-button",
   );
   const create = button("+", "New note", () => actions.commandCreate(), "icon-button");
+  const read = toolButton(state.readingMode ? "eyeOff" : "eye", "Read", () =>
+    actions.toggleReadingMode(),
+  );
   const palette = button(
     "⌘",
     "Commands",
@@ -117,9 +123,9 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
     },
     "icon-button",
   );
-  const controls = el("div", "sidebar-controls", vaultSelect, searchButton, create, palette);
+  const controls = el("div", "sidebar-controls", searchButton, create, read, palette);
 
-  sidebar.append(controls, search);
+  sidebar.append(vaultControl, controls, search);
   sidebar.append(section("Pinned", noteList(state, [...state.pinned], actions)));
   sidebar.append(section("Recent", noteList(state, recentNoteIds(state), actions)));
   return sidebar;
@@ -145,8 +151,7 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
     tabEl.append(span(tab.title), span(tab.dirty ? "•" : ""), closeButton(tab.noteId, actions));
     tabs.append(tabEl);
   }
-  const title = active === undefined ? "No note selected" : active.path;
-  const topbar = el("div", "topbar", tabs, topbarActions(active, state, actions));
+  const topbar = el("div", "topbar", tabs);
   const workspace = el("section", "workspace");
   if (active === undefined) {
     workspace.append(emptyState(actions));
@@ -155,17 +160,16 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
   } else {
     const mount = el("div", "editor-mount");
     mount.id = "editor-mount";
-    if (reading) {
-      workspace.append(mount);
-    } else {
-      const meta = el(
-        "div",
-        "editor-meta",
-        el("div", "path-label", title),
-        renderTagRow(active, actions),
-      );
-      workspace.append(meta, mount);
+    if (!reading) {
+      workspace.append(editorToolbar(actions));
     }
+    const meta = el(
+      "div",
+      reading ? "editor-meta reader-meta" : "editor-meta",
+      el("div", "meta-spacer"),
+      renderTagRow(active, actions, reading),
+    );
+    workspace.append(meta, mount);
     if (active.conflict) {
       const banner = el(
         "div",
@@ -189,23 +193,9 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
       workspace.append(banner);
     }
   }
-  if (!reading) {
-    main.append(topbar, editorToolbar(actions));
-  }
+  if (!reading) main.append(topbar);
   main.append(workspace, renderStatusBar(state));
   return main;
-}
-
-function topbarActions(active: Tab | undefined, state: State, actions: ViewActions): HTMLElement {
-  const controls = el("div", "topbar-actions");
-  if (active !== undefined) {
-    controls.append(
-      toolButton(state.readingMode ? "edit" : "read", state.readingMode ? "Edit" : "Read", () =>
-        actions.toggleReadingMode(),
-      ),
-    );
-  }
-  return controls;
 }
 
 function editorToolbar(actions: ViewActions): HTMLElement {
@@ -629,7 +619,7 @@ function emptyState(actions: ViewActions): HTMLElement {
   );
 }
 
-function renderTagRow(tab: Tab, actions: ViewActions): HTMLElement {
+function renderTagRow(tab: Tab, actions: ViewActions, readonly = false): HTMLElement {
   const row = el("div", "tag-row");
   if (tab.doc === null) {
     return row;
@@ -644,12 +634,14 @@ function renderTagRow(tab: Tab, actions: ViewActions): HTMLElement {
       },
       "tag",
     );
-    tagButton.disabled = !supported;
+    tagButton.disabled = readonly || !supported;
     row.append(tagButton);
   }
   const add = button("+ tag", "Add tag", () => actions.commandAddTag(), "tag tag-add");
-  add.disabled = !supported;
-  row.append(add);
+  add.disabled = readonly || !supported;
+  if (!readonly) {
+    row.append(add);
+  }
   if (!supported) {
     row.append(span("Tags locked", "tag-disabled"));
   }
@@ -714,8 +706,8 @@ type ToolIcon =
   | "redo"
   | "code"
   | "save"
-  | "read"
-  | "edit";
+  | "eye"
+  | "eyeOff";
 
 function toolButton(iconName: ToolIcon, title: string, onClick: (event: MouseEvent) => void) {
   const element = button("", title, onClick, "tool-button");
@@ -767,14 +759,17 @@ function iconPaths(iconName: ToolIcon): SVGElement[] {
         iconShape("rect", { x: "9", y: "15", width: "6", height: "5", fill: "#dfe7f2" }),
         iconPath("M5 4h12l2 2v14H5zM8 4v6h8V4M8 20v-6h8v6"),
       ];
-    case "read":
+    case "eye":
       return [
-        iconPath(
-          "M4 6.5A7 7 0 0 1 11 6h2a7 7 0 0 1 7 7 7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7zM8 9h8M8 13h6M8 17h4",
-        ),
+        iconPath("M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"),
+        iconPath("M12 9.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"),
       ];
-    case "edit":
-      return [iconPath("M5 19h4l10-10-4-4L5 15zM13.5 6.5l4 4M4 22h16")];
+    case "eyeOff":
+      return [
+        iconPath("M3 3l18 18"),
+        iconPath("M10.7 5.2A10.7 10.7 0 0 1 12 5c6 0 9.5 7 9.5 7a17.8 17.8 0 0 1-3.2 4.1"),
+        iconPath("M6.5 6.9A17.6 17.6 0 0 0 2.5 12s3.5 7 9.5 7c1.7 0 3.2-.4 4.5-1"),
+      ];
   }
 }
 

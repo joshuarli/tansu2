@@ -21,6 +21,10 @@
   --radius-panel: 10px;
   --content-width: 880px;
   --content-offset: clamp(64px, 15vw, 300px);
+  --chrome-top: 26px;
+  --chrome-control-height: 34px;
+  --chrome-text-size: 16px;
+  --chrome-line-height: 24px;
   --md-color-bg: var(--color-bg);
   --md-color-bg-elevated: var(--color-bg-elevated);
   --md-color-bg-hover: var(--color-bg-hover);
@@ -81,17 +85,50 @@ button {
   min-height: 100dvh;
   contain: layout paint style;
   background: var(--color-bg);
-  padding: 26px 18px 28px clamp(18px, 2vw, 32px);
+  padding: var(--chrome-top) 18px 28px clamp(18px, 2vw, 32px);
+  opacity: 1;
+  transition: opacity 140ms ease-out;
+}
+
+.reading-sidebar {
+  opacity: 0.5;
+}
+
+.reading-sidebar:hover,
+.reading-sidebar:focus-within {
+  opacity: 1;
 }
 
 .sidebar-controls {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 32px 32px 32px;
+  grid-template-columns: 32px 32px 32px 32px;
   gap: 6px;
   align-items: center;
+  min-height: var(--chrome-control-height);
 }
 
-.vault-select,
+.vault-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--chrome-control-height);
+  min-height: var(--chrome-control-height);
+  min-width: 0;
+}
+
+.vault-control::after {
+  position: absolute;
+  top: 50%;
+  right: 9px;
+  width: 7px;
+  height: 7px;
+  transform: translateY(-65%) rotate(45deg);
+  border-right: 1.5px solid var(--color-text-muted);
+  border-bottom: 1.5px solid var(--color-text-muted);
+  content: "";
+  pointer-events: none;
+}
+
 .search-input,
 .command-input {
   width: 100%;
@@ -104,17 +141,34 @@ button {
   outline: none;
 }
 
-.vault-select:focus,
 .search-input:focus,
 .command-input:focus {
   color: var(--color-text);
   box-shadow: none;
 }
 
-.vault-select {
-  appearance: none;
+.vault-label {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0 28px 0 7px;
   color: var(--color-text);
-  font-weight: 500;
+  font-size: var(--chrome-text-size);
+  font-weight: 520;
+  line-height: var(--chrome-line-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vault-select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  border: 0;
+  opacity: 0;
+  outline: none;
 }
 
 .search-input::placeholder {
@@ -146,12 +200,6 @@ button {
 .tab-close:hover {
   background: transparent;
   color: var(--color-text);
-}
-
-.reading-sidebar .sidebar-controls,
-.reading-sidebar .search-input {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .sidebar-section {
@@ -209,7 +257,7 @@ button {
 
 .main {
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   min-width: 0;
   min-height: 100vh;
   min-height: 100dvh;
@@ -225,10 +273,10 @@ button {
   align-items: center;
   justify-content: space-between;
   min-width: 0;
-  min-height: 58px;
+  min-height: calc(var(--chrome-top) + var(--chrome-control-height));
   contain: layout paint style;
   overflow: hidden;
-  padding: 13px clamp(18px, 3vw, 40px);
+  padding: var(--chrome-top) 20px 0;
 }
 
 .topbar-actions {
@@ -258,12 +306,15 @@ button {
   align-items: center;
   max-width: 220px;
   min-width: 112px;
-  min-height: 34px;
+  height: var(--chrome-control-height);
+  min-height: var(--chrome-control-height);
   border: 0;
   border-radius: 0;
   background: transparent;
   color: var(--color-text-muted);
-  padding: 4px 4px 4px 8px;
+  font-size: var(--chrome-text-size);
+  line-height: var(--chrome-line-height);
+  padding: 0 4px 0 8px;
 }
 
 .tab span:first-child {
@@ -284,7 +335,7 @@ button {
   align-items: center;
   min-height: 40px;
   contain: layout paint style;
-  padding: 4px 12px;
+  padding: 0;
 }
 
 .workspace {
@@ -296,9 +347,10 @@ button {
 }
 
 .reading-mode .workspace {
-  padding-top: 166px;
+  padding-top: 139px;
 }
 
+.toolbar,
 .editor-meta,
 .editor-mount {
   width: min(920px, 100%);
@@ -306,6 +358,7 @@ button {
 }
 
 @media (min-width: 1100px) {
+  .toolbar,
   .editor-meta,
   .editor-mount {
     width: min(var(--content-width), calc(100% - var(--content-offset) - 40px));
@@ -315,19 +368,19 @@ button {
 }
 
 .editor-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  display: grid;
+  gap: 8px;
   min-height: 32px;
   color: var(--color-text-muted);
   font-size: 13px;
 }
 
-.path-label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.reader-meta {
+  pointer-events: none;
+}
+
+.meta-spacer {
+  min-height: 20px;
 }
 
 .tag-row {

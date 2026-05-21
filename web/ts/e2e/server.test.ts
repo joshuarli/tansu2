@@ -123,7 +123,9 @@ describe("real server harness", () => {
     });
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
-    expect(await page.locator(".topbar + .toolbar").count()).toBe(1);
+    await page.locator('.note-row[title="one.md"]').first().click();
+    await page.waitForSelector(".workspace > .toolbar");
+    expect(await page.locator(".workspace > .toolbar").count()).toBe(1);
     expect(await page.locator(".section-title", { hasText: "Notes" }).count()).toBe(0);
     expect(await page.locator('.toolbar [title="Source"] svg').count()).toBe(1);
     expect(await page.locator('.toolbar [title="Save"] svg').count()).toBe(1);
@@ -142,9 +144,32 @@ describe("real server harness", () => {
     await page.locator('.sidebar-controls [title="New note"]').click();
     await page.locator(".note-dialog-panel input").fill("Meeting Notes");
     await page.locator(".note-dialog-panel .primary-button").click();
-    await page.waitForFunction(
-      () => document.querySelector(".path-label")?.textContent === "meeting-notes.md",
+    await page.waitForFunction(() =>
+      document.querySelector(".tab.active")?.textContent?.includes("Meeting Notes"),
     );
+    const chromeAlignment = await page.evaluate(() => {
+      const vaultText = document.querySelector(".vault-label")?.getBoundingClientRect();
+      const tabText = document
+        .querySelector(".tab.active span:first-child")
+        ?.getBoundingClientRect();
+      const vaultControl = document.querySelector(".vault-control")?.getBoundingClientRect();
+      const tabControl = document.querySelector(".tab.active")?.getBoundingClientRect();
+      if (
+        vaultText === undefined ||
+        tabText === undefined ||
+        vaultControl === undefined ||
+        tabControl === undefined
+      ) {
+        return undefined;
+      }
+      return {
+        textDelta: tabText.top - vaultText.top,
+        controlDelta: tabControl.top - vaultControl.top,
+      };
+    });
+    expect(chromeAlignment).toBeDefined();
+    expect(Math.abs(chromeAlignment!.textDelta)).toBeLessThanOrEqual(0.5);
+    expect(Math.abs(chromeAlignment!.controlDelta)).toBeLessThanOrEqual(0.5);
 
     await page.locator('.sidebar-controls [title="Search notes"]').click();
     await page.locator(".search-panel input").fill("alpha");
@@ -175,10 +200,12 @@ describe("real server harness", () => {
     await page.locator(".tab.active").click({ button: "right" });
     await page.locator(".context-menu", { hasText: "Rename" }).getByText("Rename").click();
     await page.locator(".note-dialog-panel input").fill("Renamed Note");
-    await page.locator(".note-dialog-panel .primary-button").click();
-    await page.waitForFunction(
-      () => document.querySelector(".path-label")?.textContent === "renamed-note.md",
+    const renameResponse = page.waitForResponse(
+      (response) => response.url().includes("/rename") && response.status() === 200,
     );
+    await page.locator(".note-dialog-panel .primary-button").click();
+    await renameResponse;
+    await page.waitForSelector(".note-dialog-panel", { state: "detached" });
 
     await page.locator(".tab.active").click({ button: "right" });
     await page.locator(".context-menu", { hasText: "Delete" }).getByText("Delete").click();
@@ -203,17 +230,11 @@ describe("real server harness", () => {
     const searchBefore = await openSeededDocument("search.md");
 
     await page.locator('.note-row[title="one.md"]').first().click();
-    await page.waitForFunction(
-      () => document.querySelector(".path-label")?.textContent === "one.md",
-    );
     await page.waitForFunction(() =>
       document.querySelector(".app-editor")?.textContent?.includes("alpha"),
     );
 
     await page.locator('.note-row[title="search.md"]').first().click();
-    await page.waitForFunction(
-      () => document.querySelector(".path-label")?.textContent === "search.md",
-    );
     await page.waitForFunction(() =>
       document.querySelector(".app-editor")?.textContent?.includes("Search Fixture"),
     );
