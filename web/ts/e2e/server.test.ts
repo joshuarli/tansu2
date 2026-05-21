@@ -248,6 +248,232 @@ describe("real server harness", () => {
     await page.close();
   });
 
+  it("keeps immediate typing after Enter in the visual editor", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await page.locator('.sidebar-controls [title="New note"]').click();
+    await page.locator(".note-dialog-panel input").fill("Immediate Cursor");
+    await page.locator(".note-dialog-panel .primary-button").click();
+    await page.waitForFunction(() =>
+      document.querySelector(".tab.active")?.textContent?.includes("Immediate Cursor"),
+    );
+    await expect
+      .poll(() =>
+        page.locator(".app-editor").evaluate((editor) => {
+          const anchor = getSelection()?.anchorNode;
+          const element = anchor instanceof Element ? anchor : anchor?.parentElement;
+          return element?.closest("p")?.parentElement === editor;
+        }),
+      )
+      .toBe(true);
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("bar");
+
+    await expect
+      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.innerHTML))
+      .toContain("<p>bar</p>");
+    await expect
+      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
+      .toContain("bar");
+    await page.close();
+  });
+
+  it("preserves repeated blank lines across autosave", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await page.locator('.sidebar-controls [title="New note"]').click();
+    await page.locator(".note-dialog-panel input").fill("Blank Lines");
+    await page.locator(".note-dialog-panel .primary-button").click();
+    await page.waitForFunction(() =>
+      document.querySelector(".tab.active")?.textContent?.includes("Blank Lines"),
+    );
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await expect
+      .poll(() =>
+        page.locator(".app-editor").evaluate(
+          (editor) =>
+            [...editor.querySelectorAll<HTMLElement>('[data-md-blank="true"]')].filter(
+              (blank) => !blank.hidden,
+            ).length,
+        ),
+      )
+      .toBe(2);
+    await page.waitForResponse(
+      (response) =>
+        response.request().method() === "PUT" &&
+        new URL(response.url()).pathname.startsWith("/api/notes/") &&
+        response.status() === 200,
+    );
+
+    await expect
+      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
+      .toBe("Blank Lines\n\n\n");
+    await expect
+      .poll(() =>
+        page.locator(".app-editor").evaluate((editor) => {
+          const anchor = getSelection()?.anchorNode;
+          const element = anchor instanceof Element ? anchor : anchor?.parentElement;
+          return element?.closest("p")?.parentElement === editor;
+        }),
+      )
+      .toBe(true);
+
+    const saved = await openSeededDocument("blank-lines.md");
+    expect(saved.content).toBe("# Blank Lines\r\n\r\n\r\n");
+    await page.close();
+  });
+
+  it("preserves blank lines inserted between typed paragraphs", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await page.locator('.sidebar-controls [title="New note"]').click();
+    await page.locator(".note-dialog-panel input").fill("Collapse Repro");
+    await page.locator(".note-dialog-panel .primary-button").click();
+    await page.waitForFunction(() =>
+      document.querySelector(".tab.active")?.textContent?.includes("Collapse Repro"),
+    );
+    await page.keyboard.type("foo");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("bar");
+
+    await expect
+      .poll(() =>
+        page.locator(".app-editor").evaluate(
+          (editor) =>
+            [...editor.querySelectorAll<HTMLElement>('[data-md-blank="true"]')].filter(
+              (blank) => !blank.hidden,
+            ).length,
+        ),
+      )
+      .toBe(2);
+    await page.waitForResponse(
+      (response) =>
+        response.request().method() === "PUT" &&
+        new URL(response.url()).pathname.startsWith("/api/notes/") &&
+        response.status() === 200,
+    );
+
+    const saved = await openSeededDocument("collapse-repro.md");
+    expect(saved.content).toBe("# Collapse Repro\r\nfoo\r\n\r\n\r\nbar");
+    await page.keyboard.press("Enter");
+    await expect
+      .poll(() =>
+        page.locator(".app-editor").evaluate(
+          (editor) =>
+            [...editor.querySelectorAll<HTMLElement>('[data-md-blank="true"]')].filter(
+              (blank) => !blank.hidden,
+            ).length,
+        ),
+      )
+      .toBe(2);
+    await page.close();
+  });
+
+  it("moves through visible blank lines with arrow keys", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await page.locator('.sidebar-controls [title="New note"]').click();
+    await page.locator(".note-dialog-panel input").fill("Arrow Blanks");
+    await page.locator(".note-dialog-panel .primary-button").click();
+    await page.waitForFunction(() =>
+      document.querySelector(".tab.active")?.textContent?.includes("Arrow Blanks"),
+    );
+    await page.keyboard.type("foo");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("bar");
+    await page.keyboard.press("ArrowUp");
+
+    await expect
+      .poll(() =>
+        page.locator(".app-editor").evaluate((editor) => {
+          const anchor = getSelection()?.anchorNode;
+          const active = anchor instanceof Element ? anchor : anchor?.parentElement;
+          const activeBlock = active?.closest("p");
+          const children = [...editor.children];
+          return {
+            activeIndex: activeBlock === null || activeBlock === undefined ? -1 : children.indexOf(activeBlock),
+            blocks: children.map((child) => ({
+              blank: (child as HTMLElement).dataset["mdBlank"] === "true",
+              hidden: (child as HTMLElement).hidden,
+              text: child.textContent ?? "",
+            })),
+          };
+        }),
+      )
+      .toEqual({
+        activeIndex: 3,
+        blocks: [
+          { blank: false, hidden: false, text: "Arrow Blanks" },
+          { blank: false, hidden: false, text: "foo" },
+          { blank: true, hidden: false, text: "" },
+          { blank: false, hidden: false, text: "" },
+          { blank: false, hidden: false, text: "bar" },
+        ],
+      });
+    await page.close();
+  });
+
+  it("keeps rapid typing responsive in a large visual note", async () => {
+    const content =
+      "# Stress\n\n" +
+      Array.from({ length: 500 }, (_, i) => `paragraph ${i} with enough text to make DOM walks expensive`).join(
+        "\n",
+      );
+    await fetch(`${baseUrl}/api/notes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tansu-Vault": "0",
+      },
+      body: JSON.stringify({ path: "stress-lag.md", content, source: null }),
+    });
+
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+    await page.locator('.note-row[title="stress-lag.md"]').first().click();
+    await page.waitForFunction(() =>
+      document.querySelector(".app-editor")?.textContent?.includes("paragraph 499"),
+    );
+    await page.locator(".app-editor").evaluate((editor) => {
+      const last = editor.lastChild;
+      if (last === null) {
+        throw new Error("missing editor content");
+      }
+      const range = document.createRange();
+      range.selectNodeContents(last);
+      range.collapse(false);
+      const selection = getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+      (editor as HTMLElement).focus();
+    });
+
+    const typed = " latency-free-editing-regression-check";
+    const started = performance.now();
+    await page.keyboard.type(typed);
+    const elapsed = performance.now() - started;
+
+    expect(elapsed).toBeLessThan(2500);
+    await expect
+      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
+      .toContain(`paragraph 499 with enough text to make DOM walks expensive${typed}`);
+    await page.close();
+  });
+
   it("streams vault-scoped note changes over SSE", async () => {
     const page = await browser!.newPage();
     await page.goto(baseUrl);

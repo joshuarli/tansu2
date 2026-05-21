@@ -292,8 +292,8 @@ describe("line model", () => {
   it("blank line between paragraphs renders placeholder", () => {
     expect(renderMarkdown("foo\n\nbar")).toContain('data-md-blank="true"');
   });
-  it("blank line placeholder has br inside", () => {
-    expect(renderMarkdown("foo\n\nbar")).toContain('data-md-blank="true"><br>');
+  it("blank line sentinel is hidden", () => {
+    expect(renderMarkdown("foo\n\nbar")).toContain('<p data-md-blank="true" hidden></p>');
   });
   it("two blank lines produce two placeholders", () => {
     const html = renderMarkdown("foo\n\n\nbar");

@@ -330,7 +330,7 @@ function createRenderer(extensions: MarkdownExtension[]) {
         }>&nbsp;${block.text === "" ? "<br>" : inline(block.text)}</li>\n</ul>`;
       }
       case "blank": {
-        return '<p data-md-blank="true"><br></p>';
+        return '<p data-md-blank="true" hidden></p>';
       }
       case "hr": {
         return "<hr>";

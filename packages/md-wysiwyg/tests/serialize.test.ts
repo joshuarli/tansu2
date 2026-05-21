@@ -172,6 +172,14 @@ describe("serialize", () => {
     );
   });
 
+  it("empty paragraph between blocks preserves an inserted blank line", () => {
+    expect(domToMarkdown(html("<p>First</p><p></p><p>Second</p>"))).toBe("First\n\nSecond");
+  });
+
+  it("trailing empty paragraph preserves the active cursor line", () => {
+    expect(domToMarkdown(html("<h1>Title</h1><p></p>"))).toBe("# Title\n");
+  });
+
   it("typed text inside a former blank paragraph is preserved", () => {
     expect(
       domToMarkdown(

@@ -60,6 +60,7 @@ export class TansuApp {
   private readonly state: State;
   private editor: EditorHandle | null = null;
   private editorNoteId: string | null = null;
+  private captureTimer: number | undefined;
   private autosaveTimer: number | undefined;
   private sessionTimer: number | undefined;
   private events: EventSource | null = null;
@@ -244,7 +245,7 @@ export class TansuApp {
         : "md-editor-content app-editor",
       sourceClassName: "md-editor-source app-editor-source",
       onImagePaste: (blob) => this.uploadPastedImage(blob),
-      onChange: () => this.captureEditorChange(),
+      onChange: () => this.noteEditorChanged(),
       onSave: () => void this.manualSave(),
     };
     const settings = this.state.boot?.settings;
@@ -282,13 +283,40 @@ export class TansuApp {
 
   private destroyEditor(): void {
     if (this.editor !== null) {
+      this.flushEditorChange();
       this.editor.destroy();
       this.editor = null;
     }
     this.editorNoteId = null;
   }
 
-  private captureEditorChange(): void {
+  private noteEditorChanged(): void {
+    const active =
+      this.editorNoteId === null ? activeTab(this.state) : tabById(this.state, this.editorNoteId);
+    if (active === undefined || this.editor === null) {
+      return;
+    }
+    active.dirty = true;
+    window.clearTimeout(this.captureTimer);
+    this.captureTimer = window.setTimeout(() => {
+      this.captureTimer = undefined;
+      this.captureEditorChange();
+    }, 150);
+    this.scheduleAutosave();
+    this.scheduleSessionSave();
+    this.renderStatusOnly();
+  }
+
+  private flushEditorChange(): void {
+    if (this.captureTimer === undefined) {
+      return;
+    }
+    window.clearTimeout(this.captureTimer);
+    this.captureTimer = undefined;
+    this.captureEditorChange();
+  }
+
+  private captureEditorChange(renderStatus = true): void {
     const active =
       this.editorNoteId === null ? activeTab(this.state) : tabById(this.state, this.editorNoteId);
     if (active === undefined || this.editor === null) {
@@ -303,12 +331,14 @@ export class TansuApp {
     active.dirty = active.draft !== active.doc?.content;
     active.cursorOffset = this.editor.getCursorOffset();
     active.sourceMode = this.editor.isSourceMode;
-    this.scheduleAutosave();
-    this.scheduleSessionSave();
-    this.renderStatusOnly();
+    if (renderStatus) {
+      this.renderStatusOnly();
+    }
   }
 
   private syncActiveDraft(): void {
+    window.clearTimeout(this.captureTimer);
+    this.captureTimer = undefined;
     const tab =
       this.editorNoteId === null ? activeTab(this.state) : tabById(this.state, this.editorNoteId);
     if (
@@ -427,6 +457,7 @@ export class TansuApp {
   private scheduleAutosave(): void {
     window.clearTimeout(this.autosaveTimer);
     this.autosaveTimer = window.setTimeout(() => {
+      this.syncActiveDraft();
       const tab = activeTab(this.state);
       if (tab !== undefined && tab.dirty && !tab.saving) {
         void this.persistTab(tab);
@@ -715,7 +746,9 @@ export class TansuApp {
       );
       if (response.document !== null) {
         this.state.notes.set(response.meta.noteId, response.meta);
-        this.state.tabs.push(tabFromDocument(response.document));
+        const tab = tabFromDocument(response.document);
+        tab.cursorOffset = response.document.content.length;
+        this.state.tabs.push(tab);
         this.state.noteDialog = null;
         await this.activateTab(response.meta.noteId);
       }

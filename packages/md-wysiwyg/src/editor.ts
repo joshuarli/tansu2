@@ -65,6 +65,7 @@ const INDENTABLE_BLOCKS = new Set([
 const IMAGE_RESIZE_EDGE_PX = 14;
 const IMAGE_RESIZE_MIN_WIDTH = 48;
 const IMAGE_RESIZE_MAX_WIDTH = 2400;
+const BLANK_LINE_SELECTOR = '[data-md-blank="true"]';
 
 type ImageResizeDrag = {
   image: HTMLImageElement;
@@ -195,6 +196,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   let _isSourceMode = false;
   const renderer = createEditorRenderer(contentEl, extensions);
   const selection = createEditorSelectionController(contentEl, extensions);
+  let suppressNextInsertParagraph = false;
 
   // ── getValue / setValue ─────────────────────────────────────────────────────
 
@@ -208,6 +210,12 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     } else if (cursorOffset !== undefined) {
       renderer.renderWithCursor(md, cursorOffset);
       selection.restoreCursorMarker();
+      const activeBlock = getIndentableBlock(window.getSelection()?.anchorNode ?? contentEl);
+      if (activeBlock && isEmptyParagraphBlock(activeBlock)) {
+        ensureEmptyParagraphPlaceholder(activeBlock);
+        placeCursorAtBlockStart(activeBlock);
+      }
+      updateActiveBlankVisibility();
     } else {
       renderer.render(md);
     }
@@ -301,6 +309,16 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     sel.addRange(range);
   }
 
+  function ensureEmptyParagraphPlaceholder(block: HTMLElement): void {
+    if (
+      (block.tagName === "P" || block.tagName === "DIV") &&
+      block.dataset["mdBlank"] !== "true" &&
+      !block.hasChildNodes()
+    ) {
+      block.append(document.createElement("br"));
+    }
+  }
+
   function placeCursorAtBlockEnd(block: HTMLElement): void {
     const sel = window.getSelection();
     if (!sel) return;
@@ -309,6 +327,110 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     range.collapse(false);
     sel.removeAllRanges();
     sel.addRange(range);
+  }
+
+  function getBlankLineBlock(node: Node | null): HTMLElement | null {
+    if (!node) return null;
+    const el = node instanceof Element ? node : node.parentElement;
+    const blank = el?.closest(BLANK_LINE_SELECTOR);
+    return blank instanceof HTMLElement && contentEl.contains(blank) ? blank : null;
+  }
+
+  function isBlankLineElement(el: Element | null): el is HTMLElement {
+    return el instanceof HTMLElement && el.dataset["mdBlank"] === "true";
+  }
+
+  function hideBlankLine(blank: HTMLElement): void {
+    blank.hidden = true;
+    blank.contentEditable = "false";
+  }
+
+  function showBlankLine(blank: HTMLElement): void {
+    blank.hidden = false;
+    blank.contentEditable = "false";
+    if (!blank.hasChildNodes()) {
+      blank.append(document.createElement("br"));
+    }
+  }
+
+  function isVisibleContentBlock(el: Element | null): boolean {
+    return el instanceof HTMLElement && el.dataset["mdBlank"] !== "true";
+  }
+
+  function showMultiBlankRunsBetweenContent(): void {
+    const children = [...contentEl.children];
+    let i = 0;
+    while (i < children.length) {
+      if (!isBlankLineElement(children[i] ?? null)) {
+        i++;
+        continue;
+      }
+
+      const start = i;
+      while (i < children.length && isBlankLineElement(children[i] ?? null)) {
+        i++;
+      }
+      const blanks = children.slice(start, i).filter(isBlankLineElement);
+      if (
+        blanks.length > 1 &&
+        isVisibleContentBlock(children[start - 1] ?? null) &&
+        isVisibleContentBlock(children[i] ?? null)
+      ) {
+        for (const blank of blanks) {
+          showBlankLine(blank);
+        }
+      }
+    }
+  }
+
+  function updateActiveBlankVisibility(): void {
+    for (const blank of contentEl.querySelectorAll(BLANK_LINE_SELECTOR)) {
+      if (blank instanceof HTMLElement) {
+        hideBlankLine(blank);
+      }
+    }
+    showMultiBlankRunsBetweenContent();
+
+    const sel = window.getSelection();
+    const anchorNode = sel?.anchorNode;
+    const activeBlock = anchorNode ? getIndentableBlock(anchorNode) : null;
+    if (!activeBlock) {
+      return;
+    }
+
+    if (!isEmptyParagraphBlock(activeBlock)) {
+      return;
+    }
+
+    let previous = activeBlock.previousElementSibling;
+    while (isBlankLineElement(previous)) {
+      showBlankLine(previous);
+      previous = previous.previousElementSibling;
+    }
+    let next = activeBlock.nextElementSibling;
+    while (isBlankLineElement(next)) {
+      showBlankLine(next);
+      next = next.nextElementSibling;
+    }
+  }
+
+  function selectionStartsInBlankLine(): boolean {
+    const sel = window.getSelection();
+    return !!sel?.anchorNode && getBlankLineBlock(sel.anchorNode) !== null;
+  }
+
+  function placeCursorNearBlankLine(blank: HTMLElement): void {
+    const next = getNextElementSibling(blank);
+    if (next) {
+      placeCursorAtBlockStart(next);
+      return;
+    }
+    const previous = getPrevElementSibling(blank);
+    if (previous) {
+      placeCursorAtBlockEnd(previous);
+      return;
+    }
+    selection.placeCursorAtEnd();
   }
 
   function removeEmptyTopLevelListItem(item: HTMLElement): void {
@@ -423,7 +545,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     } else {
       removeEmptyTopLevelListItem(listItem);
     }
-    normalizeEditableContent(contentEl);
+    normalizeEditableContent(contentEl, { preserveActiveEmptyBlock: true });
     cfg.onChange?.();
     return true;
   }
@@ -449,10 +571,99 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     paragraph.className = "md-heading-continuation";
     paragraph.append(document.createElement("br"));
     heading.after(paragraph);
-    normalizeEditableContent(contentEl);
     placeCursorAtBlockStart(paragraph);
     cfg.onChange?.();
     return true;
+  }
+
+  function isEmptyParagraphBlock(block: HTMLElement): boolean {
+    if (block.dataset["mdBlank"] === "true" || (block.tagName !== "P" && block.tagName !== "DIV")) {
+      return false;
+    }
+    return (block.textContent ?? "").replaceAll("​", "").trim() === "";
+  }
+
+  function handleEmptyParagraphEnter(): boolean {
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0 || !sel.isCollapsed) {
+      return false;
+    }
+    const anchorNode = sel.anchorNode;
+    if (!anchorNode) {
+      return false;
+    }
+    const block = getIndentableBlock(anchorNode);
+    if (!block || !isEmptyParagraphBlock(block)) {
+      return false;
+    }
+
+    const blank = document.createElement("p");
+    blank.dataset["mdBlank"] = "true";
+    showBlankLine(blank);
+    const next = document.createElement("p");
+    next.append(document.createElement("br"));
+    block.replaceWith(blank, next);
+    placeCursorAtBlockStart(next);
+    updateActiveBlankVisibility();
+    cfg.onChange?.();
+    return true;
+  }
+
+  function createBlankLineSpacer(): HTMLElement {
+    const blank = document.createElement("p");
+    blank.dataset["mdBlank"] = "true";
+    showBlankLine(blank);
+    return blank;
+  }
+
+  function createCursorParagraph(): HTMLElement {
+    const paragraph = document.createElement("p");
+    paragraph.append(document.createElement("br"));
+    return paragraph;
+  }
+
+  function moveCursorIntoBlankLine(blank: HTMLElement, activeEmpty?: HTMLElement): void {
+    if (activeEmpty) {
+      activeEmpty.replaceWith(createBlankLineSpacer());
+    }
+    const cursorLine = createCursorParagraph();
+    blank.replaceWith(cursorLine);
+    placeCursorAtBlockStart(cursorLine);
+    updateActiveBlankVisibility();
+  }
+
+  function handleArrowThroughBlankLines(e: KeyboardEvent): boolean {
+    if (
+      (e.key !== "ArrowUp" && e.key !== "ArrowDown") ||
+      e.shiftKey ||
+      e.metaKey ||
+      e.ctrlKey ||
+      e.altKey
+    ) {
+      return false;
+    }
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0 || !sel.isCollapsed || !sel.anchorNode) {
+      return false;
+    }
+    const activeBlock = getIndentableBlock(sel.anchorNode);
+    if (!activeBlock) {
+      return false;
+    }
+
+    const previous = activeBlock.previousElementSibling;
+    const next = activeBlock.nextElementSibling;
+    if (e.key === "ArrowUp" && isBlankLineElement(previous)) {
+      e.preventDefault();
+      moveCursorIntoBlankLine(previous, isEmptyParagraphBlock(activeBlock) ? activeBlock : undefined);
+      return true;
+    }
+    if (e.key === "ArrowDown" && isBlankLineElement(next)) {
+      e.preventDefault();
+      moveCursorIntoBlankLine(next, isEmptyParagraphBlock(activeBlock) ? activeBlock : undefined);
+      return true;
+    }
+    return false;
   }
 
   function isRangeAtEndOfBlock(range: Range, block: HTMLElement): boolean {
@@ -545,9 +756,22 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       applyFormat(toggleHighlight);
       return;
     }
+    if (handleArrowThroughBlankLines(e)) return;
     if (e.key === "Backspace" && handleEmptyListItemBackspace(e)) return;
     if (e.key === "Enter" && !e.shiftKey) {
       if (handleHeadingEnter()) {
+        suppressNextInsertParagraph = true;
+        window.setTimeout(() => {
+          suppressNextInsertParagraph = false;
+        }, 0);
+        e.preventDefault();
+        return;
+      }
+      if (handleEmptyParagraphEnter()) {
+        suppressNextInsertParagraph = true;
+        window.setTimeout(() => {
+          suppressNextInsertParagraph = false;
+        }, 0);
         e.preventDefault();
         return;
       }
@@ -561,7 +785,14 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       return;
     }
     checkInlineTransform();
-    normalizeEditableContent(contentEl);
+    const activeBlock = getIndentableBlock(window.getSelection()?.anchorNode ?? contentEl);
+    normalizeEditableContent(activeBlock ?? contentEl, { preserveActiveEmptyBlock: true });
+    const blank = window.getSelection()?.anchorNode;
+    const blankBlock = blank ? getBlankLineBlock(blank) : null;
+    if (blankBlock) {
+      placeCursorNearBlankLine(blankBlock);
+    }
+    updateActiveBlankVisibility();
     undoController.scheduleTypingCheckpoint();
     cfg.onChange?.();
   }
@@ -611,6 +842,26 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   }
 
   function onBeforeInput(e: InputEvent): void {
+    if (e.inputType === "insertParagraph") {
+      if (suppressNextInsertParagraph) {
+        suppressNextInsertParagraph = false;
+        e.preventDefault();
+        return;
+      }
+      if (handleHeadingEnter()) {
+        e.preventDefault();
+        return;
+      }
+      if (handleEmptyParagraphEnter()) {
+        e.preventDefault();
+        return;
+      }
+    }
+    if (selectionStartsInBlankLine()) {
+      e.preventDefault();
+      preferPlainTextPaste = false;
+      return;
+    }
     if (e.inputType !== "insertFromPaste" && e.inputType !== "insertFromPasteAsQuotation") {
       preferPlainTextPaste = false;
       return;
@@ -630,6 +881,13 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function onContentPaste(e: ClipboardEvent): void {
     void onPaste(e);
+  }
+
+  function onContentPointerDown(e: PointerEvent): void {
+    const blank = getBlankLineBlock(e.target instanceof Node ? e.target : null);
+    if (!blank) return;
+    e.preventDefault();
+    placeCursorNearBlankLine(blank);
   }
 
   function onSourceInput(): void {
@@ -718,6 +976,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   contentEl.addEventListener("paste", onContentPaste);
   contentEl.addEventListener("change", onCheckboxEvent);
   contentEl.addEventListener("click", onCheckboxEvent);
+  contentEl.addEventListener("pointerdown", onContentPointerDown);
   contentEl.addEventListener("pointerdown", onImagePointerDown);
   document.addEventListener("pointermove", onDocumentPointerMove);
   document.addEventListener("pointerup", endImageResize);
@@ -756,6 +1015,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     contentEl.removeEventListener("paste", onContentPaste);
     contentEl.removeEventListener("change", onCheckboxEvent);
     contentEl.removeEventListener("click", onCheckboxEvent);
+    contentEl.removeEventListener("pointerdown", onContentPointerDown);
     contentEl.removeEventListener("pointerdown", onImagePointerDown);
     document.removeEventListener("pointermove", onDocumentPointerMove);
     document.removeEventListener("pointerup", endImageResize);

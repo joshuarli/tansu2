@@ -88,6 +88,68 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
+  it("renders blank lines as hidden sentinels", () => {
+    const handle = createEditor(container);
+    handle.setValue("foo\n\nbar");
+    const blank = handle.contentEl.querySelector('[data-md-blank="true"]');
+    expect(blank).toBeInstanceOf(HTMLElement);
+    expect((blank as HTMLElement).hidden).toBe(true);
+    handle.destroy();
+  });
+
+  it("prevents beforeinput while the selection is in a blank line placeholder", () => {
+    const handle = createEditor(container);
+    handle.setValue("foo\n\nbar");
+    const blank = handle.contentEl.querySelector('[data-md-blank="true"]')!;
+    const range = document.createRange();
+    range.selectNodeContents(blank);
+    range.collapse(true);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    const event = new InputEvent("beforeinput", {
+      bubbles: true,
+      cancelable: true,
+      inputType: "insertText",
+      data: "x",
+    });
+    const dispatched = handle.contentEl.dispatchEvent(event);
+
+    expect(dispatched).toBe(false);
+    expect(event.defaultPrevented).toBe(true);
+    expect(handle.getValue()).toBe("foo\n\nbar");
+    handle.destroy();
+  });
+
+  it("moves pointer selection out of blank line placeholders", () => {
+    const handle = createEditor(container);
+    handle.setValue("foo\n\nbar");
+    const blank = handle.contentEl.querySelector('[data-md-blank="true"]') as HTMLElement;
+    blank.dispatchEvent(new MouseEvent("pointerdown", { bubbles: true, cancelable: true }));
+
+    const anchor = window.getSelection()!.anchorNode;
+    expect(anchor).not.toBeNull();
+    expect(blank.contains(anchor)).toBe(false);
+    handle.destroy();
+  });
+
+  it("enter on an empty paragraph preserves repeated blank lines", () => {
+    const handle = createEditor(container);
+    handle.setValue("# Foo\n", "# Foo\n".length);
+
+    handle.contentEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true }),
+    );
+    expect(handle.getValue()).toBe("# Foo\n\n");
+
+    handle.contentEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true }),
+    );
+    expect(handle.getValue()).toBe("# Foo\n\n\n");
+    expect(handle.contentEl.querySelectorAll('[data-md-blank="true"]')).toHaveLength(2);
+    handle.destroy();
+  });
+
   // ── applyFormat ────────────────────────────────────────────────────────────
 
   it("applyFormat toggleBold on selection wraps with **", () => {

@@ -1,5 +1,9 @@
 const NORMALIZABLE_BLOCK_SELECTOR = "h1, h2, h3, h4, h5, h6, p, div, li";
 
+type NormalizeOptions = {
+  preserveActiveEmptyBlock?: boolean;
+};
+
 function isMarkerNode(node: Node): boolean {
   if (!(node instanceof HTMLElement)) {
     return false;
@@ -64,21 +68,58 @@ function trimTrailingPlaceholderBreaks(block: HTMLElement): void {
   }
 }
 
-function normalizeEditableBlock(block: HTMLElement): void {
-  if (block.dataset["mdBlank"] === "true" || !hasSubstantiveContent(block)) {
+function hasElementSibling(block: HTMLElement): boolean {
+  return block.previousElementSibling !== null || block.nextElementSibling !== null;
+}
+
+function containsSelection(block: HTMLElement): boolean {
+  const sel = window.getSelection();
+  const anchor = sel?.anchorNode;
+  return anchor !== undefined && anchor !== null && (block === anchor || block.contains(anchor));
+}
+
+function normalizeBlankLineBlock(block: HTMLElement): boolean {
+  if (
+    block.dataset["mdBlank"] !== "true" &&
+    (block.tagName !== "P" && block.tagName !== "DIV")
+  ) {
+    return false;
+  }
+  if (block.dataset["mdBlank"] !== "true" && !hasElementSibling(block)) {
+    return false;
+  }
+  if (hasSubstantiveContent(block)) {
+    return false;
+  }
+  block.dataset["mdBlank"] = "true";
+  block.hidden = true;
+  block.replaceChildren();
+  return true;
+}
+
+function normalizeEditableBlock(block: HTMLElement, options: NormalizeOptions): void {
+  if (
+    options.preserveActiveEmptyBlock === true &&
+    block.dataset["mdBlank"] !== "true" &&
+    !hasSubstantiveContent(block) &&
+    containsSelection(block)
+  ) {
+    return;
+  }
+  if (normalizeBlankLineBlock(block) || !hasSubstantiveContent(block)) {
     return;
   }
   trimLeadingPlaceholderBreaks(block);
   trimTrailingPlaceholderBreaks(block);
 }
 
-export function normalizeEditableContent(root: ParentNode): void {
+export function normalizeEditableContent(root: ParentNode, options: NormalizeOptions = {}): void {
   if (root instanceof HTMLElement && root.matches(NORMALIZABLE_BLOCK_SELECTOR)) {
-    normalizeEditableBlock(root);
+    normalizeEditableBlock(root, options);
   }
   for (const block of root.querySelectorAll(NORMALIZABLE_BLOCK_SELECTOR)) {
     if (block instanceof HTMLElement) {
-      normalizeEditableBlock(block);
+      normalizeEditableBlock(block, options);
     }
   }
 }

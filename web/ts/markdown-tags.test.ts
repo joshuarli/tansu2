@@ -32,6 +32,23 @@ describe("markdown tag frontmatter", () => {
     expect(editableMarkdown(tab)).toBe("# Body\n");
   });
 
+  it("normalizes plain note line endings before editor display", () => {
+    const tab = tabFromDocument({
+      meta: {
+        noteId: "n1",
+        path: "n.md",
+        title: "N",
+        tags: [],
+        seq: 1,
+        contentHash: "hash",
+        updatedAtMs: 1,
+      },
+      content: "# Body\r\n\r\ntext\r\n",
+    });
+
+    expect(editableMarkdown(tab)).toBe("# Body\n\ntext\n");
+  });
+
   it("updates tags while preserving the markdown body", () => {
     expect(setMarkdownTags("# Body\n", ["alpha", "beta"])).toBe(
       "---\ntags:\n  - alpha\n  - beta\n---\n\n# Body\n",

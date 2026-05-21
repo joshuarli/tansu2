@@ -17,7 +17,7 @@ Enter in the content editor creates a new `<p>` (browser default), which round-t
 
 ### Blank lines
 
-A blank line (`\n\n`) renders as `<p data-md-blank="true"><br></p>`. This placeholder takes up one line of visual height (so `\n\n` and `\n` look visually distinct), serializes to zero characters (only contributing `\n` separators), and remains interactive in the editor so the cursor can be placed on it.
+A blank line (`\n\n`) renders as `<p data-md-blank="true" hidden></p>`. This sentinel does not occupy visual height in the editor, serializes to zero characters (only contributing `\n` separators), and is not editable in the visual editor.
 
 `isBlankLineBlock` also treats browser-created `<p><br></p>` (from Enter on an empty line) the same way.
 

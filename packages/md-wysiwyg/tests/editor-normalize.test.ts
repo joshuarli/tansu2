@@ -30,9 +30,21 @@ describe("normalizeEditableContent", () => {
     expect(root.innerHTML).toBe("<p>x</p>");
   });
 
-  it("preserves explicit blank paragraphs", () => {
+  it("normalizes explicit blank paragraphs to hidden sentinels", () => {
     const root = html('<p data-md-blank="true"><br></p>');
     normalizeEditableContent(root);
-    expect(root.innerHTML).toBe('<p data-md-blank="true"><br></p>');
+    expect(root.innerHTML).toBe('<p data-md-blank="true" hidden=""></p>');
+  });
+
+  it("normalizes inserted empty paragraphs to hidden sentinels", () => {
+    const root = html("<p>foo</p><p></p><p>bar</p>");
+    normalizeEditableContent(root);
+    expect(root.innerHTML).toBe('<p>foo</p><p data-md-blank="true" hidden=""></p><p>bar</p>');
+  });
+
+  it("leaves a lone empty paragraph editable", () => {
+    const root = html("<p><br></p>");
+    normalizeEditableContent(root);
+    expect(root.innerHTML).toBe("<p><br></p>");
   });
 });

@@ -170,6 +170,10 @@ describe("TansuApp note loading", () => {
       { path: "meeting-notes.md", content: "# Meeting Notes\n", source: null },
       0,
     );
+    expect(editorMock.instances.at(-1)?.setValue).toHaveBeenLastCalledWith(
+      "# Meeting Notes\n",
+      "# Meeting Notes\n".length,
+    );
 
     root
       .querySelector<HTMLButtonElement>(".tab.active")
@@ -270,6 +274,35 @@ describe("TansuApp note loading", () => {
     root.querySelector<HTMLButtonElement>('[title="Restore conflict draft"]')?.click();
     await flushAsync();
     expect(api.restoreConflictDraft).toHaveBeenCalledWith("note-1", 9, 0);
+  });
+
+  it("does not serialize editor content synchronously on every change", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    api.openNote.mockResolvedValue({ meta: note, content: "# One\n" });
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    const editor = editorMock.instances.at(-1)!;
+    editor.getValue.mockClear();
+    editor.getCursorOffset.mockClear();
+
+    (editor.config["onChange"] as () => void)();
+
+    expect(editor.getValue).not.toHaveBeenCalled();
+    expect(editor.getCursorOffset).not.toHaveBeenCalled();
+    vi.advanceTimersByTime(150);
+    expect(editor.getValue).toHaveBeenCalledTimes(1);
+    expect(editor.getCursorOffset).toHaveBeenCalledTimes(1);
   });
 
   it("opens revisions, restores conflict drafts, saves settings, and updates tags", async () => {

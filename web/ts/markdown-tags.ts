@@ -2,7 +2,7 @@ import type { Tab } from "./state.ts";
 
 export function editableMarkdown(tab: Tab): string {
   const content = tab.draft ?? tab.doc?.content ?? "";
-  return frontmatterSupportsTags(content) ? markdownBody(content) : content;
+  return frontmatterSupportsTags(content) ? markdownBody(content) : normalizeLineEndings(content);
 }
 
 export function frontmatterSupportsTags(content: string): boolean {
@@ -42,10 +42,14 @@ export function setMarkdownTags(content: string, tags: string[]): string {
 }
 
 export function markdownBody(content: string): string {
-  const normalized = content.replaceAll("\r\n", "\n");
+  const normalized = normalizeLineEndings(content);
   const hasFrontmatter = normalized.startsWith("---\n");
   const end = hasFrontmatter ? normalized.indexOf("\n---", 4) : -1;
   return end === -1 ? normalized : normalized.slice(end + 4).replace(/^\n+/, "");
+}
+
+function normalizeLineEndings(content: string): string {
+  return content.replaceAll("\r\n", "\n").replaceAll("\r", "\n");
 }
 
 export function normalizeTag(value: string): string | null {
