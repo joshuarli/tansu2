@@ -232,7 +232,7 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
-  it("prevents beforeinput while the selection is in a blank line placeholder", () => {
+  it("routes beforeinput in a blank line placeholder through the model", () => {
     const handle = createEditor(container);
     handle.setValue("foo\n\nbar");
     const blank = handle.contentEl.querySelector('[data-md-blank="true"]')!;
@@ -252,7 +252,7 @@ describe("createEditor", () => {
 
     expect(dispatched).toBe(false);
     expect(event.defaultPrevented).toBe(true);
-    expect(handle.getValue()).toBe("foo\n\nbar");
+    expect(handle.getValue()).toBe("foo\nx\nbar");
     handle.destroy();
   });
 
@@ -1088,7 +1088,9 @@ describe("createEditor", () => {
     window.getSelection()!.removeAllRanges();
     window.getSelection()!.addRange(range);
 
-    handle.contentEl.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    handle.contentEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true }),
+    );
     expect(handle.getValue()).toBe("# Heading\n");
     expect(handle.contentEl.querySelector("h1 + p")).not.toBeNull();
     expect(onChange).toHaveBeenCalled();

@@ -593,15 +593,21 @@ button {
   opacity: 0;
 }
 
+.app-editor .md-block-handle-caption {
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
 .app-editor .md-block-handle::before {
   content: "...";
   display: block;
   line-height: 20px;
 }
 
-.app-editor [data-md-block-id]:hover > .md-block-handle,
+.app-editor [data-md-block-id]:hover .md-block-handle,
 .app-editor .md-block-handle:focus-visible,
-.app-editor [data-md-block-id].md-block-selected > .md-block-handle {
+.app-editor [data-md-block-id].md-block-selected .md-block-handle {
   opacity: 1;
 }
 

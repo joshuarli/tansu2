@@ -84,11 +84,13 @@ function annotateLineElement(el: HTMLElement, doc: EditorDoc, line: number): voi
 }
 
 function ensureBlockHandle(el: HTMLElement, blockId: string): void {
-  const existing = el.querySelector(":scope > .md-block-handle");
+  const existing = findOwnBlockHandle(el, blockId);
   if (existing instanceof HTMLElement) {
     existing.dataset["mdBlockHandle"] = blockId;
     return;
   }
+  const host = blockHandleHost(el);
+  if (host === null) return;
   const handle = document.createElement("button");
   handle.type = "button";
   handle.className = "md-block-handle";
@@ -96,7 +98,34 @@ function ensureBlockHandle(el: HTMLElement, blockId: string): void {
   handle.tabIndex = 0;
   handle.ariaLabel = "Select block";
   handle.dataset["mdBlockHandle"] = blockId;
-  el.append(handle);
+  host.append(handle);
+}
+
+function findOwnBlockHandle(el: HTMLElement, blockId: string): HTMLElement | null {
+  return (
+    el.querySelector<HTMLElement>(`:scope > .md-block-handle[data-md-block-handle="${blockId}"]`) ??
+    el.querySelector<HTMLElement>(
+      `:scope > li > .md-block-handle[data-md-block-handle="${blockId}"]`,
+    ) ??
+    el.querySelector<HTMLElement>(
+      `:scope > caption > .md-block-handle[data-md-block-handle="${blockId}"]`,
+    )
+  );
+}
+
+function blockHandleHost(el: HTMLElement): HTMLElement | null {
+  if (el instanceof HTMLUListElement || el instanceof HTMLOListElement) {
+    return el.querySelector<HTMLElement>(":scope > li");
+  }
+  if (el instanceof HTMLTableElement) {
+    const existingCaption = el.querySelector<HTMLElement>(":scope > caption");
+    if (existingCaption !== null) return existingCaption;
+    const caption = document.createElement("caption");
+    caption.className = "md-block-handle-caption";
+    el.prepend(caption);
+    return caption;
+  }
+  return el;
 }
 
 function findLineHosts(el: HTMLElement, block: EditorBlock): HTMLElement[] {

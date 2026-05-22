@@ -164,6 +164,16 @@ function htmlToSanitizedContainer(html: string): HTMLElement {
   return container;
 }
 
+function parseSanitizedHtmlContainer(html: string): HTMLElement {
+  const container = document.createElement("div");
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  sanitizePastedTree(doc.body);
+  for (const child of doc.body.childNodes) {
+    container.append(child.cloneNode(true));
+  }
+  return container;
+}
+
 function findLineStart(md: string, offset: number): number {
   const lineStartIdx = md.lastIndexOf("\n", offset - 1);
   return lineStartIdx === -1 ? 0 : lineStartIdx + 1;
@@ -285,9 +295,33 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function renderCurrentModel(): void {
     renderer.render(currentMarkdown());
+    if (
+      contentEl.childElementCount === 0 &&
+      state.doc.lines.length === 1 &&
+      state.doc.lines[0]?.text === ""
+    ) {
+      contentEl.append(createCursorParagraph());
+    }
     annotateCurrentDom();
     restoreDomSelectionFromModel();
     updateActiveBlankVisibility();
+    showSingleEmptyDocumentHost();
+  }
+
+  function showSingleEmptyDocumentHost(): void {
+    if (state.doc.lines.length !== 1 || state.doc.lines[0]?.text !== "") {
+      return;
+    }
+    const host = contentEl.querySelector<HTMLElement>("[data-md-line-index='0']");
+    if (host === null) {
+      return;
+    }
+    delete host.dataset["mdBlank"];
+    host.hidden = false;
+    host.setAttribute("contenteditable", "true");
+    if (!host.querySelector("br") && (host.textContent ?? "") === "") {
+      host.prepend(document.createElement("br"));
+    }
   }
 
   function renderModelHint(hint: RenderHint): boolean {
@@ -342,7 +376,12 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   function renderSelectionAndModel(md: string, selStart: number, selEnd: number): void {
     const normalized = normalizeMarkdownNewlines(md);
     setModelMarkdown(normalized, { start: selStart, end: selEnd });
-    renderCurrentModel();
+    if (_isSourceMode) {
+      sourceEl.value = normalized;
+      sourceEl.setSelectionRange(selStart, selEnd);
+    } else {
+      renderCurrentModel();
+    }
   }
 
   function commitTransaction(result: TransactionResult, notify = true): boolean {
@@ -841,7 +880,13 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       cfg.onChange?.();
       return true;
     }
-    return commitStructuralTransaction(replaceLineText(state, anchor.line, text));
+    undoController.ensureTypingCheckpoint();
+    const result = replaceLineText(state, anchor.line, text);
+    state = result.state;
+    renderPlainLineHost(anchor.line, text);
+    undoController.scheduleTypingCheckpoint();
+    cfg.onChange?.();
+    return true;
   }
 
   function plainMarkerPrefixTextAfterInsert(data: string): string | null {
@@ -1071,11 +1116,29 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   // ── Undo / redo ─────────────────────────────────────────────────────────────
 
   function undo(): void {
+    if (!_isSourceMode) {
+      syncActiveLineFromDom();
+    }
     undoController.undo();
   }
 
   function redo(): void {
+    if (!_isSourceMode) {
+      syncActiveLineFromDom();
+    }
     undoController.redo();
+  }
+
+  function collapseBlockSelectionToStart(): boolean {
+    if (state.selection.kind !== "block") {
+      return false;
+    }
+    const block = state.doc.blocks.byId.get(state.selection.anchorBlockId);
+    const offset = block ? state.doc.lineStarts[block.startLine]! : 0;
+    state = { ...state, selection: offsetsToSelection(state.doc, offset, offset) };
+    renderCurrentModel();
+    contentEl.focus();
+    return true;
   }
 
   // ── List-editing helpers ────────────────────────────────────────────────────
@@ -1168,12 +1231,12 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function hideBlankLine(blank: HTMLElement): void {
     blank.hidden = true;
-    blank.contentEditable = "false";
+    blank.setAttribute("contenteditable", "false");
   }
 
   function showBlankLine(blank: HTMLElement): void {
     blank.hidden = false;
-    blank.contentEditable = "false";
+    blank.setAttribute("contenteditable", "false");
     if (!blank.querySelector("br") && (blank.textContent ?? "") === "") {
       blank.prepend(document.createElement("br"));
     }
@@ -1187,7 +1250,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       delete blank.dataset["mdBlank"];
     }
     blank.hidden = false;
-    blank.contentEditable = "true";
+    blank.setAttribute("contenteditable", "true");
     if (!blank.querySelector("br") && (blank.textContent ?? "") === "") {
       blank.prepend(document.createElement("br"));
     }
@@ -1274,7 +1337,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       placeCursorAtBlockEnd(previous);
       return;
     }
-    selection.placeCursorAtEnd();
+    showActiveBlankLine(blank);
+    placeCursorAtBlockStart(blank);
   }
 
   function isIndentableBlock(el: HTMLElement): boolean {
@@ -1499,13 +1563,13 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       return;
     }
     const meta = e.metaKey || e.ctrlKey;
+    if (e.key.length === 1 && !meta && !e.altKey && state.selection.kind !== "block") {
+      undoController.ensureTypingCheckpoint();
+    }
     if (state.selection.kind === "block") {
       if (e.key === "Escape") {
         e.preventDefault();
-        const block = state.doc.blocks.byId.get(state.selection.anchorBlockId);
-        const offset = block ? state.doc.lineStarts[block.startLine]! : 0;
-        state = { ...state, selection: offsetsToSelection(state.doc, offset, offset) };
-        renderCurrentModel();
+        collapseBlockSelectionToStart();
         return;
       }
       if (e.key === "Backspace" || e.key === "Delete") {
@@ -1525,12 +1589,12 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       cfg.onSave?.();
       return;
     }
-    if (meta && e.key === "z" && !e.shiftKey) {
+    if (meta && e.key.toLowerCase() === "z" && !e.shiftKey) {
       e.preventDefault();
       undo();
       return;
     }
-    if ((meta && e.shiftKey && e.key === "z") || (meta && e.key === "y")) {
+    if ((meta && e.shiftKey && e.key.toLowerCase() === "z") || (meta && e.key.toLowerCase() === "y")) {
       e.preventDefault();
       redo();
       return;
@@ -1576,6 +1640,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     }
     if (e.key === "Backspace" && handleEmptyListItemBackspace(e)) return;
     if (e.key === "Backspace") {
+      syncActiveLineFromDom();
       if (
         syncSelectionFromDomMetadata() &&
         (commitStructuralTransaction(modelDeleteEmptyListItemBackward(state)) ||
@@ -1586,6 +1651,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       }
     }
     if (e.key === "Delete") {
+      syncActiveLineFromDom();
       if (syncSelectionFromDomMetadata() && commitStructuralTransaction(modelDeleteForward(state))) {
         e.preventDefault();
         return;
@@ -1621,11 +1687,54 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     ) {
       return;
     }
+    const meta = e.metaKey || e.ctrlKey;
+    if (e.type === "keydown" && meta && e.key.toLowerCase() === "z" && !e.shiftKey) {
+      e.preventDefault();
+      undo();
+      return;
+    }
+    if (
+      e.type === "keydown" &&
+      ((meta && e.shiftKey && e.key.toLowerCase() === "z") ||
+        (meta && e.key.toLowerCase() === "y"))
+    ) {
+      e.preventDefault();
+      redo();
+      return;
+    }
+    if (e.type === "keydown" && state.selection.kind === "block") {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        collapseBlockSelectionToStart();
+        return;
+      }
+      if (e.key === "Backspace" || e.key === "Delete") {
+        e.preventDefault();
+        replaceBlockSelection("");
+        return;
+      }
+      if (e.key.length === 1 && !meta && !e.altKey) {
+        e.preventDefault();
+        replaceBlockSelection(e.key);
+        return;
+      }
+    }
     const anchor = window.getSelection()?.anchorNode;
     if (anchor === null || anchor === undefined || !contentEl.contains(anchor)) {
       return;
     }
+    if (e.type === "keydown" && e.key === "Enter" && !e.shiftKey) {
+      if (handleModelEnter()) {
+        suppressNextInsertParagraph = true;
+        window.setTimeout(() => {
+          suppressNextInsertParagraph = false;
+        }, 0);
+        e.preventDefault();
+      }
+      return;
+    }
     if (e.type === "keydown" && (e.key === "Backspace" || e.key === "Delete")) {
+      syncActiveLineFromDom();
       const result =
         e.key === "Backspace"
           ? syncSelectionFromDomMetadata() && commitStructuralTransaction(modelDeleteBackward(state))
@@ -1694,7 +1803,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         bitmap.close();
         const html = await cfg.onImagePaste(blob);
         if (html) {
-          const div = htmlToSanitizedContainer(html);
+          const div = parseSanitizedHtmlContainer(html);
           const imageMarkdown = domToMarkdown(div, { extensions }) || html;
           if (!replaceBlockSelection(imageMarkdown)) {
             if (syncSelectionFromDomMetadata()) {
@@ -1751,6 +1860,30 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   function onBeforeInput(e: InputEvent): void {
     if (state.composing) {
       return;
+    }
+    if (e.inputType === "historyUndo") {
+      e.preventDefault();
+      undo();
+      return;
+    }
+    if (e.inputType === "historyRedo") {
+      e.preventDefault();
+      redo();
+      return;
+    }
+    if (e.inputType === "insertText" && e.data !== null && state.selection.kind !== "block") {
+      syncSelectionFromDomMetadata();
+    }
+    if (
+      e.inputType === "insertText" &&
+      e.data !== null &&
+      state.doc.lines.length === 1 &&
+      state.doc.lines[0]?.text === ""
+    ) {
+      undoController.pushUndo("", 0, 0);
+    }
+    if (e.inputType === "insertText" && e.data !== null && state.selection.kind !== "block") {
+      undoController.ensureTypingCheckpoint();
     }
     if (state.selection.kind === "block") {
       if (e.inputType === "insertText" && e.data !== null) {
@@ -1868,6 +2001,31 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function onCheckboxEvent(e: Event): void {
     if (e.target instanceof HTMLInputElement && e.target.type === "checkbox") {
+      const host = e.target.closest("[data-md-line-index]");
+      if (!(host instanceof HTMLElement)) {
+        cfg.onChange?.();
+        return;
+      }
+      const lineIndex = Number(host.dataset["mdLineIndex"]);
+      const line = Number.isInteger(lineIndex) ? state.doc.lines[lineIndex] : undefined;
+      if (!line) {
+        cfg.onChange?.();
+        return;
+      }
+      const marker = e.target.checked ? "[x]" : "[ ]";
+      const text = line.text.replace(/\[([ xX])\]/, marker);
+      if (text === line.text) {
+        cfg.onChange?.();
+        return;
+      }
+      undoController.checkpoint();
+      const column =
+        state.selection.kind === "text"
+          ? Math.min(state.selection.anchor.column, text.length)
+          : text.length;
+      state = replaceLineText(state, lineIndex, text, column).state;
+      renderCurrentModel();
+      undoController.scheduleTypingCheckpoint();
       cfg.onChange?.();
     }
   }
@@ -1908,6 +2066,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       e.preventDefault();
       const blockId = handle.dataset["mdBlockHandle"];
       if (blockId) {
+        contentEl.focus();
         selectBlock(blockId, e.shiftKey);
       }
       return;
@@ -1920,6 +2079,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function onSourceInput(): void {
     syncModelFromSource();
+    undoController.scheduleTypingCheckpoint();
     cfg.onChange?.();
   }
 
@@ -2007,6 +2167,16 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       cfg.onSave?.();
       return;
     }
+    if (meta && e.key.toLowerCase() === "z" && !e.shiftKey) {
+      e.preventDefault();
+      undo();
+      return;
+    }
+    if ((meta && e.shiftKey && e.key.toLowerCase() === "z") || (meta && e.key.toLowerCase() === "y")) {
+      e.preventDefault();
+      redo();
+      return;
+    }
     if (e.key === "Tab") {
       handleSourceTabKey(e);
     }
@@ -2039,6 +2209,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   function toggleSourceMode(): void {
     if (_isSourceMode) {
       syncModelFromSource();
+      const offsets = currentSelectionOffsets();
+      undoController.reset(currentMarkdown(), offsets?.start ?? 0, offsets?.end ?? 0);
       _isSourceMode = false;
       state = { ...state, sourceMode: false };
       sourceEl.style.display = "none";
@@ -2050,6 +2222,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       }
       const offsets = currentSelectionOffsets();
       sourceEl.value = currentMarkdown();
+      undoController.checkpoint();
       _isSourceMode = true;
       state = { ...state, sourceMode: true };
       contentEl.style.display = "none";

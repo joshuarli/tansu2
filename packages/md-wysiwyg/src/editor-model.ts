@@ -233,13 +233,16 @@ export function insertListParagraph(state: EditorState): TransactionResult {
     return unchanged(state);
   }
   const parsed = parseListLine(line.text);
-  if (!parsed || anchor.column !== line.text.length) {
+  if (!parsed) {
     return unchanged(state);
   }
   if (parsed.content === "") {
     const start = positionToOffset(state.doc, { line: anchor.line, column: 0 });
     const end = positionToOffset(state.doc, { line: anchor.line, column: line.text.length });
     return replaceRange(state, start, end, "");
+  }
+  if (anchor.column !== line.text.length) {
+    return unchanged(state);
   }
   const nextMarker = parsed.ordered
     ? `${parsed.indent}${parsed.number + 1}. `

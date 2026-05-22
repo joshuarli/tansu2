@@ -27,7 +27,7 @@ const md = domToMarkdown(document.getElementById("editor")!);
 
 ### Full editor
 
-`createEditor` wires a complete WYSIWYG editor inside a container element — contenteditable pane, hidden source textarea, undo/redo, keyboard shortcuts, image paste, and inline/block transforms. All markdown-specific behaviour is delegated to the render/serialize modules; you configure extensions and callbacks.
+`createEditor` wires a complete model-owned WYSIWYG editor inside a container element: contenteditable pane, hidden source textarea, undo/redo, keyboard shortcuts, image paste, block gutter selection, and inline/block transforms. Markdown body text lives in the editor model; the DOM is a rendered editing surface that is reconciled back into that model.
 
 ```ts
 import { createEditor, createWikiLinkExtension } from "@joshuarli98/md-wysiwyg";
@@ -63,7 +63,7 @@ handle.focus();
 | `imageWebpQuality`   | `0.85`                | WebP quality (0–1) for pasted images                          |
 | `indentUnit`         | `"\t"`                | Indent string used in source mode tab/shift-tab               |
 
-`EditorHandle` exposes: `getValue()`, `setValue(md, cursorOffset?)`, `getSelectionOffsets()`, `getCursorOffset()`, `applyFormat(op)`, `undo()`, `redo()`, `toggleSourceMode()`, `focus()`, `setConfig(partial)`, `isSourceMode`, `contentEl`, `sourceEl`, `destroy()`.
+`EditorHandle` exposes: `getValue()`, `getSnapshot()`, `setValue(md, cursorOffset?)`, `getSelectionOffsets()`, `getCursorOffset()`, `applyFormat(op)`, `undo()`, `redo()`, `toggleSourceMode()`, `focus()`, `setConfig(partial)`, `isSourceMode`, `contentEl`, `sourceEl`, `destroy()`.
 
 `setConfig(partial)` updates config at runtime — callbacks, class names, and numeric tunables all take effect immediately. Note: `extensions` are fixed at construction time and cannot be changed via `setConfig`.
 

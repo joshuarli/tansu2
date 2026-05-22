@@ -18,7 +18,9 @@ type UndoControllerOptions = {
 
 type EditorUndoController = {
   pushUndo(md: string, selStart: number, selEnd: number): void;
+  reset(md: string, selStart: number, selEnd: number): void;
   checkpoint(): void;
+  ensureTypingCheckpoint(): void;
   scheduleTypingCheckpoint(): void;
   clearTypingCheckpoint(): void;
   undo(): void;
@@ -52,11 +54,26 @@ export function createEditorUndoController(
     }
   }
 
+  function reset(md: string, selStart: number, selEnd: number): void {
+    clearTypingCheckpoint();
+    undoStack.splice(0);
+    undoIndex = -1;
+    pushUndo(md, selStart, selEnd);
+  }
+
   function checkpoint(): void {
     clearTypingCheckpoint();
     const md = opts.getValue();
     const sel = opts.getSelectionOffsets();
     pushUndo(md, sel?.start ?? 0, sel?.end ?? 0);
+  }
+
+  function ensureTypingCheckpoint(): void {
+    if (typingTimer !== null) {
+      const top = undoStack[undoIndex];
+      if (top?.md === opts.getValue()) return;
+    }
+    checkpoint();
   }
 
   function scheduleTypingCheckpoint(): void {
@@ -72,8 +89,13 @@ export function createEditorUndoController(
   function undo(): void {
     checkpoint();
     if (undoIndex <= 0) return;
+    const current = undoStack[undoIndex];
     undoIndex--;
-    const entry = undoStack[undoIndex]!;
+    let entry = undoStack[undoIndex]!;
+    while (undoIndex > 0 && current && (entry.md === current.md || current.md.startsWith(entry.md))) {
+      undoIndex--;
+      entry = undoStack[undoIndex]!;
+    }
     opts.renderSelection(entry.md, entry.selStart, entry.selEnd);
     opts.restoreSelection();
     opts.onChange?.();
@@ -81,8 +103,18 @@ export function createEditorUndoController(
 
   function redo(): void {
     if (undoIndex >= undoStack.length - 1) return;
+    const current = undoStack[undoIndex];
     undoIndex++;
-    const entry = undoStack[undoIndex]!;
+    let entry = undoStack[undoIndex]!;
+    while (
+      undoIndex < undoStack.length - 1 &&
+      current &&
+      entry.md.startsWith(current.md) &&
+      undoStack[undoIndex + 1]!.md.startsWith(entry.md)
+    ) {
+      undoIndex++;
+      entry = undoStack[undoIndex]!;
+    }
     opts.renderSelection(entry.md, entry.selStart, entry.selEnd);
     opts.restoreSelection();
     opts.onChange?.();
@@ -90,7 +122,9 @@ export function createEditorUndoController(
 
   return {
     pushUndo,
+    reset,
     checkpoint,
+    ensureTypingCheckpoint,
     scheduleTypingCheckpoint,
     clearTypingCheckpoint,
     undo,
