@@ -572,6 +572,10 @@ button {
   margin-bottom: 1em;
 }
 
+.app-editor p {
+  margin-bottom: 0.2em;
+}
+
 .app-editor [data-md-block-id].md-block-selected {
   outline: 1px solid color-mix(in srgb, var(--color-accent) 52%, transparent);
   outline-offset: 3px;

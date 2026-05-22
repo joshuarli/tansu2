@@ -290,6 +290,22 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
+  it("moves arrow selection across a structural separator to the visible text end", () => {
+    const handle = createEditor(container);
+    handle.setValue("foo\n\nbar", "foo\n\n".length);
+
+    handle.contentEl.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "ArrowUp", bubbles: true, cancelable: true }),
+    );
+
+    const selection = window.getSelection()!;
+    expect(selection.anchorNode?.nodeType).toBe(Node.TEXT_NODE);
+    expect(selection.anchorNode?.textContent).toBe("foo");
+    expect(selection.anchorOffset).toBe(3);
+    expect(handle.getValue()).toBe("foo\n\nbar");
+    handle.destroy();
+  });
+
   it("enter on an empty paragraph preserves repeated blank lines", () => {
     const handle = createEditor(container);
     handle.setValue("# Foo\n", "# Foo\n".length);

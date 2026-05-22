@@ -235,8 +235,9 @@ export function createEditorDomHelpers(contentEl: HTMLElement): {
   function placeCursorAtBlockStart(block: HTMLElement): void {
     const sel = window.getSelection();
     if (!sel) return;
+    const point = domPointFromVisualOffset(block, 0);
     const range = document.createRange();
-    range.selectNodeContents(block);
+    range.setStart(point.node, point.offset);
     range.collapse(true);
     sel.removeAllRanges();
     sel.addRange(range);
@@ -245,9 +246,10 @@ export function createEditorDomHelpers(contentEl: HTMLElement): {
   function placeCursorAtBlockEnd(block: HTMLElement): void {
     const sel = window.getSelection();
     if (!sel) return;
+    const point = domPointFromVisualOffset(block, hostTextWithoutControls(block).length);
     const range = document.createRange();
-    range.selectNodeContents(block);
-    range.collapse(false);
+    range.setStart(point.node, point.offset);
+    range.collapse(true);
     sel.removeAllRanges();
     sel.addRange(range);
   }
