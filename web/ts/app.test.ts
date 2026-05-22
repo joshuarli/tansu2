@@ -64,7 +64,7 @@ const editorMock = vi.hoisted(() => ({
   }>,
 }));
 
-vi.mock("@joshuarli98/md-wysiwyg", () => ({
+vi.mock("./editor/index.js", () => ({
   createCalloutExtension: vi.fn(() => ({})),
   createEditor: vi.fn((_mount: HTMLElement, config: Record<string, unknown> = {}) => {
     const instance = {

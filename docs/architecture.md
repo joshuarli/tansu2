@@ -33,7 +33,7 @@ search, settings, session, pins, recents, and repair state.
 | Vault orchestration     | `src/vault.rs`                                            |
 | Frontend state/API      | `web/ts/app.ts`, `web/ts/api.ts`, `web/ts/state.ts`       |
 | Frontend DOM/visuals    | `web/ts/view.ts`, `web/ts/dom.ts`, `web/static/app.css`   |
-| Editor engine           | `packages/md-wysiwyg/`                                    |
+| Editor engine           | `web/ts/editor/`                                          |
 | Dev/e2e fixture vaults  | `scripts/test-fixture.mjs`, `tests/fixtures/test-vaults/` |
 
 ## Write Path
@@ -73,7 +73,9 @@ identity.
 
 ## Editor Boundary
 
-`packages/md-wysiwyg` owns Markdown rendering, DOM serialization, selection,
-source mode, undo/redo, formatting, paste handling, and editor extensions. The
-app mounts/configures it and handles persistence. Do not duplicate editor
-internals in `web/ts`.
+`web/ts/editor` owns Markdown rendering, DOM serialization, selection, source
+mode, undo/redo, formatting, paste handling, and editor extensions. It is an
+internal Tansu editor engine, not a reusable package boundary. The app
+mounts/configures it and handles persistence. Keep editor internals inside
+`web/ts/editor` rather than spreading them through the app shell. See
+[Editor](editor.md) for editor-specific invariants and extension behavior.

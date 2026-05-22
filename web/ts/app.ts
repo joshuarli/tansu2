@@ -1,17 +1,4 @@
 import {
-  createCalloutExtension,
-  createEditor,
-  createWikiImageExtension,
-  toggleBold,
-  toggleHeading,
-  toggleHighlight,
-  toggleItalic,
-  toggleStrikethrough,
-  type EditorConfig,
-  type EditorHandle,
-} from "@joshuarli98/md-wysiwyg";
-
-import {
   activeVault,
   assetUrl,
   bootstrap,
@@ -34,6 +21,18 @@ import {
   setPinned,
   uploadImage,
 } from "./api.ts";
+import {
+  createCalloutExtension,
+  createEditor,
+  createWikiImageExtension,
+  toggleBold,
+  toggleHeading,
+  toggleHighlight,
+  toggleItalic,
+  toggleStrikethrough,
+  type EditorConfig,
+  type EditorHandle,
+} from "./editor/index.js";
 import { pickHtmlImport } from "./html-import.ts";
 import {
   editableMarkdown,

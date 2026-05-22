@@ -1,13 +1,6 @@
-import { resolve } from "path";
-
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      "@joshuarli98/md-wysiwyg": resolve(__dirname, "packages/md-wysiwyg/src/index.ts"),
-    },
-  },
   test: {
     globals: true,
     environment: "node",

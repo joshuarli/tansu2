@@ -1,9 +1,6 @@
 {
   "name": "tansu2",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "type": "module",
   "scripts": {
     "bundle": "node scripts/build-web.mjs production",
@@ -15,7 +12,6 @@
     "test-e2e": "pnpm run bundle-dev && vitest run --config vitest.e2e.config.ts"
   },
   "dependencies": {
-    "@joshuarli98/md-wysiwyg": "workspace:*",
     "defuddle": "^0.18.1"
   },
   "devDependencies": {

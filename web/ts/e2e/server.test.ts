@@ -285,12 +285,14 @@ describe("real server harness", () => {
     await page.keyboard.press("Enter");
     await page.keyboard.type("bar");
 
-    await expect.poll(() => visibleParagraphLayout(page, "Immediate Cursor", "bar", 1)).toMatchObject({
-      blankCount: 1,
-      ordered: true,
-      blankHasLineBox: true,
-      gapLooksLikeBlankLine: true,
-    });
+    await expect
+      .poll(() => visibleParagraphLayout(page, "Immediate Cursor", "bar", 1))
+      .toMatchObject({
+        blankCount: 1,
+        ordered: true,
+        blankHasLineBox: true,
+        gapLooksLikeBlankLine: true,
+      });
     await saveResponse;
     const saved = await openSeededDocument("immediate-cursor.md");
     expect(saved.content).toBe("# Immediate Cursor\r\n\r\nbar");
@@ -310,11 +312,13 @@ describe("real server harness", () => {
     );
     await page.keyboard.press("Enter");
     await page.keyboard.press("Enter");
-    await expect.poll(() => activeCursorBlankLayout(page, "Blank Lines")).toMatchObject({
-      visibleBlankCountAfterText: 3,
-      cursorHasLineBox: true,
-      cursorIsAfterBlankLine: true,
-    });
+    await expect
+      .poll(() => activeCursorBlankLayout(page, "Blank Lines"))
+      .toMatchObject({
+        visibleBlankCountAfterText: 3,
+        cursorHasLineBox: true,
+        cursorIsAfterBlankLine: true,
+      });
     await page.waitForResponse(
       (response) =>
         response.request().method() === "PUT" &&
@@ -356,12 +360,14 @@ describe("real server harness", () => {
     await page.keyboard.press("Enter");
     await page.keyboard.type("bar");
 
-    await expect.poll(() => visibleParagraphLayout(page, "foo", "bar", 1)).toMatchObject({
-      blankCount: 1,
-      ordered: true,
-      blankHasLineBox: true,
-      gapLooksLikeBlankLine: true,
-    });
+    await expect
+      .poll(() => visibleParagraphLayout(page, "foo", "bar", 1))
+      .toMatchObject({
+        blankCount: 1,
+        ordered: true,
+        blankHasLineBox: true,
+        gapLooksLikeBlankLine: true,
+      });
     await page.waitForResponse(
       (response) =>
         response.request().method() === "PUT" &&
@@ -372,12 +378,14 @@ describe("real server harness", () => {
     const saved = await openSeededDocument("collapse-repro.md");
     expect(saved.content).toBe("# Collapse Repro\r\nfoo\r\n\r\nbar");
     await page.keyboard.press("Enter");
-    await expect.poll(() => visibleParagraphLayout(page, "foo", "bar", 1)).toMatchObject({
-      blankCount: 1,
-      ordered: true,
-      blankHasLineBox: true,
-      gapLooksLikeBlankLine: true,
-    });
+    await expect
+      .poll(() => visibleParagraphLayout(page, "foo", "bar", 1))
+      .toMatchObject({
+        blankCount: 1,
+        ordered: true,
+        blankHasLineBox: true,
+        gapLooksLikeBlankLine: true,
+      });
     await page.close();
   });
 
@@ -396,11 +404,13 @@ describe("real server harness", () => {
     await page.keyboard.press("Enter");
     await page.keyboard.press("Enter");
 
-    await expect.poll(() => activeCursorBlankLayout(page, "foo")).toMatchObject({
-      visibleBlankCountAfterText: 2,
-      cursorHasLineBox: true,
-      cursorIsAfterBlankLine: true,
-    });
+    await expect
+      .poll(() => activeCursorBlankLayout(page, "foo"))
+      .toMatchObject({
+        visibleBlankCountAfterText: 2,
+        cursorHasLineBox: true,
+        cursorIsAfterBlankLine: true,
+      });
     await page.close();
   });
 
@@ -422,12 +432,14 @@ describe("real server harness", () => {
     await page.keyboard.type("bar");
     await page.keyboard.press("ArrowUp");
 
-    await expect.poll(() => activeCursorBetweenParagraphsLayout(page, "foo", "bar")).toMatchObject({
-      visibleLaneCount: 2,
-      cursorVisibleLaneOrdinal: 2,
-      cursorHasLineBox: true,
-      cursorIsBetweenTextBlocks: true,
-    });
+    await expect
+      .poll(() => activeCursorBetweenParagraphsLayout(page, "foo", "bar"))
+      .toMatchObject({
+        visibleLaneCount: 2,
+        cursorVisibleLaneOrdinal: 2,
+        cursorHasLineBox: true,
+        cursorIsBetweenTextBlocks: true,
+      });
     await page.close();
   });
 
@@ -449,17 +461,19 @@ describe("real server harness", () => {
     await page.keyboard.type("bar");
 
     await page.locator('.toolbar [title="Source"]').click();
-    await expect.poll(() => page.locator(".app-editor-source").inputValue()).toBe(
-      "# Source Round Trip\nfoo\n\n\nbar",
-    );
+    await expect
+      .poll(() => page.locator(".app-editor-source").inputValue())
+      .toBe("# Source Round Trip\nfoo\n\n\nbar");
     await page.locator('.toolbar [title="Source"]').click();
 
-    await expect.poll(() => visibleParagraphLayout(page, "foo", "bar", 2)).toMatchObject({
-      blankCount: 2,
-      ordered: true,
-      blankHasLineBox: true,
-      gapLooksLikeBlankLine: true,
-    });
+    await expect
+      .poll(() => visibleParagraphLayout(page, "foo", "bar", 2))
+      .toMatchObject({
+        blankCount: 2,
+        ordered: true,
+        blankHasLineBox: true,
+        gapLooksLikeBlankLine: true,
+      });
     await page.close();
   });
 
@@ -472,28 +486,34 @@ describe("real server harness", () => {
     await page.keyboard.type("foo");
     await placeCursorInTextBlock(page, "foo", 0);
     await page.keyboard.press("Enter");
-    await expect.poll(() => activeCursorBlankLayout(page, "Enter Positions")).toMatchObject({
-      visibleBlankCountAfterText: 1,
-      cursorHasLineBox: true,
-      cursorIsAfterBlankLine: true,
-    });
+    await expect
+      .poll(() => activeCursorBlankLayout(page, "Enter Positions"))
+      .toMatchObject({
+        visibleBlankCountAfterText: 1,
+        cursorHasLineBox: true,
+        cursorIsAfterBlankLine: true,
+      });
 
     await placeCursorInTextBlock(page, "foo", 1);
     await page.keyboard.press("Enter");
-    await expect.poll(() => visibleParagraphLayout(page, "f", "oo", 0)).toMatchObject({
-      blankCount: 0,
-      ordered: true,
-      blankHasLineBox: true,
-      gapLooksLikeBlankLine: true,
-    });
+    await expect
+      .poll(() => visibleParagraphLayout(page, "f", "oo", 0))
+      .toMatchObject({
+        blankCount: 0,
+        ordered: true,
+        blankHasLineBox: true,
+        gapLooksLikeBlankLine: true,
+      });
 
     await placeCursorInTextBlock(page, "oo", 2);
     await page.keyboard.press("Enter");
-    await expect.poll(() => activeCursorBlankLayout(page, "oo")).toMatchObject({
-      visibleBlankCountAfterText: 0,
-      cursorHasLineBox: true,
-      cursorIsAfterBlankLine: false,
-    });
+    await expect
+      .poll(() => activeCursorBlankLayout(page, "oo"))
+      .toMatchObject({
+        visibleBlankCountAfterText: 0,
+        cursorHasLineBox: true,
+        cursorIsAfterBlankLine: false,
+      });
 
     await waitForNoteSave(page);
     const saved = await openSeededDocument("enter-positions.md");
@@ -510,13 +530,13 @@ describe("real server harness", () => {
     await page.keyboard.type("abc");
     await placeCursorInTextBlock(page, "abc", 2);
     await page.keyboard.press("Backspace");
-    await expect.poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? "")).toContain(
-      "ac",
-    );
+    await expect
+      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
+      .toContain("ac");
     await page.keyboard.press("Delete");
-    await expect.poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? "")).not.toContain(
-      "ac",
-    );
+    await expect
+      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
+      .not.toContain("ac");
 
     await createNote(page, "Delete Boundaries Blank");
     await page.keyboard.type("foo");
@@ -525,19 +545,22 @@ describe("real server harness", () => {
     await page.keyboard.type("bar");
     await placeCursorInTextBlock(page, "bar", 0);
     await page.keyboard.press("Backspace");
-    await expect.poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? "")).not.toContain(
-      "foo\n\nbar",
-    );
+    await expect
+      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
+      .not.toContain("foo\n\nbar");
 
     await placeCursorInTextBlock(page, "foo", 3);
     await page.keyboard.press("Enter");
     await placeCursorInTextBlock(page, "foo", 3);
     await page.keyboard.press("Delete");
-    await expect.poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? "")).not.toContain(
-      "foo\n\nbar",
-    );
+    await expect
+      .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
+      .not.toContain("foo\n\nbar");
 
-    await expectSavedContent("delete-boundaries-blank.md", "# Delete Boundaries Blank\r\nfoo\r\nbar");
+    await expectSavedContent(
+      "delete-boundaries-blank.md",
+      "# Delete Boundaries Blank\r\nfoo\r\nbar",
+    );
     await page.close();
   });
 
@@ -554,11 +577,13 @@ describe("real server harness", () => {
     }
     await expect.poll(() => blockSyntaxSummary(page)).toMatchObject({ headings: 2 });
     if (e2eBrowser.name() !== "webkit") {
-      await expect.poll(() => activeCursorHost(page)).toMatchObject({
-        tagName: "H1",
-        text: "Heading",
-        cursorAtEnd: true,
-      });
+      await expect
+        .poll(() => activeCursorHost(page))
+        .toMatchObject({
+          tagName: "H1",
+          text: "Heading",
+          cursorAtEnd: true,
+        });
     }
     await expectSavedContent("heading-syntax.md", "# Heading Syntax\r\n# Heading");
     await page.close();
@@ -574,12 +599,14 @@ describe("real server harness", () => {
     }
     await expect.poll(() => blockSyntaxSummary(listPage)).toMatchObject({ unorderedItems: 1 });
     if (e2eBrowser.name() !== "webkit") {
-      await expect.poll(() => activeCursorHost(listPage)).toMatchObject({
-        tagName: "LI",
-        text: "item",
-        cursorAtEnd: true,
-        inUnorderedList: true,
-      });
+      await expect
+        .poll(() => activeCursorHost(listPage))
+        .toMatchObject({
+          tagName: "LI",
+          text: "item",
+          cursorAtEnd: true,
+          inUnorderedList: true,
+        });
     }
     await expectSavedContent("list-syntax.md", "# List Syntax\r\n- item");
     await listPage.close();
@@ -595,12 +622,14 @@ describe("real server harness", () => {
     }
     await expect.poll(() => blockSyntaxSummary(orderedPage)).toMatchObject({ orderedItems: 1 });
     if (e2eBrowser.name() !== "webkit") {
-      await expect.poll(() => activeCursorHost(orderedPage)).toMatchObject({
-        tagName: "LI",
-        text: "ordered",
-        cursorAtEnd: true,
-        inOrderedList: true,
-      });
+      await expect
+        .poll(() => activeCursorHost(orderedPage))
+        .toMatchObject({
+          tagName: "LI",
+          text: "ordered",
+          cursorAtEnd: true,
+          inOrderedList: true,
+        });
     }
     await expectSavedContent("ordered-syntax.md", "# Ordered Syntax\r\n1. ordered");
     await orderedPage.close();
@@ -616,12 +645,14 @@ describe("real server harness", () => {
     }
     await expect.poll(() => blockSyntaxSummary(taskPage)).toMatchObject({ taskItems: 1 });
     if (e2eBrowser.name() !== "webkit") {
-      await expect.poll(() => activeCursorHost(taskPage)).toMatchObject({
-        tagName: "LI",
-        text: "task",
-        cursorAtEnd: true,
-        inTaskList: true,
-      });
+      await expect
+        .poll(() => activeCursorHost(taskPage))
+        .toMatchObject({
+          tagName: "LI",
+          text: "task",
+          cursorAtEnd: true,
+          inTaskList: true,
+        });
     }
     await expectSavedContent("task-syntax.md", "# Task Syntax\r\n[ ] task");
     await taskPage.close();
@@ -637,12 +668,14 @@ describe("real server harness", () => {
     }
     await expect.poll(() => blockSyntaxSummary(quotePage)).toMatchObject({ blockquotes: 1 });
     if (e2eBrowser.name() !== "webkit") {
-      await expect.poll(() => activeCursorHost(quotePage)).toMatchObject({
-        tagName: "P",
-        text: "quote",
-        cursorAtEnd: true,
-        inBlockquote: true,
-      });
+      await expect
+        .poll(() => activeCursorHost(quotePage))
+        .toMatchObject({
+          tagName: "P",
+          text: "quote",
+          cursorAtEnd: true,
+          inBlockquote: true,
+        });
     }
     await expectSavedContent("quote-syntax.md", "# Quote Syntax\r\n> quote");
     await quotePage.close();
@@ -659,12 +692,14 @@ describe("real server harness", () => {
     }
     await expect.poll(() => blockSyntaxSummary(hrPage)).toMatchObject({ hrs: 1 });
     if (e2eBrowser.name() !== "webkit") {
-      await expect.poll(() => activeCursorHost(hrPage)).toMatchObject({
-        tagName: "P",
-        text: "",
-        cursorAtEnd: true,
-        previousTagName: "HR",
-      });
+      await expect
+        .poll(() => activeCursorHost(hrPage))
+        .toMatchObject({
+          tagName: "P",
+          text: "",
+          cursorAtEnd: true,
+          previousTagName: "HR",
+        });
     }
     await expectSavedContent("hr-syntax.md", "# Hr Syntax\r\n---\r\n");
     await hrPage.close();
@@ -681,12 +716,14 @@ describe("real server harness", () => {
     }
     await expect.poll(() => blockSyntaxSummary(codePage)).toMatchObject({ codeBlocks: 1 });
     if (e2eBrowser.name() !== "webkit") {
-      await expect.poll(() => activeCursorHost(codePage)).toMatchObject({
-        tagName: "PRE",
-        text: "",
-        cursorAtEnd: true,
-        inCodeBlock: true,
-      });
+      await expect
+        .poll(() => activeCursorHost(codePage))
+        .toMatchObject({
+          tagName: "PRE",
+          text: "",
+          cursorAtEnd: true,
+          inCodeBlock: true,
+        });
     }
     await expectSavedContent("code-syntax.md", "# Code Syntax\r\n```\r\n");
     await codePage.close();
@@ -702,18 +739,22 @@ describe("real server harness", () => {
     await page.keyboard.press("Enter");
     await pasteHtml(page, "<p>four</p><p><br></p><p>six</p>", "four\n\nsix");
 
-    await expect.poll(() => visibleParagraphLayout(page, "one", "three", 1)).toMatchObject({
-      blankCount: 1,
-      ordered: true,
-      blankHasLineBox: true,
-      gapLooksLikeBlankLine: true,
-    });
-    await expect.poll(() => visibleParagraphLayout(page, "four", "six", 1)).toMatchObject({
-      blankCount: 1,
-      ordered: true,
-      blankHasLineBox: true,
-      gapLooksLikeBlankLine: true,
-    });
+    await expect
+      .poll(() => visibleParagraphLayout(page, "one", "three", 1))
+      .toMatchObject({
+        blankCount: 1,
+        ordered: true,
+        blankHasLineBox: true,
+        gapLooksLikeBlankLine: true,
+      });
+    await expect
+      .poll(() => visibleParagraphLayout(page, "four", "six", 1))
+      .toMatchObject({
+        blankCount: 1,
+        ordered: true,
+        blankHasLineBox: true,
+        gapLooksLikeBlankLine: true,
+      });
     await waitForNoteSave(page);
     const saved = await openSeededDocument("paste-blanks.md");
     expect(saved.content).toBe("# Paste Blanks\r\none\r\n\r\nthree\r\nfour\r\n\r\nsix");
@@ -809,47 +850,43 @@ describe("real server harness", () => {
     await page.close();
   });
 
-  it(
-    "adapts legacy autosave, reload, and double-newline loss regressions",
-    async () => {
-      const page = await browser!.newPage();
-      await page.goto(baseUrl);
+  it("adapts legacy autosave, reload, and double-newline loss regressions", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await createNote(page, "Legacy Persistence Regressions");
+    for (const source of ["\nline1\n\n\nline2\n", "foo:\n- one", "foo:\n- one\n- \ndsf"]) {
+      await setEditorSource(page, source);
+      await expectSavedContent("legacy-persistence-regressions.md", storedMarkdown(source));
+      await page.reload({ waitUntil: "load" });
       await page.waitForSelector(".main");
+      await page.locator('.note-row[title="legacy-persistence-regressions.md"]').first().click();
+      await expectEditorSource(page, source);
+    }
 
-      await createNote(page, "Legacy Persistence Regressions");
-      for (const source of ["\nline1\n\n\nline2\n", "foo:\n- one", "foo:\n- one\n- \ndsf"]) {
-        await setEditorSource(page, source);
-        await expectSavedContent("legacy-persistence-regressions.md", storedMarkdown(source));
-        await page.reload({ waitUntil: "load" });
-        await page.waitForSelector(".main");
-        await page.locator('.note-row[title="legacy-persistence-regressions.md"]').first().click();
-        await expectEditorSource(page, source);
-      }
+    await setEditorSource(page, "sdf\n\nsdf");
+    await placeCursorInLastTextBlock(page, "sdf", 3);
+    const reportedLines = ["a", "sd", "s", "d", "csd", "dsfb", "b"];
+    for (const line of reportedLines) {
+      await page.keyboard.press("Enter");
+      await page.keyboard.type(line);
+    }
+    await expectEditorSource(page, `sdf\n\nsdf\n${reportedLines.join("\n")}`);
 
+    const rand = mulberry32(43);
+    for (let i = 0; i < 8; i++) {
+      const lines = Array.from({ length: 5 }, () => randomPlainText(rand, 2, 12));
       await setEditorSource(page, "sdf\n\nsdf");
       await placeCursorInLastTextBlock(page, "sdf", 3);
-      const reportedLines = ["a", "sd", "s", "d", "csd", "dsfb", "b"];
-      for (const line of reportedLines) {
+      for (const line of lines) {
         await page.keyboard.press("Enter");
         await page.keyboard.type(line);
       }
-      await expectEditorSource(page, `sdf\n\nsdf\n${reportedLines.join("\n")}`);
-
-      const rand = mulberry32(43);
-      for (let i = 0; i < 8; i++) {
-        const lines = Array.from({ length: 5 }, () => randomPlainText(rand, 2, 12));
-        await setEditorSource(page, "sdf\n\nsdf");
-        await placeCursorInLastTextBlock(page, "sdf", 3);
-        for (const line of lines) {
-          await page.keyboard.press("Enter");
-          await page.keyboard.type(line);
-        }
-        await expectEditorSource(page, `sdf\n\nsdf\n${lines.join("\n")}`);
-      }
-      await page.close();
-    },
-    90_000,
-  );
+      await expectEditorSource(page, `sdf\n\nsdf\n${lines.join("\n")}`);
+    }
+    await page.close();
+  }, 90_000);
 
   it("adapts legacy save and shortcut integration coverage", async () => {
     const page = await browser!.newPage();
@@ -886,9 +923,9 @@ describe("real server harness", () => {
       await page.keyboard.press(`${shortcutModifier()}+s`);
       await page.waitForTimeout(500);
     });
-    expect(cleanSaveRequests.filter((request) => request.startsWith("PUT /api/notes/"))).toHaveLength(
-      0,
-    );
+    expect(
+      cleanSaveRequests.filter((request) => request.startsWith("PUT /api/notes/")),
+    ).toHaveLength(0);
     await page.close();
   });
 
@@ -929,15 +966,17 @@ describe("real server harness", () => {
       "| A | B |\n| --- | --- |\n| 1 | 2 |\n\n" +
       "[regular](https://example.com) [[Wiki Note|Wiki]] ![alt](https://example.com/a.png) ![[z-images/sample.webp|132]]";
     await setEditorSource(page, surface);
-    await expect.poll(() => markdownSurfaceSummary(page)).toMatchObject({
-      codeBlocks: 1,
-      callouts: 1,
-      tables: 1,
-      regularLinks: 1,
-      wikiLinks: 0,
-      regularImages: 1,
-      wikiImages: 1,
-    });
+    await expect
+      .poll(() => markdownSurfaceSummary(page))
+      .toMatchObject({
+        codeBlocks: 1,
+        callouts: 1,
+        tables: 1,
+        regularLinks: 1,
+        wikiLinks: 0,
+        regularImages: 1,
+        wikiImages: 1,
+      });
     await expectEditorSource(page, surface);
 
     await page.close();
@@ -950,7 +989,7 @@ describe("real server harness", () => {
 
     await createNote(page, "Image Editing");
     await pasteGeneratedImage(page);
-    await expect.poll(() => page.locator('.app-editor img[data-wiki-image]').count()).toBe(1);
+    await expect.poll(() => page.locator(".app-editor img[data-wiki-image]").count()).toBe(1);
     await expect.poll(() => readEditorSource(page)).toMatch(/!\[\[z-images\/.+\.webp\]\]/);
 
     await resizeFirstWikiImage(page, 36);
@@ -978,7 +1017,7 @@ describe("real server harness", () => {
       .toBe("| A | B |\n| --- | --- |\n| 1 | 2 |\n");
     await expect.poll(() => copyBlockByText(page, "Title")).toBe("> [!note] Title\n> Body\n");
     await expect
-      .poll(() => copyBlockBySelector(page, 'img[data-wiki-image]'))
+      .poll(() => copyBlockBySelector(page, "img[data-wiki-image]"))
       .toBe("![[z-images/sample.webp|132]]");
     await expect.poll(() => copyBlockBySelector(page, '[data-md-block-kind="blank"]')).toBe("\n");
 
@@ -1017,13 +1056,25 @@ describe("real server harness", () => {
     await typeText(page, "alpha");
     await undoEditor(page);
     await expect
-      .poll(() => page.locator(".app-editor").innerText().then((text) => text.trim()))
+      .poll(() =>
+        page
+          .locator(".app-editor")
+          .innerText()
+          .then((text) => text.trim()),
+      )
       .toBe("");
     await redoEditor(page);
     await expect
-      .poll(() => page.locator(".app-editor").innerText().then((text) => text.trim()))
+      .poll(() =>
+        page
+          .locator(".app-editor")
+          .innerText()
+          .then((text) => text.trim()),
+      )
       .toBe("alpha");
-    await expect.poll(() => activeCursorHost(page)).toMatchObject({ text: "alpha", cursorAtEnd: true });
+    await expect
+      .poll(() => activeCursorHost(page))
+      .toMatchObject({ text: "alpha", cursorAtEnd: true });
 
     await page.keyboard.press("Enter");
     await page.keyboard.type("beta");
@@ -1039,12 +1090,14 @@ describe("real server harness", () => {
     await page.keyboard.press("ArrowUp");
     await undoEditor(page);
     await redoEditor(page);
-    await expect.poll(() => activeCursorBetweenParagraphsLayout(page, "foo", "bar")).toMatchObject({
-      visibleLaneCount: 1,
-      cursorVisibleLaneOrdinal: 0,
-      cursorHasLineBox: true,
-      cursorIsBetweenTextBlocks: false,
-    });
+    await expect
+      .poll(() => activeCursorBetweenParagraphsLayout(page, "foo", "bar"))
+      .toMatchObject({
+        visibleLaneCount: 1,
+        cursorVisibleLaneOrdinal: 0,
+        cursorHasLineBox: true,
+        cursorIsBetweenTextBlocks: false,
+      });
 
     await setEditorSource(page, "source");
     await openSourceMode(page);
@@ -1307,7 +1360,9 @@ async function setEditorSource(page: Page, content: string): Promise<void> {
   await source.evaluate((textarea, value) => {
     const sourceTextarea = textarea as HTMLTextAreaElement;
     sourceTextarea.value = value;
-    sourceTextarea.dispatchEvent(new InputEvent("input", { bubbles: true, inputType: "insertText" }));
+    sourceTextarea.dispatchEvent(
+      new InputEvent("input", { bubbles: true, inputType: "insertText" }),
+    );
   }, content);
   await closeSourceMode(page);
   await page.locator(".app-editor").evaluate((editor) => {
@@ -1481,7 +1536,11 @@ async function placeCursorInListItem(page: Page, text: string, offset: number): 
   );
 }
 
-async function placeCursorInListItemByIndex(page: Page, index: number, offset: number): Promise<void> {
+async function placeCursorInListItemByIndex(
+  page: Page,
+  index: number,
+  offset: number,
+): Promise<void> {
   await page.locator(".app-editor").evaluate(
     (editor, args) => {
       const item = [...editor.querySelectorAll<HTMLLIElement>("li")][args.index];
@@ -1577,7 +1636,10 @@ async function pasteGeneratedImage(page: Page): Promise<void> {
     context.fillStyle = "#cc3344";
     context.fillRect(0, 0, 4, 4);
     const blob = await new Promise<Blob>((resolve, reject) => {
-      canvas.toBlob((value) => (value === null ? reject(new Error("missing blob")) : resolve(value)), "image/png");
+      canvas.toBlob(
+        (value) => (value === null ? reject(new Error("missing blob")) : resolve(value)),
+        "image/png",
+      );
     });
     const file = new File([blob], "pasted.png", { type: "image/png" });
     const data = {
@@ -1592,7 +1654,7 @@ async function pasteGeneratedImage(page: Page): Promise<void> {
 
 async function resizeFirstWikiImage(page: Page, deltaX: number): Promise<void> {
   await page.locator(".app-editor").evaluate((editor, amount) => {
-    const image = editor.querySelector<HTMLImageElement>('img[data-wiki-image]');
+    const image = editor.querySelector<HTMLImageElement>("img[data-wiki-image]");
     if (image === null) {
       throw new Error("missing wiki image");
     }
@@ -1678,7 +1740,7 @@ async function markdownSurfaceSummary(page: Page): Promise<{
     codeBlocks: editor.querySelectorAll("pre code").length,
     callouts: editor.querySelectorAll(".callout").length,
     tables: editor.querySelectorAll("table").length,
-    regularLinks: editor.querySelectorAll('a[href]:not(.wiki-link)').length,
+    regularLinks: editor.querySelectorAll("a[href]:not(.wiki-link)").length,
     wikiLinks: editor.querySelectorAll("a.wiki-link").length,
     regularImages: editor.querySelectorAll("img:not([data-wiki-image])").length,
     wikiImages: editor.querySelectorAll("img[data-wiki-image]").length,
@@ -1772,8 +1834,9 @@ async function selectBlockAndCopy(
         .find(
           (candidate): candidate is HTMLElement =>
             candidate instanceof HTMLElement &&
-            candidate.querySelector(`[data-md-block-handle="${candidate.dataset["mdBlockId"]}"]`) !==
-              null,
+            candidate.querySelector(
+              `[data-md-block-handle="${candidate.dataset["mdBlockId"]}"]`,
+            ) !== null,
         );
     const block = args.kind === "text" ? findByText(args.value) : findBySelector(args.value);
     if (block === undefined) {
@@ -1943,8 +2006,7 @@ async function activeCursorHost(page: Page): Promise<{
       text,
       cursorAtEnd: text === "" || cursorAtEnd,
       inUnorderedList:
-        host.tagName === "LI" &&
-        host.closest("ul:not(.task-list)") instanceof HTMLUListElement,
+        host.tagName === "LI" && host.closest("ul:not(.task-list)") instanceof HTMLUListElement,
       inOrderedList: host.tagName === "LI" && host.closest("ol") instanceof HTMLOListElement,
       inTaskList: host.tagName === "LI" && host.closest(".task-list") instanceof HTMLUListElement,
       inBlockquote: host.closest("blockquote") instanceof HTMLQuoteElement,

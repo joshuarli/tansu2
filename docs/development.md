@@ -53,14 +53,12 @@ Full focused list:
 
 ```sh
 pnpm exec tsgo --noEmit --pretty false
-pnpm exec tsgo -p packages/md-wysiwyg/tsconfig.json --noEmit --pretty false
 pnpm exec oxfmt --check --config oxfmt.config.mjs
 pnpm exec oxlint
 cargo fmt --check
 cargo check -q
 cargo test -q
 pnpm run test
-cd packages/md-wysiwyg && pnpm exec vitest run
 pnpm run test-e2e
 ```
 

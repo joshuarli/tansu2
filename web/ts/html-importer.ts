@@ -12,7 +12,7 @@ export type HtmlImportParseResult = ImportedMetadata & {
   contentMarkdown?: string;
 };
 
-export type HtmlImportParser = (html: string) => Promise<HtmlImportParseResult>;
+type HtmlImportParser = (html: string) => Promise<HtmlImportParseResult>;
 
 export type ImportedHtml = {
   path: string;

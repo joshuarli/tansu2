@@ -9,6 +9,7 @@ leak into each other.
 - [Architecture](docs/architecture.md): invariants, ownership, and change map.
 - [API](docs/api.md): generated DTOs, endpoints, and high-risk request examples.
 - [Development](docs/development.md): setup, commands, and validation.
+- [Editor](docs/editor.md): editor model, rendering, selection, and extensions.
 - [Fixtures](docs/fixtures.md): shared dev/e2e test vaults.
 - [Migration](docs/migration.md): safe first run on an existing Markdown vault.
 - [V2](V2.md): deferred work.
@@ -22,7 +23,7 @@ leak into each other.
 - Startup or external file reconciliation: `src/reconcile.rs`.
 - Frontend state and editor lifecycle: `web/ts/app.ts`.
 - Frontend DOM and visual controls: `web/ts/view.ts`, `web/static/app.css`.
-- Markdown editor internals: `packages/md-wysiwyg/`.
+- Markdown editor internals: `web/ts/editor/`; see `docs/editor.md`.
 - Dev/e2e vault content: `tests/fixtures/test-vaults/`.
 
 ## Non-Negotiables
@@ -30,7 +31,8 @@ leak into each other.
 - Use `noteId`, not `path`, for identity.
 - Do not let search, SSE, or watcher freshness roll back accepted note writes.
 - Keep V1 frontmatter support tags-only.
-- Keep Markdown/editor behavior inside `packages/md-wysiwyg`.
+- Keep Markdown/editor behavior inside `web/ts/editor`; update `docs/editor.md`
+  when editor invariants or extension behavior change.
 - Keep per-vault mutations serialized unless a tested design change says
   otherwise.
 - Do not add broad dependencies without updating docs.

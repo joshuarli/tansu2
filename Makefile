@@ -11,7 +11,6 @@ dev-config:
 
 check: types-check
 	pnpm exec tsgo --noEmit --pretty false
-	pnpm exec tsgo -p packages/md-wysiwyg/tsconfig.json --noEmit --pretty false
 	cargo check -q
 
 lint: lint-ts lint-rs
@@ -30,14 +29,12 @@ coverage-rs:
 
 coverage-ts: types-check
 	pnpm exec vitest run --coverage
-	cd packages/md-wysiwyg && pnpm exec vitest run --coverage
 
 coverage: coverage-rs coverage-ts
 
 coverage-html: types-check
 	cargo llvm-cov --workspace --all-targets --ignore-filename-regex 'src/(main\.rs|bin/gen-api-types\.rs)$$' --html --no-clean
 	pnpm exec vitest run --coverage --coverage.reporter=html
-	cd packages/md-wysiwyg && pnpm exec vitest run --coverage --coverage.reporter=html
 
 audit:
 	pnpm audit --prod --audit-level=high
@@ -55,10 +52,7 @@ ts: types
 	pnpm run bundle-dev
 	pnpm exec tsgo --noEmit --pretty false
 
-test: types-check test-pkg test-ts test-rs
-
-test-pkg:
-	cd packages/md-wysiwyg && pnpm exec vitest run
+test: types-check test-ts test-rs
 
 test-ts:
 	pnpm exec vitest run
@@ -80,10 +74,10 @@ build-linux-musl-docker:
 
 bench:
 	node bench/integrated-bench.mjs --browser=chromium --warmups=2 --runs=5
-	cd packages/md-wysiwyg && MD_WYSIWYG_BENCH=1 pnpm exec vitest run tests/large-note-bench.test.ts
+	MD_WYSIWYG_BENCH=1 pnpm exec vitest run web/ts/editor/tests/large-note-bench.test.ts
 
 bench-full:
 	node bench/integrated-bench.mjs --browser=chromium,firefox,webkit --warmups=5 --runs=20
-	cd packages/md-wysiwyg && MD_WYSIWYG_BENCH=1 pnpm exec vitest run tests/large-note-bench.test.ts
+	MD_WYSIWYG_BENCH=1 pnpm exec vitest run web/ts/editor/tests/large-note-bench.test.ts
 
-.PHONY: audit bench bench-full ci coverage coverage-html coverage-rs coverage-ts dev dev-config check lint types types-check ts test test-pkg test-ts test-e2e test-rs
+.PHONY: audit bench bench-full ci coverage coverage-html coverage-rs coverage-ts dev dev-config check lint types types-check ts test test-ts test-e2e test-rs

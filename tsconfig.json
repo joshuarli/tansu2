@@ -22,10 +22,7 @@
     "allowUnreachableCode": false,
     "exactOptionalPropertyTypes": true,
     "noImplicitReturns": true,
-    "isolatedModules": true,
-    "paths": {
-      "@joshuarli98/md-wysiwyg": ["./packages/md-wysiwyg/src/index.ts"]
-    }
+    "isolatedModules": true
   },
   "include": ["web/ts", "scripts/**/*.ts"]
 }
