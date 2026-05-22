@@ -4,7 +4,15 @@ import net from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { chromium, firefox, webkit, type Browser, type BrowserType, type Page } from "playwright";
+import {
+  chromium,
+  firefox,
+  webkit,
+  type Browser,
+  type BrowserType,
+  type Page,
+  type Request,
+} from "playwright";
 
 let server: ChildProcess | undefined;
 let browser: Browser | undefined;
@@ -670,6 +678,178 @@ describe("real server harness", () => {
     await page.close();
   });
 
+  it("adapts legacy editor typing and inline round-trip regressions", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await createNote(page, "Legacy Editor Roundtrips");
+    await setEditorSource(page, "");
+    await page.keyboard.type("foo");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("bar");
+    await expectEditorSource(page, "foo\nbar");
+
+    await setEditorSource(page, "");
+    await page.keyboard.type("a");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("b");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("c");
+    await expectEditorSource(page, "a\nb\nc");
+
+    await setEditorSource(page, "");
+    await page.keyboard.type("**bold**");
+    await expect.poll(() => inlineSyntaxSummary(page)).toMatchObject({ strong: 1 });
+    await expectEditorSource(page, "**bold**");
+
+    await setEditorSource(page, "");
+    await page.keyboard.type("*italic*");
+    await expect.poll(() => inlineSyntaxSummary(page)).toMatchObject({ emphasis: 1 });
+    await expectEditorSource(page, "*italic*");
+
+    await setEditorSource(page, "");
+    await page.keyboard.type("`code` ");
+    await expect.poll(() => inlineSyntaxSummary(page)).toMatchObject({ code: 1 });
+    expect((await readEditorSource(page)).trim()).toBe("`code`");
+
+    await setEditorSource(page, "");
+    await page.keyboard.type("**bold**");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("next");
+    await expectEditorSource(page, "**bold**\nnext");
+    await page.close();
+  });
+
+  it("adapts legacy heading, list, and boundary regressions", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await createNote(page, "Legacy Structural Regressions");
+    await setEditorSource(page, "");
+    await page.keyboard.type("## Heading");
+    await expect.poll(() => blockSyntaxSummary(page)).toMatchObject({ h2: 1 });
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("plain text");
+    await expectEditorSource(page, "## Heading\nplain text");
+
+    await setEditorSource(page, "");
+    await page.keyboard.type("### Subheading");
+    await expect.poll(() => blockSyntaxSummary(page)).toMatchObject({ h3: 1 });
+
+    await setEditorSource(page, "# foo");
+    await page.locator(".app-editor h1", { hasText: "foo" }).click();
+    await page.keyboard.press("End");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("bar");
+    await expectEditorSource(page, "# foo\nbar");
+
+    await setEditorSource(page, "- 1\n  - 2\n    - 3");
+    await placeCursorInListItem(page, "3", 1);
+    await page.keyboard.press("Shift+Tab");
+    await expectEditorSource(page, "- 1\n  - 2\n  - 3");
+
+    await setEditorSource(page, "- one\n- two");
+    await placeCursorInListItem(page, "two", 3);
+    await page.keyboard.press("Tab");
+    await expectEditorSource(page, "- one\n  - two");
+
+    await setEditorSource(page, "- 1\n  - 2\n    - 3\n      - 4");
+    await selectListRange(page, 1, 1, 3, 3);
+    await page.keyboard.press("Shift+Tab");
+    await expectEditorSource(page, "- 1\n- 2\n  - 3\n    - 4");
+
+    await setEditorSource(page, "- 1\n- 2");
+    await placeCursorInListItem(page, "2", 1);
+    await page.keyboard.press("Shift+Tab");
+    await expectEditorSource(page, "- 1\n- 2");
+    await page.close();
+  });
+
+  it(
+    "adapts legacy autosave, reload, and double-newline loss regressions",
+    async () => {
+      const page = await browser!.newPage();
+      await page.goto(baseUrl);
+      await page.waitForSelector(".main");
+
+      await createNote(page, "Legacy Persistence Regressions");
+      for (const source of ["\nline1\n\n\nline2\n", "foo:\n- one", "foo:\n- one\n- \ndsf"]) {
+        await setEditorSource(page, source);
+        await expectSavedContent("legacy-persistence-regressions.md", storedMarkdown(source));
+        await page.reload({ waitUntil: "load" });
+        await page.waitForSelector(".main");
+        await page.locator('.note-row[title="legacy-persistence-regressions.md"]').first().click();
+        await expectEditorSource(page, source);
+      }
+
+      await setEditorSource(page, "sdf\n\nsdf");
+      await placeCursorInLastTextBlock(page, "sdf", 3);
+      const reportedLines = ["a", "sd", "s", "d", "csd", "dsfb", "b"];
+      for (const line of reportedLines) {
+        await page.keyboard.press("Enter");
+        await page.keyboard.type(line);
+      }
+      await expectEditorSource(page, `sdf\n\nsdf\n${reportedLines.join("\n")}`);
+
+      const rand = mulberry32(43);
+      for (let i = 0; i < 8; i++) {
+        const lines = Array.from({ length: 5 }, () => randomPlainText(rand, 2, 12));
+        await setEditorSource(page, "sdf\n\nsdf");
+        await placeCursorInLastTextBlock(page, "sdf", 3);
+        for (const line of lines) {
+          await page.keyboard.press("Enter");
+          await page.keyboard.type(line);
+        }
+        await expectEditorSource(page, `sdf\n\nsdf\n${lines.join("\n")}`);
+      }
+      await page.close();
+    },
+    90_000,
+  );
+
+  it("adapts legacy save and shortcut integration coverage", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    await page.keyboard.press(`${shortcutModifier()}+p`);
+    await expect.poll(() => page.locator(".search-panel .command-input").isVisible()).toBe(true);
+    await page.keyboard.press("Escape");
+    await expect.poll(() => page.locator(".search-panel").count()).toBe(0);
+
+    await page.keyboard.press(`${shortcutModifier()}+k`);
+    await expect.poll(() => page.locator(".command-panel .command-input").isVisible()).toBe(true);
+    await page.keyboard.press("Escape");
+    await expect.poll(() => page.locator(".command-panel").count()).toBe(0);
+
+    await createNote(page, "Legacy Save Requests");
+    await page.waitForTimeout(500);
+
+    const typingRequests = await collectApiRequests(page, async () => {
+      await page.keyboard.type("abcdef");
+      await page.waitForTimeout(500);
+    });
+    expect(typingRequests.filter((request) => request === "PUT /api/session")).toHaveLength(0);
+
+    const saveRequests = await collectApiRequests(page, async () => {
+      await page.keyboard.press(`${shortcutModifier()}+s`);
+      await expectSavedContent("legacy-save-requests.md", "# Legacy Save Requests\r\nabcdef");
+    });
+    expect(saveRequests.filter((request) => request.startsWith("PUT /api/notes/"))).toHaveLength(1);
+    expect(saveRequests.filter((request) => request.startsWith("GET /api/notes/"))).toHaveLength(0);
+
+    const cleanSaveRequests = await collectApiRequests(page, async () => {
+      await page.keyboard.press(`${shortcutModifier()}+s`);
+      await page.waitForTimeout(500);
+    });
+    expect(cleanSaveRequests.filter((request) => request.startsWith("PUT /api/notes/"))).toHaveLength(
+      0,
+    );
+    await page.close();
+  });
+
   it("keeps rapid typing responsive in a large visual note", async () => {
     const content =
       "# Stress\n\n" +
@@ -912,6 +1092,38 @@ async function createNote(page: Page, title: string): Promise<void> {
     .toBe(true);
 }
 
+async function setEditorSource(page: Page, content: string): Promise<void> {
+  await openSourceMode(page);
+  await page.locator(".app-editor-source").fill(content);
+  await closeSourceMode(page);
+  await page.locator(".app-editor").click();
+}
+
+async function readEditorSource(page: Page): Promise<string> {
+  await openSourceMode(page);
+  const source = await page.locator(".app-editor-source").inputValue();
+  await closeSourceMode(page);
+  return source;
+}
+
+async function expectEditorSource(page: Page, content: string): Promise<void> {
+  await expect.poll(() => readEditorSource(page)).toBe(content);
+}
+
+async function openSourceMode(page: Page): Promise<void> {
+  if (!(await page.locator(".app-editor-source").isVisible())) {
+    await page.locator('.toolbar [title="Source"]').click();
+  }
+  await expect.poll(() => page.locator(".app-editor-source").isVisible()).toBe(true);
+}
+
+async function closeSourceMode(page: Page): Promise<void> {
+  if (await page.locator(".app-editor-source").isVisible()) {
+    await page.locator('.toolbar [title="Source"]').click();
+  }
+  await expect.poll(() => page.locator(".app-editor").isVisible()).toBe(true);
+}
+
 async function waitForNoteSave(page: Page): Promise<void> {
   await page.waitForResponse(
     (response) =>
@@ -923,6 +1135,10 @@ async function waitForNoteSave(page: Page): Promise<void> {
 
 async function expectSavedContent(path: string, content: string): Promise<void> {
   await expect.poll(async () => (await openSeededDocument(path)).content).toBe(content);
+}
+
+function storedMarkdown(markdown: string): string {
+  return markdown.replaceAll("\n", "\r\n");
 }
 
 async function placeCursorInTextBlock(page: Page, text: string, offset: number): Promise<void> {
@@ -948,6 +1164,101 @@ async function placeCursorInTextBlock(page: Page, text: string, offset: number):
       (editor as HTMLElement).focus();
     },
     { text, offset },
+  );
+}
+
+async function placeCursorInLastTextBlock(page: Page, text: string, offset: number): Promise<void> {
+  await page.locator(".app-editor").evaluate(
+    (editor, args) => {
+      const hosts = [...editor.querySelectorAll<HTMLElement>("[data-md-line-index]")].filter(
+        (candidate) =>
+          candidate.dataset["mdBlank"] !== "true" && candidate.textContent === args.text,
+      );
+      const host = hosts.at(-1);
+      if (!host) {
+        throw new Error(`missing text block: ${args.text}`);
+      }
+      const textNode = [...host.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
+      if (!textNode) {
+        throw new Error(`missing text node: ${args.text}`);
+      }
+      const range = document.createRange();
+      range.setStart(textNode, Math.min(args.offset, textNode.textContent?.length ?? 0));
+      range.collapse(true);
+      const selection = getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+      (editor as HTMLElement).focus();
+    },
+    { text, offset },
+  );
+}
+
+async function placeCursorInListItem(page: Page, text: string, offset: number): Promise<void> {
+  await page.locator(".app-editor").evaluate(
+    (editor, args) => {
+      const item = [...editor.querySelectorAll<HTMLLIElement>("li")].find((candidate) =>
+        (candidate.textContent ?? "").includes(args.text),
+      );
+      if (!item) {
+        throw new Error(`missing list item: ${args.text}`);
+      }
+      const walker = document.createTreeWalker(item, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          return (node.textContent ?? "").includes(args.text)
+            ? NodeFilter.FILTER_ACCEPT
+            : NodeFilter.FILTER_SKIP;
+        },
+      });
+      const textNode = walker.nextNode();
+      if (!textNode) {
+        throw new Error(`missing list item text node: ${args.text}`);
+      }
+      const textOffset = Math.min(args.offset, textNode.textContent?.length ?? 0);
+      const range = document.createRange();
+      range.setStart(textNode, textOffset);
+      range.collapse(true);
+      const selection = getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+      (editor as HTMLElement).focus();
+    },
+    { text, offset },
+  );
+}
+
+async function selectListRange(
+  page: Page,
+  startIndex: number,
+  startOffset: number,
+  endIndex: number,
+  endOffset: number,
+): Promise<void> {
+  await page.locator(".app-editor").evaluate(
+    (editor, rangeArgs) => {
+      const items = [...editor.querySelectorAll<HTMLLIElement>("li")];
+      const getTextNode = (item: Element): Node => {
+        const walker = document.createTreeWalker(item, NodeFilter.SHOW_TEXT);
+        const node = walker.nextNode();
+        if (!node) {
+          throw new Error("expected list item text node");
+        }
+        return node;
+      };
+      const startNode = getTextNode(items[rangeArgs.startIndex]!);
+      const endNode = getTextNode(items[rangeArgs.endIndex]!);
+      const range = document.createRange();
+      range.setStart(
+        startNode,
+        Math.min(rangeArgs.startOffset, startNode.textContent?.length ?? 0),
+      );
+      range.setEnd(endNode, Math.min(rangeArgs.endOffset, endNode.textContent?.length ?? 0));
+      const selection = getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+      (editor as HTMLElement).focus();
+    },
+    { startIndex, startOffset, endIndex, endOffset },
   );
 }
 
@@ -977,6 +1288,8 @@ async function pasteHtml(page: Page, html: string, fallbackText: string): Promis
 
 async function blockSyntaxSummary(page: Page): Promise<{
   headings: number;
+  h2: number;
+  h3: number;
   unorderedItems: number;
   orderedItems: number;
   taskItems: number;
@@ -986,6 +1299,8 @@ async function blockSyntaxSummary(page: Page): Promise<{
 }> {
   return page.locator(".app-editor").evaluate((editor) => ({
     headings: editor.querySelectorAll("h1").length,
+    h2: editor.querySelectorAll("h2").length,
+    h3: editor.querySelectorAll("h3").length,
     unorderedItems: editor.querySelectorAll("ul:not(.task-list) > li").length,
     orderedItems: editor.querySelectorAll("ol > li").length,
     taskItems: editor.querySelectorAll(".task-item").length,
@@ -993,6 +1308,56 @@ async function blockSyntaxSummary(page: Page): Promise<{
     hrs: editor.querySelectorAll("hr").length,
     codeBlocks: editor.querySelectorAll("pre code").length,
   }));
+}
+
+async function inlineSyntaxSummary(page: Page): Promise<{
+  strong: number;
+  emphasis: number;
+  code: number;
+}> {
+  return page.locator(".app-editor").evaluate((editor) => ({
+    strong: editor.querySelectorAll("strong").length,
+    emphasis: editor.querySelectorAll("em").length,
+    code: editor.querySelectorAll("p code, li code, h1 code, h2 code, h3 code").length,
+  }));
+}
+
+async function collectApiRequests(page: Page, fn: () => Promise<void>): Promise<string[]> {
+  const requests: string[] = [];
+  const handler = (request: Request) => {
+    const url = new URL(request.url());
+    if (url.pathname.startsWith("/api/") || url.pathname === "/events") {
+      requests.push(`${request.method()} ${url.pathname}`);
+    }
+  };
+  page.on("request", handler);
+  try {
+    await fn();
+    await page.waitForTimeout(250);
+  } finally {
+    page.off("request", handler);
+  }
+  return requests;
+}
+
+function shortcutModifier(): "Control" | "Meta" {
+  return process.platform === "darwin" ? "Meta" : "Control";
+}
+
+function mulberry32(seed: number): () => number {
+  return function prng() {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
+    return ((t ^ (t >>> 14)) >>> 0) / 4_294_967_296;
+  };
+}
+
+function randomPlainText(rand: () => number, minLen: number, maxLen: number): string {
+  const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789   ";
+  const len = minLen + Math.floor(rand() * (maxLen - minLen + 1));
+  return Array.from({ length: len }, () => alphabet[Math.floor(rand() * alphabet.length)]).join("");
 }
 
 async function activeCursorHost(page: Page): Promise<{

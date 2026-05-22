@@ -761,8 +761,15 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   }
 
   function lineTextFromHost(host: HTMLElement, lineIndex: number): string {
-    const visualText = (host.textContent ?? "").replaceAll("​", "").replace(/^\u00A0/, "");
+    const rawText = (host.textContent ?? "").replaceAll("​", "");
     const lineContentStart = Number(host.dataset["mdLineContentStart"]);
+    const contentText =
+      Number.isFinite(lineContentStart) && lineContentStart > 0
+        ? rawText.replace(/^\u00A0/, "")
+        : rawText;
+    const visualText = /^\u00A0*$/.test(contentText)
+      ? ""
+      : contentText.replaceAll("\u00A0", " ");
     if (!Number.isFinite(lineContentStart) || lineContentStart <= 0) {
       return visualText;
     }
@@ -825,7 +832,52 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       cfg.onChange?.();
       return true;
     }
+    if (text === " " || text === "\u00A0") {
+      const line = anchor.line;
+      const result = replaceLineText(state, line, " ");
+      state = result.state;
+      renderPlainLineHost(line, " ");
+      undoController.scheduleTypingCheckpoint();
+      cfg.onChange?.();
+      return true;
+    }
     return commitStructuralTransaction(replaceLineText(state, anchor.line, text));
+  }
+
+  function plainMarkerPrefixTextAfterInsert(data: string): string | null {
+    if (data.length !== 1 || state.selection.kind !== "text") {
+      return null;
+    }
+    const { anchor, focus } = state.selection;
+    if (anchor.line !== focus.line || anchor.column !== focus.column) {
+      return null;
+    }
+    const line = state.doc.lines[anchor.line]?.text;
+    if (line === undefined || anchor.column !== line.length) {
+      return null;
+    }
+    if (/^(\*|`|~|=)$/.test(line) && data === line) {
+      return `${line}${data}`;
+    }
+    return null;
+  }
+
+  function leadingSpaceTextAfterInsert(data: string): { line: number; text: string } | null {
+    if (data.length !== 1 || state.selection.kind !== "text") {
+      return null;
+    }
+    const { anchor, focus } = state.selection;
+    if (anchor.line !== focus.line || anchor.column !== focus.column) {
+      return null;
+    }
+    const line = state.doc.lines[anchor.line]?.text;
+    if (line === undefined || !line.startsWith(" ")) {
+      return null;
+    }
+    return {
+      line: anchor.line,
+      text: `${line.slice(0, anchor.column)}${data}${line.slice(anchor.column)}`,
+    };
   }
 
   function shouldKeepMarkerInputPlain(text: string): boolean {
@@ -845,7 +897,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
         child.remove();
       }
     }
-    const textNode = document.createTextNode(text);
+    const displayText = text.replace(/^ +/, (spaces) => "\u00A0".repeat(spaces.length));
+    const textNode = document.createTextNode(displayText);
     if (handle) {
       host.insertBefore(textNode, handle);
     } else {
@@ -1301,7 +1354,20 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       const { md: newMd, selStart, selEnd } = shiftIndent(md, offsets.start, offsets.end, true);
       renderSelectionAndModel(newMd, selStart, selEnd);
     } else {
-      syncSelectionFromDomMetadata();
+      const line = Number(listItem.dataset["mdLineIndex"]);
+      if (Number.isInteger(line) && state.doc.lines[line] !== undefined) {
+        const column = state.doc.lines[line]!.text.length;
+        state = {
+          ...state,
+          selection: {
+            kind: "text",
+            anchor: { line, column },
+            focus: { line, column },
+          },
+        };
+      } else {
+        syncSelectionFromDomMetadata();
+      }
       if (commitStructuralTransaction(modelDeleteEmptyListItemBackward(state))) {
         return true;
       }
@@ -1512,7 +1578,8 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     if (e.key === "Backspace") {
       if (
         syncSelectionFromDomMetadata() &&
-        commitStructuralTransaction(modelDeleteBackward(state))
+        (commitStructuralTransaction(modelDeleteEmptyListItemBackward(state)) ||
+          commitStructuralTransaction(modelDeleteBackward(state)))
       ) {
         e.preventDefault();
         return;
@@ -1715,6 +1782,32 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       return;
     }
     if (e.inputType === "insertText" && e.data !== null) {
+      const leadingSpaceText = leadingSpaceTextAfterInsert(e.data);
+      if (leadingSpaceText !== null) {
+        e.preventDefault();
+        const result = replaceLineText(
+          state,
+          leadingSpaceText.line,
+          leadingSpaceText.text,
+          leadingSpaceText.text.length,
+        );
+        state = result.state;
+        renderPlainLineHost(leadingSpaceText.line, leadingSpaceText.text);
+        undoController.scheduleTypingCheckpoint();
+        cfg.onChange?.();
+        return;
+      }
+      const plainMarkerText = plainMarkerPrefixTextAfterInsert(e.data);
+      if (plainMarkerText !== null && state.selection.kind === "text") {
+        e.preventDefault();
+        const line = state.selection.anchor.line;
+        const result = replaceLineText(state, line, plainMarkerText);
+        state = result.state;
+        renderPlainLineHost(line, plainMarkerText);
+        undoController.scheduleTypingCheckpoint();
+        cfg.onChange?.();
+        return;
+      }
       const text = blockTransformTextAfterInsert(e.data);
       if (text !== null && state.selection.kind === "text") {
         e.preventDefault();

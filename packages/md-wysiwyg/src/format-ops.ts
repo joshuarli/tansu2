@@ -264,8 +264,8 @@ export function shiftIndent(
         }
       }
     } else {
-      newLine = `\t${line}`;
-      delta = 1;
+      newLine = `${" ".repeat(LIST_INDENT_SPACES)}${line}`;
+      delta = LIST_INDENT_SPACES;
     }
 
     transformed.push(newLine);

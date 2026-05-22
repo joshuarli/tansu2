@@ -82,9 +82,9 @@ describe("format operations", () => {
 
   it("indents and dedents selected lines while preserving selection bounds", () => {
     expect(shiftIndent("one\ntwo", 1, 6, false)).toEqual({
-      md: "\tone\n\ttwo",
-      selStart: 2,
-      selEnd: 8,
+      md: "  one\n  two",
+      selStart: 3,
+      selEnd: 10,
     });
     expect(shiftIndent("\tone\n  two\n    three\nfour", 1, 13, true)).toEqual({
       md: "one\ntwo\n  three\nfour",

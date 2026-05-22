@@ -232,6 +232,9 @@ function parseListLine(line: string): {
   if (!match) {
     return null;
   }
+  if ((match[2] === "*" || match[2] === "+") && match[3] === undefined) {
+    return null;
+  }
 
   let text = match[3] ?? "";
   let checked: boolean | null = null;

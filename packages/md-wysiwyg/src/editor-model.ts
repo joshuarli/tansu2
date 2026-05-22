@@ -399,6 +399,9 @@ function parseListLine(line: string): ParsedListLine | null {
     return null;
   }
   const marker = match[2]!;
+  if ((marker === "*" || marker === "+") && match[3] === undefined) {
+    return null;
+  }
   const orderedMatch = marker.match(/^(\d+)\.$/);
   let content = match[3] ?? "";
   let taskMarker: string | null = null;
@@ -535,7 +538,11 @@ function deriveBlockIndex(lines: readonly EditorLine[]): BlockIndex {
 }
 
 function isListStart(line: string): boolean {
-  return /^[ \t]*([-*+]|\d+\.)(?:\s|$)/.test(line) || /^[ \t]*\[[ xX]\](?:\s|$)/.test(line);
+  return (
+    /^[ \t]*([-+]|\d+\.)(?:\s|$)/.test(line) ||
+    /^[ \t]*\*\s/.test(line) ||
+    /^[ \t]*\[[ xX]\](?:\s|$)/.test(line)
+  );
 }
 
 function isTableStart(lines: readonly EditorLine[], index: number): boolean {

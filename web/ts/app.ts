@@ -45,6 +45,7 @@ import {
 import {
   activeTab,
   createState,
+  normalizeMarkdownNewlines,
   sessionFromState,
   tabById,
   tabFromDocument,
@@ -250,6 +251,7 @@ export class TansuApp {
       onImagePaste: (blob) => this.uploadPastedImage(blob),
       onChange: () => this.noteEditorChanged(),
       onSave: () => void this.manualSave(),
+      indentUnit: "  ",
     };
     const settings = this.state.boot?.settings;
     if (settings !== undefined) {
@@ -456,6 +458,7 @@ export class TansuApp {
     if (tab === undefined || tab.doc === null || !tab.dirty || tab.saving) {
       return;
     }
+    window.clearTimeout(this.autosaveTimer);
     await this.persistTab(tab);
   }
 
@@ -488,11 +491,15 @@ export class TansuApp {
         this.state.vault,
       );
       if (response.document !== null) {
-        tab.doc = response.document;
-        tab.draft = response.document.content;
-        tab.title = response.document.meta.title;
-        tab.path = response.document.meta.path;
-        this.state.notes.set(response.document.meta.noteId, response.document.meta);
+        const document = {
+          ...response.document,
+          content: normalizeMarkdownNewlines(response.document.content),
+        };
+        tab.doc = document;
+        tab.draft = document.content;
+        tab.title = document.meta.title;
+        tab.path = document.meta.path;
+        this.state.notes.set(document.meta.noteId, document.meta);
       }
       tab.dirty = false;
       tab.conflict = false;
@@ -760,7 +767,7 @@ export class TansuApp {
       if (response.document !== null) {
         this.state.notes.set(response.meta.noteId, response.meta);
         const tab = tabFromDocument(response.document);
-        tab.cursorOffset = response.document.content.length;
+        tab.cursorOffset = tab.doc?.content.length ?? null;
         this.state.tabs.push(tab);
         this.state.noteDialog = null;
         await this.activateTab(response.meta.noteId);
@@ -901,10 +908,14 @@ export class TansuApp {
       tab = tabFromDocument(response.document);
       this.state.tabs.push(tab);
     } else {
-      tab.doc = response.document;
-      tab.draft = response.document.content;
-      tab.title = response.document.meta.title;
-      tab.path = response.document.meta.path;
+      const document = {
+        ...response.document,
+        content: normalizeMarkdownNewlines(response.document.content),
+      };
+      tab.doc = document;
+      tab.draft = document.content;
+      tab.title = document.meta.title;
+      tab.path = document.meta.path;
       tab.dirty = false;
       tab.conflict = false;
       tab.conflictDraftId = null;

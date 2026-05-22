@@ -123,12 +123,14 @@ export function tabFromMeta(note: NoteMeta): Tab {
 }
 
 export function tabFromDocument(document: NoteDocument): Tab {
+  const content = normalizeMarkdownNewlines(document.content);
+  const doc = content === document.content ? document : { ...document, content };
   return {
-    noteId: document.meta.noteId,
-    title: document.meta.title,
-    path: document.meta.path,
-    doc: document,
-    draft: document.content,
+    noteId: doc.meta.noteId,
+    title: doc.meta.title,
+    path: doc.meta.path,
+    doc,
+    draft: doc.content,
     dirty: false,
     saving: false,
     conflict: false,
@@ -136,6 +138,10 @@ export function tabFromDocument(document: NoteDocument): Tab {
     cursorOffset: null,
     sourceMode: false,
   };
+}
+
+export function normalizeMarkdownNewlines(markdown: string): string {
+  return markdown.replace(/\r\n?/g, "\n");
 }
 
 export function sessionFromState(state: State): SessionState {
