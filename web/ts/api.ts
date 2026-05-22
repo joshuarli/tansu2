@@ -1,6 +1,15 @@
 import type {
+  AssetName,
+  ConflictDraftId,
+  ContentHash,
+  NoteId,
+  RevisionEventId,
+  VaultIndex,
+} from "./state.ts";
+import type {
   BootstrapResponse,
   CreateNoteRequest,
+  ApiErrorResponse,
   ConflictDraftDocument,
   ImageUploadResponse,
   NoteDocument,
@@ -27,6 +36,77 @@ class ApiError extends Error {
     this.response = response;
   }
 }
+
+export type SaveConflictError = Extract<ApiErrorResponse["error"], { code: "save_conflict" }>;
+
+function apiErrorResponse(error: unknown): ApiErrorResponse | null {
+  return error instanceof ApiError ? (error.response as ApiErrorResponse | null) : null;
+}
+
+export function saveConflictError(error: unknown): SaveConflictError | null {
+  const response = apiErrorResponse(error);
+  return response?.error.code === "save_conflict" ? response.error : null;
+}
+
+export type ApiClient = {
+  bootstrap: (vault?: VaultIndex) => Promise<BootstrapResponse>;
+  openNote: (noteId: NoteId | string, vault?: VaultIndex) => Promise<NoteDocument>;
+  createNote: (request: CreateNoteRequest, vault?: VaultIndex) => Promise<NoteMutationResponse>;
+  saveNote: (
+    noteId: NoteId | string,
+    request: SaveNoteRequest & { baseHash: ContentHash | string },
+    vault?: VaultIndex,
+  ) => Promise<NoteMutationResponse>;
+  saveNoteDelta: (
+    noteId: NoteId | string,
+    request: SaveNoteDeltaRequest & {
+      baseHash: ContentHash | string;
+      contentHash: ContentHash | string;
+    },
+    vault?: VaultIndex,
+  ) => Promise<NoteMutationResponse>;
+  renameNote: (
+    noteId: NoteId | string,
+    request: RenameNoteRequest,
+    vault?: VaultIndex,
+  ) => Promise<NoteMutationResponse>;
+  deleteNote: (noteId: NoteId | string, vault?: VaultIndex) => Promise<NoteMutationResponse>;
+  listRevisions: (noteId: NoteId | string, vault?: VaultIndex) => Promise<RevisionMeta[]>;
+  openRevision: (
+    noteId: NoteId | string,
+    eventId: RevisionEventId | number,
+    vault?: VaultIndex,
+  ) => Promise<RevisionDocument>;
+  restoreRevision: (
+    noteId: NoteId | string,
+    eventId: RevisionEventId | number,
+    vault?: VaultIndex,
+  ) => Promise<NoteMutationResponse>;
+  openConflictDraft: (
+    noteId: NoteId | string,
+    draftId: ConflictDraftId | number,
+    vault?: VaultIndex,
+  ) => Promise<ConflictDraftDocument>;
+  restoreConflictDraft: (
+    noteId: NoteId | string,
+    draftId: ConflictDraftId | number,
+    vault?: VaultIndex,
+  ) => Promise<NoteMutationResponse>;
+  setPinned: (
+    noteId: NoteId | string,
+    pinned: boolean,
+    vault?: VaultIndex,
+  ) => Promise<{ ok: true }>;
+  searchNotes: (query: string, vault?: VaultIndex) => Promise<SearchHit[]>;
+  saveSession: (session: SessionState, vault?: VaultIndex) => Promise<{ ok: true }>;
+  saveSettings: (settings: Settings, vault?: VaultIndex) => Promise<Settings>;
+  uploadImage: (blob: Blob, vault?: VaultIndex) => Promise<ImageUploadResponse>;
+  assetUrl: (name: AssetName | string, vault?: VaultIndex) => string;
+  activeVault: () => VaultIndex;
+  setActiveVault: (index: VaultIndex | number) => void;
+  connectEvents: (vault?: VaultIndex) => EventSource;
+  parseServerEvent: (event: MessageEvent<string>) => ServerEvent;
+};
 
 async function apiFetch<T>(
   path: string,
@@ -223,3 +303,32 @@ export function connectEvents(vault = activeVault()): EventSource {
 export function parseServerEvent(event: MessageEvent<string>): ServerEvent {
   return JSON.parse(event.data) as ServerEvent;
 }
+
+function createApiClient(): ApiClient {
+  return {
+    bootstrap,
+    openNote,
+    createNote,
+    saveNote,
+    saveNoteDelta,
+    renameNote,
+    deleteNote,
+    listRevisions,
+    openRevision,
+    restoreRevision,
+    openConflictDraft,
+    restoreConflictDraft,
+    setPinned,
+    searchNotes,
+    saveSession,
+    saveSettings,
+    uploadImage,
+    assetUrl,
+    activeVault,
+    setActiveVault,
+    connectEvents,
+    parseServerEvent,
+  };
+}
+
+export const apiClient = createApiClient();

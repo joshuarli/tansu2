@@ -20,7 +20,7 @@ type EditorLine = {
   text: string;
 };
 
-export type BlankLineRole = "separator" | "editable";
+type BlankLineRole = "separator" | "editable";
 
 export type LogicalPosition = {
   line: number;
@@ -550,7 +550,7 @@ function classifyBlankRun(
   startLine: number,
   endLine: number,
 ): BlankLineRole[] {
-  const roles = new Array<BlankLineRole>(endLine - startLine).fill("editable");
+  const roles = Array.from({ length: endLine - startLine }, () => "editable" as BlankLineRole);
   const betweenContent =
     startLine > 0 &&
     endLine < lines.length &&

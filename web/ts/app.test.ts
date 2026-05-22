@@ -9,6 +9,9 @@ import type {
 } from "./types.generated.ts";
 
 const api = vi.hoisted(() => ({
+  get apiClient() {
+    return this;
+  },
   activeVault: vi.fn(() => 0),
   assetUrl: vi.fn((name: string) => `/api/assets?name=${encodeURIComponent(name)}`),
   bootstrap: vi.fn(),
@@ -30,6 +33,13 @@ const api = vi.hoisted(() => ({
   restoreConflictDraft: vi.fn(),
   restoreRevision: vi.fn(),
   saveNote: vi.fn(),
+  saveConflictError: vi.fn((error: unknown) => {
+    const response =
+      error instanceof Error && "response" in error
+        ? (error.response as { error?: { code?: string } } | null)
+        : null;
+    return response?.error?.code === "save_conflict" ? response.error : null;
+  }),
   saveNoteDelta: vi.fn(),
   saveSession: vi.fn(),
   saveSettings: vi.fn(),
@@ -58,14 +68,17 @@ vi.mock("./note-cache.ts", () => noteCache);
 const editorMock = vi.hoisted(() => ({
   instances: [] as Array<{
     applyFormat: ReturnType<typeof vi.fn>;
+    containsEditableTarget: ReturnType<typeof vi.fn>;
     destroy: ReturnType<typeof vi.fn>;
     focus: ReturnType<typeof vi.fn>;
     getCursorOffset: ReturnType<typeof vi.fn>;
     getSnapshot: ReturnType<typeof vi.fn>;
     getValue: ReturnType<typeof vi.fn>;
+    isReadOnly: boolean;
     isSourceMode: boolean;
     redo: ReturnType<typeof vi.fn>;
     setConfig: ReturnType<typeof vi.fn>;
+    setReadOnly: ReturnType<typeof vi.fn>;
     setValue: ReturnType<typeof vi.fn>;
     toggleSourceMode: ReturnType<typeof vi.fn>;
     undo: ReturnType<typeof vi.fn>;
@@ -80,6 +93,7 @@ vi.mock("./editor/index.js", () => ({
   createEditor: vi.fn((_mount: HTMLElement, config: Record<string, unknown> = {}) => {
     const instance = {
       applyFormat: vi.fn(),
+      containsEditableTarget: vi.fn(() => false),
       destroy: vi.fn(),
       focus: vi.fn(),
       getCursorOffset: vi.fn(() => null),
@@ -91,9 +105,13 @@ vi.mock("./editor/index.js", () => ({
         sourceMode: false,
       })),
       getValue: vi.fn(() => "# One"),
+      isReadOnly: false,
       isSourceMode: false,
       redo: vi.fn(),
       setConfig: vi.fn(),
+      setReadOnly: vi.fn(function setReadOnly(this: { isReadOnly: boolean }, readonly: boolean) {
+        this.isReadOnly = readonly;
+      }),
       setValue: vi.fn(),
       toggleSourceMode: vi.fn(function toggleSourceMode(this: { isSourceMode: boolean }) {
         this.isSourceMode = !this.isSourceMode;

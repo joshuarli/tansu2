@@ -1,29 +1,9 @@
-import {
-  activeVault,
-  assetUrl,
-  bootstrap,
-  connectEvents,
-  createNote,
-  deleteNote,
-  listRevisions,
-  openConflictDraft,
-  openNote,
-  openRevision,
-  parseServerEvent,
-  renameNote,
-  restoreConflictDraft,
-  restoreRevision,
-  saveNoteDelta,
-  saveSettings,
-  saveSession,
-  searchNotes,
-  setActiveVault,
-  setPinned,
-  uploadImage,
-} from "./api.ts";
+import { saveConflictError } from "./api.ts";
+import { commandItems } from "./app/commands.ts";
+import type { CommandId, CommandItem, EditorToolbarCommand, ViewEvent } from "./app/events.ts";
+import { defaultServices, type AppServices } from "./app/services.ts";
 import {
   createCalloutExtension,
-  createEditor,
   createWikiImageExtension,
   toggleBold,
   toggleHeading,
@@ -33,7 +13,6 @@ import {
   type EditorConfig,
   type EditorHandle,
 } from "./editor/index.js";
-import { pickHtmlImport } from "./html-import.ts";
 import {
   editableMarkdown,
   frontmatterSupportsTags,
@@ -41,8 +20,6 @@ import {
   normalizeTag,
   setMarkdownTags,
 } from "./markdown-tags.ts";
-import { cacheNoteBody, deleteCachedNoteBodies, getCachedNoteBody } from "./note-cache.ts";
-import { markNextPaint, markPerformance } from "./performance.ts";
 import { buildSaveNoteDeltaRequest } from "./save-delta.ts";
 import {
   activeTab,
@@ -52,11 +29,10 @@ import {
   tabById,
   tabFromDocument,
   tabFromMeta,
-  type Command,
   type State,
   type Tab,
 } from "./state.ts";
-import type { ApiErrorResponse, NoteMeta, NoteMutationResponse } from "./types.generated.ts";
+import type { NoteMeta, NoteMutationResponse } from "./types.generated.ts";
 import { renderApp, renderLoading, renderStatusBar, type ViewActions } from "./view.ts";
 
 const SESSION_SAVE_DELAY_MS = 250;
@@ -75,22 +51,27 @@ export class TansuApp {
   private searchRequestSeq = 0;
   private searchOverlayRequestSeq = 0;
   private readonly extensions = [
-    createWikiImageExtension({ resolveUrl: (name) => assetUrl(name, this.state.vault) }),
+    createWikiImageExtension({
+      resolveUrl: (name) => this.services.api.assetUrl(name, this.state.vault),
+    }),
     createCalloutExtension(),
   ];
 
-  constructor(private readonly root: HTMLElement) {
-    this.state = createState(activeVault());
+  constructor(
+    private readonly root: HTMLElement,
+    private readonly services: AppServices = defaultServices,
+  ) {
+    this.state = createState(this.services.api.activeVault());
   }
 
   async boot(): Promise<void> {
     this.destroyEditor();
     this.events?.close();
     this.noteLoads.clear();
-    this.state.vault = activeVault();
-    markPerformance("tansu:bootstrap:start");
-    this.state.boot = await bootstrap(this.state.vault);
-    markPerformance("tansu:bootstrap:response");
+    this.state.vault = this.services.api.activeVault();
+    this.services.performance.markPerformance("tansu:bootstrap:start");
+    this.state.boot = await this.services.api.bootstrap(this.state.vault);
+    this.services.performance.markPerformance("tansu:bootstrap:response");
     this.state.notes = new Map(this.state.boot.notes.map((note) => [note.noteId, note]));
     this.state.pinned = new Set(this.state.boot.pinnedNoteIds);
     this.state.recent = this.state.boot.recentNoteIds;
@@ -132,10 +113,7 @@ export class TansuApp {
 
     window.addEventListener("keydown", (event) => {
       const target = event.target;
-      const inEditor =
-        target instanceof HTMLElement &&
-        (target.closest('.md-editor-content[contenteditable="true"]') !== null ||
-          target.closest(".md-editor-source") !== null);
+      const inEditor = this.editor?.containsEditableTarget(target) ?? false;
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
         this.state.commandOpen = true;
@@ -197,9 +175,9 @@ export class TansuApp {
 
   private connectSse(): void {
     this.events?.close();
-    this.events = connectEvents(this.state.vault);
+    this.events = this.services.api.connectEvents(this.state.vault);
     this.events.addEventListener("message", (event) => {
-      const payload = parseServerEvent(event as MessageEvent<string>);
+      const payload = this.services.api.parseServerEvent(event as MessageEvent<string>);
       if (payload.vault !== this.state.vault) {
         return;
       }
@@ -215,7 +193,7 @@ export class TansuApp {
         }
       }
       for (const noteId of payload.deletedNoteIds) {
-        void deleteCachedNoteBodies(this.state.vault, noteId);
+        void this.services.noteCache.deleteCachedNoteBodies(this.state.vault, noteId);
         this.state.notes.delete(noteId);
         this.closeTab(noteId, false);
       }
@@ -268,29 +246,28 @@ export class TansuApp {
       config.typingCheckpointMs = settings.autosaveDelayMs;
       config.imageWebpQuality = settings.imageWebpQuality;
     }
-    this.editor = createEditor(mount, config);
+    this.editor = this.services.editor.createEditor(mount, config);
     this.editorNoteId = tab.noteId;
     this.editor.setValue(
       editableMarkdown(tab),
       reading ? undefined : (tab.cursorOffset ?? undefined),
     );
     if (reading) {
-      this.editor.contentEl.contentEditable = "false";
-      this.editor.contentEl.setAttribute("aria-readonly", "true");
+      this.editor.setReadOnly(true);
       return;
     }
     if (tab.sourceMode && !this.editor.isSourceMode) {
       this.editor.toggleSourceMode();
     }
-    markPerformance("tansu:editor:mount");
-    markNextPaint("tansu:editor:first-editable-paint");
+    this.services.performance.markPerformance("tansu:editor:mount");
+    this.services.performance.markNextPaint("tansu:editor:first-editable-paint");
     this.editor.focus();
   }
 
   private async uploadPastedImage(blob: Blob): Promise<string | null> {
     try {
-      const uploaded = await uploadImage(blob, this.state.vault);
-      return `<img src="${assetUrl(uploaded.name, this.state.vault)}" alt="${uploaded.name}" data-wiki-image="${uploaded.name}" loading="lazy">`;
+      const uploaded = await this.services.api.uploadImage(blob, this.state.vault);
+      return `<img src="${this.services.api.assetUrl(uploaded.name, this.state.vault)}" alt="${uploaded.name}" data-wiki-image="${uploaded.name}" loading="lazy">`;
     } catch {
       this.notify("Image upload failed");
       return null;
@@ -362,7 +339,7 @@ export class TansuApp {
       tab === undefined ||
       this.state.readingMode ||
       this.editor === null ||
-      this.editor.contentEl.contentEditable === "false"
+      this.editor.isReadOnly
     ) {
       return;
     }
@@ -406,9 +383,9 @@ export class TansuApp {
   }
 
   private async loadNote(noteId: string, vault: number): Promise<void> {
-    markPerformance("tansu:note:request:start");
-    const serverLoad = openNote(noteId, vault).then((document) => {
-      markPerformance("tansu:note:request:response");
+    this.services.performance.markPerformance("tansu:note:request:start");
+    const serverLoad = this.services.api.openNote(noteId, vault).then((document) => {
+      this.services.performance.markPerformance("tansu:note:request:response");
       return {
         ...document,
         content: normalizeMarkdownNewlines(document.content),
@@ -419,7 +396,7 @@ export class TansuApp {
       this.render();
     }
     const document = await serverLoad;
-    void cacheNoteBody(vault, document);
+    void this.services.noteCache.cacheNoteBody(vault, document);
     if (this.state.vault !== vault) {
       return;
     }
@@ -445,10 +422,10 @@ export class TansuApp {
   private async readCachedNote(noteId: string, vault: number): Promise<boolean> {
     const meta = this.state.notes.get(noteId);
     if (meta === undefined) {
-      markPerformance("tansu:note-cache:miss");
+      this.services.performance.markPerformance("tansu:note-cache:miss");
       return false;
     }
-    const cached = await getCachedNoteBody(vault, meta);
+    const cached = await this.services.noteCache.getCachedNoteBody(vault, meta);
     if (this.state.vault !== vault) {
       return false;
     }
@@ -463,7 +440,7 @@ export class TansuApp {
       currentMeta === undefined ||
       cached.contentHash !== currentMeta.contentHash
     ) {
-      markPerformance("tansu:note-cache:miss");
+      this.services.performance.markPerformance("tansu:note-cache:miss");
       return false;
     }
     target.doc = {
@@ -473,7 +450,7 @@ export class TansuApp {
     target.draft = target.doc.content;
     target.title = currentMeta.title;
     target.path = currentMeta.path;
-    markPerformance("tansu:note-cache:hit");
+    this.services.performance.markPerformance("tansu:note-cache:hit");
     return true;
   }
 
@@ -561,7 +538,7 @@ export class TansuApp {
     tab.saving = true;
     this.renderStatusOnly();
     try {
-      const response = await saveNoteDelta(
+      const response = await this.services.api.saveNoteDelta(
         tab.noteId,
         await buildSaveNoteDeltaRequest(
           tab.doc.content,
@@ -577,7 +554,7 @@ export class TansuApp {
           ...response.document,
           content: normalizeMarkdownNewlines(response.document.content),
         };
-        void cacheNoteBody(vault, document);
+        void this.services.noteCache.cacheNoteBody(vault, document);
         if (this.state.vault !== vault) {
           return;
         }
@@ -593,7 +570,7 @@ export class TansuApp {
           meta: response.meta,
           content: normalizeMarkdownNewlines(savingDraft),
         };
-        void cacheNoteBody(vault, document);
+        void this.services.noteCache.cacheNoteBody(vault, document);
         if (this.state.vault !== vault) {
           return;
         }
@@ -611,7 +588,7 @@ export class TansuApp {
       if (this.state.vault !== vault) {
         return;
       }
-      const conflict = saveConflict(error);
+      const conflict = saveConflictError(error);
       tab.conflict = conflict !== null;
       tab.conflictDraftId = conflict?.draft.draftId ?? null;
       this.notify(tab.conflict ? "Save conflict" : "Save failed");
@@ -631,7 +608,7 @@ export class TansuApp {
   private scheduleSessionSave(): void {
     window.clearTimeout(this.sessionTimer);
     this.sessionTimer = window.setTimeout(() => {
-      void saveSession(sessionFromState(this.state), this.state.vault);
+      void this.services.api.saveSession(sessionFromState(this.state), this.state.vault);
     }, SESSION_SAVE_DELAY_MS);
   }
 
@@ -639,7 +616,7 @@ export class TansuApp {
     window.clearTimeout(this.sessionTimer);
     this.sessionTimer = window.setTimeout(() => {
       this.syncActiveDraft();
-      void saveSession(sessionFromState(this.state), this.state.vault);
+      void this.services.api.saveSession(sessionFromState(this.state), this.state.vault);
     }, EDITOR_SESSION_SAVE_DELAY_MS);
   }
 
@@ -652,7 +629,7 @@ export class TansuApp {
       this.render();
       return;
     }
-    const hits = await searchNotes(query, vault);
+    const hits = await this.services.api.searchNotes(query, vault);
     if (
       seq !== this.searchRequestSeq ||
       this.state.vault !== vault ||
@@ -673,7 +650,7 @@ export class TansuApp {
       this.render();
       return;
     }
-    const hits = await searchNotes(query, vault);
+    const hits = await this.services.api.searchNotes(query, vault);
     if (
       seq !== this.searchOverlayRequestSeq ||
       this.state.vault !== vault ||
@@ -724,7 +701,7 @@ export class TansuApp {
       return;
     }
     const pinned = !this.state.pinned.has(noteId);
-    await setPinned(noteId, pinned, this.state.vault);
+    await this.services.api.setPinned(noteId, pinned, this.state.vault);
     if (pinned) {
       this.state.pinned.add(noteId);
     } else {
@@ -752,12 +729,12 @@ export class TansuApp {
   }
 
   private async commandImportHtml(): Promise<void> {
-    const imported = await pickHtmlImport(this.state.notes.values());
+    const imported = await this.services.htmlImport.pickHtmlImport(this.state.notes.values());
     if (imported === null) {
       this.notify("HTML import failed");
       return;
     }
-    const response = await createNote(
+    const response = await this.services.api.createNote(
       { path: imported.path, content: imported.content, source: "import" },
       this.state.vault,
     );
@@ -782,7 +759,7 @@ export class TansuApp {
       return;
     }
     this.state.revisionsOpen = true;
-    this.state.revisionList = await listRevisions(tab.noteId, this.state.vault);
+    this.state.revisionList = await this.services.api.listRevisions(tab.noteId, this.state.vault);
     this.state.revisionDocument = null;
     this.render();
   }
@@ -837,44 +814,54 @@ export class TansuApp {
     this.render();
   }
 
-  private filteredCommands(): Command[] {
-    const commands: Command[] = [
-      { id: "open", label: "Open note", run: () => this.commandOpen() },
-      { id: "create", label: "Create note", run: () => this.commandCreate() },
-      { id: "save", label: "Save note", run: () => this.manualSave() },
-      { id: "rename", label: "Rename note", run: () => this.commandRename() },
-      { id: "delete", label: "Delete note", run: () => this.commandDelete() },
-      {
-        id: "pin",
-        label:
-          this.state.activeNoteId !== null && this.state.pinned.has(this.state.activeNoteId)
-            ? "Unpin note"
-            : "Pin note",
-        run: () => this.commandPin(),
-      },
-      { id: "reopen", label: "Reopen closed tab", run: () => this.commandReopenClosed() },
-      {
-        id: "reading",
-        label: this.state.readingMode ? "Edit mode" : "Reading mode",
-        run: () => this.toggleReadingMode(),
-      },
-      {
-        id: "search",
-        label: "Search notes",
-        run: () => {
-          this.state.searchOpen = true;
-          this.render();
-        },
-      },
-      { id: "import", label: "Import HTML", run: () => this.commandImportHtml() },
-      { id: "revisions", label: "Revisions", run: () => this.commandRevisions() },
-      { id: "settings", label: "Settings", run: () => this.commandSettings() },
-      { id: "source", label: "Source mode", run: () => this.toggleSourceMode() },
-    ];
-    const query = this.state.commandFilter.toLowerCase();
-    return commands.filter((command) =>
-      `${command.id} ${command.label}`.toLowerCase().includes(query),
-    );
+  private filteredCommands(): CommandItem[] {
+    return commandItems(this.state);
+  }
+
+  private executeCommand(id: CommandId): void {
+    this.state.commandOpen = false;
+    switch (id) {
+      case "open":
+        this.commandOpen();
+        return;
+      case "create":
+        void this.commandCreate();
+        return;
+      case "save":
+        void this.manualSave();
+        return;
+      case "rename":
+        this.commandRename();
+        return;
+      case "delete":
+        this.commandDelete();
+        return;
+      case "pin":
+        void this.commandPin();
+        return;
+      case "reopen":
+        void this.commandReopenClosed();
+        return;
+      case "reading":
+        this.toggleReadingMode();
+        return;
+      case "search":
+        this.state.searchOpen = true;
+        this.render();
+        return;
+      case "import":
+        void this.commandImportHtml();
+        return;
+      case "revisions":
+        void this.commandRevisions();
+        return;
+      case "settings":
+        this.commandSettings();
+        return;
+      case "source":
+        this.toggleSourceMode();
+        return;
+    }
   }
 
   private notify(message: string): void {
@@ -914,7 +901,7 @@ export class TansuApp {
     if (dialog.kind === "create") {
       const title = (value ?? "").trim() || "Untitled";
       const path = uniqueNotePath(title, this.state.notes.values());
-      const response = await createNote(
+      const response = await this.services.api.createNote(
         { path, content: `# ${title}\n`, source: null },
         this.state.vault,
       );
@@ -937,7 +924,11 @@ export class TansuApp {
         return;
       }
       const path = renamedPath(note.path, title, this.state.notes.values(), dialog.noteId);
-      const response = await renameNote(dialog.noteId, { path }, this.state.vault);
+      const response = await this.services.api.renameNote(
+        dialog.noteId,
+        { path },
+        this.state.vault,
+      );
       const tab = tabById(this.state, dialog.noteId);
       if (tab !== undefined) {
         tab.title = response.meta.title;
@@ -966,8 +957,8 @@ export class TansuApp {
     this.state.noteDialog = null;
     this.render();
     try {
-      await deleteNote(noteId, vault);
-      void deleteCachedNoteBodies(vault, noteId);
+      await this.services.api.deleteNote(noteId, vault);
+      void this.services.noteCache.deleteCachedNoteBodies(vault, noteId);
       if (this.state.vault !== vault) {
         return;
       }
@@ -991,7 +982,7 @@ export class TansuApp {
     if (this.state.boot === null) {
       return;
     }
-    this.state.boot.settings = await saveSettings(
+    this.state.boot.settings = await this.services.api.saveSettings(
       {
         ...this.state.boot.settings,
         excludedFolders: settings.excludedFoldersText
@@ -1019,7 +1010,11 @@ export class TansuApp {
       return;
     }
     this.syncActiveDraft();
-    this.state.revisionDocument = await openRevision(tab.noteId, eventId, this.state.vault);
+    this.state.revisionDocument = await this.services.api.openRevision(
+      tab.noteId,
+      eventId,
+      this.state.vault,
+    );
     this.render();
   }
 
@@ -1030,7 +1025,11 @@ export class TansuApp {
       return;
     }
     const vault = this.state.vault;
-    const response = await restoreRevision(tab.noteId, revision.revision.eventId, vault);
+    const response = await this.services.api.restoreRevision(
+      tab.noteId,
+      revision.revision.eventId,
+      vault,
+    );
     if (this.state.vault !== vault) {
       return;
     }
@@ -1046,7 +1045,11 @@ export class TansuApp {
       return;
     }
     const vault = this.state.vault;
-    const response = await restoreConflictDraft(tab.noteId, tab.conflictDraftId, vault);
+    const response = await this.services.api.restoreConflictDraft(
+      tab.noteId,
+      tab.conflictDraftId,
+      vault,
+    );
     if (this.state.vault !== vault) {
       return;
     }
@@ -1060,7 +1063,7 @@ export class TansuApp {
     if (tab === undefined || tab.conflictDraftId === null) {
       return;
     }
-    this.state.conflictDraft = await openConflictDraft(
+    this.state.conflictDraft = await this.services.api.openConflictDraft(
       tab.noteId,
       tab.conflictDraftId,
       this.state.vault,
@@ -1072,7 +1075,7 @@ export class TansuApp {
     if (response.document === null) {
       return;
     }
-    void cacheNoteBody(vault, {
+    void this.services.noteCache.cacheNoteBody(vault, {
       ...response.document,
       content: normalizeMarkdownNewlines(response.document.content),
     });
@@ -1109,57 +1112,151 @@ export class TansuApp {
     );
   }
 
+  private dispatch(event: ViewEvent): void {
+    switch (event.type) {
+      case "vault.switch":
+        this.services.api.setActiveVault(event.index);
+        void this.boot();
+        return;
+      case "search.input":
+        this.state.searchQuery = event.query;
+        void this.updateSearch();
+        return;
+      case "search.open":
+        this.state.searchOpen = true;
+        this.state.commandOpen = false;
+        this.state.searchOverlayQuery = this.state.searchQuery;
+        this.state.searchOverlayHits = this.state.searchHits;
+        this.render();
+        return;
+      case "search.overlayInput":
+        this.state.searchOverlayQuery = event.query;
+        void this.updateSearchOverlay();
+        return;
+      case "command.open":
+        this.state.commandOpen = true;
+        this.state.searchOpen = false;
+        this.state.commandFilter = "";
+        this.render();
+        return;
+      case "command.filter":
+        this.state.commandFilter = event.query;
+        this.render();
+        return;
+      case "command.run":
+        this.executeCommand(event.id);
+        return;
+      case "dialog.input":
+        if (this.state.noteDialog?.kind === "create" || this.state.noteDialog?.kind === "rename") {
+          this.state.noteDialog.title = event.value;
+        } else if (this.state.noteDialog?.kind === "tag") {
+          this.state.noteDialog.value = event.value;
+        }
+        return;
+      case "dialog.submit":
+        void this.submitNoteDialog(event.value);
+        return;
+      case "settings.submit":
+        void this.saveSettingsFromModal(event.settings);
+        return;
+      case "overlay.close":
+        this.closeOverlays();
+        return;
+      case "context.close":
+        this.closeContextMenu();
+        return;
+      case "context.open":
+        this.openNoteContextMenu(event.noteId, event.x, event.y);
+        return;
+      case "tab.activate":
+        void this.activateTab(event.noteId);
+        return;
+      case "tab.close":
+        this.closeTab(event.noteId);
+        return;
+      case "note.open":
+        void this.openInTab(event.noteId);
+        return;
+      case "note.rename":
+        this.commandRename(event.noteId);
+        return;
+      case "note.delete":
+        this.commandDelete(event.noteId);
+        return;
+      case "note.pin":
+        void this.commandPin(event.noteId);
+        return;
+      case "note.addTag":
+        void this.commandAddTag();
+        return;
+      case "tags.update":
+        this.updateActiveTags(event.tags);
+        return;
+      case "reading.toggle":
+        this.toggleReadingMode();
+        return;
+      case "editor.toolbar":
+        this.dispatchEditorToolbar(event.command);
+        return;
+      case "revisions.open":
+        void this.commandRevisions();
+        return;
+      case "revisions.select":
+        void this.selectRevision(event.eventId);
+        return;
+      case "revisions.restore":
+        void this.restoreSelectedRevision();
+        return;
+      case "conflict.view":
+        void this.viewActiveConflictDraft();
+        return;
+      case "conflict.restore":
+        void this.restoreActiveConflictDraft();
+        return;
+      case "render.request":
+        this.render();
+        return;
+    }
+  }
+
+  private dispatchEditorToolbar(command: EditorToolbarCommand): void {
+    switch (command) {
+      case "bold":
+        this.editor?.applyFormat(toggleBold);
+        return;
+      case "italic":
+        this.editor?.applyFormat(toggleItalic);
+        return;
+      case "highlight":
+        this.editor?.applyFormat(toggleHighlight);
+        return;
+      case "strikethrough":
+        this.editor?.applyFormat(toggleStrikethrough);
+        return;
+      case "heading":
+        this.editor?.applyFormat((md, start) => toggleHeading(md, start, 1));
+        return;
+      case "undo":
+        this.editor?.undo();
+        return;
+      case "redo":
+        this.editor?.redo();
+        return;
+      case "source":
+        this.toggleSourceMode();
+        return;
+      case "save":
+        void this.manualSave();
+        return;
+    }
+  }
+
   private viewActions(): ViewActions {
     return {
-      render: () => this.render(),
-      switchVault: (index) => {
-        setActiveVault(index);
-        void this.boot();
-      },
-      updateSearch: () => void this.updateSearch(),
-      updateSearchOverlay: () => void this.updateSearchOverlay(),
-      commandCreate: () => void this.commandCreate(),
-      commandRename: (noteId) => this.commandRename(noteId),
-      commandDelete: (noteId) => this.commandDelete(noteId),
-      commandPin: (noteId) => void this.commandPin(noteId),
-      commandAddTag: () => void this.commandAddTag(),
-      closeOverlays: () => this.closeOverlays(),
-      closeContextMenu: () => this.closeContextMenu(),
-      openNoteContextMenu: (noteId, x, y) => this.openNoteContextMenu(noteId, x, y),
-      submitNoteDialog: (value) => void this.submitNoteDialog(value),
-      saveSettings: (settings) => void this.saveSettingsFromModal(settings),
-      openRevisions: () => void this.commandRevisions(),
-      selectRevision: (eventId) => void this.selectRevision(eventId),
-      restoreSelectedRevision: () => void this.restoreSelectedRevision(),
-      viewConflictDraft: () => void this.viewActiveConflictDraft(),
-      restoreConflictDraft: () => void this.restoreActiveConflictDraft(),
-      filteredCommands: () => this.filteredCommands(),
-      activateTab: (noteId) => void this.activateTab(noteId),
-      closeTab: (noteId) => this.closeTab(noteId),
-      openInTab: (noteId) => void this.openInTab(noteId),
-      updateActiveTags: (tags) => this.updateActiveTags(tags),
-      toggleReadingMode: () => this.toggleReadingMode(),
-      formatBold: () => this.editor?.applyFormat(toggleBold),
-      formatItalic: () => this.editor?.applyFormat(toggleItalic),
-      formatHighlight: () => this.editor?.applyFormat(toggleHighlight),
-      formatStrikethrough: () => this.editor?.applyFormat(toggleStrikethrough),
-      formatHeading: () => this.editor?.applyFormat((md, start) => toggleHeading(md, start, 1)),
-      undo: () => this.editor?.undo(),
-      redo: () => this.editor?.redo(),
-      toggleSourceMode: () => this.toggleSourceMode(),
-      manualSave: () => void this.manualSave(),
+      dispatch: (event) => this.dispatch(event),
+      commandItems: () => this.filteredCommands(),
     };
   }
-}
-
-function saveConflict(
-  error: unknown,
-): Extract<ApiErrorResponse["error"], { code: "save_conflict" }> | null {
-  const response =
-    error instanceof Error && "response" in error
-      ? (error.response as ApiErrorResponse | null)
-      : null;
-  return response?.error.code === "save_conflict" ? response.error : null;
 }
 
 function uniqueNotePath(title: string, notes: Iterable<NoteMeta>): string {

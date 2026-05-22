@@ -10,8 +10,18 @@ import type {
   SessionTab,
 } from "./types.generated.ts";
 
+declare const appBrand: unique symbol;
+
+type AppBrand<T, Name extends string> = T & { readonly [appBrand]?: Name };
+export type NoteId = AppBrand<string, "NoteId">;
+export type VaultIndex = AppBrand<number, "VaultIndex">;
+export type ContentHash = AppBrand<string, "ContentHash">;
+export type RevisionEventId = AppBrand<number, "RevisionEventId">;
+export type ConflictDraftId = AppBrand<number, "ConflictDraftId">;
+export type AssetName = AppBrand<string, "AssetName">;
+
 export type Tab = {
-  noteId: string;
+  noteId: NoteId;
   title: string;
   path: string;
   doc: NoteDocument | null;
@@ -20,15 +30,9 @@ export type Tab = {
   saving: boolean;
   savePending: boolean;
   conflict: boolean;
-  conflictDraftId: number | null;
+  conflictDraftId: ConflictDraftId | null;
   cursorOffset: number | null;
   sourceMode: boolean;
-};
-
-export type Command = {
-  id: string;
-  label: string;
-  run: () => void | Promise<void>;
 };
 
 type NoteDialog =
@@ -45,13 +49,13 @@ type ContextMenuState = {
 
 export type State = {
   boot: BootstrapResponse | null;
-  vault: number;
+  vault: VaultIndex;
   notes: Map<string, NoteMeta>;
   pinned: Set<string>;
   recent: string[];
   tabs: Tab[];
   closedTabs: SessionTab[];
-  activeNoteId: string | null;
+  activeNoteId: NoteId | null;
   searchQuery: string;
   searchHits: SearchHit[] | null;
   searchOpen: boolean;
@@ -70,7 +74,7 @@ export type State = {
   readingMode: boolean;
 };
 
-export function createState(vault: number): State {
+export function createState(vault: VaultIndex): State {
   return {
     boot: null,
     vault,
@@ -141,6 +145,18 @@ export function tabFromDocument(document: NoteDocument): Tab {
     cursorOffset: null,
     sourceMode: false,
   };
+}
+
+export function loadedDocument(tab: Tab): NoteDocument | null {
+  return tab.doc;
+}
+
+export function loadedDraft(tab: Tab): string | null {
+  return tab.doc === null ? null : (tab.draft ?? tab.doc.content);
+}
+
+export function tabIsDirty(tab: Tab): boolean {
+  return tab.dirty;
 }
 
 export function normalizeMarkdownNewlines(markdown: string): string {

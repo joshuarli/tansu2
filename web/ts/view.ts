@@ -1,48 +1,19 @@
+import type { CommandItem, ViewEvent } from "./app/events.ts";
 import { button, el, span } from "./dom.ts";
 import { frontmatterSupportsTags } from "./markdown-tags.ts";
-import { activeTab, type Command, type State, type Tab } from "./state.ts";
+import {
+  activeTab,
+  loadedDocument,
+  loadedDraft,
+  tabIsDirty,
+  type State,
+  type Tab,
+} from "./state.ts";
 import type { SearchHit } from "./types.generated.ts";
 
 export type ViewActions = {
-  render: () => void;
-  switchVault: (index: number) => void;
-  updateSearch: () => void;
-  updateSearchOverlay: () => void;
-  commandCreate: () => void;
-  commandRename: (noteId?: string) => void;
-  commandDelete: (noteId?: string) => void;
-  commandPin: (noteId?: string) => void;
-  commandAddTag: () => void;
-  closeOverlays: () => void;
-  closeContextMenu: () => void;
-  openNoteContextMenu: (noteId: string, x: number, y: number) => void;
-  submitNoteDialog: (value?: string) => void;
-  saveSettings: (settings: {
-    excludedFoldersText: string;
-    autosaveDelayMs: number;
-    undoStackMax: number;
-    imageWebpQuality: number;
-  }) => void;
-  openRevisions: () => void;
-  selectRevision: (eventId: number) => void;
-  restoreSelectedRevision: () => void;
-  viewConflictDraft: () => void;
-  restoreConflictDraft: () => void;
-  filteredCommands: () => Command[];
-  activateTab: (noteId: string) => void;
-  closeTab: (noteId: string) => void;
-  openInTab: (noteId: string) => void;
-  updateActiveTags: (tags: string[]) => void;
-  toggleReadingMode: () => void;
-  formatBold: () => void;
-  formatItalic: () => void;
-  formatHighlight: () => void;
-  formatStrikethrough: () => void;
-  formatHeading: () => void;
-  undo: () => void;
-  redo: () => void;
-  toggleSourceMode: () => void;
-  manualSave: () => void;
+  dispatch: (event: ViewEvent) => void;
+  commandItems: () => CommandItem[];
 };
 
 export function renderApp(state: State, actions: ViewActions): Array<HTMLElement> {
@@ -60,7 +31,7 @@ export function renderLoading(): HTMLElement {
 export function renderStatusBar(state: State): HTMLElement {
   const active = activeTab(state);
   const text =
-    active === undefined ? "" : active.saving ? "Saving" : active.dirty ? "Unsaved" : "Saved";
+    active === undefined ? "" : active.saving ? "Saving" : tabIsDirty(active) ? "Unsaved" : "Saved";
   return el(
     "footer",
     "statusbar",
@@ -84,7 +55,7 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
   const vaultLabel = span(vaultSelect.selectedOptions[0]?.textContent ?? "", "vault-label");
   vaultSelect.addEventListener("change", () => {
     vaultLabel.textContent = vaultSelect.selectedOptions[0]?.textContent ?? "";
-    actions.switchVault(Number(vaultSelect.value));
+    actions.dispatch({ type: "vault.switch", index: Number(vaultSelect.value) });
   });
   const vaultOptions = el("div", "vault-options");
   const vaultControl = el("div", "vault-control", vaultLabel, vaultSelect, vaultOptions);
@@ -101,7 +72,7 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
         if (vault.index !== Number(vaultSelect.value)) {
           vaultSelect.value = String(vault.index);
           vaultLabel.textContent = vault.name;
-          actions.switchVault(vault.index);
+          actions.dispatch({ type: "vault.switch", index: vault.index });
         }
       },
       vault.index === state.vault ? "vault-option active" : "vault-option",
@@ -118,34 +89,28 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
   search.placeholder = "Search";
   search.value = state.searchQuery;
   search.addEventListener("input", () => {
-    state.searchQuery = search.value;
-    actions.updateSearch();
+    actions.dispatch({ type: "search.input", query: search.value });
   });
 
   const searchButton = button(
     "⌕",
     "Search notes",
-    () => {
-      state.searchOpen = true;
-      state.commandOpen = false;
-      state.searchOverlayQuery = state.searchQuery;
-      state.searchOverlayHits = state.searchHits;
-      actions.render();
-    },
+    () => actions.dispatch({ type: "search.open" }),
     "icon-button",
   );
-  const create = button("+", "New note", () => actions.commandCreate(), "icon-button");
+  const create = button(
+    "+",
+    "New note",
+    () => actions.dispatch({ type: "command.run", id: "create" }),
+    "icon-button",
+  );
   const read = toolButton(state.readingMode ? "eyeOff" : "eye", "Read", () =>
-    actions.toggleReadingMode(),
+    actions.dispatch({ type: "reading.toggle" }),
   );
   const palette = button(
     "⌘",
     "Commands",
-    () => {
-      state.commandOpen = true;
-      state.searchOpen = false;
-      actions.render();
-    },
+    () => actions.dispatch({ type: "command.open" }),
     "icon-button",
   );
   const controls = el("div", "sidebar-controls", searchButton, create, read, palette);
@@ -208,12 +173,17 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
     const tabEl = button(
       "",
       tab.title,
-      () => actions.activateTab(tab.noteId),
+      () => actions.dispatch({ type: "tab.activate", noteId: tab.noteId }),
       active ? "tab active" : "tab",
     );
     tabEl.addEventListener("contextmenu", (event) => {
       event.preventDefault();
-      actions.openNoteContextMenu(tab.noteId, event.clientX, event.clientY);
+      actions.dispatch({
+        type: "context.open",
+        noteId: tab.noteId,
+        x: event.clientX,
+        y: event.clientY,
+      });
     });
     const closeHint = span("x to close", "tab-close-tooltip");
     closeHint.setAttribute("aria-hidden", "true");
@@ -230,7 +200,7 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
   const workspace = el("section", "workspace");
   if (active === undefined) {
     workspace.append(emptyState(actions));
-  } else if (active.doc === null) {
+  } else if (loadedDocument(active) === null) {
     workspace.append(el("div", "loading", "Loading"));
   } else {
     const mount = el("div", "editor-mount");
@@ -255,13 +225,13 @@ function renderMain(state: State, actions: ViewActions): HTMLElement {
         button(
           "View draft",
           "View conflict draft",
-          () => actions.viewConflictDraft(),
+          () => actions.dispatch({ type: "conflict.view" }),
           "text-button",
         ),
         button(
           "Restore draft",
           "Restore conflict draft",
-          () => actions.restoreConflictDraft(),
+          () => actions.dispatch({ type: "conflict.restore" }),
           "text-button",
         ),
       );
@@ -277,15 +247,25 @@ function editorToolbar(actions: ViewActions): HTMLElement {
   return el(
     "div",
     "toolbar",
-    toolButton("bold", "Bold", () => actions.formatBold()),
-    toolButton("italic", "Italic", () => actions.formatItalic()),
-    toolButton("strikethrough", "Strikethrough", () => actions.formatStrikethrough()),
-    toolButton("highlight", "Highlight", () => actions.formatHighlight()),
-    toolButton("heading", "Heading", () => actions.formatHeading()),
-    toolButton("undo", "Undo", () => actions.undo()),
-    toolButton("redo", "Redo", () => actions.redo()),
-    toolButton("code", "Source", () => actions.toggleSourceMode()),
-    toolButton("save", "Save", () => actions.manualSave()),
+    toolButton("bold", "Bold", () => actions.dispatch({ type: "editor.toolbar", command: "bold" })),
+    toolButton("italic", "Italic", () =>
+      actions.dispatch({ type: "editor.toolbar", command: "italic" }),
+    ),
+    toolButton("strikethrough", "Strikethrough", () =>
+      actions.dispatch({ type: "editor.toolbar", command: "strikethrough" }),
+    ),
+    toolButton("highlight", "Highlight", () =>
+      actions.dispatch({ type: "editor.toolbar", command: "highlight" }),
+    ),
+    toolButton("heading", "Heading", () =>
+      actions.dispatch({ type: "editor.toolbar", command: "heading" }),
+    ),
+    toolButton("undo", "Undo", () => actions.dispatch({ type: "editor.toolbar", command: "undo" })),
+    toolButton("redo", "Redo", () => actions.dispatch({ type: "editor.toolbar", command: "redo" })),
+    toolButton("code", "Source", () =>
+      actions.dispatch({ type: "editor.toolbar", command: "source" }),
+    ),
+    toolButton("save", "Save", () => actions.dispatch({ type: "editor.toolbar", command: "save" })),
   );
 }
 
@@ -297,19 +277,15 @@ function renderOverlays(state: State, actions: ViewActions): HTMLElement {
     input.value = state.commandFilter;
     input.placeholder = "Command";
     input.addEventListener("input", () => {
-      state.commandFilter = input.value;
-      actions.render();
+      actions.dispatch({ type: "command.filter", query: input.value });
     });
     const list = el("div", "command-list");
-    for (const command of actions.filteredCommands()) {
+    for (const command of actions.commandItems()) {
       list.append(
         button(
           command.label,
           command.label,
-          () => {
-            state.commandOpen = false;
-            void command.run();
-          },
+          () => actions.dispatch({ type: "command.run", id: command.id }),
           "command-row",
         ),
       );
@@ -323,8 +299,7 @@ function renderOverlays(state: State, actions: ViewActions): HTMLElement {
     input.value = state.searchOverlayQuery;
     input.placeholder = "Search notes";
     input.addEventListener("input", () => {
-      state.searchOverlayQuery = input.value;
-      actions.updateSearchOverlay();
+      actions.dispatch({ type: "search.overlayInput", query: input.value });
     });
     const list = el("div", "command-list");
     if (state.searchOverlayQuery.trim() === "") {
@@ -366,7 +341,7 @@ function renderOverlays(state: State, actions: ViewActions): HTMLElement {
 
 function backdrop(actions: ViewActions): HTMLElement {
   const element = el("div", "overlay-backdrop");
-  element.addEventListener("click", () => actions.closeOverlays());
+  element.addEventListener("click", () => actions.dispatch({ type: "overlay.close" }));
   return element;
 }
 
@@ -377,7 +352,7 @@ function renderRevisionsPanel(state: State, actions: ViewActions): HTMLElement {
       button(
         `${revision.kind}  seq ${revision.seq}`,
         `Revision ${revision.eventId}`,
-        () => actions.selectRevision(revision.eventId),
+        () => actions.dispatch({ type: "revisions.select", eventId: revision.eventId }),
         state.revisionDocument?.revision.eventId === revision.eventId
           ? "revision-row active"
           : "revision-row",
@@ -385,7 +360,7 @@ function renderRevisionsPanel(state: State, actions: ViewActions): HTMLElement {
     );
   }
   const active = activeTab(state);
-  const current = active?.draft ?? active?.doc?.content ?? "";
+  const current = active === undefined ? "" : (loadedDraft(active) ?? "");
   const preview =
     state.revisionDocument === null
       ? el("div", "empty-panel", "Select a revision")
@@ -397,7 +372,7 @@ function renderRevisionsPanel(state: State, actions: ViewActions): HTMLElement {
       "div",
       "modal-header",
       span("Revisions"),
-      button("×", "Close", () => actions.closeOverlays(), "tab-close"),
+      button("×", "Close", () => actions.dispatch({ type: "overlay.close" }), "tab-close"),
     ),
     el("div", "revision-body", list, preview),
     el(
@@ -406,7 +381,7 @@ function renderRevisionsPanel(state: State, actions: ViewActions): HTMLElement {
       button(
         "Restore",
         "Restore selected revision",
-        () => actions.restoreSelectedRevision(),
+        () => actions.dispatch({ type: "revisions.restore" }),
         "primary-button",
       ),
     ),
@@ -422,7 +397,7 @@ function renderConflictPanel(state: State, actions: ViewActions): HTMLElement {
       "div",
       "modal-header",
       span("Conflict Draft"),
-      button("×", "Close", () => actions.closeOverlays(), "tab-close"),
+      button("×", "Close", () => actions.dispatch({ type: "overlay.close" }), "tab-close"),
     ),
     el("pre", "diff-preview", draft?.content ?? ""),
     el(
@@ -431,7 +406,7 @@ function renderConflictPanel(state: State, actions: ViewActions): HTMLElement {
       button(
         "Restore Draft",
         "Restore conflict draft",
-        () => actions.restoreConflictDraft(),
+        () => actions.dispatch({ type: "conflict.restore" }),
         "primary-button",
       ),
     ),
@@ -458,7 +433,7 @@ function renderSettingsPanel(state: State, actions: ViewActions): HTMLElement {
       "div",
       "modal-header",
       span("Settings"),
-      button("×", "Close", () => actions.closeOverlays(), "tab-close"),
+      button("×", "Close", () => actions.dispatch({ type: "overlay.close" }), "tab-close"),
     ),
     el("label", "field-label", span("Excluded folders"), excluded),
     el("label", "field-label", span("Autosave delay ms"), autosave),
@@ -471,11 +446,14 @@ function renderSettingsPanel(state: State, actions: ViewActions): HTMLElement {
         "Save",
         "Save settings",
         () => {
-          actions.saveSettings({
-            excludedFoldersText: excluded.value,
-            autosaveDelayMs: Number(autosave.value),
-            undoStackMax: Number(undo.value),
-            imageWebpQuality: Number(quality.value),
+          actions.dispatch({
+            type: "settings.submit",
+            settings: {
+              excludedFoldersText: excluded.value,
+              autosaveDelayMs: Number(autosave.value),
+              undoStackMax: Number(undo.value),
+              imageWebpQuality: Number(quality.value),
+            },
           });
         },
         "primary-button",
@@ -506,7 +484,7 @@ function renderNoteDialog(state: State, actions: ViewActions): HTMLElement {
       "div",
       "modal-header",
       span(title),
-      button("×", "Close", () => actions.closeOverlays(), "tab-close"),
+      button("×", "Close", () => actions.dispatch({ type: "overlay.close" }), "tab-close"),
     ),
   );
   if (isDelete) {
@@ -516,35 +494,46 @@ function renderNoteDialog(state: State, actions: ViewActions): HTMLElement {
       el(
         "div",
         "modal-actions",
-        button("Cancel", "Cancel", () => actions.closeOverlays(), "text-button"),
-        button("Delete", "Delete note", () => actions.submitNoteDialog(), "danger-button"),
+        button(
+          "Cancel",
+          "Cancel",
+          () => actions.dispatch({ type: "overlay.close" }),
+          "text-button",
+        ),
+        button(
+          "Delete",
+          "Delete note",
+          () => actions.dispatch({ type: "dialog.submit" }),
+          "danger-button",
+        ),
       ),
     );
   } else if (inputEl !== null) {
     inputEl.addEventListener("input", () => {
-      if (state.noteDialog?.kind === "create" || state.noteDialog?.kind === "rename") {
-        state.noteDialog.title = inputEl.value;
-      } else if (state.noteDialog?.kind === "tag") {
-        state.noteDialog.value = inputEl.value;
-      }
+      actions.dispatch({ type: "dialog.input", value: inputEl.value });
     });
     panel.append(
       el("label", "field-label", span(dialog?.kind === "tag" ? "Tag" : "Title"), inputEl),
       el(
         "div",
         "modal-actions",
-        button("Cancel", "Cancel", () => actions.closeOverlays(), "text-button"),
+        button(
+          "Cancel",
+          "Cancel",
+          () => actions.dispatch({ type: "overlay.close" }),
+          "text-button",
+        ),
         button(
           dialog?.kind === "create" ? "Create" : dialog?.kind === "rename" ? "Rename" : "Add",
           title,
-          () => actions.submitNoteDialog(inputEl.value),
+          () => actions.dispatch({ type: "dialog.submit", value: inputEl.value }),
           "primary-button",
         ),
       ),
     );
     panel.addEventListener("submit", (event) => {
       event.preventDefault();
-      actions.submitNoteDialog(inputEl.value);
+      actions.dispatch({ type: "dialog.submit", value: inputEl.value });
     });
     queueMicrotask(() => inputEl.focus());
   }
@@ -565,8 +554,8 @@ function renderContextMenu(state: State, actions: ViewActions): HTMLElement {
       "Rename",
       "Rename note",
       () => {
-        actions.commandRename(context.noteId);
-        actions.closeContextMenu();
+        actions.dispatch({ type: "note.rename", noteId: context.noteId });
+        actions.dispatch({ type: "context.close" });
       },
       "context-menu-item",
     ),
@@ -574,8 +563,8 @@ function renderContextMenu(state: State, actions: ViewActions): HTMLElement {
       pinned ? "Unpin" : "Pin",
       pinned ? "Unpin note" : "Pin note",
       () => {
-        actions.commandPin(context.noteId);
-        actions.closeContextMenu();
+        actions.dispatch({ type: "note.pin", noteId: context.noteId });
+        actions.dispatch({ type: "context.close" });
       },
       "context-menu-item",
     ),
@@ -583,8 +572,8 @@ function renderContextMenu(state: State, actions: ViewActions): HTMLElement {
       "Delete",
       "Delete note",
       () => {
-        actions.commandDelete(context.noteId);
-        actions.closeContextMenu();
+        actions.dispatch({ type: "note.delete", noteId: context.noteId });
+        actions.dispatch({ type: "context.close" });
       },
       "context-menu-item danger",
     ),
@@ -602,8 +591,8 @@ function searchNoteRow(
     "",
     path,
     () => {
-      actions.closeOverlays();
-      actions.openInTab(noteId);
+      actions.dispatch({ type: "overlay.close" });
+      actions.dispatch({ type: "note.open", noteId });
     },
     "command-row search-result-row",
   );
@@ -697,7 +686,12 @@ function emptyState(actions: ViewActions): HTMLElement {
     "div",
     "empty-state",
     el("div", "empty-title", "No note selected"),
-    button("New note", "New note", () => actions.commandCreate(), "primary-button"),
+    button(
+      "New note",
+      "New note",
+      () => actions.dispatch({ type: "command.run", id: "create" }),
+      "primary-button",
+    ),
   );
 }
 
@@ -712,14 +706,22 @@ function renderTagRow(tab: Tab, actions: ViewActions, readonly = false): HTMLEle
       `#${tag} x`,
       `Remove ${tag}`,
       () => {
-        actions.updateActiveTags(tab.doc?.meta.tags.filter((item) => item !== tag) ?? []);
+        actions.dispatch({
+          type: "tags.update",
+          tags: tab.doc?.meta.tags.filter((item) => item !== tag) ?? [],
+        });
       },
       "tag",
     );
     tagButton.disabled = readonly || !supported;
     row.append(tagButton);
   }
-  const add = button("+ tag", "Add tag", () => actions.commandAddTag(), "tag tag-add");
+  const add = button(
+    "+ tag",
+    "Add tag",
+    () => actions.dispatch({ type: "note.addTag" }),
+    "tag tag-add",
+  );
   add.disabled = readonly || !supported;
   if (!readonly) {
     row.append(add);
@@ -745,12 +747,17 @@ function noteList(state: State, ids: string[], actions: ViewActions): HTMLElemen
     const row = button(
       note.title,
       note.path,
-      () => actions.openInTab(note.noteId),
+      () => actions.dispatch({ type: "note.open", noteId: note.noteId }),
       state.activeNoteId === note.noteId ? "note-row active" : "note-row",
     );
     row.addEventListener("contextmenu", (event) => {
       event.preventDefault();
-      actions.openNoteContextMenu(note.noteId, event.clientX, event.clientY);
+      actions.dispatch({
+        type: "context.open",
+        noteId: note.noteId,
+        x: event.clientX,
+        y: event.clientY,
+      });
     });
     list.append(row);
   }
@@ -773,7 +780,7 @@ function closeButton(noteId: string, actions: ViewActions, beforeClose?: () => v
     (event) => {
       event.stopPropagation();
       beforeClose?.();
-      actions.closeTab(noteId);
+      actions.dispatch({ type: "tab.close", noteId });
     },
     "tab-close",
   );
@@ -813,7 +820,7 @@ function bindTabCloseHint(
     event.preventDefault();
     event.stopPropagation();
     hideCloseHint();
-    actions.closeTab(noteId);
+    actions.dispatch({ type: "tab.close", noteId });
   }
   tabEl.addEventListener("mouseenter", (event) => {
     document.body.append(closeHint);

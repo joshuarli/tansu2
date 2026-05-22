@@ -82,9 +82,12 @@ export type EditorHandle = {
   undo(): void;
   redo(): void;
   toggleSourceMode(): void;
+  setReadOnly(readonly: boolean): void;
+  containsEditableTarget(target: EventTarget | null): boolean;
   focus(): void;
   setConfig(partial: Partial<EditorConfig>): void;
   readonly isSourceMode: boolean;
+  readonly isReadOnly: boolean;
   readonly contentEl: HTMLElement;
   readonly sourceEl: HTMLTextAreaElement;
   destroy(): void;
@@ -1708,6 +1711,23 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     restoreDomSelectionFromModel();
   }
 
+  function setReadOnly(readonly: boolean): void {
+    contentEl.contentEditable = readonly ? "false" : "true";
+    sourceEl.readOnly = readonly;
+    if (readonly) {
+      contentEl.setAttribute("aria-readonly", "true");
+    } else {
+      contentEl.removeAttribute("aria-readonly");
+    }
+  }
+
+  function containsEditableTarget(target: EventTarget | null): boolean {
+    if (!(target instanceof Node)) {
+      return false;
+    }
+    return contentEl.contains(target) || sourceEl.contains(target);
+  }
+
   function destroy(): void {
     undoController.destroy();
     contentEl.removeEventListener("keydown", onKeyDown);
@@ -1745,10 +1765,15 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     undo,
     redo,
     toggleSourceMode: sourceModeController.toggleSourceMode,
+    setReadOnly,
+    containsEditableTarget,
     focus,
     setConfig,
     get isSourceMode() {
       return _isSourceMode;
+    },
+    get isReadOnly() {
+      return contentEl.contentEditable === "false";
     },
     contentEl,
     sourceEl,

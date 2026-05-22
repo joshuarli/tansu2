@@ -1,4 +1,5 @@
-import { createState, tabFromDocument, tabFromMeta, type Command, type State } from "./state.ts";
+import type { CommandItem, ViewEvent } from "./app/events.ts";
+import { createState, tabFromDocument, tabFromMeta, type State } from "./state.ts";
 import type { BootstrapResponse, NoteMeta, RevisionMeta } from "./types.generated.ts";
 import { renderApp, renderLoading, renderStatusBar, type ViewActions } from "./view.ts";
 
@@ -77,17 +78,17 @@ describe("view rendering", () => {
     root.querySelector<HTMLButtonElement>('[title="Rename note"]')!.click();
     root.querySelector<HTMLButtonElement>('[title="Delete note"]')!.click();
 
-    expect(actions.switchVault).toHaveBeenCalledWith(0);
-    expect(actions.updateSearch).toHaveBeenCalled();
-    expect(actions.render).toHaveBeenCalled();
-    expect(actions.commandCreate).toHaveBeenCalled();
-    expect(actions.closeTab).toHaveBeenCalledWith("n2");
-    expect(actions.activateTab).toHaveBeenCalledWith("n2");
-    expect(actions.openNoteContextMenu).toHaveBeenCalledWith("n1", 3, 4);
-    expect(actions.updateActiveTags).toHaveBeenCalledWith([]);
-    expect(actions.commandPin).toHaveBeenCalledWith("n1");
-    expect(actions.toggleReadingMode).toHaveBeenCalled();
-    expect(actions.formatBold).toHaveBeenCalled();
+    expectDispatched(actions, { type: "vault.switch", index: 0 });
+    expectDispatched(actions, { type: "search.input", query: "alpha" });
+    expectDispatched(actions, { type: "search.open" });
+    expectDispatched(actions, { type: "command.run", id: "create" });
+    expectDispatched(actions, { type: "tab.close", noteId: "n2" });
+    expectDispatched(actions, { type: "tab.activate", noteId: "n2" });
+    expectDispatched(actions, { type: "context.open", noteId: "n1", x: 3, y: 4 });
+    expectDispatched(actions, { type: "tags.update", tags: [] });
+    expectDispatched(actions, { type: "note.pin", noteId: "n1" });
+    expectDispatched(actions, { type: "reading.toggle" });
+    expectDispatched(actions, { type: "editor.toolbar", command: "bold" });
     expect(root.textContent).toContain("Save conflict");
   });
 
@@ -108,7 +109,7 @@ describe("view rendering", () => {
     expect([...vaultOptions].map((option) => option.textContent)).toEqual(["Work"]);
 
     vaultOptions[0]!.click();
-    expect(actions.switchVault).toHaveBeenCalledWith(1);
+    expectDispatched(actions, { type: "vault.switch", index: 1 });
     expect(root.querySelector<HTMLElement>(".vault-label")!.textContent).toBe("Work");
     expect(vaultControl.classList.contains("open")).toBe(false);
   });
@@ -127,7 +128,7 @@ describe("view rendering", () => {
     expect(root.querySelector(".editor-meta")).not.toBeNull();
     expect(root.querySelector(".tag-row")).not.toBeNull();
     root.querySelector<HTMLButtonElement>('[title="Read"]')!.click();
-    expect(actions.toggleReadingMode).toHaveBeenCalled();
+    expectDispatched(actions, { type: "reading.toggle" });
   });
 
   it("shows tab close hint and captures x before editor key handlers", () => {
@@ -158,10 +159,10 @@ describe("view rendering", () => {
       expect(hint.style.top).toBe("34px");
 
       root.querySelector<HTMLButtonElement>(".tab-close")!.click();
-      expect(actions.closeTab).toHaveBeenCalledWith("n1");
+      expectDispatched(actions, { type: "tab.close", noteId: "n1" });
       expect(hint.parentElement).toBeNull();
       expect(hint.classList.contains("visible")).toBe(false);
-      actions.closeTab.mockClear();
+      actions.dispatch.mockClear();
 
       tab.dispatchEvent(new MouseEvent("mouseenter", { clientX: 112, clientY: 18 }));
       const closeEvent = new KeyboardEvent("keydown", {
@@ -170,7 +171,7 @@ describe("view rendering", () => {
         cancelable: true,
       });
       editor.dispatchEvent(closeEvent);
-      expect(actions.closeTab).toHaveBeenCalledWith("n1");
+      expectDispatched(actions, { type: "tab.close", noteId: "n1" });
       expect(closeEvent.defaultPrevented).toBe(true);
       expect(editorKeydown).not.toHaveBeenCalled();
     } finally {
@@ -234,15 +235,23 @@ describe("view rendering", () => {
     expect(root.textContent).toContain("Settings");
     expect(root.textContent).toContain("Conflict Draft");
     expect(root.textContent).toContain("Saved");
-    expect(actions.filteredCommands).toHaveBeenCalled();
-    expect(actions.updateSearchOverlay).toHaveBeenCalled();
-    expect(actions.openInTab).toHaveBeenCalledWith("n1");
-    expect(actions.selectRevision).toHaveBeenCalledWith(7);
-    expect(actions.restoreSelectedRevision).toHaveBeenCalled();
-    expect(actions.saveSettings).toHaveBeenCalled();
-    expect(actions.restoreConflictDraft).toHaveBeenCalled();
-    expect(actions.submitNoteDialog).toHaveBeenCalledWith("One");
-    expect(actions.closeOverlays).toHaveBeenCalled();
+    expect(actions.commandItems).toHaveBeenCalled();
+    expectDispatched(actions, { type: "search.overlayInput", query: "beta" });
+    expectDispatched(actions, { type: "note.open", noteId: "n1" });
+    expectDispatched(actions, { type: "revisions.select", eventId: 7 });
+    expectDispatched(actions, { type: "revisions.restore" });
+    expectDispatched(actions, {
+      type: "settings.submit",
+      settings: {
+        excludedFoldersText: "node_modules",
+        autosaveDelayMs: 900,
+        undoStackMax: 100,
+        imageWebpQuality: 0.8,
+      },
+    });
+    expectDispatched(actions, { type: "conflict.restore" });
+    expectDispatched(actions, { type: "dialog.submit", value: "One" });
+    expectDispatched(actions, { type: "overlay.close" });
   });
 
   it("renders empty search and delete/tag dialogs", () => {
@@ -255,8 +264,8 @@ describe("view rendering", () => {
     let root = render(state, actions);
     root.querySelector<HTMLButtonElement>(".search-result-row")!.click();
     root.querySelector<HTMLButtonElement>(".danger-button")!.click();
-    expect(actions.openInTab).toHaveBeenCalledWith("n1");
-    expect(actions.submitNoteDialog).toHaveBeenCalledWith();
+    expectDispatched(actions, { type: "note.open", noteId: "n1" });
+    expectDispatched(actions, { type: "dialog.submit" });
 
     state.noteDialog = { kind: "tag", value: "" };
     actions = actionSpies();
@@ -264,7 +273,7 @@ describe("view rendering", () => {
     root
       .querySelector<HTMLFormElement>(".note-dialog-panel")!
       .dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-    expect(actions.submitNoteDialog).toHaveBeenCalledWith("");
+    expectDispatched(actions, { type: "dialog.submit", value: "" });
   });
 });
 
@@ -274,45 +283,22 @@ function render(state: State, actions = actionSpies()): HTMLElement {
   return root;
 }
 
-function actionSpies(): ViewActions & { [K in keyof ViewActions]: ReturnType<typeof vi.fn> } {
-  const commands: Command[] = [{ id: "save", label: "Save note", run: vi.fn() }];
+type ViewActionSpies = ViewActions & {
+  dispatch: ReturnType<typeof vi.fn>;
+  commandItems: ReturnType<typeof vi.fn>;
+};
+
+function actionSpies(): ViewActionSpies {
+  const commands: CommandItem[] = [{ id: "save", label: "Save note" }];
   const actions = {
-    render: vi.fn(),
-    switchVault: vi.fn(),
-    updateSearch: vi.fn(),
-    updateSearchOverlay: vi.fn(),
-    commandCreate: vi.fn(),
-    commandRename: vi.fn(),
-    commandDelete: vi.fn(),
-    commandPin: vi.fn(),
-    commandAddTag: vi.fn(),
-    closeOverlays: vi.fn(),
-    closeContextMenu: vi.fn(),
-    openNoteContextMenu: vi.fn(),
-    submitNoteDialog: vi.fn(),
-    saveSettings: vi.fn(),
-    openRevisions: vi.fn(),
-    selectRevision: vi.fn(),
-    restoreSelectedRevision: vi.fn(),
-    viewConflictDraft: vi.fn(),
-    restoreConflictDraft: vi.fn(),
-    filteredCommands: vi.fn(() => commands),
-    activateTab: vi.fn(),
-    closeTab: vi.fn(),
-    openInTab: vi.fn(),
-    updateActiveTags: vi.fn(),
-    toggleReadingMode: vi.fn(),
-    formatBold: vi.fn(),
-    formatItalic: vi.fn(),
-    formatHighlight: vi.fn(),
-    formatStrikethrough: vi.fn(),
-    formatHeading: vi.fn(),
-    undo: vi.fn(),
-    redo: vi.fn(),
-    toggleSourceMode: vi.fn(),
-    manualSave: vi.fn(),
+    dispatch: vi.fn(),
+    commandItems: vi.fn(() => commands),
   };
-  return actions as unknown as ViewActions & { [K in keyof ViewActions]: ReturnType<typeof vi.fn> };
+  return actions;
+}
+
+function expectDispatched(actions: ViewActionSpies, event: ViewEvent): void {
+  expect(actions.dispatch).toHaveBeenCalledWith(event);
 }
 
 function baseState(): State {
