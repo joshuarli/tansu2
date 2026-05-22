@@ -120,6 +120,9 @@ describe("editor model", () => {
       "list",
     ]);
     expect(doc.blocks.byLine[4]?.role).toBe("blank");
+    expect(doc.blocks.byLine[1]?.blankRole).toBe("separator");
+    expect(doc.blocks.byLine[3]?.blankRole).toBe("separator");
+    expect(doc.blocks.byLine[4]?.blankRole).toBe("editable");
     expect(doc.blocks.byLine[6]?.role).toBe("continuation");
     expect(doc.blocks.byLine[11]?.role).toBe("continuation");
   });

@@ -225,10 +225,12 @@ describe("createEditor", () => {
     const blank = handle.contentEl.querySelector('[data-md-blank="true"]');
     expect(blank).toBeInstanceOf(HTMLElement);
     expect((blank as HTMLElement).hidden).toBe(false);
+    expect((blank as HTMLElement).dataset["mdBlankRole"]).toBe("separator");
+    expect((blank as HTMLElement).contentEditable).toBe("false");
     handle.destroy();
   });
 
-  it("routes beforeinput in a blank line placeholder through the model", () => {
+  it("blocks beforeinput in a structural blank separator", () => {
     const handle = createEditor(container);
     handle.setValue("foo\n\nbar");
     const blank = handle.contentEl.querySelector('[data-md-blank="true"]')!;
@@ -248,7 +250,31 @@ describe("createEditor", () => {
 
     expect(dispatched).toBe(false);
     expect(event.defaultPrevented).toBe(true);
-    expect(handle.getValue()).toBe("foo\nx\nbar");
+    expect(handle.getValue()).toBe("foo\n\nbar");
+    handle.destroy();
+  });
+
+  it("routes beforeinput in repeated editable blank lines through the model", () => {
+    const handle = createEditor(container);
+    handle.setValue("foo\n\n\nbar");
+    const blank = handle.contentEl.querySelector('[data-md-blank-role="editable"]')!;
+    const range = document.createRange();
+    range.selectNodeContents(blank);
+    range.collapse(true);
+    window.getSelection()!.removeAllRanges();
+    window.getSelection()!.addRange(range);
+
+    const event = new InputEvent("beforeinput", {
+      bubbles: true,
+      cancelable: true,
+      inputType: "insertText",
+      data: "x",
+    });
+    const dispatched = handle.contentEl.dispatchEvent(event);
+
+    expect(dispatched).toBe(false);
+    expect(event.defaultPrevented).toBe(true);
+    expect(handle.getValue()).toBe("foo\n\nx\nbar");
     handle.destroy();
   });
 

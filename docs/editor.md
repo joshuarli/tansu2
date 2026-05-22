@@ -95,10 +95,12 @@ renderer replaces the affected modeled line and then rebuilds metadata from the
 new DOM. Ordinary typing does not render the document: the browser mutates the
 active line host and the editor reconciles that one host back into the model.
 
-Blank Markdown lines render as `data-md-blank="true"` lanes. Blank separators
-between content blocks are visible so `foo\n\nbar` has a real editable visual
-gap. Leading/trailing single blank cursor lines may be hidden until active, and
-hidden blank lanes are still model lines that serialize through `docToMarkdown`.
+Blank Markdown lines render as `data-md-blank="true"` lanes. A single blank line
+between two content blocks is a structural separator and is not editable.
+Repeated blank lines keep the first blank as the structural separator and make
+the additional blank lanes editable. Leading/trailing single blank cursor lines
+may be hidden until active, and hidden blank lanes are still model lines that
+serialize through `docToMarkdown`.
 
 ## Input
 

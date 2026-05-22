@@ -66,6 +66,12 @@ function annotateBlockElement(el: HTMLElement, block: EditorBlock): void {
 function annotateLineElement(el: HTMLElement, doc: EditorDoc, line: number): void {
   el.dataset["mdLineId"] = doc.lines[line]!.id;
   el.dataset["mdLineIndex"] = String(line);
+  const blockRef = doc.blocks.byLine[line];
+  if (blockRef?.role === "blank") {
+    el.dataset["mdBlankRole"] = blockRef.blankRole ?? "editable";
+  } else {
+    delete el.dataset["mdBlankRole"];
+  }
   const text = doc.lines[line]!.text;
   const listMatch = text.match(/^([ \t]*([-*+]|\d+\.)(?: \[[ xX]\])?\s)(.*)$/);
   const headingMatch = text.match(/^(#{1,6}\s+)(.*)$/);

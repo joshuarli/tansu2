@@ -121,6 +121,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     ensureEmptyParagraphPlaceholder,
     getBlankLineBlock,
     isBlankLineElement,
+    isEditableBlankLineElement,
     isVisibleContentBlock,
     hideBlankLine,
     showBlankLine,
@@ -221,6 +222,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       return;
     }
     delete host.dataset["mdBlank"];
+    delete host.dataset["mdBlankRole"];
     host.hidden = false;
     host.setAttribute("contenteditable", "true");
     if (!host.querySelector("br") && (host.textContent ?? "") === "") {
@@ -365,6 +367,9 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     const clampedColumn = Math.min(Math.max(0, pos.column), line.text.length);
     if (line.text === "" || (host.textContent ?? "").replaceAll("​", "") === "") {
       if (isBlankLineElement(host)) {
+        if (!isEditableBlankLineElement(host)) {
+          return domPointNearStructuralBlankLine(host);
+        }
         showActiveBlankLine(host);
       }
       ensureEmptyParagraphPlaceholder(host);
@@ -383,6 +388,19 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       visualOffset += 1;
     }
     return domPointFromVisualOffset(host, visualOffset);
+  }
+
+  function domPointNearStructuralBlankLine(blank: HTMLElement): { node: Node; offset: number } {
+    const next = getNextElementSibling(blank);
+    if (next && next.dataset["mdBlank"] !== "true") {
+      return { node: next, offset: 0 };
+    }
+    const previous = getPrevElementSibling(blank);
+    if (previous && previous.dataset["mdBlank"] !== "true") {
+      const handle = hostDirectHandle(previous);
+      return { node: previous, offset: handle ? childOffset(handle) : previous.childNodes.length };
+    }
+    return { node: contentEl, offset: childOffset(blank) };
   }
 
   function domPointFromSourceSpan(
@@ -470,6 +488,9 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     );
     const lineIndex = Number(host.dataset["mdLineIndex"]);
     if (!Number.isInteger(lineIndex)) return false;
+    if (blockKind === "blank" && !isEditableBlankModelLine(lineIndex)) {
+      return false;
+    }
     if (hasRichInline) {
       return syncActiveSourceSpanFromDom(host, lineIndex, range);
     }
@@ -539,6 +560,9 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       return false;
     }
     if (state.doc.lines[anchor.line]?.text !== "") {
+      return false;
+    }
+    if (!isEditableBlankModelLine(anchor.line)) {
       return false;
     }
     if (shouldKeepMarkerInputPlain(text)) {
@@ -630,6 +654,7 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     }
     host.hidden = false;
     delete host.dataset["mdBlank"];
+    delete host.dataset["mdBlankRole"];
     delete host.dataset["mdLineContentStart"];
     host.dataset["mdLineId"] = line.id;
     host.dataset["mdLineIndex"] = String(lineIndex);
@@ -707,6 +732,11 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
 
   function getValue(): string {
     return _isSourceMode ? normalizeMarkdownNewlines(sourceEl.value) : currentMarkdown();
+  }
+
+  function isEditableBlankModelLine(line: number): boolean {
+    const blockRef = state.doc.blocks.byLine[line];
+    return blockRef?.role === "blank" && blockRef.blankRole !== "separator";
   }
 
   function getSnapshot(): EditorSnapshot {
@@ -938,7 +968,11 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     }
 
     if (isBlankLineElement(activeBlock)) {
-      showActiveBlankLine(activeBlock);
+      if (isEditableBlankLineElement(activeBlock)) {
+        showActiveBlankLine(activeBlock);
+      } else {
+        placeCursorNearBlankLine(activeBlock);
+      }
       return;
     }
 
@@ -966,18 +1000,33 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   }
 
   function placeCursorNearBlankLine(blank: HTMLElement): void {
+    if (isEditableBlankLineElement(blank)) {
+      showActiveBlankLine(blank);
+      placeCursorAtBlockStart(blank);
+      return;
+    }
+    const nextEditable = getNextElementSibling(blank);
+    if (isEditableBlankLineElement(nextEditable)) {
+      showActiveBlankLine(nextEditable);
+      placeCursorAtBlockStart(nextEditable);
+      return;
+    }
     const next = getNextElementSibling(blank);
-    if (next) {
+    if (next && !isBlankLineElement(next)) {
       placeCursorAtBlockStart(next);
       return;
     }
+    const previousEditable = getPrevElementSibling(blank);
+    if (isEditableBlankLineElement(previousEditable)) {
+      showActiveBlankLine(previousEditable);
+      placeCursorAtBlockEnd(previousEditable);
+      return;
+    }
     const previous = getPrevElementSibling(blank);
-    if (previous) {
+    if (previous && !isBlankLineElement(previous)) {
       placeCursorAtBlockEnd(previous);
       return;
     }
-    showActiveBlankLine(blank);
-    placeCursorAtBlockStart(blank);
   }
 
   function getListItemBlock(node: Node): HTMLElement | null {
@@ -1073,7 +1122,39 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
     );
   }
 
-  function moveCursorIntoBlankLine(blank: HTMLElement, activeEmpty?: HTMLElement): void {
+  function moveCursorIntoBlankLine(
+    blank: HTMLElement,
+    activeEmpty?: HTMLElement,
+    direction?: "previous" | "next",
+  ): void {
+    if (!isEditableBlankLineElement(blank)) {
+      if (direction === "next") {
+        const next = getNextElementSibling(blank);
+        if (isEditableBlankLineElement(next)) {
+          showActiveBlankLine(next);
+          placeCursorAtBlockStart(next);
+          return;
+        }
+        if (next && !isBlankLineElement(next)) {
+          placeCursorAtBlockStart(next);
+          return;
+        }
+      }
+      if (direction === "previous") {
+        const previous = getPrevElementSibling(blank);
+        if (isEditableBlankLineElement(previous)) {
+          showActiveBlankLine(previous);
+          placeCursorAtBlockEnd(previous);
+          return;
+        }
+        if (previous && !isBlankLineElement(previous)) {
+          placeCursorAtBlockEnd(previous);
+          return;
+        }
+      }
+      placeCursorNearBlankLine(blank);
+      return;
+    }
     if (activeEmpty) {
       activeEmpty.replaceWith(createBlankLineSpacer());
     }
@@ -1109,12 +1190,17 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       moveCursorIntoBlankLine(
         previous,
         isEmptyParagraphBlock(activeBlock) ? activeBlock : undefined,
+        "previous",
       );
       return true;
     }
     if (e.key === "ArrowDown" && isBlankLineElement(next)) {
       e.preventDefault();
-      moveCursorIntoBlankLine(next, isEmptyParagraphBlock(activeBlock) ? activeBlock : undefined);
+      moveCursorIntoBlankLine(
+        next,
+        isEmptyParagraphBlock(activeBlock) ? activeBlock : undefined,
+        "next",
+      );
       return true;
     }
     return false;
@@ -1360,6 +1446,9 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
       return false;
     }
     if (state.doc.lines[anchor.line]?.text !== "") {
+      return false;
+    }
+    if (!isEditableBlankModelLine(anchor.line)) {
       return false;
     }
     return commitStructuralTransaction(replaceLine(state, anchor.line, text));

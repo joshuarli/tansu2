@@ -20,6 +20,8 @@ type EditorLine = {
   text: string;
 };
 
+export type BlankLineRole = "separator" | "editable";
+
 export type LogicalPosition = {
   line: number;
   column: number;
@@ -67,6 +69,7 @@ export type EditorBlock = {
 type EditorBlockRef = {
   blockId: string;
   role: "content" | "blank" | "continuation";
+  blankRole?: BlankLineRole;
 };
 
 export type TransactionResult = {
@@ -429,7 +432,13 @@ function deriveBlockIndex(lines: readonly EditorLine[]): BlockIndex {
   const byId = new Map<string, EditorBlock>();
   const byLine: EditorBlockRef[] = [];
 
-  function addBlock(kind: BlockKind, startLine: number, endLine: number, editable = true): void {
+  function addBlock(
+    kind: BlockKind,
+    startLine: number,
+    endLine: number,
+    editable = true,
+    blankRoles: readonly BlankLineRole[] = [],
+  ): void {
     const block: EditorBlock = {
       id: createId("block"),
       kind,
@@ -440,10 +449,15 @@ function deriveBlockIndex(lines: readonly EditorLine[]): BlockIndex {
     blocks.push(block);
     byId.set(block.id, block);
     for (let line = startLine; line < endLine; line++) {
-      byLine[line] = {
+      const role = kind === "blank" ? "blank" : line === startLine ? "content" : "continuation";
+      const ref: EditorBlockRef = {
         blockId: block.id,
-        role: kind === "blank" ? "blank" : line === startLine ? "content" : "continuation",
+        role,
       };
+      if (role === "blank") {
+        ref.blankRole = blankRoles[line - startLine] ?? "editable";
+      }
+      byLine[line] = ref;
     }
   }
 
@@ -455,7 +469,7 @@ function deriveBlockIndex(lines: readonly EditorLine[]): BlockIndex {
       while (i < lines.length && lines[i]!.text.trim() === "") {
         i += 1;
       }
-      addBlock("blank", start, i);
+      addBlock("blank", start, i, true, classifyBlankRun(lines, start, i));
       continue;
     }
 
@@ -529,6 +543,23 @@ function deriveBlockIndex(lines: readonly EditorLine[]): BlockIndex {
   }
 
   return { blocks, byId, byLine };
+}
+
+function classifyBlankRun(
+  lines: readonly EditorLine[],
+  startLine: number,
+  endLine: number,
+): BlankLineRole[] {
+  const roles = new Array<BlankLineRole>(endLine - startLine).fill("editable");
+  const betweenContent =
+    startLine > 0 &&
+    endLine < lines.length &&
+    lines[startLine - 1]!.text.trim() !== "" &&
+    lines[endLine]!.text.trim() !== "";
+  if (betweenContent && roles.length > 0) {
+    roles[0] = "separator";
+  }
+  return roles;
 }
 
 function isListStart(line: string): boolean {

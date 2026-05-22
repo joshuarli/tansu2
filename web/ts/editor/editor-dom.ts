@@ -153,6 +153,7 @@ export function createEditorDomHelpers(contentEl: HTMLElement): {
   ensureEmptyParagraphPlaceholder(block: HTMLElement): void;
   getBlankLineBlock(node: Node | null): HTMLElement | null;
   isBlankLineElement(el: Element | null): el is HTMLElement;
+  isEditableBlankLineElement(el: Element | null): el is HTMLElement;
   isVisibleContentBlock(el: Element | null): boolean;
   hideBlankLine(blank: HTMLElement): void;
   showBlankLine(blank: HTMLElement): void;
@@ -277,6 +278,10 @@ export function createEditorDomHelpers(contentEl: HTMLElement): {
     return el instanceof HTMLElement && el.dataset["mdBlank"] === "true";
   }
 
+  function isEditableBlankLineElement(el: Element | null): el is HTMLElement {
+    return isBlankLineElement(el) && el.dataset["mdBlankRole"] !== "separator";
+  }
+
   function isVisibleContentBlock(el: Element | null): boolean {
     return el instanceof HTMLElement && el.dataset["mdBlank"] !== "true";
   }
@@ -295,6 +300,10 @@ export function createEditorDomHelpers(contentEl: HTMLElement): {
   }
 
   function showActiveBlankLine(blank: HTMLElement): void {
+    if (!isEditableBlankLineElement(blank)) {
+      showBlankLine(blank);
+      return;
+    }
     const hasAdjacentBlank =
       isBlankLineElement(blank.previousElementSibling) ||
       isBlankLineElement(blank.nextElementSibling);
@@ -337,6 +346,7 @@ export function createEditorDomHelpers(contentEl: HTMLElement): {
   function createBlankLineSpacer(): HTMLElement {
     const blank = document.createElement("p");
     blank.dataset["mdBlank"] = "true";
+    blank.dataset["mdBlankRole"] = "editable";
     showBlankLine(blank);
     return blank;
   }
@@ -358,6 +368,7 @@ export function createEditorDomHelpers(contentEl: HTMLElement): {
     ensureEmptyParagraphPlaceholder,
     getBlankLineBlock,
     isBlankLineElement,
+    isEditableBlankLineElement,
     isVisibleContentBlock,
     hideBlankLine,
     showBlankLine,
