@@ -521,6 +521,13 @@ function renderNoteDialog(state: State, actions: ViewActions): HTMLElement {
       ),
     );
   } else if (inputEl !== null) {
+    inputEl.addEventListener("input", () => {
+      if (state.noteDialog?.kind === "create" || state.noteDialog?.kind === "rename") {
+        state.noteDialog.title = inputEl.value;
+      } else if (state.noteDialog?.kind === "tag") {
+        state.noteDialog.value = inputEl.value;
+      }
+    });
     panel.append(
       el("label", "field-label", span(dialog?.kind === "tag" ? "Tag" : "Title"), inputEl),
       el(

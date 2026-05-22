@@ -23,6 +23,7 @@ pub struct HttpRequest {
 pub struct HttpResponse {
     status: u16,
     content_type: String,
+    headers: Vec<(String, String)>,
     body: Vec<u8>,
 }
 
@@ -34,6 +35,7 @@ impl HttpResponse {
         Ok(Self {
             status,
             content_type: "application/json; charset=utf-8".to_string(),
+            headers: Vec::new(),
             body: serde_json::to_vec(value)?,
         })
     }
@@ -42,6 +44,7 @@ impl HttpResponse {
         Self {
             status,
             content_type: "text/plain; charset=utf-8".to_string(),
+            headers: Vec::new(),
             body: text.as_bytes().to_vec(),
         }
     }
@@ -50,8 +53,14 @@ impl HttpResponse {
         Self {
             status,
             content_type: content_type.to_string(),
+            headers: Vec::new(),
             body,
         }
+    }
+
+    fn with_header(mut self, name: &str, value: &str) -> Self {
+        self.headers.push((name.to_string(), value.to_string()));
+        self
     }
 
     #[cfg(test)]
@@ -62,6 +71,14 @@ impl HttpResponse {
     #[cfg(test)]
     pub(crate) fn content_type(&self) -> &str {
         &self.content_type
+    }
+
+    #[cfg(test)]
+    pub(crate) fn header(&self, name: &str) -> Option<&str> {
+        self.headers
+            .iter()
+            .find(|(header_name, _)| header_name.eq_ignore_ascii_case(name))
+            .map(|(_, value)| value.as_str())
     }
 
     #[cfg(test)]
@@ -79,14 +96,18 @@ impl HttpResponse {
             500 => "Internal Server Error",
             _ => "OK",
         };
-        write!(
-            stream,
-            "HTTP/1.1 {} {}\r\nContent-Type: {}\r\nContent-Length: {}\r\nConnection: close\r\nX-Content-Type-Options: nosniff\r\nReferrer-Policy: no-referrer\r\nContent-Security-Policy: default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'\r\n\r\n",
+        let mut headers = format!(
+            "HTTP/1.1 {} {}\r\nContent-Type: {}\r\nContent-Length: {}\r\nConnection: close\r\nX-Content-Type-Options: nosniff\r\nReferrer-Policy: no-referrer\r\nContent-Security-Policy: default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'\r\n",
             self.status,
             reason,
             self.content_type,
             self.body.len()
-        )?;
+        );
+        for (name, value) in self.headers {
+            headers.push_str(&format!("{name}: {value}\r\n"));
+        }
+        headers.push_str("\r\n");
+        stream.write_all(headers.as_bytes())?;
         stream.write_all(&self.body)
     }
 }
@@ -258,7 +279,7 @@ fn serve_static(path: &str) -> Result<HttpResponse> {
         Some("js") => "text/javascript; charset=utf-8",
         _ => "application/octet-stream",
     };
-    Ok(HttpResponse::bytes(200, content_type, body))
+    Ok(HttpResponse::bytes(200, content_type, body).with_header("Cache-Control", "no-cache"))
 }
 
 #[cfg(test)]
@@ -300,10 +321,12 @@ mod tests {
         let html = serve_static("/").unwrap();
         assert_eq!(html.status(), 200);
         assert_eq!(html.content_type(), "text/html; charset=utf-8");
+        assert_eq!(html.header("cache-control"), Some("no-cache"));
         assert!(!html.body().is_empty());
 
         let css = serve_static("/static/app.css?cache=1").unwrap();
         assert_eq!(css.content_type(), "text/css; charset=utf-8");
+        assert_eq!(css.header("cache-control"), Some("no-cache"));
 
         let missing = serve_static("/../Cargo.toml").unwrap_err();
         assert!(matches!(missing, Error::NotFound(_)));
@@ -327,6 +350,7 @@ mod tests {
         assert!(response.starts_with("HTTP/1.1 409 Conflict"));
         assert!(response.contains("X-Content-Type-Options: nosniff"));
         assert!(response.contains("Content-Security-Policy: default-src 'self'"));
+        assert!(response.contains("\r\n\r\nconflict"));
         assert!(response.ends_with("conflict"));
     }
 

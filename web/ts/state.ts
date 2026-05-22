@@ -18,6 +18,7 @@ export type Tab = {
   draft: string | null;
   dirty: boolean;
   saving: boolean;
+  savePending: boolean;
   conflict: boolean;
   conflictDraftId: number | null;
   cursorOffset: number | null;
@@ -115,6 +116,7 @@ export function tabFromMeta(note: NoteMeta): Tab {
     draft: null,
     dirty: false,
     saving: false,
+    savePending: false,
     conflict: false,
     conflictDraftId: null,
     cursorOffset: null,
@@ -133,6 +135,7 @@ export function tabFromDocument(document: NoteDocument): Tab {
     draft: doc.content,
     dirty: false,
     saving: false,
+    savePending: false,
     conflict: false,
     conflictDraftId: null,
     cursorOffset: null,

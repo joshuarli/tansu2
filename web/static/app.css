@@ -192,7 +192,6 @@ button {
   pointer-events: none;
   transform: translateY(-4px);
   transition:
-    max-height 180ms ease,
     opacity 140ms ease,
     transform 180ms ease;
 }

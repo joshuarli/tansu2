@@ -1,8 +1,10 @@
+import type { CachedNoteBody } from "./note-cache.ts";
 import type {
   BootstrapResponse,
   NoteDocument,
   NoteMeta,
   RevisionMeta,
+  SearchHit,
   SessionState,
 } from "./types.generated.ts";
 
@@ -43,6 +45,14 @@ const htmlImport = vi.hoisted(() => ({
 }));
 
 vi.mock("./html-import.ts", () => htmlImport);
+
+const noteCache = vi.hoisted(() => ({
+  cacheNoteBody: vi.fn(async () => {}),
+  deleteCachedNoteBodies: vi.fn(async () => {}),
+  getCachedNoteBody: vi.fn(async (): Promise<CachedNoteBody | null> => null),
+}));
+
+vi.mock("./note-cache.ts", () => noteCache);
 
 const editorMock = vi.hoisted(() => ({
   instances: [] as Array<{
@@ -111,6 +121,9 @@ describe("TansuApp note loading", () => {
     vi.clearAllMocks();
     editorMock.instances.length = 0;
     api.activeVault.mockReturnValue(0);
+    noteCache.getCachedNoteBody.mockResolvedValue(null);
+    noteCache.cacheNoteBody.mockResolvedValue(undefined);
+    noteCache.deleteCachedNoteBodies.mockResolvedValue(undefined);
     document.body.replaceChildren();
   });
 
@@ -137,6 +150,346 @@ describe("TansuApp note loading", () => {
     load.resolve({ meta: note, content: "# One" });
     await load.promise;
     await Promise.resolve();
+  });
+
+  it("renders a restored active tab from a valid cached body before openNote resolves", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    noteCache.getCachedNoteBody.mockResolvedValue(cachedBody(note, "# Cached\n"));
+    const load = deferred<NoteDocument>();
+    api.openNote.mockReturnValue(load.promise);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    const boot = app.boot();
+    await flushAsync();
+
+    expect(api.openNote).toHaveBeenCalledWith("note-1", 0);
+    expect(noteCache.getCachedNoteBody).toHaveBeenCalledWith(0, note);
+    expect(editorMock.instances.at(-1)?.setValue).toHaveBeenCalledWith("# Cached\n", undefined);
+
+    load.resolve({ meta: note, content: "# Cached\n" });
+    await boot;
+    expect(noteCache.cacheNoteBody).toHaveBeenCalledWith(0, {
+      meta: note,
+      content: "# Cached\n",
+    });
+  });
+
+  it("ignores stale cached bodies and keeps the loading state until openNote resolves", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    noteCache.getCachedNoteBody.mockResolvedValue({
+      ...cachedBody(note, "# Stale\n"),
+      contentHash: "stale",
+    });
+    const load = deferred<NoteDocument>();
+    api.openNote.mockReturnValue(load.promise);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    const boot = app.boot();
+    await flushAsync();
+
+    expect(editorMock.instances).toHaveLength(0);
+    expect(root.textContent).toContain("Loading");
+
+    load.resolve({ meta: note, content: "# Server\n" });
+    await boot;
+    expect(editorMock.instances.at(-1)?.setValue).toHaveBeenCalledWith("# Server\n", undefined);
+  });
+
+  it("does not let a late openNote response replace edits made after a cache hit", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    noteCache.getCachedNoteBody.mockResolvedValue(cachedBody(note, "# Cached\n"));
+    const load = deferred<NoteDocument>();
+    api.openNote.mockReturnValue(load.promise);
+    api.saveNote.mockResolvedValue({
+      document: { meta: { ...note, seq: 2, contentHash: "next" }, content: "# Draft\n" },
+      meta: { ...note, seq: 2, contentHash: "next" },
+      syncVersion: 2,
+    });
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    const boot = app.boot();
+    await flushAsync();
+    const editor = editorMock.instances.at(-1)!;
+    editor.getSnapshot.mockReturnValue({
+      markdown: "# Draft\n",
+      cursorOffset: -1,
+      selection: null,
+      revision: 1,
+      sourceMode: false,
+    });
+    (editor.config["onChange"] as () => void)();
+
+    load.resolve({ meta: { ...note, seq: 2, contentHash: "server" }, content: "# Server\n" });
+    await boot;
+
+    expect(editor.setValue).not.toHaveBeenCalledWith("# Server\n", undefined);
+    root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
+    await flushAsync();
+    expect(api.saveNote).toHaveBeenCalledWith(
+      "note-1",
+      { content: "# Draft\n", baseSeq: 1, baseHash: "hash", checkpoint: false },
+      0,
+    );
+  });
+
+  it("ignores a pending cache read after switching vaults", async () => {
+    const oldNote = noteMeta("note-1", "one.md", "One");
+    const newNote = noteMeta("note-1", "other.md", "Other");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([oldNote], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    const cache = deferred<CachedNoteBody | null>();
+    const load = deferred<NoteDocument>();
+    noteCache.getCachedNoteBody.mockReturnValue(cache.promise);
+    api.openNote.mockReturnValue(load.promise);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    const oldBoot = app.boot();
+    await flushAsync();
+
+    api.activeVault.mockReturnValue(1);
+    api.bootstrap.mockResolvedValueOnce(bootstrapResponse([newNote]));
+    await app.boot();
+
+    cache.resolve(cachedBody(oldNote, "# Old cached\n"));
+    load.resolve({ meta: oldNote, content: "# Old server\n" });
+    await oldBoot;
+    await flushAsync();
+
+    expect(editorMock.instances).toHaveLength(0);
+    expect(root.textContent).toContain("No note selected");
+  });
+
+  it("renders notes opened from recent rows from cache before openNote resolves", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(bootstrapResponse([note]));
+    noteCache.getCachedNoteBody.mockResolvedValue(cachedBody(note, "# Cached\n"));
+    const load = deferred<NoteDocument>();
+    api.openNote.mockReturnValue(load.promise);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    root.querySelector<HTMLButtonElement>(".note-row")?.click();
+    await flushAsync();
+
+    expect(editorMock.instances.at(-1)?.setValue).toHaveBeenCalledWith("# Cached\n", undefined);
+
+    load.resolve({ meta: note, content: "# Cached\n" });
+    await load.promise;
+  });
+
+  it("preserves loading behavior on cache miss when opening a note", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(bootstrapResponse([note]));
+    const load = deferred<NoteDocument>();
+    api.openNote.mockReturnValue(load.promise);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    root.querySelector<HTMLButtonElement>(".note-row")?.click();
+    await flushAsync();
+
+    expect(editorMock.instances).toHaveLength(0);
+    expect(root.textContent).toContain("Loading");
+
+    load.resolve({ meta: note, content: "# Server\n" });
+    await load.promise;
+    await flushAsync();
+    expect(editorMock.instances.at(-1)?.setValue).toHaveBeenCalledWith("# Server\n", undefined);
+  });
+
+  it("renders reopened closed tabs from cache before openNote resolves", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [],
+        activeNoteId: null,
+        closedTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: 3, sourceMode: false },
+        ],
+      }),
+    );
+    noteCache.getCachedNoteBody.mockResolvedValue(cachedBody(note, "# Cached\n"));
+    const load = deferred<NoteDocument>();
+    api.openNote.mockReturnValue(load.promise);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    root.querySelector<HTMLButtonElement>('[title="Commands"]')?.click();
+    root.querySelector<HTMLInputElement>(".command-input")!.value = "reopen";
+    root
+      .querySelector<HTMLInputElement>(".command-input")!
+      .dispatchEvent(new Event("input", { bubbles: true }));
+    root.querySelector<HTMLButtonElement>(".command-row")?.click();
+    await flushAsync();
+
+    expect(editorMock.instances.at(-1)?.setValue).toHaveBeenCalledWith("# Cached\n", 3);
+
+    load.resolve({ meta: note, content: "# Cached\n" });
+    await load.promise;
+  });
+
+  it("keeps already-loaded tab state ahead of the cache", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    api.openNote.mockResolvedValue({ meta: note, content: "# Server\n" });
+    noteCache.getCachedNoteBody.mockResolvedValue(cachedBody(note, "# Cached\n"));
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    noteCache.getCachedNoteBody.mockClear();
+    root.querySelector<HTMLButtonElement>(".note-row")?.click();
+    await flushAsync();
+
+    expect(noteCache.getCachedNoteBody).not.toHaveBeenCalled();
+    expect(api.openNote).toHaveBeenCalledTimes(1);
+  });
+
+  it("uses noteId metadata when opening a cached search result", async () => {
+    const note = noteMeta("note-1", "folder/one.md", "One");
+    api.bootstrap.mockResolvedValue(bootstrapResponse([note]));
+    api.searchNotes.mockResolvedValue([
+      {
+        note,
+        score: 3,
+        snippet: "<b>one</b>",
+        fieldScores: { title: 3, headings: 0, tags: 0, content: 0 },
+      },
+    ]);
+    noteCache.getCachedNoteBody.mockResolvedValue(cachedBody(note, "# Cached\n"));
+    const load = deferred<NoteDocument>();
+    api.openNote.mockReturnValue(load.promise);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    root.querySelector<HTMLButtonElement>('[title="Search notes"]')?.click();
+    root.querySelector<HTMLInputElement>(".command-input")!.value = "one";
+    root
+      .querySelector<HTMLInputElement>(".command-input")!
+      .dispatchEvent(new Event("input", { bubbles: true }));
+    await flushAsync();
+    root.querySelector<HTMLButtonElement>(".search-result-row")?.click();
+    await flushAsync();
+
+    expect(noteCache.getCachedNoteBody).toHaveBeenCalledWith(0, note);
+    expect(editorMock.instances.at(-1)?.setValue).toHaveBeenCalledWith("# Cached\n", undefined);
+
+    load.resolve({ meta: note, content: "# Cached\n" });
+    await load.promise;
+  });
+
+  it("ignores stale search overlay responses", async () => {
+    const alpha = noteMeta("note-a", "alpha.md", "Alpha");
+    const beta = noteMeta("note-b", "beta.md", "Beta");
+    api.bootstrap.mockResolvedValue(bootstrapResponse([alpha, beta]));
+    const alphaSearch = deferred<SearchHit[]>();
+    const betaSearch = deferred<SearchHit[]>();
+    api.searchNotes
+      .mockReturnValueOnce(alphaSearch.promise)
+      .mockReturnValueOnce(betaSearch.promise);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    root.querySelector<HTMLButtonElement>('[title="Search notes"]')?.click();
+    const input = root.querySelector<HTMLInputElement>(".command-input")!;
+    input.value = "alpha";
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.value = "beta";
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+
+    betaSearch.resolve([searchHit(beta)]);
+    await flushAsync();
+    expect(root.textContent).toContain("beta.md");
+
+    alphaSearch.resolve([searchHit(alpha)]);
+    await flushAsync();
+    expect(root.textContent).toContain("beta.md");
+    expect(root.textContent).not.toContain("alpha.md");
+  });
+
+  it("waits for three search characters before querying", async () => {
+    const alpha = noteMeta("note-a", "alpha.md", "Alpha");
+    api.bootstrap.mockResolvedValue(bootstrapResponse([alpha]));
+    api.searchNotes.mockResolvedValue([searchHit(alpha)]);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+
+    const sidebarSearch = root.querySelector<HTMLInputElement>(".search-input")!;
+    sidebarSearch.value = "al";
+    sidebarSearch.dispatchEvent(new Event("input", { bubbles: true }));
+    await flushAsync();
+    expect(api.searchNotes).not.toHaveBeenCalled();
+
+    sidebarSearch.value = "alp";
+    sidebarSearch.dispatchEvent(new Event("input", { bubbles: true }));
+    await flushAsync();
+    expect(api.searchNotes).toHaveBeenCalledWith("alp", 0);
+
+    api.searchNotes.mockClear();
+    root.querySelector<HTMLButtonElement>('[title="Search notes"]')?.click();
+    const overlaySearch = root.querySelector<HTMLInputElement>(".command-input")!;
+    overlaySearch.value = "al";
+    overlaySearch.dispatchEvent(new Event("input", { bubbles: true }));
+    await flushAsync();
+    expect(api.searchNotes).not.toHaveBeenCalled();
+
+    overlaySearch.value = "alp";
+    overlaySearch.dispatchEvent(new Event("input", { bubbles: true }));
+    await flushAsync();
+    expect(api.searchNotes).toHaveBeenCalledWith("alp", 0);
   });
 
   it("creates, renames, pins, deletes, searches, and switches vaults through the DOM", async () => {
@@ -216,6 +569,7 @@ describe("TansuApp note loading", () => {
     root.querySelector<HTMLButtonElement>(".note-dialog-panel .danger-button")?.click();
     await flushAsync();
     expect(api.deleteNote).toHaveBeenCalledWith("note-2", 0);
+    expect(noteCache.deleteCachedNoteBodies).toHaveBeenCalledWith(0, "note-2");
 
     root.querySelector<HTMLSelectElement>(".vault-select")!.value = "0";
     root
@@ -288,6 +642,119 @@ describe("TansuApp note loading", () => {
     root.querySelector<HTMLButtonElement>('[title="Restore conflict draft"]')?.click();
     await flushAsync();
     expect(api.restoreConflictDraft).toHaveBeenCalledWith("note-1", 9, 0);
+    expect(noteCache.cacheNoteBody).toHaveBeenCalledWith(0, {
+      meta: { ...note, seq: 2 },
+      content: "# Draft\n",
+    });
+  });
+
+  it("caches the clean document returned by a successful save", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    const saved = { ...note, seq: 2, contentHash: "next" };
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    api.openNote.mockResolvedValue({ meta: note, content: "# One\n" });
+    api.saveNote.mockResolvedValue({
+      document: { meta: saved, content: "# Saved\n" },
+      meta: saved,
+      syncVersion: 2,
+    });
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    noteCache.cacheNoteBody.mockClear();
+    const editor = editorMock.instances.at(-1)!;
+    editor.getSnapshot.mockReturnValue({
+      markdown: "# Saved\n",
+      cursorOffset: -1,
+      selection: null,
+      revision: 1,
+      sourceMode: false,
+    });
+    (editor.config["onChange"] as () => void)();
+    root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
+    await flushAsync();
+
+    expect(noteCache.cacheNoteBody).toHaveBeenCalledWith(0, {
+      meta: saved,
+      content: "# Saved\n",
+    });
+  });
+
+  it("runs a follow-up autosave for edits made during an in-flight save", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    const firstSaved = { ...note, seq: 2, contentHash: "first" };
+    const secondSaved = { ...note, seq: 3, contentHash: "second" };
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    api.openNote.mockResolvedValue({ meta: note, content: "# One\n" });
+    const firstSave = deferred<{
+      document: NoteDocument;
+      meta: NoteMeta;
+      syncVersion: number;
+    }>();
+    api.saveNote.mockReturnValueOnce(firstSave.promise).mockResolvedValueOnce({
+      document: { meta: secondSaved, content: "# Second\n" },
+      meta: secondSaved,
+      syncVersion: 3,
+    });
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    const editor = editorMock.instances.at(-1)!;
+    editor.getSnapshot.mockReturnValue({
+      markdown: "# First\n",
+      cursorOffset: -1,
+      selection: null,
+      revision: 1,
+      sourceMode: false,
+    });
+    (editor.config["onChange"] as () => void)();
+    vi.advanceTimersByTime(900);
+    await flushAsync();
+    expect(api.saveNote).toHaveBeenCalledTimes(1);
+
+    editor.getSnapshot.mockReturnValue({
+      markdown: "# Second\n",
+      cursorOffset: -1,
+      selection: null,
+      revision: 2,
+      sourceMode: false,
+    });
+    (editor.config["onChange"] as () => void)();
+    vi.advanceTimersByTime(900);
+    await flushAsync();
+    expect(api.saveNote).toHaveBeenCalledTimes(1);
+
+    firstSave.resolve({
+      document: { meta: firstSaved, content: "# First\n" },
+      meta: firstSaved,
+      syncVersion: 2,
+    });
+    await flushAsync();
+
+    expect(api.saveNote).toHaveBeenCalledTimes(2);
+    expect(api.saveNote).toHaveBeenLastCalledWith(
+      "note-1",
+      { content: "# Second\n", baseSeq: 2, baseHash: "first", checkpoint: false },
+      0,
+    );
   });
 
   it("does not serialize editor content synchronously on every change", async () => {
@@ -414,9 +881,14 @@ describe("TansuApp note loading", () => {
     await flushAsync();
     root.querySelector<HTMLButtonElement>(".revision-row")?.click();
     await flushAsync();
+    noteCache.cacheNoteBody.mockClear();
     root.querySelector<HTMLButtonElement>(".revisions-panel .primary-button")?.click();
     await flushAsync();
     expect(api.restoreRevision).toHaveBeenCalledWith("note-1", 4, 0);
+    expect(noteCache.cacheNoteBody).toHaveBeenCalledWith(0, {
+      meta: { ...note, seq: 2 },
+      content: "# Old\n",
+    });
 
     root.querySelector<HTMLButtonElement>('[title="Commands"]')?.click();
     root.querySelector<HTMLInputElement>(".command-input")!.value = "settings";
@@ -513,11 +985,13 @@ describe("TansuApp note loading", () => {
       .querySelector<HTMLInputElement>(".command-input")!
       .dispatchEvent(new Event("input", { bubbles: true }));
     root.querySelector<HTMLButtonElement>(".command-row")?.click();
-    await flushAsync();
-    expect(htmlImport.pickHtmlImport).toHaveBeenCalled();
+    await vi.waitFor(() => expect(htmlImport.pickHtmlImport).toHaveBeenCalled());
     expect(api.createNote).toHaveBeenCalledWith(
       { path: "imported.md", content: "# Imported\n", source: "import" },
       0,
+    );
+    await vi.waitFor(() =>
+      expect(root.querySelector(".tab.active")?.textContent).toContain("Imported"),
     );
 
     window.dispatchEvent(new KeyboardEvent("keydown", { key: "p", metaKey: true }));
@@ -616,9 +1090,7 @@ describe("TansuApp note loading", () => {
       .querySelector<HTMLInputElement>(".command-input")!
       .dispatchEvent(new Event("input", { bubbles: true }));
     root.querySelector<HTMLButtonElement>('[title="Import HTML"]')?.click();
-    await flushAsync();
-    await flushAsync();
-    expect(htmlImport.pickHtmlImport).toHaveBeenCalled();
+    await vi.waitFor(() => expect(htmlImport.pickHtmlImport).toHaveBeenCalled());
     root.querySelector<HTMLButtonElement>(".overlay-backdrop")?.click();
   });
 });
@@ -638,6 +1110,36 @@ function noteMeta(noteId: string, path: string, title: string, tags: string[] = 
     seq: 1,
     contentHash: "hash",
     updatedAtMs: 1,
+  };
+}
+
+function cachedBody(
+  note: NoteMeta,
+  content: string,
+): {
+  vault: number;
+  noteId: string;
+  contentHash: string;
+  seq: number;
+  content: string;
+  cachedAtMs: number;
+} {
+  return {
+    vault: 0,
+    noteId: note.noteId,
+    contentHash: note.contentHash,
+    seq: note.seq,
+    content,
+    cachedAtMs: 1,
+  };
+}
+
+function searchHit(note: NoteMeta): SearchHit {
+  return {
+    note,
+    score: 1,
+    snippet: note.title,
+    fieldScores: { title: 1, headings: 0, tags: 0, content: 0 },
   };
 }
 
@@ -693,6 +1195,8 @@ function deferred<T>(): { promise: Promise<T>; resolve: (value: T) => void } {
 }
 
 async function flushAsync(): Promise<void> {
+  await Promise.resolve();
+  await Promise.resolve();
   await Promise.resolve();
   await Promise.resolve();
 }

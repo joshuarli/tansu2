@@ -41,6 +41,8 @@ import {
   normalizeTag,
   setMarkdownTags,
 } from "./markdown-tags.ts";
+import { cacheNoteBody, deleteCachedNoteBodies, getCachedNoteBody } from "./note-cache.ts";
+import { markNextPaint, markPerformance } from "./performance.ts";
 import {
   activeTab,
   createState,
@@ -58,6 +60,7 @@ import { renderApp, renderLoading, renderStatusBar, type ViewActions } from "./v
 
 const SESSION_SAVE_DELAY_MS = 250;
 const EDITOR_SESSION_SAVE_DELAY_MS = 3000;
+const MIN_SEARCH_QUERY_CHARS = 3;
 
 export class TansuApp {
   private readonly state: State;
@@ -68,6 +71,8 @@ export class TansuApp {
   private sessionTimer: number | undefined;
   private events: EventSource | null = null;
   private readonly noteLoads = new Map<string, Promise<void>>();
+  private searchRequestSeq = 0;
+  private searchOverlayRequestSeq = 0;
   private readonly extensions = [
     createWikiImageExtension({ resolveUrl: (name) => assetUrl(name, this.state.vault) }),
     createCalloutExtension(),
@@ -82,7 +87,9 @@ export class TansuApp {
     this.events?.close();
     this.noteLoads.clear();
     this.state.vault = activeVault();
+    markPerformance("tansu:bootstrap:start");
     this.state.boot = await bootstrap(this.state.vault);
+    markPerformance("tansu:bootstrap:response");
     this.state.notes = new Map(this.state.boot.notes.map((note) => [note.noteId, note]));
     this.state.pinned = new Set(this.state.boot.pinnedNoteIds);
     this.state.recent = this.state.boot.recentNoteIds;
@@ -96,6 +103,7 @@ export class TansuApp {
         draft: null,
         dirty: false,
         saving: false,
+        savePending: false,
         conflict: false,
         conflictDraftId: null,
         cursorOffset: tab.cursorOffset ?? null,
@@ -206,6 +214,7 @@ export class TansuApp {
         }
       }
       for (const noteId of payload.deletedNoteIds) {
+        void deleteCachedNoteBodies(this.state.vault, noteId);
         this.state.notes.delete(noteId);
         this.closeTab(noteId, false);
       }
@@ -272,6 +281,8 @@ export class TansuApp {
     if (tab.sourceMode && !this.editor.isSourceMode) {
       this.editor.toggleSourceMode();
     }
+    markPerformance("tansu:editor:mount");
+    markNextPaint("tansu:editor:first-editable-paint");
     this.editor.focus();
   }
 
@@ -378,19 +389,7 @@ export class TansuApp {
       return;
     }
     const vault = this.state.vault;
-    const load = openNote(tab.noteId, vault).then((document) => {
-      if (this.state.vault !== vault) {
-        return;
-      }
-      const loadedTab = tabById(this.state, document.meta.noteId);
-      if (loadedTab === undefined) {
-        return;
-      }
-      loadedTab.doc = document;
-      loadedTab.title = document.meta.title;
-      loadedTab.path = document.meta.path;
-      this.state.notes.set(document.meta.noteId, document.meta);
-    });
+    const load = this.loadNote(tab.noteId, vault);
     this.noteLoads.set(key, load);
     try {
       await load;
@@ -399,11 +398,82 @@ export class TansuApp {
         this.noteLoads.delete(key);
       }
     }
-    this.render();
   }
 
   private noteLoadKey(noteId: string): string {
     return `${this.state.vault}:${noteId}`;
+  }
+
+  private async loadNote(noteId: string, vault: number): Promise<void> {
+    markPerformance("tansu:note:request:start");
+    const serverLoad = openNote(noteId, vault).then((document) => {
+      markPerformance("tansu:note:request:response");
+      return {
+        ...document,
+        content: normalizeMarkdownNewlines(document.content),
+      };
+    });
+    const cached = await this.readCachedNote(noteId, vault);
+    if (cached) {
+      this.render();
+    }
+    const document = await serverLoad;
+    void cacheNoteBody(vault, document);
+    if (this.state.vault !== vault) {
+      return;
+    }
+    const loadedTab = tabById(this.state, document.meta.noteId);
+    if (loadedTab === undefined) {
+      return;
+    }
+    this.state.notes.set(document.meta.noteId, document.meta);
+    if (loadedTab.dirty) {
+      return;
+    }
+    const sameVisibleContent =
+      loadedTab.doc !== null && loadedTab.doc.meta.contentHash === document.meta.contentHash;
+    loadedTab.doc = document;
+    loadedTab.draft = document.content;
+    loadedTab.title = document.meta.title;
+    loadedTab.path = document.meta.path;
+    if (this.state.activeNoteId === document.meta.noteId && !sameVisibleContent) {
+      this.render();
+    }
+  }
+
+  private async readCachedNote(noteId: string, vault: number): Promise<boolean> {
+    const meta = this.state.notes.get(noteId);
+    if (meta === undefined) {
+      markPerformance("tansu:note-cache:miss");
+      return false;
+    }
+    const cached = await getCachedNoteBody(vault, meta);
+    if (this.state.vault !== vault) {
+      return false;
+    }
+    const target = tabById(this.state, noteId);
+    const currentMeta = this.state.notes.get(noteId);
+    if (
+      cached === null ||
+      target === undefined ||
+      this.state.activeNoteId !== noteId ||
+      target.doc !== null ||
+      target.dirty ||
+      currentMeta === undefined ||
+      cached.contentHash !== currentMeta.contentHash
+    ) {
+      markPerformance("tansu:note-cache:miss");
+      return false;
+    }
+    target.doc = {
+      meta: currentMeta,
+      content: normalizeMarkdownNewlines(cached.content),
+    };
+    target.draft = target.doc.content;
+    target.title = currentMeta.title;
+    target.path = currentMeta.path;
+    markPerformance("tansu:note-cache:hit");
+    return true;
   }
 
   private async activateTab(noteId: string): Promise<void> {
@@ -454,7 +524,11 @@ export class TansuApp {
   private async manualSave(): Promise<void> {
     this.syncActiveDraft();
     const tab = activeTab(this.state);
-    if (tab === undefined || tab.doc === null || !tab.dirty || tab.saving) {
+    if (tab === undefined || tab.doc === null || !tab.dirty) {
+      return;
+    }
+    if (tab.saving) {
+      tab.savePending = true;
       return;
     }
     window.clearTimeout(this.autosaveTimer);
@@ -466,8 +540,12 @@ export class TansuApp {
     this.autosaveTimer = window.setTimeout(() => {
       this.syncActiveDraft();
       const tab = activeTab(this.state);
-      if (tab !== undefined && tab.dirty && !tab.saving) {
-        void this.persistTab(tab);
+      if (tab !== undefined && tab.dirty) {
+        if (tab.saving) {
+          tab.savePending = true;
+        } else {
+          void this.persistTab(tab);
+        }
       }
     }, this.state.boot?.settings.autosaveDelayMs ?? 900);
   }
@@ -476,6 +554,9 @@ export class TansuApp {
     if (tab.doc === null || tab.draft === null) {
       return;
     }
+    const vault = this.state.vault;
+    const savingDraft = tab.draft;
+    tab.savePending = false;
     tab.saving = true;
     this.renderStatusOnly();
     try {
@@ -487,30 +568,47 @@ export class TansuApp {
           baseHash: tab.doc.meta.contentHash,
           checkpoint: false,
         },
-        this.state.vault,
+        vault,
       );
       if (response.document !== null) {
         const document = {
           ...response.document,
           content: normalizeMarkdownNewlines(response.document.content),
         };
+        void cacheNoteBody(vault, document);
+        if (this.state.vault !== vault) {
+          return;
+        }
+        const currentDraft = tab.draft;
         tab.doc = document;
-        tab.draft = document.content;
+        tab.draft = currentDraft === savingDraft ? document.content : currentDraft;
         tab.title = document.meta.title;
         tab.path = document.meta.path;
         this.state.notes.set(document.meta.noteId, document.meta);
+        tab.dirty = tab.draft !== document.content;
+      } else {
+        tab.dirty = false;
       }
-      tab.dirty = false;
       tab.conflict = false;
       tab.conflictDraftId = null;
     } catch (error) {
+      if (this.state.vault !== vault) {
+        return;
+      }
       const conflict = saveConflict(error);
       tab.conflict = conflict !== null;
       tab.conflictDraftId = conflict?.draft.draftId ?? null;
       this.notify(tab.conflict ? "Save conflict" : "Save failed");
     } finally {
       tab.saving = false;
-      this.render();
+      if (this.state.vault === vault) {
+        if (tab.savePending && tab.dirty && tab.doc !== null) {
+          tab.savePending = false;
+          void this.persistTab(tab);
+        } else {
+          this.render();
+        }
+      }
     }
   }
 
@@ -530,14 +628,44 @@ export class TansuApp {
   }
 
   private async updateSearch(): Promise<void> {
+    const seq = ++this.searchRequestSeq;
+    const vault = this.state.vault;
     const query = this.state.searchQuery.trim();
-    this.state.searchHits = query === "" ? null : await searchNotes(query, this.state.vault);
+    if (query.length < MIN_SEARCH_QUERY_CHARS) {
+      this.state.searchHits = null;
+      this.render();
+      return;
+    }
+    const hits = await searchNotes(query, vault);
+    if (
+      seq !== this.searchRequestSeq ||
+      this.state.vault !== vault ||
+      query !== this.state.searchQuery.trim()
+    ) {
+      return;
+    }
+    this.state.searchHits = hits;
     this.render();
   }
 
   private async updateSearchOverlay(): Promise<void> {
+    const seq = ++this.searchOverlayRequestSeq;
+    const vault = this.state.vault;
     const query = this.state.searchOverlayQuery.trim();
-    this.state.searchOverlayHits = query === "" ? null : await searchNotes(query, this.state.vault);
+    if (query.length < MIN_SEARCH_QUERY_CHARS) {
+      this.state.searchOverlayHits = null;
+      this.render();
+      return;
+    }
+    const hits = await searchNotes(query, vault);
+    if (
+      seq !== this.searchOverlayRequestSeq ||
+      this.state.vault !== vault ||
+      query !== this.state.searchOverlayQuery.trim()
+    ) {
+      return;
+    }
+    this.state.searchOverlayHits = hits;
     this.render();
   }
 
@@ -590,9 +718,20 @@ export class TansuApp {
   }
 
   private async commandReopenClosed(): Promise<void> {
-    const tab = this.state.closedTabs.shift();
+    const closed = this.state.closedTabs.shift();
+    if (closed === undefined) {
+      return;
+    }
+    let tab = tabById(this.state, closed.noteId);
+    const note = this.state.notes.get(closed.noteId);
+    if (tab === undefined && note !== undefined) {
+      tab = tabFromMeta(note);
+      tab.cursorOffset = closed.cursorOffset ?? null;
+      tab.sourceMode = closed.sourceMode;
+      this.state.tabs.push(tab);
+    }
     if (tab !== undefined) {
-      await this.openInTab(tab.noteId);
+      await this.activateTab(closed.noteId);
     }
   }
 
@@ -807,16 +946,23 @@ export class TansuApp {
       return;
     }
     const noteId = dialog.noteId;
+    const vault = this.state.vault;
     this.state.noteDialog = null;
     this.render();
     try {
-      await deleteNote(noteId, this.state.vault);
+      await deleteNote(noteId, vault);
+      void deleteCachedNoteBodies(vault, noteId);
+      if (this.state.vault !== vault) {
+        return;
+      }
       this.state.notes.delete(noteId);
       this.state.pinned.delete(noteId);
       this.state.recent = this.state.recent.filter((item) => item !== noteId);
       this.closeTab(noteId, false);
     } catch {
-      this.notify("Delete failed");
+      if (this.state.vault === vault) {
+        this.notify("Delete failed");
+      }
     }
   }
 
@@ -867,8 +1013,12 @@ export class TansuApp {
     if (tab === undefined || revision === null) {
       return;
     }
-    const response = await restoreRevision(tab.noteId, revision.revision.eventId, this.state.vault);
-    this.applyMutationToTab(response);
+    const vault = this.state.vault;
+    const response = await restoreRevision(tab.noteId, revision.revision.eventId, vault);
+    if (this.state.vault !== vault) {
+      return;
+    }
+    this.applyMutationToTab(response, vault);
     this.state.revisionsOpen = false;
     this.state.revisionDocument = null;
     this.notify("Revision restored");
@@ -879,8 +1029,12 @@ export class TansuApp {
     if (tab === undefined || tab.conflictDraftId === null) {
       return;
     }
-    const response = await restoreConflictDraft(tab.noteId, tab.conflictDraftId, this.state.vault);
-    this.applyMutationToTab(response);
+    const vault = this.state.vault;
+    const response = await restoreConflictDraft(tab.noteId, tab.conflictDraftId, vault);
+    if (this.state.vault !== vault) {
+      return;
+    }
+    this.applyMutationToTab(response, vault);
     this.state.conflictDraft = null;
     this.notify("Conflict draft restored");
   }
@@ -898,10 +1052,17 @@ export class TansuApp {
     this.render();
   }
 
-  private applyMutationToTab(response: Awaited<ReturnType<typeof saveNote>>): void {
+  private applyMutationToTab(
+    response: Awaited<ReturnType<typeof saveNote>>,
+    vault = this.state.vault,
+  ): void {
     if (response.document === null) {
       return;
     }
+    void cacheNoteBody(vault, {
+      ...response.document,
+      content: normalizeMarkdownNewlines(response.document.content),
+    });
     let tab = tabById(this.state, response.meta.noteId);
     if (tab === undefined) {
       tab = tabFromDocument(response.document);
