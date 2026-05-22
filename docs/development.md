@@ -123,7 +123,6 @@ Nested vaults are rejected before startup.
 
 - `.dev/`: generated dev/test runtime state
 - `web/static/app.js`: generated frontend bundle
-- `web/static/app.js.map`: generated source map
 - `bindings/`: ignored `ts-rs` output
 
 Do not commit generated runtime state.

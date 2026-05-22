@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "bundle": "node scripts/build-web.mjs production",
-    "bundle-dev": "node scripts/build-web.mjs development",
+    "bundle-dev": "node scripts/build-web.mjs production",
     "format:check": "oxfmt --check --config oxfmt.config.mjs",
     "lint": "oxlint",
     "playwright:install": "node scripts/install-playwright-browsers.mjs",
