@@ -40,8 +40,10 @@ search, settings, session, pins, recents, and repair state.
 
 Accepted writes canonicalize Markdown, compute `sha256:<hex>`, write compressed
 history, update catalog state/events, then update the visible Markdown file.
-Startup repair uses committed catalog/history state to finish interrupted writes
-conservatively.
+Delta saves are only a transport optimization: the server reconstructs the full
+candidate content from an exact base snapshot, verifies the submitted final hash,
+and then follows the same full-snapshot write path. Startup repair uses
+committed catalog/history state to finish interrupted writes conservatively.
 
 The same identity rule applies to create, save, import, restore, delete, rename,
 and conflict recovery: history follows `noteId`, not path.

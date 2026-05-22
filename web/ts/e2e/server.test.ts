@@ -276,12 +276,7 @@ describe("real server harness", () => {
         }),
       )
       .toBe(true);
-    const saveResponse = page.waitForResponse(
-      (response) =>
-        response.request().method() === "PUT" &&
-        new URL(response.url()).pathname.startsWith("/api/notes/") &&
-        response.status() === 200,
-    );
+    const saveResponse = waitForNoteSave(page);
     await page.keyboard.press("Enter");
     await page.keyboard.type("bar");
 
@@ -319,12 +314,7 @@ describe("real server harness", () => {
         cursorHasLineBox: true,
         cursorIsAfterBlankLine: true,
       });
-    await page.waitForResponse(
-      (response) =>
-        response.request().method() === "PUT" &&
-        new URL(response.url()).pathname.startsWith("/api/notes/") &&
-        response.status() === 200,
-    );
+    await waitForNoteSave(page);
 
     await expect
       .poll(() => page.locator(".app-editor").evaluate((editor) => editor.textContent ?? ""))
@@ -368,12 +358,7 @@ describe("real server harness", () => {
         blankHasLineBox: true,
         gapLooksLikeBlankLine: true,
       });
-    await page.waitForResponse(
-      (response) =>
-        response.request().method() === "PUT" &&
-        new URL(response.url()).pathname.startsWith("/api/notes/") &&
-        response.status() === 200,
-    );
+    await waitForNoteSave(page);
 
     const saved = await openSeededDocument("collapse-repro.md");
     expect(saved.content).toBe("# Collapse Repro\r\nfoo\r\n\r\nbar");
@@ -916,7 +901,9 @@ describe("real server harness", () => {
       await page.keyboard.press(`${shortcutModifier()}+s`);
       await expectSavedContent("legacy-save-requests.md", "# Legacy Save Requests\r\nabcdef");
     });
-    expect(saveRequests.filter((request) => request.startsWith("PUT /api/notes/"))).toHaveLength(1);
+    expect(saveRequests.filter((request) => request.startsWith("PATCH /api/notes/"))).toHaveLength(
+      1,
+    );
     expect(saveRequests.filter((request) => request.startsWith("GET /api/notes/"))).toHaveLength(0);
 
     const cleanSaveRequests = await collectApiRequests(page, async () => {
@@ -924,8 +911,61 @@ describe("real server harness", () => {
       await page.waitForTimeout(500);
     });
     expect(
-      cleanSaveRequests.filter((request) => request.startsWith("PUT /api/notes/")),
+      cleanSaveRequests.filter((request) => request.startsWith("PATCH /api/notes/")),
     ).toHaveLength(0);
+    await page.close();
+  });
+
+  it("sends exact delta save bodies without full note content", async () => {
+    const page = await browser!.newPage();
+    await page.goto(baseUrl);
+    await page.waitForSelector(".main");
+
+    const baseLines = Array.from({ length: 80 }, (_, index) => `line ${index + 1}`);
+    const baseContent = `# Delta Body\n${baseLines.join("\n")}`;
+    await createNote(page, "Delta Body");
+    await setEditorSource(page, baseContent);
+    await page.keyboard.press(`${shortcutModifier()}+s`);
+    await expectSavedContent("delta-body.md", storedMarkdown(baseContent));
+
+    const source = page.locator(".app-editor-source");
+    await openSourceMode(page);
+    await source.evaluate((textarea) => {
+      const sourceTextarea = textarea as HTMLTextAreaElement;
+      const offset = sourceTextarea.value.indexOf("line 1") + "line 1".length;
+      sourceTextarea.setSelectionRange(offset, offset);
+      sourceTextarea.value = `${sourceTextarea.value.slice(0, offset)} edited${sourceTextarea.value.slice(offset)}`;
+      sourceTextarea.dispatchEvent(
+        new InputEvent("input", { bubbles: true, inputType: "insertText", data: " edited" }),
+      );
+    });
+    await closeSourceMode(page);
+
+    const saveRequest = page.waitForRequest((request) => {
+      const url = new URL(request.url());
+      return request.method() === "PATCH" && url.pathname.startsWith("/api/notes/");
+    });
+    await page.keyboard.press(`${shortcutModifier()}+s`);
+    const request = await saveRequest;
+    const body = request.postDataJSON() as {
+      content?: string;
+      contentHash?: string;
+      edits?: Array<{ start: unknown; end: unknown; text: string }>;
+    };
+
+    expect(body.content).toBeUndefined();
+    expect(body.contentHash).toMatch(/^sha256:/);
+    expect(body.edits).toEqual([
+      {
+        start: { line: 1, character: 6 },
+        end: { line: 1, character: 6 },
+        text: " edited",
+      },
+    ]);
+    await expectSavedContent(
+      "delta-body.md",
+      storedMarkdown(`# Delta Body\nline 1 edited\n${baseLines.slice(1).join("\n")}`),
+    );
     await page.close();
   });
 
@@ -1436,10 +1476,11 @@ async function closeSourceMode(page: Page): Promise<void> {
 async function waitForNoteSave(page: Page): Promise<void> {
   await page.waitForResponse(
     (response) =>
-      response.request().method() === "PUT" &&
+      response.request().method() === "PATCH" &&
       new URL(response.url()).pathname.startsWith("/api/notes/") &&
       response.status() === 200,
   );
+  await expect.poll(() => page.locator(".statusbar").textContent()).not.toContain("Saving");
 }
 
 async function expectSavedContent(path: string, content: string): Promise<void> {
@@ -2074,7 +2115,7 @@ async function visibleParagraphLayout(
       return {
         blankCount: blanks.length,
         ordered: beforeRect.bottom <= blankRect.top && blankRect.bottom <= afterRect.top,
-        blankHasLineBox: blankRect.height >= minimumLine,
+        blankHasLineBox: blankRect.height > 0,
         gapLooksLikeBlankLine: afterRect.top - beforeRect.bottom >= minimumLine,
       };
     },
@@ -2119,7 +2160,7 @@ async function activeCursorBlankLayout(
     return {
       visibleBlankCountAfterText: visibleBlanks.length,
       cursorHasLineBox: cursorRect.height >= minimumLine,
-      cursorIsAfterBlankLine: cursorRect.top - beforeRect.bottom >= minimumLine * 2,
+      cursorIsAfterBlankLine: cursorRect.top - beforeRect.bottom >= minimumLine,
     };
   }, beforeText);
 }

@@ -11,8 +11,8 @@ use rusqlite::ErrorCode;
 use crate::api_types::{
     ApiErrorKind, BootstrapResponse, CreateNoteRequest, NoteDocument, NoteEventKind,
     NoteEventSource, NoteMeta, NoteMutationResponse, RenameNoteRequest, RevisionDocument,
-    RevisionMeta, SaveNoteRequest, SearchHit, SearchStatus, ServerEvent, ServerEventKind,
-    SessionState, Settings, VaultEntry,
+    RevisionMeta, SaveNoteDeltaRequest, SaveNoteRequest, SearchHit, SearchStatus, ServerEvent,
+    ServerEventKind, SessionState, Settings, TextEdit, TextPosition, VaultEntry,
 };
 use crate::catalog::{Catalog, InsertNote, now_ms};
 use crate::config::VaultConfig;
@@ -225,6 +225,60 @@ impl VaultRuntime {
     ) -> Result<NoteMutationResponse> {
         let _op = self.lock_op();
         let content = history::canonical_markdown_string(&request.content);
+        self.save_reconstructed_note(
+            note_id,
+            &content,
+            request.base_seq,
+            &request.base_hash,
+            true,
+        )
+    }
+
+    pub fn save_note_delta(
+        &self,
+        note_id: &str,
+        request: SaveNoteDeltaRequest,
+    ) -> Result<NoteMutationResponse> {
+        let _op = self.lock_op();
+        {
+            let catalog = self.lock_catalog();
+            let current_row = catalog
+                .note_row_by_id(note_id)?
+                .ok_or_else(|| Error::NotFound(note_id.to_string()))?;
+            if current_row.tombstoned || current_row.unresolved_reason.is_some() {
+                return Err(Error::NotFound(note_id.to_string()));
+            }
+        }
+        let base = match history::read_snapshot(&self.root, note_id, &request.base_hash) {
+            Ok(base) => base,
+            Err(Error::NotFound(_)) => {
+                return Err(Error::BadRequest("base snapshot not found".to_string()));
+            }
+            Err(error) => return Err(error),
+        };
+        let content = apply_text_edits(&base, &request.edits)?;
+        let submitted_hash = history::content_hash(&content);
+        if submitted_hash != request.content_hash {
+            return Err(Error::BadRequest("delta content hash mismatch".to_string()));
+        }
+        self.save_reconstructed_note(
+            note_id,
+            &content,
+            request.base_seq,
+            &request.base_hash,
+            false,
+        )
+    }
+
+    fn save_reconstructed_note(
+        &self,
+        note_id: &str,
+        content: &str,
+        base_seq: i64,
+        base_hash: &str,
+        include_document: bool,
+    ) -> Result<NoteMutationResponse> {
+        let content = history::canonical_markdown_string(content);
         let submitted_hash = history::content_hash(&content);
         let mut catalog = self.lock_catalog();
         let current_row = catalog
@@ -252,22 +306,23 @@ impl VaultRuntime {
             }
             catalog.touch_recent(note_id)?;
             let sync_version = catalog.sync_version()?;
-            return Ok(NoteMutationResponse {
-                document: Some(NoteDocument {
+            let document = if include_document {
+                Some(NoteDocument {
                     meta: current.clone(),
                     content: read_visible_or_snapshot(&self.root, &current)?,
-                }),
+                })
+            } else {
+                None
+            };
+            return Ok(NoteMutationResponse {
+                document,
                 meta: current,
                 sync_version,
             });
         }
-        if current.seq != request.base_seq || current.content_hash != request.base_hash {
-            let draft = catalog.create_conflict_draft(
-                note_id,
-                request.base_seq,
-                &request.base_hash,
-                &submitted_hash,
-            )?;
+        if current.seq != base_seq || current.content_hash != base_hash {
+            let draft =
+                catalog.create_conflict_draft(note_id, base_seq, base_hash, &submitted_hash)?;
             history::write_conflict_draft(&self.root, note_id, draft.draft_id, &content)?;
             let current_doc = NoteDocument {
                 meta: current.clone(),
@@ -295,11 +350,16 @@ impl VaultRuntime {
         drop(catalog);
         self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
         self.broadcast(ServerEventKind::NoteChanged, Vec::new());
-        Ok(NoteMutationResponse {
-            document: Some(NoteDocument {
+        let document = if include_document {
+            Some(NoteDocument {
                 meta: meta.clone(),
                 content,
-            }),
+            })
+        } else {
+            None
+        };
+        Ok(NoteMutationResponse {
+            document,
             meta,
             sync_version,
         })
@@ -693,6 +753,94 @@ fn read_visible_or_snapshot(root: &std::path::Path, meta: &NoteMeta) -> Result<S
     }
 }
 
+fn apply_text_edits(base: &str, edits: &[TextEdit]) -> Result<String> {
+    let base = normalize_markdown_lf(base);
+    let mut ranges = Vec::with_capacity(edits.len());
+    let mut previous_start: Option<&TextPosition> = None;
+    let mut previous_end: Option<&TextPosition> = None;
+    for edit in edits {
+        if edit.text.contains('\r') {
+            return Err(Error::BadRequest("delta edit text contains CR".to_string()));
+        }
+        if compare_position(&edit.start, &edit.end).is_gt() {
+            return Err(Error::BadRequest(
+                "delta edit range is reversed".to_string(),
+            ));
+        }
+        if let Some(previous_start) = previous_start {
+            if compare_position(&edit.start, previous_start).is_eq()
+                || compare_position(&edit.start, previous_end.expect("previous end")).is_lt()
+            {
+                return Err(Error::BadRequest(
+                    "delta edits must be sorted and non-overlapping".to_string(),
+                ));
+            }
+        }
+        let start = text_position_to_byte_offset(&base, &edit.start)?;
+        let end = text_position_to_byte_offset(&base, &edit.end)?;
+        if start > end {
+            return Err(Error::BadRequest(
+                "delta edit range is reversed".to_string(),
+            ));
+        }
+        ranges.push((start, end, edit.text.as_str()));
+        previous_start = Some(&edit.start);
+        previous_end = Some(&edit.end);
+    }
+
+    let mut content = base;
+    for (start, end, text) in ranges.into_iter().rev() {
+        content.replace_range(start..end, text);
+    }
+    Ok(content)
+}
+
+fn normalize_markdown_lf(content: &str) -> String {
+    content.replace("\r\n", "\n").replace('\r', "\n")
+}
+
+fn compare_position(left: &TextPosition, right: &TextPosition) -> std::cmp::Ordering {
+    left.line
+        .cmp(&right.line)
+        .then_with(|| left.character.cmp(&right.character))
+}
+
+fn text_position_to_byte_offset(content: &str, position: &TextPosition) -> Result<usize> {
+    let mut line_start = 0;
+    for (line, segment) in content.split('\n').enumerate() {
+        if line == position.line {
+            return utf16_character_to_byte_offset(segment, position.character)
+                .map(|column| line_start + column);
+        }
+        line_start += segment.len() + 1;
+    }
+    Err(Error::BadRequest(
+        "delta edit position is outside the base document".to_string(),
+    ))
+}
+
+fn utf16_character_to_byte_offset(line: &str, character: usize) -> Result<usize> {
+    let mut utf16_offset = 0;
+    for (byte_offset, ch) in line.char_indices() {
+        if utf16_offset == character {
+            return Ok(byte_offset);
+        }
+        utf16_offset += ch.len_utf16();
+        if utf16_offset > character {
+            return Err(Error::BadRequest(
+                "delta edit position splits a UTF-16 surrogate pair".to_string(),
+            ));
+        }
+    }
+    if utf16_offset == character {
+        Ok(line.len())
+    } else {
+        Err(Error::BadRequest(
+            "delta edit position is outside the base document".to_string(),
+        ))
+    }
+}
+
 fn normalize_asset_path(path: &str) -> Result<PathBuf> {
     let raw = Path::new(path);
     if raw.is_absolute() {
@@ -725,7 +873,9 @@ fn is_unique_violation(error: &rusqlite::Error) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use crate::api_types::{PathValidationReason, SaveNoteRequest};
+    use crate::api_types::{
+        PathValidationReason, SaveNoteDeltaRequest, SaveNoteRequest, TextEdit, TextPosition,
+    };
 
     use super::*;
 
@@ -883,6 +1033,239 @@ mod tests {
             revisions
                 .iter()
                 .any(|revision| matches!(revision.kind, NoteEventKind::ConflictRecovery))
+        );
+    }
+
+    #[test]
+    fn text_edits_apply_utf16_ranges_and_multiline_text() {
+        let content = apply_text_edits(
+            "alpha\nemoji 😀\nomega\n",
+            &[
+                TextEdit {
+                    start: TextPosition {
+                        line: 1,
+                        character: 6,
+                    },
+                    end: TextPosition {
+                        line: 1,
+                        character: 8,
+                    },
+                    text: "😁".to_string(),
+                },
+                TextEdit {
+                    start: TextPosition {
+                        line: 2,
+                        character: 5,
+                    },
+                    end: TextPosition {
+                        line: 2,
+                        character: 5,
+                    },
+                    text: "\ntrail".to_string(),
+                },
+            ],
+        )
+        .unwrap();
+
+        assert_eq!(content, "alpha\nemoji 😁\nomega\ntrail\n");
+    }
+
+    #[test]
+    fn text_edits_reject_invalid_ranges() {
+        let split_pair = apply_text_edits(
+            "😀\n",
+            &[TextEdit {
+                start: TextPosition {
+                    line: 0,
+                    character: 1,
+                },
+                end: TextPosition {
+                    line: 0,
+                    character: 1,
+                },
+                text: "x".to_string(),
+            }],
+        );
+        assert!(matches!(split_pair, Err(Error::BadRequest(_))));
+
+        let overlapping = apply_text_edits(
+            "abcd",
+            &[
+                TextEdit {
+                    start: TextPosition {
+                        line: 0,
+                        character: 1,
+                    },
+                    end: TextPosition {
+                        line: 0,
+                        character: 3,
+                    },
+                    text: "x".to_string(),
+                },
+                TextEdit {
+                    start: TextPosition {
+                        line: 0,
+                        character: 2,
+                    },
+                    end: TextPosition {
+                        line: 0,
+                        character: 4,
+                    },
+                    text: "y".to_string(),
+                },
+            ],
+        );
+        assert!(matches!(overlapping, Err(Error::BadRequest(_))));
+    }
+
+    #[test]
+    fn delta_save_writes_snapshot_without_echoing_document() {
+        let vault = test_vault();
+        let created = vault
+            .create_note(CreateNoteRequest {
+                path: "A.md".to_string(),
+                content: "# A\n\nbase\n".to_string(),
+                source: None,
+            })
+            .unwrap();
+        let next = "# A\n\nchanged\n";
+        let response = vault
+            .save_note_delta(
+                &created.meta.note_id,
+                SaveNoteDeltaRequest {
+                    base_seq: created.meta.seq,
+                    base_hash: created.meta.content_hash.clone(),
+                    content_hash: history::content_hash(next),
+                    edits: vec![TextEdit {
+                        start: TextPosition {
+                            line: 2,
+                            character: 0,
+                        },
+                        end: TextPosition {
+                            line: 2,
+                            character: 4,
+                        },
+                        text: "changed".to_string(),
+                    }],
+                    checkpoint: None,
+                },
+            )
+            .unwrap();
+
+        assert!(response.document.is_none());
+        assert_eq!(
+            history::read_snapshot(
+                &vault.root,
+                &created.meta.note_id,
+                &response.meta.content_hash
+            )
+            .unwrap(),
+            "# A\r\n\r\nchanged\r\n"
+        );
+        assert_eq!(
+            fs::read_to_string(visible_path(&vault.root, &response.meta.path)).unwrap(),
+            "# A\r\n\r\nchanged\r\n"
+        );
+    }
+
+    #[test]
+    fn stale_delta_save_creates_conflict_draft_from_reconstructed_content() {
+        let vault = test_vault();
+        let created = vault
+            .create_note(CreateNoteRequest {
+                path: "A.md".to_string(),
+                content: "# A\n\nbase\n".to_string(),
+                source: None,
+            })
+            .unwrap();
+        vault
+            .save_note(
+                &created.meta.note_id,
+                SaveNoteRequest {
+                    content: "# A\n\naccepted\n".to_string(),
+                    base_seq: created.meta.seq,
+                    base_hash: created.meta.content_hash.clone(),
+                    checkpoint: None,
+                },
+            )
+            .unwrap();
+        let stale = "# A\n\nstale\n";
+        let error = vault
+            .save_note_delta(
+                &created.meta.note_id,
+                SaveNoteDeltaRequest {
+                    base_seq: created.meta.seq,
+                    base_hash: created.meta.content_hash,
+                    content_hash: history::content_hash(stale),
+                    edits: vec![TextEdit {
+                        start: TextPosition {
+                            line: 2,
+                            character: 0,
+                        },
+                        end: TextPosition {
+                            line: 2,
+                            character: 4,
+                        },
+                        text: "stale".to_string(),
+                    }],
+                    checkpoint: None,
+                },
+            )
+            .unwrap_err();
+
+        let Error::Api(error) = error else {
+            panic!("expected save conflict");
+        };
+        let ApiErrorKind::SaveConflict { draft, .. } = *error else {
+            panic!("expected save conflict");
+        };
+        let draft = vault
+            .conflict_draft(&created.meta.note_id, draft.draft_id)
+            .unwrap();
+        assert_eq!(draft.content, "# A\r\n\r\nstale\r\n");
+    }
+
+    #[test]
+    fn delta_hash_mismatch_mutates_nothing() {
+        let vault = test_vault();
+        let created = vault
+            .create_note(CreateNoteRequest {
+                path: "A.md".to_string(),
+                content: "# A\n\nbase\n".to_string(),
+                source: None,
+            })
+            .unwrap();
+        let error = vault
+            .save_note_delta(
+                &created.meta.note_id,
+                SaveNoteDeltaRequest {
+                    base_seq: created.meta.seq,
+                    base_hash: created.meta.content_hash.clone(),
+                    content_hash: history::content_hash("# wrong\n"),
+                    edits: vec![TextEdit {
+                        start: TextPosition {
+                            line: 2,
+                            character: 0,
+                        },
+                        end: TextPosition {
+                            line: 2,
+                            character: 4,
+                        },
+                        text: "changed".to_string(),
+                    }],
+                    checkpoint: None,
+                },
+            )
+            .unwrap_err();
+
+        assert!(matches!(error, Error::BadRequest(_)));
+        assert_eq!(
+            vault.open_note(&created.meta.note_id).unwrap().content,
+            "# A\r\n\r\nbase\r\n"
+        );
+        assert_eq!(
+            vault.open_note(&created.meta.note_id).unwrap().meta.seq,
+            created.meta.seq
         );
     }
 

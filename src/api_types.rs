@@ -230,6 +230,37 @@ pub struct SaveNoteRequest {
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
 #[serde(rename_all = "camelCase")]
 #[serde(deny_unknown_fields)]
+pub struct SaveNoteDeltaRequest {
+    #[ts(type = "number")]
+    pub base_seq: i64,
+    pub base_hash: String,
+    pub content_hash: String,
+    pub edits: Vec<TextEdit>,
+    pub checkpoint: Option<bool>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[serde(deny_unknown_fields)]
+pub struct TextEdit {
+    pub start: TextPosition,
+    pub end: TextPosition,
+    pub text: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[serde(deny_unknown_fields)]
+pub struct TextPosition {
+    #[ts(type = "number")]
+    pub line: usize,
+    #[ts(type = "number")]
+    pub character: usize,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[serde(deny_unknown_fields)]
 pub struct RenameNoteRequest {
     pub path: String,
 }

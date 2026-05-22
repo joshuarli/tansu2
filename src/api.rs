@@ -1,6 +1,6 @@
 use crate::api_types::{
-    ApiErrorKind, ApiErrorResponse, CreateNoteRequest, RenameNoteRequest, SaveNoteRequest,
-    SessionState, Settings,
+    ApiErrorKind, ApiErrorResponse, CreateNoteRequest, RenameNoteRequest, SaveNoteDeltaRequest,
+    SaveNoteRequest, SessionState, Settings,
 };
 use crate::app::App;
 use crate::http::{HttpRequest, HttpResponse};
@@ -87,6 +87,10 @@ fn handle_note_route(
         ("PUT", [note_id]) => {
             let body: SaveNoteRequest = serde_json::from_slice(&request.body)?;
             json(200, &vault.save_note(note_id, body)?)
+        }
+        ("PATCH", [note_id]) => {
+            let body: SaveNoteDeltaRequest = serde_json::from_slice(&request.body)?;
+            json(200, &vault.save_note_delta(note_id, body)?)
         }
         ("POST", [note_id, "rename"]) => {
             let body: RenameNoteRequest = serde_json::from_slice(&request.body)?;
@@ -352,6 +356,31 @@ mod tests {
         let saved_body: NoteMutationResponse = serde_json::from_slice(saved.body()).unwrap();
         let saved_doc = saved_body.document.as_ref().unwrap();
         assert!(saved_doc.content.contains("changed"));
+
+        let patched = handle_api(
+            &app,
+            &request(
+                "PATCH",
+                &note_path,
+                0,
+                &serde_json::json!({
+                    "baseSeq": saved_body.meta.seq,
+                    "baseHash": saved_body.meta.content_hash,
+                    "contentHash": crate::history::content_hash("# One\n\npatched\n"),
+                    "edits": [{
+                        "start": { "line": 2, "character": 0 },
+                        "end": { "line": 2, "character": 7 },
+                        "text": "patched"
+                    }],
+                    "checkpoint": false
+                })
+                .to_string(),
+            ),
+        )
+        .unwrap();
+        let patched_body: NoteMutationResponse = serde_json::from_slice(patched.body()).unwrap();
+        assert!(patched_body.document.is_none());
+        assert_eq!(patched_body.meta.seq, saved_body.meta.seq + 1);
 
         let conflict = handle_api(
             &app,

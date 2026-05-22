@@ -29,6 +29,9 @@ fn main() {
     push::<ServerEventKind>(&mut output);
     push::<CreateNoteRequest>(&mut output);
     push::<SaveNoteRequest>(&mut output);
+    push::<SaveNoteDeltaRequest>(&mut output);
+    push::<TextEdit>(&mut output);
+    push::<TextPosition>(&mut output);
     push::<RenameNoteRequest>(&mut output);
     push::<NoteMutationResponse>(&mut output);
     push::<ImageUploadResponse>(&mut output);

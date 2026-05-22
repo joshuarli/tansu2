@@ -20,7 +20,8 @@ The frontend stores the active vault index in `sessionStorage` as
 | `GET`    | `/api/bootstrap`                                | initial vault metadata         |
 | `GET`    | `/api/notes/:noteId`                            | open one note                  |
 | `POST`   | `/api/notes`                                    | create note                    |
-| `PUT`    | `/api/notes/:noteId`                            | save with `baseSeq`/`baseHash` |
+| `PUT`    | `/api/notes/:noteId`                            | save full content with `baseSeq`/`baseHash` |
+| `PATCH`  | `/api/notes/:noteId`                            | save exact deltas with `baseSeq`/`baseHash` |
 | `DELETE` | `/api/notes/:noteId`                            | tombstone note                 |
 | `POST`   | `/api/notes/:noteId/rename`                     | rename path                    |
 | `GET`    | `/api/notes/:noteId/revisions`                  | list revisions                 |
@@ -47,7 +48,7 @@ POST /api/notes
 { "path": "meeting-notes.md", "content": "# Meeting Notes\n", "source": null }
 ```
 
-Save:
+Full save:
 
 ```json
 PUT /api/notes/<noteId>
@@ -58,6 +59,30 @@ PUT /api/notes/<noteId>
   "checkpoint": false
 }
 ```
+
+Delta save:
+
+```json
+PATCH /api/notes/<noteId>
+{
+  "baseSeq": 3,
+  "baseHash": "sha256:...",
+  "contentHash": "sha256:...",
+  "edits": [
+    {
+      "start": { "line": 2, "character": 0 },
+      "end": { "line": 2, "character": 4 },
+      "text": "changed"
+    }
+  ],
+  "checkpoint": false
+}
+```
+
+Delta edit positions are zero-based line and UTF-16 character offsets in the
+LF-normalized base snapshot. Edits must be sorted, non-overlapping, and exact;
+the server rejects malformed edits and final hash mismatches before mutating the
+vault. Accepted delta saves still write full recoverable snapshots.
 
 Stale save response:
 

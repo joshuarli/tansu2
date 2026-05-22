@@ -16,6 +16,7 @@ const {
   restoreConflictDraft,
   restoreRevision,
   saveNote,
+  saveNoteDelta,
   saveSession,
   saveSettings,
   searchNotes,
@@ -70,15 +71,29 @@ describe("API client", () => {
       { content: "# A\n", baseSeq: 1, baseHash: "h", checkpoint: true },
       2,
     );
+    await saveNoteDelta(
+      "space/id",
+      {
+        baseSeq: 1,
+        baseHash: "h",
+        contentHash: "sha256:abc",
+        edits: [{ start: { line: 0, character: 0 }, end: { line: 0, character: 0 }, text: "x" }],
+        checkpoint: false,
+      },
+      2,
+    );
     await renameNote("space/id", { path: "Renamed.md" }, 2);
     await deleteNote("space/id", 2);
 
     expect(fetchCall(0)[0]).toBe("/api/notes/space%2Fid");
     expect(fetchCall(1)[0]).toBe("/api/notes");
     expect(fetchCall(2)[0]).toBe("/api/notes/space%2Fid");
-    expect(fetchCall(3)[0]).toBe("/api/notes/space%2Fid/rename");
-    expect(fetchCall(4)[0]).toBe("/api/notes/space%2Fid");
+    expect(fetchCall(3)[0]).toBe("/api/notes/space%2Fid");
+    expect(fetchCall(4)[0]).toBe("/api/notes/space%2Fid/rename");
+    expect(fetchCall(5)[0]).toBe("/api/notes/space%2Fid");
     expect(JSON.parse(String(fetchCall(2)[1].body))).toMatchObject({ baseSeq: 1 });
+    expect(fetchCall(3)[1].method).toBe("PATCH");
+    expect(JSON.parse(String(fetchCall(3)[1].body))).toMatchObject({ contentHash: "sha256:abc" });
   });
 
   it("throws an error with status and response body for failed JSON requests", async () => {

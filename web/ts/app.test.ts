@@ -30,6 +30,7 @@ const api = vi.hoisted(() => ({
   restoreConflictDraft: vi.fn(),
   restoreRevision: vi.fn(),
   saveNote: vi.fn(),
+  saveNoteDelta: vi.fn(),
   saveSession: vi.fn(),
   saveSettings: vi.fn(),
   searchNotes: vi.fn(),
@@ -124,11 +125,17 @@ describe("TansuApp note loading", () => {
     noteCache.getCachedNoteBody.mockResolvedValue(null);
     noteCache.cacheNoteBody.mockResolvedValue(undefined);
     noteCache.deleteCachedNoteBodies.mockResolvedValue(undefined);
+    vi.stubGlobal("crypto", {
+      subtle: {
+        digest: vi.fn(async () => new Uint8Array(32).buffer),
+      },
+    });
     document.body.replaceChildren();
   });
 
   afterEach(() => {
     vi.useRealTimers();
+    vi.unstubAllGlobals();
   });
 
   it("deduplicates the render-triggered load when opening a note", async () => {
@@ -229,7 +236,7 @@ describe("TansuApp note loading", () => {
     noteCache.getCachedNoteBody.mockResolvedValue(cachedBody(note, "# Cached\n"));
     const load = deferred<NoteDocument>();
     api.openNote.mockReturnValue(load.promise);
-    api.saveNote.mockResolvedValue({
+    api.saveNoteDelta.mockResolvedValue({
       document: { meta: { ...note, seq: 2, contentHash: "next" }, content: "# Draft\n" },
       meta: { ...note, seq: 2, contentHash: "next" },
       syncVersion: 2,
@@ -254,12 +261,13 @@ describe("TansuApp note loading", () => {
 
     expect(editor.setValue).not.toHaveBeenCalledWith("# Server\n", undefined);
     root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
-    await flushAsync();
-    expect(api.saveNote).toHaveBeenCalledWith(
-      "note-1",
-      { content: "# Draft\n", baseSeq: 1, baseHash: "hash", checkpoint: false },
-      0,
-    );
+    await vi.waitFor(() => {
+      expect(api.saveNoteDelta).toHaveBeenCalledWith(
+        "note-1",
+        expect.objectContaining({ baseSeq: 1, baseHash: "hash", checkpoint: false }),
+        0,
+      );
+    });
   });
 
   it("ignores a pending cache read after switching vaults", async () => {
@@ -591,7 +599,7 @@ describe("TansuApp note loading", () => {
       }),
     );
     api.openNote.mockResolvedValue({ meta: note, content: "# One\n" });
-    api.saveNote.mockRejectedValue(
+    api.saveNoteDelta.mockRejectedValue(
       Object.assign(new Error("conflict"), {
         response: { error: { code: "save_conflict", draft: { draftId: 9 } } },
       }),
@@ -610,13 +618,13 @@ describe("TansuApp note loading", () => {
     });
     (editor.config["onChange"] as () => void)();
     root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
-    await flushAsync();
-
-    expect(api.saveNote).toHaveBeenCalledWith(
-      "note-1",
-      { content: "# Changed\n", baseSeq: 1, baseHash: "hash", checkpoint: false },
-      0,
-    );
+    await vi.waitFor(() => {
+      expect(api.saveNoteDelta).toHaveBeenCalledWith(
+        "note-1",
+        expect.objectContaining({ baseSeq: 1, baseHash: "hash", checkpoint: false }),
+        0,
+      );
+    });
     expect(root.textContent).toContain("Save conflict");
     expect(root.textContent).toContain("View draft");
 
@@ -661,8 +669,8 @@ describe("TansuApp note loading", () => {
       }),
     );
     api.openNote.mockResolvedValue({ meta: note, content: "# One\n" });
-    api.saveNote.mockResolvedValue({
-      document: { meta: saved, content: "# Saved\n" },
+    api.saveNoteDelta.mockResolvedValue({
+      document: null,
       meta: saved,
       syncVersion: 2,
     });
@@ -681,11 +689,11 @@ describe("TansuApp note loading", () => {
     });
     (editor.config["onChange"] as () => void)();
     root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
-    await flushAsync();
-
-    expect(noteCache.cacheNoteBody).toHaveBeenCalledWith(0, {
-      meta: saved,
-      content: "# Saved\n",
+    await vi.waitFor(() => {
+      expect(noteCache.cacheNoteBody).toHaveBeenCalledWith(0, {
+        meta: saved,
+        content: "# Saved\n",
+      });
     });
   });
 
@@ -708,7 +716,7 @@ describe("TansuApp note loading", () => {
       meta: NoteMeta;
       syncVersion: number;
     }>();
-    api.saveNote.mockReturnValueOnce(firstSave.promise).mockResolvedValueOnce({
+    api.saveNoteDelta.mockReturnValueOnce(firstSave.promise).mockResolvedValueOnce({
       document: { meta: secondSaved, content: "# Second\n" },
       meta: secondSaved,
       syncVersion: 3,
@@ -727,8 +735,8 @@ describe("TansuApp note loading", () => {
     });
     (editor.config["onChange"] as () => void)();
     vi.advanceTimersByTime(900);
-    await flushAsync();
-    expect(api.saveNote).toHaveBeenCalledTimes(1);
+    await flushUntil(() => api.saveNoteDelta.mock.calls.length >= 1);
+    expect(api.saveNoteDelta).toHaveBeenCalledTimes(1);
 
     editor.getSnapshot.mockReturnValue({
       markdown: "# Second\n",
@@ -740,7 +748,7 @@ describe("TansuApp note loading", () => {
     (editor.config["onChange"] as () => void)();
     vi.advanceTimersByTime(900);
     await flushAsync();
-    expect(api.saveNote).toHaveBeenCalledTimes(1);
+    expect(api.saveNoteDelta).toHaveBeenCalledTimes(1);
 
     firstSave.resolve({
       document: { meta: firstSaved, content: "# First\n" },
@@ -749,10 +757,11 @@ describe("TansuApp note loading", () => {
     });
     await flushAsync();
 
-    expect(api.saveNote).toHaveBeenCalledTimes(2);
-    expect(api.saveNote).toHaveBeenLastCalledWith(
+    await flushUntil(() => api.saveNoteDelta.mock.calls.length >= 2);
+    expect(api.saveNoteDelta).toHaveBeenCalledTimes(2);
+    expect(api.saveNoteDelta).toHaveBeenLastCalledWith(
       "note-1",
-      { content: "# Second\n", baseSeq: 2, baseHash: "first", checkpoint: false },
+      expect.objectContaining({ baseSeq: 2, baseHash: "first", checkpoint: false }),
       0,
     );
   });
@@ -931,7 +940,7 @@ describe("TansuApp note loading", () => {
       }),
     );
     api.openNote.mockResolvedValue({ meta: note, content: "# One\n" });
-    api.saveNote.mockResolvedValue({
+    api.saveNoteDelta.mockResolvedValue({
       document: { meta: { ...note, seq: 2, contentHash: "next" }, content: "# Changed\n" },
       meta: { ...note, seq: 2, contentHash: "next" },
       syncVersion: 2,
@@ -1009,12 +1018,13 @@ describe("TansuApp note loading", () => {
     });
     (editor.config["onChange"] as () => void)();
     vi.advanceTimersByTime(900);
-    await flushAsync();
-    expect(api.saveNote).toHaveBeenCalledWith(
-      "note-2",
-      { content: "# Changed\n", baseSeq: 1, baseHash: "hash", checkpoint: false },
-      0,
-    );
+    await vi.waitFor(() => {
+      expect(api.saveNoteDelta).toHaveBeenCalledWith(
+        "note-2",
+        expect.objectContaining({ baseSeq: 1, baseHash: "hash", checkpoint: false }),
+        0,
+      );
+    });
     vi.advanceTimersByTime(3000);
     await flushAsync();
     expect(api.saveSession).toHaveBeenCalled();
@@ -1064,7 +1074,7 @@ describe("TansuApp note loading", () => {
       }),
     );
     api.openNote.mockResolvedValue({ meta: note, content: "# One\n" });
-    api.saveNote.mockRejectedValue(new Error("offline"));
+    api.saveNoteDelta.mockRejectedValue(new Error("offline"));
     api.deleteNote.mockRejectedValue(new Error("offline"));
     htmlImport.pickHtmlImport.mockResolvedValue(null);
 
@@ -1081,8 +1091,7 @@ describe("TansuApp note loading", () => {
     });
     (editor.config["onChange"] as () => void)();
     root.querySelector<HTMLButtonElement>('[title="Save"]')?.click();
-    await flushAsync();
-    expect(root.textContent).toContain("Save failed");
+    await vi.waitFor(() => expect(root.textContent).toContain("Save failed"));
 
     root.querySelector<HTMLButtonElement>('[title="Commands"]')?.click();
     root.querySelector<HTMLInputElement>(".command-input")!.value = "import";
@@ -1199,4 +1208,10 @@ async function flushAsync(): Promise<void> {
   await Promise.resolve();
   await Promise.resolve();
   await Promise.resolve();
+}
+
+async function flushUntil(done: () => boolean): Promise<void> {
+  for (let attempt = 0; attempt < 20 && !done(); attempt++) {
+    await flushAsync();
+  }
 }

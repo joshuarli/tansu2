@@ -41,6 +41,12 @@ export type CreateNoteRequest = { path: string, content: string, source: NoteEve
 
 export type SaveNoteRequest = { content: string, baseSeq: number, baseHash: string, checkpoint: boolean | null, };
 
+export type SaveNoteDeltaRequest = { baseSeq: number, baseHash: string, contentHash: string, edits: Array<TextEdit>, checkpoint: boolean | null, };
+
+export type TextEdit = { start: TextPosition, end: TextPosition, text: string, };
+
+export type TextPosition = { line: number, character: number, };
+
 export type RenameNoteRequest = { path: string, };
 
 export type NoteMutationResponse = { document: NoteDocument | null, meta: NoteMeta, syncVersion: number, };

@@ -13,7 +13,7 @@ import {
   renameNote,
   restoreConflictDraft,
   restoreRevision,
-  saveNote,
+  saveNoteDelta,
   saveSettings,
   saveSession,
   searchNotes,
@@ -43,6 +43,7 @@ import {
 } from "./markdown-tags.ts";
 import { cacheNoteBody, deleteCachedNoteBodies, getCachedNoteBody } from "./note-cache.ts";
 import { markNextPaint, markPerformance } from "./performance.ts";
+import { buildSaveNoteDeltaRequest } from "./save-delta.ts";
 import {
   activeTab,
   createState,
@@ -55,7 +56,7 @@ import {
   type State,
   type Tab,
 } from "./state.ts";
-import type { ApiErrorResponse, NoteMeta } from "./types.generated.ts";
+import type { ApiErrorResponse, NoteMeta, NoteMutationResponse } from "./types.generated.ts";
 import { renderApp, renderLoading, renderStatusBar, type ViewActions } from "./view.ts";
 
 const SESSION_SAVE_DELAY_MS = 250;
@@ -560,14 +561,15 @@ export class TansuApp {
     tab.saving = true;
     this.renderStatusOnly();
     try {
-      const response = await saveNote(
+      const response = await saveNoteDelta(
         tab.noteId,
-        {
-          content: tab.draft,
-          baseSeq: tab.doc.meta.seq,
-          baseHash: tab.doc.meta.contentHash,
-          checkpoint: false,
-        },
+        await buildSaveNoteDeltaRequest(
+          tab.doc.content,
+          tab.draft,
+          tab.doc.meta.seq,
+          tab.doc.meta.contentHash,
+          false,
+        ),
         vault,
       );
       if (response.document !== null) {
@@ -587,7 +589,21 @@ export class TansuApp {
         this.state.notes.set(document.meta.noteId, document.meta);
         tab.dirty = tab.draft !== document.content;
       } else {
-        tab.dirty = false;
+        const document = {
+          meta: response.meta,
+          content: normalizeMarkdownNewlines(savingDraft),
+        };
+        void cacheNoteBody(vault, document);
+        if (this.state.vault !== vault) {
+          return;
+        }
+        const currentDraft = tab.draft;
+        tab.doc = document;
+        tab.draft = currentDraft === savingDraft ? document.content : currentDraft;
+        tab.title = document.meta.title;
+        tab.path = document.meta.path;
+        this.state.notes.set(document.meta.noteId, document.meta);
+        tab.dirty = tab.draft !== document.content;
       }
       tab.conflict = false;
       tab.conflictDraftId = null;
@@ -1052,10 +1068,7 @@ export class TansuApp {
     this.render();
   }
 
-  private applyMutationToTab(
-    response: Awaited<ReturnType<typeof saveNote>>,
-    vault = this.state.vault,
-  ): void {
+  private applyMutationToTab(response: NoteMutationResponse, vault = this.state.vault): void {
     if (response.document === null) {
       return;
     }

@@ -8,6 +8,7 @@ import type {
   RenameNoteRequest,
   RevisionDocument,
   RevisionMeta,
+  SaveNoteDeltaRequest,
   SaveNoteRequest,
   SearchHit,
   ServerEvent,
@@ -71,6 +72,18 @@ export function saveNote(
 ): Promise<NoteMutationResponse> {
   return apiFetch<NoteMutationResponse>(`/api/notes/${encodeURIComponent(noteId)}`, {
     method: "PUT",
+    body: JSON.stringify(request),
+    vault,
+  });
+}
+
+export function saveNoteDelta(
+  noteId: string,
+  request: SaveNoteDeltaRequest,
+  vault = activeVault(),
+): Promise<NoteMutationResponse> {
+  return apiFetch<NoteMutationResponse>(`/api/notes/${encodeURIComponent(noteId)}`, {
+    method: "PATCH",
     body: JSON.stringify(request),
     vault,
   });
