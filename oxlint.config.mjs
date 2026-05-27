@@ -241,6 +241,31 @@ export default defineConfig({
     "unicorn/require-module-specifiers": "off",
     "no-await-in-loop": "off",
 
+    // Disabled: too much agent churn for cosmetic preferences
+    "no-shadow": "off",
+    "eslint/no-shadow": "off",
+    "unicorn/prefer-ternary": "off",
+    "typescript/explicit-member-accessibility": "off",
+    "eslint/no-underscore-dangle": "off",
+    "no-underscore-dangle": "off",
+    "eslint/default-case": "off",
+    "default-case": "off",
+    "unicorn/prefer-modern-dom-apis": "off",
+    "typescript/parameter-properties": "off",
+    "parameter-properties": "off",
+    "typescript/array-type": "off",
+    "array-type": "off",
+    "vitest/prefer-importing-vitest-globals": "off",
+
+    // Benchmarks legitimately use new Function() for dynamic test generation
+    "no-new-func": "off",
+    "eslint/no-new-func": "off",
+
+    // False positive: undo/redo loops capture `current` as a fixed reference and
+    // advance `entry` + `undoIndex` instead. `current` isn't meant to change.
+    "eslint/no-unmodified-loop-condition": "off",
+    "no-unmodified-loop-condition": "off",
+
     "numeric-separators-style": "off",
   },
   overrides: [
