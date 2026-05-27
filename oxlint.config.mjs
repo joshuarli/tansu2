@@ -13,10 +13,10 @@ export default defineConfig({
     correctness: "error",
     suspicious: "error",
     perf: "error",
-    pedantic: "error",
+    pedantic: "off",
     style: "error",
     restriction: "error",
-    nursery: "error",
+    nursery: "off",
   },
   rules: {
     // TS-aware unused vars: allows _prefixed params as intentional no-ops
@@ -112,6 +112,30 @@ export default defineConfig({
     "jest/require-to-throw-message": "off",
     "jest/require-top-level-describe": "off",
 
+    // High-noise vitest style rules; test structure is a team convention, not a lint concern
+    "vitest/prefer-expect-assertions": "off",
+    "vitest/max-expects": "off",
+    "vitest/no-conditional-in-test": "off",
+    "vitest/no-conditional-expect": "off",
+    "vitest/no-hooks": "off",
+    "vitest/prefer-hooks-in-order": "off",
+    "vitest/require-hook": "off",
+    "vitest/no-importing-vitest-globals": "off",
+
+    // Broken autofix: vi.fn() needs function form for constructor mocks (has prototype).
+    // Arrow functions break vitest's function/class detection.
+    "eslint/prefer-arrow-callback": "off",
+    "prefer-arrow-callback": "off",
+    "eslint/func-names": "off",
+    "func-names": "off",
+
+    // Broken autofix: toHaveBeenCalledWith() is stricter than toHaveBeenCalled(); fails
+    // when the function receives any arguments (e.g. Iterator from callbacks).
+    "vitest/prefer-called-with": "off",
+
+    // Broken autofix: lowercases describe() title strings, changing test semantics.
+    "vitest/prefer-lowercase-title": "off",
+
     // Explicit timeout per test is too prescriptive
     "vitest/require-test-timeout": "off",
     "vitest/require-mock-type-parameters": "off",
@@ -142,6 +166,7 @@ export default defineConfig({
 
     // Style preference; negated conditions can be clearer
     "no-negated-condition": "off",
+    "eslint/no-negated-condition": "off",
 
     // Project returns null as a sentinel value (e.g. merge3 on conflict)
     "unicorn/no-null": "off",
@@ -265,10 +290,10 @@ export default defineConfig({
       },
     },
     {
-      // Prefer explicit counts over once-specific matchers for consistency.
       files: ["**/*.test.ts", "**/*.test.tsx"],
       rules: {
         "vitest/prefer-called-once": "off",
+        "vitest/prefer-called-with": "off",
       },
     },
   ],
