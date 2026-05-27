@@ -4,6 +4,7 @@ use crate::api_types::{
 };
 use crate::app::App;
 use crate::http::{HttpRequest, HttpResponse};
+use crate::search::DEFAULT_SEARCH_LIMIT;
 use crate::{Error, Result};
 
 pub const API_VERSION: u32 = 1;
@@ -48,7 +49,10 @@ pub fn handle_api(app: &App, request: &HttpRequest) -> Result<HttpResponse> {
         }
         ("GET", _) if path.starts_with("/api/search") => {
             let query = query_param(path, "q")?.unwrap_or_default();
-            json(200, &vault.search(&query)?)
+            let limit = query_param(path, "limit")?
+                .and_then(|value| value.parse::<usize>().ok())
+                .unwrap_or(DEFAULT_SEARCH_LIMIT);
+            json(200, &vault.search(&query, limit)?)
         }
         ("POST", "/api/notes") => {
             let body: CreateNoteRequest = serde_json::from_slice(&request.body)?;
@@ -213,7 +217,7 @@ fn percent_decode(value: &str) -> Result<String> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::api_types::{BootstrapResponse, NoteMutationResponse};
+    use crate::api_types::{BootstrapResponse, NoteMutationResponse, SearchHit};
     use crate::config::{Config, VaultConfig};
     use std::fs;
     use tempfile::TempDir;
@@ -291,6 +295,23 @@ mod tests {
         )
         .unwrap();
         assert_eq!(session.status(), 200);
+    }
+
+    #[test]
+    fn search_defaults_to_twenty_hits() {
+        let notes = (0..25)
+            .map(|index| (format!("note-{index}.md"), "# Alpha\n\nalpha\n".to_string()))
+            .collect::<Vec<_>>();
+        let refs = notes
+            .iter()
+            .map(|(path, content)| (path.as_str(), content.as_str()))
+            .collect::<Vec<_>>();
+        let fixture = app_fixture(&[("One", refs.as_slice())]);
+        let app = fixture.app();
+
+        let search = handle_api(&app, &request("GET", "/api/search?q=alpha", 0, "")).unwrap();
+        let body: Vec<SearchHit> = serde_json::from_slice(search.body()).unwrap();
+        assert_eq!(body.len(), 20);
     }
 
     #[test]

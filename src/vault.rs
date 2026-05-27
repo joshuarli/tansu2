@@ -466,14 +466,14 @@ impl VaultRuntime {
         })
     }
 
-    pub fn search(&self, query: &str) -> Result<Vec<SearchHit>> {
+    pub fn search(&self, query: &str, limit: usize) -> Result<Vec<SearchHit>> {
         let _op = self.lock_op();
         let (notes, settings) = {
             let catalog = self.lock_catalog();
             (catalog.live_notes()?, catalog.settings()?)
         };
         let search = self.search.lock().expect("search mutex poisoned");
-        let hits = search.search(query, &settings, &notes);
+        let hits = search.search(query, &settings, &notes, limit);
         if self.logs.enabled() {
             self.logs.server_event(
                 LogLevel::Info,
@@ -485,6 +485,7 @@ impl VaultRuntime {
                         serde_json::json!({
                             "queryLength": query.len(),
                             "hits": hits.len(),
+                            "limit": limit,
                             "notes": notes.len(),
                         }),
                     ),

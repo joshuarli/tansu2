@@ -284,6 +284,26 @@ describe("view rendering", () => {
       .dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
     expectDispatched(actions, { type: "dialog.submit", value: "" });
   });
+
+  it("decodes escaped search snippet text while preserving highlights", () => {
+    const state = baseState();
+    state.searchOpen = true;
+    state.searchOverlayQuery = "quote";
+    state.searchOverlayHits = [
+      {
+        note: note("n1", "one.md", "One"),
+        snippet: "&quot;<b>quote</b>&quot; &lt;tag&gt;",
+        score: 1,
+        fieldScores: { title: 0, headings: 0, tags: 0, content: 1 },
+      },
+    ];
+
+    const root = render(state);
+    const snippet = root.querySelector(".search-snippet")!;
+
+    expect(snippet.textContent).toBe('"quote" <tag>');
+    expect(snippet.querySelector("b")?.textContent).toBe("quote");
+  });
 });
 
 function render(state: State, actions = actionSpies()): HTMLElement {

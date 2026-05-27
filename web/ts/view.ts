@@ -626,7 +626,8 @@ function renderScore(hit: SearchHit): HTMLElement {
 function renderSnippet(snippet: string): HTMLElement {
   const element = el("span", "search-snippet");
   for (const part of parseHighlightedSnippet(snippet)) {
-    element.append(part.highlight ? el("b", "", part.text) : document.createTextNode(part.text));
+    const text = decodeHtmlEntities(part.text);
+    element.append(part.highlight ? el("b", "", text) : document.createTextNode(text));
   }
   return element;
 }
@@ -645,6 +646,12 @@ function parseHighlightedSnippet(snippet: string): { text: string; highlight: bo
     }
   }
   return result;
+}
+
+function decodeHtmlEntities(text: string): string {
+  const element = document.createElement("textarea");
+  element.innerHTML = text;
+  return element.value;
 }
 
 function input(

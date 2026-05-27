@@ -923,29 +923,52 @@ button {
 
 .search-panel {
   top: 10vh;
+  padding: 10px;
 }
 
 .command-list {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  max-height: 360px;
+  gap: 6px;
+  max-height: min(520px, calc(100vh - 180px));
   overflow: auto;
   content-visibility: auto;
   contain-intrinsic-size: auto 220px;
-  padding-top: 6px;
+  padding-top: 8px;
+}
+
+.search-panel .command-list {
+  content-visibility: visible;
+  contain-intrinsic-size: none;
 }
 
 .search-result-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 2px;
+  gap: 5px;
   align-items: start;
-  min-height: 0;
+  min-height: 88px;
+  overflow: visible;
+  padding: 11px 12px;
+  opacity: 0.82;
+  transition:
+    background-color 140ms ease,
+    opacity 140ms ease;
   white-space: normal;
 }
 
+.search-result-row + .search-result-row {
+  margin-top: 8px;
+}
+
+.search-result-row:hover,
+.search-result-row:focus-visible {
+  background: var(--color-bg-hover);
+  opacity: 1;
+}
+
 .search-result-title {
+  min-width: 0;
   overflow: hidden;
   color: var(--color-text);
   font-weight: 600;
@@ -957,6 +980,7 @@ button {
 .search-score,
 .search-snippet {
   display: block;
+  min-width: 0;
   overflow: hidden;
   color: var(--color-text-muted);
   font-size: 12px;
@@ -965,16 +989,21 @@ button {
 
 .search-score {
   font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  white-space: nowrap;
 }
 
 .search-snippet {
-  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
   white-space: normal;
 }
 
 .search-snippet b {
   border-radius: 3px;
-  background: var(--color-bg-hover);
+  background: #fff2a8;
   color: var(--color-text);
   font-weight: 600;
 }

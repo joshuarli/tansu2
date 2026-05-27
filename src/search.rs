@@ -13,6 +13,8 @@ use crate::history;
 use crate::paths::visible_path;
 use crate::{Error, Result};
 
+pub const DEFAULT_SEARCH_LIMIT: usize = 20;
+
 #[derive(Debug)]
 pub struct SearchIndex {
     index: Index,
@@ -105,9 +107,15 @@ impl SearchIndex {
         }
     }
 
-    pub fn search(&self, query: &str, settings: &Settings, current: &[NoteMeta]) -> Vec<SearchHit> {
+    pub fn search(
+        &self,
+        query: &str,
+        settings: &Settings,
+        current: &[NoteMeta],
+        limit: usize,
+    ) -> Vec<SearchHit> {
         let terms = tokenize_query(query);
-        if terms.is_empty() {
+        if terms.is_empty() || limit == 0 {
             return Vec::new();
         }
         let current_ids = current
@@ -156,6 +164,7 @@ impl SearchIndex {
                 .unwrap_or(std::cmp::Ordering::Equal)
                 .then_with(|| b.note.updated_at_ms.cmp(&a.note.updated_at_ms))
         });
+        hits.truncate(limit);
         hits
     }
 
