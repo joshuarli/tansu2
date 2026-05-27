@@ -6,18 +6,18 @@ author: "Douglas Herz"
 description: "Nova metrology and inspection"
 ---
 
-*This post was sponsored by Nova Ltd. Nova Ltd. is a leading innovator and key provider of dimensional, materials, and chemical metrology solutions for advanced process control used in semiconductor manufacturing. They are a publically traded firm on the Nasdaq. - [NVMI 0.00%↑](https://substack.com/search/%24NVMI)*
+_This post was sponsored by Nova Ltd. Nova Ltd. is a leading innovator and key provider of dimensional, materials, and chemical metrology solutions for advanced process control used in semiconductor manufacturing. They are a publically traded firm on the Nasdaq. - [NVMI 0.00%↑](https://substack.com/search/%24NVMI)_
 
 > It’s \[Moore’s Law\] not dead. It’s not slowing down. It’s not even sick.” ([1](https://www.nextplatform.com/2019/09/13/tsmc-thinks-it-can-uphold-moores-law-for-decades/amp/))
-> 
+>
 > Philip Wong, VP of Research, TSMC
 
 > Today we are predicting that we will maintain or even go faster than Moore's Law for the next decade. ([2](https://www.cnet.com/tech/computing/intel-will-outpace-moores-law-ceo-pat-gelsinger-says/),[3](https://www.cnet.com/tech/computing/intel-will-outpace-moores-law-ceo-pat-gelsinger-says/),[4](https://www.techinsights.com/blog/pat-gelsinger-takes-us-trip-down-memory-lane-and-look-ahead),[5](https://www.cnet.com/tech/computing/intel-will-outpace-moores-law-ceo-pat-gelsinger-says/),[6](http://shardware.com/news/intels-pat-gelsinger-on-super-moores-law-making-multi-billion-dollar-bets))
-> 
+>
 > Intel Chief Executive Pat Gelsinger
 
 > Moore's Law isn't possible anymore. ([7](https://www.techspot.com/news/96094-nvidia-jensen-huang-once-again-claims-moore-law.html#:~:text=The%20outlook%2C%20aptly%20named%20Huang's,observation%20don't%20stop%20there.),[17](https://arstechnica.com/gaming/2022/09/do-expensive-nvidia-graphics-cards-foretell-the-death-of-moores-law/))
-> 
+>
 > Jensen Huang, CEO Nvidia
 
 ## INTRODUCTION
@@ -166,7 +166,7 @@ Proposed by Robert H. Dennard in 1974 while working as an IBM researcher, the se
 
 10\. Koomey’s Law
 
-[https://www.phonearena.com/news/performance-per-watt-is-becoming-the-most-important-metric-for-chips\_id133709](https://www.phonearena.com/news/performance-per-watt-is-becoming-the-most-important-metric-for-chips_id133709)
+[https://www.phonearena.com/news/performance-per-watt-is-becoming-the-most-important-metric-for-chips_id133709](https://www.phonearena.com/news/performance-per-watt-is-becoming-the-most-important-metric-for-chips_id133709)
 
 11\. Huang’s Law- NVIDIA
 
@@ -198,7 +198,7 @@ Proposed by Robert H. Dennard in 1974 while working as an IBM researcher, the se
 
 18\. Introduction to GPU
 
-[https://enccs.github.io/OpenACC/0.01\_gpu-introduction/](https://enccs.github.io/OpenACC/0.01_gpu-introduction/)
+[https://enccs.github.io/OpenACC/0.01_gpu-introduction/](https://enccs.github.io/OpenACC/0.01_gpu-introduction/)
 
 19\. One Teaspoon of Soil Contains More Living Organisms Than There are People in the World
 
@@ -220,7 +220,7 @@ Proposed by Robert H. Dennard in 1974 while working as an IBM researcher, the se
 
 24\. Dennard’s Law
 
-[https://semiengineering.com/knowledge\_centers/standards-laws/laws/dennards-law/](https://semiengineering.com/knowledge_centers/standards-laws/laws/dennards-law/)
+[https://semiengineering.com/knowledge_centers/standards-laws/laws/dennards-law/](https://semiengineering.com/knowledge_centers/standards-laws/laws/dennards-law/)
 
 ## Background Articles
 
@@ -274,7 +274,7 @@ DOE on collision course with end of Moore’s Law
 
 Chip Design Shifts As Fundamental Laws Run Out of Steam
 
-*Dennard scaling is gone, Amdahl’s Law is reaching its limit, and Moore’s Law is becoming difficult and expensive to follow.*
+_Dennard scaling is gone, Amdahl’s Law is reaching its limit, and Moore’s Law is becoming difficult and expensive to follow._
 
 [https://semiengineering.com/chip-design-shifts-as-fundamental-laws-run-out-of-steam/?cmid=ecdebce6-1507-4585-b7a8-1c2dc8f79092](https://semiengineering.com/chip-design-shifts-as-fundamental-laws-run-out-of-steam/?cmid=ecdebce6-1507-4585-b7a8-1c2dc8f79092)
 
@@ -288,7 +288,7 @@ Big Changes in Architectures, Transistors, Materials
 
 How to Compare Chips
 
-*Traditional metrics no longer work in the context of domain-specific designs and rising complexity.*
+_Traditional metrics no longer work in the context of domain-specific designs and rising complexity._
 
 [https://semiengineering.com/how-to-compare-chips/?cmid=778f62b4-b135-435c-8d58-34bcf6c15e5d](https://semiengineering.com/how-to-compare-chips/?cmid=778f62b4-b135-435c-8d58-34bcf6c15e5d)
 
@@ -306,13 +306,13 @@ Is Moore’s Law Still Ticking?
 
 How Is the Semiconductor Industry Handling Scaling: Is Moore's Law Still Alive?
 
-[https://community.cadence.com/cadence\_blogs\_8/b/corporate/posts/soc-demands-is-moore-s-law-still-alive](https://community.cadence.com/cadence_blogs_8/b/corporate/posts/soc-demands-is-moore-s-law-still-alive)
+[https://community.cadence.com/cadence_blogs_8/b/corporate/posts/soc-demands-is-moore-s-law-still-alive](https://community.cadence.com/cadence_blogs_8/b/corporate/posts/soc-demands-is-moore-s-law-still-alive)
 
 Other Topics
 
 What is Koomey’s Law and why could it replace Moore’s Law in importance among chip makers?
 
-[https://www.phonearena.com/news/performance-per-watt-is-becoming-the-most-important-metric-for-chips\_id133709](https://www.phonearena.com/news/performance-per-watt-is-becoming-the-most-important-metric-for-chips_id133709)
+[https://www.phonearena.com/news/performance-per-watt-is-becoming-the-most-important-metric-for-chips_id133709](https://www.phonearena.com/news/performance-per-watt-is-becoming-the-most-important-metric-for-chips_id133709)
 
 42 Years of Microprocessor Trend Data
 
@@ -320,7 +320,7 @@ What is Koomey’s Law and why could it replace Moore’s Law in importance amon
 
 Pat Gelsinger Takes us on a Trip Down Memory Lane- and a Look Ahead
 
-[https://www.techinsights.com/blog/pat-gelsinger-takes-us-trip-down-memory-lane-and-look-ahead?utm\_medium=email&utm\_source=email&utm\_campaign=2022\_FY\_Logic\_Linley\_Newsletter](https://www.techinsights.com/blog/pat-gelsinger-takes-us-trip-down-memory-lane-and-look-ahead?utm_medium=email&utm_source=email&utm_campaign=2022_FY_Logic_Linley_Newsletter)
+[https://www.techinsights.com/blog/pat-gelsinger-takes-us-trip-down-memory-lane-and-look-ahead?utm_medium=email&utm_source=email&utm_campaign=2022_FY_Logic_Linley_Newsletter](https://www.techinsights.com/blog/pat-gelsinger-takes-us-trip-down-memory-lane-and-look-ahead?utm_medium=email&utm_source=email&utm_campaign=2022_FY_Logic_Linley_Newsletter)
 
 The High Price of Smaller Features
 

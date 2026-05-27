@@ -107,7 +107,7 @@ Lack of drop-in support is something that Google has solved by redesigning their
 The Apollo Project at first used a vendor-based solution for their OCS. Huawei also used this same vendor for their different use case in networks.
 
 > Due to the difficulties in maintaining reliability and quality of this solution at scale, the decision was made to internally develop an OCS system.
-> 
+>
 > Google
 
 That internally developed OCS is called Palomar.

@@ -37,8 +37,8 @@ We would like to thank our collaborators:
 - [Charles Frye](https://charlesfrye.github.io/about/), Modal: Pedagogical GPU Glossary and general review of the draft
 - [Simon Guo](https://simonguo.tech/), Stanford PhD student: Illustrated the cover picture and reviewed the draft
 - NVIDIA: Shared context around the progression of Tensor Core designs. Teams include:
-	- [Ian Buck](https://x.com/SemiAnalysis_/status/1916204055564849358), Inventor of CUDA
-		- [Jonah Alben](https://x.com/SemiAnalysis_/status/1916204055564849358), Head of GPU Architecture and Engineering
+  - [Ian Buck](https://x.com/SemiAnalysis_/status/1916204055564849358), Inventor of CUDA
+    - [Jonah Alben](https://x.com/SemiAnalysis_/status/1916204055564849358), Head of GPU Architecture and Engineering
 - Many other GPU wizards
 
 SemiAnalysis will be posting exclusive content on [Instagram Reels](http://instagram.com/semianalysis) and [TikTok](https://www.tiktok.com/@semianalysis) starting next week. Follow our socials to get the latest insights on the AI and GPU industry.
@@ -215,7 +215,7 @@ While all threads in a warpgroup collectively hold the output matrix in their re
 
 Source: SemiAnalysis
 
-For `wgmma` data types, Hopper introduced 8-bit floating-point data types (E4M3 and E5M2) with FP32 accumulation. In practice, [the accumulation path was implemented as a 22-bit fixed-point format (13-bit mantissa plus sign and exponent bits),](https://arxiv.org/abs/2412.19437) limiting the dynamic range compared to true 32-bit accumulation. Due to the reduced tensor core precision, every N\_c accumulations has to happen in the CUDA core to prevent constraining training accuracy. ([See this paper section 3.3.2](https://arxiv.org/abs/2412.19437)). This reduced precision accumulation improves efficiency, but comes at the cost of accuracy.
+For `wgmma` data types, Hopper introduced 8-bit floating-point data types (E4M3 and E5M2) with FP32 accumulation. In practice, [the accumulation path was implemented as a 22-bit fixed-point format (13-bit mantissa plus sign and exponent bits),](https://arxiv.org/abs/2412.19437) limiting the dynamic range compared to true 32-bit accumulation. Due to the reduced tensor core precision, every N_c accumulations has to happen in the CUDA core to prevent constraining training accuracy. ([See this paper section 3.3.2](https://arxiv.org/abs/2412.19437)). This reduced precision accumulation improves efficiency, but comes at the cost of accuracy.
 
 For more information on the Hopper Architecture, see the following:
 

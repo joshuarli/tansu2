@@ -20,6 +20,6 @@ Operating margins are amazing, revenue growth is still coming in this year and n
 
 What more is there to say besides there is a secular within a cyclical. Many of the biggest mega trends we see, especially with IoT, Edge, 5G, and Automotive silicon content, rely on large amounts of trailing edge silicon. These are packaged by majority, with KLIC wire bonders. The semiconductor cycle has scarred many investors, which is causing a high-quality firm with leading market share and amazing margins to trade at a steep discount. The management sandbagging on future earnings doesn’t help. They want to keep targets low so they can beat and raise for the next 2 years. Despite wire bonders slowly losing share of total package type over time, the combination of these new growth areas as well as trailing edge out growing leading edge is a big catalyst for KLIC.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/kulicke-soffa-industries-klic-crushes-earnings-but-continues-to-sandbag-6-eps-21-6-75-eps-22/) on August 5th 2021*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/kulicke-soffa-industries-klic-crushes-earnings-but-continues-to-sandbag-6-eps-21-6-75-eps-22/) on August 5th 2021_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

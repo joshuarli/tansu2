@@ -58,7 +58,7 @@ In 2022, Samsung began using GAA in its 3nm process. Due to issues with yield, h
 
 Beyond initial GAA processes include moving to forksheet or 3D complementary FET (CFET), in which the n and p channel are moved closer together or stacked vertically.
 
-To continue roadmaps beyond 2nm, the transition to Gate-All-Around will also require new transistor channel materials for the nanosheets. This is because the electron mobility in bulk materials like silicon and germanium drops significantly < 5nm. As we go deeper into the nanoscale, atomic effects can no longer be ignored. Perhaps the best family of materials to address these challenges is *2D materials*.
+To continue roadmaps beyond 2nm, the transition to Gate-All-Around will also require new transistor channel materials for the nanosheets. This is because the electron mobility in bulk materials like silicon and germanium drops significantly < 5nm. As we go deeper into the nanoscale, atomic effects can no longer be ignored. Perhaps the best family of materials to address these challenges is _2D materials_.
 
 ## 2D Materials
 
@@ -72,7 +72,7 @@ The most promising 2D materials for next-gen nanosheets come from the “Transit
 
 ![](z-images/d1ad02026e2a8ffe222807423b6d1d5c.webp)
 
-This was highlighted by H.-S. Philip Wong in his HotChips 2019 Keynote, “ *What will the next node offer us?”*
+This was highlighted by H.-S. Philip Wong in his HotChips 2019 Keynote, “ _What will the next node offer us?”_
 
 ![](z-images/c17052863c8310e55544ebf812811ded.webp)
 

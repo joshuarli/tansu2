@@ -80,6 +80,6 @@ Qualcomm Boundless XR demo was one of the most impressive showcases of technolog
 
 In all, despite a big lack on consumer hardware, this year’s MWC announcements may be Qualcomm’s best yet. They have shown off numerous infrastructure demonstrations and are starting to launch the capabilities to build these networks. Instead of just throwing their hands up and saying they have the best modems, Qualcomm is taking their rapid innovation to the network infrastructure as well. Whether it’s through their rapid hardware iteration, machine learning prowess, or radio fronted expertise, Qualcomm is poised to capture large share in the 5G infrastructure and emerging 5G applications such as factories, supply chain, and automotive!
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/qualcomm-mwc-2021-network-infrastructure-and-edge-5g-get-supercharged-fsm200-du-x100-accelerator-and-range-of-features/) on June 29th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/qualcomm-mwc-2021-network-infrastructure-and-edge-5g-get-supercharged-fsm200-du-x100-accelerator-and-range-of-features/) on June 29th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

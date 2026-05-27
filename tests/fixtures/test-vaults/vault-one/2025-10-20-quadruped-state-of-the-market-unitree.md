@@ -161,7 +161,7 @@ In [Level 2,](https://semianalysis.com/2025/07/30/robotics-levels-of-autonomy/#l
 - Navigating - Maneuvering in the environment appropriately
 - Positioning - Setting up to safely and accurately perform inspections
 
-Western quadrupeds’ inhouse autonomy ***can*** plan paths around people, obstacles, and hazards, and move reliably through facilities. But **positioning** is not always precise, often requiring AprilTags, like QR-codes that reorient the robot, or task-specific models for orientation. **Planning** can falter, with robots stalling or making poor choices in novel situations, like moving humans (some might just stop in place). **Navigation** remains fragile in cluttered environments. In the domains they’ve been trained on Westerns may perform well, but they may struggle in novelty.
+Western quadrupeds’ inhouse autonomy **_can_** plan paths around people, obstacles, and hazards, and move reliably through facilities. But **positioning** is not always precise, often requiring AprilTags, like QR-codes that reorient the robot, or task-specific models for orientation. **Planning** can falter, with robots stalling or making poor choices in novel situations, like moving humans (some might just stop in place). **Navigation** remains fragile in cluttered environments. In the domains they’ve been trained on Westerns may perform well, but they may struggle in novelty.
 
 As for Unitree, their inhouse autonomy is less-known. But judging from our research, it’s likely not much beyond the pre-programmed actions and teleoperation for now. While the Western quadrupeds developed a partial autonomy/software stack over Unitree, it may not necessarily earn them more deployments.
 
@@ -341,7 +341,7 @@ Source: RMA
 
 ## Security Issues?
 
-Security may be a headline risk after the discovery of a backdoor (discovered by [Andreas Makris](https://www.linkedin.com/in/makrisandreas/)), but the reality is mixed. Unitree lacks clear on-premises data solutions, which could restrict access to U.S. utilities under [NERC](https://www.nerc.com/pa/comp/guidance/EROEndorsedImplementationGuidance/CIP-013-1%20R1%20R2%20%20Supply%20Chain%20Management%20\(NATF\).pdf). We recently heard some Oil and Gas companies have told integrators they will not deploy Unitrees. Moreover, data-sensitive domains, like semiconductor fabs, are also opposed to Unitrees.
+Security may be a headline risk after the discovery of a backdoor (discovered by [Andreas Makris](https://www.linkedin.com/in/makrisandreas/)), but the reality is mixed. Unitree lacks clear on-premises data solutions, which could restrict access to U.S. utilities under [NERC](<https://www.nerc.com/pa/comp/guidance/EROEndorsedImplementationGuidance/CIP-013-1%20R1%20R2%20%20Supply%20Chain%20Management%20(NATF).pdf>). We recently heard some Oil and Gas companies have told integrators they will not deploy Unitrees. Moreover, data-sensitive domains, like semiconductor fabs, are also opposed to Unitrees.
 
 At the same time, many buyers are less concerned. Unitree quadrupeds are already in use across construction, critical infrastructure, and even security/patrol work. Even after [U.S](https://www.insidegovernmentcontracts.com/2025/02/fy2025-ndaa-congressional-efforts-to-bolster-u-s-resilience-against-chinese-tech-and-influence/)./ [EU](https://digital-strategy.ec.europa.eu/en/policies/nis2-directive) warnings, deployments continue. Security will likely shape which segments Unitree can enter, but many seem undecided at the moment.
 

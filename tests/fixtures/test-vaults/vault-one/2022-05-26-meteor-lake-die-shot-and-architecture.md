@@ -71,7 +71,7 @@ At first this may seem to be a tall order, but SemiAnalysis can confirm that Int
 This is an illustrative drawing of what Intel could do to grow the GPU significantly beyond the size of what the Foveros interposer allows. As explained in [our deep dive on advanced packaging](https://semianalysis.substack.com/p/advanced-packaging-part-2-review), Foveros Omni would allow overhang and other enhancements to packaging especially in regards to power delivery and flexibility of design. This would be different packaging flow versus the standard Foveros which is a chip on wafer flow. That flow does not seem possible for Foveros Omni. Intel has stated before that Foveros Omni will go into production in 2023. Furthermore, they have said this is a client mobile product.
 
 > Our first Foveros Omni product is going to be a client product in the mobile segment.
-> 
+>
 > Babak Sabi, SVP and GM of Assembly/Test Development at Intel
 
 In terms of Meteor Lake rollout, this makes sense. Meteor Lake as a whole starts production in 2022, but that doesn’t mean every variant. Friends at OEMs have told us they get a lower GPU performance mobile CPUs first, but that there will be higher GPU performance mobile CPUs later in the year. Omni likely is reserved for the Arrow Lake SOC which shares many of the same system architecture details. We will discuss the rollout and ramp of Meteor Lake and Arrow Lake more in the subscriber only section.

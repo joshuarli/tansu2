@@ -92,6 +92,6 @@ Cerebras is pitching real time computational fluid dynamics as the next workload
 
 We are excited for the 7nm based WSE2 to roll out fully. It will be exciting to see if the SDK can allow developers to generate other workloads where the WSEs can bring orders of magnitude performance increases. AI is an area where Cerebras is being aggressive and turning heads, but wafer scale computing could change this industry far outside of just machine learning.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/cerebras-wafer-scale-hardware-crushes-high-performance-computing-workloads-including-machine-learning-and-beyond/) on June 30th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/cerebras-wafer-scale-hardware-crushes-high-performance-computing-workloads-including-machine-learning-and-beyond/) on June 30th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

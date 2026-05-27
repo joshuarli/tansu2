@@ -44,6 +44,6 @@ The physical system is slightly different for photonics applications. Each FOX-X
 
 Aehr has stayed a small for decades, but right now they are entering an inflection point. With the move to 400G, 800G, and co-packaged photonics, the number and quality criteria for lasers will explode. Intel’s silicon photonics volumes will soar and that likely means more Aehr systems. If they can convince the fledgling SiC industry that wafer level burn-in test should be implemented in the test cycle, they can rack up huge wins as volumes begin to boom. The current valuation has Aehr getting quite a few more wins and growth with existing clients. We can't be certain Aehr gets these wins, but it is certainly a company to keep an eye on. The largest SiC players haven’t committed yet, but if they do, the sky is the limit. Wafer level burn-in is too expensive for most mass volume semiconductors, but compound semiconductors and photonics flip that paradigm on its head.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/aehr-multi-wafer-level-burn-in-test-for-silicon-carbide-and-silicon-photonics-applications/) on September 29th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/aehr-multi-wafer-level-burn-in-test-for-silicon-carbide-and-silicon-photonics-applications/) on September 29th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

@@ -92,7 +92,7 @@ This leads us to layer counts. Higher layer counts are harder to achieve. Simpli
 
 The bonding or die attach step is a key contributor to yield and thus requires sophisticated tools. With TSV pitches around 40 µm, the bonders must be capable of single-digit or even sub-micron alignment accuracy. Even pressure distribution is also crucial to avoid warpage that will compound over many layers. And throughput of course is important as it drives cost.
 
-Hanmi made an early bet to focus on thermocompression (TC) bonders for HBM, a segment at that time ignored by market leaders Besi and ASMPT. This paid off in a near monopoly in current HBM processes. At SK Hynix their share was 100% until last fall, when Hynix placed a large order with competing tools from Hanwha. Allegedly, they paid Hanwha a *higher* price for the tools.
+Hanmi made an early bet to focus on thermocompression (TC) bonders for HBM, a segment at that time ignored by market leaders Besi and ASMPT. This paid off in a near monopoly in current HBM processes. At SK Hynix their share was 100% until last fall, when Hynix placed a large order with competing tools from Hanwha. Allegedly, they paid Hanwha a _higher_ price for the tools.
 
 This set off a firestorm at Hanmi who, understandably, were upset to see a competitor winning with higher prices despite not being qualified on Hynix’s process for HBM supply to Nvidia, the largest and most important HBM customer.
 
@@ -168,7 +168,7 @@ As models improve, they have increased in horizon lengths. What this means is th
 
 As models can now think and reason over a long period of time, the pressure on memory capacity explodes as context lengths regularly exceed hundreds of thousands of tokens. Despite recent advances that have reduced the amount of KVCache generated per token, memory constraints still grow quickly. One way to deal with this has been to serve reasoning models at lower batch sizes which is harmful to economics.
 
-The main driver of AI progress is Reinforcement Learning (RL) and a huge part of the RL paradigm is inference. As an example, often what is needed for RL is synthetic data satisfying strict requirements, which means conducting many GPU-hours worth of inference to generate data that is later filtered by another model. Another example of heavy inference loads is RL for hard-to-verify tasks like creative writing. Unlike code, which can be checked and verified easily, things like creative writing, legal work, and teaching cannot be verified trivially. The way to get around this, and thus to get a signal to reinforce and improve the model, is to have another model *judging* the answers. This LLM-as-a-judge is then given a rubric, currently hand written but soon to be automated by LLMs, which it uses to grade the answer.
+The main driver of AI progress is Reinforcement Learning (RL) and a huge part of the RL paradigm is inference. As an example, often what is needed for RL is synthetic data satisfying strict requirements, which means conducting many GPU-hours worth of inference to generate data that is later filtered by another model. Another example of heavy inference loads is RL for hard-to-verify tasks like creative writing. Unlike code, which can be checked and verified easily, things like creative writing, legal work, and teaching cannot be verified trivially. The way to get around this, and thus to get a signal to reinforce and improve the model, is to have another model _judging_ the answers. This LLM-as-a-judge is then given a rubric, currently hand written but soon to be automated by LLMs, which it uses to grade the answer.
 
 ## KVCache offload
 
@@ -178,8 +178,8 @@ Today, KVCache offloading is already commonly used. Nvidia has a framework for t
 
 Just like how DRAM is not cannibalistic to L1/L2/L3 cache demand for CPU, HBM and DDR/SSD offload do not compete with each other directly. In fact, for most modern LLM workloads, the prefill speed (aka the rate at which KVCache is produced) is typically slower than the transfer rate to DDR or NVMe SSD, meaning KV rarely ‘lives in HBM’ in their entirety. They get produced and evicted or sent to the decode node to be used to produce the next token. Mostly it’s the system prompt that is used for every user that is kept in HBM as well as other hot KVs such as the active sequence window and some prefetch buffers.
 
-As for whether DDR or NVMe is used, it depends on workload needs and size of workload. It also depends on how often the workload is cycled as frequently cycled KVs are not a good fit for the limited write/rewrite tolerance of NAND. Agentic use cases that use tool calling to pull in documents and data at very low latency and high cycle rates today further push caching from NVMe to DDR. These are architectural and user experience tradeoffs to consider, rather than direct substitutes to each other.  
-  
+As for whether DDR or NVMe is used, it depends on workload needs and size of workload. It also depends on how often the workload is cycled as frequently cycled KVs are not a good fit for the limited write/rewrite tolerance of NAND. Agentic use cases that use tool calling to pull in documents and data at very low latency and high cycle rates today further push caching from NVMe to DDR. These are architectural and user experience tradeoffs to consider, rather than direct substitutes to each other.
+
 As use cases evolve, there may be different hardware setups used for different inference needs. For example, querying a fixed code base or document would benefit from accessing larger amounts of KVCache per user per GPU as the memory demands of those user behaviors is extremely high compared to normal chat.
 
 ## HBM for Pre-Training

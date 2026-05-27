@@ -8,7 +8,7 @@ description: "Rapid Improvements, Developers First Approach, Low AMD AI Software
 
 ### Rapid Improvements, Developers First Approach, Low AMD AI Software Engineer Pay, Python DSL, UALink Disaster, MI325x, MI355x, MI430X UL4, MI450X Architecture, IF64/IF128, Flexible IO, UALink, IFoE
 
-*<sub>SemiAnalysis is expanding the AI engineering team! If you have an experience in PyTorch, training, inferencing, system modelling, SLURM/Kubernetes, send us your resume and 5 bullet points demonstrating your engineering excellence to</sub> [<sub>letsgo@semianalysis.com</sub>](mailto:letsgo@semianalysis.com)<sub>.</sub>*
+_<sub>SemiAnalysis is expanding the AI engineering team! If you have an experience in PyTorch, training, inferencing, system modelling, SLURM/Kubernetes, send us your resume and 5 bullet points demonstrating your engineering excellence to</sub> [<sub>letsgo@semianalysis.com</sub>](mailto:letsgo@semianalysis.com)<sub>.</sub>_
 
 Ever since [SemiAnalysis published an article in December 2024 detailing mediocre AMD software and the lack of usability](https://semianalysis.com/2024/12/22/mi300x-vs-h100-vs-h200-benchmark-part-1-training/), AMD has kicked into a higher gear and has made rapid progress in the past four months on many items we laid out. We view AMD’s new sense of urgency as a massive positive in its journey to catch up to Nvidia. AMD is now in a wartime stance, but there are still many battles ahead of it.
 
@@ -50,7 +50,7 @@ We showed her dozens of bug reports our team submitted to our AMD engineering co
 
 Source: X
 
-This tone shift from the top has resonated across the organization. **AMD is now in wartime mode**, it is addressing software gaps and is working hard on closing them. This is a huge change from when AMD’s PR department in 2024 *would not publicly acknowledge* any major issues with software.
+This tone shift from the top has resonated across the organization. **AMD is now in wartime mode**, it is addressing software gaps and is working hard on closing them. This is a huge change from when AMD’s PR department in 2024 _would not publicly acknowledge_ any major issues with software.
 
 In 2025 thus far, AMD has acknowledged that their software has way more bugs are than Nvidia currently but are rapidly improving and are engaging the community to bring ROCm to parity. In particular, Anush Elangovan, the AMD AI Software Tzar, has been active in tackling the issues at AMD.
 
@@ -94,7 +94,7 @@ The result of this thriving ecosystem is that breakthrough ideas—whether new a
 
 The pay‑off from that collective energy is clear: when researchers publish a game‑changing kernel, the CUDA version typically launches day‑one. Tri Dao’s FlashAttention shipped reference CUDA code, and it took multiple quarters for ROCm to implement their own optimized attention. The selective‑state‑space model was the same, the authors only released a CUDA implementation but the authors themselves did not support or port it over to ROCm. The port of ROCm mamba was from AMD internal engineers and not the original authors. On the serving side, UC Berkeley’s vLLM and SGLang have their maintainers develop mainly on NVIDIA GPUs, and only after the CUDA path is stable do the maintainers then help AMD internal developers port to ROCm.
 
-Another example is how bugs are discovered and patched faster thanks to the millions of external CUDA ecosystem developers. In contrast, on ROCm, it may take months before a bug is discovered, such as was the case with numerous bugs we discovered and reported last year. For example, ROCm’s torch.scaled\_dot\_product\_attention API in 2024. Attention is the most important layer in start of the art transformer models.
+Another example is how bugs are discovered and patched faster thanks to the millions of external CUDA ecosystem developers. In contrast, on ROCm, it may take months before a bug is discovered, such as was the case with numerous bugs we discovered and reported last year. For example, ROCm’s torch.scaled_dot_product_attention API in 2024. Attention is the most important layer in start of the art transformer models.
 
 ## Developers, Developers, Developers
 
@@ -106,7 +106,7 @@ Source: Microsoft
 
 In January 2025, Anush took this developers-first approach by engaging with external ROCm developers on Tech Twitter & GitHub collecting feedback, being customer support whenever ROCm craps out (which is often), and personally answering questions. This hands‑on engagement is real progress, but AMD’s developer relations still runs on a skeleton crew; aside from Anush, AMD has basically zero full‑time dev‑rel engineers. AMD has started hiring [full time developer relations engineers](https://careers.amd.com/careers-home/jobs/63017?lang=en-us), but to close the gap with NVIDIA’s army of evangelists, the company will need at least 20+ devrel engineers that host regular in‑person hackathons and meetups.
 
-NVIDIA’s annual GTC developer conference, *“Super Bowl of AI”* packs more than 500 developer focused deep‑dive sessions and hands‑on labs into a single week. Those tracks—covering every layer of the stack from PyTorch to JAX to CUTLASS to CUDA C++ to Assembly to profiling tools —give external developers a reliable place to learn and push the frontier.
+NVIDIA’s annual GTC developer conference, _“Super Bowl of AI”_ packs more than 500 developer focused deep‑dive sessions and hands‑on labs into a single week. Those tracks—covering every layer of the stack from PyTorch to JAX to CUTLASS to CUDA C++ to Assembly to profiling tools —give external developers a reliable place to learn and push the frontier.
 
 AMD, by contrast, still lacks a GTC style developer conference that has many developer focused sessions. The company’s June “Advancing AI” event will be great for roadmap reveals, but the event is essentially a few product keynotes plus a handful of prerecorded talks—nowhere near the multi‑track developer sessions, code‑lab depth developers get at GTC. If AMD is serious about its new developer‑first stance, it should launch an annual, in‑person ROCm Developer Conference: three to four days of parallel tracks that cover kernel authoring, graph compilers, HIP/Triton migration, MI300 cluster tuning, and real‑time debugging with the ROCm toolchain. Pair those talks with on‑site hackathons run by a beefed‑up (20‑plus‑strong) devrel team and follow‑up regional roadshows, and ROCm users would finally have a venue to share war stories, surface blocking bugs, and build the social fabric that made GTC indispensable to the CUDA community.
 
@@ -114,13 +114,13 @@ AMD, by contrast, still lacks a GTC style developer conference that has many dev
 
 Source: NVIDIA
 
-Although George Hotz could have settled for AMD’s earlier offer of cloud‑hosted MI300X systems with full BMC access, he insisted on physical hardware so he could *“hack the metal”* directly. AMD initially balked—even though Hotz’s goal was to help open‑source tooling on their GPUs. The stalemate turned into a public spectacle when the widely respected PyTorch co‑creator, Soumith Chintala, tweeted in support of Geohotz receiving the physical boxes.
+Although George Hotz could have settled for AMD’s earlier offer of cloud‑hosted MI300X systems with full BMC access, he insisted on physical hardware so he could _“hack the metal”_ directly. AMD initially balked—even though Hotz’s goal was to help open‑source tooling on their GPUs. The stalemate turned into a public spectacle when the widely respected PyTorch co‑creator, Soumith Chintala, tweeted in support of Geohotz receiving the physical boxes.
 
 ![](z-images/c910aa30e3446b43514f33b2fdee0d5b.webp)
 
 Source: X
 
-We believe that this nudge worked, and a [Geohotz March 8 blog](https://geohot.github.io/blog/jekyll/update/2025/03/08/AMD-YOLO.html) revealed that AMD had relented, sending him the two MI300X boxes. With this, AMD finally passed *Geohotz’s “cultural test.”* For AMD, this is arguably a bigger reputational coup than a technical one—shipping real silicon to a high‑profile hacker signals a newfound, developer‑first ethos that marketing dollars alone can’t buy, and it finally turns a bruising Twitter saga into a story demonstrating AMD’s new developer-first ethos.
+We believe that this nudge worked, and a [Geohotz March 8 blog](https://geohot.github.io/blog/jekyll/update/2025/03/08/AMD-YOLO.html) revealed that AMD had relented, sending him the two MI300X boxes. With this, AMD finally passed _Geohotz’s “cultural test.”_ For AMD, this is arguably a bigger reputational coup than a technical one—shipping real silicon to a high‑profile hacker signals a newfound, developer‑first ethos that marketing dollars alone can’t buy, and it finally turns a bruising Twitter saga into a story demonstrating AMD’s new developer-first ethos.
 
 In addition to sending Geohotz boxes, we believe that AMD can also score another easy reputation and marketing win by donating physical AMD GPU boxes to academic labs. [Jensen & Ian Buck has had a long history of donating GPUs to academics labs even going back as far as 2014](https://x.com/haozhangml/status/1914439713332863348?s=46). This year, Jensen continues to supporting academics labs such as [CMU’s Catalyst Labs](https://x.com/scsatcmu/status/1912910889566490821?s=46), [Berekely’s Sky labs](https://x.com/vllm_project/status/1893001644037566610), [UCSD’s HaoAI Lab](https://x.com/haoailab) and others for some time by donating physical gold plated B200 boxes to them in addition to providing free cloud access to NVIDIA GPUs.
 
@@ -286,11 +286,11 @@ AMD has indicated that they are currently in the planning phase of rewriting RCC
 
 At his GTC 2025 talk, as a joke, we asked NCCL chief Sylvain Jeaugey, if in the spirit of open-source development, he would lend a helping hand to RCCL as its currently mostly a copy paste library.
 
-He rebuffed our suggestion:  
-  
-*SemiAnalysis: Will Nvidia provide support to the AMD team's RCCL fork due to this big of a refactor in the upcoming 2.28?  
+He rebuffed our suggestion:
+
+_SemiAnalysis: Will Nvidia provide support to the AMD team's RCCL fork due to this big of a refactor in the upcoming 2.28?  
 Sylvain: Are we going to also help RCCL move to that? I don't think so - usually we don't really take part in that development.  
-Source: [Nvidia](https://www.nvidia.com/en-us/on-demand/session/gtc25-s72583/?start=2025) – timestamp 33:48*
+Source: [Nvidia](https://www.nvidia.com/en-us/on-demand/session/gtc25-s72583/?start=2025) – timestamp 33:48_
 
 During this talk, Sylvain also announced many new NCCL features in the upcoming massive refactor. These new features include supporting symmetric memory natively in NCCL as well as new algorithms that run much faster and use fewer SMs thus allowing more SMs for compute.
 
@@ -330,7 +330,7 @@ Another feature that is currently only available on Nvidia is user buffer regist
 
 Source: NVIDIA
 
-Most experienced ML engineers have seen the dreaded NCCL\_TIMEOUT/RCCL\_TIMEOUT or NCCL/RCCL stalling. NVIDIA NCCL supports [ncclras](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/ras.html), which simplifies debugging these issues. Unfortunately, RCCL does not currently include any features to help with debugging.
+Most experienced ML engineers have seen the dreaded NCCL_TIMEOUT/RCCL_TIMEOUT or NCCL/RCCL stalling. NVIDIA NCCL supports [ncclras](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/ras.html), which simplifies debugging these issues. Unfortunately, RCCL does not currently include any features to help with debugging.
 
 ![](z-images/f866ba82164365d910593ae605b94b74.webp)
 
@@ -342,7 +342,7 @@ AMD’s has made meaningful progress in the last four months on its software inf
 
 Until seven months ago, AMD had no GPU metrics export function at all, meaning that cluster operators had no way to gain observability into their GPUs. Although ROCm claimed to be an open-source ecosystem, AMD’s GPU metrics exporter was not open source until SemiAnalysis took this point up with AMD executives, advocating for them to adopt a sense of urgency for AMD to live by the ethos of their claimed commitment to the “open source” ecosystem.
 
-Fortunately, after many follow-ups, AMD has finally open sourced their GPU exporter. Note that their GPU exporter is still a work in progress and many features are still missing and are not at parity with NVIDIA’s GPU open-source metrics exporter yet. For example, AMD’s GPU exporter currently has still does not support the metric for matrix core activity, CU occupancy or CU active. These are extremely important metrics to proxy how workloads are performing. The only current utilization metric available in AMD’s GPU exporter is GPU\_UTIL which, as most experienced [ML engineers know, doesn’t actually measure util at all for both Nvidia and AMD GPUs](https://x.com/memorypaladin/status/1817689501113979357).
+Fortunately, after many follow-ups, AMD has finally open sourced their GPU exporter. Note that their GPU exporter is still a work in progress and many features are still missing and are not at parity with NVIDIA’s GPU open-source metrics exporter yet. For example, AMD’s GPU exporter currently has still does not support the metric for matrix core activity, CU occupancy or CU active. These are extremely important metrics to proxy how workloads are performing. The only current utilization metric available in AMD’s GPU exporter is GPU_UTIL which, as most experienced [ML engineers know, doesn’t actually measure util at all for both Nvidia and AMD GPUs](https://x.com/memorypaladin/status/1817689501113979357).
 
 [As mentioned in our December AMD article](https://semianalysis.com/2024/12/22/mi300x-vs-h100-vs-h200-benchmark-part-1-training/#amd%e2%80%99s-forked-libraries), the AMD Docker UX is extremely poor compared to Nvidia’s UX. AMD has acknowledged this shortcoming and has mentioned to us that they are working on this. They have indicated that they will announce a roadmap for this later this quarter.
 
@@ -360,7 +360,7 @@ Source: GitHub, AMD
 
 We have recommended on multiple occasions that AMD prioritize fixing this and focus on supporting a first-class Slurm+Containers experience by putting some money to work and paying for SchmedMD’s (the maintainers of Slurm) consulting services. We have yet to see any concrete timelines or roadmap on when AMD plans to fix this issue.
 
-Moreover, Nvidia’s datacenter-manager tool (DCGM) has directly integrated NVVS (Nvidia Validation suite) such that running diagnostics is as simple as running “sudo dcgmi diag -r <diag\_level>”. In contrast, on AMD, the RVVS (ROCm validation Suite) is separate from their Datacenter tool (RDC), forcing the end user to download yet another library. We recommend that AMD integrate RVVS into RDC to make the user experience as simple as that of Nvidia’s DCGM.
+Moreover, Nvidia’s datacenter-manager tool (DCGM) has directly integrated NVVS (Nvidia Validation suite) such that running diagnostics is as simple as running “sudo dcgmi diag -r <diag_level>”. In contrast, on AMD, the RVVS (ROCm validation Suite) is separate from their Datacenter tool (RDC), forcing the end user to download yet another library. We recommend that AMD integrate RVVS into RDC to make the user experience as simple as that of Nvidia’s DCGM.
 
 Also, AMD’s UX and validation coverage is not as good as DCGM’s. [Nvidia’s DCGM utilizes notation denoting different levels (r1,r2,r3,r4)](https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/dcgm-diagnostics.html#run-levels-and-tests) while AMD’s NVVS does not use any such notation.
 
@@ -416,7 +416,7 @@ These features for KVCache offload will matter more and more as RLVR and multi-a
 2. AMD leadership team’s biggest blind spot is low total compensation (base + RSU + bonus) for their AI software engineers due to incorrect compensation structure benchmarking to semiconductor companies instead of companies that are great at AI software. We have discussed how our recommendation will help strengthen the alignment of engineers’ compensation to AMD’s success (or failure). **We strongly believe that if AMD does not significantly increase their AI Software Engineer pay, AMD will continue losing to Nvidia.**
 3. We recommend that AMD invest heavily in Python interfaces at every layer of the ROCm stack, and not just in Python Kernel Authoring DSLs.
 4. AMD needs to invest heavily in a team of 20+ developer relations engineers hosting In Real Life events and interacting with the community at a deeper level.
-5. Unlike NVIDIA GTC, AMD doesn’t hold any developer-focused conferences and only holds product launch keynote events, for instance *“Advancing AI”.* We recommend that AMD host an in‑person “ROCm Developer Conference”.
+5. Unlike NVIDIA GTC, AMD doesn’t hold any developer-focused conferences and only holds product launch keynote events, for instance _“Advancing AI”._ We recommend that AMD host an in‑person “ROCm Developer Conference”.
 6. NVIDIA has launched their [Dynamo disaggregated prefill inference framework called](https://github.com/ai-dynamo/dynamo) and [their NIXL inference KV cache tiering library](https://github.com/ai-dynamo/nixl). AMD does not have first-class support for disaggregated prefill or NVMe KVCache tiering. They need to rapidly make progress on this, or they will fall behind on inference.
 7. AMD should give ROCm collective engineers a persistent cluster of at least 1,024 MI300 class GPUs that are for the exclusive of this team. This will go a long way towards helping RCCL catch up to NCCL.
 8. Nvidia overstates TFLOP/s in their chip specifications, but AMD overstates TFLOP/s specifications even more. [Even in AMD’s own blog, they have admitted to a significantly larger gap between their marketed TFLOP/s and what is achievable](https://rocm.blogs.amd.com/software-tools-optimization/Understanding_Peak_and_Max-Achievable_FLOPS/README.html) than users might experience with NVIDIA.

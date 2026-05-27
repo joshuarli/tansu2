@@ -76,6 +76,6 @@ They have actually beat their long-term financial model in terms of operating ma
 
 This excellent management, growth, leading technology, and focus on areas of efficiency and green energy revolution make Power Integrations a fantastic focus for investment. Those firms with ESG principals especially should consider Power Integrations as the number of semiconductor firms viable for ESG is quite low. They have won numerous awards for their work on energy efficiency from a variety of organizations including Energy Star and SEAD. [We offer financial models, projections, and further technological competitive information for those who would like to investigate further.](https://semianalysis.com/contact/)
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/power-integrations-powi-a-premier-esg-play-semiconductor-exposure-to-electric-vehicles-green-energy-and-power-efficiency-regulations/) on August 2nd 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/power-integrations-powi-a-premier-esg-play-semiconductor-exposure-to-electric-vehicles-green-energy-and-power-efficiency-regulations/) on August 2nd 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

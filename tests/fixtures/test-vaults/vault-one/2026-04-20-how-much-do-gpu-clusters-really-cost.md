@@ -13,11 +13,11 @@ description: "Calculating Cluster TCO, The Real Impact of Downtime, The Grand Un
 Modern GPUs are unbelievably expensive. A single Blackwell GPU costs more than the average car, and uses more energy than a single family home. It is now common for unicorn startups to have thousands of these GPUs working for them, day and night. Many foundation model companies now spend an order of magnitude more money on GPUs than they do on employees. We know multiple companies spending over 80% of their initial funding on GPUs. Startup founders now have four important categories of spending to consider when building a financial plan for their company:
 
 > 1\. GPU clusters
-> 
+>
 > 2\. Tokens
-> 
+>
 > 3\. Employees
-> 
+>
 > 4\. Everything else
 
 Traditionally, when deciding where to get a cluster to solve that first category, companies evaluate neoclouds on a cost-per-hour basis, focusing on the most expensive line item: the GPUs. However, focusing solely on the price per GPU-hour a provider offers can be misleading. In practice, two cloud offerings with identical pricing per GPU-hour can have very different TCO, once you account for everything that goes into training a model or building inference endpoints. Factors such as downtime, setup time, debugging time, and required performance tuning of networking and storage can dramatically impact how much useful work users can do per dollar spent. Additional costs for non-GPU expenses such as CPU compute, networking, storage, orchestration software, and support can also be hidden and not considered. In other words, what appears to be a cheaper cluster can in many cases end up being more expensive.
@@ -102,7 +102,7 @@ Where…
 
 Note: setup is amortized over the contract term (3mo to 3yr). in other words, spending time setting up a cluster you will use for 3 years is not a big deal. Spending weeks setting up a cluster you will use for 3 months is.
 
-Next, we define G\_chkpt-hot, G\_chkpt-cold, and G\_tolerant, i.e. the different ways to calculate goodput expense.
+Next, we define G_chkpt-hot, G_chkpt-cold, and G_tolerant, i.e. the different ways to calculate goodput expense.
 
 ## The Grand Unifying Theory Of Goodput
 
@@ -132,13 +132,13 @@ We summarize all of this in our TCO Calculator as “Goodput Expense”, where t
 
 \\(\\begin{align\*} G\_{\\text{chkpt-cold}} &= \\left\[\\left(t\_{\\text{id}}+\\, \\frac{t\_{\\text{chkpt}}}{2}\\right) + t\_{\\text{init}} + t\_{\\text{repair}}\\right\] j\_{\\text{size}} \\cdot \\#\_{\\text{failures}} \\cdot \\$\_{\\text{GPU-hr}} \\\\\[14pt\] G\_{\\text{chkpt-hot}} &= \\left\\{\\left\[\\left(t\_{\\text{id}}+\\, \\frac{t\_{\\text{chkpt}}}{2}\\right) + t\_{\\text{init}}\\right\] j\_{\\text{size}} + t\_{\\text{repair}} \\cdot b\_{\\text{radius}}\\right\\} \\#\_{\\text{failures}} \\cdot \\$\_{\\text{GPU-hr}} \\\\\[14pt\] G\_{\\text{tolerant}} &= \\left\[(t\_{\\text{id}} + t\_{\\text{failover}}) j\_{\\text{size}} + t\_{\\text{repair}} \\cdot b\_{\\text{radius}}\\right\] \\#\_{\\text{failures}} \\cdot \\$\_{\\text{GPU-hr}} \\end{align\*}\\)
 
-Where…  
-  
-G\_chkpt-cold = goodput expense when jobs restart from a checkpoint via a spare node that is “cold” (typically, provider managed). In other words, the jobs wait until a repair/replace happens. This is the worst case scenario, since these kinds of repairs typically take hours or days.
+Where…
 
-G\_chkpt-hot = goodput expense when jobs restart from a checkpoint via a spare node that is “hot” (typically, customer managed but can also be from top-tier providers). In other words, the jobs (depending on defined priorities) can restart immediately on idle nodes (customer managed), pre-empt lower-priority jobs (also customer managed), or restart on a node that gets brought into the cluster from a spare pool (provider managed). Of course, a provider-managed spare pool also depends on some capacity guarantee from the customer (i.e. if one of your machines fail and you report it for repair/replacement, there needs to be spares available). Top-tier providers that are experienced running multi-tenant clusters at 4k+ GPU scale tell us that they will leave anywhere from 2-6% of their nodes in this spare pool to be used for hot-swaps.
+G_chkpt-cold = goodput expense when jobs restart from a checkpoint via a spare node that is “cold” (typically, provider managed). In other words, the jobs wait until a repair/replace happens. This is the worst case scenario, since these kinds of repairs typically take hours or days.
 
-G\_tolerant = goodput expense when jobs are “fault tolerant”, i.e. they can keep running in the event of a hardware issue. This scenario is well understood for single-node inference, where a framework such as llm-d or ome or kserve will just have the load balancer stop sending traffic to the failed node and resend any failed requests to the healthy nodes. The scenario is less well understood in training.
+G_chkpt-hot = goodput expense when jobs restart from a checkpoint via a spare node that is “hot” (typically, customer managed but can also be from top-tier providers). In other words, the jobs (depending on defined priorities) can restart immediately on idle nodes (customer managed), pre-empt lower-priority jobs (also customer managed), or restart on a node that gets brought into the cluster from a spare pool (provider managed). Of course, a provider-managed spare pool also depends on some capacity guarantee from the customer (i.e. if one of your machines fail and you report it for repair/replacement, there needs to be spares available). Top-tier providers that are experienced running multi-tenant clusters at 4k+ GPU scale tell us that they will leave anywhere from 2-6% of their nodes in this spare pool to be used for hot-swaps.
+
+G_tolerant = goodput expense when jobs are “fault tolerant”, i.e. they can keep running in the event of a hardware issue. This scenario is well understood for single-node inference, where a framework such as llm-d or ome or kserve will just have the load balancer stop sending traffic to the failed node and resend any failed requests to the healthy nodes. The scenario is less well understood in training.
 
 Individual terms are…
 
@@ -216,7 +216,7 @@ Notably, checkpointless training is integrated with AWS node lifecycle managemen
 
 By direct comparison to the previous two frameworks, torchpass is the only licensed software product, and the only option that maintains the same training performance as jobs without fault tolerance. In other words, the code changes are minimal, there is no performance overhead. The cost comes in the form of idle nodes in the cluster or time spent pre-empting lower priority jobs.
 
-TorchPass is implemented at the scheduler level via plugin. In the case of our hands on testing this was an 8-node GKE cluster running a torchtitan job via PyTorchJob (KubeFlow) and the native kubernetes scheduler. We primarily tested the “planned migration” case, which is applicable for interruptions such as upgrades or maintenance on nodes in the cluster, and various Xids related to ECCs, GPU falling off the bus, power failures, link flaps, etc. In these cases, TorchPass supports a simple “just-in-time” checkpoint concept via get\_state() that allows for the failing node to transfer state via RDMA to an idle spare. Notably, this sort of soft failure scenario is the most common type of failure in large training clusters where nodes slowly degrade over time but are still functional.
+TorchPass is implemented at the scheduler level via plugin. In the case of our hands on testing this was an 8-node GKE cluster running a torchtitan job via PyTorchJob (KubeFlow) and the native kubernetes scheduler. We primarily tested the “planned migration” case, which is applicable for interruptions such as upgrades or maintenance on nodes in the cluster, and various Xids related to ECCs, GPU falling off the bus, power failures, link flaps, etc. In these cases, TorchPass supports a simple “just-in-time” checkpoint concept via get_state() that allows for the failing node to transfer state via RDMA to an idle spare. Notably, this sort of soft failure scenario is the most common type of failure in large training clusters where nodes slowly degrade over time but are still functional.
 
 The results are clear when compared to checkpoint restart and TorchFT with performance overhead. Recovery times are similar for planned migrations, and the job performance is similar.
 
@@ -245,9 +245,9 @@ Now, to demonstrate how to use the calculator, we use three representative provi
 These are not direct comparisons, but rather an amalgamation of the average experience using the providers in the given tier. Roughly speaking:
 
 > Gold-tier = Nebius + Fluidstack + Crusoe
-> 
+>
 > Hyperscaler = Oracle + Azure + AWS + GCP
-> 
+>
 > Silver-tier = Together + Lambda + Vultr + Voltage Park + Cirrascale + Gcore + Firmus + GMO + Tensorwave
 
 ![](z-images/bb61f5ea15b1ea93933216d1a0bccef3.webp)

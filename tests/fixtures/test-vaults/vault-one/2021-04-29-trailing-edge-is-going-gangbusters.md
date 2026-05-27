@@ -20,6 +20,6 @@ Advanced Semiconductor Engineering ($ASX) a leading OSAT firm (Outsourced Assemb
 
 KLIC is fully maxed out on production with huge lead times. They are confident about $1.2EPS in Q2. This indicates sequential growth from here on out through the rest of the year as they add capacity. Comments on complexity indicate a multiplicative effect on wafer production increases which bodes well beyond 2021. SemiAnalysis is extremely positive on $KLIC to say the least. We are even more positive now than we were months ago when we first started alerting clients to this trade.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/trailing-edge-is-going-gangbusters-klic/) on April 29th 2021*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/trailing-edge-is-going-gangbusters-klic/) on April 29th 2021_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

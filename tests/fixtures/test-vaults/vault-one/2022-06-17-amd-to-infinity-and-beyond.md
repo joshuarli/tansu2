@@ -13,7 +13,7 @@ Today we are going to cover the information AMD presented from their Financial A
 AMD’s strategy can be summed up into one quote from Lisa Su.
 
 > No matter who you are, no matter which business you're in, you need more compute.
-> 
+>
 > Dr. Lisa Su, CEO of AMD
 
 ![](z-images/8d8f1a83473f3f82c8ce870454f1bba6.webp)
@@ -61,11 +61,11 @@ AMD’s fabrics are very exciting and the most critical part of the company in o
 AMD can make the best CPU or GPU or FPGA in the world, but customers will ditch them if they cannot bring something differentiated to the table. Products are going to get more and more tailored to their specific applications. Volumes fall and design costs rise unless chiplets and amazing fabrics are developed. AMD has both of these.
 
 > Customers have come and asked us, hey, can you help us differentiate?
-> 
+>
 > We don't want to build all the general-purpose stuff that you guys are doing because you have the scale in the general-purpose stuff, but we want to be able to add our secret sauce.
-> 
+>
 > We already have the leading industry platform for chiplets, but what we're doing is we're going to make it much easier to add third-party IP as well as customer IP to that chiplet platform.
-> 
+>
 > Dr. Lisa Su, CEO of AMD
 
 AMD’s defining moment with their fabric comes with Infinity Fabric 4. Infinity Fabric has generally sat on top of the same PHYs that are designed for the PCIe standard but utilizing a different protocol. Things get tricky with CXL and UCIe in the play. CXL is a big deal for coherency between accelerators and hosts, pooled memory, and in general, disaggregated server architecture. AMD wants to leverage this while also providing enhanced capabilities.
@@ -117,7 +117,7 @@ Currently AMD does well with their Xilinx FPGAs. This is due to being far more p
 That is where the Pensando acquisition comes in. The most difficult part is software, and FPGAs are horrible for this aspect. We have heard from actual users of the hardware that Pensando has some of the best software for this market. They use open standards for the networking flow such as P4. The acquisition was a no brainer as Pensando needed AMDs backing as Intel, Nvidia, and Marvell are investing very heavily into hardware and software for this field, and AMD needs this IP for datacenter and edge. We expect Intel to be the highest volume DPU provider in 2023 due to their Mount Evans ASIC, but the DPU market is very early days and the landscape is constantly shifting.
 
 > x86 is certainly where a lot of our compute solutions are, but we all recognize that ARM has a lot of traction, frankly, in our Xilinx roadmap and our Pensando road map will use ARM. We would also use in this environment for custom -- really the technology of choice of the customers.
-> 
+>
 > Dr. Lisa Su, CEO of AMD
 
 Also, a fun sidenote, [Locuza](https://twitter.com/Locuza_/status/1535395024669749249?s=20&t=Zerg8R4eX2kFHkCN8rdm1Q) figured out that the die shot AMD presented as 7nm Elba, but is actually of the 16nm Capri chip. Tsk tsk to the marketing person who made these slides!

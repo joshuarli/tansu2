@@ -25,7 +25,7 @@ Most of the investor community’s sell-side (besides Redburn) just plugged in A
 To start with, it’s interesting to see ASML on the side of Moore’s Law continuing to be alive, even as so many others rush to call it dead, most notably, Jensen Huang, CEO of Nvidia.
 
 > But it's the value of Moore's Law, which is basically reducing the cost per function that will drive our business, and we'll create these building blocks for growth and for solving some of humanity's biggest challenges. And we are a strong believer in this.
-> 
+>
 > Peter Wennink, CEO of ASML
 
 ASML shared that they believe the semiconductor end market will grow at a rate of ~9% annually from 2020 to 2030. For those keeping track, this would mean semiconductor sales in 2025 would exceed $700B, and 2030 would reach ~1.1 Trillion! Compare this to Tech Insights at $1T, McKinsey at $1.1T, and Semi at $1.3T. The highlights are that wafer capacity grows by 780k wafer starts per month (WPM) at a CAGR of 6.5%.
@@ -41,9 +41,9 @@ ASML also shared this slide with CAGR data by subsegment by year. We transposed 
 ASML went on to fluff on about all the megatrends, cloud, artificial intelligence, green energy, and the transformation to renewable, but there wasn't too much new or interesting content in that section, but there are a few anecdotes.
 
 > Some data that we got from some of our customers and some of other companies that is from Shell. It is an estimate that 1 megawatt of wind power will take EUR 3,000 worth of semiconductors and solar EUR 4,000. Now the question. What was the electricity needed in the world in 2019?
-> 
+>
 > It was about 24,000 terawatt hour. Now you can then calculate this and take the average of wind and solar. All the electricity you need in the world, which, of course, is not going to be the case, but it's going to be wind and solar. You come to significant numbers. Now the 24,000 was 21,000 3 years earlier, it was 2019, the 24,000.
-> 
+>
 > Peter Wennink, CEO of ASML
 
 Edit: corrected the math in this section
@@ -67,9 +67,9 @@ Not that ridiculous, but if we stack on battery storage, the numbers would conti
 We did want to share one particular quote from the 65-year-old CEO, which made us groan.
 
 > I'm from a generation where actually, we were given the promise of the global village. And I had a discussion with the some young people that actually said, you guys screwed up your generation because you left us with all these problems.
-> 
+>
 > So listen, but our generation did create a global village. Our generation, my generation did create the Internet, did create global travel.
-> 
+>
 > Peter Wennink, ASML’s CEO
 
 It’s interesting to hear that the baby boomer generation invented boats, airplanes, and an internet that doesn't have a massive firewall between China and the rest of the world. Sorry for the aside, folks; back to semiconductors!
@@ -127,9 +127,9 @@ The technological sovereignty argument is a big part of ASML’s capacity aspira
 This 10% capacity is due to the inherent inefficiencies of a regionalized versus centralized semiconductor fabrication market. This 10% inefficient capacity represents 150 thousand wafers per month added annually.
 
 > The first implication from regionalization is there will be a movement towards smaller fabs away from larger giga-fabs. A giga-fab is one that has a monthly production capacity more than 100,000 wafers per month. We can see this already with TSMC’s current investments in Japan, US, and China. These fabs are smaller than their giga-fabs in Taiwan and likely that means they are less efficient. Larger fabs are run more efficiently than many small fabs due to the nature of the incredibly complicated multivariate calculus that involves tool positions, cycle times, throughput per tool, variance in time between tools, the wafer highway that transports wafers across the fab, and much more. A larger fab is better able to balance these factors and therefore extract more throughput out of each tool. These multiple small fabs could have just as many tools, but their output would be lower. Regionalization has a direct impact on the capital intensity of a fab (a measure of revenue versus spending on building the fab).
-> 
+>
 > The second implication is that less efficient operators would be rewarded. Integrated design manufactures such as Intel, Samsung, Texas Instruments, STMicroelectronics, Infineon, and NXP are generally considered to be less efficient at getting wafers through the fab and maximizing utilization of their tools versus foundries. Capital intensity will continue to rise across the industry due to this. Intel states they will run at [a long term capital intensity of ~30% with the net capital intensity being 25%](https://semianalysis.substack.com/p/intel-is-throwing-the-kitchen-sink?utm_source=url). Texas Instruments, a Wall Street darling due to their consistently large buybacks, has stated their long term capital intensity is rising from 6% to 10%.
-> 
+>
 > Dylan Patel, Chief Analyst of SemiAnalysis in [“I, Semiconductor – The Regionalization Of Semiconductors Due To Global Supply Chain Instability”](https://www.semianalysis.com/p/i-semiconductor-the-regionalization)
 
 For the record, WFE intensity is artificially high in 2021/2022, and it will fall slightly as the decade progresses, but it will be higher than in the late 2010s. Furthermore, this paradigm of excess capacity due to regionalization also means that utilization rates would fall. Geographically dispersed competing fabs will have to compete on pricing to fill the overbuilt fabs. The combination of factors results in fabrication margins falling.
@@ -137,7 +137,7 @@ For the record, WFE intensity is artificially high in 2021/2022, and it will fal
 And if there were any questions about where ASML stands on the current geopolitical mess…
 
 > I think the energy transition is something that surprised us for the last couple of -- and there is anecdotal evidence, we had a Chinese customer that actually was in our offices at the beginning of the year, and has said, basically, they were making very mature stuff. It was in power, in some analog products.
-> 
+>
 > And actually said, Peter, we need your help because we're going to build a 300-millimeter fab, 90 nanometers, 9-0.
 
 ASML’s answer is that they will teach China everything they can. This will destroy the profitability of the power semiconductor market for Infineon, ST Micro, and other European companies. 90nm is where the 200mm to 300mm fab transition started. This would lead to the new 90nm 300mm fab having better unit economics than the 90nm 200mm fab despite massive depreciation differences.

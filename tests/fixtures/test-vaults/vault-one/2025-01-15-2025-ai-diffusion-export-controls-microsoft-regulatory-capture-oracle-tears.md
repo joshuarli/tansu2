@@ -88,8 +88,8 @@ One bright side of the regulation is that Nvidia and AMD may stop capping on the
 
 ## How the AI Diffusion Framework Works
 
-To begin, the AI diffusion framework creates a global license requirement for the export of AI chips, and grants exemptions to this licensing requirement that effectively divides the world into three tiers of countries:  
-  
+To begin, the AI diffusion framework creates a global license requirement for the export of AI chips, and grants exemptions to this licensing requirement that effectively divides the world into three tiers of countries:
+
 Tier 1: The United States plus 18 security and trade partners or treaty allies that are highly aligned with the US in terms of control over strategic technology and have trustworthy export control regimes. GPUs may be shipped into these countries under the Artificial Intelligence Authorization (AIA) exception, but the entity importing the GPUs must be headquartered or have its ultimate parent from a Tier 1 country.
 
 Tier 3: Countries are the list of [23 arms-embargoed nations (Country List D:5)](https://www.bis.gov/ear/title-15/subtitle-b/chapter-vii/subchapter-c/part-740/supplement-no-1-part-740-country-groups) plus Macau, where exports of controlled chips are effectively banned. This includes China, Russia, Syria and other countries.
@@ -107,13 +107,13 @@ There are three broad categories in which AI Chips are permitted to be exported 
 ## Shipments to Two Classes of Validated End Users (VEUs):
 
 - **Universal Validated End Users (UVEUs):** Companies that have their headquarters or ultimate parent in a Tier 1 country and that can meet various security and compliance standards. Companies will need to apply to become recognized as UVEUs, we think that US Hyperscalers such as Microsoft, Amazon, Google and Meta will likely qualify under this category, and we expect that the application process will be streamlined and not onerous. UVEUs will be able to seamlessly obtain licenses to import GPUs into Tier 2 countries so long as they satisfy certain requirements:
-	- UVEUs must have **75% of their controlled compute in Tier 1 countries**
-		- They cannot have more than **7% of controlled compute within a single Tier 2 country**.
-		- If the UVEU is from the US, that UVEU must have 50% of its total AI computing power within the US. [Based on our AI Datacenter Industry Model](https://semianalysis.com/datacenter-industry-model/), for the next few years, all major US hyperscalers will have well beyond 50% of their compute in the US and are also safely above the 75% Tier 1 country threshold.
-		- UVEUs are subject to stringent security requirements that govern topics like model weights, supply chain security including personnel checking, and transit security. These security measures will be covered in detail in a later section.
+  - UVEUs must have **75% of their controlled compute in Tier 1 countries**
+    - They cannot have more than **7% of controlled compute within a single Tier 2 country**.
+    - If the UVEU is from the US, that UVEU must have 50% of its total AI computing power within the US. [Based on our AI Datacenter Industry Model](https://semianalysis.com/datacenter-industry-model/), for the next few years, all major US hyperscalers will have well beyond 50% of their compute in the US and are also safely above the 75% Tier 1 country threshold.
+    - UVEUs are subject to stringent security requirements that govern topics like model weights, supply chain security including personnel checking, and transit security. These security measures will be covered in detail in a later section.
 - **National Validated End Users (NVEUs):** NVEU Authorizations can be granted to entities from Tier 1 and 2 countries that can meet specified security requirements export a much larger number of accelerators into a single specified country (that is not a Tier 3 country). This would cover scenarios such as national AI champions that are headquartered in Tier 2 countries and who want to build large AI clusters in their home country, but also for said national AI champion to build a cluster in another destination country – though NVEUs would need to apply for a separate NVEU authorization in each additional country they want to build in using this NVEU exception. For a company from a Tier 2 country, they would also need an NVEU Authorization to deploy a significant amount of GPUs in a Tier 1 country.
-	- An NVEU authorization gives the NVEU an export license to have an installed base of up to ~320,000 H100 equivalents for use in the destination country they have received the NVEU for, though the installed base allowance is phased in gradually as per the table below. It is likely that to be granted an NVEU authorization, the specified destination country will need to have a government-to-government agreement with the US in advance.
-		- NVEUs must follow the same stringent security requirements as UVEUs, but with added requirements in specific circumstances. For example, UVEUs must submit semi-annual reports to the BIS including a record of current inventory, but NVEUs have to disclose a list of current customers.
+  - An NVEU authorization gives the NVEU an export license to have an installed base of up to ~320,000 H100 equivalents for use in the destination country they have received the NVEU for, though the installed base allowance is phased in gradually as per the table below. It is likely that to be granted an NVEU authorization, the specified destination country will need to have a government-to-government agreement with the US in advance.
+    - NVEUs must follow the same stringent security requirements as UVEUs, but with added requirements in specific circumstances. For example, UVEUs must submit semi-annual reports to the BIS including a record of current inventory, but NVEUs have to disclose a list of current customers.
 
 ![](z-images/d76a377c5fbf2d1f62b21d6565f961d8.webp)
 
@@ -145,7 +145,7 @@ A single cloud company doing a 20k GB200 cluster or a 13k GB300 this year can ta
 
 For gaming GPUs, the AI Diffusion Framework provides the License Exception Advanced Computing Authorized (ACA): This is a carveout for chips that are covered by 3A090.a but not designed or marketed for use in datacenters i.e. consumer gaming GPUs. The ACA license exception is only for Tier 2 countries and the ACA exception does not require any notification to BIS, effectively allowing consumer gaming GPUs to ship freely to these markets. The treatment for Tier 3 Countries is more stringent, with the same products requiring a NAC (Notified Advanced Computing) license exception which is more onerous. The NAC license exemption requires an application to BIS for export and inter-agency review. Therefore, high-end gaming GPUs like the RTX4090 have effectively been banned in China and other Tier 3 Countries. These gaming cards can be popular for some users as they have decent price-performance ratios for certain inference workloads.
 
-In all cases, the AI Diffusion Framework *also* imposes restrictions that prevent the training of frontier models, which is defined as the greater of 1e26 training FLOPS or the training FLOPS of the largest open-source model on the market, as well as prohibiting the export of model weights of models of this size with closed weights. We will explain the restrictions on AI Model Training and Model Weights Exports in much more detail below.
+In all cases, the AI Diffusion Framework _also_ imposes restrictions that prevent the training of frontier models, which is defined as the greater of 1e26 training FLOPS or the training FLOPS of the largest open-source model on the market, as well as prohibiting the export of model weights of models of this size with closed weights. We will explain the restrictions on AI Model Training and Model Weights Exports in much more detail below.
 
 ## AI Diffusion Framework Effective Date and Implementation
 
@@ -157,8 +157,8 @@ The implementation details might also trigger a dilemma for providers that are u
 
 The new framework requires all companies willing to deploy GPUs to submit a VEU Authorization application – and involves 19 separate certification and policy requirements, to become either a UVEU or NVEU
 
-Notably, the process requires approval from 4 different agencies: The Department of Commerce, State, Defense, and Energy. Coordinating across 4 different agencies entails processing applications may not be as fast as some were hoping.  
-  
+Notably, the process requires approval from 4 different agencies: The Department of Commerce, State, Defense, and Energy. Coordinating across 4 different agencies entails processing applications may not be as fast as some were hoping.
+
 We show below the list of requirements to be certified as a VEU:
 
 1. General Compliance and Proven Track Record: the VEU must demonstrate that it meets physical, cyber, and personnel security standards.
@@ -212,7 +212,7 @@ This means that there are three main categories for models that are not regulate
 
 In the long run, this means that if there is a model that exceeds 1e26 in training, then the flops used to train that open-source model will be used as the lower bound of what counts as regulated.
 
-For now, models that *do* fall under the purview of the regulation are ones that utilize more than 1e26 FLOPs during pre-training. However, this number is better thought of as a “compute budget”, as it is not just pre-training flops that count towards this. If synthetic data is used and is generated by a closed source model to the point where more than 10% of the pre-training operations are over this synthetically generated data, then the number of operations it took to generate such data also counts toward the overall budget. In other words, if a huge portion of the pre-training data is synthetic data, then that counts against the number of raw compute that can be used to train a model. In this case “a single model” can be variants of the same model (e.g., fine-tuned or previous check points).
+For now, models that _do_ fall under the purview of the regulation are ones that utilize more than 1e26 FLOPs during pre-training. However, this number is better thought of as a “compute budget”, as it is not just pre-training flops that count towards this. If synthetic data is used and is generated by a closed source model to the point where more than 10% of the pre-training operations are over this synthetically generated data, then the number of operations it took to generate such data also counts toward the overall budget. In other words, if a huge portion of the pre-training data is synthetic data, then that counts against the number of raw compute that can be used to train a model. In this case “a single model” can be variants of the same model (e.g., fine-tuned or previous check points).
 
 If more than one closed-source model is used and in combination, they comprise more than 10% of operations, then the number of operations from the model comprising the largest amount of data are counted toward the compute budget.
 

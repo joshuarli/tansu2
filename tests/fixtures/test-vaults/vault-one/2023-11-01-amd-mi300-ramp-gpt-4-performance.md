@@ -15,7 +15,7 @@ We detailed the MI300 architecture in June, where we reiterated those above poin
 Companies such as Microsoft, Meta, Oracle, Google, Supermicro/Quanta direct, Amazon and more have already placed varying amounts of orders for MI300. We will detail the volumes, gross margins, and average price for these below, but first let’s talk about what AMD officially says.
 
 > Based on the rapid progress we are making with our AI road map execution and purchase commitments from cloud customers, we now expect Datacenter GPU revenue to be approximately $400 million in the fourth quarter and exceed $2 billion in 2024 as revenue ramps throughout the year. This growth would make MI300 the fastest product to ramp to $1 billion in sales in AMD history. I look forward to sharing more details on our progress at our December AI event.
-> 
+>
 > Lisa Su, AMD CEO
 
 Note she is actually sandbagging MI300 here by only saying >$2 billion. We will share our numbers below, but note there is supreme visibility due to AMD MI300’s complicated supply chain, it takes ~7 months for AMD to actually have a MI300X 8 GPU Baseboard to ship from the moment TSMC starts working on the wafers.

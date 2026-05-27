@@ -64,7 +64,7 @@ PCIe 6 requires a BER of < 1e-12 while Ethernet requires 1e-4. This massive 8 or
 Ethernet-style SerDes are much less constrained by stringent PCIe specifications, allowing it to be much faster and have higher bandwidth. As a result, NVlink has higher latency, but this doesn’t matter as much in the AI world of massively parallel workloads, where ~100ns vs ~30ns is not a worthy consideration.
 
 > First off, the MI300 AID uses most of its beachfront area for PCIe SerDes instead of Ethernet-style SerDes. While this gives AMD more configurability in terms of IFIS, CXL, and PCIe connectivity, it results in the total IO being about 1/3 that of Ethernet-style SerDes. AMD needs to immediately move off PCIe-style SerDes for their AI accelerator if they want to have any hopes at competing with Nvidia’s B100. We believe they will be for MI400.
-> 
+>
 > [Nvidia’s Plans To Crush Competition – B100, “X100”, H200, 224G SerDes, OCS, CPO, PCIe 7.0, HBM3E](https://www.semianalysis.com/p/nvidias-plans-to-crush-competition)
 
 AMD’s lack of high quality SerDes are severely limiting them in the competitiveness of their products long term. They have come up with the Open xGMI / Open Infinity Fabric / Accelerated Fabric Link, because CXL is not the correct protocol for AI. While it is primarily based on PCIe, it does eschew some of the standard features of PCIe 7.0 and CXL for time to market, performance, coherence, and reach reasons.

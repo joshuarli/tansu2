@@ -40,7 +40,7 @@ Furthermore, this 14GB ignores other applications, operating system, and [other 
 
 For reference, that is about the same size chip as the upcoming iPhone 15 Pro’s A17 and ~25% smaller than the upcoming M3. Furthermore, this figure is without overhead from assist circuity, array inefficiency, NOCs, etc. Large amounts of local SRAM will not work for client inference. Emerging memories such as FeRAM and MRAM do bring some hope for a light at the end of the tunnel, but they are quite far away from being productized on the scale of Gigabytes.
 
-The next layer down the hierarchy is DRAM. The highest-end iPhone, the 14 Pro Max, has 6GB of RAM, but the modal iPhone has 3GB RAM. While high-end PC’s will have 16GB+, the majority of *new* sales are at 8GB of RAM. The typical client device cannot run a 7 billion parameter model quantized to FP16!
+The next layer down the hierarchy is DRAM. The highest-end iPhone, the 14 Pro Max, has 6GB of RAM, but the modal iPhone has 3GB RAM. While high-end PC’s will have 16GB+, the majority of _new_ sales are at 8GB of RAM. The typical client device cannot run a 7 billion parameter model quantized to FP16!
 
 This then brings up the question. Why can’t we go down another layer in the hierarchy? Can we run these models off of NAND-based SSDs instead of off RAM?
 

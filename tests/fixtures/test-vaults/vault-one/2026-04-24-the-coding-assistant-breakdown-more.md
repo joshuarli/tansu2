@@ -61,7 +61,7 @@ As a result, the noticeable changes in this transition are:
 1. High-resolution image support, and a clear increase in RL training objectives that include the use of screenshots for frontend styling rather than running tests programmatically via headless browsers and tools like playwright
 2. An “xhigh” reasoning effort option that slots in between “high” and “max” on the hierarchy of effort (i.e. how much time the model is going to spend reasoning about a task, described earlier)
 3. Thinking content is omitted by default. Of course, you still get charged for these tokens, but you have to opt in to see them.
-4. Task budgets (in beta, and API only) where the model is given a suggestion on how efficiently to complete a task. If the model is given a task budget that is too restrictive, it can take shortcuts or refuse. This is different from max\_tokens, which is a hard restriction on output length
+4. Task budgets (in beta, and API only) where the model is given a suggestion on how efficiently to complete a task. If the model is given a task budget that is too restrictive, it can take shortcuts or refuse. This is different from max_tokens, which is a hard restriction on output length
 5. Updated token counting, the most critical change when it comes to pricing. 4.7 uses a new tokenizer, which trades off improved performance via more granular token counting for more total token usage. They admit directly that this will lead to increases up to 35% in token usage. Implicitly, this is a 35% increase in price!
 
 On model behavior changes, the biggest thing we have noticed in our testing is how 4.7 is using fewer tool calls by default, and using reasoning more. The jury is still out on the benefits here, but in general we don’t like it. Anthropic suggests raising the reasoning effort from high to xhigh or max to increase tool usage. And it seems that our users are doing exactly this in order to let the model bring in enough context to successfully complete a complex task or form a complete multi-step plan. Not exactly the token efficiency tradeoff claimed in the announcement.
@@ -142,9 +142,9 @@ SemiAnalysis is famous (infamous?) for shilling Claude, and we’ve been testing
 
 We think GPT-5.5 is a significant improvement within Codex specifically. Previously, ~all our engineers used Claude exclusively, and use of ChatGPT models for coding was restricted to wrappers like Cursor. Now, most of our engineers switch between Codex and Claude models depending on the task and IDE preference. Here are some quotes:
 
-> *“What I have really appreciated about Codex recently is how it pulls in a lot of context before making changes to code. Not like just a structural change, but a change that actually requires non trivial ‘thinking’. 4.7 often feels like it just does a quick Explore and then #yolos changes whereas codex pulls in a shit ton of more granular context from the internet + codebase and then makes a directed effort at the ask”*
+> _“What I have really appreciated about Codex recently is how it pulls in a lot of context before making changes to code. Not like just a structural change, but a change that actually requires non trivial ‘thinking’. 4.7 often feels like it just does a quick Explore and then #yolos changes whereas codex pulls in a shit ton of more granular context from the internet + codebase and then makes a directed effort at the ask”_
 
-> *“Currently I use Codex for reviewing PRs/bug hunting, explaining existing code, and creating/revising documentation. Its better at understanding code structure and reasoning about it.”*
+> _“Currently I use Codex for reviewing PRs/bug hunting, explaining existing code, and creating/revising documentation. Its better at understanding code structure and reasoning about it.”_
 
 However, it’s not all positive for OpenAI. Some of our other engineers complained that Codex is still worse at inferring your true intent than Claude Code. Humans naturally give terse and not particularly well thought out instructions when prompting coding agents, and Codex often listens too literally.
 
@@ -263,7 +263,7 @@ OpenAI attempted to solve these issues by releasing [SWE-bench verified](https:/
 
 In February 2026, OpenAI [announced](https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/) that they would no longer report results on SWE-bench verified for two reasons:
 
-1. Of the 138 problems consistently failed by o3, over half *still* had unfair evals that were scoped to specific implementation details not mentioned in the task description OR extra tests that checked for functionality not mentioned in the task description. In other words, the “verified” subset still wasn’t very good
+1. Of the 138 problems consistently failed by o3, over half _still_ had unfair evals that were scoped to specific implementation details not mentioned in the task description OR extra tests that checked for functionality not mentioned in the task description. In other words, the “verified” subset still wasn’t very good
 2. Because all the PRs are part of popular open-source repos that are definitely included in every model’s training data, they found evidence that GPT-5.2, Opus 4.5, and Gemini 3 Flash had all memorized some of the answers (aka “contamination”).
 
 Instead, they recommended model makers report [SWE-bench pro](https://labs.scale.com/leaderboard/swe_bench_pro_public) results instead. SWE-bench pro is another Scale creation. The main difference (besides making the tasks harder) is that they used public repos with less permissive licenses and private repos to avoid contamination. They also hired contractors to write evals and problem descriptions for the commits, instead of relying purely on GitHub issues and preexisting PRs. These are all good steps, but they definitely don’t fully solve either problem identified with SWE-bench verified. As you’ve probably already figured out by now, no benchmark is perfect.

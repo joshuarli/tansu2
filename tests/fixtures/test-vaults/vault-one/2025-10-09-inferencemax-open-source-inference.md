@@ -67,84 +67,84 @@ Link to apply: [https://app.dover.com/apply/SemiAnalysis/2a9c8da5-6d59-4ac8-8302
 
 InferenceMAX™ initiative is supported by many major buyers of compute and prominent members of the ML community including those from OpenAI, Microsoft, PyTorch Foundation, etc.:
 
-> *“As we build systems at unprecedented scale, it’s critical for the ML community to have open, transparent benchmarks that reflect how inference really performs across hardware and software. InferenceMAX™’s head-to-head benchmarks cut through the noise and provide a living picture of token throughput, performance per dollar, and tokens per Megawatt. This kind of open source effort strengthens the entire ecosystem and helps everyone, from researchers to operators of frontier datacenters, make smarter decisions.”*
-> 
+> _“As we build systems at unprecedented scale, it’s critical for the ML community to have open, transparent benchmarks that reflect how inference really performs across hardware and software. InferenceMAX™’s head-to-head benchmarks cut through the noise and provide a living picture of token throughput, performance per dollar, and tokens per Megawatt. This kind of open source effort strengthens the entire ecosystem and helps everyone, from researchers to operators of frontier datacenters, make smarter decisions.”_
+>
 > – Peter Hoeschele, VP of Infrastructure and Industrial Compute, OpenAI Stargate
 
-> *“Open collaboration is driving the next era of AI innovation. The open-source InferenceMAX benchmark gives the community transparent, nightly results that inspire trust and accelerate progress. It highlights the competitive TCO performance of our AMD Instinct MI300, MI325X, and MI355X GPUs across diverse workloads, underscoring the strength of our platform and our commitment to giving developers real-time visibility into our software progress.”*
-> 
+> _“Open collaboration is driving the next era of AI innovation. The open-source InferenceMAX benchmark gives the community transparent, nightly results that inspire trust and accelerate progress. It highlights the competitive TCO performance of our AMD Instinct MI300, MI325X, and MI355X GPUs across diverse workloads, underscoring the strength of our platform and our commitment to giving developers real-time visibility into our software progress.”_
+>
 > – Dr. Lisa Su, Chair and CEO, AMD
 
-> *“Inference demand is growing exponentially, driven by long-context reasoning. NVIDIA Grace Blackwell NVL72 was invented for this new era of thinking AI. NVIDIA is meeting that demand through constant hardware and software innovation to enable what’s next in AI. By benchmarking frequently, InferenceMAX™ gives the industry a transparent view of LLM inference performance on real-world workloads. The results are clear: Grace Blackwell NVL72 with TRT-LLM and Dynamo delivers unmatched performance per dollar and per megawatt—powering the most productive and cost-effective AI factories in the world*.”
-> 
+> _“Inference demand is growing exponentially, driven by long-context reasoning. NVIDIA Grace Blackwell NVL72 was invented for this new era of thinking AI. NVIDIA is meeting that demand through constant hardware and software innovation to enable what’s next in AI. By benchmarking frequently, InferenceMAX™ gives the industry a transparent view of LLM inference performance on real-world workloads. The results are clear: Grace Blackwell NVL72 with TRT-LLM and Dynamo delivers unmatched performance per dollar and per megawatt—powering the most productive and cost-effective AI factories in the world_.”
+>
 > – Jensen Huang, Founder & CEO, NVIDIA
 
-> *“Speed is the moat. InferenceMAX™’s nightly benchmarks match the speed of improvement of the AMD software stack. It’s fantastic to see AMD’s MI300, MI325, and MI355 GPUs performing so well across diverse workloads and interactivity levels.”*
-> 
+> _“Speed is the moat. InferenceMAX™’s nightly benchmarks match the speed of improvement of the AMD software stack. It’s fantastic to see AMD’s MI300, MI325, and MI355 GPUs performing so well across diverse workloads and interactivity levels.”_
+>
 > – Anush Elangovan, VP GPU Software, AMD
 
-> *“InferenceMAX™ highlights workloads that the ML community cares about. At NVIDIA, we welcome these comparisons because they underscore the advantage of our full-stack approach—from GPUs hardware to NVLink networking to NVL72 Rack Scale to Dynamo disaggregated serving that consistently delivers industry-leading inference performance and ROI at scale.”*
-> 
+> _“InferenceMAX™ highlights workloads that the ML community cares about. At NVIDIA, we welcome these comparisons because they underscore the advantage of our full-stack approach—from GPUs hardware to NVLink networking to NVL72 Rack Scale to Dynamo disaggregated serving that consistently delivers industry-leading inference performance and ROI at scale.”_
+>
 > – Ian Buck, VP & GM, Hyperscale, NVIDIA & Inventor of CUDA
 
-> *“ InferenceMAX™’s nightly results highlight the rapid pace of progress in the AMD software stack. It’s exciting to witness the birth of an open project that provides a tied feedback loop between what the software team works on here at AMD and how it affects specific ML use cases across our MI300, MI325, and MI355 GPUs. I’m looking forward to see what’s next for InferenceMAX and to showcase what the AMD platform can do. AMD GPUs will continue to get faster every week.”*
-> 
+> _“ InferenceMAX™’s nightly results highlight the rapid pace of progress in the AMD software stack. It’s exciting to witness the birth of an open project that provides a tied feedback loop between what the software team works on here at AMD and how it affects specific ML use cases across our MI300, MI325, and MI355 GPUs. I’m looking forward to see what’s next for InferenceMAX and to showcase what the AMD platform can do. AMD GPUs will continue to get faster every week.”_
+>
 > – Quentin Colombet, Senior Director, AMD, Ex-Brium CEO
 
-> *“Our mission at Azure is to give customers the most performant, efficient, and cost-effective cloud for AI. SemiAnalysis InferenceMAX™ supports that mission by providing transparent, reproducible benchmarks that track inference performance across GPUs and software stacks under realistic workloads. This continuous data on throughput, efficiency, and cost per watt strengthens our ability to tune Azure’s inference platform for scale, helping customers build with confidence on Microsoft Cloud.”*
-> 
+> _“Our mission at Azure is to give customers the most performant, efficient, and cost-effective cloud for AI. SemiAnalysis InferenceMAX™ supports that mission by providing transparent, reproducible benchmarks that track inference performance across GPUs and software stacks under realistic workloads. This continuous data on throughput, efficiency, and cost per watt strengthens our ability to tune Azure’s inference platform for scale, helping customers build with confidence on Microsoft Cloud.”_
+>
 > – Scott Guthrie, Executive Vice President, Microsoft Cloud & AI
 
-> *“At Microsoft, delivering the best inference performance and economics for our customers at scale requires a deep understanding of how AI models interact with real-world hardware and software. Open-source, reproducible benchmarks, like InferenceMAX™, are essential for generating transparent insights into throughput, efficiency, and cost under realistic workloads. These continuous signals help guide our platform strategy, enabling us to optimize the entire stack from silicon, to systems, to software, so that every layer works together to unlock the full potential of our infrastructure.”*
-> 
+> _“At Microsoft, delivering the best inference performance and economics for our customers at scale requires a deep understanding of how AI models interact with real-world hardware and software. Open-source, reproducible benchmarks, like InferenceMAX™, are essential for generating transparent insights into throughput, efficiency, and cost under realistic workloads. These continuous signals help guide our platform strategy, enabling us to optimize the entire stack from silicon, to systems, to software, so that every layer works together to unlock the full potential of our infrastructure.”_
+>
 > – Saurabh Dighe, Corporate Vice President, Azure Strategic Planning & Architecture
 
-> *“The gap between theoretical peak and real-world inference throughput is often determined by systems software: inference engine, distributed strategies, and low-level kernels. InferenceMAX™ is valuable because it benchmarks the latest software showing how optimizations like FP4, MTP, speculative decode, and wide-EP actually play out across various hardware. Open, reproducible results like these help the whole community move faster.”*
-> 
+> _“The gap between theoretical peak and real-world inference throughput is often determined by systems software: inference engine, distributed strategies, and low-level kernels. InferenceMAX™ is valuable because it benchmarks the latest software showing how optimizations like FP4, MTP, speculative decode, and wide-EP actually play out across various hardware. Open, reproducible results like these help the whole community move faster.”_
+>
 > – Tri Dao, Chief Scientist of Together AI & Inventor of Flash Attention
 
-> *“The industry needs many public, reproducible benchmarks of inference performance. We’re excited to collaborate with InferenceMAX™ from the vLLM team. More diverse workloads and scenarios that everyone can trust and reference will help the ecosystem move forward. Fair, transparent measurements drive progress across every layer of the stack, from model architectures to inference engines to hardware.”*
-> 
+> _“The industry needs many public, reproducible benchmarks of inference performance. We’re excited to collaborate with InferenceMAX™ from the vLLM team. More diverse workloads and scenarios that everyone can trust and reference will help the ecosystem move forward. Fair, transparent measurements drive progress across every layer of the stack, from model architectures to inference engines to hardware.”_
+>
 > – Simon Mo, vLLM Project Co-Lead
 
-> *“The benchmark is good sir”*
-> 
+> _“The benchmark is good sir”_
+>
 > – Michael Goin, vLLM maintainer
 
-> *“InferenceMAX™ benchmark is pogchamp & W in chat”*
-> 
+> _“InferenceMAX™ benchmark is pogchamp & W in chat”_
+>
 > – Kaichao You, vLLM Project Co-lead
 
-> *“InferenceMAX™ demonstrates how an open ecosystem can operate in practice. Many leading inference stacks such as vLLM, SGLang, and TensorRT-LLM are built on PyTorch, and benchmarks like this show how innovations across kernels, runtimes, and frameworks translate into measurable performance on a range of hardware platforms, including NVIDIA and AMD GPUs. By being open source and running nightly, InferenceMAX™ offers a transparent, community-driven approach to tracking progress and providing PyTorch users with data-driven insights.”*
-> 
+> _“InferenceMAX™ demonstrates how an open ecosystem can operate in practice. Many leading inference stacks such as vLLM, SGLang, and TensorRT-LLM are built on PyTorch, and benchmarks like this show how innovations across kernels, runtimes, and frameworks translate into measurable performance on a range of hardware platforms, including NVIDIA and AMD GPUs. By being open source and running nightly, InferenceMAX™ offers a transparent, community-driven approach to tracking progress and providing PyTorch users with data-driven insights.”_
+>
 > – Matt White, Executive Director, PyTorch Foundation
 
-> *“Oracle Cloud Infrastructure is built to give frontier labs & enterprises flexibility and choice, with many GPU SKUs available for AI at scale. InferenceMAX strengthens that mission by delivering open source, reproducible benchmarks that reflect real-world performance, efficiency, and cost on the latest hardware and software. With this transparency, customers can confidently select the platforms that best align with their AI strategies.”*
-> 
+> _“Oracle Cloud Infrastructure is built to give frontier labs & enterprises flexibility and choice, with many GPU SKUs available for AI at scale. InferenceMAX strengthens that mission by delivering open source, reproducible benchmarks that reflect real-world performance, efficiency, and cost on the latest hardware and software. With this transparency, customers can confidently select the platforms that best align with their AI strategies.”_
+>
 > – Jay Jackson, Vice President, Oracle Cloud Infrastructure
 
-> *“InferenceMAX™ raises the bar by delivering open, transparent benchmarks that track how inference really performs across the latest GPUs and software stacks. For customers, having reproducible data that measures real world tokens per dollar & tokens per watt, turns abstract marketing numbers into actionable insight. At CoreWeave, we support this effort because it brings clarity to a fast-moving space and helps the entire ecosystem build with confidence.”*
-> 
+> _“InferenceMAX™ raises the bar by delivering open, transparent benchmarks that track how inference really performs across the latest GPUs and software stacks. For customers, having reproducible data that measures real world tokens per dollar & tokens per watt, turns abstract marketing numbers into actionable insight. At CoreWeave, we support this effort because it brings clarity to a fast-moving space and helps the entire ecosystem build with confidence.”_
+>
 > – Peter Salanki, CTO, CoreWeave
 
-> *“InferenceMAX™ sets a new standard by providing open, transparent benchmarks that reveal how inference performs across today’s leading GPUs and software stacks. With reproducible data measuring real-world tokens per dollar and tokens per watt, customers can move beyond marketing claims to actionable insights. For us at Nebius, as a full-stack AI cloud provider, this initiative helps us build our inference platform with confidence and ensure we are aligned with the ecosystem.”*
-> 
+> _“InferenceMAX™ sets a new standard by providing open, transparent benchmarks that reveal how inference performs across today’s leading GPUs and software stacks. With reproducible data measuring real-world tokens per dollar and tokens per watt, customers can move beyond marketing claims to actionable insights. For us at Nebius, as a full-stack AI cloud provider, this initiative helps us build our inference platform with confidence and ensure we are aligned with the ecosystem.”_
+>
 > – Roman Chernin, co-founder and Chief Business Officer, Nebius
 
-> *“At Crusoe, we believe being a great partner means empowering our customers with choice and clarity. That’s why we’re proud to support InferenceMAX™, which provides the entire AI community with open-source, reproducible benchmarks for the latest hardware. By delivering transparent, real-world data on throughput, efficiency, and cost, InferenceMAX™ cuts through the hype and helps our customers confidently select the very best platform for their unique workloads.”*
-> 
+> _“At Crusoe, we believe being a great partner means empowering our customers with choice and clarity. That’s why we’re proud to support InferenceMAX™, which provides the entire AI community with open-source, reproducible benchmarks for the latest hardware. By delivering transparent, real-world data on throughput, efficiency, and cost, InferenceMAX™ cuts through the hype and helps our customers confidently select the very best platform for their unique workloads.”_
+>
 > – Chase Lochmiller, Co-Founder & CEO, Crusoe
 
-> *“Supermicro is excited about the launch of InferenceMAX™, the SemiAnalysis benchmarking system that measures real-world throughput, performance per dollar, and energy efficiency. This open-source tool provides reproducible benchmarks running on the latest hardware and software enabling AI labs and enterprises to choose the best platforms at scale.”*
-> 
+> _“Supermicro is excited about the launch of InferenceMAX™, the SemiAnalysis benchmarking system that measures real-world throughput, performance per dollar, and energy efficiency. This open-source tool provides reproducible benchmarks running on the latest hardware and software enabling AI labs and enterprises to choose the best platforms at scale.”_
+>
 > – Charles Liang, Founder & CEO, Supermicro
 
-> *“At TensorWave, we’re building a next-generation cloud on AMD GPUs because we believe innovation thrives when customers have strong alternatives. InferenceMAX™ reinforces that vision by providing open source, reproducible benchmarks that track throughput, efficiency, and cost across the latest hardware and software. By cutting through synthetic numbers and highlighting real-world inference performance, it helps customers see the full potential of AMD platforms for AI at scale.”*
-> 
+> _“At TensorWave, we’re building a next-generation cloud on AMD GPUs because we believe innovation thrives when customers have strong alternatives. InferenceMAX™ reinforces that vision by providing open source, reproducible benchmarks that track throughput, efficiency, and cost across the latest hardware and software. By cutting through synthetic numbers and highlighting real-world inference performance, it helps customers see the full potential of AMD platforms for AI at scale.”_
+>
 > – Darrick Horton, CEO, TensorWave
 
-> *“Vultr is committed to providing an open ecosystem that gives developers freedom in how they build and scale AI — whether on NVIDIA or AMD GPUs. With InferenceMAX™, customers gain open, reproducible benchmarks that deliver clear insights into throughput, efficiency, and cost across cutting-edge hardware and software. By showcasing real-world performance, we empower teams to confidently choose the right platform for their AI workloads.”*
-> 
+> _“Vultr is committed to providing an open ecosystem that gives developers freedom in how they build and scale AI — whether on NVIDIA or AMD GPUs. With InferenceMAX™, customers gain open, reproducible benchmarks that deliver clear insights into throughput, efficiency, and cost across cutting-edge hardware and software. By showcasing real-world performance, we empower teams to confidently choose the right platform for their AI workloads.”_
+>
 > – Nathan Goulding, SVP of Engineering, Vultr
 
 ## The Fundamental Trade-off between Throughput (tok/s/gpu) & Latency/ Interactivity (tok/s/user)
@@ -182,15 +182,15 @@ For input / output sequence lengths, we converged on three sets: 1024 input toke
 The config options for a benchmark run are as follows:
 
 > · **Model**: LLaMA 70B, DeepSeek R1, gpt-oss 120B
-> 
+>
 > · **Precision**: MXFP4 weights, FP8, FP4
-> 
+>
 > · **GPU**: H100, H200, B200, GB200 NVL72, MI300X, MI325X, MI355X
-> 
+>
 > · **Open source Frameworks**: [vLLM](https://github.com/vllm-project/vllm), [SGLang](https://github.com/sgl-project/sglang), [TRT-LLM](https://github.com/NVIDIA/TensorRT-LLM)
-> 
+>
 > · **Parallelism**: 1, 2, 4, 8, etc.
-> 
+>
 > · **Max concurrency**: 4, 8, 16, 32, 64, etc.
 
 Starting with models, we picked LLaMA3 70B to represent dense enterprise model deployments.
@@ -431,8 +431,8 @@ Do note that colocation rent and electricity cost typically make up less than 20
 
 We use rate units – i.e. token/s per MW as opposed to an accumulated amount of energy per token such as Joules per Token. This is because datacenter capacity is commissioned in terms of Megawatts (MW), which is a rate unit and is equivalent to 1 megajoule (MJ) per second. If we integrate the rate unit over a given time period – we get the absolute quantity of energy consumed over that period.
 
-For now, we build up our estimate for MW needed for a given cluster by adding up Thermal Design Power (TDP) of each component in the datacenter. TDP is not the same as expected average power. Using an example to explain, for memory bandwidth bounded decode workloads, power consumption of the system should never reach TDP and will instead hover at a lower power level – the expected average power. In the future, we will benchmark the actual power consumption of each system (and networking equipment) through ipmitool. Only then will we pivot to an accumulated quantity of energy per token.  
-  
+For now, we build up our estimate for MW needed for a given cluster by adding up Thermal Design Power (TDP) of each component in the datacenter. TDP is not the same as expected average power. Using an example to explain, for memory bandwidth bounded decode workloads, power consumption of the system should never reach TDP and will instead hover at a lower power level – the expected average power. In the future, we will benchmark the actual power consumption of each system (and networking equipment) through ipmitool. Only then will we pivot to an accumulated quantity of energy per token.
+
 We estimate throughput per provisioned power based on the raw InferenceMAX™ results combined with data on total utility power for AI clusters from our [AI Datacenter Industry Model](https://semianalysis.com/datacenter-industry-model/). This model quantifies total utility power through power-normalized estimates across vendors, architectures, and inference stacks. Full estimates and ongoing nightly benchmarks are available at [InferenceMAX.ai](https://inferencemax.semianalysis.com/).
 
 ## Performance per MW Results
@@ -477,9 +477,9 @@ The first tool we turned to in order to debug this hanging issue was [py-spy](ht
 
 Source: SemiAnalysis
 
-Reading through vLLM’s NCCL bindings, we weren’t convinced that the FFI binding was the root cause of issue. Running nvidia-smi, we saw that the GPU\_UTIL was not at 100% but instead at 0% - indicating that no kernels were running on the GPU, leading us to conclude this was not a device side NCCL deadlock.
+Reading through vLLM’s NCCL bindings, we weren’t convinced that the FFI binding was the root cause of issue. Running nvidia-smi, we saw that the GPU_UTIL was not at 100% but instead at 0% - indicating that no kernels were running on the GPU, leading us to conclude this was not a device side NCCL deadlock.
 
-Next, we used linux [perf](https://perfwiki.github.io/main/) top profiler to look beneath the python layer and try to gain more insight into what specific shared library could be triggering this issue. We noted that most of the CPU cycles for this process (and sub processes) were running on “libnvidia-ptxjitcompiler.so”. Reading the docs on “libnvidia-ptxjitcompiler”, we came across a description that reads: *“The PTX JIT Compiler library (/usr/lib/libnvidia-ptxjitcompiler.so.575.57.08) is a JIT compiler which compiles PTX into GPU machine code and is used by the CUDA driver”.* This is extremely strange as we are not sure why this is calling the PTX compiler on init given that there are no just in time kernels to compile because typically all the NCCL kernels are prebuilt at build time.
+Next, we used linux [perf](https://perfwiki.github.io/main/) top profiler to look beneath the python layer and try to gain more insight into what specific shared library could be triggering this issue. We noted that most of the CPU cycles for this process (and sub processes) were running on “libnvidia-ptxjitcompiler.so”. Reading the docs on “libnvidia-ptxjitcompiler”, we came across a description that reads: _“The PTX JIT Compiler library (/usr/lib/libnvidia-ptxjitcompiler.so.575.57.08) is a JIT compiler which compiles PTX into GPU machine code and is used by the CUDA driver”._ This is extremely strange as we are not sure why this is calling the PTX compiler on init given that there are no just in time kernels to compile because typically all the NCCL kernels are prebuilt at build time.
 
 ![](z-images/2e91700cc7b3b7561fc953fe71b9e35d.webp)
 
@@ -491,7 +491,7 @@ We were too ~~lazy~~ busy to rebuild the whole container image to compile NCCL f
 
 Source: SemiAnalysis
 
-Peeling back yet another layer of the onion, we read up on what ~/.nv/ComputeCache/ does. According to documentation, it is the cache to convert PTX virtual ISA to SASS machine code. This was also very puzzling to us as typically NCCL is built with the machine code already bundled in addition to the PTX virtual ISA. We started reading the [NCCL build scripts and we noticed that SM100 (Blackwell) wasn’t enabled for CUDA 12](https://github.com/NVIDIA/nccl/commit/80f6bda4378b99d99e82b4d76a633791cc45fef0#diff-45a9034a0c75cbfbbb34e853a43f6513c1d4c933eccf6adca705abe234fc1113R42-R49) which was what we were using and found out that they had only enabled it for the upcoming CUDA 13. This means that SM100 SASS was not bundled in and we were JIT converting compute\_90 (hopper) PTX to SM100 SASS resulting in the process taking an extremely long time. The reason why other people didn’t see this bug when he ran it was that he was using an internal cluster using slurm with a setting that manually mounted his home directory. Since the SASS JIT cache is stored in the home directory, ~/.nv/ComputeCache/, the SASS was already cached!
+Peeling back yet another layer of the onion, we read up on what ~/.nv/ComputeCache/ does. According to documentation, it is the cache to convert PTX virtual ISA to SASS machine code. This was also very puzzling to us as typically NCCL is built with the machine code already bundled in addition to the PTX virtual ISA. We started reading the [NCCL build scripts and we noticed that SM100 (Blackwell) wasn’t enabled for CUDA 12](https://github.com/NVIDIA/nccl/commit/80f6bda4378b99d99e82b4d76a633791cc45fef0#diff-45a9034a0c75cbfbbb34e853a43f6513c1d4c933eccf6adca705abe234fc1113R42-R49) which was what we were using and found out that they had only enabled it for the upcoming CUDA 13. This means that SM100 SASS was not bundled in and we were JIT converting compute_90 (hopper) PTX to SM100 SASS resulting in the process taking an extremely long time. The reason why other people didn’t see this bug when he ran it was that he was using an internal cluster using slurm with a setting that manually mounted his home directory. Since the SASS JIT cache is stored in the home directory, ~/.nv/ComputeCache/, the SASS was already cached!
 
 It turns out that the vLLM July container image was based on the pytorch container image which used a version of NCCL that didn’t have Blackwell SM100 prebuilt. The fix is to use a [post fix version of 2.26.2](https://pypi.org/project/nvidia-nccl-cu12/2.26.2.post1/) that has Blackwell bundled such that we don’t waste 30 minutes compiling virtual ISA to machine code. This bug has since been fixed in the latest vLLM container images. Thank you to simon-mo, youkaichao, mgoin, Robert-shaw, ptrblck, and Kedar Potdar for helping implement the permanent fix and immediate action on the quick resolution.
 
@@ -503,13 +503,13 @@ Another Blackwell issue we ran into is that a sub-dependency of vLLM/SGLang, Fla
 
 It turns out that this race condition was introduced due to [in an attempt to prevent race conditions from happening](https://github.com/flashinfer-ai/flashinfer/pull/1779)! Instead of relying on the builtin FileLock python package’s lock cleanup, flashinfer manually cleans it up which results in a race condition. [This has been patched in Flashinfer](https://github.com/flashinfer-ai/flashinfer/pull/1779) but has not yet been upstreamed to vLLM/SGLang Blackwell release container images yet. Huge thanks to the Flashinfer team and Kedar Potar for jumping in and helping debug and patch this in record time - all within 4 hours of getting connected with the team.
 
-There is another Blackwell bug with respective to Flashinfer changing an build environment flag name to FLASHINFER\_CUDA\_ARCH\_LIST but the Nvidians did not inform the vLLM/SGLang maintainers or contribute their own PR thus for a couple weeks, [vLLM](https://github.com/vllm-project/vllm/pull/25730) and [SGLang did](https://github.com/sgl-project/sglang/pull/11226) not support AOT for flashinfer.  
-  
+There is another Blackwell bug with respective to Flashinfer changing an build environment flag name to FLASHINFER_CUDA_ARCH_LIST but the Nvidians did not inform the vLLM/SGLang maintainers or contribute their own PR thus for a couple weeks, [vLLM](https://github.com/vllm-project/vllm/pull/25730) and [SGLang did](https://github.com/sgl-project/sglang/pull/11226) not support AOT for flashinfer.
+
 We were seeing that every so often, our Nvidia container toolkit would completely error out and display this message:
 
-> *“docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error running prestart hook #0: exit status 1, stdout:, stderr: Auto-detected mode as ‘legacy’*
-> 
-> *nvidia-container-cli: initialization error: driver rpc error: timed out: unknown”*
+> _“docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error running prestart hook #0: exit status 1, stdout:, stderr: Auto-detected mode as ‘legacy’_
+>
+> _nvidia-container-cli: initialization error: driver rpc error: timed out: unknown”_
 
 Trying to use the nvidia-smi in CLI would trigger a stall as well. This indicates that the entire Nvidia driver has actually crashed. After a detailed debug session with the Nvidia firmware/driver team and the Nvidia NCCL team, we found out that there is a slow resource leak bug around since NCCL 2.26 given that we are using CUDA graphs and launching over 500 Blackwell containers per night.
 
@@ -519,7 +519,7 @@ On the AMD front, we ran into fewer bugs while developing InferenceMAX™, and t
 
 We also encountered a bug when benchmarking MI355X, where the benchmark runs crashed and dumps 1TB of files named gpucore.XXX. After investigation, we found out the root cause was chunked prefill size in the server configs was set too high. Lowering it from 196608 to 32768 fixed the issue ([PR link](https://github.com/InferenceMAX/InferenceMAX/pull/80/files)).
 
-AMD [recently added pyxis support](https://instinct.docs.amd.com/projects/container-toolkit/en/release-1.1.x/container-runtime/enroot-pyxis-installation.html), which has resulted in a good UX for using containers in SLURM, especially when it comes to multi-node training or multi-node offline batch inference jobs. However, we ran into one bug related to their ROCm 7.0 SGLang image *“rocm/7.0:rocm7.0\_ubuntu\_22.04\_sgl-dev-v0.5.2-rocm7.0-mi30x-20250915”* which caused a hard crash when trying to run this image through pyxis SLURM. The root cause of this stems from how permissions are handled with the some of the layers that make up that docker image causing permission conflicts between layers. The AMD team is looking into how to permanently fix it and prevent such errors from happening again.
+AMD [recently added pyxis support](https://instinct.docs.amd.com/projects/container-toolkit/en/release-1.1.x/container-runtime/enroot-pyxis-installation.html), which has resulted in a good UX for using containers in SLURM, especially when it comes to multi-node training or multi-node offline batch inference jobs. However, we ran into one bug related to their ROCm 7.0 SGLang image _“rocm/7.0:rocm7.0_ubuntu_22.04_sgl-dev-v0.5.2-rocm7.0-mi30x-20250915”_ which caused a hard crash when trying to run this image through pyxis SLURM. The root cause of this stems from how permissions are handled with the some of the layers that make up that docker image causing permission conflicts between layers. The AMD team is looking into how to permanently fix it and prevent such errors from happening again.
 
 Back in July, When we tried to enable AITER on SGLang for AMD GPUs, the process took 10x longer than normal (~30 minutes in total) given a slow process to finish compilation for DeepSeek V3 ([GitHub issue here](https://github.com/sgl-project/sglang/issues/7826)). This issue was eventually resolved in future releases and is currently fixed.
 

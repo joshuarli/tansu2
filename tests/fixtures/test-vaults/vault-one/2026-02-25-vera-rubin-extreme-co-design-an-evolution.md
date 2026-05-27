@@ -241,14 +241,14 @@ The BlueField-4 DPU sits in center of the front of the chassis between the left-
 
 Speaking of BlueField-4, it is important to discuss the new offering Jensen highlighted at CES earlier this year: ICMS, or Inference Context Memory Storage — a platform that we hear may be rebranded to “CMX” at GTC. ICMS, or CMX, introduces a third, entirely separate network dedicated solely to context memory. CMX is a purpose-built KV cache fabric. As long-context inference pushes context windows toward millions of tokens and agentic concurrency scales across users and services, the current memory hierarchy used to store KVcache begins to look insufficient.
 
-KV cache grows linearly with sequence length and multiplicatively with workload parallelism, quickly expanding beyond what any single tier of memory was designed to hold. GPU HBM, while unmatched in bandwidth and latency, is not enough on its own to store KV especially for longer sequence length queries that are becoming popular between turns or tool calls. Host DRAM extends capacity but remains node-bound and limited in aggregate footprint and ultimately has limited capacity. Meanwhile, traditional shared storage—architected for durability rather than latency —has more access time and power overhead, making it unsuitable for participation in the decode loop.  
-  
+KV cache grows linearly with sequence length and multiplicatively with workload parallelism, quickly expanding beyond what any single tier of memory was designed to hold. GPU HBM, while unmatched in bandwidth and latency, is not enough on its own to store KV especially for longer sequence length queries that are becoming popular between turns or tool calls. Host DRAM extends capacity but remains node-bound and limited in aggregate footprint and ultimately has limited capacity. Meanwhile, traditional shared storage—architected for durability rather than latency —has more access time and power overhead, making it unsuitable for participation in the decode loop.
+
 As we noted in mid-January in our [Memory Model note](https://semianalysis.com/institutional/ssd-and-storage-anchoring-note-the-best-is-yet-come/), Nvidia's ICMS inserts a new G3.5 tier between local SSD (G3) and shared storage (G4), optimized specifically for ephemeral, recomputable KV cache. The ICMS requires a dedicated networking layer designed exclusively for KV traffic. Wherever networking is used in this architecture, it is provisioned as a context memory network — isolated from general data movement and optimized for predictable decode latency.
 
-The challenge with this is that the volumes of SSDs going to ICMS / CMX are quite overblown by the industry. We worked through the math in the [Memory model](https://semianalysis.com/memory-model/) and [Tokenomics model](https://semianalysis.com/tokenomics-model/).  
-  
-BlueField-4 will be the silicon anchor of this third network. Positioned on the storage array, it terminates NVMe-oF and RDMA traffic at line rate and manages KV movement independently of host CPUs and GPUs. With 2×400G SerDes links providing 800Gb/s of bandwidth, integrated Grace CPU, and LPDDR, BlueField-4 would act as the controller for a distributed context memory fabric. In a preferred DGX-style configuration, a single BlueField-4 per tray may serve four Rubin processors, with the DPU dedicated purely to KV cache traffic and not shared with generic storage I/O.  
-  
+The challenge with this is that the volumes of SSDs going to ICMS / CMX are quite overblown by the industry. We worked through the math in the [Memory model](https://semianalysis.com/memory-model/) and [Tokenomics model](https://semianalysis.com/tokenomics-model/).
+
+BlueField-4 will be the silicon anchor of this third network. Positioned on the storage array, it terminates NVMe-oF and RDMA traffic at line rate and manages KV movement independently of host CPUs and GPUs. With 2×400G SerDes links providing 800Gb/s of bandwidth, integrated Grace CPU, and LPDDR, BlueField-4 would act as the controller for a distributed context memory fabric. In a preferred DGX-style configuration, a single BlueField-4 per tray may serve four Rubin processors, with the DPU dedicated purely to KV cache traffic and not shared with generic storage I/O.
+
 The new CMX/ICMS ecosystem will likely include leading storage providers such as Weka, DDN, Dell Technologies, NetApp, VAST Data, and others.
 
 ### Power Delivery
@@ -756,8 +756,8 @@ Outside of the NVIDIA ecosystem, the main switch ASIC players are Broadcom, whic
 Source: SemiAnalysis AI Networking Model
 
 - Single plane network with 1.6T OSFP cages at the NIC.
-	![](z-images/6c96a1a589c6ae6cbe769f3a8105e606.webp)
-	Source: SemiAnalysis AI Networking Model
+  ![](z-images/6c96a1a589c6ae6cbe769f3a8105e606.webp)
+  Source: SemiAnalysis AI Networking Model
 
 For Meta, we think the VR NVL72 deployments will comprise only of non-scheduled fabric (NSF) clusters built using Tomahawk 6-based Minipack-4 OCP Rack 102.4T switches in each datacenter. While Meta will be using optics to connect all the switches within its cluster, it will use 1.6T AECs for NIC-to-TOR connections once 1.6T AECs become broadly available in the market. We expect the 1.6T AEC ramp to happen in the second half of calendar year 2026.
 

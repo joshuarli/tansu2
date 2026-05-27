@@ -13,7 +13,7 @@ Meta has historically made very odd AI infrastructure choices. First, they overl
 While Meta finally going all in on Nvidia GPUs…
 
 > We've shifted the models from being more CPU-based to being GPU-based. The current surge in CapEx is really due to the building out of AI infrastructure, which we really began last year and are continuing into this year.
-> 
+>
 > [Meta Earnings Call February 2023](https://s21.q4cdn.com/399680738/files/doc_financials/2022/q4/META-Q4-2022-Earnings-Call-Transcript.pdf)
 
 That doesn’t mean their bizarre infrastructure choices have stopped occurring. Meta is currently deploying billions of dollars of servers with silicon that increases costs, increases power, and, worst of all, reduces performance by increasing latency. The benefits of this infrastructure choice range from very limited to non-existent, and it will cost them hundreds of millions of dollars to implement.

@@ -46,8 +46,8 @@ However, the Groq LPU 2 was never productized because of design issues. The C2C 
 
 ## SRAM and Memory Hierarchy
 
-We have written about the role of SRAM in the memory hierarchy, but the quick recap is that SRAM is very fast (low latency and high bandwidth) but this comes at the expense of density and therefore cost.  
-  
+We have written about the role of SRAM in the memory hierarchy, but the quick recap is that SRAM is very fast (low latency and high bandwidth) but this comes at the expense of density and therefore cost.
+
 SRAM machines such as Groq’s LPU therefore enable very fast time to first token and tokens per second per user but at the expense of total throughput, as their limited SRAM capacity quickly gets saturated by weights, with little left over for KVcache that grows as more users are batched. GPUs win for throughput and cost as we have shown. This is why Nvidia has decided to combine these architectures to get the best of both worlds: accelerate parts of decode that are more latency sensitive and are not as memory heavy on a low-latency SRAM-heavy chip like the LPU, while memory hungry attention is performed on GPUs that come with a lot of fast (but not SRAM fast) memory capacity.
 
 ![](z-images/02c62ee8dd5a26e5c777ad4998ffc334.webp)
@@ -214,8 +214,8 @@ While 448G high speed SerDes have big challenges for shoreline, reach, and power
 
 With that said, the NVL1152 SKU is years out – and the roadmap is highly likely to shift. For now, our base case stands at copper being used within each rack and CPO between the racks, but this could easily change.
 
-For now – our best estimate of Nvidia’s CPO roadmap is as follows:  
-  
+For now – our best estimate of Nvidia’s CPO roadmap is as follows:
+
 Rubin:
 
 - NVL72 – Oberon all copper scale up
@@ -232,8 +232,8 @@ Feynman:
 - NVL72 – Oberon Rack – All Copper
 - NVL144 – Kyber Rack – All Copper
 - NVL1152 – 8xKyber Rack – Copper within rack and CPO on the switch between racks
-	![](z-images/33d4f20a3f232f33c2988384fe21d06e.webp)
-	Source: SemiAnalysis, Nvidia
+  ![](z-images/33d4f20a3f232f33c2988384fe21d06e.webp)
+  Source: SemiAnalysis, Nvidia
 
 ## Oberon and Kyber Updates, Larger World Sizes Introduced, More Networking Updates
 

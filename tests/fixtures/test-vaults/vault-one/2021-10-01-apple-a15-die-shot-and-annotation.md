@@ -42,6 +42,6 @@ The entire GPU is up 30% in size. This is mostly due to the 5th GPU core and cha
 
 The single largest area contributor is the system cache. It has doubled from 16MB to 32MB. This helps keep the various IP blocks of the A15 fed. This article was just a short summary of SkyJuice die analysis. What else did you folks notice about the die shot?
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/china-has-built-the-worlds-most-expensive-silicon-carbide-fab-but-numbers-dont-add-up/) on September 30th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/china-has-built-the-worlds-most-expensive-silicon-carbide-fab-but-numbers-dont-add-up/) on September 30th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

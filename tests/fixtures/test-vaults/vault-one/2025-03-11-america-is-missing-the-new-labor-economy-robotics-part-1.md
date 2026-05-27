@@ -26,7 +26,7 @@ China’s robotics localization effort is well underway. Local firms are taking 
 
 Source: SemiAnalysis, IFR.org.
 
-Today, building an identical robot arm (modeled after the Universal Robots UR5e) in the US **is ~2.2x more expensive than in China**. Under the hood, the situation is even more alarming. Even if those components are labeled “Made in USA”, they rely *heavily* upon China-made parts and materials - with no viable scalable alternative.
+Today, building an identical robot arm (modeled after the Universal Robots UR5e) in the US **is ~2.2x more expensive than in China**. Under the hood, the situation is even more alarming. Even if those components are labeled “Made in USA”, they rely _heavily_ upon China-made parts and materials - with no viable scalable alternative.
 
 ![](z-images/82bf9af354ee355dfbd624d131b92871.webp)
 
@@ -214,11 +214,11 @@ Source: Igus
 
 ## Supply Chain Woes
 
-*Thanks to our friends at [Silverado Policy Accelerator](https://silverado.org/) for highlighting this Substantial Transformation Principle obfuscation!*
+_Thanks to our friends at [Silverado Policy Accelerator](https://silverado.org/) for highlighting this Substantial Transformation Principle obfuscation!_
 
 In the US, the "Made in America" label is misleading at best, and downright harmful at worst. The substantial transformation principle allows for significant processing of foreign materials, notably from China, in intermediary countries, before final assembly in the US. This means a product can be labeled "Made in USA" even if its core components originated in China, obfuscating the true extent of foreign dependence. Consequently, many US companies will purchase cheap materials from China, transform them into robotics hardware packaged with Country of Origin (COO) America, and undercut the US firms that are actually extracting from the ground and manufacturing in the US. This is hard to talk about, but it's even harder to solve.
 
-It is far more difficult and time consuming than many people think to bring manufacturing capacity online and mass produce industrial robots to introduce automation, and worse, it’s *very* time consuming. Supply chains for many industrial robots are very complex, coming from many corners of the world where component production is typically already dominated through competitive cost advantages. There have been many cases of supply chain disruptions that have rattled Western economies. For example, in 2020-2022 during COVID the ports of Los Angeles and Long Beach experienced a line of over 100 ships waiting outside the port for their turn to disembark. In stark contrast to this debacle, during the same time period (2020-2021), China pivoted and increased their robotics installation by [44%](https://ifr.org/ifr-press-releases/news/china-robot-installations-grew-by-44-percent) from 2020-2021 in order to implement automation to make up for the lack of a workforce.
+It is far more difficult and time consuming than many people think to bring manufacturing capacity online and mass produce industrial robots to introduce automation, and worse, it’s _very_ time consuming. Supply chains for many industrial robots are very complex, coming from many corners of the world where component production is typically already dominated through competitive cost advantages. There have been many cases of supply chain disruptions that have rattled Western economies. For example, in 2020-2022 during COVID the ports of Los Angeles and Long Beach experienced a line of over 100 ships waiting outside the port for their turn to disembark. In stark contrast to this debacle, during the same time period (2020-2021), China pivoted and increased their robotics installation by [44%](https://ifr.org/ifr-press-releases/news/china-robot-installations-grew-by-44-percent) from 2020-2021 in order to implement automation to make up for the lack of a workforce.
 
 Why didn’t the US follow suit? COVID was the largest wake up call in years regarding the supply chain dependencies, yet the country refused to open its eyes. As explained below, the US has no significant market share in **any** of the relevant manufacturing nodes for robotics, and in most it’s essentially absent.
 
@@ -256,7 +256,7 @@ While “rare earth” is a misnomer -- they are just as abundant as most other 
 
 Source: GAO
 
-However, it’s likely that these companies will not catch up in scale without *significant* government subsidy to match the lower cost of capital in China. We’ve heard rumblings that China has some 250-275K tons of installed capacity for refining NdFeB magnets, and this will likely double in the next five years. For comparison, the USD$120M investment from the DoD in Lynas will likely produce somewhere around ~4,200 tons of refined REEs. At the moment, China’s economies of scale has given the country a nearly unshakable monopoly on the rare earths market.
+However, it’s likely that these companies will not catch up in scale without _significant_ government subsidy to match the lower cost of capital in China. We’ve heard rumblings that China has some 250-275K tons of installed capacity for refining NdFeB magnets, and this will likely double in the next five years. For comparison, the USD$120M investment from the DoD in Lynas will likely produce somewhere around ~4,200 tons of refined REEs. At the moment, China’s economies of scale has given the country a nearly unshakable monopoly on the rare earths market.
 
 Mining and materials beyond rare earth elements are just as -- if not more essential, and while this is not typically bottlenecked, they are largely under the control of China. Additionally, having raw ore deposits or being capable of mining doesn't imply too much for many of these elements. Many economies struggle to process these elements whereas China excels in this endeavor due to its advanced industrial economy. Stemming from two main initiatives in China, the Belt and Road initiative and Made in China 2025 initiative, the country has invested and built a well-paved path to absolute dominance over nearly the entire minerals processing industry.
 
@@ -266,7 +266,7 @@ Source: SemiAnalysis, Industry Estimates
 
 ## Lithium and Batteries
 
-All of the ore may come from other countries rich in deposits, but this means nothing without the capacity to refine them at scale and with high enough grade. In fact, China is only rich in deposits in *two* of these minerals, lithium and graphite, but countries rely on Chinese processing to refine them into usable materials. The Belt and Road initiative came up with clever ways to circumvent the lack of mineral deposits.
+All of the ore may come from other countries rich in deposits, but this means nothing without the capacity to refine them at scale and with high enough grade. In fact, China is only rich in deposits in _two_ of these minerals, lithium and graphite, but countries rely on Chinese processing to refine them into usable materials. The Belt and Road initiative came up with clever ways to circumvent the lack of mineral deposits.
 
 - Copper typically comes from Chile and Peru, and around 76% of Peru's and 68% of Chile's copper exports went to China, totaling up to 56% of all global raw [copper](https://features.csis.org/copper-in-latin-america/).
 - Nickel is highlighted as the one key mineral that is not refined mostly in China, as 37% is refined in Indonesia, and “only” 28% in China. However, according to the most recent [IEA](https://iea.blob.core.windows.net/assets/ee01701d-1d5c-4ba8-9df6-abeeac9de99a/GlobalCriticalMineralsOutlook2024.pdf) report, over 80% of Indonesia’s battery-grade nickel output is owned by Chinese producers linked to the [CCP](https://c4ads.org/commentary/refining-power/).

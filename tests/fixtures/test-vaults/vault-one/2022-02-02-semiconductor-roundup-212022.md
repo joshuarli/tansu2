@@ -11,7 +11,7 @@ This will be our third post of this type for the flurry of semiconductor earning
 **Google**
 
 > Turning to CapEx. The results in the fourth quarter primarily reflect ongoing investment in our technical infrastructure, most notably in servers, to support ongoing growth in both Google Services and Google Cloud. We also increased the pace of investment in fit-outs and ground-up construction of office facilities.
-> 
+>
 > In 2022, we expect a meaningful increase in CapEx. In technical infrastructure, servers will again be the largest driver of spend.
 
 [I don’t need to say anything, only link this.](https://www.youtube.com/watch?v=OFr74zI1LBM)
@@ -23,7 +23,7 @@ This will be our third post of this type for the flurry of semiconductor earning
 This is one that I think sell side has completely wrong. There’s a couple sell/downgrade ratings even from terrific analysts such as Stacy Rasgon. NXP isn't big into the power semi and battery world, but they are embedded in so many other applications and usecases. The beat was strong, guidance was terrific.
 
 > We anticipate 2022 will be another year of demand/supply imbalance with lead times extending out across almost the entire portfolio and the level and intensity of supply-related escalation conversations with our customers remains elevated.
-> 
+>
 > Q1, very clearly, and I just want to be very explicit here relative to the guidance, this is completely kept by available supply, so much more demand than what we have in terms of supply.
 
 Don’t know how one can get more bullish than this.

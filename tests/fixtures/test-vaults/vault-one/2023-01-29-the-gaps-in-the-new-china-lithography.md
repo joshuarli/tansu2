@@ -13,7 +13,7 @@ Over the last few months, [a few of these were partially addressed](https://www.
 Furthermore, [the world’s largest equipment maker, ASML,](https://www.semianalysis.com/p/asml-and-the-semiconductor-market) has been dogmatic about not following US technology restrictions.
 
 > As a European-based company with limited US technology in our systems, ASML can continue to ship all non-EUV lithography systems to China out of the Netherlands.
-> 
+>
 > [Peter Wennink, ASML CEO](https://www.asml.com/-/media/asml/files/investors/financial-results/q-results/2022/q3/investor-call-prepared-remarks.pdf?rev=39ae2eaeab37427a88d128a8ccc4d0cf#:~:text=Net%20income%20in%20Q3%20was,level%20of%203.4%20billion%20euros.)
 
 This is despite ASML’s source engineering being done in San Diego by a US company they acquired, Cymer.

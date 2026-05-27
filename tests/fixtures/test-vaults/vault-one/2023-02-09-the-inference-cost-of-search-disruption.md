@@ -9,7 +9,7 @@ description: "$30B Of Google Profit Evaporating Overnight, Performance Improveme
 OpenAI’s ChatGPT took the world by storm, quickly amassing [over 100 million active users](https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-base-analyst-note-2023-02-01/) in January alone. This is the fastest any application has ever grown to this size, with the prior two record keepers being TikTok at 9 months and Instagram at 2.5 years. The top question on everyone’s mind is how disruptive large language models (LLMs) will be for search. Microsoft rocked the world this week with their Bing announcement, incorporating OpenAI’s technology into search.
 
 > This new Bing will make Google come out and dance, and I want people to know that we made them dance.
-> 
+>
 > [Satya Nadella, Microsoft CEO](https://www.theverge.com/23589994/microsoft-ceo-satya-nadella-bing-chatgpt-google-search-ai)
 
 Google’s recent actions make it look like they are dancing. While [we believe Google has better models and AI expertise](https://www.semianalysis.com/i/97006309/tensorflow-vs-pytorch) than any other firm in the world, they do not have a culture conducive to implementing and commercializing much of its leading technology. The competitive pressures from Microsoft and OpenAI are changing this rapidly.
@@ -25,7 +25,7 @@ First off, let’s define the parameters of the search market. Our sources indic
 Google’s Services business unit has an operating margin of 34.15%. If we allocate the COGS/operating expense per query, you arrive at the cost of 1.06 cents per search query, generating 1.61 cents of revenue. This means that a search query with an LLM has to be significantly less than <0.5 cents per query, or the search business would become tremendously unprofitable for Google.
 
 > We’re excited to announce the new Bing is running on a new, next-generation OpenAI large language model that is more powerful than ChatGPT and customized specifically for search. It takes key learnings and advancements from ChatGPT and GPT-3.5 – and it is even faster, more accurate and more capable.
-> 
+>
 > [Microsoft](https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/)
 
 ## ChatGPT Costs
@@ -47,7 +47,7 @@ Deploying current ChatGPT into every search done by Google would require 512,820
 The amazing thing is that Microsoft knows that LLM insertion into search will crush the profitability of search and require massive Capex. While we estimated the operating margin shift, check out what Satya Nadella says about the gross margin.
 
 > From now on, the \[gross margin\] of search is going to drop forever.
-> 
+>
 > [Satya Nadella, Microsoft CEO](https://www.ft.com/content/2d48d982-80b2-49f3-8a83-f5afef98e8eb)
 
 This doesn’t even account for the fact that search volumes likely decrease somewhat as search quality improves, the difficulties in inserting ads into an LLM’s response, or a myriad of other technical issues that we will discuss later in this report.
@@ -55,15 +55,15 @@ This doesn’t even account for the fact that search volumes likely decrease som
 Microsoft is happily blowing up the profitability of the search market.
 
 > For every one point of share gain in the search advertising market, it’s a $2 billion revenue opportunity for our advertising business.
-> 
+>
 > [Microsoft](https://view.officeapps.live.com/op/view.aspx?src=https://c.s-microsoft.com/en-us/CMSFiles/Transcript223.docx?version=e69dc7f8-a0b8-7d09-ff82-f821891ad767)
 
 Bing has a meager market share. Any share gains Microsoft grabs will give them tremendous top-line and bottom-line financials.
 
 > I think there’s so much upside for both of us here. We’re going to discover what these new models can do, but if I were sitting on a lethargic search monopoly and had to think about a world where there was going to be a real challenge to the way that monetization of this works and new ad units, and maybe even a temporary downward pressure, I would not feel great about that.
-> 
+>
 > There’s so much value here, it’s inconceivable to me that we can’t figure out how to ring the cash register on it.
-> 
+>
 > [Sam Altman, CEO OpenAI on Stratechery](https://stratechery.com/2023/new-bing-and-an-interview-with-kevin-scott-and-sam-altman-about-the-microsoft-openai-partnership/)
 
 Meanwhile, Google is on the defensive. If their search franchise falters, they have a tremendous problem with their bottom line. Share losses will look even worse than the analysis above as Google is quite bloated in operating costs.
@@ -75,7 +75,7 @@ Google isn’t taking this lying down. Within just a couple of months of ChatGPT
 Bing GPT seems tremendously more potent in terms of LLM capabilities. [Google has already had issues with accuracy, even in their on-stage demonstrations of this new technology](https://www.reuters.com/technology/google-ai-chatbot-bard-offers-inaccurate-information-company-ad-2023-02-08/). If you measure both Bing GPT and Google Bard response time, Bard crushes Bing in response time. These model response time and quality differences are directly related to model size.
 
 > Bard combines the breadth of the world’s knowledge with the power, intelligence, and creativity of a large language model. It draws on the information from the web to provide fresh and high-quality responses. We’re releasing it initially with **our lightweight model version of LaMDA. This much smaller model requires significantly less computing power**, enabling us to scale to more users, allowing for more feedback.
-> 
+>
 > [Google](https://www.youtube.com/watch?v=yLWXJ22LUEc)
 
 Google is playing defense on margins with this smaller model. They could have deployed their full-size LaMDA model or the far more capable and larger PaLM model, but instead, they went for something much skinnier.

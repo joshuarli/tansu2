@@ -12,15 +12,15 @@ Today we are sharing a roundup of earnings in the semiconductor world, such as L
 
 To start off with, before we jump into the semiconductor companies, Google and Meta did report earnings. Google seemed like they would continue to grow server capital expenditures and headcount next year. Meta is saving the datacenter secular growth headline despite enterprise server spending weakening by upping their datacenter Capex plan by a significant amount.
 
-> We expect 2022 capital expenditures, including principal payments on finance leases, to be in the range of $32-33 billion, updated from our prior range of $30-34 billion. For 2023, we expect capital expenditures to be in the range of $34-39 billion, driven by our investments in data centers, servers, and network infrastructure. An increase in AI capacity is driving substantially all of our capital expenditure growth in 2023. *\- Meta*
+> We expect 2022 capital expenditures, including principal payments on finance leases, to be in the range of $32-33 billion, updated from our prior range of $30-34 billion. For 2023, we expect capital expenditures to be in the range of $34-39 billion, driven by our investments in data centers, servers, and network infrastructure. An increase in AI capacity is driving substantially all of our capital expenditure growth in 2023. _\- Meta_
 
 For the record, in our [2023 datacenter CPU spending and market share outlook](https://www.semianalysis.com/p/2023-datacenter-outlook-amd-and-intel), we penned in Meta as a 7% Capex decline. Instead, they will spend ~12% more year on year. Most of this will be levered towards AI training and inference, so it will not be a significant change for CPU spending. It should be noted that Meta’s spending guidance is most levered to Arista Networks and Nvidia. A lot of incremental dollars will actually flow to Intel as well given Meta has designed Sapphire Rapids into the majority of next-generation Yosemite and all Grand Teton servers. This is due to Sapphire Rapids host of specialized accelerators such as AMX (AI inference), DSA (data streaming accelerator), IAA (in-memory analytics), DLB (dynamic load-balancer), and QAT (quickassist technology). However, these wins at Meta won’t truly move the needle for Intel.
 
 The only other thing to mention is that the Capex that Meta is spending is doing meaningful work for short-form video uptake. Meta is firmly ahead of Google on this front, and they continue to spend to catch up to TikTok.
 
-> There are now more than **140 billion reels played across Facebook and Instagram every day**. That’s a 50% increase from 6 months ago. *\- Meta*
+> There are now more than **140 billion reels played across Facebook and Instagram every day**. That’s a 50% increase from 6 months ago. _\- Meta_
 
-> There’s \[YouTube\] Shorts. 1.5 billion users every month, **30 billion daily views.** *\- Google*
+> There’s \[YouTube\] Shorts. 1.5 billion users every month, **30 billion daily views.** _\- Google_
 
 No view on Google and Meta; just important to watch their Capex plans in semiconductor land. As an aside, it is funny to see Meta have $19B of FCF this year and then guide Capex up ~$5B and Opex up ~12B. With ad CPM slowing down, are they FCF negative next year?
 
@@ -29,7 +29,7 @@ No view on Google and Meta; just important to watch their Capex plans in semicon
 $WOLF is down significantly after earnings, more than 27% after hours. This is off the backs of their yields being significantly lower and materially impacting their business and their Capex requiring huge amounts of new capital to be raised, diluting the stock. Basically, Wolfspeed is transitioning to growing taller boules (more wafers per boule), and they are having yield issues with that process. They are also having trouble with the back-end processes for the new material innovations. Both are temporary but sting and give competitors more breathing room. Dipping below $1B rev is not a good look when you promise the world of growth.
 
 > And lastly, as part of an ongoing effort to expand supply of silicon carbide. The team was successful in increasing the length of pools through our continuous improvement efforts, which will help drive more wafers going forward to meet the immense demand for silicon carbide substrates.
-> 
+>
 > While this will help alleviate some supply constraints, we're still refining some of our back-end processes for the longer poles, and this will impact yield for the next couple of quarters. We're entering a period of significant expansion and are experiencing the associated growing pains.
 
 On the capital side, that is the bigger scare medium term. As people are more uncertain of the future, their timelines shorten. Wolfspeed will not generate significant free cash flow for many years. Every year will involve growing capacity significantly, and Wolfspeed can either give up huge share (which they are in the materials business anyways), or they can spend a considerable amount to remain by far the largest materials player.
@@ -58,7 +58,7 @@ Call me crazy but I sold my Cree Wolfspeed despite having been bullish about the
 
 Dylan Patel@dylan522p
 
-Competitors talking really big on SiC revenue guides $1B $ON exiting 2023 $STM $1B 2024 $IFNNY $1B ~2025 CHINA! $WOLF must raise massively to satisfy holders Big potential for misses, SiC is harder than they think $WOLF knows and guides conservatively Don't kill me @Ravi\_711
+Competitors talking really big on SiC revenue guides $1B $ON exiting 2023 $STM $1B 2024 $IFNNY $1B ~2025 CHINA! $WOLF must raise massively to satisfy holders Big potential for misses, SiC is harder than they think $WOLF knows and guides conservatively Don't kill me @Ravi_711
 
 7:50 PM · Nov 16, 2021
 
@@ -72,7 +72,7 @@ Competitors talking really big on SiC revenue guides $1B $ON exiting 2023 $STM $
 
 Dylan Patel@dylan522p
 
-@FoolAllTheTime @Ravi\_711 If they're not building out as fast as possible including self funding + subsidies + capital markets, the team is doing it wrong and giving up share. They will use as much capital as they can get to build as much capacity as possible. Convertibles will dilute More offerings
+@FoolAllTheTime @Ravi_711 If they're not building out as fast as possible including self funding + subsidies + capital markets, the team is doing it wrong and giving up share. They will use as much capital as they can get to build as much capacity as possible. Convertibles will dilute More offerings
 
 9:03 PM · Oct 24, 2022
 
@@ -83,7 +83,7 @@ We like Wolfspeed again at this level.
 ## Texas Instruments – TXN 0.00%↑
 
 > Turning to our expectations for the fourth, we expect that most of our end markets will decline sequentially with the exception of the automotive market.
-> 
+>
 > We saw weakness begin to broaden in the industrial market.
 
 Not much to say beyond those two quotes for a readthrough. Q1 and Q2 next year will be rough for Texas Instruments. They were smart to slow buybacks when they did. They will likely reaccelerate them when the stock gets to a level they feel is fairer. No point in worrying about TXN till they start repurchasing in volume again.
@@ -105,7 +105,7 @@ That’s Apple, by the way. In the past, we discussed [how the lack of 3nm shift
 Expected
 
 > Regarding the recent changes in trade regulations, indigenous Chinese memory makers have been a significant and growing part of our Memory business. And while the new regulations mainly focus on fab equipment rather than test, tighter restrictions, combined with potential reduction in their wafer volume will likely impact our business.
-> 
+>
 > This situation is dynamic, but as of now, we see these regulations as about a $75 million to $100 million headwind going into 2023.
 
 We talked a lot about how Apple was forced to [split their SoC designs across Pro and Normal phone models due to the slowdown of Moore’s Law here.](https://www.semianalysis.com/p/as-moores-law-slows-apple-is-forced)
@@ -115,9 +115,9 @@ We talked a lot about how Apple was forced to [split their SoC designs across Pr
 That is impacting Teradyne significantly as well as expected. Test content grows sub-linearly with transistor count and node transitions.
 
 > Another bump is 3-nanometer for the apps processor for 2023 phones. If, in fact, that occurs, it's likely that it will be a pretty significant complexity bump, not 6%, but probably back in the 20% to 30% complexity growth that we've seen historically with a new node. That gets muted a little bit though because it's likely it will still only go into the top-end phone models, while this year's 6% incremental complex part waterfalls down to the other models.
-> 
+>
 > So the other models in 2023 aren't going to see much of a bump, but the high-end phone will. That's what kind of gives us this view that they could go back to being greater than 10%, but less than historical peaks. Then let's look forward to 2024. We see another significant bump in complexity at the high end that phone app processor that was introduced in 2023 would likely waterfall down to the other models.
-> 
+>
 > And then the full product line in 2024 is likely to see a significant jump in complexity. So this is sort of how the movie plays out. And then on top of that, there's new silicon. There's also high-performance computing. All of that moving to 3-nanometer.
 
 2023 looks very weak for Apple tester demand. Mediatek’s and Qualcomm's transition to 3nm is also later, slated for 2024 model year launched devices. While Teradyne has moderate sales in China, given where they sit in the supply chain, the restrictions don’t directly impact them.
@@ -127,7 +127,7 @@ That is impacting Teradyne significantly as well as expected. Test content grows
 UMC is the leading trailing edge fab in Taiwan. There is finally smoke in their numbers. They guided a 10% quarterly decrease in revenue and cut 2022 Capex by 17%. Given how far into the year this is, they are pumping the brakes **hard,** as we discussed in [our recent deep dive into semiconductor fab buildout spending and delays.](https://www.semianalysis.com/p/semiconductor-fab-buildout-delays)
 
 > Foundry margins will go down structurally, especially at tier 2 foundries such as UMC
-> 
+>
 > SemiAnalysis
 
 Utilization rates will dip instead of being pegged at 100% in Q4. Only 80% of their 28nm revenue is protected by long-term agreements for 2023, accounting for ~20% of their revenue. The other 20% of 28nm is not. Long-term agreements are often broken in the semiconductor world so downside is large.

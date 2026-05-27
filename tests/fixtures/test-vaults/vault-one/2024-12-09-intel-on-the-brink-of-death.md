@@ -8,9 +8,9 @@ description: "Board Short Circuits, Cultural Rot, x86 Has No Moat, Sell PC Busin
 
 ### Board Short Circuits, Cultural Rot, x86 Has No Moat, Sell PC Business, Nvidia's PC CPU Push, Roadmap Review
 
-Intel’s board is incompetent and its horrible decisions over the decades are going to push it towards death. The decision to fire Pat Gelsinger, put in charge a [CFO](https://www.linkedin.com/in/dzinsner/) + [career sales and marketing leader](https://www.linkedin.com/in/michellejohnstonholthaus/), and cut spending on fabs in favor of a renewed focus on x86 is an example of the incompetence that will end Intel. *Fabricated Knowledge* wrote *[The Death of Intel: When Boards Fail](https://www.fabricatedknowledge.com/p/the-death-of-intel-when-boards-fail)* recently explaining how board issues around leadership and planning have failed the company. Simply put, the Intel board has escaped blame for over a decade of failures. This decade of failure culminates in the ultimate mistake: dismissing CEO Pat Gelsinger.
+Intel’s board is incompetent and its horrible decisions over the decades are going to push it towards death. The decision to fire Pat Gelsinger, put in charge a [CFO](https://www.linkedin.com/in/dzinsner/) + [career sales and marketing leader](https://www.linkedin.com/in/michellejohnstonholthaus/), and cut spending on fabs in favor of a renewed focus on x86 is an example of the incompetence that will end Intel. _Fabricated Knowledge_ wrote _[The Death of Intel: When Boards Fail](https://www.fabricatedknowledge.com/p/the-death-of-intel-when-boards-fail)_ recently explaining how board issues around leadership and planning have failed the company. Simply put, the Intel board has escaped blame for over a decade of failures. This decade of failure culminates in the ultimate mistake: dismissing CEO Pat Gelsinger.
 
-Upon closer inspection, these failures are no surprise. 7 of 11 members have *no relevant semiconductor experience*. Two more are accomplished in the field but as academics, not industry players. They have no experience making hard decisions, understanding critical business inflections, and are not qualified for what's at stake. The only member with a strong and relevant CV, Stacy J. Smith, joined just this year as a replacement for Lip-Bu Tan.
+Upon closer inspection, these failures are no surprise. 7 of 11 members have _no relevant semiconductor experience_. Two more are accomplished in the field but as academics, not industry players. They have no experience making hard decisions, understanding critical business inflections, and are not qualified for what's at stake. The only member with a strong and relevant CV, Stacy J. Smith, joined just this year as a replacement for Lip-Bu Tan.
 
 The past decade is the worst in Intel’s history, with much of the damage done in the 2010s. Pat Gelsinger's spent the past few years spent correcting the course, but turning the Titanic is not a quick task. There is one constant in Intel's demise: **seven board members**. They are still at large on the board today.
 
@@ -52,7 +52,7 @@ Besides changing the culture, there were also numerous horrible decisions that t
 
 Not to be outdone, the 2018 board iteration replaced Krzanich with the first truly non-technical CEO in Intel’s history: **Bob Swan**. Technically, Paul Otellini was the first non-engineer to lead Intel, but he spent more than 30 years with the company, including his time as a technical advisor to the legendary Andy Grove and leading the microprocessor division.
 
-Swan was a professional CFO – Intel was his *10 <sup>th</sup>* CFO role – and so process engineering took a backseat to financial engineering. Swan’s Intel spent as much on stock buybacks as it did capital expenditures on fabs over his tenure: more than $36 billion towards buybacks versus $38 billion in Capex. This was malpractice in a capital-intensive industry when the company was bleeding market share and more than two nodes behind its chief rival.
+Swan was a professional CFO – Intel was his _10 <sup>th</sup>_ CFO role – and so process engineering took a backseat to financial engineering. Swan’s Intel spent as much on stock buybacks as it did capital expenditures on fabs over his tenure: more than $36 billion towards buybacks versus $38 billion in Capex. This was malpractice in a capital-intensive industry when the company was bleeding market share and more than two nodes behind its chief rival.
 
 Brian Krzanich, Bob Swan, and Intel's board cut not only Capex, but also technical talent, in droves. From 2013 to 2020, 4 out of 7 years had shrinking headcount all while the business lost its technical leadership and had fantastic profitability. Their idle, non-technical eye led to technical incompetence and politicians such as Navin Shenoy, Murthy Renduchintala, Aicha Evans, Remi El-Ouazzane, and many others to drive horrible decision-making throughout the organization. This is just a shortlist. Pat Gelsinger was the cure, and he cleared out many of the fiefdoms and incompetency of these managers. Our only criticism of culture is that he is too nice, gives them chances, and doesn't do it faster.
 
@@ -95,8 +95,8 @@ While the client PC market slowed due to smartphones, x86 CPU still grew in serv
 A stunning datapoint from AWS Re:Invent captures the success of Graviton:
 
 > Over the last two years, **more than 50 percent of all the CPU capacity landed in our datacenters was on AWS Graviton.** Think about that. That’s more Graviton processors than all the other processor types combined.
-> 
-> *Dave Brown, Leading AWS EC2 Compute and Networking*
+>
+> _Dave Brown, Leading AWS EC2 Compute and Networking_
 
 Other hyperscalers took note and are following suit: Google has Axion, Microsoft has Cobalt, Alibaba has Yitian, and Meta is also developing an Arm based CPU. [Arm is making it incredibly easy for customers to design custom chips with their CSS offering](https://www.semianalysis.com/p/microsoft-infrastructure-ai-and-cpu).
 
@@ -112,7 +112,7 @@ No, x86 will not disappear overnight. It is still a large market and potentially
 
 However, the problem is that without Intel’s old manufacturing prowess, Intel’s x86 is no longer competitive with AMD, let alone the Arm-based options. Intel can bite the bullet and take the gross margin hit by outsourcing manufacturing to TSMC. This levels the playing field with AMD but doesn’t solve the issue that Intel cannot out-design AMD.
 
-This is why products like Lunar Lake, which are primarily outsourced to TSMC, cannot be ramped. They have a gross margin in the teens. The board doesn't understand this because *they don't understand semiconductor manufacturing*. The client CPU organization still ships the majority of Raptor Lake monolithic dies made by Intel's fabs for a reason. If they didn't, Intel would be losing money even faster.
+This is why products like Lunar Lake, which are primarily outsourced to TSMC, cannot be ramped. They have a gross margin in the teens. The board doesn't understand this because _they don't understand semiconductor manufacturing_. The client CPU organization still ships the majority of Raptor Lake monolithic dies made by Intel's fabs for a reason. If they didn't, Intel would be losing money even faster.
 
 The Intel Product group has been spoiled with exclusive access to a superior process for decades, which covered up any flaws in their microarchitecture. The consequence is that Intel uses 2x as much silicon area for their product today compared to best-in-class peers: AMD, Nvidia, and Qualcomm. That does not sound like a leading design firm, and Intel’s product group should not be the focus. It simply is a legacy of Intel’s technology leadership in logic fabrication and the dominance of the x86 ISA in general purpose CPU. That is no longer relevant today.
 
@@ -130,13 +130,13 @@ The only entity even remotely able to fill this gap is Intel Foundry. Intel has 
 
 Intel Foundry will need help. Intel will likely be sold off for parts; the board has stated Products are the priority, and Foundry’s greatest champion was just shown the door. The business is a capex black hole: we estimate that, even with highly reduced capacity buildouts, Intel Foundry will need $36.5B just for wafer fab equipment in the next 3 years. Fab shells and other expenses would add another $15-20B+. Intel doesn't have the cash flow to support this due to the product group's failings, even with CHIPS Act subsidies.
 
-Yet the cost of losing access to cutting edge chips would be an order of magnitude more. According to the director of the National Economic Council, the 2021 chip shortage cost 1% of U.S. GDP that year – about $240B. That was a months-long disruption, mostly in *mature chips*. Restoring advanced logic capabilities from zero would take decades. If the 2021 shortage was a 10-foot swell, zeroing out advanced logic supply would be a 100-foot tsunami.
+Yet the cost of losing access to cutting edge chips would be an order of magnitude more. According to the director of the National Economic Council, the 2021 chip shortage cost 1% of U.S. GDP that year – about $240B. That was a months-long disruption, mostly in _mature chips_. Restoring advanced logic capabilities from zero would take decades. If the 2021 shortage was a 10-foot swell, zeroing out advanced logic supply would be a 100-foot tsunami.
 
 Besides the cost risk, there is a national security imperative. If you believe National Security Advisor Jake Sullivan that “there is probably no other technology that will be more critical to our national security in the years ahead” than advanced AI systems, then you must believe that Intel Foundry, as America’s best option to guarantee advanced logic supply, is critical as well. Imagine not having the means to produce the most crucial technology of the next century. Intel Foundry must be saved.
 
 ## How to Save Intel Foundry
 
-How then can Intel Foundry survive? The minimum survivable product is as a second-source for TSMC leading edge with significant product volumes from multiple top hyperscalers and fabless design companies. Customers *want* to de-risk their TSMC/Taiwan exposure the same way the national security community does.
+How then can Intel Foundry survive? The minimum survivable product is as a second-source for TSMC leading edge with significant product volumes from multiple top hyperscalers and fabless design companies. Customers _want_ to de-risk their TSMC/Taiwan exposure the same way the national security community does.
 
 At present, second sourcing with Intel Foundry would mean trading geopolitical risk for performance and cost. The 18A ecosystem is not mature – the PDK is not as good as TSMC’s, the library of silicon-proven IP is small, and EDA support is not strong (EDA companies will get much better returns for their efforts supporting TSMC than Intel Foundry currently).
 

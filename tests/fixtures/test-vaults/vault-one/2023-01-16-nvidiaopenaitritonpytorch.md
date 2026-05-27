@@ -96,8 +96,8 @@ The H100 brings [distributed shared memory and L2 multicast to Hopper](https://d
 ## Operator Fusion – The Workaround
 
 > Just like with training ML models, knowing what regime you're in allows you to narrow in on optimizations that matters. For example, if you're spending all of your time doing memory transfers (i.e. you are in a memory-bandwidth bound regime), then increasing the FLOPS of your GPU won't help. On the other hand, if you're spending all of your time performing big chonky matmuls (i.e. a compute-bound regime), then rewriting your model logic into C++ to reduce overhead won't help.
-> 
-> [https://horace.io/brrr\_intro.html](https://horace.io/brrr_intro.html)
+>
+> [https://horace.io/brrr_intro.html](https://horace.io/brrr_intro.html)
 
 Referring back to why PyTorch won, it was the increased flexibility and usability due to Eager mode, but moving to Eager mode isn’t all sunshine and rainbows. When executing in Eager mode, each operation is read from memory, computed, then sent to memory before the next operation is handled. This significantly increases the memory bandwidth demands if heavy optimizations aren’t done.
 
@@ -176,7 +176,7 @@ Inductor then goes to the “Wrapper Codegen,” which generates code that runs 
 More hardware will be supported going forward, but the key is that Inductor dramatically reduces the amount of work a compiler team must do when making a compiler for their AI hardware accelerator. Furthermore, the code is more optimized for performance. There are significant reductions in memory bandwidth and capacity requirements.
 
 > We didn't want to build a compiler that only supported GPUs. We wanted something that could scale to support a wide variety of hardware back ends, and having a C++ as well as \[OpenAI\] Triton forces that generality.
-> 
+>
 > [Jason Ansel – Meta AI](https://www.youtube.com/watch?v=ppWKVg-VxmQ)
 
 ## OpenAI Triton

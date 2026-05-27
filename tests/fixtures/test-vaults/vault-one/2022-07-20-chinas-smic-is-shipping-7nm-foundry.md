@@ -13,7 +13,7 @@ SMIC, China’s largest foundry has slowly been catching up to TSMC, Samsung, an
 We say quietly as this didn’t come directly from SMIC, but rather the reverse engineering and teardown firm [TechInsights](https://www.techinsights.com/) who purchased the chip on the open market and sent it to their labs. SMIC likely has not discussed this publicly on earnings reports as they are afraid of blowback. To be abundantly clear, China’s SMIC is shipping a foundry process with commercially available chips in the open market which are more advanced than any American or European company. While the US has high hopes for Intel to be the savior, there are no Intel 7 class foundry chips commercially available for purchase currently and they still have to build out their foundry operations. The most advanced American or European foundry produced chips are based on GlobalFoundries 12nm.
 
 > Initial images suggest it is a close copy of TSMC 7nm process technology.
-> 
+>
 > TechInsights Product Brief
 
 SMIC’s 7nm just like TSMC’s 7nm and Intel’s 7nm class technologies does not use EUV lithography. TechInsights has more information in their 3 detailed reports titled “ASIC Digital Floorplan Analysis,” “(SMIC 7nm) Advanced CMOS Process Analysis,” and “(SMIC 7nm) Process Flow Analysis.” We recommend people check those out for more details.
@@ -24,4 +24,4 @@ This is a groundbreaking discovery because the US Department of Commerce was sup
 
 SMIC’s foundry customer, [MinerVa](https://miner-va.com/) states this chip has been in production since July of 2021. On September 22nd 2021, MinerVa’s website was updated with information about the product and the image above. It is a small 19.3mm2 chip used for mining cryptocurrencies, but in the future, this process technology could be scaled up and adopted for high end supercomputer and consumer applications. Their miner ships with 120 chips per board with 3 board per miner and a total power consumption of 3300W.
 
-*[This article was originally published on SemiAnalysis.com on July 20th, 2022.](https://semianalysis.com/chinas-smic-is-shipping-7nm-foundry-asics-the-most-advanced-foundry-in-the-world-after-tsmc-and-samsung/)*
+_[This article was originally published on SemiAnalysis.com on July 20th, 2022.](https://semianalysis.com/chinas-smic-is-shipping-7nm-foundry-asics-the-most-advanced-foundry-in-the-world-after-tsmc-and-samsung/)_

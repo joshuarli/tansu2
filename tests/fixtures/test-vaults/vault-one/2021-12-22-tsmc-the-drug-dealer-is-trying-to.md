@@ -20,7 +20,7 @@ Due to Apple being the first to major new nodes, Apple is in a unique position w
 TSMC takes this seasonal element and does something quite clever. Despite Apple not demanding TSMC’s full capacity of N5 wafers, TSMC continues to manufacture these wafers and holds them on the balance sheet. By pre-manufacturing wafers that TSMC knows they will sell, TSMC retains more capacity for later in the year and maximizes throughput/earnings.
 
 > Days of inventory increased 10 days to 83 days, primarily due to N5 wafer prebuild. We prebuild for our customers during seasonal low level as we did before. Now when we start to ramp in the higher season, the inventory usually come down naturally as before.
-> 
+>
 > Wendall Huang – TSMC CFO
 
 This paradigm will be changing somewhat with the N3 process node which has twice the number of new design tape outs in the first year relative to the N5 process node. There are a lot more firms hopping onto N3 despite some of the performance and cost per wafer issues. They will deal with some teething pains related to being the first mover that Apple and TSMC have hidden due to their incredibly tight integration.
@@ -44,11 +44,11 @@ Nvidia has played this relationship masterfully. Nvidia has received much lower 
 Due to Nvidia’s opportunistic switching between TSMC and Samsung, Nvidia doesn’t receive the same terms. Nvidia wants a lot of N5 capacity and 2.5D packaging capabilities next year and beyond as they prep launch for Hopper datacenter GPUs, Lovelace gaming GPUs, and continue to gain share in networking versus Broadcom. To secure this supply, Nvidia is prepaying billions to TSMC, something the previous 3 customers have not had to deal with. A big portion of this is also due to Nvidia’s growth at TSMC due to switching away from Samsung.
 
 > We entered into several long-term supply agreements, under which we made advance payments of $1.64 billion this quarter and will make future payments of $1.79 billion. Outstanding inventory purchase and long-term supply obligations were $6.90 billion, inclusive of the $1.79 billion, up from $2.57 billion a year earlier and up from $4.79 billion in the prior quarter.
-> 
+>
 > Colette Kress – Nvidia CFO
 
 > First of all, we have secured guaranteed supply, very large amounts of it, quite a spectacular amount of it from the world's leading foundry in substrate and packaging and testing certain companies, the integral part of our supply chain.
-> 
+>
 > Jensen Huang – Nvidia CEO
 
 Qualcomm has played this relationship masterfully, but they have also had a recent misstep. Qualcomm has long since produced many of their low end and midrange SOCs at Samsung, but in 2020, they moved the flagship Snapdragon 800 line to Samsung. A long-speculated item is that Samsung used more Qualcomm SOCs in their smartphones due to their use of Samsung foundry.
@@ -76,7 +76,7 @@ TSMC wants to convert the Intel internal design and product teams to choosing TS
 Pat Gelsinger has obviously pitched a very different story. He has been investing heavily in manufacturing and is even pushing a foundry service story. SemiAnalysis can confirm that Intel has stopped selling old tools into the market as they will be preserving older node capacity that they cannot transition. While the deals Bob Swan signed are very much binding and do include some pretty harsh terms to prevent cancellation, the long-term story is quite different.
 
 > But let's get to '25 and '26, and we say we've overshot a little bit. I have 3 uses for that spare capacity. One is go get more market share, right? If I have leadership products and leadership process, I'm going to do so with good margins. Gain market share back. Second is, I've also built into our business model that we use foundries, right, external foundries as well. So if I have too much capacity, I'm going to pull wafers back from the external foundries and run them internally at better margins. Third, I go win more foundry customers. So I have -- and these are good margin foundry customers as well, just like we're seeing in the leading edge foundry market. So in the off chance that I have any spare capacity, I have 3 tremendous uses of that, that are highly margin and capital and cash flow efficient as well. So to me, those concerns, right, I lust after the day that one of those might actually materialize.
-> 
+>
 > Pat Gelsinger – Intel CEO
 
 What is the current Intel TSMC deal? What did Bob Swan sign? How much capacity does Intel have at TSMC in 2023 and 2024? What products will they be moving to external nodes? What about other clients and their capacity arrangements?

@@ -26,6 +26,6 @@ Outside the Apple world, the reduced orders of components particularly will hit 
 
 Players in the OSAT and ICs have plummeting orders for some components. People invested in the numerous Taiwanese companies at play here should lower their expectations for 2021. Not everything is peachy keen in the year 2021, for the darling semiconductor industry.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/semi-supply-chain-cutting-expectations-as-phone-sales-plummet/) on May 11th 2021*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/semi-supply-chain-cutting-expectations-as-phone-sales-plummet/) on May 11th 2021_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

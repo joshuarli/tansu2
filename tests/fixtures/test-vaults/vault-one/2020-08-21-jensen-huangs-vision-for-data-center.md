@@ -56,6 +56,6 @@ Nvidia’s endgame isn’t more revenue from licensing costs. Their endgame is a
 
 If Nvidia can quickly seize the worlds most important IP, the most commonly used CPU ISA and designs, they will control the destiny of mobile and data center. This is Jensen Huang’s “Trojan Horse” for a Machiavellian takeover of the future of computing.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/jensen-huangs-vision-for-data-center-dominance-will-destroy-the-arm-ecosystem/) on August 21st 2020*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/jensen-huangs-vision-for-data-center-dominance-will-destroy-the-arm-ecosystem/) on August 21st 2020_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

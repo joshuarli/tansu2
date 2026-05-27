@@ -50,6 +50,6 @@ The GPU comparison is the iPhone Pro Max vs Pro Max. This includes the full 5 co
 
 [We also would like to do a bit of a victory lap on calling out that garbage rumor about Satellite internet on the iPhone 13.](https://semianalysis.substack.com/p/no-the-iphone-13-does-not-have-satellite)
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/apple-cpu-gains-grind-to-a-halt-and-the-future-looks-dim-as-the-cpu-engineer-exodus-to-nuvia-and-rivos-impact-starts-to-bleed-in/) on September 14th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/apple-cpu-gains-grind-to-a-halt-and-the-future-looks-dim-as-the-cpu-engineer-exodus-to-nuvia-and-rivos-impact-starts-to-bleed-in/) on September 14th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

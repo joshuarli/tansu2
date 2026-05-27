@@ -71,7 +71,7 @@ References:
 
 ## Logical vs. Physical GPC
 
-The groupings of TPCs into GPCs we presented above are *logical* groupings. They represent software’s view of the GPCs, with no information about which of the 20 actual physical SMs in each GPC are enabled, or where each physical GPC is located on the two dies. In reality, B200 chips with the same logical configuration need not have exactly the same physical SMs yielded in each GPC. This can be a potential source of performance non-determinism between GPUs which otherwise might look the same from the view of software. Additionally, the logical groupings of SMs into GPCs tells us nothing about which GPC is on each of the two dies in the B200 package.
+The groupings of TPCs into GPCs we presented above are _logical_ groupings. They represent software’s view of the GPCs, with no information about which of the 20 actual physical SMs in each GPC are enabled, or where each physical GPC is located on the two dies. In reality, B200 chips with the same logical configuration need not have exactly the same physical SMs yielded in each GPC. This can be a potential source of performance non-determinism between GPUs which otherwise might look the same from the view of software. Additionally, the logical groupings of SMs into GPCs tells us nothing about which GPC is on each of the two dies in the B200 package.
 
 To discover more information about the physical layout of the SMs, we have every SM traverse a pointer-chase array that fills L2 cache, measuring the latency of each load. For each address, we compare the latency seen from each SM to the latency seen by every other SM, to produce an SM<->SM distance matrix. X and Y axes are SM ID.
 
@@ -175,7 +175,7 @@ Here, we compare three cases:
 2. TMA multicast (explicit) - one CTA in each cluster issues multicast loads to all CTAs in its cluster
 3. TMA multicast (implicit) - all CTAs in each cluster issue plain TMA loads to the same data
 
-TMA multicast allows for much higher load bandwidth to fill SMEM buffers, even if data is not already in L2. For known traffic patterns, explicit TMA multicast instructions perfectly eliminate L2 traffic, resulting in the ideal “1 / cluster\_size” L2 bytes per SMEM byte. We also observe that for this simple benchmark, we achieve nearly the same SMEM fill throughput in both the explicit and the implicit case. However, we can see the LRC is not perfect; the L2 receives a bit more traffic in the implicit case, especially as the total volume increases.
+TMA multicast allows for much higher load bandwidth to fill SMEM buffers, even if data is not already in L2. For known traffic patterns, explicit TMA multicast instructions perfectly eliminate L2 traffic, resulting in the ideal “1 / cluster_size” L2 bytes per SMEM byte. We also observe that for this simple benchmark, we achieve nearly the same SMEM fill throughput in both the explicit and the implicit case. However, we can see the LRC is not perfect; the L2 receives a bit more traffic in the implicit case, especially as the total volume increases.
 
 ![](z-images/7c1b1f4ccf900de6190769133a7e24ca.webp)
 

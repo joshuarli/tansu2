@@ -9,7 +9,7 @@ description: "Astera Labs Leo has a feature and time-to-market advantage."
 CXL will revolutionize the datacenter by bringing [composable server architecture](https://semianalysis.substack.com/p/cxl-deep-dive-future-of-composable) and [heterogenous compute](https://semianalysis.substack.com/p/cxl-deep-dive-future-of-composable). We recently did a [deep dive on the CXL standard, exploring products, timing, and strategy from 20 firms](https://semianalysis.substack.com/p/cxl-deep-dive-future-of-composable) on CXL, including switches, NICs, DPUs, IPUs, co-packaged optics, memory expanders, memory poolers, memory sharers, CPUs, GPUs, and accelerators. Over the next few years, the most important category of these products will be those related to memory because [50% of server costs are from DRAM alone](https://semianalysis.substack.com/p/cxl-enables-microsoft-azure-to-cut).
 
 > \[1st generation memory\] disaggregation can achieve a 9 – 10% reduction in overall DRAM, which represents hundreds of millions of dollars in cost savings for a large cloud provider.
-> 
+>
 > > [Microsoft](https://semianalysis.substack.com/p/cxl-enables-microsoft-azure-to-cut)
 
 The primary provider of memory disaggregation hardware will benefit hugely as the large cloud providers rush to implement memory pooling within their datacenters to increase memory utilization and reduce costs. SemiAnalysis believes the CXL-based memory expansion and memory pooling hardware market will exceed 1 billion dollars in 2025. The industry recognizes this, so it is an incredibly crowded field. Samsung, Micron, and SK Hynix are all developing memory expansion hardware. Furthermore, Rambus, Microchip, Montage Technologies, Marvell, and Astera Labs are all developing memory expansion and pooling ASICs.
@@ -19,7 +19,7 @@ The primary provider of memory disaggregation hardware will benefit hugely as th
 With all these players, there will be a couple of winners and many losers. [In our prior report explaining why Marvell purchased Tanzanite Silicon](https://semianalysis.substack.com/p/marvell-acquires-tanzanite-silicon?s=w), we also reviewed the hardware status from Astera Labs.
 
 > Astera Labs is coming to market sooner \[with CXL based memory pooling\]. Their success, so far, is as the only high-volume smart retimer for PCIe 5.0/CXL. We believe they have taped out their CXL memory accelerator, codenamed Leo. Astera Labs should be able to ship it early next year. We believe they will have the highest volume CXL memory accelerator for 2023.
-> 
+>
 > > [Marvell Acquires Tanzanite Silicon To Enable Composable Server Architectures Using CXL Based Memory Expansion And Pooling](https://semianalysis.substack.com/p/marvell-acquires-tanzanite-silicon?s=w)
 
 We stand by what we wrote in our prior report and want to expand further with today’s official announcement about the Leo memory connectivity platform.
@@ -37,7 +37,7 @@ Astera Labs says they have conducted end-to-end interoperability testing with in
 The most crucial feature of Leo is that it can do memory pooling on CXL 1.1 platforms. Marvell’s Tanzanite Silicon solution also supports memory pooling on CXL 1.1.
 
 > There are some drawbacks \[with the Marvell solution\]. The host would need to restart every time the memory pool size was changed, which would be untenable in a cloud VM setting but is fine in high-performance computing environments
-> 
+>
 > > [CXL Deep Dive – Future of Composable Server Architecture and Heterogeneous Compute, Products From 20 Firms, Overview of 3.0 Standard](https://semianalysis.substack.com/p/cxl-deep-dive-future-of-composable)
 
 Astera Labs Leo can dynamically resize the pools without restarting the host CPU. This makes memory pooling possible in the most important market, multi-tenant clouds. Astera Labs’ solution is uniquely positioned and advantaged at this support level.
@@ -55,7 +55,7 @@ The 16-lane platform seems more attractive because multiple CPUs can be connecte
 In general, AMD’s Genoa and Bergamo will be the systems of choice for memory pooling. This is because they support CXL bifurcation and have some memory pooling features from CXL 2.0 despite the official support level being CXL 1.1. In memory expansion mode, the 8-lane chip is advantageous because it provides slightly lower latency due to a more simplified expander-only data path.
 
 > CXL is designed to be an open standard interface to support composable memory infrastructure that can expand and share memory resources to bring greater efficiency to modern data centers. We’re excited to work closely with Astera Labs on the development of their Leo Memory Connectivity Platform to deliver interoperability and robust validation with AMD processors and **accelerators**.
-> 
+>
 > > Raghu Nambiar, AMD Corporate Vice President, Data Center Ecosystems and Solutions
 
 Part of the announcement included this quote from AMD. The inclusion of the word accelerator is fascinating because it indicates that FPGAs or [MI300](https://semianalysis.substack.com/p/amd-to-infinity-and-beyond) could also support Leo’s memory pooling.

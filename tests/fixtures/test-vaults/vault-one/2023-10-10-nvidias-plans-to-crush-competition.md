@@ -21,7 +21,7 @@ Nvidia saw the writing on the wall years ago. The tech giants have been trying t
 Of course, Nvidia isn’t sitting on their hands. While Nvidia is extremely successful, they are also one of the most paranoid firms in the industry, from management style to roadmap decisions. Jensen Huang embodies the spirit of Andy Grove.
 
 > Success breeds complacency. Complacency breeds failure. Only the paranoid survive.
-> 
+>
 > Andy Grove
 
 As such, Nvidia embarked on a very ambitious and risky multi-pronged strategy to remain atop the market for AI hardware. Nvidia’s plan are to transcend the comparisons with traditional competitors like Intel and AMD and ascend to the rank of tech giants. They want to become a peer of Google, Microsoft, Amazon, Meta, and Apple. [Nvidia’s DGX Cloud](https://www.semianalysis.com/i/137441303/nvidias-dgx-cloud-business-model-software-as-a-service), [software](https://www.semianalysis.com/i/137441303/nvidias-healthcare-push-a-front-row-seat), and [non-semiconductor acquisition strategy](https://www.semianalysis.com/p/nvidia-buys-illumina-the-ai-foundry) is one to watch closely.
@@ -47,7 +47,7 @@ Nvidia has secured immense supply by being willing to commit to non-cancellable 
 Ever since the early days of Nvidia, Jensen has been aggressive with his supply chain in order to fuel Nvidia’s massive growth ambitions. Look no further than Jensen retelling his early meetings with Morris Chang, TSMC’s founder.
 
 > In 1997, when \[Morris\] and I met, Nvidia was completed that year with $27 million in revenues. We had 100 people and then we met and you guys probably don't believe this but Morris used to make sales calls. You used to make house calls, right? And you would come in and visit customers and I would explain to Morris what it is that Nvidia did and, you know, I would explain how big our die size needed to be and that, every year, it was going to get bigger and bigger and bigger. You would come back to Nvidia periodically to make me tell the story over again just to make sure that I'm going to need that many wafers and, next year, we started working with TSMC. Nvidia did, I think it was 127 million and then, from that point forward, we grew nearly 100% per year until now. I mean, our compounded annual growth rate over the last 10 years was 70-some odd percent.
-> 
+>
 > [Jensen Huang in conversation with Morris Chang, Computer History Museum, 2007](https://www.youtube.com/watch?v=u-x7PdnvCyI)
 
 ![](z-images/18bfa741f6854a1d4e3e9cf261a0a1bb.webp)

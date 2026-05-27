@@ -27,7 +27,7 @@ The telecommunication network is split into 2 functions, the radio access networ
 With the radio access network, this is a more recent change. In the days of 3G and 4G networks, the radio access network base stations were often built upon custom ASICs from the likes of a Ericsson, Nokia, or Huawei. These custom ASICs were in charge of running signal processing and packet processing for network functions and involved very low-level network software. In essence, the whole stack was highly customized. Highly customized is great when performance and energy efficiency are there, but it also causes higher unit costs due to higher fixed costs. Highly customized silicon solutions also tax software engineering resources.
 
 > There is a trade-off between performance, energy efficiency, and programmability.
-> 
+>
 > Dr. Sachin Katti, Intel Network and Edge Group Chief Technology Officer
 
 That’s where the OpenRAN Alliance comes in. The entire purpose of this open organization is to attempt to open up the 5G infrastructure market for radio access networks. Dr. Katti was deeply involved in the founding of the OpenRAN Alliance and currently co-chair’s it.
@@ -59,21 +59,21 @@ Intel’s Network and Edge group has used this playbook for the AI inference mar
 OpenVINO supports a wide array of Intel hardware. Intel CPUs alone can vary in terms of their AVX support levels. Sapphire Rapids CPUs bring an AI coprocessor into the fray. Furthermore, Intel has a variety of GPU architectures deployed in integrated and discrete form factors. Lastly there are also Movidius based VPUs and FPGAs. A variety of hardware can be utilized. OpenVINO enables the AI models to be mapped directly to whatever hardware you have for the most efficient inference possible. It knows the correct DNN math libraries to utilize for the best possible result. This is all abstracted away from the developer.
 
 > The developer just says go run inferencing on whatever compute you find. That's one of the big things we announced. OpenVINO knows the characteristics of all the underlying hardware, and so instead seeing everything as nails to hammer in, you can essentially pick the right mix in a given edge deployment of accelerators and compute that hit your power and performance characteristics that you need, and so that makes it more tailored from an ROI perspective to a given edge deployment.
-> 
+>
 > Matthew Formica, Senior Director of AI Inference at Intel
 
 The edge is quite a unique area where heat and power play a big role. For example, there are factories where the devices must be fanless because of fire regulations. This would drive targeting the AI workload onto one set of accelerators instead of another perhaps more performant set of accelerators. OpenVINO attempts to make this seamless.
 
 > That principle of the edge driving unique architectural considerations that don't lend themselves to macro benchmarks plays out exactly the same way in AI.
-> 
+>
 > Matthew Formica, Senior Director of AI Inference at Intel
 
 Habana was also noticeably missing from the OpenVINO support list. This makes sense given it has been quite unsuccessful in the market. SemiAnalysis believes Habana still has not even reached the level sales of Intel’s former Nervana AI chips, despite Intel having dumped multiple billions of dollars into Habana. We asked Matthew about support for Habana AI inference accelerators within OpenVINO and this is what he had to say.
 
 > As accelerators mature at Intel, we have the conversations with them about “Is it time to write a plugin for OpenVINO?”
-> 
+>
 > It’s going to be accelerator by accelerator when it’s time for them to hit that scale point in their curve to have the general developer community be ready to access that hardware. Habana is less mature than the CPU and we constantly work with them and other accelerator teams at Intel to add support.
-> 
+>
 > Matthew Formica, Senior Director of AI Inference at Intel
 
 This response made complete sense to us given Habana’s 1st generation hardware had lousy performance and efficiency. According to our sources, the 2nd generation hardware is running later than what they had originally promised when Intel was pitched to purchase the company. Software support has been a big sore spot with Habana, and Habana still does not support OneAPI. An AI developer and researcher who is a friend of SemiAnalysis tested out the preview instances of Habana on AWS told us Habana is not competitive even with Nvidia’s last generation Volta and Turing, let alone the current generation Ampere or next generation Hopper. Habana will not be competitive in any shape or form until they fix the software and have competitive hardware. We believe this is not likely to occur over the next 3 years.
@@ -93,9 +93,9 @@ This open software stack is gaining traction, and it prevents Nvidia from monopo
 IPDK supports all the capabilities needed for a DPU such as RDMA, remote storage, and pass layer components like Kubernetes. IPDK targets what multiple different forms of software that already exist do. Part of the functionality is similar to Microsoft Sonic which is a network operating system that abstracts out NIC cards and switching. IPDK also abstracts out the compression and encryption capabilities of the hardware. It also abstracts out lower-level storage acceleration.
 
 > IPDK, think of it like a bunch of OS libraries that would be layered in Linux. It will still look like Linux, but it will have all these special things that will abstract out all of this hardware and make it available as operating system resources. Then you can write the equivalent of a virtual network capability, or a V-Switch, or you can write an RDMA implementation on top, or you can write even service mesh. Service mesh is an HTTP stack with lower-level TCP and some load balancing.
-> 
+>
 > What we are doing essentially here is taking advantage of these OS capabilities, these hardware capabilities to run HTTP more efficiently, to run TCP more efficiently and offload it from the main CPU. Think of IPDK as a set of abstractions that sit on top of this heterogenous hardware and expose it in a consistent manner to all of these application on top.
-> 
+>
 > Dr. Sachin Katti, Intel Network and Edge Group Chief Technology Officer
 
 IPDKs will enable new architectures by allowing a transition to diskless architectures on the edge and in the datacenter. In many cases you don’t want storage in the edge device or server for cost, power, or space reasons. IPDK and Intel’s IPUs enable diskless architectures by offering hardware acceleration to keep performance degradations and power impact to a minimum.
@@ -103,17 +103,17 @@ IPDKs will enable new architectures by allowing a transition to diskless archite
 Dr. Sachin Katti, CTO’s of Intel Network and Edge Group, is a professor at Stanford. Dr. Nick McKeown, General Manager of Intel Network and Edge Group, is also a professor of Intel Network and Edge Group. They developed P4 as a research project out of Standard. The purpose was for creating software defined networking and decoupling the data plane from the control plane. P4 stands for programming protocol independent packet processors. This open language is now supported by Intel, Nvidia, Cisco, Marvell, Google, Microsoft, and many others.
 
 > What people realized very quickly is that you also need data plane programmability. You need to be able to specify to a switch or a NIC card how it should manipulate the packet, how it should manipulate the headers of a packet. In the past, that was done with very proprietary means that either a Cisco or a Broadcom would expose, but it was really not portable. So P4’s vision was that you can write with the domain specific language, how you want every packet to be processed in the network, and compile it down to run on our Tofino switches, compile it down to our IPU's, compile it down even to virtual implementations in Xeon.
-> 
+>
 > Dr. Sachin Katti, Intel Network and Edge Group Chief Technology Officer
 
 Intel’s IPDK supports P4. Nvidia’s DOCA still does not support P4. Sources say Nvidia's DOCA will support P4 later this year. Nvidia is lacking behind Intel and Marvell in software support for their DPUs. This time to market advantage with software capabilities and deployment is how Intel can fight back Nvidia’s titanic software-hardware optimization lead in the server space.
 
 ![](z-images/0293ee55575721e39d77a046b41927db.webp)
 
-Nvidia supports P4 in some of their NICs and Switch silicon, but they also have created SHARP, Scalable Hierarchical Aggregation and Reduction Protocol into their switches. Some capabilities of P4 are replicated in SHARP, but others are not. Nvidia’s SHARP includes accelerated collectives include write broadcast (all\_gather), reduce\_scatter, and broadcast atomics. Intel is battling Nvidia’s proprietary SHARP with P4. Intel’s 25.6T Tofino 3 networking switches have similar large AI model training capabilities.
+Nvidia supports P4 in some of their NICs and Switch silicon, but they also have created SHARP, Scalable Hierarchical Aggregation and Reduction Protocol into their switches. Some capabilities of P4 are replicated in SHARP, but others are not. Nvidia’s SHARP includes accelerated collectives include write broadcast (all_gather), reduce_scatter, and broadcast atomics. Intel is battling Nvidia’s proprietary SHARP with P4. Intel’s 25.6T Tofino 3 networking switches have similar large AI model training capabilities.
 
 > When training really large models, you have these functions that need to collect gradients from a number of different places and combine those gradients and pass the gradient onto the next layer. This is a typical training workflow, now typically what you do is ship it to a server, all of those different variants, the server would do that processing, and then send it back, but it's wasteful because all of those are probably going through the same switch. In P4, what you can do is you can actually write that gradient processing step as a piece of P4 code that collects the appropriate packets from the different servers, does that that crossing step inside the switch itself, and then just sends the update onto the next server. You short circuit that tromboning where you need to go to another server and come back.
-> 
+>
 > Dr. Sachin Katti, Intel Network and Edge Group Chief Technology Officer
 
 Intel’s fastest growing business within Network and Edge is the Internet of Things Group. There is a wide variety of low-level software. Intel also builds a lot of application layer software as well. One of these is Edge Insights for Industrial which also supports OpenVINO. The entire purpose of this software is for making it easy for Intel’s industrial customers to build industrial automation applications. This is an incredibly fast growing vertical, and this software and hardware optimization makes it easy for clients to deploy emerging workloads on the edge while also tying them into Intel hardware platforms.
@@ -125,23 +125,23 @@ Intel has used this same strategy with Open Visual Cloud which is built for cont
 To summarize, the playbook for stopping Nvidia from dominating with their hardware-software co-optimization across all of datacenter, networking, and edge compute, is succinctly described by this quote from the conversation.
 
 > Our job is to show the world that you can consolidate and run all of these different specific point specific workloads on general purpose platforms and consolidate them using containerized or virtualized technologies. Often the world is too conservative to adopt this and so we have to show them how to do it. Once they are adopted, then it gets going, the flywheel gets going, people invent more and more things.
-> 
+>
 > We like to create languages that abstract the hardware out, allow you to write the specific logic that you need for that domain, whether it's packet processing in the case of P4, whether it's IPDK for infrastructure processing, whether it's FlexRAN for radio processing, and compile it down to the hardware at runtime depending on what you need.
-> 
+>
 > NEX builds not only hardware, but it also builds software to show the world it is feasible. We invest in software to reduce the time to market to build these kinds of applications.
-> 
+>
 > Dr. Sachin Katti, Intel Network and Edge Group Chief Technology Officer
 
 Intel Network and Edge Group has the playbook, and now it’s up to Intel’s CEO Pat Gelsinger and CTO Greg Lavender to implement it across the company. Pat Gelsinger and Greg Lavender come from VMWare, so if anyone can build it, it is them.
 
 > And increasingly, that's built on a common end-to-end software platform that Greg described our oneAPI approach. But our software assets are one of the underappreciated competitive advantages that we've had. We have these 4 decades of hardening of the software technologies. And having run a software company, and sometimes I wonder why did God take me on an 8-year journey to come back to silicon but it was learning how to become a software executive at scale.
-> 
+>
 > And software is like a fine wine. It just takes time to harden those components. And we're creating these core platform capabilities and then driving them into the open-source community efforts. We're the leading provider of Linux and Linux OS technology.
-> 
+>
 > In fact, with the 19,000 software engineers we have, I have more software engineers working for me today than when I was running a software company. It really is quite spectacular. But software is not just 1 thing. Developers are everywhere. And for us, software is key to exposing our silicon features, optimizing the software to run best on Intel, but pulling that platform value up the stack. And our software strategy, if you describe it in just 2 words is move up. And what Greg described is how we're moving up the software stack.
-> 
+>
 > Today, about $100 million or so from software licensing subscription. In the future, Greg's agenda, a lot more. And the value of software of exposing our platform of creating and enabling an industry of developers is so critical to the future and why I was so excited to have a leader like Greg join us here on this journey, making software a competitive differentiator for Intel on this journey.
-> 
+>
 > Pat Gelsinger, Intel CEO
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

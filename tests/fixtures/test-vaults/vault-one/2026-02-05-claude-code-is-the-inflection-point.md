@@ -58,7 +58,7 @@ It is a glimpse of the future, but it is also here today in software already. Yo
 
 - **Andrej Karpathy**, [who coined the term vibe coding 1 year ago](https://x.com/karpathy/status/1886192184808149383?s=20), is [openly discussing the phase shift](https://x.com/karpathy/status/2015883857489522876?s=20), and specifically says “I’ve already noticed that I am slowly starting to atrophy my ability to write code manually. Generation (writing code) and discrimination (reading code) are different capabilities in the brain.”
 - **Malte Ubl, CTO of Vercel**, claims that his “new primary job” is “to tell AI what it did wrong”
-[
+  [
 
 ![X avatar for @cramforce](z-images/48ecad9651b24e7ba60e60a1d3024ea5.webp)
 
@@ -79,8 +79,9 @@ AI can make work faster, but a fear is that relying on it may make it harder to 
 21 Replies · 14 Reposts · 558 Likes
 
 ](https://x.com/cramforce/status/2017631686142644691?s=20)
+
 - **Ryan Dahl, creator of NodeJS,** says that “the era of humans writing code is over”
-[
+  [
 
 ![X avatar for @rough__sea](z-images/4b1afe159e3ddbc147522488d6c5badc.webp)
 
@@ -95,8 +96,9 @@ This has been said a thousand times before, but allow me to add my own voice: th
 970 Replies · 2.74K Reposts · 20.1K Likes
 
 ](https://x.com/rough__sea/status/2013280952370573666?s=20)
+
 - **David Heinemeier Hansson**, creator of Ruby on Rails, is having some sort of anticipated nostalgia, reminiscing about writing code by hand while writing code by hand:
-[
+  [
 
 ![X avatar for @dhh](z-images/e97e2410b6dccf2136c45f25a724f49a.webp)
 
@@ -113,8 +115,9 @@ Writing Ruby code by hand in a text editor feels like such a luxury. Maybe this 
 54 Replies · 44 Reposts · 968 Likes
 
 ](https://x.com/dhh/status/1995858288710476080?s=20)
+
 - **Boris Cherny**, creator of Claude Code says that “Pretty much 100% of our code is written by Claude Code + Opus 4.5”
-[
+  [
 
 ![X avatar for @bcherny](z-images/0d857885ab8c086199c84b0c8567bac4.webp)
 
@@ -129,6 +132,7 @@ Boris Cherny@bcherny
 162 Replies · 411 Reposts · 6.85K Likes
 
 ](https://x.com/bcherny/status/2015979257038831967?s=20)
+
 - Even **Linus Torvalds** is vibe coding: [https://github.com/torvalds/AudioNoise](https://github.com/torvalds/AudioNoise)
 
 But it isn’t just coders, here at SemiAnalysis our Analysts and Technical Staff have different roles and responsibilities. The Datacenter Model team needs to review hundreds of documents every week. Our AI Supply Chain team needs to inspect BOMs with thousands of line items. Our Memory Model team needs to build forecasts in near-real time as spot market prices explode. Our Technical Staff need to maintain a live dashboard for [InferenceMAX,](https://inferencemax.semianalysis.com/) including nightly runs of the latest software recipes across 9 different system types/clusters. From regulatory filings to permits, spec sheets to documentation, config to code, the way that we interact with our computers has changed.
@@ -147,7 +151,7 @@ And here’s the output:
 
 Source: SemiAnalysis, Claude Code
 
-Coders will stop doing code and rather request jobs to be done on their behalf. And the magic of Claude Code is *it just works*. Many famous coders are finally giving into the new wave of vibe coding and now realizing that coding is effectively close to a solved problem that is better off supported by Agents than humans.
+Coders will stop doing code and rather request jobs to be done on their behalf. And the magic of Claude Code is _it just works_. Many famous coders are finally giving into the new wave of vibe coding and now realizing that coding is effectively close to a solved problem that is better off supported by Agents than humans.
 
 The locus of competition is shifting. Obsessions over linear benchmarks as to what model is “best” will look quaint, akin to how fast your dial-up is compared to DSL. Speed and performance matters, and the models are what power agents, but performance will be measured as the net output of packets to make a website, not the packet quality itself. The website features of tomorrow is going to be the orchestration through tools, memory, sub-agents, and verification loops to create outcomes and not responses. And all information work is finally addressed by models.
 
@@ -229,6 +233,6 @@ There are two beasts within Microsoft: Azure growth for public market investors 
 
 Claude for Excel effectively is what Copilot for Excel should have been, **but it was launched by an external party on their own first party product**. Most of the cash today still comes from Office but most of terminal value comes from Azure revenue growth. In order to accelerate Azure it will allow the barbarians at the gate to tear down the walls even quicker. And once Microsoft’s deal was made with upstarts, but as OpenAI and Anthropic start to become larger platforms, it’s unclear if the moat will keep them out.
 
-Microsoft’s spending on AI ironically *must increase* or the terminal value of the O365 suite of products is going to plummet. They do have distribution, but it’s mostly on a product whose positioning is eroding by the day compared to the AI upstarts. Meanwhile OpenAI, Microsoft’s core partner in AI itself is seeing enterprise disruption from Claude Code. OpenAI must respond swiftly to Claude Code’s rise in agentic adoption or they themselves might look like an infrastructure company (tokens) not a solutions (agent) company. The risk of disruption is ratcheting up precipitously, and it’s happening to one of the most profitable companies of all time.
+Microsoft’s spending on AI ironically _must increase_ or the terminal value of the O365 suite of products is going to plummet. They do have distribution, but it’s mostly on a product whose positioning is eroding by the day compared to the AI upstarts. Meanwhile OpenAI, Microsoft’s core partner in AI itself is seeing enterprise disruption from Claude Code. OpenAI must respond swiftly to Claude Code’s rise in agentic adoption or they themselves might look like an infrastructure company (tokens) not a solutions (agent) company. The risk of disruption is ratcheting up precipitously, and it’s happening to one of the most profitable companies of all time.
 
 GitHub copilot and Office Copilot had a year headstart and barely made any inroads as a product. Meanwhile Satya is literally stepping in as the [product manager of Microsoft AI](https://www.businessinsider.com/microsoft-ceo-satya-nadella-ai-revolution-2025-12?utm_source=reddit&utm_medium=social&utm_campaign=insider-artificial-sub-post) and away from his day to day duties as CEO. It’s pretty clear the stakes of this single product might be the entirety of the company.

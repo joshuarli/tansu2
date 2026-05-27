@@ -20,6 +20,6 @@ Many would think this is a classic Apple supplier diversity and cost cutting mea
 
 Give the language in the [press release](https://en.prnasia.com/releases/apac/usi-s-first-5g-mmwave-laboratory-completed-and-fully-operational-for-5g-antenna-module-testing-services-274695.shtml), this part is almost certainly an Apple exclusive with heavy collaboration and design from Apple. Will other mobile manufacturers begin to use their own mmWave antennas over Qualcomm’s integrated solution? How much of an ASP erosion will this knock on effect cause on entire 5G modem + AP sales? These are questions every Qualcomm investor should be wondering.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/qualcomm-lost-the-iphone-12-mmwave-antenna-module-contract-to-a-chinese-company/) on October 25nd 2020*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/qualcomm-lost-the-iphone-12-mmwave-antenna-module-contract-to-a-chinese-company/) on October 25nd 2020_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

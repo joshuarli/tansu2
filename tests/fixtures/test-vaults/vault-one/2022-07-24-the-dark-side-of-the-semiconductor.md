@@ -16,7 +16,7 @@ Wafer manufacturing is a cycle of defining features with lithography and buildin
 
 There are many clever tricks that are being used to lower costs of designing that chip, but the biggest hinderances to bringing that design to market is the cost of a mask set. On a foundry process node, at 90nm to 45nm, mask sets cost on the order of hundreds of thousands of dollars. At 28nm it moves beyond $1M. With 7nm, the cost increases beyond $10M, and now, as we cross the 3nm barrier, mask sets will begin to push into the $40M range.
 
-*Special thanks to the SPIE Advanced Lithography + Patterning for providing many great presentations focused on masks, lithography, patterning, and metrology that identify this cost issue and how to scale from here.*
+_Special thanks to the SPIE Advanced Lithography + Patterning for providing many great presentations focused on masks, lithography, patterning, and metrology that identify this cost issue and how to scale from here._
 
 ![](z-images/c913ab001fb279a765c2fffcb1a5c6c8.webp)
 

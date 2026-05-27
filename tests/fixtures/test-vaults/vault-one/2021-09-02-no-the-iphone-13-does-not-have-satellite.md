@@ -40,6 +40,6 @@ As per GlobalStar, they are capable of up to 256kbps (32Kbps). This is with opti
 
 Anyone who has experience with RF, knows peak capabilities are not typically or ever reached. This 256kbps is an incredibly optimistic reading. Furthermore, the fact Globalstar’s satellite network is close the end of its useful life. Their long term revenue projections are mostly attributed to licensing their n53 band for terrestrial service. It is very clear that Apple is working on satellite internet capabilities in the long term, but this will not be from Globalstar’s current satellites. The recent meteoric rise in Globalstar's stock price is almost entirely unwarranted.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/no-the-iphone-13-does-not-have-satellite-internet-band-n53-globalstar-gsat-explained/) on September 2nd 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/no-the-iphone-13-does-not-have-satellite-internet-band-n53-globalstar-gsat-explained/) on September 2nd 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

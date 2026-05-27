@@ -27,7 +27,7 @@ Cisco also has partnerships with Intel coming on manufacturing. It will be very 
 Marvell is the leader in TIAs and DSPs that accompany all optical transceivers via the Inphi acquisition. They also have a treasure trove of other networking IP including Innovium Switch and Cavium/Avera/Aquantia Infrastructure IP. Due to their deep chest of networking IP and the semicustom design integration with hyperscalers, they likely will be developing co-packaged optical chiplets for hyperscalers such as Microsoft.
 
 > Marvell continues to lead the industry with the highest performance transimpedance amplifiers and modulator drivers for next-generation optical connectivity solutions for the cloud data centers and carrier markets. GF’s latest silicon germanium (SiGe) technology enables us to achieve the high bandwidth speeds and power efficiencies that our customers require to meet their ever-increasing data demands.
-> 
+>
 > Dr. Loi Nguyen, executive vice president, Optical and Copper Connectivity Group, Marvell
 
 ![](z-images/ed9e68480fa2d86bb26fb6e9ae380712.webp)
@@ -41,7 +41,7 @@ Each generation of Nvida’s GPUs has doubled the IO via the custom NVLink inter
 Nvidia has presented research related to co-packaged photonics before. We have always been concerned about how they would manufacture with photonics because most manufacturing IP is held by non-foundry firms. The GlobalFoundries Fotonix platform answers this issue.
 
 > We’re working closely with GlobalFoundries to design high-bandwidth, low-power optical interconnects for some of our leading-edge data center products. NVIDIA interconnect solutions manufactured with the monolithic GF Fotonix platform will boost high performance computing and AI applications, enabling breakthrough advances.
-> 
+>
 > Edward Lee, vice president of Mixed-Signal Design, NVIDIA
 
 It seems as though Nvidia is announcing a brand-new technology via the press-release of a partner, which is very odd. Given Nvidia’s graphics technology conference is very soon, we hope to hear more about this platform then. As for a bit of speculation, we expect TSMC to still do most of the logic fabrication and advanced packaging over the long term. TSMC would likely ship diced chip on wafer assemblies which GlobalFoundries could then co-package these with optical tiles.
@@ -55,7 +55,7 @@ GlobalFoundries is championing the ability to do 500Gbps per fiber as their tech
 Ayar Labs is perhaps the most promising startup related to co-packaged optics. They have already shipped co-packaged optics with Intel FPGAs, and they continue to get more wins and traction. They currently manufacture with GlobalFoundries and seem to have no intention of leaving. GlobalFoundries has developed many of their key packaging technologies by using Ayar as a ramp partner. These include the copper pillar technology and v-groove fiber attach technology. Macom makes external lasers that are then coupled with this fiber off package. On die vs off package laser is an interesting debate, but GlobalFoundries supports both these technologies and has customers using both.
 
 > Since our earliest days, Ayar Labs and GlobalFoundries have partnered on the development of GF Fotonix, from incorporating our PDK requirements and process optimizations to demonstrating the first working silicon on the platform. The combination of our leading monolithic electronic/photonic solution and GF Fotonix unlocks a tremendous market opportunity for chip-to-chip optical I/O and sets the stage for us to **deliver substantial volume shipments by year end.**
-> 
+>
 > Charles Wuischpard, CEO, Ayar Labs
 
 ![](z-images/b03812f3d0e850f81a248ffeec05eb41.webp)
@@ -63,7 +63,7 @@ Ayar Labs is perhaps the most promising startup related to co-packaged optics. T
 Ranovus is another co-packaged optics firm. They have partnered with AMD for co-packaged optics on FPGAs. This partnership could extend beyond, but it may also be similar to the Ayar and Intel collaboration where it is short lived. AMD lacks photonics IP, so this would be a natural long term partnership or acquisition target for them.
 
 > We are delighted to share our multi-disciplinary silicon-photonics IP cores and chiplets, and advanced packaging solutions with our customers who are driving the adoption of novel data center architectures based on integrating best-in-class chiplets and co-packaged optics. Our close collaboration with GlobalFoundries underlines our joint commitment to deliver a fully featured set of qualified IP cores and chiplets with OSAT-ready high-volume manufacturing flows and supporting ecosystem to enable the huge potential of monolithic silicon photonics.
-> 
+>
 > Hojjat Salemi, chief business development officer of Ranovus
 
 Macom is generally a provider of TIAs and other amplifiers, but they also are involved in other parts of silicon photonics. They are also working with GlobalFoundries. We doubt they will be manufacturing with GlobalFoundries, so it is likely more of a validation and testing relationship to integrate Macom’s external TIAs into the Fotonix ecosystem. GlobalFoundries also offers EIC capabilities so it’s possible they will be displaced in the long run by more vertically integrated EIC designs.
@@ -77,7 +77,7 @@ Lightmatter is one of the most interesting AI start-ups due to the use of the 90
 PsiQuantum is one of the most promising quantum computing firms. While we won’t pretend to be experts in the industry at all, they have a unique approach that uses light rather than electrons for entanglement. In addition, they are one of the most well-funded quantum computing startups. PsiQuantum funded 6 new tools for GlobalFoundries to use in their co-designed custom manufacturing process.
 
 > We are leveraging GF’s new Fotonix™ platform to develop custom silicon photonics chips that meet our advanced quantum computing requirements.
-> 
+>
 > Fariba Danesh, chief operating officer of PsiQuantum
 
 ![](z-images/9db9945550b730f04e260dab8ea0bece.webp)
@@ -85,7 +85,7 @@ PsiQuantum is one of the most promising quantum computing firms. While we won’
 Xanadu is using a similar approach with photonics, but we have less details on the exact implementation.
 
 > Many chips, operating in parallel and networked together, are required to process the large number of qubits involved in fault-tolerant quantum computing algorithms. Leveraging an existing advanced 300mm platform like GF Fotonix gives us a huge advantage in the race to deliver a useful, error-corrected quantum computer.
-> 
+>
 > Zachary Vernon, head of hardware at Xanadu.
 
 GlobalFoundries Fotonix platform isn’t just about pure manufacturing capabilities. The really difficult thing about a foundry process is converting a concept for a design to a design that can be manufactured. The process design rules must be strict enough that whatever is defined can be manufactured, but it must also be flexible enough that it’s not a pain.

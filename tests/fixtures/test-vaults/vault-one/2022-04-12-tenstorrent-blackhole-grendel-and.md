@@ -31,7 +31,7 @@ These models with more conditional routing will probably be good for GPUs becaus
 Conditional routing is still nascent in its research and use today, but Tenstorrent envisions a future where a single, very large, highly effective, but incredibly computationally expensive neural network is built. This model would run in the datacenter. At the edge, cameras or sensors would have a segment of the neural network that does some pre-processing and naturally interfaces with the rest of this model. They compared this type of architecture to that of the human or animal where the eyes and appendages have neurons themselves, but the brain is the central hub.
 
 > The world is going to go to 80, 90% of all cycles, are going to be AI cycles running on AI processors programmed by data.
-> 
+>
 > Jim Keller, CTO of Tenstorrent
 
 Tenstorrent offered an example in smart retail of heterogeneous compute being required for a model. There could be a video decode in stage, some model processing, database read and write, further model processing, followed by video encoding. It’s quite interesting that Tenstorrent offered this example as the only single chip solutions that can offer this today are Intel client/edge CPUs, Nvidia GPUs, and AMD/Intel FPGAs.
@@ -61,7 +61,7 @@ Just like the human mind picks up tasks incredibly quickly because it is general
 Tenstorrent wants to create hardware that runs huge models that can take a large number of varying tasks and apply them to various criteria and train itself in a highly spare manner where a given input has a unique path through sparsity within the matrix or routing.
 
 > We started Tenstorrent about 5 years ago with exactly these ideas in mind. We wanted a computer that can scale from a tiny little sub-watt deployment to a data center size deployment and be targeted by the same compiler stack, same software stack. We wanted a computer that can enable artificial neural nets to do what our brains do. Meaning turn on only two percent of the model for any given input training or inference.
-> 
+>
 > Ljubisa Bajic, CEO of Tenstorrent
 
 ![](z-images/17bdc632a14263b905255fe8023b0182.webp)
@@ -115,7 +115,7 @@ Any kind of pipelining across cores is going to make conditional computation a h
 Tenstorrent claims their hardware approach has a huge advantage to software. Other companies have to deal with a classical load store architecture for passing data, so they must spend a lot of effort manually writing kernels that fuse operations together. Tenstorrent says high quality fusing at the compiler level is still not really a thing. This necessitates that fusing must done.
 
 > That explains the large gap between some GPU vendors and other GPU venders in machine learning performance. Some of them have been hand fusing lots of kernels for a lot of things over the last five years or even more. Some haven't.
-> 
+>
 > Ljubisa Bajic, CEO of Tenstorrent
 
 It’s pretty clear Ljubisa is referring to Nvidia versus AMD here in a diplomatic way. They claim this can take teams of as many people as 2,000, which is not feasible for a startup which has forced them down the path they are on.
@@ -134,7 +134,7 @@ We also encourage you to also check out our other AI chip coverage.
 
 [Graphcore Looks Like A Complete Failure In Machine Learning Training Performance](https://semianalysis.substack.com/p/graphcore-looks-like-a-complete-failure)
 
-[Tesla AI Day Supercomputer Chip Teaser | Is This The First Deployment Of TSMC InFO\_SoW?](https://semianalysis.substack.com/p/tesla-ai-day-supercomputer-chip-teaser)
+[Tesla AI Day Supercomputer Chip Teaser | Is This The First Deployment Of TSMC InFO_SoW?](https://semianalysis.substack.com/p/tesla-ai-day-supercomputer-chip-teaser)
 
 [Tesla Dojo - Unique Packaging and Chip Design Allow An Order Magnitude Advantage Over Competing AI Hardware](https://semianalysis.substack.com/p/tesla-dojo-unique-packaging-and-chip)
 

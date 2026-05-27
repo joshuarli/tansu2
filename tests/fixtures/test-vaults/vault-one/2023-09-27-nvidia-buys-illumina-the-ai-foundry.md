@@ -70,7 +70,7 @@ Source: NIH – DNA Sequencing Costs: Data
 
 The huge drop in cost per sequencing has led to an exponential growth in genomics data. This improvement isn’t slowing either, Illumina, the leading genome sequencing tool company, recently released the [NovaSeq X](https://www.genengnews.com/news/illumina-reveals-new-high-throughput-instrument-novaseq-x/#:~:text=Although%20the%20instruments%20have%20the,ultra%2Dhigh%20density%20flow%20cells.) instrument in September 2022 which triggers another shrink in upstream sequencing costs. The cost per sequence for this tool is ~$200, an 80% reduction compared to the prior generation tool. Despite this reduction, the time to sequence still remains a key bottleneck in clinical adoption with the newest instrument still requiring [21-48 hours](https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html) of run time for sequencing.
 
-Between [2018 (~100 Petabytes)](https://s24.q4cdn.com/526396163/files/doc_presentations/ILMN-at-Barclays-13-March-2019.pdf) and [2021 (280 PB)](https://www.illumina.com/company/news-center/press-releases/2022/4ea79eed-e630-4f50-b6b3-c7f11a8780cc.html#:~:text=\(Nasdaq%3A%20ILMN\)%20will%20host,Time%20in%20San%20Diego%2C%20CA.), data created on instruments sold by Illumina, the leading gene sequencing machine company, exhibited a Compound Annual Growth Rate (CAGR) of 41%, a doubling every 2 years. This trend is only accelerating.
+Between [2018 (~100 Petabytes)](https://s24.q4cdn.com/526396163/files/doc_presentations/ILMN-at-Barclays-13-March-2019.pdf) and [2021 (280 PB)](<https://www.illumina.com/company/news-center/press-releases/2022/4ea79eed-e630-4f50-b6b3-c7f11a8780cc.html#:~:text=(Nasdaq%3A%20ILMN)%20will%20host,Time%20in%20San%20Diego%2C%20CA.>), data created on instruments sold by Illumina, the leading gene sequencing machine company, exhibited a Compound Annual Growth Rate (CAGR) of 41%, a doubling every 2 years. This trend is only accelerating.
 
 ![](z-images/1fb4d94deded5e6f8190c4d686b93f96.webp)
 
@@ -124,7 +124,7 @@ Look no further than the groundbreaking impact DeepMind’s AlphaFold has had on
 
 Historically these disparate disciplines (the various “omics”) were explored in their own silos.
 
-*Subsequent reports will dive into the advances in each of briefly mentioned fields as well as others not mentioned, especially with regards to AI usage and demand.*
+_Subsequent reports will dive into the advances in each of briefly mentioned fields as well as others not mentioned, especially with regards to AI usage and demand._
 
 The healthcare sector finds itself on the precipice of a paradigm shift as it starts to embrace these key enabling trends and continues to unify the various fields of research. Recent advancements in a host of fields from Genomics to Gene Therapies, Drug Development and a proliferation of electronic health care data have outpaced the industry’s ability to fully harness these transformative innovations. Instead of seeing an acceleration in breakthroughs, the industry has hit a wall. There is a clear potential to dismantle Eroom's Law.
 
@@ -164,17 +164,17 @@ Source: UK CMA – Anticipated acquisition by Illumina of Pacific Biosciences
 
 The market for Long-Read sequencing machines is slightly more fragmented with firms such as Pacific BioSciences (PacBio) and Oxford Nanopore. Upstarts in the short-read market include Element Biosciences, Singular Genomics, and Ultima Genomics while industry giant Thermo Fisher participates through their Ion Torrent platform.
 
-*Subsequent reports will dive deeper into the short vs long-read market and the competitive dynamics.*
+_Subsequent reports will dive deeper into the short vs long-read market and the competitive dynamics._
 
 Though each platform possesses its own strengths and weaknesses, the underlying processes and workflows follow the same path. Two key bottlenecks in the process revolve around the interoperability of data during base calling and alignment as well as variant calling.
 
 ## Bottlenecks Building: Base Calling, Alignment, and Variant Calling
 
 > As the cost of sequencing diminishes, the prominence of compute expenses within our overall costs increases.
-> 
+>
 > Al Maynard, associate director of software engineering at Illumina
 
-The quote above shows remarkable foresight in the face of declining Human Genome sequencing costs that outpace Moore's Law. This, combined with demand's price elasticity, results in a data production surge due to the cost of Human Genome sequencing costing only $200 now. However, these gains now face Eroom's Law as sequencers generate raw data. Scientists rely on extensive computational processes for contextual insight and analysis, known as secondary or downstream analysis. The cost and time of secondary analysis far outstrips sequencing, representing future opportunities for Nvidia to *flip the script* on Eroom’s Law.
+The quote above shows remarkable foresight in the face of declining Human Genome sequencing costs that outpace Moore's Law. This, combined with demand's price elasticity, results in a data production surge due to the cost of Human Genome sequencing costing only $200 now. However, these gains now face Eroom's Law as sequencers generate raw data. Scientists rely on extensive computational processes for contextual insight and analysis, known as secondary or downstream analysis. The cost and time of secondary analysis far outstrips sequencing, representing future opportunities for Nvidia to _flip the script_ on Eroom’s Law.
 
 ![](z-images/dc22421778839988483c21facbe79be3.webp)
 
@@ -196,7 +196,7 @@ PacBio, a prominent manufacturer of long-read sequencing machines, recently intr
 
 Source: Scaling long-read sequencing throughput and accessibility with deep learning and Nvidia
 
-Integrating Nvidia’s GPUs *flipped the script* for PacBio. Compared to prior generations of instruments, the Revio produces 12x the amount of data in 20% less time (15x faster). To provide context, the [NovaSeq X](https://www.genengnews.com/news/illumina-reveals-new-high-throughput-instrument-novaseq-x/#:~:text=Although%20the%20instruments%20have%20the,ultra%2Dhigh%20density%20flow%20cells.), the new instrument from Illumina highlighted earlier, relies on CPUs to produce 2.5x the amount of data compared to prior generations (16Tb vs. 6Tb), but it requires 10% more time (48 vs. 44 hours).
+Integrating Nvidia’s GPUs _flipped the script_ for PacBio. Compared to prior generations of instruments, the Revio produces 12x the amount of data in 20% less time (15x faster). To provide context, the [NovaSeq X](https://www.genengnews.com/news/illumina-reveals-new-high-throughput-instrument-novaseq-x/#:~:text=Although%20the%20instruments%20have%20the,ultra%2Dhigh%20density%20flow%20cells.), the new instrument from Illumina highlighted earlier, relies on CPUs to produce 2.5x the amount of data compared to prior generations (16Tb vs. 6Tb), but it requires 10% more time (48 vs. 44 hours).
 
 ![](z-images/271c143c3cc4baaeac38cb4fde1f7bb6.webp)
 
@@ -241,34 +241,27 @@ The field of healthcare at large, and genomics in particular, is increasingly be
 Nvidia has pushed into the healthcare market by being an enabler of accelerated compute at the instrument and device level and by providing biology and bioinformatics platforms that feature AI-defined software solutions as well as access to best-in-class implementation of these solutions on cutting edge GPU hardware.
 
 > And so that's why **I really describe Nvidia not as a chip company, but we are an accelerated data center company.** And so to compete at that level is very, very difficult. And the software investment that we've made and our ecosystem partners have made is really what differentiates us and allows us to remain -- **allows us to innovate continuously at the speed of light, because we're a full-stack company.**
-> 
-> *Nvidia atJP Morgan Healthcare Conference 1/12/23*
+>
+> _Nvidia atJP Morgan Healthcare Conference 1/12/23_
 
 **Nvidia’s approach to addressing this vast data analytics and compute need is multifaceted:**
 
 1. Integrating GPUs into Devices
-	1. Long-Read Sequencers. Both [Oxford Nanopore](https://nanoporetech.com/about-us/news/oxford-nanopore-and-nvidia-collaborate-partner-dgx-ai-compute-system-ultra-high) and [PacBio](https://www.pacb.com/revio/) integrate Nvidia GPU’s into their instruments reducing sequencing time and enabling greater data extraction.
-		2. [Nvidia IGX](https://nvidianews.nvidia.com/news/nvidia-launches-igx-edge-ai-computing-platform-for-safe-secure-autonomous-systems). IGX delivers secure, low-latency AI inference to address the clinical demand for instantaneous insights from a range of instruments and sensors for medical procedures, such as robotic-assisted surgery and patient monitoring.
+   1. Long-Read Sequencers. Both [Oxford Nanopore](https://nanoporetech.com/about-us/news/oxford-nanopore-and-nvidia-collaborate-partner-dgx-ai-compute-system-ultra-high) and [PacBio](https://www.pacb.com/revio/) integrate Nvidia GPU’s into their instruments reducing sequencing time and enabling greater data extraction. 2. [Nvidia IGX](https://nvidianews.nvidia.com/news/nvidia-launches-igx-edge-ai-computing-platform-for-safe-secure-autonomous-systems). IGX delivers secure, low-latency AI inference to address the clinical demand for instantaneous insights from a range of instruments and sensors for medical procedures, such as robotic-assisted surgery and patient monitoring.
 2. Supercomputers. The [Cambridge-1](https://nvidianews.nvidia.com/news/nvidia-launches-uks-most-powerful-supercomputer-for-research-in-ai-and-healthcare) supercomputer is the most powerful computer in the United Kingdom and was purposefully built by Nvidia to accelerate digital biology. AstraZeneca collaborated with Nvidia to build transformer-based neural network architectures capable of leveraging massive datasets for chemical structures. [Oxford Nanopore utilizes Cambridge-1 to carry out algorithm improvements in hours](https://www.nvidia.com/en-gb/industries/healthcare-life-sciences/cambridge-1/), versus days. [GSK, UK NHS, Peptone, and Alchemab](https://www.nvidia.com/en-gb/industries/healthcare-life-sciences/cambridge-1/) has also had various breakthroughs in healthcare related applications by utilizing this supercomputer.
 3. [Nvidia Clara](https://www.nvidia.com/en-us/clara/) provides a suite of AI-accelerated solutions across the healthcare ecosystem.
-	1. [Parabricks](https://www.nvidia.com/en-us/clara/genomics/) for Genomics. Parabricks, acquired in 2019, offers a suite of GPU-accelerated tools for secondary analysis in the genomics sequencing flow. It performs tasks like sequence alignment and assembly, which help determine the locations of genetic variations and mutations within the sequenced DNA. This is significantly faster and cheaper than using CPUs.
-		2. Nvidia [Holoscan](https://www.nvidia.com/en-us/clara/medical-devices/) and [MONAI](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara/containers/monai-toolkit) for Medical Imaging
-		1. Holoscan and MONAI are both AI computing platforms for medical devices and medical imaging combining hardware systems for low-latency sensors and network connectivity, AI optimized libraries for inferences, and software-defined architectures for real-time processing of data coming from the devices or in the cloud.
+   1. [Parabricks](https://www.nvidia.com/en-us/clara/genomics/) for Genomics. Parabricks, acquired in 2019, offers a suite of GPU-accelerated tools for secondary analysis in the genomics sequencing flow. It performs tasks like sequence alignment and assembly, which help determine the locations of genetic variations and mutations within the sequenced DNA. This is significantly faster and cheaper than using CPUs. 2. Nvidia [Holoscan](https://www.nvidia.com/en-us/clara/medical-devices/) and [MONAI](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara/containers/monai-toolkit) for Medical Imaging
+      1. Holoscan and MONAI are both AI computing platforms for medical devices and medical imaging combining hardware systems for low-latency sensors and network connectivity, AI optimized libraries for inferences, and software-defined architectures for real-time processing of data coming from the devices or in the cloud.
 4. Nvidia’s [BioNeMo](https://www.nvidia.com/en-us/gpu-cloud/bionemo/) LLM, launched in March 2023, applies large language models (LLMs) to the study of chemistry, proteins, RNA and DNA, allowing developers to effectively train and deploy biology LLMs with billions of parameters, leading to insights that researchers can connect to biological properties or functions and even human health conditions. Products offered as part of BioNeMo [include](https://nvidianews.nvidia.com/news/nvidia-unveils-large-language-models-and-generative-ai-services-to-advance-life-sciences-r-d):
-	1. *AlphaFold2: A deep learning model that reduces the time it takes to determine a protein’s structure from years to minutes or even seconds, just by using its amino acid sequence, developed by DeepMind and already used by over a million researchers.*
-		2. *DiffDock: To help researchers understand how a drug molecule will bind with a target protein, this model predicts the 3D orientation and docking interaction of small molecules with high accuracy and computational efficiency.*
-		3. *ESMFold: This protein structure prediction model, using Meta AI’s ESM2 protein language model, can estimate the 3D structure of a protein based on a single amino acid sequence, without requiring examples of several similar sequences.*
-		4. *ESM2: This protein language model is used for inferring machine representations of proteins which are useful for downstream tasks such as protein structure prediction, property prediction and molecular docking.*
-		5. *MoFlow: Used for molecular optimization and small molecule generation, this generative chemistry model creates molecules from scratch, coming up with diverse chemical structures for potential therapeutics.*
-		6. *ProtGPT-2: This language model generates novel protein sequences to help researchers design proteins with unique structures, properties and functions.*
+   1. _AlphaFold2: A deep learning model that reduces the time it takes to determine a protein’s structure from years to minutes or even seconds, just by using its amino acid sequence, developed by DeepMind and already used by over a million researchers._ 2. _DiffDock: To help researchers understand how a drug molecule will bind with a target protein, this model predicts the 3D orientation and docking interaction of small molecules with high accuracy and computational efficiency._ 3. _ESMFold: This protein structure prediction model, using Meta AI’s ESM2 protein language model, can estimate the 3D structure of a protein based on a single amino acid sequence, without requiring examples of several similar sequences._ 4. _ESM2: This protein language model is used for inferring machine representations of proteins which are useful for downstream tasks such as protein structure prediction, property prediction and molecular docking._ 5. _MoFlow: Used for molecular optimization and small molecule generation, this generative chemistry model creates molecules from scratch, coming up with diverse chemical structures for potential therapeutics._ 6. _ProtGPT-2: This language model generates novel protein sequences to help researchers design proteins with unique structures, properties and functions._
 
 These platforms go a long way to enabling various applications, but there are also many haps in Nvidia’s current offerings for them to realize their ambitions of being a full-stack provider in healthcare when other ecosystems control all the data processed on their platforms.
 
 ## Illumina = Missing Puzzle Piece
 
-> ***So genomics is a modality that is delivering great value to health care as well as research and drug discovery. It is the largest data generator in health care and growing rapidly.** We're witnessing the continued decline in cost, enabling large-scale genomics programs to transpire. However, we need to be sensitive to the fact that a lot of times, **when you advertise the cost of sequencing, it's just the cost of sequencing and not the downstream analysis, which is ultimately the insights that we need to care for our patients and to deliver insights in drug discovery*** … ***With more sequencing platforms and modalities entering the market, we are going to be pushing these 40 exabytes of genomic data out there into the world.***
-> 
-> *Nvidia at JP Morgan Healthcare Conference 1/12/23*
+> **\*So genomics is a modality that is delivering great value to health care as well as research and drug discovery. It is the largest data generator in health care and growing rapidly.** We're witnessing the continued decline in cost, enabling large-scale genomics programs to transpire. However, we need to be sensitive to the fact that a lot of times, **when you advertise the cost of sequencing, it's just the cost of sequencing and not the downstream analysis, which is ultimately the insights that we need to care for our patients and to deliver insights in drug discovery\*** … **_With more sequencing platforms and modalities entering the market, we are going to be pushing these 40 exabytes of genomic data out there into the world._**
+>
+> _Nvidia at JP Morgan Healthcare Conference 1/12/23_
 
 ![](z-images/8417b6c6bea88899edb994239f334887.webp)
 

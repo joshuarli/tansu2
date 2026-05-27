@@ -30,6 +30,6 @@ Nvidia GPU sales could be inflated because of mining, but at the same time, the 
 
 Nvidia looks well positioned heading into 2022, but with competition becoming fiercer from AMD and pent up demand becoming satisfied, will this level of growth hold true? Will Datacenter continue to grow at such fantastic rates? Will the $8B of automotive sales pipeline hold true? SemiAnalysis is skeptical on some fronts, but we also will be cautious of betting against Jensun Huang!
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/nvidia-is-raking-in-the-money-but-are-earnings-inflated/) on May 27th 2021*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/nvidia-is-raking-in-the-money-but-are-earnings-inflated/) on May 27th 2021_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

@@ -25,9 +25,9 @@ First let’s start off with defining the problem Ayar Labs set out to tackle an
 Ayar Labs set out to break this paradigm. Rather than being limited by IO density issues, data rate scaling, and power inefficiencies of electrical package to package interconnects, the goal was to place optical communications directly onto the package. Ayar Labs main point is that Optical IO is more efficient than current electrical regime in the 1cm to 10cm transmission range. The best way to break the problem of ballooning power with data movement is to switch to optical any time you transfer data beyond this distance.
 
 > We should build the biggest chips we can. Then we connect them together. The reason for that is because it’s sensible. That’s why chips got bigger and bigger over time. They’re not getting smaller over time. They’re getting bigger. The reason for that is because larger chips benefit from the high energy efficiency of the wires that are on chip. No matter how energy-efficient a chip-to-chip SerDes is, it’s never going to be as energy-efficient as a wire on the chip. It’s just one little tiny thread of wire. We would like to make the chips as big as we can, and then connect them together. We call that superchips.
-> 
+>
 > Do I believe in chiplets? In the future there will be little tiny things you can connect directly into our chips, and as a result, a customer could do a semi-custom chip with just a little engineering effort, connect it into ours, and differentiate it in their data center in their own special way. Nobody wants to spend $100 million to differentiate. They’d love to spend $10 million to differentiate while leveraging off someone else’s $100 million. NVLink chip-to-chip, and in the future UCIe, are going to bring a lot of those exciting opportunities in the future.
-> 
+>
 > Jensen Huang, Nvidia Founder and CEO
 
 ![](z-images/9a9de10c75e588d5717eaef6a1cd60f6.webp)
@@ -68,4 +68,4 @@ With Nvidia’s current generation Hopper SXM5 reportedly selling for above $20k
 
 Ayar Lab has demonstrated amazing success and capabilities which make them the most promising hardware startup. They have big wins at companies such as HPE, and the strategic investment from Nvidia is certainly a head turner. They are the furthest along on a co-packaged optics solution and by supporting open standards and many types of packaging they have opened the walls of the dam for potentially revolutionizing the architecture of high-performance computing. Their innovation alongside GlobalFoundries on micro-ring modulators is a huge deal given their reliability claims. This would be an industry first for a high-volume products. Pluggable optics will always have their place, but co-packaged optics have many clear advantages on power, performance, bandwidth density, and even cost.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

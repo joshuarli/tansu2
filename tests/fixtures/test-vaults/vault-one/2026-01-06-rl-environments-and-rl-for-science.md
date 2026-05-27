@@ -8,7 +8,7 @@ description: "Worker Automation, RL as a Service, Anthropic's next big bet, GDPv
 
 ### Worker Automation, RL as a Service, Anthropic's next big bet, GDPval and Utility Evals, Computer Use Agents, LLMs in Biology, Mid-Training, Lab Procurement Patterns, Platform Politics and Access
 
-*We’re hiring for AI Analysts and Tokenomics Analyst roles. [Apply here](https://app.dover.com/SemiAnalysis/careers/ddbb65b5-1f71-4c20-835f-7c6860ed5d7f) or reach out directly.*
+_We’re hiring for AI Analysts and Tokenomics Analyst roles. [Apply here](https://app.dover.com/SemiAnalysis/careers/ddbb65b5-1f71-4c20-835f-7c6860ed5d7f) or reach out directly._
 
 Last June, we argued that scaling RL is the critical path to unlocking further AI capabilities. As we will show, the past several months have affirmed our thesis: major capability gains are coming from ramping RL compute. Pre-training continues to see further optimizations, but the lab’s are laser focused on scaling compute for RL.
 
@@ -24,7 +24,7 @@ Making the models “do the homework” started with math problems, which are ea
 
 Aggregating tasks and data can be done manually, or through the curation of high signal user data. The latter is what gives companies like Windsurf and Cursor the ability to post-train their own competitive models despite not having the resources of a lab.
 
-These post-training efforts have improved model capability in domains like coding, but also model *utility*: models are more usable in everyday tools like Excel and PowerPoint.
+These post-training efforts have improved model capability in domains like coding, but also model _utility_: models are more usable in everyday tools like Excel and PowerPoint.
 
 To measure how much models are improving in utility and capability, OpenAI created an eval called GDPval. This eval covers 1000+ tasks across 44 occupations, picked from sectors that representing >5% of the economy. Many of these tasks are digital but require several hours to complete for a human. These tasks were created in conjunction with experts, averaging 14 years of experience.
 
@@ -98,8 +98,8 @@ Source: Badertdinov, Golubev et al.
 
 Each candidate task then undergoes execution-based verification. The environment is instantiated in a container, and tests from the PR’s test patch are executed. A task is considered valid only if at least one test fails before applying the solution patch, all initially failing tests pass after the patch is applied, and any tests that passed before continue to pass. After all the filtering, we end up with 21,336 tasks from the 450k we started.
 
-But most PRs do not meet the strict criteria, which is why the yield is low. SWE-smith demonstrates this by having an LLM install repositories at their latest commit, then synthesizing bugs through four methods: prompting a model to introduce subtle errors into working functions, applying deterministic AST transformations like flipping if/else blocks or removing loops, using an LLM to semantically reverse real PRs against the current codebase, and combining validated single-function bugs into harder multi-file tasks. Every candidate is validated by checking if it breaks at least one existing test.  
-  
+But most PRs do not meet the strict criteria, which is why the yield is low. SWE-smith demonstrates this by having an LLM install repositories at their latest commit, then synthesizing bugs through four methods: prompting a model to introduce subtle errors into working functions, applying deterministic AST transformations like flipping if/else blocks or removing loops, using an LLM to semantically reverse real PRs against the current codebase, and combining validated single-function bugs into harder multi-file tasks. Every candidate is validated by checking if it breaks at least one existing test.
+
 Importantly, these approaches aren't mutually exclusive. PR mining captures realistic bug patterns from actual development history and synthetic generation provides volume and coverage across the entire codebase. A lab with access to private repositories could run both pipelines against the same environments, first mining PRs then improving them with synthetic bugs. This combined approach is likely a strong approximation for how frontier labs are constructing RL environments for code.
 
 At scale, these pipelines produce tasks in the tens of thousands. DeepSeek ended up using 24,667 coding tasks extracted from GitHub for the training of V3.2. We know, from other labs like Kimi, that the infrastructure developed can support the instantiation of 10,000+ instances simultaneously. Generally speaking, the more difficult the task the more rollouts are needed during training. This is due to the problem being harder to solve, and the more rollouts, the more “shots on goal” the model has. However, this comes at the expense of each rollout being slower as throughput comes at the expense of speed.
@@ -298,7 +298,7 @@ Medra aims to set up a robotically automated scientific lab focused on biology. 
 
 This further demonstrates how different post-training is to pre-training: if OpenAI choose a different set of experiments to optimise for versus Google DeepMind, then the resulting models and applications will be separate. The specialisation in these hyper specific domains cuts against the notion of model commodification and similarity.
 
-RL environments are *spilling* *into the physical world*. These environments are no longer just a docker container that can be arbitrarily spun up in software land. It is an experiment that needs to be run by a human or a robot, with a real cost to materials, electricity, equipment, and lab space. There are interesting implications to this, including that the marginal amount of data per dollar spent is drastically lower than in software. A single biological experiment can cost hundreds to thousands of dollars and take hours to complete, compared to a coding task that can be attempted 64 times and graded for a trivial cost. This drives up the need for more efficient algorithms and specific architectural decisions to make physical RL tractable.
+RL environments are _spilling_ _into the physical world_. These environments are no longer just a docker container that can be arbitrarily spun up in software land. It is an experiment that needs to be run by a human or a robot, with a real cost to materials, electricity, equipment, and lab space. There are interesting implications to this, including that the marginal amount of data per dollar spent is drastically lower than in software. A single biological experiment can cost hundreds to thousands of dollars and take hours to complete, compared to a coding task that can be attempted 64 times and graded for a trivial cost. This drives up the need for more efficient algorithms and specific architectural decisions to make physical RL tractable.
 
 ## Why RL for Biology Can be Challenging
 

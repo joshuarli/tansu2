@@ -28,6 +28,6 @@ More wafers require additional clean room space and semiconductor capital equipm
 
 ![](z-images/c6c6eeaba4798f6d4ef5457bae6f6950.webp)
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/moores-law-is-dead-for-dram-and-that-is-great-for-semicap/) on May 22nd 2020*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/moores-law-is-dead-for-dram-and-that-is-great-for-semicap/) on May 22nd 2020_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

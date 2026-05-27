@@ -34,7 +34,7 @@ We also see that for single node aggregated serving, AMD’s SGLang delivers bet
 
 When it comes to the latest inference techniques that are used by the most prominent frontier large-scale inference services (such as disagg prefill+wideEP+FP4), Nvidia absolutely frame mogs with the B200, B300 and ASU frat leader, rack scale GB200/GB300 NVL72 across both SGLang and TRTLLM. Nvidia GPUs also dominate when it comes to energy efficiency, with much lower all-in provisioned picoJoules of energy per token across all workloads.
 
-Turning to AMD, we find that the biggest issue with inference on their systems and using their software is *[composability](https://en.wikipedia.org/wiki/Composability)*. That is, many of AMDs inference optimization implementations work well in isolation, but when combined with other optimizations, the result is not as competitive as one would expect. Specifically, the composability of disagg prefill, wideEP and FP4 inference optimizations needs significant improvement.
+Turning to AMD, we find that the biggest issue with inference on their systems and using their software is _[composability](https://en.wikipedia.org/wiki/Composability)_. That is, many of AMDs inference optimization implementations work well in isolation, but when combined with other optimizations, the result is not as competitive as one would expect. Specifically, the composability of disagg prefill, wideEP and FP4 inference optimizations needs significant improvement.
 
 While performance is competitive on AMD when enabling just a subset of the SOTA inference optimizations, enabling all three major optimizations that labs use, AMD’s performance is currently not competitive with Nvidia’s. We strongly recommend to AMD that they focus heavily on composability of different inference optimizations. We have been told that AMD will start focusing on software composability of FP4+distributed inferencing across their whole software stack. This will happen after Chinese New Year as most of their disagg prefill+wideEP 10x inference engineers are based in China
 
@@ -66,7 +66,7 @@ In this section, we will give a brief primer on technical concepts that may help
 
 ## Interactivity vs Throughput Tradeoff
 
-The fundamental tradeoff with LLM inference is throughput versus latency. *Interactivity* (tok/s/user) describes how fast each user of a system receives tokens – it is the inverse of time per output token (TPOT). *Throughput* (tok/s) describes how many total tokens a system can crank out across all users. One can achieve higher total throughput by batching requests, but each request will be allocated less FLOPs and thus complete slower. This is analogous to the choice of riding a metro bus vs a race car. The metro bus serves many riders, but also makes frequent stops which takes time, but the cost of the metro bus can be amortized across many passengers. The race car can only carry one or two passengers, but it will make few if any additional stops meaning a faster travel time overall, but it is much more expensive to ride per passenger. The metro bus might make more sense for people heading to the park on a weekend, while the race car might be better for bringing a celebrity to their destination. There is no one size fits all solution.
+The fundamental tradeoff with LLM inference is throughput versus latency. _Interactivity_ (tok/s/user) describes how fast each user of a system receives tokens – it is the inverse of time per output token (TPOT). _Throughput_ (tok/s) describes how many total tokens a system can crank out across all users. One can achieve higher total throughput by batching requests, but each request will be allocated less FLOPs and thus complete slower. This is analogous to the choice of riding a metro bus vs a race car. The metro bus serves many riders, but also makes frequent stops which takes time, but the cost of the metro bus can be amortized across many passengers. The race car can only carry one or two passengers, but it will make few if any additional stops meaning a faster travel time overall, but it is much more expensive to ride per passenger. The metro bus might make more sense for people heading to the park on a weekend, while the race car might be better for bringing a celebrity to their destination. There is no one size fits all solution.
 
 ![](z-images/1a764f64d5df2a6eb5bc9f422756925d.webp)
 
@@ -78,7 +78,7 @@ The Cost/Perf per TCO vs Interactivity/End-to-End Latency curve mostly follows t
 
 ### Prefill and Decode Phases
 
-Inference contains two main phases: prefill and decode. *Prefill* occurs during the first forward pass of a request’s lifetime. It is computationally intensive since all tokens in the request are processed in parallel. This phase is responsible for “filling up” the KV cache for a sequence. After prefill, responses are generated (or *decoded*) one token at a time. Each forward pass loads the entire KV cache for a sequence from HBM, while only performing the computation for a single token, making decode memory (bandwidth) intensive.
+Inference contains two main phases: prefill and decode. _Prefill_ occurs during the first forward pass of a request’s lifetime. It is computationally intensive since all tokens in the request are processed in parallel. This phase is responsible for “filling up” the KV cache for a sequence. After prefill, responses are generated (or _decoded_) one token at a time. Each forward pass loads the entire KV cache for a sequence from HBM, while only performing the computation for a single token, making decode memory (bandwidth) intensive.
 
 When prefill and decode performed on the same engine, prefill constantly disrupts decode batches leading to worse overall performance.
 
@@ -275,7 +275,7 @@ Source: OpenRouter
 
 We can then use real InferenceX data to interpolate the cost per million input/output tokens at an interactivity level of 35 tok/sec/user, which is a reasonable interactivity level given the data above.
 
-As we mention later in the article, this is best understood as *baseline* data and not completely representative of real-world inference, mainly because InferenceX benchmarks on random data and disables prefix caching. In other words, performance/cost will be *at least* this good. It is also important to note that there are not data points for *each GPU* at *each* interactivity level. Thus we cannot make *exact* comparisons at each degree of interactivity. We nevertheless think the bar chart comparisons presented below are (very) reasonable interpolations in lieu of using exact data points.
+As we mention later in the article, this is best understood as _baseline_ data and not completely representative of real-world inference, mainly because InferenceX benchmarks on random data and disables prefix caching. In other words, performance/cost will be _at least_ this good. It is also important to note that there are not data points for _each GPU_ at _each_ interactivity level. Thus we cannot make _exact_ comparisons at each degree of interactivity. We nevertheless think the bar chart comparisons presented below are (very) reasonable interpolations in lieu of using exact data points.
 
 Comparing disagg+wideEP configs at this interactivity level, we see just how effective distributed inference techniques are when it comes to both perf/TCO and overall throughput. We also see how large scale up domains (like GB300 and GB200 NVL72) absolutely dominate in total throughput per GPU.
 
@@ -291,7 +291,7 @@ Source: SemiAnalysis InferenceX
 
 Let’s use the findings above to dig deeper into the unit economics of serving LLMs at scale. From the OpenRouter data above, we see that Crusoe serves at 36 tok/sec/user at $1.35/M input tokens and $5.40/M output tokens. If we assume no cache hits and that Crusoe is using at least H200s with SOTA inference techniques like MTP, disagg, and wide EP, the data above suggests they incur a cost of *no more than* $0.226$/M input tokens and $2.955/M output tokens for a profit margin of up to 83% gross margin (depreciation counted in cost of goods sold) on input tokens and 45% gross margin on output tokens.
 
-Of course, these assumptions may not be *exactly* correct and these calculations don’t account for downtime or underutilization, but this gives an idea of some cool math you can do with InferenceX data. More analysis on the economics of inference can be found in the [SemiAnalysis Tokenomics Model](https://semianalysis.com/tokenomics-model/).
+Of course, these assumptions may not be _exactly_ correct and these calculations don’t account for downtime or underutilization, but this gives an idea of some cool math you can do with InferenceX data. More analysis on the economics of inference can be found in the [SemiAnalysis Tokenomics Model](https://semianalysis.com/tokenomics-model/).
 
 The OpenRouter data also shows Nebius AI Studio (Fast) serving DeepSeek FP4 at 167 tok/sec/user at $2/M input, $6/M output tokens. Adjusting the interactivity level in InferenceX accordingly and we see the following data.
 
@@ -542,7 +542,7 @@ Source: SemiAnalysis InferenceX
 
 ## Wide Expert Parallelism (WideEP) and Disaggregated Prefill
 
-In this section, we will go deeper on expert parallelism and go on to explain what *wide* expert parallelism is. We will then explain the idea of Disaggregated Prefill, how it is different from WideEP, and how WideEP and Disaggregated Prefill are used in unison to achieve SOTA performance.
+In this section, we will go deeper on expert parallelism and go on to explain what _wide_ expert parallelism is. We will then explain the idea of Disaggregated Prefill, how it is different from WideEP, and how WideEP and Disaggregated Prefill are used in unison to achieve SOTA performance.
 
 ## WideEP
 
@@ -560,7 +560,7 @@ An EP8 DP8 deployment of DeepSeek R1. All 256 experts per layer are divided even
 
 The obvious way to scale is replication: deploy N independent EP8 instances across N nodes. Each instance serves requests independently with no cross-node communication. This scales throughput linearly, but each GPU still holds 32 experts per layer, and each token activates at most 8 of those 32 local experts. 75% of expert weights sit cold in HBM.
 
-**Wide expert parallelism** (WideEP) takes a different approach by scaling EP *across* nodes rather than replicating independent instances. On a 64-GPU cluster (8 nodes), DP64/EP64 places only 256/64 = 4 experts per layer per GPU, each still holding a full replica of the non-expert weights. During the MoE phase, tokens from all 64 DP ranks are dispatched via all-to-all to the GPUs hosting their routed experts.
+**Wide expert parallelism** (WideEP) takes a different approach by scaling EP _across_ nodes rather than replicating independent instances. On a 64-GPU cluster (8 nodes), DP64/EP64 places only 256/64 = 4 experts per layer per GPU, each still holding a full replica of the non-expert weights. During the MoE phase, tokens from all 64 DP ranks are dispatched via all-to-all to the GPUs hosting their routed experts.
 
 This yields three compounding benefits over the single-node EP8 baseline. First, reducing expert footprint from 32 to 4 experts/GPU frees substantial HBM for KV cache, directly increasing per-GPU batch size capacity. Second, 64 DP ranks funneling tokens through fewer experts per GPU increases tokens-per-expert, raising arithmetic intensity (more FLOPs per byte of weights loaded) and improving compute utilization. The same expert weights service 8x more tokens per step. Third, aggregate HBM bandwidth scales linearly with GPU count; 64 GPUs loading expert weights simultaneously provide 8x the memory bandwidth of a single node, reducing memory bottleneck.
 
@@ -688,11 +688,11 @@ Below is a high-level diagram of how InferenceX launches jobs.
 
 ## Klaud Cold AI Usage
 
-Shortly after the release of InferenceX v1, we realized how much developer throughput was being left on the table by not utilizing AI more in our InferenceX development. So, we rolled our sleeves up and decided to embrace Claude Code and begin absorbing intelligence, one token at a time to the point that we are currently spending at a $6,000/day run rate. If you want to contribute towards our KPI of absorbing an annualized $3 million dollars’ worth of Claude intelligence, [apply here to join the mission.](https://app.dover.com/apply/semianalysis/2a9c8da5-6d59-4ac8-8302-3877345dbce1) We started our enlightenment journey when we realized the GitHub Copilot agent was free – at first we couldn’t believe this feature came at no cost! We soon realized that Copilot is terrible and it became apparent why GitHub was giving it away for free. You probably would have had to *pay us* to keep using it.
+Shortly after the release of InferenceX v1, we realized how much developer throughput was being left on the table by not utilizing AI more in our InferenceX development. So, we rolled our sleeves up and decided to embrace Claude Code and begin absorbing intelligence, one token at a time to the point that we are currently spending at a $6,000/day run rate. If you want to contribute towards our KPI of absorbing an annualized $3 million dollars’ worth of Claude intelligence, [apply here to join the mission.](https://app.dover.com/apply/semianalysis/2a9c8da5-6d59-4ac8-8302-3877345dbce1) We started our enlightenment journey when we realized the GitHub Copilot agent was free – at first we couldn’t believe this feature came at no cost! We soon realized that Copilot is terrible and it became apparent why GitHub was giving it away for free. You probably would have had to _pay us_ to keep using it.
 
 We had been using Claude Code locally ever since it was released. But recently, we have integrated Claude Code into InferenceX development, using it for the usual tasks such as reviewing PRs, but we also have given it the ability to perform sweeps on clusters. With the workflows we setup, Claude can manually initiate runs, view the results, and iterate. This has enabled us to deploy quick fixes easily on the go via the GitHub app.
 
-Another cool use case is using Claude to find recipes for new vLLM/SGLang images. When a new image is released, recipes sometimes need to be updated to achieve optimal performance (new environment variables, modified engine arguments, etc.) With our Claude Code integration, we simply open an issue and ask Claude to search through all commits in the image changelog to find necessary changes to be added to the recipe. This works quite well, and although it’s not *perfect*, it often gives a good starting point.
+Another cool use case is using Claude to find recipes for new vLLM/SGLang images. When a new image is released, recipes sometimes need to be updated to achieve optimal performance (new environment variables, modified engine arguments, etc.) With our Claude Code integration, we simply open an issue and ask Claude to search through all commits in the image changelog to find necessary changes to be added to the recipe. This works quite well, and although it’s not _perfect_, it often gives a good starting point.
 
 ## GitHub Actions
 

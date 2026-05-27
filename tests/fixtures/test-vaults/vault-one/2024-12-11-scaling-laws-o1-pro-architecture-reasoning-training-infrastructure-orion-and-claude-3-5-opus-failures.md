@@ -104,7 +104,7 @@ The heavy use of synthetic data also incentivizes a push toward better models. F
 
 The better the underlying model is at judging tasks, the better the dataset for training. Inherent in this are scaling laws of their own. This is how we got the “new Claude 3.5 Sonnet”. Anthropic finished training Claude 3.5 Opus and it performed well, with it scaling appropriately (ignore the scaling deniers who claim otherwise - this is FUD).
 
-Yet Anthropic didn’t release it. This is because instead of releasing publicly, Anthropic *used Claude 3.5 Opus to generate synthetic data* and for reward modeling to improve Claude 3.5 Sonnet significantly, alongside user data. Inference costs did not change drastically, but the model's performance did. Why release 3.5 Opus when, on a cost basis, it does not make economic sense to do so, relative to releasing a 3.5 Sonnet with further post-training from said 3.5 Opus?
+Yet Anthropic didn’t release it. This is because instead of releasing publicly, Anthropic _used Claude 3.5 Opus to generate synthetic data_ and for reward modeling to improve Claude 3.5 Sonnet significantly, alongside user data. Inference costs did not change drastically, but the model's performance did. Why release 3.5 Opus when, on a cost basis, it does not make economic sense to do so, relative to releasing a 3.5 Sonnet with further post-training from said 3.5 Opus?
 
 With more synthetic data comes better models. Better models provide better synthetic data and act as better judges for filtering or scoring preferences. Inherent in the use of synthetic data are many smaller scaling laws that, collectively, push toward developing better models faster.
 

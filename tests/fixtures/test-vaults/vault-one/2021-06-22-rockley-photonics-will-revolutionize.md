@@ -116,6 +116,6 @@ In diabetes, it’s not just glucose levels that are important, there’s also g
 
 Given Rockley Photonics huge market opportunity with industry revolutionizing technology, it could potentially be a great investment. Big customer wins like Apple validate the technology. The fact that all current investors wanting to stay invested is a very bullish signal on this technology. The fabless model with people inside an independent fab with a proprietary process creates a large moat that cannot be penetrated. The financials are conservative, strong, and represent a meaningful upside, and the management team has a strong track record of delivering on their promises.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/rockley-photonics-will-revolutionize-healthcare-by-measuring-biomarkers-such-as-glucose-with-lasers-in-an-apple-watch/) on June 22nd 2021. More financials related to Rockley Photonics can be found there*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/rockley-photonics-will-revolutionize-healthcare-by-measuring-biomarkers-such-as-glucose-with-lasers-in-an-apple-watch/) on June 22nd 2021. More financials related to Rockley Photonics can be found there_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

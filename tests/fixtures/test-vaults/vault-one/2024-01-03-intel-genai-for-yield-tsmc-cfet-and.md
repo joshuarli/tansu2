@@ -86,7 +86,7 @@ Being just a few atoms thick, these materials are of course challenging to fabri
 
 TSMC demonstrated working nanosheet FETs (NSFETs) fabricated with a single nanosheet channel. The ability to construct 2 stacked nanosheets was also shown but without mention of any working transistors built on those nanosheets. A key point was that the 2D material was grown directly via chemical vapor deposition (CVD) rather than utilizing an additional film transfer step as had previously been done.
 
-Growth is *the* fundamental problem for 2D materials. No solution exists today that can reliably grow 2D materials over a non-negligible surface area.
+Growth is _the_ fundamental problem for 2D materials. No solution exists today that can reliably grow 2D materials over a non-negligible surface area.
 
 ![](z-images/ed1819bdf69b3b7c46d4162f8b9ff0eb.webp)
 

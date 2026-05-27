@@ -12,7 +12,7 @@ The chipmaking industry is, surprisingly, ripe for disruption. Technical decisio
 
 A TSMC fab cleanroom. The yellow lighting tint hasn’t been necessary for decades. Source: TSMC
 
-This has worsened in recent years. Chipmakers iterate on existing technology despite slower scaling and rapidly increasing costs. ASML has a tool on their roadmap, hyper-NA, that they openly admit may not be economically viable! But it’s hard to fault these companies – the tools and fabs print *a lot* of money. A single EUV tool, sold for $225M, can produce more than $650M in complete wafers in a year (note that there are many costs beyond that single EUV tool incurred in producing those wafers). There is little incentive for incumbents to change tack.
+This has worsened in recent years. Chipmakers iterate on existing technology despite slower scaling and rapidly increasing costs. ASML has a tool on their roadmap, hyper-NA, that they openly admit may not be economically viable! But it’s hard to fault these companies – the tools and fabs print _a lot_ of money. A single EUV tool, sold for $225M, can produce more than $650M in complete wafers in a year (note that there are many costs beyond that single EUV tool incurred in producing those wafers). There is little incentive for incumbents to change tack.
 
 But that leaves an opening for ~~masochistic~~ bold, scrappy innovators… enter Substrate.
 
@@ -32,19 +32,19 @@ It appears Substrate has overcome these x-ray challenges at least partially, and
 - Capable of complex, arbitrary patterns
 - Overlay <= 1.6 nm, full-wafer CDU 0.25 nm, line edge roughness (LER) <= 1 nm, LCDU <= 1.5 nm
 - **Leading edge wafers will be produced at 50% less than existing options**
-![](z-images/86c251c982c1cd59f6068ee3d6246293.webp)
+  ![](z-images/86c251c982c1cd59f6068ee3d6246293.webp)
 
 Images of single exposure patterning on Substrate’s XRL tool. 12nm lines with 13nm tip-to-tip distance and random vias, 12nm CD (diameter) at 30nm minimum pitch. Source: Substrate
 
-These are *extraordinary* claims and thus demand extraordinary evidence. Let’s take them one-by-one:
+These are _extraordinary_ claims and thus demand extraordinary evidence. Let’s take them one-by-one:
 
 - **Single-patterning for 2 nm, 1 nm, and beyond**: the line/space pattern is 12 nm lines + 24 nm spaces, which add up to P36. The target for 2 nm - 1 nm nodes is more like the P20-22 range, but it’s not clear this pattern was targeting minimum total pitch. Tip-to-tip distance between line ends is 13 nm, very good for single patterning.
-	Still, this is **clearly in the high-NA class of single patterning resolution** where low-NA is limited to ~P28. And the random vias look very good, 30 nm pitch is aggressive.
+  Still, this is **clearly in the high-NA class of single patterning resolution** where low-NA is limited to ~P28. And the random vias look very good, 30 nm pitch is aggressive.
 - **Complex, arbitrary patterns** look to be true. Micrographs of bi-directional patterns have not been publicly shared, but an example of dense structures was shared with us. The results are promising, but here is a lot more we need to see and understand. The expected patterning challenges at this scale and density are clearly present (LCDU, stochastics, etc). It’s also not clear if this was a resist or etched pattern.
 - **Overlay** 1.6 nm is high for critical layers in the most advanced logic processes. A good heuristic is overlay = 10% of feature size, so closer to 1.0-1.2 nm would be ideal in this case. It’s not clear if this is machine-matched overlay, which is much more difficult that single-machine but important for high volume fabs. Good machine-matched overlay allows you to run successive layers on different litho tools, simplifying production planning in the fab. ASML achieves ~0.9 nm machine-matched overlay on the latest EUV machines.
 - **Full-wafer CDU** of 0.25 nm is exceptional. It’s actually beyond typical measurement capabilities. Assuming both are measuring the typical 3 standard deviations of the mean CD for each field, this is much better than the 0.7 nm on ASML’s 3800E scanner.
 - Good CDU means more consistent performance in the end chip – a transistor on one end will have similar threshold voltage, drive current, etc. as one on the other, for example. It also improves yield as CDs are more likely to be within the design tolerance.
-- **Leading-edge wafers will be 50% cheaper than existing**: this remains to be seen. Presumably this is done mostly via eliminating multipatterning and reducing single-exposure costs. With the most favorable assumptions, a detailed SemiAnalysis model of a 5 nm-class process shows a 25% cost reduction. A 2 nm process would not be substantially different. It may not match the claim, but a 25% savings is *massive* in this context and would mean a substantial competitive advantage.
+- **Leading-edge wafers will be 50% cheaper than existing**: this remains to be seen. Presumably this is done mostly via eliminating multipatterning and reducing single-exposure costs. With the most favorable assumptions, a detailed SemiAnalysis model of a 5 nm-class process shows a 25% cost reduction. A 2 nm process would not be substantially different. It may not match the claim, but a 25% savings is _massive_ in this context and would mean a substantial competitive advantage.
 
 Evidence so far is scarce, so we repeat these claims with some healthy skepticism. But we should also note, external contacts and 3 <sup>rd</sup> party reports are all telling us the same story: the litho tool is legit. Note we have worked with Substrate since as far back as 2022, but the technical analysis here was by team members who did not have access to that NDA information.
 
@@ -52,7 +52,7 @@ Substrate isn’t stopping there. They intend to run the tools in their own fabs
 
 Key to this is lithography using a large synchrotron, particle accelerator, or free electron laser that is on the scale of entire fabs to generate sub-EUV wavelengths. While Substrate has long since decided what they are doing, they want to keep it vague for competitive reasons. Note the cover photo of this report is purely AI generated and not what it looks like.
 
-Naysayers will point out a million reasons why this is improbable, difficult, etc. - and they are mostly correct. **There is a** ***big*** **difference between lab-scale and industrialized, high-volume tools.** Substrate itself realizes this and agrees they are in for a lot of development and scaling pain.
+Naysayers will point out a million reasons why this is improbable, difficult, etc. - and they are mostly correct. **There is a** **_big_** **difference between lab-scale and industrialized, high-volume tools.** Substrate itself realizes this and agrees they are in for a lot of development and scaling pain.
 
 Still, they have at least developed some impressive capabilities on the most complex part of the process (litho) in a short amount of time (2-3 years). Let’s assume the claims about the XRL tool are correct. What are the implications?
 
@@ -110,9 +110,9 @@ Even with a shorter-wavelength tool capable of resolving a target pitch in a sin
 
 We could make a similar list of obstacles in developing a full process technology node, but you probably get the idea at this point. Let’s go back to the implications if things work out:
 
-*If* Substrate can achieve their stated goal of leading edge wafer production at 1/10 <sup>th</sup> the existing cost, this of course means taking market share from TSMC. That alone will be an addressable market of well over $200B in 2030. But reducing chip costs by an order of magnitude would have much larger consequences than eating into TSMC share.
+_If_ Substrate can achieve their stated goal of leading edge wafer production at 1/10 <sup>th</sup> the existing cost, this of course means taking market share from TSMC. That alone will be an addressable market of well over $200B in 2030. But reducing chip costs by an order of magnitude would have much larger consequences than eating into TSMC share.
 
-In the absolute best-case scenario, this is an end of decade story. In broad strokes, it will take another 2 years to mature the process technology such that customers can begin design work. Design and tape-out work is another year, and then ramp to volume is 1 more year. This would be *ludicrous* speed for the existing industry workflow. Substrate’s goal is to upset the paradigm and speed up these cycles, with tape-outs as soon as 2028. We will see.
+In the absolute best-case scenario, this is an end of decade story. In broad strokes, it will take another 2 years to mature the process technology such that customers can begin design work. Design and tape-out work is another year, and then ramp to volume is 1 more year. This would be _ludicrous_ speed for the existing industry workflow. Substrate’s goal is to upset the paradigm and speed up these cycles, with tape-outs as soon as 2028. We will see.
 
 ## Strategic Implications
 

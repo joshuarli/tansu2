@@ -11,7 +11,7 @@ Lam Research is one of the most dominant semiconductor capital equipment firms. 
 In 2015, Lam Research had $5.26B of revenue, and they are expected to earn nearly $17B in revenue this year. This has required massive capacity expansions. While they have expanded at existing locations in the US, Taiwan, and South Korea, Lam Research’s largest expansion is in Malaysia. We were asked why Lam Research is outsourcing so much of their new production to Malaysia especially given the [pro-CCP attitude of the current Malaysian government.](https://supchina.com/2022/07/12/china-and-malaysia-pledge-stronger-ties/) It seems like a potential national security issue, but we will leave that for others more politically inclined to speculate about that. Instead, we want to drill down into the total manufacturing square footage Lam Research has and their public comments about the facility in Malaysia.
 
 > Malaysia facility, our largest and most advanced facility
-> 
+>
 > Lam Research (2022)
 
 ![](z-images/8f6c17d8a82e35a27647f89e6153aebb.webp)
@@ -19,11 +19,11 @@ In 2015, Lam Research had $5.26B of revenue, and they are expected to earn nearl
 The opening of the facility in Batu Kawan Penang, Malaysia late last year almost single-handedly grew Lam Research’s total manufacturing square footage by nearly 50%! As such, Lam Research has been shy to state how large this facility is relative to their other facilities.
 
 > How much of your manufacturing is U.S.-based versus international?
-> 
+>
 > Stacy Rasgon (2020)
 
 > We don't disclose exact percentages, but we have large manufacturing facilities in California and Oregon, but also a large manufacturing facility in Korea, manufacturing in Taiwan, in Austria, and we just started building a very large facility in Malaysia that will come up middle of next year.
-> 
+>
 > Timothy Archer, Lam Research President & CEO (2020)
 
 We went through various company information as well as to various local county assessor’s office information to pin down how large the existing facilities are. Here is a list of manufacturing and warehouse growth over the last handful of years for Lam Research. These facilities are what’s enabled Lam Research to more than triple their revenue since 2016.
@@ -33,7 +33,7 @@ We went through various company information as well as to various local county a
 Malaysia stands out as much larger than other facilities. Furthermore, Lam Research has only said it is for manufacturing where as some of the other larger new facilities include descriptions of operations and logistics. In 2021, Lam Research added ~845,000 square feet of manufacturing space which increased Lam Research’s total manufacturing and warehousing square footage by nearly 50%. As such it stands to reason more than 1/3 of Lam Research’s future manufacturing capacity will be in Malaysia.
 
 > The ramp is very much on track. It eventually -- once it's fully ramped, the factory in Malaysia, will be the largest factory in our network, not today.
-> 
+>
 > Tim Archer, Lam Research President & CEO (2022)
 
 Furthermore, Lam has only just started to ramp their Malaysia facility. It is likely that in 2023 or 2024, if the total wafer fabrication equipment market shrinks in size, Lam Research will continue to fill out their Malaysia facility due to better cost structure versus their American facilities. Does this mean that other locations, especially in the United States, will start to cut jobs in favor of the lower cost manufacturing location?
@@ -47,7 +47,7 @@ So why is Lam Research outsourcing jobs despite their main competitor expanding 
 There’s 3 main reasons, there is a [perceived lack of skilled workers in the US](https://semianalysis.substack.com/p/why-america-will-lose-semiconductors?s=w), lower cost labor and operations, and lower logistics costs. The reasoning has also been openly explained by the CEO.
 
 > One, it's closer to the customer base. So even though we're still going to be flying things, we're going to be flying things a shorter distance. So there's some level of benefit there. And obviously, I think everybody on the webcast knows, Malaysia is a lower-cost location. So we're going to benefit from that in addition to the fact that we're bringing the supply chain along with us to Malaysia.
-> 
+>
 > Tim Archer, Lam Research President & CEO
 
 Suppliers of Lam Research will also likely be told to move to Malaysia as a method of lowering costs.

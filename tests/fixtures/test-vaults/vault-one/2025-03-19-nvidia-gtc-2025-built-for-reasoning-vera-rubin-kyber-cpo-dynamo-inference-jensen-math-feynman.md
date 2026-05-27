@@ -22,7 +22,7 @@ Claude 3.7 shows incredible performance for software engineering. Deepseek v3 sh
 
 Last year’s mantra was “the more you buy, the more you save,” but this year’s slogan is **“the more you save, the more you buy.”** The inference efficiencies delivered in Nvidia’s roadmaps on the hardware and software side unlock reasoning and agents in the cost-effective deployment of models and other transformational enterprise applications, allowing widespread proliferation and deployment—a classic example of Jevons’ paradox at work. Or how Jensen says it: **“the more you buy, the more you make”.**
 
-The market is worried about this. The concern is that DeepSeek-style software optimization and increasing Nvidia-driven hardware improvements are leading to *too much savings*, meaning that the demand for AI hardware decreases and the market will be in a token glut. Price does influence demand, and as the price of intelligence decreases, the frontier of intelligence capabilities continues to push on, and then demand increases. Today’s capabilities are constrained in cost due to inference cost. AI’s actual impact on our lives is still in its infancy. As costs drop, net consumption paradoxically increases.
+The market is worried about this. The concern is that DeepSeek-style software optimization and increasing Nvidia-driven hardware improvements are leading to _too much savings_, meaning that the demand for AI hardware decreases and the market will be in a token glut. Price does influence demand, and as the price of intelligence decreases, the frontier of intelligence capabilities continues to push on, and then demand increases. Today’s capabilities are constrained in cost due to inference cost. AI’s actual impact on our lives is still in its infancy. As costs drop, net consumption paradoxically increases.
 
 The concern on token deflation is akin to discussing the fiber bubble's per-packet internet connectivity cost decreasing while ignoring the eventual impacts that websites and internet-driven applications would have on our lives, society, and economy. The key difference is that bandwidth demands are constrained, while demand for intelligence grows to infinity as capabilities improve drastically and costs fall.
 
@@ -38,7 +38,7 @@ Test-time computing takes hundreds of thousands of tokens/queries, and there are
 
 Every year, Jensen drops new math rules on the industry. Jensen Math is famously confusing and to add to the confusion this year, we now observe a third new Jensen math rule.
 
-The first Jensen math rule is that Nvidia headline FLOPs are quoted with 2:4 sparsity (*which no one uses*) versus dense FLOPs, which is the real world performance metric – meaning the 989.4 TFLOPs of FP16 in for the H100 is quoted as 1979.8 <sup>1</sup> TFLOPs.
+The first Jensen math rule is that Nvidia headline FLOPs are quoted with 2:4 sparsity (_which no one uses_) versus dense FLOPs, which is the real world performance metric – meaning the 989.4 TFLOPs of FP16 in for the H100 is quoted as 1979.8 <sup>1</sup> TFLOPs.
 
 The second Jensen math rule is that bandwidth should be quoted in bidirectional terms. NVLink5 is quoted as 1.8TB/s because it is 900GB/s of transmit plus 900GB/s of receive. These are added together for the spec sheet, but in the networking world, the standard is to quote the unidirectional bandwidth.
 
@@ -95,9 +95,9 @@ Rubin will again use the Oberon rack architecture as is used for the GB200/300 N
 
 This is where the new nomenclature comes in. The new rack will be named **VR200 NVL144** despite having 72 GPU packages, with 144 compute dies (72 packages x 2 compute die per package). Nvidia is such a revolutionary company that they’re even changing how we count GPUs!
 
-*The AMD marketing team should take note. AMD is leaving performance on the table by not claiming that the MI300X family can scale up to a 64 GPU world size (8 packages per system x 8 XCD chiplets per package), and this is a critical missed opportunity.*
+_The AMD marketing team should take note. AMD is leaving performance on the table by not claiming that the MI300X family can scale up to a 64 GPU world size (8 packages per system x 8 XCD chiplets per package), and this is a critical missed opportunity._
 
-*/sarcasm... Lisa, please don’t*
+_/sarcasm... Lisa, please don’t_
 
 Nvidia’s HBM capacity will remain the same at 288GB generation on generation but is upgraded to HBM4: 8 stacks of 12-Hi with the same 24 GB layer density. The move to HBM4 affords a bandwidth increase, with 20.5TB/s of aggregate bandwidth, mostly from the bus width doubling to 2048 bits wide, with a pin speed of 6.4Gbps, the current cap in the JEDEC standard.
 
@@ -145,17 +145,17 @@ Source: SemiAnalysis
 
 - The compute trays are rotated 90 degrees into the blade form factor to achieve higher rack density.
 - Each rack comprises four canisters, consisting of 18 compute blades each.
-	- For NVL576, there are two Rubin Ultra GPU and two Vera CPU in each compute blade.
-		- There will be a total of 36 R300 GPUs (144 dies) and 36 Vera CPUs per canister
-		- This brings the total NVLink world size within the rack to 144 GPUs (576 dies)
+  - For NVL576, there are two Rubin Ultra GPU and two Vera CPU in each compute blade.
+    - There will be a total of 36 R300 GPUs (144 dies) and 36 Vera CPUs per canister
+    - This brings the total NVLink world size within the rack to 144 GPUs (576 dies)
 - The PCB board backplane replaces the copper cable backplane as the scale-up link between the GPUs and the NVSwitches within the canister.
-	- This shift is primarily due to the increased difficulties to fit the cables within the smaller footprint.
-		- The NVSwitch blades at the back of the rack are connected to the compute blades via the backside of the PCB backplane.
-		- It's still unclear how the NVSwitch blades in each canister will connect to link all four canisters into a single NVLink domain.
-		- Some possible solutions being considered include DAC, ACC, and AEC.
+  - This shift is primarily due to the increased difficulties to fit the cables within the smaller footprint.
+    - The NVSwitch blades at the back of the rack are connected to the compute blades via the backside of the PCB backplane.
+    - It's still unclear how the NVSwitch blades in each canister will connect to link all four canisters into a single NVLink domain.
+    - Some possible solutions being considered include DAC, ACC, and AEC.
 - Some might wonder where the power supply, battery, and switches would be placed, since the compute blades occupy the entire rack.
-	- In future datacenter hall layout, there will be a [standalone power rack](https://semianalysis.com/2025/02/13/datacenter-anatomy-part-2-cooling-systems/), standalone cooling rack, and a stand alone switch rack.
-		- This is also one of the main reasons why Nvidia is announcing the roadmap for the Kyber rack architecture so early—to prepare the supply chain for upcoming changes in datacenter infrastructure at both the compute hall and rack levels.
+  - In future datacenter hall layout, there will be a [standalone power rack](https://semianalysis.com/2025/02/13/datacenter-anatomy-part-2-cooling-systems/), standalone cooling rack, and a stand alone switch rack.
+    - This is also one of the main reasons why Nvidia is announcing the roadmap for the Kyber rack architecture so early—to prepare the supply chain for upcoming changes in datacenter infrastructure at both the compute hall and rack levels.
 
 ![](z-images/cb149c85d05280c424f9ad27cf1fbdc0.webp)
 

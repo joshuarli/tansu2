@@ -19,7 +19,7 @@ In total, TSMC has collected $6.7B of prepayments over the last 6 months and the
 [As mentioned in the Intel TSMC wafer supply agreement article, different customers have different preferential treatment](https://semianalysis.substack.com/p/tsmc-wants-to-make-intel-dependent), but this treatment is fair based on exclusivity terms. Nvidia alone contributed to more than $3B of these prepayments to TSMC, with some of their prepayments also going to packaging and test firms.
 
 > We entered into several long-term supply agreements, under which we made advance payments of $1.64 billion this quarter and will make future payments of $1.79 billion. Outstanding inventory purchase and long-term supply obligations were $6.90 billion, inclusive of the $1.79 billion, up from $2.57 billion a year earlier and up from $4.79 billion in the prior quarter.
-> 
+>
 > Colette Kress – Nvidia CFO
 
 With this huge capacity expansion also comes some margin expansion. TSMC projects over 53% long term gross margins. This is material increase over the prior guidance which were over 50%. [Morgan Stanley continues to look idiotic](https://semianalysis.substack.com/p/morgan-stanley-just-reduced-tsmcs) given they claimed TSMC would fall under 50% margins in late 2021 / early 2022 and that TSMC had no price pressure. In regards to margin, TSMC also stated N5 continues to be below the current corporate average, but as the technology matures it will reach the higher margins of their older technologies.
@@ -33,7 +33,7 @@ TSMC derives more than half their revenue from 7nm and 5nm technologies, areas t
 All this growth has caused TSMC’s total wafer shipments to skyrocket form less than 10.5 million 12” equivalent wafers shipped in 2016 to more than 14.1 million 12” equivalent wafers shipped in 2021. The more impressive trend is the pricing power of these wafers that TSMC is adding. The average selling price has skyrocketed due to the increase in mix on the leading edge and with specialty technologies. The chart above is raw revenue/wafers and doesn't account for packaging and mask making revenues. More recently, trailing edge wafers have also received price increases. This trend looks to hold steady and not be transitory for the medium term despite TSMC trying to talk down their price increases on the legacy nodes.
 
 > We are continuing to work closely with our customers to support their growth, and our pricing strategy will remain strategic not opportunistic to reflect our value creation.
-> 
+>
 > TSMC Q4 2021 Earnings Call
 
 ![](z-images/73a77a6007abaefa0055a3354f824eaa.webp)
@@ -41,15 +41,15 @@ All this growth has caused TSMC’s total wafer shipments to skyrocket form less
 While automotive is the largest growth sector on a percentage basis, HPC is the largest growth sector on an absolute dollar basis. The HPC category that TSMC names covers all sorts of processors, all the way from Apple’s M1 to AMD CPUs and Nvidia GPUs to networking switch ASICs and NICs. It is an incredibly broad category that will continue to be the backbone of growth as Nvidia, AMD, and in-house hyperscaler efforts blossom into full-fledged market dominance. TSMC had some interesting comments on Arm.
 
 > ARM is a new phenomenon. I think the CPU architecture no longer been dominant by 1 architecture. Multiple architecture provided their better integration with software, provide a much wider application of CPUs. And that no matter what the CPU, which architecture they are, currently, we are engaging to all CPU architecture customers.
-> 
+>
 > TSMC Q4 2021 Earnings Call
 
 Moving onto the N3 technology which has had some bumps its development. It is the first major TSMC node with a greater than 2 year gap since 28nm. TSMC continues to reiterate there will be shipment in the beginning of 2023, so this is a 2.5 year gap versus N5. TSMC also continues to reiterate they have more tape outs on N3 than they did on N5 in the same timeframe, and the answer why is obvious given what Apple, [Intel,](https://semianalysis.substack.com/p/tsmc-wants-to-make-intel-dependent) and other customers are doing in the midst of the semiconductor design renaissance.
 
 > Let me emphasize that we always operate in a good phase and support all our customers opening and fairly. And the IDM customer has been the same. That's also that TSMC's good customer. We also understand that the IDM customer has their own plans for future insourcing, and we already have taken this into our capacity planning consideration.
-> 
+>
 > Our capacity planning is based on the long-term market demand profile, underpinned by the industry megatrend of 5G and HPC and the semiconductor content enrichment in very end devices. And we do not depend on any 1 single customer or product.
-> 
+>
 > TSMC Q4 2021 Earnings Call
 
 TSMC made it quite clear that these huge expansions are solely due to Intel’s movement. [Despite the details of their supply agreement, Intel isn’t a risky customer to take on and TSMC is playing the long game.](https://semianalysis.substack.com/p/tsmc-wants-to-make-intel-dependent)

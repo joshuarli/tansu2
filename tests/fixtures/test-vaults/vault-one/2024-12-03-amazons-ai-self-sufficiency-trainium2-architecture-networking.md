@@ -103,7 +103,7 @@ Lastly, inside the NeuronCore, there are multiple Turing-complete **GpSimd Engin
 
 Furthermore, just like in Trainium1, with Trainium2, there are dedicated collective communication cores solely devoted to communicating with other chips. This is an excellent innovation as it allows for compute-communication overlapping **without** any contention between compute resources and communication resources.
 
-In contrast, on Nvidia as well as AMD GPUs, communication operations run on the same cores (SMs) as the compute operations. Thus, the end user needs to carefully balance the ratio of SMs running communication ops with the SMs running compute ops. On GPUs, this is done using the “ [NCCL\_MIN\_NCHANNELS](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html#nccl-min-nchannels) ” env flag and is in practice a fairly complex tuning.
+In contrast, on Nvidia as well as AMD GPUs, communication operations run on the same cores (SMs) as the compute operations. Thus, the end user needs to carefully balance the ratio of SMs running communication ops with the SMs running compute ops. On GPUs, this is done using the “ [NCCL_MIN_NCHANNELS](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html#nccl-min-nchannels) ” env flag and is in practice a fairly complex tuning.
 
 Due to this complexity, only the most advanced users will be doing comms/compute SMs ratio tuning. Furthermore, executing communication operations often decreases the L2 cache hint rate of the SMs running the compute operations. Thus, [Nvidia PTX provides cache hints](https://docs.nvidia.com/cuda/parallel-thread-execution/index.html#cache-operators) such that the collective communication kernel engineer can tell the GPU to skip storing their elements inside the L2 cache.
 
@@ -239,8 +239,8 @@ We have mentioned and discussed various pieces of the networking puzzle above, b
 There are four different types of networking on a Trainium2 based instance:
 
 - Scale-up: NeuronLinkv3
-	- Intra-Server NeuronLinkv3
-	- Inter-Server NeuronLinkv3
+  - Intra-Server NeuronLinkv3
+  - Inter-Server NeuronLinkv3
 - Scale-out: Elastic Fabric Adaptor EFAv3
 - Front-end and Storage: Elastic Network Adaptor (ENA), Elastic Block Store (EBS)
 - Out of Band Management Networking
@@ -459,7 +459,7 @@ JAX has traditionally only worked for Google’s TPU chip when using Google’s 
 
 The Neuron Kernel Language (NKI) - pronounced “Nicky” – is Trainium domain specific language for writing kernels similar to NVIDIA’s CUDA and OpenAI’s Triton language. Unlike Nvidia’s CUDA language, NKI is based on tiles programming like OpenAI’s Triton programming language. NKI will allow expert programmers to be able to achieve near speed of light (SOL) performance on the Trainium2 chip.
 
-In addition to AWS’s own public documentation and kernel examples, in order to spread the knowledge and education of the NKI kernel language, Amazon has collaborated with [Stanford to give students assignments](https://github.com/stanford-cs149/asst4-trainium) that focus on writing real world kernels such as fused convolution + max\_pool. We like the direction they are heading in as in order to be competitive with the CUDA ecosystem, AWS must take an ecosystem and open-source approach towards educating around the NKI kernel language.
+In addition to AWS’s own public documentation and kernel examples, in order to spread the knowledge and education of the NKI kernel language, Amazon has collaborated with [Stanford to give students assignments](https://github.com/stanford-cs149/asst4-trainium) that focus on writing real world kernels such as fused convolution + max_pool. We like the direction they are heading in as in order to be competitive with the CUDA ecosystem, AWS must take an ecosystem and open-source approach towards educating around the NKI kernel language.
 
 ![](z-images/79673a743eb514f2769a0f10bb80fbb9.webp)
 

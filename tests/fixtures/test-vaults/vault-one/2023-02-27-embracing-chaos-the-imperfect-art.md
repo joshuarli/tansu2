@@ -45,7 +45,7 @@ These stochastic defects are a multi-billion dollar problem for the wafer fabric
 A gigafab will run 1000’s steps across ~250,000 in-flight wafers, with ~100,000 finishing over a month and a new 100,000 starting over a month. The logistical challenges of routing, optimization, and making decisions cannot be understated.
 
 > Stochastics are not just growing linearly, but they're growing exponentially as a percentage of the critical dimensions that we are printing.
-> 
+>
 > Chris Mack
 
 ![](z-images/9273f71c8209b61dbf95a86fac50222a.webp)

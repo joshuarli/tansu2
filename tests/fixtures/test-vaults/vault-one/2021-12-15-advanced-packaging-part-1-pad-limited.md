@@ -35,9 +35,9 @@ This brings about the concept of a pad limited design. When moving old designs t
 As an aside, this is relevant not only on the leading edge where advanced packaging will be used, but also to discussions surrounding the automotive chip and general trailing edge semiconductor shortage. Intel’s Pat Gelsinger has argued that these companies with shortages should transition to Intel 16nm foundry services.
 
 > Today, we're announcing the European foundry services at Intel 16 and other nodes out of our Ireland facility, and we believe this has an opportunity to help expedite the end to the supply shortage, and we're engaging with auto and other industries to help build on those capabilities. But I'd also say some might argue, well, let's go build most of those auto chips are on old nodes. Don't we need some old fabs for old nodes? Do we want to invest in our past or do we want to invest in the future?
-> 
+>
 > A new fab takes 4 or 5 years to build and have production worthy. Not an option to solve today's crisis, invest in the future, don't invest backwards. Instead, we should be migrating all designs on to new modern nodes, setting them up for increased supply and flexibility into the future.
-> 
+>
 > Pat Gelsinger - Intel CEO
 
 The issue with the Intel spiel is that these designs will be pad limited when moving from ancient nodes to relatively modern ones. The unit cost economics don’t work here due to the higher cost per mm2 because chip area does not scale well due to being pad limited. Beyond these costs, there are also high one time costs due to having to redesign ancient chips on the newer node and entire recertification process. The solution of moving old chips to newer nodes isn’t feasible.

@@ -24,6 +24,6 @@ The CFO is going to be one of the ones who has discussed this deal directly and 
 
 Maybe there is another, completely justifiable reason a 10+ year executive needed $32M all at once, but SemiAnalysis did not find one. While he is retiring in February of 2022, the timing and size is still suspect. We aren’t saying this is insider trading, we will leave that up to regulators, but we can’t rule out the possibility either. NXP did not respond when we requested a comment.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/nxp-semiconductor-nxpi-cfo-sells-70-of-his-shares-as-samsung-acquisition-rumored-to-fall-apart/) on August 31st 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/nxp-semiconductor-nxpi-cfo-sells-70-of-his-shares-as-samsung-acquisition-rumored-to-fall-apart/) on August 31st 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

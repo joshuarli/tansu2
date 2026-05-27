@@ -36,7 +36,7 @@ In addition to utilizing SMIC, Huawei is also aggressively snapping up their equ
 
 The scale and speed are staggering: we estimate the Huawei fab network will spend $7.3B on foreign wafer fabrication equipment in 2024, making it the 4th largest purchaser in the world. If SMIC and CXMT are included, both of which work closely with Huawei, they would be the 2nd largest purchaser in the world only behind TSMC, and far ahead of any US firm. More than half of this equipment currently comes from US companies.
 
-This begs the question of what export controls should look like going forward. It’s clear the entity list approach is easily circumvented, but we believe it is fixable. There’s the option of invoking the toughest version of the Foreign Direct Product Rule, meaning the U.S. could exert control over equipment containing *any* American content, rather than the >25% set by the current *de minimis* guideline. Lobbying efforts from equipment companies suggest that restrictions should be relaxed or totally repealed because of harm to their business, but this is far overblown. Relaxing the controls would be a serious unforced error that would harm American suppliers and U.S. national security in the long-term.
+This begs the question of what export controls should look like going forward. It’s clear the entity list approach is easily circumvented, but we believe it is fixable. There’s the option of invoking the toughest version of the Foreign Direct Product Rule, meaning the U.S. could exert control over equipment containing _any_ American content, rather than the >25% set by the current _de minimis_ guideline. Lobbying efforts from equipment companies suggest that restrictions should be relaxed or totally repealed because of harm to their business, but this is far overblown. Relaxing the controls would be a serious unforced error that would harm American suppliers and U.S. national security in the long-term.
 
 In this report we’ll discuss all these issues, laid out under 4 key points:
 
@@ -56,11 +56,11 @@ Current Western export controls have slowed progress in China. The current gap i
 But this does not mean the regulations are perfect or will work ad infinitum without updates. We’ve covered the technology gaps in [multiple](https://semianalysis.com/china-ai-and-semiconductors-rise?utm_source=publication-search) [reports](https://semianalysis.com/the-gaps-in-the-new-china-lithography?utm_source=publication-search), but there are also loopholes in the practical implementation of current restrictions:
 
 1. **Offshore Manufacturing**  
-	Western companies now offshore supply chains to export U.S. technology into China. An [isotropic etch chamber](https://newsroom.lamresearch.com/etch-essentials-semiconductor-manufacturing?blog=true), essential to producing the latest 2nm Gate-All-Around transistors, cannot be exported to China from Lam’s U.S. factories. This same etch chamber, manufactured in Lam’s [Malaysia facility](https://www.semianalysis.com/p/lam-research-is-outsourcing-more), can *legally* be sold to an advanced logic fab in China if no U.S. persons are involved (in manufacturing, sales, installation, and servicing). This includes even customers on the U.S. entity list. Other companies follow the same playbook, including Applied Materials & KLA with their Singapore facilities. Equipment component companies such as UCTT are also doing the same. And why not? Any rational company would do the same to further their business under the current restrictions.
+   Western companies now offshore supply chains to export U.S. technology into China. An [isotropic etch chamber](https://newsroom.lamresearch.com/etch-essentials-semiconductor-manufacturing?blog=true), essential to producing the latest 2nm Gate-All-Around transistors, cannot be exported to China from Lam’s U.S. factories. This same etch chamber, manufactured in Lam’s [Malaysia facility](https://www.semianalysis.com/p/lam-research-is-outsourcing-more), can _legally_ be sold to an advanced logic fab in China if no U.S. persons are involved (in manufacturing, sales, installation, and servicing). This includes even customers on the U.S. entity list. Other companies follow the same playbook, including Applied Materials & KLA with their Singapore facilities. Equipment component companies such as UCTT are also doing the same. And why not? Any rational company would do the same to further their business under the current restrictions.
 2. **End-Use Workarounds**  
-	Narrowly tailored end-use restrictions, intended to limit collateral damage to non-military or non-strategic applications, open a loophole that is easily exploited. A logic fab claiming to produce mature logic can import leading-edge tools (except for those on the current control list, which limits a small number of exquisite tools such as EUV scanners) despite being connected by a wafer bridge to one running advanced nodes next door. With an automated overhead track connecting the two, advanced tools in the mature fab are easily available to the restricted logic line. Even easier, tools can be delivered to a warehouse and later moved into any fab, restricted or not. Flimsy public compliance statements provide legal cover while installs continue unabated. Tools imported for mature processes can easily be used for restricted purposes i.e. advanced logic or memory.
+   Narrowly tailored end-use restrictions, intended to limit collateral damage to non-military or non-strategic applications, open a loophole that is easily exploited. A logic fab claiming to produce mature logic can import leading-edge tools (except for those on the current control list, which limits a small number of exquisite tools such as EUV scanners) despite being connected by a wafer bridge to one running advanced nodes next door. With an automated overhead track connecting the two, advanced tools in the mature fab are easily available to the restricted logic line. Even easier, tools can be delivered to a warehouse and later moved into any fab, restricted or not. Flimsy public compliance statements provide legal cover while installs continue unabated. Tools imported for mature processes can easily be used for restricted purposes i.e. advanced logic or memory.
 3. **Rename & Reclassify**  
-	CXMT’s advanced DRAM with [18nm half pitch](https://www.semianalysis.com/i/140324030/future-of-memory-scaling-cxmt-d-dram-blatant-sanctions-violation) was subject to the original 2022 export controls. A new method of calculating half-pitch in the 2023 rules put them back above the minimum line for controls. Without changing the underlying process, they went from restricted to not. They also changed the node name from 17nm or 18.5nm to 19nm, to avoid any appearance of impropriety. The subtleties of the rule change that so specifically moved them from under to a literal nanometer or two over the restriction are, at least, very fortunate for CXMT. Lobbying efforts by giants such as Applied Materials who has made over $3 billion from CXMT may be noteworthy.
+   CXMT’s advanced DRAM with [18nm half pitch](https://www.semianalysis.com/i/140324030/future-of-memory-scaling-cxmt-d-dram-blatant-sanctions-violation) was subject to the original 2022 export controls. A new method of calculating half-pitch in the 2023 rules put them back above the minimum line for controls. Without changing the underlying process, they went from restricted to not. They also changed the node name from 17nm or 18.5nm to 19nm, to avoid any appearance of impropriety. The subtleties of the rule change that so specifically moved them from under to a literal nanometer or two over the restriction are, at least, very fortunate for CXMT. Lobbying efforts by giants such as Applied Materials who has made over $3 billion from CXMT may be noteworthy.
 
 ![](z-images/74311c027c127de48b865a5b97b22c7a.webp)
 
@@ -74,9 +74,9 @@ This was reported by [Nikkei Asia](https://asia.nikkei.com/Spotlight/Huawei-crac
 
 Source: SemiAnalysis
 
-Looking at the incomplete corporate family tree, there is a clear gap in the U.S. Entity List. Many fabs and entities upstream in the supply chain *are not* entity listed, despite being controlled by Huawei which *is*. The non-listed companies are free to import advanced equipment while claiming not to share it with their restricted peers. This gap is exploited by Huawei.
+Looking at the incomplete corporate family tree, there is a clear gap in the U.S. Entity List. Many fabs and entities upstream in the supply chain _are not_ entity listed, despite being controlled by Huawei which _is_. The non-listed companies are free to import advanced equipment while claiming not to share it with their restricted peers. This gap is exploited by Huawei.
 
-They are following the SMIC playbook: Pengjin High-Tech, a GaN startup that is not entity-listed, is building its cleanroom *across the street* from entity-listed advanced logic producer PXW. Pengjin is free to import nearly all advanced Western production equipment, including equipment critical to producing advanced logic at 7nm or below (again the exceptions are a small number of tools on the control list, including EUV). Yet again regulators are expected to believe that nothing will be shared with its neighbor.
+They are following the SMIC playbook: Pengjin High-Tech, a GaN startup that is not entity-listed, is building its cleanroom _across the street_ from entity-listed advanced logic producer PXW. Pengjin is free to import nearly all advanced Western production equipment, including equipment critical to producing advanced logic at 7nm or below (again the exceptions are a small number of tools on the control list, including EUV). Yet again regulators are expected to believe that nothing will be shared with its neighbor.
 
 ![](z-images/4ab86f9449dc403933f6aba78a915fe8.webp)
 
@@ -148,30 +148,30 @@ Company executives on earnings calls also tell a very different story than that 
 On further tightening export controls past the original October 2022 ruling:
 
 > Our view is that it's not incremental if -- **if it weren't allowed to be shipped \[to China\], that it would be shipped somewhere else** in the world for production.
-> 
+>
 > \-Brice Hill, CFO Applied Materials, Q3 FY23 Earnings Call
 
 > …In 2023, Applied **grew faster than the wafer fab equipment market** for the fifth year in a row.  
 > We accomplished this **despite headwinds created by trade rules** that we estimate restricted us from more than 10% of the China market during that period.
-> 
+>
 > \-Gary Dickerson, CEO Applied Materials, Q2 FY24 Earnings Call
 
 Regarding the 2023 restrictions update which included market segments important for AMAT - epitaxial growth, metal deposition, Cobalt or Copper hardmask, and atomic layer deposition tools:
 
 > We **do not expect an incremental material impact** from the recently updated trade rules. Our business in China grew as expected in Q4 (2023)
-> 
+>
 > \-Brice Hill, CFO Applied Materials, Q4 FY23 Earnings Call
 
 Lam recovered within a year when their largest customer was zeroed out via regulation:
 
 > …Perhaps **our largest customer got restricted** when the regulations came out, our NAND customer in China. That customer was pretty strong in '22, went away in '23… **the strength we're seeing '23 to '24 is a different mix entirely**, really not any NAND in China to speak of, at least not domestic China.
-> 
+>
 > \-Douglas Bettinger, CFO Lam Research, Q4 FY24 Earnings Call
 
 More than six months after the 1 <sup>st</sup> round of export controls:
 
 > **Our market share \[in China\] continues to be strong**. I mean, we started focusing on legacy market opportunities several years ago. In fact, we started some older product lines, and they continue to be the most competitive really at all price points in terms of -- so we feel while there is more competition trailing edge, we're very well positioned to be able to win.
-> 
+>
 > \-Rick Wallace, CEO KLA Corp., Q4 FY23 Earnings Call
 
 And for 2025, the semicap majors are all guiding to their best year ever:
@@ -206,7 +206,7 @@ Selling tools to Chinese fabs now will only expedite this process. In many cases
 
 Given that it’s possible to impose controls without serious harm to WFE companies, and that current restrictions have many flaws, let’s turn to how they might be improved.
 
-Starting on a positive note: the export controls are clearly having a strategic effect on Chinese capabilities in advanced memory and logic. We should also give credit where it’s due. The U.S. government correctly recognized the strategic significance of AI before it was obvious and acted on it. Recall that the first round of WFE export controls were released more than a month *before* ChatGPT and the ensuing transformation of AI.
+Starting on a positive note: the export controls are clearly having a strategic effect on Chinese capabilities in advanced memory and logic. We should also give credit where it’s due. The U.S. government correctly recognized the strategic significance of AI before it was obvious and acted on it. Recall that the first round of WFE export controls were released more than a month _before_ ChatGPT and the ensuing transformation of AI.
 
 The current export controls comprise country-wide restrictions on a few exquisite tools and more severe controls on a select sub-set of fabs via the entity list and end-use controls. U.S.-made equipment and foreign tools with > 25% U.S.-origin content are subject to the entity list and end-use controls. U.S. persons are also prohibited from servicing restricted equipment. Despite the WFE vendors lobbying, these are the most important controls in effect today, they are not killing our domestic manufacturers, and they should not be walked back.
 
@@ -216,7 +216,7 @@ And the efficacy of controls is eroding in the face of a massive, organized evas
 
 Lessons from the past two years under export controls must be learned: **the fab whack-a-mole approach for entity listing is not effective**. It’s trivial to set up a friendly, non-restricted entity next door. Instead fabs in China should be considered fungible. It should be assumed that **end-use cannot be controlled once equipment is in country**.
 
-One option is lowering the content threshold to 0%. This tightens restrictions such that equipment with *any* U.S. content will require a license from the U.S. for sale or service to restricted entities. By applying this standard the U.S. could unilaterally prohibit sales of Dutch and Japanese manufacturing equipment relevant for advanced logic and DRAM. At its own discretion the U.S. could stop Chinese capacity expansion immediately, and existing fabs would be severely handicapped if not inoperable within six months.
+One option is lowering the content threshold to 0%. This tightens restrictions such that equipment with _any_ U.S. content will require a license from the U.S. for sale or service to restricted entities. By applying this standard the U.S. could unilaterally prohibit sales of Dutch and Japanese manufacturing equipment relevant for advanced logic and DRAM. At its own discretion the U.S. could stop Chinese capacity expansion immediately, and existing fabs would be severely handicapped if not inoperable within six months.
 
 This would placate U.S. equipment firms as it eliminates any imbalance between U.S. and allied restrictions. It clearly accomplishes the strategic goal of limiting Chinese AI capability. And it leaves little room for circumvention in the short-term.
 
@@ -225,7 +225,7 @@ But the 0% threshold has serious downsides:
 - High diplomatic cost. Allies will take offense to the U.S. unilaterally restricting their firms, especially the Netherlands which sees ASML as one of its crown jewel companies.
 - Chinese response will be severe as their short- and medium-term chip production is destroyed.
 - Strengthens the perverse incentive to remove all U.S. contents, persons, and production from the supply chain. Foreign manufacturers will try to design all U.S. content out of their tools. Note, even in the medium-term this is effectively impossible.
-	Take for example the Windows operating system – not only would removal require a major overhaul of the software stack but it’s not clear sufficient alternatives even exist.
+  Take for example the Windows operating system – not only would removal require a major overhaul of the software stack but it’s not clear sufficient alternatives even exist.
 - Removes tool data visibility. All advanced wafer fab equipment reports some level of detailed information back to support organizations at the manufacturer and local field service. China’s national security laws prohibit U.S. companies from sharing this data with foreign parties, so it’s unclear how much value would be lost here.
 
 The 0% threshold is effective but has high cost. If AI is going to transfrom society and the world over the next decade, then it must be applied. The national security risk of not applying it, is too grave.
@@ -240,7 +240,7 @@ We’ve focused on advanced process technologies here – logic and DRAM. Reason
 
 This is concerning as mature processes are still vital to national security-related applications. Attention and likely intervention are needed to maintain on-shore development and production capacity for legacy nodes going forward. We’ll leave further discussion to a separate report.
 
-Note that we are talking about the *goal* of sanctions and not the *implementation* when leaving mature applications out. Given that fabs assisting in advanced processes may also run mature nodes, sanctions with the goal of limiting advanced applications must be implemented in a way that restricts certain “mature” fabs.
+Note that we are talking about the _goal_ of sanctions and not the _implementation_ when leaving mature applications out. Given that fabs assisting in advanced processes may also run mature nodes, sanctions with the goal of limiting advanced applications must be implemented in a way that restricts certain “mature” fabs.
 
 In summary:
 

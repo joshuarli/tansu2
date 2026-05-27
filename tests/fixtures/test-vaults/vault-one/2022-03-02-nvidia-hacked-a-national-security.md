@@ -38,4 +38,4 @@ Edit: Nvidia's reached out and referred us to [their official statement.](https:
 
 > We have no evidence of ransomware being deployed on the NVIDIA environment or that this is related to the Russia-Ukraine conflict.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/nvidia-hacked-a-national-security-disaster/) on March 3rd 2022.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/nvidia-hacked-a-national-security-disaster/) on March 3rd 2022._

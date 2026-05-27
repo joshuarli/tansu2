@@ -6,7 +6,7 @@ author: "Dylan Patel"
 description: "Cost model for low- & high-NA EUV, Feature Fidelity, Technical Challenges"
 ---
 
-*This post was primarily authored by Jeff Koch, who joined SemiAnalysis last month from ASML, and will be leading our semiconductor capital equipment & manufacturing analysis. “ [Lithos Graphien](https://twitter.com/lithos_graphein),” an anonymous contributor with decades of experience in the chip & litho industry also helped significantly, [follow](https://twitter.com/lithos_graphein) him!*
+_This post was primarily authored by Jeff Koch, who joined SemiAnalysis last month from ASML, and will be leading our semiconductor capital equipment & manufacturing analysis. “ [Lithos Graphien](https://twitter.com/lithos_graphein),” an anonymous contributor with decades of experience in the chip & litho industry also helped significantly, [follow](https://twitter.com/lithos_graphein) him!_
 
 In recent years, the “next big thing” in photolithography has been High Numerical Aperture Extreme Ultraviolet, IE high-NA EUV, the next evolutionary step in lithography tool technology development at ASML. High-NA is marketed as reducing process complexity and enabling scaling beyond 2nm. The implication from ASML is that reduced complexity results in lower costs.
 

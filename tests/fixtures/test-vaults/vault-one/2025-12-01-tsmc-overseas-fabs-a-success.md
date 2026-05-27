@@ -8,7 +8,7 @@ description: "Why Morris Chang Said U.S. Fabs Will Fail, Wafer Cost and Economic
 
 ### Why Morris Chang Said U.S. Fabs Will Fail, Wafer Cost and Economics of Taiwan vs. U.S. Fabs, TSMC Supply Chain Details
 
-Earlier this year, U.S. President Donald Trump called TSMC “one of the most important businesses in the world.” Although he was incorrect, TSMC is *the* most important business in the world, his government and others do realize the importance of bringing TSMC into their countries.
+Earlier this year, U.S. President Donald Trump called TSMC “one of the most important businesses in the world.” Although he was incorrect, TSMC is _the_ most important business in the world, his government and others do realize the importance of bringing TSMC into their countries.
 
 ![](z-images/762bfaf4b0b79250826577cbb7ec2b4a.webp)
 
@@ -45,7 +45,7 @@ TSMC has an extensive university pipeline for both research and talent. Source: 
 TSMC has also demonstrated world-class corporate governance throughout its 38-year history. It was clear even from the initial vision for the company:
 
 > When I founded a semiconductor company, there was only one path: to make it a world-class one.
-> 
+>
 > \-Dr. Morris Chang, TSMC founder
 
 Unlike most Taiwanese companies - where boards are often dominated by major shareholders - Morris emphasized professional governance and independence from the start. When founding TSMC, he designed a board structure grounded in two key principles:
@@ -72,7 +72,7 @@ From 1990-1999, TSMC achieved a CAGR of nearly 45%, with 1995 revenue at $1.1B a
 Reality soon proved otherwise:
 
 > Initially it was chaos, **it was just a series of ugly surprises** because when we first went in, we really expected the costs to be comparable to Taiwan. And that was extremely naive.
-> 
+>
 > \-Morris Chang on early years of the WaferTech venture
 
 After groundbreaking, nearly every cost exceeded estimates, and coordination between the WaferTech management team and TSMC headquarters in Taiwan became strained. TSMC’s Senior Vice President of Operations, Steve, Tso, was tapped to stabilize the project. It took four years to normalize operations, and profit margin on identical products remained 20–25% lower than at TSMC’s Taiwan fabs.
@@ -143,7 +143,7 @@ The company line about overseas fabs is that they are always driven by customer 
 
 It may not be TSMC’s preferred method of operating, but it makes sense from a government perspective. As we’ve said before, bringing advanced logic capacity on-shore is an [economic and national security imperative](https://newsletter.semianalysis.com/p/intel-on-the-brink-of-death?r=329z6u&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false):
 
-> According to the director of the National Economic Council, the 2021 chip shortage cost 1% of U.S. GDP that year – about $240B. That was a months-long disruption, mostly in *mature chips*. Restoring advanced logic capabilities from zero would take decades. If the 2021 shortage was a 10-foot swell, zeroing out advanced logic supply would be a 100-foot tsunami.
+> According to the director of the National Economic Council, the 2021 chip shortage cost 1% of U.S. GDP that year – about $240B. That was a months-long disruption, mostly in _mature chips_. Restoring advanced logic capabilities from zero would take decades. If the 2021 shortage was a 10-foot swell, zeroing out advanced logic supply would be a 100-foot tsunami.
 
 8 of the 10 largest companies in the world depend in large part on TSMC for their business (the 9 <sup>th</sup> is TSMC itself). Together, more than 1/3 <sup>rd</sup> of their combined $2T in revenue comes from hardware that requires TSMC products. That alone is **3% of U.S. GDP dependent on 1 square mile in southern Taiwan.** Bear in mind this is only a portion of the companies beholden to TSMC Taiwan production. Furthermore the entirety of the digital economy, automotive economy, and industrial production economy relies on chips from TSMC. The world economy would grind to a halt without TSMC.
 

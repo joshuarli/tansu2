@@ -15,7 +15,7 @@ Today let’s answer these questions, with the first half of the report free, an
 Many are opining with ridiculous assumptions about datacenter buildout pace. Even Elon Musk has chimed in to opine, but his assessment is not exactly accurate.
 
 > The artificial intelligence compute coming online appears to be increasing by a factor of 10 every six months… Then, it was very easy to predict that the next shortage will be voltage step-down transformers. You've got to feed the power to these things. If you've got 100-300 kilovolts coming out of a utility and it's got to step down all the way to six volts, that's a lot of stepping down. My not-that-funny joke is that you need transformers to run transformers... Then, the next shortage will be electricity. They won't be able to find enough electricity to run all the chips. I think next year, you'll see they just can't find enough electricity to run all the chips.
-> 
+>
 > Bosch Connected World Conference
 
 To be clear he is mostly right on these limitations of physical infrastructure, but compute is not up 10x every six months – we track the [CoWoS, HBM, and server supply chains of all major hyperscale and merchant silicon firms](https://www.semianalysis.com/p/accelerator-model) and see total AI compute capacity measured in peak theoretical FP8 FLOPS has been growing at a still rapid 50-60% quarter on quarter pace since 1Q23. I.E. nowhere close to 10x in six months. CoWoS and HBM is simply not growing fast enough.

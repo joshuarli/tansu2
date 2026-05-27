@@ -122,8 +122,8 @@ Tenstorrent has achieved something truly magical if their claims pan out. Their 
 
 Nvidia, the leader in AI hardware and software has not come close to solving this problem. They provide libraries, SKDs, and help with optimization, but their compiler can't do this automatically. We are skeptical the Tenstorrent compiler perfectly can place and route layers within the AI network to the mesh of cores while avoiding network congestion or bottlenecks. These types of bottlenecks are common within mesh networks. If they have truly solved the scale out AI problem with no software overhead, then all AI training hardware is in for a rough wakeup call. Every researcher working on massive models will flock to Tenstorrent Wormhole and future hardware rapidly due to dramatic jump in ease of use.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/tenstorrent-wormhole-analysis-a-scale-out-architecture-for-machine-learning-that-could-put-nvidia-on-their-back-foot/) on June 25th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/tenstorrent-wormhole-analysis-a-scale-out-architecture-for-machine-learning-that-could-put-nvidia-on-their-back-foot/) on June 25th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.
 
-*[Slides from Linley Spring Processor Conference](https://www.youtube.com/watch?v=Id3enIOAY2Q)*
+_[Slides from Linley Spring Processor Conference](https://www.youtube.com/watch?v=Id3enIOAY2Q)_

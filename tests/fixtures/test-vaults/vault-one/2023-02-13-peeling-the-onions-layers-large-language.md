@@ -9,7 +9,7 @@ description: "Ad Engine, Crawl, Index, and Query Processing disrupted by LLMs"
 [Last week](https://www.semianalysis.com/p/the-inference-cost-of-search-disruption) we dove into the cost of chatGPT and the potential disruption of the search business by Microsoft Bing and OpenAI leveraging large language models (LLMs). That piece is [basically required reading for this one](https://www.semianalysis.com/p/the-inference-cost-of-search-disruption), but the takeaway is that ChatGPT currently costs ~$700,000 a day to operate in hardware inference costs. If the current implementation and operation of ChatGPT were ham-fisted into every Google Search, it would represent a tremendous increase in cost structure to the tune of $36 billion. Google’s annual net income for their services business unit would drop from $55.5 billion in 2022 to $19.5 billion.
 
 > This is never going to happen, of course, but fun thought experiment if we assume no software or hardware improvements are made.
-> 
+>
 > [The Inference Cost Of Search Disruption – Large Language Model Cost Analysis](https://www.semianalysis.com/p/the-inference-cost-of-search-disruption)
 
 The first round of optimization is simple. Token output counts for 84 different real examples of Bing GPT were significantly lower, ~350, vs. the 2,000 used for ChatGPT. In most cases, people want to avoid reading huge chunks of information when interacting with search. This estimate accounts for tokens that are not displayed to the user. The subsequent optimization is that the [top 2,000 keywords account for 12.2% of searches](https://backlinko.com/google-keyword-study), and many more are also purely navigational searches. Let’s assume that 20% of searches will not require an LLM. Lastly, Google has significant infrastructure advantages using the in-house TPUv4 pods versus Microsoft/OpenAI using Nvidia-based HGX A100s.
@@ -61,7 +61,7 @@ While the last three parts of the search stack are critical for satisfying and r
 The ad market is a real time bidding bonanza where advertisers generally pay for keywords, phrases, or certain user types. The ad model uses those loosely as guidelines because the amount paid is not the only metric for serving. The model needs to optimize conversion to earn revenue and drive up rates, so relevance is the hyper-optimized parameter.
 
 > On average over the past four years, 80 percent of searches on Google haven’t had any ads at the top of search results. Further, only a small fraction of searches--less than 5 percent--currently have four top text ads.
-> 
+>
 > [Google](https://blog.google/technology/ads/how-google-search-ads-work/)
 
 With LLMs, the part the consumer reads is not the first few results where the ad can be converted to a sale for the advertiser. Instead, it is the output of the LLM. As such, this is part of the search stack that will change the most with the advent of conversational LLMs. We will discuss how and what happens to monetization later in this report because this is a fundamental shift in how ad serving must operate.
@@ -73,7 +73,7 @@ LLMs within search are not just one big model ham-fisted into a search engine’
 The biggest question is if Google is culturally up for the task. Google has to protect its golden egg. Can they adapt their entire search stack?
 
 > Move fast and break things.
-> 
+>
 > Mark Zuckerburg, 2011
 
 Does Google have a cultural requirement to hyper-optimize its search stack before the usage models are figured out? Suppose Google puts too many resources into operating at the lowest cost and reaches a local maxima for search relevance. In that case, Google could be lost in the weeds and limit its model development and innovations that should have been dedicated to expanding and testing new usage models. The Microsoft and OpenAI teams are more likely to push caution aside and test out radical reworks of all four elements of the search stack.
@@ -81,7 +81,7 @@ Does Google have a cultural requirement to hyper-optimize its search stack befor
 The most obvious example of Google playing it too safe and optimizing too early is with their search competitor, Bard.
 
 > We’re releasing it initially with our lightweight model version of LaMDA. This much smaller model requires significantly less computing power, enabling us to scale to more users, allowing for more feedback.
-> 
+>
 > [Google](https://www.youtube.com/watch?v=yLWXJ22LUEc)
 
 They are cutting down a model whose architecture was developed initially in early 2021. Of course, it has improved since, but OpenAI and Microsoft are using a larger model and newer architecture developed in late 2022 and early 2023 with continuous feedback from ChatGPT. There is a legitimate reason for this, but also it is the one that may get Google bulldozed on user experience and less valuable iterative speed.

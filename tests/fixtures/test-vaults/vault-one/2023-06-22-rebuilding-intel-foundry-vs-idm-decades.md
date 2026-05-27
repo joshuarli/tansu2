@@ -45,19 +45,19 @@ In semiconductor manufacturing, wafers are manufactured in batches known as lots
 On the other hand, a leading-edge wafer can also be processed in a few weeks if no care is given to cost, but this leads to tremendous inefficiency with tools constantly waiting for the wafer so it can be processed as quickly as possible. This is called a " **hot lot** " which refers to a batch of wafers that are given priority and processed more quickly than standard lots.
 
 > They could do as many hot lots as they want, they can do as many samples as they want.
-> 
+>
 > David Zinsner, Intel CFO
 
 This can be for a variety of reasons, such as to expedite the validation of a new process step or tool, or to create test chips for a new design or technology. The term comes from the idea that these wafers are "hot" because they're being pushed through the fabrication process as fast as possible.
 
 > We do use a lot of hot lots. And typically, as a GM, I don't always think as hard about that as I probably should in terms of the cost of hot lots -- not just the cost but the disruption to the factory in terms of their utilization and efficiency.
-> 
+>
 > Sandra Rivera, EVP and GM of Intel Datacenter and AI Group
 
 However, running hot lots can indeed decrease tool utilization and overall fab efficiency. Therefore, it's a trade-off between the urgency of getting specific wafers processed quickly versus the overall efficiency and throughput of the fabrication plant.
 
 > Our benchmarking suggests that we expedite materials around 2 to 3x more than our industry peers with an estimated 8% to 10% hit in overall output.
-> 
+>
 > Jason Grebe, VP and GM of Intel Corporate Planning Group
 
 Intel is fixing this issue by moving to the internal foundry model and charging business units for hot lots just like any other foundry charges their customers for these hot lots.
@@ -71,7 +71,7 @@ Designing a chip is incredibly costly. Once you have a complete design, bringing
 We have discussed [the design costs problem in detail for the industry here](https://www.semianalysis.com/p/the-dark-side-of-the-semiconductor), but one of the areas that is currently a major disadvantage for Intel is that they take more of these iterations. A stepping is when a modified design is sent to the fab, and new photomasks are created for new test chips.
 
 > They can do as many steppings as they want.
-> 
+>
 > David Zinsner, Intel CFO
 
 It took Intel 12 steppings to bring Sapphire Rapids to market, whereas AMD usually takes only 2 to 3 steppings for competing chips such as [Bergamo](https://www.semianalysis.com/p/zen-4c-amds-response-to-hyperscale) and Genoa. This creates a tremendous increase in costs for Intel to create all these additional photomasks as well as massively increasing the time to bring new designs to market.
@@ -87,7 +87,7 @@ Intel believes this change would save them $500M to $1B annually.
 After chips are fabbed, they are tested and sorted for failures and various bins to go into different products. Intel was a pioneer for many years in test, sort, and binning. Their tools are highly customized, and they have many unique in-house test patterns. While this gives Intel some advantages over the industry, it’s not all positive.
 
 > We've increasingly grown our test times compared to our industry peers. Currently, we estimate our test times are 2 to 3x those of our competitors. Effectively, our lower-cost testing platform was subsidizing the growth in our test times.
-> 
+>
 > Jason Grebe, VP and GM of Intel Corporate Planning Group
 
 This tremendous manufacturing capability advantage Intel had in the past, again turned into a disadvantage. The test times have no business being 2x to 3x that of a competitor like AMD, given final chip field reliability is not really differentiated.
@@ -113,7 +113,7 @@ If Intel wants to catch up, they need to be able to ramp up much faster. Ice Lak
 Much like TSMC, Intel will also begin to charge teams for their utilization and lock in orders earlier. They will begin to also be less flexible to their internal customers on orders of wafers.
 
 > They can change their forecast pretty much every week if they wanted to do that.
-> 
+>
 > David Zinsner, Intel CFO
 
 This change will help increase tool utilization due to being able to plan better production, which will also be a massive saving.

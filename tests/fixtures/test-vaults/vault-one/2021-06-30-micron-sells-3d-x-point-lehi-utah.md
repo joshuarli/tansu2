@@ -18,6 +18,6 @@ Texas Instruments is offering every Micron Lehi, Utah employee the opportunity t
 
 The companies plan for the sale to complete by the end of 2021. This fab will be fairly empty because Micron is not transferring $600M of tools and other assets. Texas Instruments says they will be incurring underutilization costs of about $75 million per quarter in 2022. This fab will be built out over 2022 with Texas Instruments own tools as it is fitted out for their processes rather than the X-Point and NAND tools currently in place. First revenue from this fab is expected in early 2023.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/micron-sells-3d-x-point-lehi-utah-fab-to-texas-instruments-for-1-5b/) on June 30th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/micron-sells-3d-x-point-lehi-utah-fab-to-texas-instruments-for-1-5b/) on June 30th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

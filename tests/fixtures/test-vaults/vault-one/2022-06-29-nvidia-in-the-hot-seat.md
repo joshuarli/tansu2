@@ -85,7 +85,7 @@ With multiple different model types from speech recognition to vision to recomme
 Lastly, having good software is a critical piece of the puzzle. The majority of cost is developing that model and software, not running it.
 
 > AI doesn't simply require simplistic calculations per dollar where you're just looking at the cost of a single server AI. Deploying AI requires very valuable data science, ML engineers and application developers who represent the bulk of the cost of AI infrastructure.
-> 
+>
 > Shar Narasimhan, Nvidia
 
 That software stack is incredibly important as it represents the majority of a company’s costs for all but the largest operators. Having developers be able to easily tweak models, deploy, test, and iterate is critical to reducing the development costs.

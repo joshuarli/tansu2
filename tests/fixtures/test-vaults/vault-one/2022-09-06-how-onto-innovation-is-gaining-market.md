@@ -23,7 +23,7 @@ Intel, TSMC, and Samsung gate all around process nodes will have similar process
 The most significant difficulty with metrology and inspection for nanosheets involves seeing very accurately vertically through multiple layers of other materials. This can also be done with high voltage contrast E-Beam, TEM, or X-Ray Spectroscopy tools, but these technologies are unsuitable for high-volume manufacturing due to low throughput and/or destructive test regimes.
 
 > An ellipsometer emits light, polarizes it, and after the beam is reflected from the surface it measures the polarization of light.
-> 
+>
 > [Fabricated Knowledge Metrology Primer](https://www.fabricatedknowledge.com/p/metrology-primer)
 
 At the SPIE Optics and Photonics conference, we learned that Onto uses a spectral ellipsometer and a suite of in-house software to generate complex 3D models of the vertically stacked nanosheets. While spectral ellipsometers have [historically been used for thin film measurement](https://www.fabricatedknowledge.com/p/metrology-primer), Onto has extended this form of optical metrology and inspection to 3D structures.

@@ -27,7 +27,7 @@ Rank and file employees earn the virtual Will currency when group bosses [alloca
 At DISCO, [everything has a price](https://www.bloomberg.com/news/articles/2019-06-20/charging-employees-for-conference-rooms-helps-disco-boost-profit), from conference rooms, office desks, and PCs to a spot for your wet umbrella. Individuals almost operate as one-person startups!
 
 > We’ve created a free economic zone, just like what exists outside the company, work should be about freedom, not orders.
-> 
+>
 > Toshio Naito – DISCO program designer
 
 The freedom enables employees to shape their own day to focus on the value placed on their own time and efforts. The ruthlessness of a hardcore free-market approach is diluted in a setting where people work side-by-side.
@@ -35,7 +35,7 @@ The freedom enables employees to shape their own day to focus on the value place
 There’s a [penalty system for inefficient behavior](https://www.bloomberg.com/news/articles/2019-06-20/charging-employees-for-conference-rooms-helps-disco-boost-profit), which includes piling up unnecessary inventory or even working late. Overtime hours have fallen 9% since penalties were implemented in 2015, aligning with the Japanese government’s goal to improve work-life balance
 
 > Economic forces are doing all the things managers used to spend time on. Employees can earn extra Will by helping each other: A parent who wants to see a kid’s baseball game can pay a colleague in the currency to finish a report. A software engineer can earn extra by offering coding skills to another team. Creating Excel macros or translation work are typical requests.
-> 
+>
 > Toshio Naito – DISCO program designer
 
 The success of this program can’t be understated. DISCO went from a 16% operating margin before it was implemented to a 36% operating margin in the most recent year. Furthermore, they have gained some share as well.

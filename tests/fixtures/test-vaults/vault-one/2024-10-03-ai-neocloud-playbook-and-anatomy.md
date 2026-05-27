@@ -76,7 +76,7 @@ Source: SuperMicro
 
 In general, while AMD CPUs are superior for most CPU only tasks, we recommend using Intel CPUs as on Intel it is easier to get NCCL performance correct, easier to do virtualization, and the experience overall is less buggy.
 
-For example, on AMD CPUs, you need to use NCCL\_IB\_PCI\_RELAXED\_ORDERING and play around with different NUMA NPS settings to achieve acceptable performance. If you plan on doing virtualization, you need to correctly pin your virtual cores to the correct NUMA regions or else your Device to Host and Host to Device bandwidth and latency will be not ideal. To be clear, if you are skilled, this is doable.
+For example, on AMD CPUs, you need to use NCCL_IB_PCI_RELAXED_ORDERING and play around with different NUMA NPS settings to achieve acceptable performance. If you plan on doing virtualization, you need to correctly pin your virtual cores to the correct NUMA regions or else your Device to Host and Host to Device bandwidth and latency will be not ideal. To be clear, if you are skilled, this is doable.
 
 Many standard offerings have 2TB of CPU DDR5 RAM, but most of your customers will not be using that much. RAM is the 4 <sup>th</sup> most expensive part of the compute chassis BoM. We recommend downgrading from the standard 2 TBytes to only 1TByte of RAM. Most customers of your Neocloud are not likely to ask about RAM capacity as their workloads are not CPU RAM limited at all.
 
@@ -324,7 +324,7 @@ Starting with GPU drivers required to run the GPUs – we need cuda-drivers-5xx 
 
 Cuda-drivers-5xx is the kernel space Nvidia drivers needed for ubuntu/Linux to interface with the GPUs. Next is fabricmanager-5xx, a software package responsible for configuring the intra-node NV link fabric. Without the fabricmanager-5xx package, the 8 GPUs within a node would not able to communicate with one another over NV link. Cuda-toolkit-12-x which is the toolkit that contains all the userspace tools and APIs like NVCC which is the compiler that compiles CUDA C++ code into PTX assembly and Nvidia machine code.
 
-For the networking, Mellanox OpenFabrics Enterprise Distribution (MLNX\_OFED) drivers are required to be installed on each GPU server. This package are the drivers for the ConnectX-7 InfiniBand NICs to do RDMA-ing (Remote Direct Memory Access-ing) and OS kernel bypassing. For your GPUs to talk directly to your NIC, you also need [GPUDirect RDMA, an additional kernel driver that is included in cuda-drivers-5xx but not enabled by default.](https://docs.nvidia.com/cuda/gpudirect-rdma/) Without this driver, the GPUs will need to buffer messages in CPU RAM before these messages can go to the NIC. The command to enable GPUDirect RDMA is “sudo modprobe nvidia-peermem”. To further optimize your GPU to NIC communication, you need to download a package called Nvidia HPC-X.
+For the networking, Mellanox OpenFabrics Enterprise Distribution (MLNX_OFED) drivers are required to be installed on each GPU server. This package are the drivers for the ConnectX-7 InfiniBand NICs to do RDMA-ing (Remote Direct Memory Access-ing) and OS kernel bypassing. For your GPUs to talk directly to your NIC, you also need [GPUDirect RDMA, an additional kernel driver that is included in cuda-drivers-5xx but not enabled by default.](https://docs.nvidia.com/cuda/gpudirect-rdma/) Without this driver, the GPUs will need to buffer messages in CPU RAM before these messages can go to the NIC. The command to enable GPUDirect RDMA is “sudo modprobe nvidia-peermem”. To further optimize your GPU to NIC communication, you need to download a package called Nvidia HPC-X.
 
 Without the aforementioned GPUDirect RDMA and HPC-X packages, your GPUs will only be able to send and receive traffic at 80Gbit/s out of the line rate of 400Gbit/s per GPU. With these packages enabled, [your point to point send and receive rate](https://github.com/linux-rdma/perftest) should reach 391Gbit/s out of the line rate of 400Gbit/s.
 
@@ -332,7 +332,7 @@ Next, users will want a scheduling and launching software package. In the Neoclo
 
 It is quite important for Neoclouds to have SLURM or Kubernetes working out of the box as the end user is usually not experienced in installing these types of schedulers. This is because users who come from big tech, or a national/university lab background, which usually have a dedicated person in charge of installing and operating these SLURM software. The cost for an end user having to spend 1-2 days to install SLURM themselves is significant as they will effectively be paying for a GPU cluster that is sitting idle during the installation time.
 
-Finally, 100% of customers also must be able to manually get an interactive terminal (i.e. ssh) into their GPU nodes if needed - having managed SLURM provides this feature. With SLURM, you can run “srun –gres=gpu=8 -w NODE\_NAME –pty bash” to get an interactive terminal into any node.
+Finally, 100% of customers also must be able to manually get an interactive terminal (i.e. ssh) into their GPU nodes if needed - having managed SLURM provides this feature. With SLURM, you can run “srun –gres=gpu=8 -w NODE_NAME –pty bash” to get an interactive terminal into any node.
 
 Neoclouds like Crusoe and TogetherAI are the gold standard. Because they have all the required InfiniBand drivers, GPU drivers, and scheduling software installed out of the box, they can charge a premium over their competitors and have lower churn.
 
@@ -416,13 +416,13 @@ Source: SemiAnalysis
 
 Creating virtual machines on GPU VMs can be done using an open-source hypervisor such as qemu-kvm, which will start your VM where you pin vCPUs to the physical CPUs and leave a couple cores unpinned to run the hypervisor.
 
-You will also need to bind your vLAN ethernet interface to your GPU VM. Creating CPU VMs using the common hypervisor is a simple task that most Computer Science grads can do nowadays. To make a VM into a GPU VM, you also need to do PCIe Passthrough for your GPUs and InfiniBand NICs. Fortunately for Neoclouds, NVIDIA has yet to figure out a way to charge for PCIe passthrough on their GPUs and NICs. We have also seen Neoclouds use [SR-IOV](https://docs.nvidia.com/networking/display/mlnxofedv522230/single+root+io+virtualization+\(sr-iov\)) to create virtual InfiniBand NICs and pass though into the Virtual Machine instead of just the physical InfiniBand NIC, although using SR-IOV is not strictly needed.
+You will also need to bind your vLAN ethernet interface to your GPU VM. Creating CPU VMs using the common hypervisor is a simple task that most Computer Science grads can do nowadays. To make a VM into a GPU VM, you also need to do PCIe Passthrough for your GPUs and InfiniBand NICs. Fortunately for Neoclouds, NVIDIA has yet to figure out a way to charge for PCIe passthrough on their GPUs and NICs. We have also seen Neoclouds use [SR-IOV](<https://docs.nvidia.com/networking/display/mlnxofedv522230/single+root+io+virtualization+(sr-iov)>) to create virtual InfiniBand NICs and pass though into the Virtual Machine instead of just the physical InfiniBand NIC, although using SR-IOV is not strictly needed.
 
 ![](z-images/e744eb939412c4f415654a07f734d278.webp)
 
 Source: SemiAnalysis
 
-One additional step that you need to remember to carry out is to manually pass in the NUMA regions and PCIe topology file in /etc/nccl.conf through the NCCL\_TOPO\_FILE variable since NCCL and the Nvidia-drivers now operate inside that GPU VM and therefore are unable to auto detect the NUMA regions and the PCIe topology. Without this step, NCCL performance will operate at 50% the bandwidth of what it should be operating at.
+One additional step that you need to remember to carry out is to manually pass in the NUMA regions and PCIe topology file in /etc/nccl.conf through the NCCL_TOPO_FILE variable since NCCL and the Nvidia-drivers now operate inside that GPU VM and therefore are unable to auto detect the NUMA regions and the PCIe topology. Without this step, NCCL performance will operate at 50% the bandwidth of what it should be operating at.
 
 ![](z-images/49a08d481c02319fd09a2bb1c346b12f.webp)
 
@@ -474,7 +474,7 @@ TensorWave Jira Portal, Source: TensorWave
 
 ## More Tips and Tests
 
-Another feature that we don’t see many Neocloud operators use is SLURM topology.conf. The SLURM topology configure function will launch users’ SLURM training jobs and assign a SLURM\_ID to each rank to reduce spine level traffic. For certain important messages, having a SLURM\_ID assigned sub optimally will result in a 20-30% slowdown. We will talk more about this in our upcoming Nvidia NCCL and AMD RCCL collective communication deep dive.
+Another feature that we don’t see many Neocloud operators use is SLURM topology.conf. The SLURM topology configure function will launch users’ SLURM training jobs and assign a SLURM_ID to each rank to reduce spine level traffic. For certain important messages, having a SLURM_ID assigned sub optimally will result in a 20-30% slowdown. We will talk more about this in our upcoming Nvidia NCCL and AMD RCCL collective communication deep dive.
 
 In general, we recommend that you use [nccl-tests](https://github.com/NVIDIA/nccl-tests) to profile across your cluster and compare against Nvidia and your OEM’s reference numbers to see if there are any performance shortfalls or degradations.
 

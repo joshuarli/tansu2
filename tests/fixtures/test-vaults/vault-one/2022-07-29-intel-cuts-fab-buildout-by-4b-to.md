@@ -15,19 +15,19 @@ Intel doesn’t have that luxury anymore as the global economy slows globally an
 In the face of Intel’s first net loss in over 30 years, Intel’s executives have decided their shareholders short term pocketbooks are more important than the company
 
 > Finally, we paid dividends of $1.5 billion, a 5% increase year-over-year, and remain committed to growing the dividend over time.
-> 
+>
 > David Zinsner, Intel CFO, 7/28/2022 at Intel’s Q2 2022 Earnings Call
 
 We wouldn’t mind the action of continuing to pay dividends and growing them over time if it that didn’t affect their [new fab buildouts and turn-around plan](https://semianalysis.substack.com/p/intel-is-throwing-the-kitchen-sink).
 
 > We are also lowering core expenses in calendar year '22
-> 
+>
 > Pat Gelsinger, Intel CEO, 7/28/2022 at Intel’s Q2 2022 Earnings Call
 
 This lowering of core expenses is directly tied to building less fabs.
 
 > CapEx, we're revising down our forecast to $23 billion, $4 billion less than our previous guidance
-> 
+>
 > David Zinsner, Intel CFO, 7/28/2022 at Intel’s Q2 2022 Earnings Call
 
 Intel paid a quarterly dividend of $1.5 billion in Q2, they expect to pay that much or more for Q3 and Q4 of 2022. That is a minimum of $4.5 billion dollars paid in dividends. Compare that to the $4 billion reduction in capital expenditures which are mostly related to building fabs. Intel will try to waffle about gross vs net capex, but their direct spending is being reduced.
@@ -57,9 +57,9 @@ We had hoped Intel would choose the prior path of being a technology company, bu
 Backing off on the sensationalism, we believe Intel will likely be underutilized in 2023 due to a weak macroeconomy and fierce competition. In that environment, it makes sense for Intel to cut the capacity buildout. It’s the correct move. If Intel admitted that, it would make sense.
 
 > However, we believe our turnaround is clearly taking shape, and expect Q2 and Q3 to be the financial bottom for the company.
-> 
+>
 > Pat Gelsinger, Intel CEO, 7/28/2022 at Intel’s Q2 2022 Earnings Call
 
 Intel doesn’t want to admit that though. Instead, they think this is the bottom for the company and they will improve the business from here on out.
 
-*We apologize for being so heated and opinionated here, but Intel is a company we love, but their current actions deeply sadden us.*
+_We apologize for being so heated and opinionated here, but Intel is a company we love, but their current actions deeply sadden us._

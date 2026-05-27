@@ -46,6 +46,6 @@ The Graphcore team is full of nice and smart people, but they are getting crushe
 
 Nvidia has advantages in initial price/performance, TCO, and software while also delivering a far more versatile chip. Nvidia is also gearing up to replace the A100 with another GPU with over 2x the performance in AI within the first half next year. Graphcore cannot keep up with the existing Nvidia products and will be left in the dust by their relentless pace of execution. When we start talking about profitability, Graphcore looks even worse. Selling 2x the silicon for virtually the same price as Nvidia is not a winning formula.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/graphcore-looks-like-a-complete-failure-in-machine-learning-training-performance/) on July 1st 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/graphcore-looks-like-a-complete-failure-in-machine-learning-training-performance/) on July 1st 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

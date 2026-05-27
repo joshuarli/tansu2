@@ -8,7 +8,7 @@ description: "Four-Phase 800VDC Transition, Power Rack Economics, SST, Equipment
 
 ![](z-images/f41b9e017b37086f066764bc1f44b112.webp)
 
-*We’d like to thank [DG Matrix](https://www.dgmatrix.com/), [Novos Power](https://www.novospower.com/), and [Aran Industries](https://aranind.com/) for their contributions and insights during the preparation of this deep dive.*
+_We’d like to thank [DG Matrix](https://www.dgmatrix.com/), [Novos Power](https://www.novospower.com/), and [Aran Industries](https://aranind.com/) for their contributions and insights during the preparation of this deep dive._
 
 ## Introduction: Welcome to the Power Chain Roller Coaster
 
@@ -38,7 +38,7 @@ This has enabled us to successfully call out both winners, and companies inaccur
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
-***Part 1 of this 800VDC Revolution series covers datacenter layout and equipment implications. Part 2 will focus on power electronics and the semiconductor revolution underneath it.***
+**_Part 1 of this 800VDC Revolution series covers datacenter layout and equipment implications. Part 2 will focus on power electronics and the semiconductor revolution underneath it._**
 
 ## Understanding The Basics: What is 800VDC and Why It’s Inevitable
 
@@ -594,7 +594,7 @@ Ohm’s Law gives the voltage drop across a conductor of resistance R:
 
 That drop is the energy dissipated as heat in the conductor. Substituting into the power equation yields the resistive loss equation:
 
-\\(P\_loss=I^2×R\\)
+\\(P_loss=I^2×R\\)
 
 Current appears squared, so the voltage-to-loss relationship is quadratic, not linear. This is the equation that makes 800VDC inevitable.
 

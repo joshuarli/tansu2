@@ -8,7 +8,7 @@ description: "90%+ Coverage by Rental GPU Value, GPU Cloud Evaluation Guidelines
 
 ### 90%+ Coverage by Rental GPU Value, GPU Cloud Evaluation Guidelines, GPU Pricing Updates, GPU Bubble Burst, CoreWeave IPO, Hyperscalers, AI Neocloud Economics, Neocloud IRR
 
-*The ClusterMAX™ Rating System and content within this article were prepared independently by SemiAnalysis. No part of SemiAnalysis’s compensation by our clients was, is, or will be directly or indirectly related to the specific tiering, ratings or comments expressed.*
+_The ClusterMAX™ Rating System and content within this article were prepared independently by SemiAnalysis. No part of SemiAnalysis’s compensation by our clients was, is, or will be directly or indirectly related to the specific tiering, ratings or comments expressed._
 
 ## Introduction
 
@@ -52,7 +52,7 @@ Source: SemiAnalysis
 12. Amongst GPU clouds that are highly competent on the technical front, Nebius offers the lowest absolute price and the best terms for short to medium-term rents. Crusoe also offers reasonable pricing and contract terms in additional to strong technical competency.
 13. As we first discussed in our article on [GPU Cloud Economics published back in December 2023](https://semianalysis.com/2023/12/04/gpu-cloud-economics-explained-the/), technological improvements mean the cost of compute goes down over time, and we now believe it’s a buyers' market for GPU rentals. There are 100 of GPU clouds all competing for mostly the same customers.
 14. The launch of DeepSeek provided a momentary short-term stabilization and even increase in H200 rental prices but in the medium to long term, prices are still declining.
-15. Jensen Huang, Chief Revenue Destroyer, said last week, “ *When Blackwells start shipping in volume, you couldn’t even give Hoppers away”.* From perspective of the GPU operator,this should be a call for GPU Rental providers to ensure that they engage in contracts that protect them from rapid compute price declines – i.e. sign long term contracts where possible. From the customer's perspective, they may prefer flexibility in their commitments and opt for shorter-term contracts.
+15. Jensen Huang, Chief Revenue Destroyer, said last week, “ _When Blackwells start shipping in volume, you couldn’t even give Hoppers away”._ From perspective of the GPU operator,this should be a call for GPU Rental providers to ensure that they engage in contracts that protect them from rapid compute price declines – i.e. sign long term contracts where possible. From the customer's perspective, they may prefer flexibility in their commitments and opt for shorter-term contracts.
 16. We will talk more about GPU Rental pricing and the IRR of GPUs as well as recent GPU Rental Market Rates for different contract lengths at the end of the article. Scroll down to the end if you are the reader who cares mainly about the finance side of GPUs or how to think about unit economics for the GPU rental business.
 
 ## The GPU Cloud ClusterMAX™ Rating System
@@ -91,13 +91,13 @@ We break our ClusterMAX™ rating system into five tiers:
 
 Each tier has attributes that justify the rating it receives. Let’s discuss from best to worst.
 
-The **ClusterMAX™ Platinum** tier represents *the best* GPU cloud providers in the industry. Providers in this category consistently excel across evaluation criteria, including security, price for value, technical expertise, reliability backed by clearly defined SLAs, seamless managed Slurm/Kubernetes offering, and best in class NCCL/RCCL networking performance. Platinum-tier providers are proactive, innovative, and maintain an active feedback loop with the community to continually raise the bar. That’s why they are the best.
+The **ClusterMAX™ Platinum** tier represents _the best_ GPU cloud providers in the industry. Providers in this category consistently excel across evaluation criteria, including security, price for value, technical expertise, reliability backed by clearly defined SLAs, seamless managed Slurm/Kubernetes offering, and best in class NCCL/RCCL networking performance. Platinum-tier providers are proactive, innovative, and maintain an active feedback loop with the community to continually raise the bar. That’s why they are the best.
 
-**ClusterMAX™ Gold** tier providers deliver *strong* performance across most key evaluation categories, with some opportunities for improvement. They offer solid security, reliable infrastructure, and competitive pricing, and competent technical support. Although Gold-tier GPU clouds may have gaps or inconsistencies in features like active health checks, they generally demonstrate responsiveness to feedback and a commitment to improvement. They are positioned as great choices for GPU renters to maximize throughput.
+**ClusterMAX™ Gold** tier providers deliver _strong_ performance across most key evaluation categories, with some opportunities for improvement. They offer solid security, reliable infrastructure, and competitive pricing, and competent technical support. Although Gold-tier GPU clouds may have gaps or inconsistencies in features like active health checks, they generally demonstrate responsiveness to feedback and a commitment to improvement. They are positioned as great choices for GPU renters to maximize throughput.
 
-Providers rated at **ClusterMAX™ Silver** demonstrate *adequate* GPU cloud offerings with a satisfactory balance of performance, security, and value, but they typically have noticeable gaps compared to Gold or Platinum-tier services. These providers meet basic standards for reliability, security, support, and have adequate networking performance but lack advanced orchestration, or have confusing pricing structures. Silver-tier GPU clouds have room for improvement and typically benefit significantly from adopting industry best practices.
+Providers rated at **ClusterMAX™ Silver** demonstrate _adequate_ GPU cloud offerings with a satisfactory balance of performance, security, and value, but they typically have noticeable gaps compared to Gold or Platinum-tier services. These providers meet basic standards for reliability, security, support, and have adequate networking performance but lack advanced orchestration, or have confusing pricing structures. Silver-tier GPU clouds have room for improvement and typically benefit significantly from adopting industry best practices.
 
-The **ClusterMAX™ Bronze** tier includes GPU cloud providers that fulfill the *minimum* criteria but consistently exhibit shortcomings in our evaluation areas. Common issues may include inconsistent support, subpar networking performance, unclear SLAs, limited integration with popular tools like Kubernetes or Slurm, or less competitive pricing. Providers in this category need considerable improvements to enhance reliability and customer experience. Some of these providers in this category are already making considerable effort to catch up - Google Cloud for example - and we are excited to see what their next ClusterMAX™ result will be in 3-6 months.
+The **ClusterMAX™ Bronze** tier includes GPU cloud providers that fulfill the _minimum_ criteria but consistently exhibit shortcomings in our evaluation areas. Common issues may include inconsistent support, subpar networking performance, unclear SLAs, limited integration with popular tools like Kubernetes or Slurm, or less competitive pricing. Providers in this category need considerable improvements to enhance reliability and customer experience. Some of these providers in this category are already making considerable effort to catch up - Google Cloud for example - and we are excited to see what their next ClusterMAX™ result will be in 3-6 months.
 
 GPU providers placed in the **UnderPerform** category fail to meet basic industry and security requirements across multiple evaluation metrics. Providers in this tier generally exhibit substantial such as insecure security practices, poor reliability or uptime, unclear or misleading marketing, limited technical knowledge or customer support, and inadequate orchestration capabilities. Most commonly, providers in the Underperform tier do not have SOC2 compliance or have security risks exposing traffic between your workload and the internet which could be logged by networking equipment. The GPU providers that land themselves in the **UnderPerform** category are often the same companies that spam AI generated advertisements.
 
@@ -111,12 +111,12 @@ Back in April 2024, our pricing model in the [AI Cloud Total Cost of Ownership M
 
 Source: SemiAnalysis
 
-The forecast model operates with three main inputs:  
-  
-1\. **Install base of AI Accelerators globally**: We utilize our [Accelerator Industry Model](https://semianalysis.com/accelerator-industry-model/) to determine the installed base of every GPU SKU shipped thus far and our estimates based on supply chain analysis for future GPU shipments.  
-  
-2\. **Total Cost of Ownership for AI Clusters:** We calculate the total cost of ownership for an AI Cluster, including capital costs such as the AI server, networking, storage, installation, and service, as well as operating costs such as colocation rental, power costs, remote hands and support engineers and internet connectivity.  
-  
+The forecast model operates with three main inputs:
+
+1\. **Install base of AI Accelerators globally**: We utilize our [Accelerator Industry Model](https://semianalysis.com/accelerator-industry-model/) to determine the installed base of every GPU SKU shipped thus far and our estimates based on supply chain analysis for future GPU shipments.
+
+2\. **Total Cost of Ownership for AI Clusters:** We calculate the total cost of ownership for an AI Cluster, including capital costs such as the AI server, networking, storage, installation, and service, as well as operating costs such as colocation rental, power costs, remote hands and support engineers and internet connectivity.
+
 3\. **Compute Throughput for AI Accelerators**: Estimated and measured effective training FLOPS and inference throughput (in tokens/second/GPU). For some systems, our AI Engineering team has run training and inference profiling and benchmarks, while for others, we have estimated output based on the chip specifications and architecture.
 
 We use the total cost of compute together with the compute throughput to calculate the cost of compute in terms of $/hr per effective PFLOP for training and $/M tokens for inference.
@@ -183,10 +183,10 @@ Currently, there are monthly newly discovered known container escape vulnerabili
 
 - [https://www.wiz.io/blog/nvidia-ai-vulnerability-deep-dive-cve-2024-0132](https://www.wiz.io/blog/nvidia-ai-vulnerability-deep-dive-cve-2024-0132)
 - [https://www.wiz.io/blog/wiz-research-critical-nvidia-ai-vulnerability](https://www.wiz.io/blog/wiz-research-critical-nvidia-ai-vulnerability)
-- [https://nvidia.custhelp.com/app/answers/detail/a\_id/5614](https://nvidia.custhelp.com/app/answers/detail/a_id/5614https:/nvd.nist.gov/vuln/detail/CVE-2025-23359)
+- [https://nvidia.custhelp.com/app/answers/detail/a_id/5614](https://nvidia.custhelp.com/app/answers/detail/a_id/5614https:/nvd.nist.gov/vuln/detail/CVE-2025-23359)
 - [https://nvd.nist.gov/vuln/detail/CVE-2025-23359](https://nvd.nist.gov/vuln/detail/CVE-2025-23359)
-- [https://nvidia.custhelp.com/app/answers/detail/a\_id/5599](https://nvidia.custhelp.com/app/answers/detail/a_id/5599)
-- [https://nvidia.custhelp.com/app/answers/detail/a\_id/5585/~/security-bulletin%3A-nvidia-container-toolkit---november-2024](https://nvidia.custhelp.com/app/answers/detail/a_id/5585/~/security-bulletin%3A-nvidia-container-toolkit---november-2024)
+- [https://nvidia.custhelp.com/app/answers/detail/a_id/5599](https://nvidia.custhelp.com/app/answers/detail/a_id/5599)
+- [https://nvidia.custhelp.com/app/answers/detail/a_id/5585/~/security-bulletin%3A-nvidia-container-toolkit---november-2024](https://nvidia.custhelp.com/app/answers/detail/a_id/5585/~/security-bulletin%3A-nvidia-container-toolkit---november-2024)
 
 Many GPU offerings utilize a multi-tenant cluster, but each tenant is on different sets of specific physical servers such that no two tenants share the same physical servers. For some GPU cloud offerings, particularly with on-demand offerings, there may be more than one tenant per physical host. If there is more than one tenant per physical host, there needs to be VM isolation as container isolation between multi tenants on the same host is not stringent enough due to the above Nvidia/AMD container security issues that have arisen nearly every month. To reiterate - if only container isolation is used, then hackers can use these known container escapes to escape to the physical host privileges and potentially peek into the other tenant's containers and examine model weights. They might even be able to access other servers and retrieve the tenant models of other servers. We strongly recommend against multiple tenants per physical host with just container-based isolation.
 
@@ -426,7 +426,7 @@ Although the rest of their customers have the option not to use the CoreWeave ma
 
 Source: CoreWeave
 
-Firstly, we will talk about CoreWeave’s automated node lifecycle controller that ensure that during cluster bring up nodes receive a full burn-in test and full cluster InfiniBand network high-temperature burn in with NCCL-tests and ib\_write\_bw. Not only does this bring up burn-in test for hard failures, but they also compare it to reference numbers and see when nodes do not meet the performance expectations or are running into silence data corruption (SDC) issues. Nodes that do not meet this comprehensive test will be automatically drained for investigation and will not proceed to the customer cluster till it is fully resolved.
+Firstly, we will talk about CoreWeave’s automated node lifecycle controller that ensure that during cluster bring up nodes receive a full burn-in test and full cluster InfiniBand network high-temperature burn in with NCCL-tests and ib_write_bw. Not only does this bring up burn-in test for hard failures, but they also compare it to reference numbers and see when nodes do not meet the performance expectations or are running into silence data corruption (SDC) issues. Nodes that do not meet this comprehensive test will be automatically drained for investigation and will not proceed to the customer cluster till it is fully resolved.
 
 ![](z-images/323b7805e8a75d87656e3c71ac99abf2.webp)
 
@@ -445,11 +445,11 @@ Once deployed in a customer environment, they will continuously do passive healt
 In addition to passive health checks, they automatically schedule on a weekly basis active health check to run on idle GPUs to do a full set of active testing to verify nodes are healthy. These tests include:
 
 - NVIDIA DCGM diag level 3 with Extensive Testing (EUD)  
-	DtoH and HtoD Bandwdith for validating PCIe performance from CPU to GPU
+  DtoH and HtoD Bandwdith for validating PCIe performance from CPU to GPU
 - Local NCCL all reduce tests for validating NVLink/NVSwitch/NVLS performance
 - Local InfiniBand all reduce test for validating InfiniBand performance and links (by force disabling NVLink/p2p/SHM)
-- Pairwise GPU ib\_write\_bw and ib\_write\_latency bidirectional tests to verify that the network is within specs with reference numbers.
-- Pairwise CPU ib\_write\_bw and ib\_write\_latency bidirectional tests to verify that the network is within specs with reference numbers.
+- Pairwise GPU ib_write_bw and ib_write_latency bidirectional tests to verify that the network is within specs with reference numbers.
+- Pairwise CPU ib_write_bw and ib_write_latency bidirectional tests to verify that the network is within specs with reference numbers.
 - GPUBurn for validating GPU won’t fail under load
 - Nvidia TinyMeg2 for validating hardware correctness and that GPU are free from SDC
 - Megatron Tests to test if TFLOP/s/GPU performance match reference numbers and that the loss convergence matches reference loss curve
@@ -460,7 +460,7 @@ By automatically scheduling these tests during cluster bring up and continuously
 
 Source: SemiAnalysis
 
-On their main dashboard, they also show events such as the classic common error of “GPUFallingoffthebus” and “LinkFlaps”. At the infra layer without any changes to application/end user code, they use "DCGM\_FI\_PROF\_PIPE\_TENSOR\_ACTIVE \* 1979" to track the current fp8 TFLOP/s (times 989 to bf16 TFLOP/s estimates) rough estimate and has a system to correlate which alerts causes a drop in cluster or job wide TFLOP/s. for example, you can clearly see that the drop in jobwide TFLOP/s is caused by PCIeFault and IBLink flapping Fault. While using DCGM\_FI\_PROF\_PIPE\_TENSOR\_ACTIVE isn’t the most accurate estimate of MFU, it does allow the customer and CoreWeave to view which events are relevant to the drop in MFU. In addition, the CoreWeave MFU infra layer estimates, customers can also calculate their MFU and TFLOP/s/GPU at their application layer for a more accurate absolute TFLOP/s/GPU.
+On their main dashboard, they also show events such as the classic common error of “GPUFallingoffthebus” and “LinkFlaps”. At the infra layer without any changes to application/end user code, they use "DCGM_FI_PROF_PIPE_TENSOR_ACTIVE \* 1979" to track the current fp8 TFLOP/s (times 989 to bf16 TFLOP/s estimates) rough estimate and has a system to correlate which alerts causes a drop in cluster or job wide TFLOP/s. for example, you can clearly see that the drop in jobwide TFLOP/s is caused by PCIeFault and IBLink flapping Fault. While using DCGM_FI_PROF_PIPE_TENSOR_ACTIVE isn’t the most accurate estimate of MFU, it does allow the customer and CoreWeave to view which events are relevant to the drop in MFU. In addition, the CoreWeave MFU infra layer estimates, customers can also calculate their MFU and TFLOP/s/GPU at their application layer for a more accurate absolute TFLOP/s/GPU.
 
 ![](z-images/c00dacc876a0d25f88bba30e758f9660.webp)
 
@@ -556,7 +556,7 @@ From our testing, OCI's GPU experience is strong and consistently recognized as 
 
 Source: Oracle
 
-In terms of monitoring, reliability, and passive health checks, OCI offers a decent solution through their Slurm HPC stack marketplace, complete with DCGM, Grafana monitoring, and passive health checks. Nevertheless, OCI currently lacks the option for advanced active health checks and automated node lifecycle management found in CoreWeave's offerings, such as automated weekly scheduled active health checks (e.g., NCCL-tests, ib\_write\_bw, dcgm diag) and automatically marking the ones that are unhealthy. Oracle has confirmed that this functionality is already on their roadmap and is scheduled for completion in Q2. Another thing that is missing from OCI HPC stack offering for Slurm is the integrated with high speed parallel filesystems such as OCI’s Managed Lustre offering.
+In terms of monitoring, reliability, and passive health checks, OCI offers a decent solution through their Slurm HPC stack marketplace, complete with DCGM, Grafana monitoring, and passive health checks. Nevertheless, OCI currently lacks the option for advanced active health checks and automated node lifecycle management found in CoreWeave's offerings, such as automated weekly scheduled active health checks (e.g., NCCL-tests, ib_write_bw, dcgm diag) and automatically marking the ones that are unhealthy. Oracle has confirmed that this functionality is already on their roadmap and is scheduled for completion in Q2. Another thing that is missing from OCI HPC stack offering for Slurm is the integrated with high speed parallel filesystems such as OCI’s Managed Lustre offering.
 
 OCI also provides automated `topology.conf` configurations out of the box, enabling topology-aware scheduling that enhances network performance—an important feature still overlooked by many emerging GPU cloud providers.
 
@@ -576,7 +576,7 @@ Azure offers a robust GPU cloud infrastructure, recognized for its exceptional n
 
 Security is another standout strength for Azure. It holds an exceptional reputation for robust security and compliance practices, which has made it a trusted partner for government agencies, defense contractors, and leading AGI research labs such as OpenAI. Azure's proven reliability at scale is evident in its successful management of massive GPU clusters, including support for OpenAI’s well-known deployments involving clusters of over 100,000 NVIDIA H100 GPUs, which highlights Azure’s ability to manage demanding and sensitive workloads securely. Note that OpenAI does complain a lot about Azure’s reliability for giant clusters, but OpenAI has extremely high standards for reliability since they have such giant clusters.
 
-For workload management, Azure offers CycleCloud, a user-friendly, web-based UI for deploying and managing Slurm clusters. CycleCloud includes basic health checks to enhance reliability and operational awareness. We look forward to doing a complete analysis of CycleCloud. However, compared to more advanced offerings like CoreWeave’s fully automated active and passive health-checking systems, Azure’s solution has room for improvement. We specifically recommend that Azure consider adopting practices similar to CoreWeave's comprehensive approach, such as regular automated checks (including NCCL tests, ib\_write\_bw, and DCGM diagnostics), as well as automated node draining and replacement to improve overall reliability.
+For workload management, Azure offers CycleCloud, a user-friendly, web-based UI for deploying and managing Slurm clusters. CycleCloud includes basic health checks to enhance reliability and operational awareness. We look forward to doing a complete analysis of CycleCloud. However, compared to more advanced offerings like CoreWeave’s fully automated active and passive health-checking systems, Azure’s solution has room for improvement. We specifically recommend that Azure consider adopting practices similar to CoreWeave's comprehensive approach, such as regular automated checks (including NCCL tests, ib_write_bw, and DCGM diagnostics), as well as automated node draining and replacement to improve overall reliability.
 
 Additionally, Azure offers a managed Lustre parallel file system, which provides high-performance storage tailored specifically for large-scale HPC and AI workloads. This integrated, optimized storage solution ensures that data-intensive workloads can scale efficiently and reliably. To further enhance their offerings, Azure would benefit from adopting more extensive passive and active monitoring solutions like those implemented by industry-leading GPU cloud providers like CoreWeave, ensuring even higher reliability and improved performance monitoring for their users.
 

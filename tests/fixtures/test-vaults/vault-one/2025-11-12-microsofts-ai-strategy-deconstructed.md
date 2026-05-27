@@ -3,7 +3,7 @@ title: "Microsoft's AI Strategy Deconstructed - from Energy to Tokens"
 date: "2025-11-12T17:18:06.757Z"
 url: "https://newsletter.semianalysis.com/p/microsofts-ai-strategy-deconstructed"
 author: "Jeremie Eliahou Ontiveros"
-description: "\"The Big Pause\", AI Tokens Factory Economics Stack, OpenAI, Neocloud Renting, GitHub Copilot Woes, MAI and Maia Floundering"
+description: '"The Big Pause", AI Tokens Factory Economics Stack, OpenAI, Neocloud Renting, GitHub Copilot Woes, MAI and Maia Floundering'
 ---
 
 ### "The Big Pause", AI Tokens Factory Economics Stack, OpenAI, Neocloud Renting, GitHub Copilot, MAI and Maia
@@ -14,7 +14,7 @@ Microsoft was at the top of AI in 2023 and 2024, but then a year ago they change
 
 This seems like a dire situation. Today we have a post dissecting Microsoft’s fumble as well as [a public interview with Satya Nadella and our dear friend Dwarkesh Patel where we challenged him on their AI strategy and execution](https://www.youtube.com/watch?v=8-boBsWcr5A).
 
-Now Microsoft’s investments in AI are back, and the AI giant has never had such high demand for Accelerated Computing. The Redmond titan has woken up to it going down the wrong path and has dramatically shifted course. With the [newly announced OpenAI deal,](https://blogs.microsoft.com/blog/2025/10/28/the-next-chapter-of-the-microsoft-openai-partnership/) Azure growth is set to ***Accelerate*** in the upcoming quarters as forecasted by our [Tokenomics model](https://semianalysis.com/tokenomics-model/).
+Now Microsoft’s investments in AI are back, and the AI giant has never had such high demand for Accelerated Computing. The Redmond titan has woken up to it going down the wrong path and has dramatically shifted course. With the [newly announced OpenAI deal,](https://blogs.microsoft.com/blog/2025/10/28/the-next-chapter-of-the-microsoft-openai-partnership/) Azure growth is set to **_Accelerate_** in the upcoming quarters as forecasted by our [Tokenomics model](https://semianalysis.com/tokenomics-model/).
 
 ![](z-images/931f8cb4b3facf7bfd6bbcea7438e7dd.webp)
 
@@ -65,7 +65,7 @@ In each section, we’ll dive deep into Microsoft’s product portfolio, competi
 
 ChatGPT’s release in November 2022 changed the world. Microsoft was the first hyperscaler to react to the “ChatGPT moment”, and they did it in a spectacular way. While Microsoft had invested $1B in OpenAI back in 2019, they 10x’d the investment in January 2023. Simultaneously, they engaged in the most aggressive datacenter buildout in history – primarily driven by its key AI partner.
 
-The chart below depicts datacenter pre-leasing activity, one of the best leading indicators on capacity growth and CapEx. Microsoft’s pre-leasing activity from Q1’23 to Q2’24 dwarfed that of the other hyperscalers *combined*. In Q3’23, Microsoft alone leased nearly as much as t *he whole North American market leasing in full year 2022*.
+The chart below depicts datacenter pre-leasing activity, one of the best leading indicators on capacity growth and CapEx. Microsoft’s pre-leasing activity from Q1’23 to Q2’24 dwarfed that of the other hyperscalers _combined_. In Q3’23, Microsoft alone leased nearly as much as t _he whole North American market leasing in full year 2022_.
 
 ![](z-images/717ec568996902d9082fa1c141f4ca2d.webp)
 
@@ -301,7 +301,7 @@ Finding some V100’s for sale on our AWS console
 
 Of course, V100s today aren’t a great business on a pure revenue-per-MW basis. So much so that we are aware of hyperscalers ripping out V100, A100, and even older H100 GPUs from their older datacenters in order to make room for the latest and greatest. The point is not that they are doing this because the GPUs are wearing out and dying of old age. Rather, they are ripping out revenue-generating assets in favour of higher-revenue-generating-assets due to power and floorspace constraints.
 
-Key to optmizing GPU Cloud economics is to ***maximize their economic life***. Our AI Cloud TCO Model provides a useful framework. Analyzing the TCO of a H100 cluster, we see that after stripping capital costs, there remains operating costs of $0.30-0.40/GPU/hour. The question is whether, after 5 years, a GPU can still monetize above that rate.
+Key to optmizing GPU Cloud economics is to **_maximize their economic life_**. Our AI Cloud TCO Model provides a useful framework. Analyzing the TCO of a H100 cluster, we see that after stripping capital costs, there remains operating costs of $0.30-0.40/GPU/hour. The question is whether, after 5 years, a GPU can still monetize above that rate.
 
 ![](z-images/044314e75fc0c5105e9b0590511db88a.webp)
 

@@ -330,8 +330,8 @@ The performance-per-TCO analyses above focus on direct purchasing scenarios—co
 
 When it comes to renting GPUs – costs are very different. AMD faces a significant competitive disadvantage compared to NVIDIA, primarily due to limited availability and reduced market competition.
 
-Currently, over 100 different Neocloud providers offer short-term (sub-six-month) rentals of NVIDIA GPUs, creating price competition and driving down rental costs. In contrast, only a handful of providers offer similar short-term AMD GPU rentals.  
-  
+Currently, over 100 different Neocloud providers offer short-term (sub-six-month) rentals of NVIDIA GPUs, creating price competition and driving down rental costs. In contrast, only a handful of providers offer similar short-term AMD GPU rentals.
+
 This scarcity in the rental market leads to artificially high prices for AMD GPU rentals, eroding AMD GPUs’ overall cost-competitiveness. **Consequently, NVIDIA consistently outperforms AMD in terms of performance-per-dollar within the rental market, irrespective of latency requirements.** This imbalance explains why AMD GPUs see minimal adoption beyond major hyperscalers, who typically make direct, long-term GPU purchases and can leverage AMD’s favorable hardware economics without facing the AMD rental market's pricing constraints.
 
 ## What rental price would make AMD GPUs competitive with Nvidia for renters of compute for inference?
@@ -386,7 +386,7 @@ We struggled with getting up-to-date performance results due to the speed with w
 
 Another reason that benchmarking takes a long time is that we cannot parallelize experiments across machines. We see non-negligible throughput and latency differences on machines from cloud service providers, which led to AMD and NVIDIA requesting that we redo all experiments.
 
-Finally, AMD maintaining separate repo forks and configurations caused major delays. Since AMD maintains a separate vLLM fork, we had to write a separate benchmarking setup. At the time of writing, AMD has wrapped up and deprecated their vLLM fork. We welcome this change and hope AMD adopts this practice in other software as well. In terms of configuration, they added AITER-related environment variables, giving us PYTORCH\_TUNABLE\_OP flashbacks. We have expressed our disdain for using environment variables to enable features, and we hope this can be removed like PYTORCH\_TUNABLE\_OP was.
+Finally, AMD maintaining separate repo forks and configurations caused major delays. Since AMD maintains a separate vLLM fork, we had to write a separate benchmarking setup. At the time of writing, AMD has wrapped up and deprecated their vLLM fork. We welcome this change and hope AMD adopts this practice in other software as well. In terms of configuration, they added AITER-related environment variables, giving us PYTORCH_TUNABLE_OP flashbacks. We have expressed our disdain for using environment variables to enable features, and we hope this can be removed like PYTORCH_TUNABLE_OP was.
 
 ## AMD SGLang CI Testing Lacks Coverage Parity
 

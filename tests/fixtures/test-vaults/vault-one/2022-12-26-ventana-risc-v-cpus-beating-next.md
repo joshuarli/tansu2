@@ -80,7 +80,7 @@ At the end of the report, there will also be a table with technical specificatio
 
 ## SiFive
 
-SiFive is the most well-known and successful firm in the RISC-V space. They have already sold a business unit to AlphaWave for $175M. SiFive has a very impressive valuation and a ton of runway. They are going in everything [from next-generation TPUs to NASA’s scalable space chiplets.](https://www.semianalysis.com/p/sifive-powers-google-tpu-nasa-tenstorrent) Suffice to say, SiFive has a ton of cores, and [X280 is the one we get the most excited about.](https://www.semianalysis.com/p/sifive-powers-google-tpu-nasa-tenstorrent) We will *only* put the X280, P470, and P670 in the core table below. SiFive’s sea of different CPU cores are regularly updated despite a pretty lean operation. This is due to their use of Chisel.
+SiFive is the most well-known and successful firm in the RISC-V space. They have already sold a business unit to AlphaWave for $175M. SiFive has a very impressive valuation and a ton of runway. They are going in everything [from next-generation TPUs to NASA’s scalable space chiplets.](https://www.semianalysis.com/p/sifive-powers-google-tpu-nasa-tenstorrent) Suffice to say, SiFive has a ton of cores, and [X280 is the one we get the most excited about.](https://www.semianalysis.com/p/sifive-powers-google-tpu-nasa-tenstorrent) We will _only_ put the X280, P470, and P670 in the core table below. SiFive’s sea of different CPU cores are regularly updated despite a pretty lean operation. This is due to their use of Chisel.
 
 ![](z-images/2aefaffbbf75c9c696b2f75eb9055e6f.webp)
 

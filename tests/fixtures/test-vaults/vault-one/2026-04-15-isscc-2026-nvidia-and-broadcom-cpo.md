@@ -22,8 +22,8 @@ One key theme that caught our attention at this year’s ISSCC was memory, inclu
 
 ## Samsung HBM4 - Paper 15.6
 
-Samsung was the only one among the top three memory vendors to present a technical paper on HBM4. Before ISSCC, we noted in our [Accelerator & HBM model](https://semianalysis.com/institutional/hbm4-samsung-incremental-progress-micron-execution-risk-rising-hbm3e-pricing-revised-up/) that Samsung had made great improvements in their HBM4 generation over their HBM3E. The data presented at ISSCC confirmed our analysis, with Samsung posting best-in-class performance - we have also detailed this development months ago, in a [model update note](https://semianalysis.com/institutional/samsung-hbm4-performance-leadership-sk-hynix-hbm4-issues/).  
-  
+Samsung was the only one among the top three memory vendors to present a technical paper on HBM4. Before ISSCC, we noted in our [Accelerator & HBM model](https://semianalysis.com/institutional/hbm4-samsung-incremental-progress-micron-execution-risk-rising-hbm3e-pricing-revised-up/) that Samsung had made great improvements in their HBM4 generation over their HBM3E. The data presented at ISSCC confirmed our analysis, with Samsung posting best-in-class performance - we have also detailed this development months ago, in a [model update note](https://semianalysis.com/institutional/samsung-hbm4-performance-leadership-sk-hynix-hbm4-issues/).
+
 The technical details presented at ISSCC, combined with industry chatter we have gathered, clearly demonstrate that Samsung’s HBM4 is competitive with its peers. Notably, it can meet the pin speed required for Rubin while staying below 1V. While Samsung still lags SK Hynix in terms of reliability and stability, the company has made meaningful progress in closing the gap on the technology front and could challenge SK Hynix’s dominance in HBM. Their 1c-based HBM4 paired with an SF4 logic base die appears to deliver stronger performance in pin speed.
 
 ![](z-images/614be87e8efefd44b60677176b6f5937.webp)

@@ -74,6 +74,6 @@ SemiAnalysis expects $KLIC to achieve $6.1 EPS in 2021 and $7 EPS in 2022 and 20
 
 They are incredibly disciplined and successful with R&D, so KNS should continue to derive operating leverage. Due to the new businesses, they are entering and higher operational efficiencies, gross margins could start to rise. Kulicke and Soffa Industries is generally a leveraged bet on trailing edge. When you consider that trailing edge will outgrow leading edge, and stack on the new growth angles, this firm is absurdly cheap.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/kulicke-soffa-industries-klic-continued-outperformance-of-wire-bonders-and-emerging-supplier-in-mini-led-micro-led-and-battery-manufacturing/) on September 27th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/kulicke-soffa-industries-klic-continued-outperformance-of-wire-bonders-and-emerging-supplier-in-mini-led-micro-led-and-battery-manufacturing/) on September 27th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

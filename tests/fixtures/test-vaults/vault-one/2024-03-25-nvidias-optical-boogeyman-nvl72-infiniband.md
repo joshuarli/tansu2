@@ -19,7 +19,7 @@ Nvidia
 When Nvidia’s DGX GB200 NVL72 was announced in the keynote speech last week – with the capability of linking 72 GPUs in the same rack with 900GB/s per GPU NVLink 5 connections – panic set in. Tourists in various optical markets began to run for the hills after reacting quite violently to Jensen’s words.
 
 > And so we have 5,000 cables, 5,000 NVLink cables. In total, 2 miles. Now this is the amazing thing. If we had to use optics, we would have had to use transceivers and retimers. And those transceivers and retimers alone would have cost 20,000 watts, 20 kilowatts of just transceivers alone, just to drive the NVLink spine. As a result, we did it completely for free over NVLink switch and we were able to save the 20 kilowatts for computation.
-> 
+>
 > Jensen Huang
 
 ![](z-images/5fcae8c3e17e07d887fce4369bb548f6.webp)

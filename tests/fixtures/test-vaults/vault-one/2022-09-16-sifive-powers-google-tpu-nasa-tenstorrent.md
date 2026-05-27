@@ -29,7 +29,7 @@ Google will utilize the base scalar and vector of X280 in a way that allows push
 We had the chance to ask Google why they wanted to stick a CPU as part of every one of their accelerator units. This has a significant area impact of around 0.5mm2 per CPU core. Their MMX unit is around 1mm2 per unit, meaning a 50% overhead. The answer was well reasoned and primarily focused on programmability and flexibility.
 
 > We could have had a horrible one-off sequencer instead, but do you like to program your machines with low-level assembly?
-> 
+>
 > Cliff Young, Google TPU Architect; MLPerf co-founder
 
 It seems clear that RISC-V will eat the world of non-user-facing cores. We will leave you with this slide that Jim Keller presented.

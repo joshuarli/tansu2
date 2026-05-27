@@ -18,24 +18,22 @@ Today we are going to go from A to Z on the different form factors of GB200 and 
 - Power budget
 - Compute tray architecture
 - Networking fabrics
-	- NVLink fabric
-		- NVL72
-				- NVL36x2
-				- NVL576
-		- Backend fabric (Infiniband/Ethernet)
-		- Frontend fabric
-		- Networking dollar content summary
-		- Optics
-		- DSP
+  - NVLink fabric
+    - NVL72 - NVL36x2 - NVL576
+    - Backend fabric (Infiniband/Ethernet)
+    - Frontend fabric
+    - Networking dollar content summary
+    - Optics
+    - DSP
 - Hyperscaler customization
 - Substrate, PCB, and CCL
 - Liquid cooling
-	- Rack architecture changes & content
-		- Heat transfer flow
-		- L2A (Liquid to Air) vs L2L (Liquid to Liquid)
-		- Redesigning data center infrastructure
-		- Supply chain procurement decision maker & analysis
-		- Liquid cooling components competition
+  - Rack architecture changes & content
+    - Heat transfer flow
+    - L2A (Liquid to Air) vs L2L (Liquid to Liquid)
+    - Redesigning data center infrastructure
+    - Supply chain procurement decision maker & analysis
+    - Liquid cooling components competition
 - Power delivery network, PDB, Busbar, VRM
 - BMC
 - Mechanical components

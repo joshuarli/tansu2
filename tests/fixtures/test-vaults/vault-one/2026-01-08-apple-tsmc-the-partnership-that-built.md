@@ -8,7 +8,7 @@ description: "Wafer demand model, node economics, and the shifting power dynamic
 
 ### Wafer Demand Model, Node Economics, and the shifting power dynamics as AI reshapes the foundry landscape
 
-In 2013, TSMC made a $10 billion bet on a single customer. Morris Chang committed to building 20nm capacity with uncertain economics on the promise that Apple would fill those fabs. “ *I bet the company, but I didn’t think I would lose*,” Chang later said. He was right. Apple’s A8 chip launched in 2014, and TSMC never looked back.
+In 2013, TSMC made a $10 billion bet on a single customer. Morris Chang committed to building 20nm capacity with uncertain economics on the promise that Apple would fill those fabs. “ _I bet the company, but I didn’t think I would lose_,” Chang later said. He was right. Apple’s A8 chip launched in 2014, and TSMC never looked back.
 
 ![](z-images/58b0bda5a3966823d956190b9a21e785.webp)
 
@@ -108,9 +108,9 @@ The original iPhone launched in 2007 relied heavily on Samsung components. Samsu
 
 Apple wanted to control the primary technologies used in its devices. The $278M P.A. Semi acquisition in April 2008 served as a stepping stone. Dan Dobberpuhl, creator of Alpha and StrongARM, had assembled 150 of the best low-power chip engineers in the world. Among them was Johny Srouji, an Israeli engineer from Intel and IBM. He now runs Apple Silicon as SVP of Hardware Technologies.
 
-> *First and foremost, if we do this, can we deliver better products? That’s the No. 1 question. It’s not about the chip. Apple is not a chip company.*
-> 
-> *\- Johny Srouji, Apple SVP of Hardware Technologies*
+> _First and foremost, if we do this, can we deliver better products? That’s the No. 1 question. It’s not about the chip. Apple is not a chip company._
+>
+> _\- Johny Srouji, Apple SVP of Hardware Technologies_
 
 Following P.A. Semi, Apple acquired ultra-low-power chip design company Intrinsity for $121M in 2010 Apple fielded its first custom smartphone applications processor (AP), the A4, in iPhone 4 in September 2010. While it was still manufactured by Samsung, Apple intensified its search for a manufacturing partner who wasn’t also their competitor.
 
@@ -136,7 +136,7 @@ In 2016, Apple funded the development of InFO (Integrated Fan-Out) packaging. Th
 
 [In a candid interview](https://www.acquired.fm/episodes/tsmc-founder-morris-chang), Morris Chang revealed that Tim Cook later told him:
 
-> *Intel just does not know how to be a foundry.*
+> _Intel just does not know how to be a foundry._
 
 At the core there are cultural differences: Intel, trapped in its product success, couldn’t foresee the massive Arm-based foundry market; TSMC offered servitude, flexibility, and a willingness to ‘bet the company’ on Apple’s success. TSMC built dedicated capacity, accepted Apple’s engineers into their labs, and aligned their roadmap with the iPhone’s annual cycle. This cultural alignment, TSMC’s willingness to customize versus Intel’s standardized product approach, remains Intel’s biggest hurdle in its IDM 2.0 pivot today.
 
@@ -273,23 +273,23 @@ Apple’s overarching semiconductor philosophy is simple but ruthless: control t
 ![](z-images/9e53d4a2d9336e320bedad62f7f92679.webp)
 
 1. **P.A. Semi (2008, $278M): The Foundation**
-	P.A. Semi was a boutique chip design firm founded by Dan Dobberpuhl, one of the most respected processor architects in the industry (creator of DEC Alpha, StrongARM). The company had 150 engineers designing low-power, high-performance processors.
-	The team designed the A4, Apple’s first custom SoC. Jim Keller, who later designed AMD’s Zen architecture, led the A4/A5 development at Apple before departing.
+   P.A. Semi was a boutique chip design firm founded by Dan Dobberpuhl, one of the most respected processor architects in the industry (creator of DEC Alpha, StrongARM). The company had 150 engineers designing low-power, high-performance processors.
+   The team designed the A4, Apple’s first custom SoC. Jim Keller, who later designed AMD’s Zen architecture, led the A4/A5 development at Apple before departing.
 2. **AuthenTec (2012, $356M): Touch ID**
-	Touch ID launched 13 months after the AuthenTec acquisition. AuthenTec’s architecture enabled the Secure Enclave, the hardware security subsystem that handles all biometric and cryptographic operations.
-	The Secure Enclave enabled Apple Pay (2014). A decade on, Apple Pay enabled $1.5T+ in transaction volume (2024). The $356M acquisition justified a financial services business that generates billions in annual revenue. A chip architecture decision in 2012 enabled a $100B+ Services business a decade later.
+   Touch ID launched 13 months after the AuthenTec acquisition. AuthenTec’s architecture enabled the Secure Enclave, the hardware security subsystem that handles all biometric and cryptographic operations.
+   The Secure Enclave enabled Apple Pay (2014). A decade on, Apple Pay enabled $1.5T+ in transaction volume (2024). The $356M acquisition justified a financial services business that generates billions in annual revenue. A chip architecture decision in 2012 enabled a $100B+ Services business a decade later.
 3. **PrimeSense (2013, $360M): Face ID**
-	PrimeSense developed the 3D depth-sensing technology behind Microsoft’s Kinect. Apple bought them for $360M and spent four years miniaturizing the technology to fit in a phone notch.
-	The TrueDepth camera projects 30,000 infrared dots onto your face, maps the 3D structure, and authenticates in milliseconds. Face ID is more secure than Touch ID (1 in 1,000,000 false positive rate vs. 1 in 50,000).
-	The same technology enabled Animoji, Memoji, and became the foundation for LiDAR Scanner in the iPhone 12 Pro.
+   PrimeSense developed the 3D depth-sensing technology behind Microsoft’s Kinect. Apple bought them for $360M and spent four years miniaturizing the technology to fit in a phone notch.
+   The TrueDepth camera projects 30,000 infrared dots onto your face, maps the 3D structure, and authenticates in milliseconds. Face ID is more secure than Touch ID (1 in 1,000,000 false positive rate vs. 1 in 50,000).
+   The same technology enabled Animoji, Memoji, and became the foundation for LiDAR Scanner in the iPhone 12 Pro.
 4. **Intel Modem Business (2019, $1B): In-house 5G Modem**
-	Apple bought Intel’s smartphone modem business the same week they settled their lawsuit with Qualcomm. The timing was intentional. The settlement was a temporary truce.
-	With Intel, Apple acquired 2,200 engineers (modem design, RF, validation), 17,000 wireless patents, Labs, equipment, IP across San Diego and Munich
-	The 5G modem was the final frontier for Apple and despite delays, the C1 modem shipped in iPhone 16e (2025), after five years of development. By 2027-2028, Apple expects to eliminate Qualcomm entirely in its lineup, offering it a gross margin stacking opportunity.
+   Apple bought Intel’s smartphone modem business the same week they settled their lawsuit with Qualcomm. The timing was intentional. The settlement was a temporary truce.
+   With Intel, Apple acquired 2,200 engineers (modem design, RF, validation), 17,000 wireless patents, Labs, equipment, IP across San Diego and Munich
+   The 5G modem was the final frontier for Apple and despite delays, the C1 modem shipped in iPhone 16e (2025), after five years of development. By 2027-2028, Apple expects to eliminate Qualcomm entirely in its lineup, offering it a gross margin stacking opportunity.
 5. **The Imagination Breakup (2017): In-House GPU**
-	Apple has licensed GPU designs from Imagination Technologies since the original iPhone. In April 2017, Apple notified Imagination they would stop using their IP within 15-24 months. Imagination’s stock dropped 70% overnight.
-	Apple had secretly built an internal GPU team. The A11 (September 2017) shipped with Apple’s first custom GPU. The Apple GPU delivered 30% better performance than Imagination’s designs.
-	Imagination nearly went bankrupt. They were sold to a Chinese-backed private equity firm. By 2020, both companies settled their disputes and entered into multi-year licensing agreements.
+   Apple has licensed GPU designs from Imagination Technologies since the original iPhone. In April 2017, Apple notified Imagination they would stop using their IP within 15-24 months. Imagination’s stock dropped 70% overnight.
+   Apple had secretly built an internal GPU team. The A11 (September 2017) shipped with Apple’s first custom GPU. The Apple GPU delivered 30% better performance than Imagination’s designs.
+   Imagination nearly went bankrupt. They were sold to a Chinese-backed private equity firm. By 2020, both companies settled their disputes and entered into multi-year licensing agreements.
 
 ### Global Design Operations
 
@@ -369,6 +369,6 @@ What’s changed in 2024-2025:
 
 Apple’s remaining advantages: larger SLC (32MB vs 8-10MB), true unified memory with full CPU/GPU coherency, and vertical integration enabling thermal co-design. The gap has narrowed, but Apple still holds the efficiency crown.
 
-*Next we’ll dive further into specifics: Apple wafer demand and economics at TSMC, including our forecasts through the end of the decade at the A14 node. We’ll quantify Apple N2 demand and how that affects their need for older nodes - surprisingly, som older nodes are seeing increased demand from Apple. More numbers are shown for demand by chip and you’ll see the change as the company (tried to) diversify beyond the iPhone. We’ll also put numbers on the HPC phenomena as, discussed earlier, Nvidia demand encroaches Apple at the leading edge.*
+_Next we’ll dive further into specifics: Apple wafer demand and economics at TSMC, including our forecasts through the end of the decade at the A14 node. We’ll quantify Apple N2 demand and how that affects their need for older nodes - surprisingly, som older nodes are seeing increased demand from Apple. More numbers are shown for demand by chip and you’ll see the change as the company (tried to) diversify beyond the iPhone. We’ll also put numbers on the HPC phenomena as, discussed earlier, Nvidia demand encroaches Apple at the leading edge._
 
-*And there’s more: packaging economics, what TSMC’s ex-Apple business looks like, Apple’s in-house efforts to replace Broadcom modems, competing efforts to copy Apple’s vertical integration, a look at the trickle down effects in the supply chain beyond TSMC, and what the future of the TSMC + Apple partnership looks like.*
+_And there’s more: packaging economics, what TSMC’s ex-Apple business looks like, Apple’s in-house efforts to replace Broadcom modems, competing efforts to copy Apple’s vertical integration, a look at the trickle down effects in the supply chain beyond TSMC, and what the future of the TSMC + Apple partnership looks like._

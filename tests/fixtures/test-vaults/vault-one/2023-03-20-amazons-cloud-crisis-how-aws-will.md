@@ -29,9 +29,9 @@ Amazon reached this same issue many years later, but they took a very different 
 Steve Yegge, an early employee at Amazon, recalled this pivotal moment at Amazon. Below is a portion of a memo he had ranting about Amazon once he joined Google, which was accidentally shared online.
 
 > So one day Jeff Bezos issued a mandate. He's doing that all the time, of course, and people scramble like ants being pounded with a rubber mallet whenever it happens. But on one occasion -- back around 2002 I think, plus or minus a year -- he issued a mandate that was so out there, so huge and eye-bulgingly ponderous, that it made all of his other mandates look like unsolicited peer bonuses.
-> 
+>
 > His Big Mandate went something along these lines:
-> 
+>
 > 1. All teams will henceforth expose their data and functionality through service interfaces.
 > 2. Teams must communicate with each other through these interfaces.
 > 3. There will be no other form of interprocess communication allowed: no direct linking, no direct reads of another team's data store, no shared-memory model, no back-doors whatsoever. The only communication allowed is via service interface calls over the network.
@@ -39,10 +39,10 @@ Steve Yegge, an early employee at Amazon, recalled this pivotal moment at Amazon
 > 5. All service interfaces, without exception, must be designed from the ground up to be externalizable. That is to say, the team must plan and design to be able to expose the interface to developers in the outside world. No exceptions.
 > 6. Anyone who doesn't do this will be fired.
 > 7. Thank you; have a nice day!
-> 
+>
 > Ha, ha! You 150-odd ex-Amazon folks here will of course realize immediately that #7 was a little joke I threw in, because Bezos most definitely does not give a shit about your day.
-> 
-> *[Full Text Of Rant](https://gist.github.com/chitchcock/1281611)*
+>
+> _[Full Text Of Rant](https://gist.github.com/chitchcock/1281611)_
 
 The most impactful part of this rant is number 5, which is they must be able to externalize these hardened interfaces. This is the beginning of making AWS….i **n 2002**
 
@@ -53,7 +53,7 @@ It took another ~4 years to take these ideas and create the public offering that
 We will fast forward through the start and talk more about what this era means to this day. In the early days, Amazon picked up all the startups and enabled them to actually build their own businesses. While most early adopters were these non-traditional new firms in software like Netflix and Twitch, innovative hardware companies were also all aboard the unstoppable freight train of cloud.
 
 > It’s so much easier. For a new company like us, you would just never build a traditional data center anymore.
-> 
+>
 > [Andy Bechtolsheim, 2010](https://www.nytimes.com/2010/04/19/technology/19cloud.html) – Founder of Arista and Sun Microsystems, also one of earliest investors in Google and VMware.
 
 Amazon launched S3, a storage service, in 2006. Shortly after EC2, a compute service. In 2009, a relational database service was offered. Then there was Redshift and Dynamo DB. There are quite literally hundreds of important releases Amazon did **with customers** before any of their competitors got even close. The main point is that this era is characterized by AWS simply having better/more products, applications, and service offerings with better documentation than anyone else. Every time Google Cloud or Microsoft Azure built something, Amazon was many steps ahead and/or easier to use.
@@ -100,7 +100,7 @@ Even with much more conservative estimates of 2 CPU cores saved per Nitro, with 
 
 The removal of these workloads from server CPU cores to the custom Nitro chip not only greatly improves cost, but also improves performance due to [removing noisy neighbor problems](https://www.semianalysis.com/p/is-ampere-computings-cloud-native) associated with the hypervisor, such as shared caches, IO bandwidth, and power/heat budgets.
 
-Furthermore, customers also reap the benefits of improved security by adding an [air gap](https://en.wikipedia.org/wiki/Air_gap_\(networking\)) between the hypervisor management layer and server. This physical isolation removes a possible vector [of side-channel escalation attacks from rogue tenants](https://www.semianalysis.com/i/57527407/cloud-native-is-it-marketing-fluff).
+Furthermore, customers also reap the benefits of improved security by adding an [air gap](<https://en.wikipedia.org/wiki/Air_gap_(networking)>) between the hypervisor management layer and server. This physical isolation removes a possible vector [of side-channel escalation attacks from rogue tenants](https://www.semianalysis.com/i/57527407/cloud-native-is-it-marketing-fluff).
 
 In addition to the hypervisor offload savings, as Nitro has evolved, it has also taken a central role in many networking workloads. For example, IPsec can be offloaded, which alone could be many millions in savings for each of Amazon’s major customers.
 
@@ -163,7 +163,7 @@ Microsoft and Google both have ongoing internal server CPU efforts on the horizo
 
 The tremendous scale of Amazon, especially with regard to general-purpose compute and storage-related verticals, cannot be understated. This will continue to drive a durable advantage in the cloud for many years to come.
 
-*Check out [The Chip Letter](https://thechipletter.substack.com/) for a ton of great history lessons on semiconductors, Babbage helped us write a portion of the history here, and he will be releasing his own piece that goes over more of the history of Amazon’s in-house semiconductors soon.*
+_Check out [The Chip Letter](https://thechipletter.substack.com/) for a ton of great history lessons on semiconductors, Babbage helped us write a portion of the history here, and he will be releasing his own piece that goes over more of the history of Amazon’s in-house semiconductors soon._
 
 ## The Next Era of Computing
 

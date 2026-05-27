@@ -15,7 +15,7 @@ Ayar Labs and Lockheed Martin published a fascinating paper regarding radio freq
 First, let’s discuss modern sensor and communications architectures. This is a demonstrative model of a modern jet fighter such as an F-22 Raptor or F-35 Lightning. These aircraft use arrays of sophisticated sensors for targeting, tracking, communications, and more. The F-35, for example, was a [pioneer in infrared sensor systems](https://www.lockheedmartin.com/en-us/products/f-35-lightning-ii-eots.html). This system utilizes many arrays of electro-optical antennas to give it a 360-degree view of everything around the aircraft. This greatly improved the fighter’s capabilities regarding searching and tracking targets. The biggest flaw of this system is that its flexibility is quite limited. The entire subsystem lives in its own bubble with its own processing pipelines.
 
 > Each aperture is tightly integrated into its corresponding RF system, and cannot be utilized by a different system without either physically rewiring the platform, or retraining an existing system to accommodate the needs of another system.
-> 
+>
 > Lockheed Martin
 
 ![](z-images/e9c18f0c9f312055aea591954e227149.webp)

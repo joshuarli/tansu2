@@ -38,6 +38,6 @@ We can already see the beginning of this shift. Lam Research makes the most semi
 
 The apocalypse occurs with the current players. Early last year SemiAnalysis protected that there would be consolidation within the NAND industry. We didn’t think that this consolidation would happen so quick. Intel is selling their NAND business to SK Hynix, and Kioxia/Western Digital are likely attempting a merger. SemiAnalysis believes there is still more consolidation to go. Micron will have to lean more on DRAM, but they likely will also partner with an existing player on future node development. Our money is on partnering with Kioxia/Western Digital. We can’t be sure exactly how this plays out, but NAND will become a complete commodity in the semiconductor space. Investors should be wary of any further investment in this market.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/the-impending-chinese-nand-apocalypse-ymtc-128-layer-nand-is-the-first-semiconductor-where-china-is-technologically-competitive/) on September 28th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/the-impending-chinese-nand-apocalypse-ymtc-128-layer-nand-is-the-first-semiconductor-where-china-is-technologically-competitive/) on September 28th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

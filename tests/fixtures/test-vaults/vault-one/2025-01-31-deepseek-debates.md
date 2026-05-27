@@ -18,7 +18,7 @@ The narrative now is that DeepSeek is so efficient that we don't need more compu
 
 ## DeepSeek and High-Flyer
 
-High-Flyer is a Chinese Hedge fund and early adopters for using AI in their trading algorithms. They realized early the potential of AI in areas outside of finance as well as the critical insight of scaling. They have been continuously increasing their supply of GPUs as a result. After experimentation with models with clusters of thousands of GPUs, High Flyer made an investment in 10,000 A100 GPUs in 2021 *before any export restrictions.* That paid off. As High-Flyer improved, they realized that it was time to spin off “DeepSeek” in May 2023 with the goal of pursuing further AI capabilities with more focus. High-Flyer self funded the company as outside investors had little interest in AI at the time, with the lack of a business model being the main concern. High-Flyer and DeepSeek today often share resources, both human and computational.
+High-Flyer is a Chinese Hedge fund and early adopters for using AI in their trading algorithms. They realized early the potential of AI in areas outside of finance as well as the critical insight of scaling. They have been continuously increasing their supply of GPUs as a result. After experimentation with models with clusters of thousands of GPUs, High Flyer made an investment in 10,000 A100 GPUs in 2021 _before any export restrictions._ That paid off. As High-Flyer improved, they realized that it was time to spin off “DeepSeek” in May 2023 with the goal of pursuing further AI capabilities with more focus. High-Flyer self funded the company as outside investors had little interest in AI at the time, with the lack of a business model being the main concern. High-Flyer and DeepSeek today often share resources, both human and computational.
 
 DeepSeek now has grown into a serious, concerted effort and are by no means a “side project” as many in the media claim. We are confident that their GPU investments account for more than $500M US dollars, even after considering export controls.
 
@@ -28,7 +28,7 @@ Source: SemiAnalysis, Lennart Heim
 
 ## The GPU Situation
 
-We believe they have access to around 50,000 *Hopper GPUs*, which is not the same as 50,000 H100, as some have claimed. There are different variations of the H100 that Nvidia made in compliance to different regulations (H800, H20), with only the H20 being currently available to Chinese model providers today. Note that H800s have the same computational power as H100s, but lower network bandwidth.
+We believe they have access to around 50,000 _Hopper GPUs_, which is not the same as 50,000 H100, as some have claimed. There are different variations of the H100 that Nvidia made in compliance to different regulations (H800, H20), with only the H20 being currently available to Chinese model providers today. Note that H800s have the same computational power as H100s, but lower network bandwidth.
 
 We believe DeepSeek has access to around 10,000 of these H800s and about 10,000 H100s. Furthermore they have orders for many more H20's, with Nvidia having produced over 1 million of the China specific GPU in the last 9 months. These GPUs are shared between High-Flyer and DeepSeek and geographically distributed to an extent. They are used for trading, inference, training, and research. For more specific detailed analysis, please refer to our [Accelerator Model](https://semianalysis.com/accelerator-industry-model/).
 
@@ -58,19 +58,19 @@ So how was DeepSeek able to have such a large cluster? The lag in export control
 
 ## Closing the Gap - V3’s Performance
 
-V3 is no doubt an impressive model, but it is worth highlighting *impressive relative to what*. Many have compared V3 to GPT-4o and highlight how V3 beats the performance of 4o. That is true but GPT-4o was released in *May of 2024*. AI moves quickly and May of 2024 is another lifetime ago in algorithmic improvements. Further we are not surprised to see less compute to achieve comparable or stronger capabilities after a given amount of time. Inference cost collapsing is a hallmark of AI improvement.
+V3 is no doubt an impressive model, but it is worth highlighting _impressive relative to what_. Many have compared V3 to GPT-4o and highlight how V3 beats the performance of 4o. That is true but GPT-4o was released in _May of 2024_. AI moves quickly and May of 2024 is another lifetime ago in algorithmic improvements. Further we are not surprised to see less compute to achieve comparable or stronger capabilities after a given amount of time. Inference cost collapsing is a hallmark of AI improvement.
 
 ![](z-images/d9e3e614b6ec3147da439ea5d6e9ccf5.webp)
 
 Source: SemiAnalysis
 
-An example is small models that can be run on laptops have comparable performance to GPT-3, which required a supercomputer to train and multiple GPUs to inference. Put differently, algorithmic improvements allow for a smaller amount of compute to train and inference models of the same capability, and this pattern plays out over and over again. This time the world took notice because it was from a lab *in China*. But smaller models getting better is not new.
+An example is small models that can be run on laptops have comparable performance to GPT-3, which required a supercomputer to train and multiple GPUs to inference. Put differently, algorithmic improvements allow for a smaller amount of compute to train and inference models of the same capability, and this pattern plays out over and over again. This time the world took notice because it was from a lab _in China_. But smaller models getting better is not new.
 
 ![](z-images/10ddbb492a07a0942f872cb7ed8adbf1.webp)
 
 Source: SemiAnalysis, Artificialanalysis.ai
 
-So far what we've witnessed with this pattern is that AI labs spend more in absolute dollars to get *even more* intelligence for their buck. Estimates put algorithmic progress at [4x per year](https://epoch.ai/blog/algorithmic-progress-in-language-models), meaning that for every passing year, 4x less compute is needed to achieve the same capability. Dario, CEO of Anthropic argues that algorithmic advancements are even faster and can yield a [10x improvement](https://darioamodei.com/on-deepseek-and-export-controls). As far as inference pricing goes for GPT-3 quality, costs have fallen 1200x.
+So far what we've witnessed with this pattern is that AI labs spend more in absolute dollars to get _even more_ intelligence for their buck. Estimates put algorithmic progress at [4x per year](https://epoch.ai/blog/algorithmic-progress-in-language-models), meaning that for every passing year, 4x less compute is needed to achieve the same capability. Dario, CEO of Anthropic argues that algorithmic advancements are even faster and can yield a [10x improvement](https://darioamodei.com/on-deepseek-and-export-controls). As far as inference pricing goes for GPT-3 quality, costs have fallen 1200x.
 
 When investigating the cost for GPT-4, we see a similar decrease in cost, although earlier in the curve. While the decreased difference in cost across time can be explained by no longer holding the capability constant like the graph above. In this case, we see algorithmic improvements and optimizations creating a 10x decrease in cost and increase in capability.
 
@@ -88,9 +88,9 @@ The answer is that reasoning is a new paradigm with faster iteration speeds and 
 
 The new paradigm, focused on reasoning capabilities through synthetic data generation and RL in post-training on an existing model, allows for quicker gains with a lower price. The lower barrier to entry combined with the easy optimization meant that DeepSeek was able to replicate o1 methods quicker than usual. As players figure out how to scale more in this new paradigm, we expect the time gap between matching capabilities to increase.
 
-Note that the R1 paper makes *no mention* of the compute used. This is not an accident – a significant amount of compute is needed to generate synthetic data for post-training R1. This is not to mention RL. R1 is a very good model, we are not disputing this, and catching up to the reasoning edge this quickly is objectively impressive. The fact that DeepSeek is Chinese and caught up with less resources makes it doubly impressive.
+Note that the R1 paper makes _no mention_ of the compute used. This is not an accident – a significant amount of compute is needed to generate synthetic data for post-training R1. This is not to mention RL. R1 is a very good model, we are not disputing this, and catching up to the reasoning edge this quickly is objectively impressive. The fact that DeepSeek is Chinese and caught up with less resources makes it doubly impressive.
 
-But some of the benchmarks R1 mention are also *misleading.* Comparing R1 to o1 is tricky, because R1 specifically doesn't mention benchmarks that they are not leading in. And while R1 matches in reasoning performance, it's not a clear winner in every metric and in many cases it is worse than o1.
+But some of the benchmarks R1 mention are also _misleading._ Comparing R1 to o1 is tricky, because R1 specifically doesn't mention benchmarks that they are not leading in. And while R1 matches in reasoning performance, it's not a clear winner in every metric and in many cases it is worse than o1.
 
 ![](z-images/629fd9d4bb46e0006cd5fafad1eb68cc.webp)
 
@@ -104,13 +104,13 @@ Source: AI Action Summit
 
 ## Google’s Reasoning Model is as Good as R1
 
-While there is a frenzy of hype for R1, a $2.5T US company released a reasoning model a month before for cheaper: Google’s Gemini Flash 2.0 Thinking. This model is available for use, and is considerably *cheaper than R1*, even with a much larger context length for the model through API.
+While there is a frenzy of hype for R1, a $2.5T US company released a reasoning model a month before for cheaper: Google’s Gemini Flash 2.0 Thinking. This model is available for use, and is considerably _cheaper than R1_, even with a much larger context length for the model through API.
 
 On reported benchmarks, Flash 2.0 Thinking beats R1, though benchmarks do not tell the whole story. Google only released 3 benchmarks so it's an incomplete picture. Still, we think Google’s model is robust, standing up to R1 in many ways while receiving none of the hype. This could be because of Google’s lackluster go to market strategy and poor user experience, but also R1 is a Chinese surprise.
 
 ![](z-images/6a3a36fc5d6ab83a66e1103b1b7de0a9.webp)
 
-To be clear, none of this detracts from DeepSeek’s remarkable achievements. DeepSeek’s structure as a fast moving, well-funded, smart and focused startup is why it's beating giants like *Meta* in releasing a reasoning model, and that's commendable.
+To be clear, none of this detracts from DeepSeek’s remarkable achievements. DeepSeek’s structure as a fast moving, well-funded, smart and focused startup is why it's beating giants like _Meta_ in releasing a reasoning model, and that's commendable.
 
 ## Technical Achievements
 
@@ -136,7 +136,7 @@ And speaking of distillation, perhaps the most interesting part of the R1 paper 
 
 ## Multi-head Latent Attention (MLA)
 
-MLA is a key innovation responsible for a significant reduction in the inference price for DeepSeek. The reason is MLA reduces the amount of KV Cache required per query by about *93.3%* versus standard attention. KV Cache is a memory mechanism in transformer models that stores data representing the context of the conversation, reducing unnecessary computation.
+MLA is a key innovation responsible for a significant reduction in the inference price for DeepSeek. The reason is MLA reduces the amount of KV Cache required per query by about _93.3%_ versus standard attention. KV Cache is a memory mechanism in transformer models that stores data representing the context of the conversation, reducing unnecessary computation.
 
 As discussed in our scaling laws article, KV Cache grows as the context of a conversation grows, and creates considerable memory constraints. Drastically decreasing the amount of KV Cache required per query decreases the amount of hardware needed per query, which decreases the cost. However we think DeepSeek is providing inference at cost to gain market share, and not actually making any money. Google Gemini Flash 2 Thinking remains cheaper, and Google is unlikely to be offering that at cost. MLA specifically caught the eyes of many leading US labs. MLA was released in DeepSeek V2, released in May 2024. DeepSeek has also enjoyed more efficiencies for inference workloads with the H20, due to higher memory bandwidth and capacity compared to the H100. They have also announced partnerships with Huawei but very little has been done with Ascend compute so far.
 

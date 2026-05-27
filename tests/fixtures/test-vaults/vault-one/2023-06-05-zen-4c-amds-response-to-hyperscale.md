@@ -11,7 +11,7 @@ description: "Bergamo Volumes, ASP, Performance, Hyperscale Order Shift, Die Sho
 Bergamo, AMD’s upcoming 128-core server part sets new heights in x86 CPU performance. Architected to be [cloud native](https://www.semianalysis.com/p/sound-the-siryn-ampereone-192-core), Bergamo represents an important inflection point in datacenter CPU design as Moore’s Law grinds to a crawl. At the heart of Bergamo is Zen 4c, a brand-new CPU core variant of their successful 5nm Zen 4 microarchitecture that enables the push toward more cores per socket. While official details of Zen 4c have been rather scant so far, AMD’s Chief Technical Officer had this to say at their [Ryzen 7000 Keynote](https://youtu.be/WcH_7xsYtUk?t=1224):
 
 > Our Zen 4c, it's our compact density that's an addition, it's a new swimlane to our cores roadmap, and it delivers the identical functionality of Zen 4 at about half of the core area.
-> 
+>
 > Mark Papermaster, AMD CTO
 
 In this deep dive, we will share out analysis on Zen 4c architecture, market impact, ASP, volumes, order switches from hyperscalers, and how AMD is able to halve core area while keeping the same core functionality and performance. We will examine why AMD is pursuing this new path in CPU design in their response to market demands and the competition from ARM-based chips from [Amazon](https://www.semianalysis.com/p/amazons-cloud-crisis-how-aws-will), [Google](https://www.semianalysis.com/p/google-ai-infrastructure-supremacy), [Microsoft](https://semianalysis.sharepoint.com/:w:/s/Confidential/EeVJIcFY-7dFsfjT6D0coHQBkvpnm7ym5dsItRd7EtKNLw), [Alibaba](https://www.semianalysis.com/i/122267137/ipo-hyperscale-in-house-chips-and-amdintel-competition), [Ampere Computing](https://www.semianalysis.com/p/sound-the-siryn-ampereone-192-core), as well as Intel’s x86 Atom E-cores.
@@ -131,7 +131,7 @@ The final method of area reduction is by using denser memory. Zen 4c has a reduc
 To save area, AMD has replaced these 8T dual-port bitcells with a new 6T pseudo dual-port bitcell developed by TSMC.
 
 > A 4.24GHz 128X256 SRAM Operating Double Pump Read Write Same Cycle in 5nm Technology, Z. N. Zhang et al, TSMC, Taiwan
-> 
+>
 > A high speed 1R1W two port 32Kbit (128X256) SRAM with single port 6T bitcell macro is proposed. A Read-Then-Write (RTW) double pump CLK generation circuit with TRKBL bypassing is proposed to enhance read performance. Double metal scheme is applied to improve signal integrity and overall operating cycle time. A Local Interlock Circuit (LIC) is introduced in Sense-Amp to reduce active power and push Fmax further. The silicon results show that the slow corner wafer was able to achieve 4.24GHz at 1.0V and 100 degree Celsius in 5nm FinFET technology.
 
 TSMC will be presenting further details on this new bitcell at VLSI 2023 in June, which SemiAnalysis will be attending. From the description, we see that TSMC is able to simulate a dual-port bitcell by doing a sequential read-and-write operation in the same clock cycle. While this is not as flexible as two independent access ports, the area reduction is significant enough for AMD to adopt this technology for Zen 4c. We will see more of these area-saving techniques going forward as [SRAM area scaling flatlines](https://fuse.wikichip.org/news/7343/iedm-2022-did-we-just-witness-the-death-of-sram/).

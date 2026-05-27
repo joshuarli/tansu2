@@ -199,13 +199,13 @@ impl LogHub {
         #[cfg(debug_assertions)]
         {
             let state = self.inner.state.lock().expect("log hub mutex poisoned");
-            return LogSnapshot {
+            LogSnapshot {
                 events: state
                     .events
                     .iter()
                     .map(|stored| stored.event.clone())
                     .collect(),
-            };
+            }
         }
         #[cfg(not(debug_assertions))]
         {
@@ -222,7 +222,7 @@ impl LogHub {
             let (tx, rx) = mpsc::channel();
             let mut state = self.inner.state.lock().expect("log hub mutex poisoned");
             state.subscribers.push(tx);
-            return Some(rx);
+            Some(rx)
         }
         #[cfg(not(debug_assertions))]
         {

@@ -24,6 +24,6 @@ Given Huawei’s own chipsets and modems will cease production within the next 1
 
 Huawei has multiple contingencies in place outside of ordering from Mediatek. They have also begun producing 14nm based Kirin 710A at the Chinese logic foundry, SMIC. SMIC is just beginning to ramp 14nm FinFet technology, but it is unknown if SMIC will be able to continue due to their relationship with Huawei and resulting US restrictions. Despite having a second source from SMIC in the midrange, the Chinese smartphone market is a ripe opportunity for MediaTek. With sanctions being lobbed at Huawei, and a Chinese reaction excepted, there is only 1 direction for the Taiwanese bystander to go.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/mediatek_stands_to_gain_the_most_from_the_new_cold_war/) on May 22nd 2020*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/mediatek_stands_to_gain_the_most_from_the_new_cold_war/) on May 22nd 2020_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

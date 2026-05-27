@@ -28,6 +28,6 @@ TSMC’s N5 node diverges from prior shrinks by showing signs of slowing SRAM sc
 
 ![](z-images/be78a557764f52956e82d299475e03f7.webp)
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/apples-a14-packs-134-million-transistors-mm2-but-falls-far-short-of-tsmcs-density-claims/) on October 27nd 2020*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/apples-a14-packs-134-million-transistors-mm2-but-falls-far-short-of-tsmcs-density-claims/) on October 27nd 2020_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

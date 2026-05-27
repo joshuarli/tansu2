@@ -176,13 +176,13 @@ Firms like ScaleAI, Mercor, and Handshake are now seeing huge amounts of busines
 
 Source: Mercor.
 
-Qwen did *another* stage of RL. It is in their best interest to give off impressions of efficiency to the greatest extent possible, so they did not share the number of samples for this next stage. This is because it is a much larger than 4,000.
+Qwen did _another_ stage of RL. It is in their best interest to give off impressions of efficiency to the greatest extent possible, so they did not share the number of samples for this next stage. This is because it is a much larger than 4,000.
 
 In this stage, they conducted RL in over 20 distinct domains. They also used all three types of reward models (rule based, LLM-judge with and without ground truth answers). This required complex engineering and compute.
 
 In the long run, we expect labs to perform RL across hundreds of specialized domains to significantly boost model performance. Quality matters more than quantity—models optimize precisely to their training data—making careful selection and filtering of this data critical.
 
-So while the samples used were 4,000, it took a substantial amount of compute to get there. It could be argued that RL is sample efficient when it comes to data, but it is certainly sample *inefficient* when it comes to compute. RL requires significantly larger engineering teams to setup effectively compared to pretraining.
+So while the samples used were 4,000, it took a substantial amount of compute to get there. It could be argued that RL is sample efficient when it comes to data, but it is certainly sample _inefficient_ when it comes to compute. RL requires significantly larger engineering teams to setup effectively compared to pretraining.
 
 ## Data is the moat
 
@@ -208,11 +208,11 @@ Extended task durations mean each RL iteration also takes longer, slowing down t
 
 Computer use is one example that illustrates many of the problems with longer horizon tasks. First, as an agentic task, it is closer to real world problems and behavior, which presents new challenges. In the case of computer use, agents run into many anti-bot web scripts, captchas, and obscure Cloudflare protection features. This happens in a relatively sporadic way. Details like that add another layer of debugging to the environment that did not previously exist. Computer use requires a lot of infrastructure in the way of VMs and browser connections. These now need to be stable and operational for long amounts of time, in addition to being subject to previously discussed environment engineering requirements.
 
-Computer use tasks often extend for several hours. This means that the rollout gets longer and the [reward gets sparser](https://www.dwarkesh.com/p/timelines-june-2025?manualredirect=). In other words, the agent took ten times more steps but is only rewarded for the last token. This makes the RL signal weaker. Computer use also relies on images and videos to *show* the model what is going on. While there has been [work](https://arxiv.org/pdf/2307.13854v4) trying to do computer use through streaming the HTML file or setting up text representations of the web page, models do not understand what images represent in this context. Getting text representations to work will decrease the memory needs of computer use.
+Computer use tasks often extend for several hours. This means that the rollout gets longer and the [reward gets sparser](https://www.dwarkesh.com/p/timelines-june-2025?manualredirect=). In other words, the agent took ten times more steps but is only rewarded for the last token. This makes the RL signal weaker. Computer use also relies on images and videos to _show_ the model what is going on. While there has been [work](https://arxiv.org/pdf/2307.13854v4) trying to do computer use through streaming the HTML file or setting up text representations of the web page, models do not understand what images represent in this context. Getting text representations to work will decrease the memory needs of computer use.
 
 ## Environment compute
 
-We see huge potential in spending on *environment compute* instead of just RL compute. An example would be a highly realistic and difficult to reward hack environment using tens or hundreds of CPUs in tandem. This is an entirely new area ripe for scaling. The realism could allow for incredible performance upgrades due to the clean signal.
+We see huge potential in spending on _environment compute_ instead of just RL compute. An example would be a highly realistic and difficult to reward hack environment using tens or hundreds of CPUs in tandem. This is an entirely new area ripe for scaling. The realism could allow for incredible performance upgrades due to the clean signal.
 
 These environments in the future will also run on GPUs which are simulating a digital twin of the real world. It's noteworthy that these GPUs have different requirements that still have graphics/rendering capabilities such as the RTX Pro GPUs or client GPUs. The AI specific GPUs and ASICS such as the H100, B200, TPUs, Trainium, etc lack significant graphics/rendering related hardware. As such there is also significant resources being invested in building AI world models for RL environments instead of the normal RL environments described elsewhere. This would make scaling easier as otherwise environment complexity will explode due to all the heterogenous types of software and hardware.
 
@@ -358,8 +358,8 @@ ASSISTANT  (turn 4 – final reply)
 Compose prose answer and cite both search results.
 </think>
 <answer>
-Zürich’s population density is **≈ 4 586 people /km²**  
-(using population = 402 762 and area = 87.88 km²).  
+Zürich’s population density is **≈ 4 586 people /km²**
+(using population = 402 762 and area = 87.88 km²).
 Sources: search result [0], search result [1].
 </answer>
 ```

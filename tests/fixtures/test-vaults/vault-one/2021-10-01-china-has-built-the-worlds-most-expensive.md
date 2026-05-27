@@ -15,7 +15,7 @@ One area China wants to leapfrog the competition is compound semiconductors. Spe
 The largest such project is Hunan Sanan Semiconductor fab. It aims to be a fully integrated SiC wafer fab from boule growth and slicing all the way to power devices, packaging, and testing. This facility has an eye popping $2.5B price tag for phase 1 and 2 with a total output of 30,000 6” wafers per month. Sanan Optoelectronics, the parent company, has stated the phase 1 was built in less than a year and can already produce 6” SiC wafers.
 
 > This is phase 1 of our site, at 15,000 wafers a month, we've brought half of its full capacity online... In phase 2 we will build a mirror image of phase one. We have an aggressive plan to get the plant fully operational - meaning equipped to deliver 30,000 wafers a month by 2024
-> 
+>
 > Mrinal Das, Director, Technical Marketing and Sales at Sanan IC
 
 This seems astounding at first glance, but there are major issues here. Sanan likely means the cleanroom was constructed in that time, but there is simply no way the entire operation was set up and wafers are being churned out. The current output of this fab is still unknown, but our sources in China do not believe they ship anywhere close to 7,500 wafers per month number currently.
@@ -28,6 +28,6 @@ SemiAnalysis wants to put a disclaimer on that Applied Material number. It is in
 
 Regardless of the napkin math and estimates, one thing is clear. The $2.5B Sanan project is more than 2x what Cree Wolfspeed is spending on Mohawk Valley but has well under half the total wafer output. The Sanan fab has many serious technical challenges related to ramping, and they are hand waving them away. The tool chain and process is very custom in silicon carbide and western companies have issues even perfecting one let alone all of them at once. Furthermore, their production numbers are nonsensical given the $2.5B cost of the project. Is this another case where government initiatives, subsidies, and unrealistic targets end up in lighting money on fire?
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/china-has-built-the-worlds-most-expensive-silicon-carbide-fab-but-numbers-dont-add-up/) on September 30th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/china-has-built-the-worlds-most-expensive-silicon-carbide-fab-but-numbers-dont-add-up/) on September 30th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

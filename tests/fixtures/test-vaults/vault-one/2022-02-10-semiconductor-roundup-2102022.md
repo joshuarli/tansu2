@@ -27,7 +27,7 @@ Amazon keeps increasing the number of years to depreciate their servers. Means t
 Total capex at $35.0 billion in 2020, $55.4 billion in 2021, and 2022 is going up without a doubt.
 
 > Unearned revenue primarily relates to prepayments of AWS services and Amazon Prime memberships. Our total unearned revenue as of December 31, 2020 was $11.6billion, of which $9.3 billion was recognized as revenue during the year ended December 31, 2021 and our total unearned revenue as of December 31, 2021 was $14.0billion
-> 
+>
 > For contracts with original terms that exceed one year, those commitments not yet recognized were $80.4 billion as of December 31, 2021. The weighted average remaining life of our long-term contracts is 3.8 years.
 
 That backlog!
@@ -57,13 +57,13 @@ While most of this expansion is not related to silicon photonics, it is one area
 This quote is amazing
 
 > Thank you for your question. Perhaps the biggest gift for all the pain we're going through now in semiconductors is that we have very painfully learned the lesson that we cannot manage the supply chain for these key components as we have. In fact, you could argue that in the change of transition to these digital electric vehicles that supply chain could be one of the biggest advantages a particular company has or doesn't have.
-> 
+>
 > The way we look at it is the key electric components, memory chips, semiconductors. I would break semiconductors into 2 types. I'll come back with GlobalFoundries in a second. Feature-rich chips that we still use a lot. A window regulator doesn't need to have a 4-nanometer chip. And the advance -- but we also have sensors, power electronics for our inverters, the batteries themselves all the way back to the mine, the inverters of different battery. Chemistries itself have different raw materials and kind of ecosystems that support them. So this is a very important topic for the company.
-> 
+>
 > How different it is? It's really different. We need different talent at the company. We need physical inspection of the actual producers. We need direct contracts with them. We need to design the SoC ourselves. We need to direct in the case -- in some cases, to even direct prefer build to print or actually use supplier XYZ to get out of where we've been. And this takes talent. It takes a different approach. It takes more resources.
-> 
+>
 > On GlobalFoundries, it's kind of the first big bet, but there'll be many, many more coming for us. We're very dependent on TSMC for our feature-rich nodes. Obviously, the capacity is at risk over time as the industry moves to more advanced nodes, including us. And as I said, we're going to need feature-rich nodes for many years to come. GlobalFoundries knows how to build them. They know to build them in the United States. We can partner with the government, depending on the CHIPS Act to capacitize here. It will be a few years until we benefit from that, but it's a really big thing to descale ourselves on the feature-rich chips from the current ecosystem that we depend on around the world. And I think GlobalFoundries is a really interesting deal when we get into the details.
-> 
+>
 > We have to put cash up when we participate. Those feature-rich semis will be used by other companies, industrial companies, not just Ford. It's a really interesting deal. And I was talking to the U.S. company. You can expect the same kind of thing on advanced nodes and all the other components I mentioned, including more deals on the raw material for various types of battery chemistry. And this is a culture change at Ford. As I said, this is part of the rhythm change between ICE and BEV.
 
 Did the auto company that fared the worst from shortages just pivot the hardest towards semiconductors? Some of it is empty signaling because of how poorly Ford has been doing under current shortages, but some of it is also a culture shift at the firm.
@@ -86,7 +86,7 @@ The traditional wire bonder orders do shrink in 2022, but [the incoming business
 And because we are so humble, here is the response to our question from the earnings call about the relationship between front end and back-end spending.
 
 > Semi unit growth was around 20% in calendar year '21. So front-end investment continue to flood through front end. Yes, that's true. But normally, I think it will take a year, sometimes 2 years, depending on what kind of technology and investment scale to reach.
-> 
+>
 > For example, investment from 2 years ago in China are expected to support wafer capacity growth in the second half calendar year, right? So I don't know if I answer your question. So normally, I think it takes up probably -- it can take up to 2 years.
 
 None of the 2021 or 2022 front end capex has flowed through to backend orders. We are still bullish once we get through this air pocket. The stock probably doesn’t do too much until we get through Q2.
@@ -94,9 +94,9 @@ None of the 2021 or 2022 front end capex has flowed through to backend orders. W
 I also asked about the battery business. This is one that I am very bullish on KLIC about. With the over $30B in battery facilities for EVs announced, the pack construction is an incredible opportunity.
 
 > Q: For a follow-up, I wanted to ask a bit more about the battery business. At the Investor Day, you talked about a laser-based cylindrical bonder system, but we didn't really get much information beyond that. There's a lot of competition in the heavy wire bonder space for automotive. But what is this laser system? What is the advantage here? What does that do for competition?
-> 
+>
 > Okay. So historically, I think we live in the heavy wire wedge space within automotive, right? But right now, actually, we have a battery solution, 2 for cylindrical and 1 for prismatic. So let me get into a right point why people think about laser compared to wedge. I think laser has a much faster process. The laser, the cost of ownership is low. But it hasn't demonstrated high-volume production capability yet.
-> 
+>
 > One of the biggest issue, I think the process window tends to be narrow. And if a process window shift a little bit it can lead to some reliability concern, right? But some people actually -- I don't even know the term, pack assembly. So nobody, I think these days people use for -- tend to -- try to use a pack assembly, and it does provide an alternative process for some customers.
 
 Fusen isn’t a native English speaker, and he is clearly more of a technical guy, so don’t fault the transcription service I used here too much. The point is they have heavy bonders for cylindrical and prismatic battery cells as well as a new laser system for automotive. We believe the customer for this new system is LG. Tesla by the way, has been a top 10 customer for KLIC as well. They are getting wins at CATL, Panasonic, and BYD aswell.

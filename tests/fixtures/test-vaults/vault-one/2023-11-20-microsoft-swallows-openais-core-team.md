@@ -9,7 +9,7 @@ description: "OpenAI is nothing without its people."
 OpenAI has imploded. Satya Nadella has somehow masterfully navigated this weekend’s wild events and has ended up with the core OpenAI research team absorbed into Microsoft.
 
 > And we’re extremely excited to share the news that Sam Altman and Greg Brockman, together with colleagues, will be joining Microsoft to lead a new advanced AI research team.
-> 
+>
 > [Satya Nadella](https://twitter.com/satyanadella/status/1726509045803336122)
 
 To quickly recap for those who weren’t caught in the drama loop and enjoyed their weekends, [Sam Altman (CEO) was fired by OpenAI’s board for vague reasons](https://openai.com/blog/openai-announces-leadership-transition). This was done without the board discussing their decision with any of OpenAI’s investors, including Microsoft. Greg Brockman (Chairman and President) was also kicked off the board and demoted. [He subsequently quit in revolt](https://x.com/gdb/status/1725736242137182594?s=20). The OpenAI board, which has [no legal obligation to shareholders or really to anything besides AI safety](https://openai.com/our-structure), has had plenty of opportunity to explain their drastic actions, but [they have not done so thus far, even internally](https://x.com/karpathy/status/1726289070345855126?s=20). Multiple [other key leaders on GPT-4](https://openai.com/contributions/gpt-4) and GPT-5 such as Jakub Pachocki and Szymon Sidor have also quit.
@@ -25,7 +25,7 @@ On Sunday, there were [negotiations to rejoin the firm](https://x.com/sama/statu
 Sam and Greg were considering creating a brand-new startup, but that would have likely caused a >1 year speed bump. Instead, now there is a new subsidiary within Microsoft.
 
 > I’m super excited to have you join as CEO of this new group, Sam, setting a new pace for innovation. We’ve learned a lot over the years about how to give founders and innovators space to build independent identities and cultures within Microsoft, including GitHub, Mojang Studios, and LinkedIn, and I’m looking forward to having you do the same.
-> 
+>
 > [Satya Nadella](https://twitter.com/satyanadella/status/1726516824597258569)
 
 There is a mass exodus of the core OpenAI team leaving and joining Microsoft. This new organization within Microsoft will get **hundreds of technical staff from OpenAI**.
@@ -59,7 +59,7 @@ It is very likely that this development accelerates spending further and Microso
 Within a few hours of Sam being fired, Satya minced no words in his tweet “supporting” OpenAI’s new leadership. It was effectively a thinly veiled threat that said “I don’t need you.” (which he doesn’t for copilot deployment)
 
 > We have a long-term agreement with OpenAI with full access to everything we need to deliver on our innovation agenda and an exciting product roadmap
-> 
+>
 > [Satya Nadella, Microsoft CEO](https://twitter.com/satyanadella/status/1725656554878492779)
 
 Microsoft has full legal rights and access to the weights of the base GPT-4 model as well as the various fine-tuned versions and DALL-E 3.

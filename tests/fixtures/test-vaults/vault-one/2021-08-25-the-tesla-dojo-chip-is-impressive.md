@@ -22,7 +22,7 @@ One of Tesla’s biggest draws is that the chip-to-chip interconnect is incredib
 
 In order to get this massive IO out of the chip, Tesla has to rely on very exotic packaging. Their chip packaging is ludicrously expensive, but it is the only way to get 8TB/s of IO out of such a small package. Normal LGA style packaging that a desktop or server CPU would utilize would not have anywhere near enough pins.
 
-Furthermore, the amount of power consumed would explode moving 8TB/s in and out of such crude packaging. TSMC’s CoWoS has a 3x reticle limit and InFo has a 2x reticle limit. This means Tesla could only package a few chips together. Their only choice was a wafer scale packaging. Specifically, they use a TSMC integrated fan out system on wafer (InFO\_SoW).
+Furthermore, the amount of power consumed would explode moving 8TB/s in and out of such crude packaging. TSMC’s CoWoS has a 3x reticle limit and InFo has a 2x reticle limit. This means Tesla could only package a few chips together. Their only choice was a wafer scale packaging. Specifically, they use a TSMC integrated fan out system on wafer (InFO_SoW).
 
 ![](z-images/81940b6c142789791092986183f8a317.webp)
 
@@ -52,6 +52,6 @@ Elon Musk stated that eventually they could start a SaaS business with this chip
 
 Cost, custom interconnects, memory constraints, lack of software, and the fact that this chip is 2022 or beyond is something we have to keep in mind. This chip is not Tesla designing something that is better than everyone else all by themselves. We are not at the liberty to reveal the name of their partner(s), but the astute readers will know exactly who we are talking about when we reference the external SerDes and interconnect IP. The Tesla chip and system design is incredibly impressive, but it should not be hyped to the moon.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/the-tesla-dojo-chip-is-impressive-but-there-are-some-major-technical-issues/) on August 25th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/the-tesla-dojo-chip-is-impressive-but-there-are-some-major-technical-issues/) on August 25th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

@@ -27,7 +27,7 @@ Despite growing as a percentage of revenue, in absolute dollar terms, the segmen
 Automotive was the standout. It grew ~50% year on year! This sounds great for most automotive suppliers, such as NXP, Onsemi, Infineon, and ST Micro, but it wasn’t all pretty.
 
 > While automotive demand is holding steady for TSMC and it is showing signs of softening into second half of 2023.
-> 
+>
 > C.C Wei, TSMC CEO
 
 This confirms the view we shared with clients 2 months ago on flipping underweight $ON.
@@ -67,7 +67,7 @@ A big contributor to this is the tightening gap between smartphone and HPC produ
 N2, their 1 <sup>st</sup> attempt at nanosheets, is still expected to enter volume production in 2025, with a much higher revenue contribution from 2026. N2 will deliver a full node worth of performance and power benefit over N3. While not commenting on competitors, TSMC expects its N3 node to be the most advanced in the industry, and they are fully confident that N2 will continue to extend its technology leadership in the future.
 
 > Our 2-nanometer technology will be the most advanced semiconductor technology in the industry, in both density and energy efficiency when it is introduced and will further extend our technology leadership well into the future.
-> 
+>
 > C.C Wei, TSMC CEO
 
 Let’s see if Intel’s 18A has anything to say about this. Volumes TSMC will retain leadership but the technology crown maybe not. We wrote extensively about a portion of the [18A process here.](https://www.semianalysis.com/p/euv-requirements-halved-applied-materials)
@@ -110,7 +110,7 @@ TSMC guided for Advanced Packaging revenue to decline due to customer demand, fr
 That being said, the long-term growth rate is expected to be slightly higher than the corporate average. In terms of capacity expansion, the CEO had this to say:
 
 > Just recently in these 2 days I received a customer's phone call requesting a big increase on the backend capacity, especially in the CoWoS. We are still evaluating that.
-> 
+>
 > C.C Wei, TSMC CEO
 
 Nvidia is the largest customer of CoWoS for their A100 and H100 class datacenter AI GPUs. [Google, through Broadcom, is the 2 <sup>nd</sup> largest customer for TPUv4 and TPUv5](https://www.semianalysis.com/p/google-ai-infrastructure-supremacy). AMD also utilizes CoWoS in some capacity, but their volume in 2023 is relatively small. Lastly, [Amazon’s Trainium through AlChip](https://www.semianalysis.com/p/amazons-cloud-crisis-how-aws-will), as well as Microsoft’s new AI chips, also use CoWoS.

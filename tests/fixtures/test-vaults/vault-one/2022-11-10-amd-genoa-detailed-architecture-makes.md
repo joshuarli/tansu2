@@ -17,7 +17,7 @@ AMD has held pre-briefings for their next-generation 96-core Zen 4-based Genoa s
 This report will focus mostly on technology, architecture, performance, and SKUs. Long story short, the server industry has been slow to switch to new suppliers due to long validation cycle times. The safe bet was to stick to your existing vendor, whether it was IBM decades ago, or Intel now.
 
 > It is not safe to stay with the performance deficit of Xeon.
-> 
+>
 > Ram Peddibhotla, Head of Epyc Product Management
 
 ![](z-images/fbab18322883c615525d8db306f03d0a.webp)
@@ -51,7 +51,7 @@ The heart of Genoa is the Zen 4 core. Performance is up massively with a 14% imp
 We got to meet Mike Clark yesterday, and that was incredible. For those who don’t know, he is basically the inventor of Zen. He’s in charge of the entire CPU core roadmap, but he’s pretty humble.
 
 > I’m honored to represent the greatest CPU team on earth
-> 
+>
 > Mike Clark, AMD Zen Chief Architect
 
 ![](z-images/0ff9e3dd6bb4443dadb45abd2a19fb8c.webp)
@@ -109,7 +109,7 @@ Compared to consumer platforms, power budgets are not exceeded for a long durati
 AMD generally supports CXL 1.1 but supports CXL 2.0 for Type 3 memory devices. We exclusively detailed this [feature support level here.](https://www.semianalysis.com/p/cxl-deep-dive-future-of-composable)
 
 > Type 3 is what the ecosystem wanted.
-> 
+>
 > Kevin Lepak, Genoa Server SOC Chief Architect
 
 Genoa was delayed 2 quarters to add this feature, and we believe that was the correct decision.

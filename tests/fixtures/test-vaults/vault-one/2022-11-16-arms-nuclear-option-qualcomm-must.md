@@ -53,13 +53,13 @@ Terminating the Qualcomm ALA would kill this custom core effort at Qualcomm, inc
 Qualcomm believes they could freely pass the Phoenix core microarchitecture between the acquired Nuvia entity and themselves. Qualcomm claims they do not need Arm’s consent as Arm does not own or have any rights to the IP transferred from Nuvia to Qualcomm. Arm disagrees with Qualcomm’s argument.
 
 > Qualcomm’s ALA with Arm expressly excludes any license to Arm technology that was not developed under that specific ALA. The Qualcomm ALA limits Qualcomm’s design and manufacture rights, and Arm’s verification, delivery, and support obligations, to chips
-> 
+>
 > (1) based on the technology Arm delivered to Qualcomm under that ALA,
-> 
+>
 > (2) created at Qualcomm, by Qualcomm engineers and Qualcomm subsidiaries during the period while those entities were subsidiaries of Qualcomm, and
-> 
+>
 > (3) licensed subject to the terms of that ALA.
-> 
+>
 > None of this is true of the Phoenix core or other designs developed by Nuvia engineers at Nuvia based on the technology and license granted to Nuvia by Arm when Nuvia was a standalone company. Thus, Qualcomm is not only trying to develop an unlicensed product, but is also **materially breaching its ALA with Arm.**
 
 The last statement is incredibly important. The Nuvia ALA was terminated following the acquisition by Qualcomm because Arm’s consent is required for a change of control. Arm is now arguing that Qualcomm has breached its own ALA, which would give Arm the right to cancel Qualcomm’s ALA.
@@ -105,11 +105,11 @@ One part of Qualcomm’s countersuit that we thought was odd was the mention tha
 There is a big argument among the tech and analyst community about whether the lawsuit is only about money or if there is an element of vengeance and hubris as well. Qualcomm argues that Arm is both mad about the failed merger and that Qualcomm will move from a more lucrative technology license agreement (TLA) to a less lucrative architecture license agreement (ALA). Qualcomm claims that Arm wants to extract more money from Qualcomm to make the upcoming IPO look better.
 
 > Arm denies the allegation that it is “\[s\]eeking additional leverage it can use to attain royalties from Qualcomm to which it is not entitled under the contracts” because even if it did not have to stop using and destroy the relevant Nuvia technology, Qualcomm would have been subject to Nuvia’s royalty rates under the Nuvia ALA in its capacity as Nuvia’s acquirer.
-> 
+>
 > For example, Section 6.2 of the Nuvia ALA says:
-> 
+>
 > \[REDACTED\]
-> 
+>
 > This royalty obligation for products that are based on or incorporate Arm-based technology developed in whole or in part under the Nuvia ALA survives termination of the Nuvia ALA. In contrast, Qualcomm improperly sought to bring the Nuvia technology under its own ALA to avoid paying Nuvia’s royalty rates, even though the Nuvia technology was not developed or licensed under Qualcomm’s ALA.
 
 Currently, Arm is not asking for more money through the courts; they are asking for the Nuvia-derived IP to be destroyed. There is no claim for damages or money in the counterclaim, but we do believe that the ultimate goal of this posturing is to bring a settlement that includes higher royalty rates.

@@ -70,8 +70,8 @@ Only Intel has the manufacturing, packaging, and silicon photonics capabilities 
 
 This model would involve deep collaboration with Intel on the design and manufacture of massive systems on packages. If Intel can seize the opportunity by keeping their advantage in high volume, reliable, and efficient silicon photonics, they will continue to find themselves at the heart of every datacenter. While this does not help Intel with any of their problems before 2025, it could become the engine for growth beyond this time frame.
 
-***Author’s Note:** A friend asked me to write an article with what I believe is the single largest bull case for Intel. While I am cautious of believing the narrative I have espoused above, if Intel can outexecute others on photonics they will not become an eroded shell. They could even eventually find themselves as the most valuable semiconductor company again. This would be a long and low probability path.*
+**\*Author’s Note:** A friend asked me to write an article with what I believe is the single largest bull case for Intel. While I am cautious of believing the narrative I have espoused above, if Intel can outexecute others on photonics they will not become an eroded shell. They could even eventually find themselves as the most valuable semiconductor company again. This would be a long and low probability path.\*
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/intels-trojan-horse-into-the-foundry-business-co-packaged-silicon-photonics-is-intels-path-forward-for-idm-2-0/) on June 11th 2021*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/intels-trojan-horse-into-the-foundry-business-co-packaged-silicon-photonics-is-intels-path-forward-for-idm-2-0/) on June 11th 2021_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

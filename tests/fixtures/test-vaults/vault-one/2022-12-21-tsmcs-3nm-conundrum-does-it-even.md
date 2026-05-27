@@ -133,7 +133,7 @@ While the increase in logic density is undoubtedly promising, the low SRAM densi
 With N3B failing to reach TSMC’s targets for performance, power, and yield, N3E was developed. Its purpose was to fix the shortcomings of N3B. The first significant change is a slight relaxation of the metal pitches. Instead of using multi-patterning EUV on the contacts, V1, V2, M0, M1, and M2 metal layers, TSMC backed off and switched to single patterning.
 
 > Furthermore, three critical layers requiring EUV double patterning in previous generation are replaced by single EUV patterning, which reduces process complexity, intrinsic cost and cycle time.
-> 
+>
 > TSMC at IEDM
 
 The number of EUV layers goes from 25 in N3B to 19 on N3E. This was achieved while keeping the power and performance figures similar. Logic density also shrunk slightly. Moreover, with a standard monolithic chip (50% Logic + 30% SRAM + 20% Analog), density only increases by 1.3x. This is effectively flat on cost per transistor for the typical monolithic chip designs, with higher development costs.
@@ -141,7 +141,7 @@ The number of EUV layers goes from 25 in N3B to 19 on N3E. This was achieved whi
 During IEDM, TSMC revealed that N3E had a bit-cell size of 0.021 μm2, precisely the same as N5. This is a devastating blow to SRAM. TSMC backed off of the SRAM cell size versus N3B due to yields.
 
 > The 256Mb HC/HD SRAM macros and product-like logic test chip have consistently demonstrated healthier defect density than our previous generation
-> 
+>
 > TSMC
 
 N3E is doing much better than N3B and will be in high-volume production in the middle of next year. For those keeping track, that's over 3 years from the introduction of N5. This is the node that AMD, Nvidia, Broadcom, Qualcomm, MediaTek, [Marvell](https://www.semianalysis.com/p/marvelldeepdive2022), and many other companies will eventually be using N3E for their leading edge.

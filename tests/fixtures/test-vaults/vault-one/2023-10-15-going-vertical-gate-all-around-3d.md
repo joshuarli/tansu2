@@ -78,7 +78,7 @@ SiH <sub>4</sub> + O <sub>2</sub> → SiO <sub>2</sub> + 2 H <sub>2</sub>
 
 #### Atomic Layer Deposition
 
-*Atomic Layer Deposition (ALD)* is a subset of CVD. In ALD, each precursor gas is emitted one at a time. The first gas is emitted to coat the wafer. An inert gas (such as N <sub>2</sub> or Argon) is then flowed into the chamber to purge any excess of the previous precursor gas and any by-products. Then the second reactant gas is flowed in. An atomic layer of the second reactant attaches to the surface of the wafer where a layer of the first reactant and these elements will react to create the target material. This process is repeated to create a film of the desired thickness.
+_Atomic Layer Deposition (ALD)_ is a subset of CVD. In ALD, each precursor gas is emitted one at a time. The first gas is emitted to coat the wafer. An inert gas (such as N <sub>2</sub> or Argon) is then flowed into the chamber to purge any excess of the previous precursor gas and any by-products. Then the second reactant gas is flowed in. An atomic layer of the second reactant attaches to the surface of the wafer where a layer of the first reactant and these elements will react to create the target material. This process is repeated to create a film of the desired thickness.
 
 The key feature of ALD is that it is a self-limiting process. Only one single layer of atoms is deposited at a time. Once the surface is saturated, the precursor cannot be deposited anymore. This is what makes ALD attractive as a deposition method.
 
@@ -145,9 +145,9 @@ ALD in particular sees more use. There are more and more different films being u
 [Let’s revisit the 3D NAND process flow which we previously wrote about:](https://www.semianalysis.com/i/134997222/d-nand-structure-and-manufacturing-flow)
 
 > Alternating layers of Oxide and Nitride films are first deposited onto the base wafer. Each layer is between 20 to 30 nm in thickness. The theoretical limit per stack can be over 250 layers high and nearly 7 microns tall. A thick hard mask is then added to prepare for the High Aspect Ratio (HAR) channel hole etch. This Reactive Ion Etch process digs an array of holes 70 times deeper than wide. Channel hole uniformity in roundness and across the entire depth of the hole is crucial in reducing memory cell performance variability. These steps are repeated for designs with multiple decks that are then stacked on top of each other.
-> 
+>
 > From this, the channel holes are filled with multiple layers to form the charge trap cell, with each layer deposited on the sidewalls making the hole progressively narrower. Next comes the metal replacement gate process. Slits are etched down though all layers to form trenches that expose the sides of the stack. This allows access for the exhumation of the Nitride layers and subsequent deposition of barriers done through ALD and the Tungsten Word Line fill. Staircases are etched on the sides of the array to expose the Word Line layers to vertical contacts.
-> 
+>
 > Finally, the Bit line and metal interconnect is formed above and connects with the fabricated CMOS circuits, which include Word Line drivers and other peripheral circuitry for the NAND interface. From this, we see that 3D NAND is highly dependent of HAR etch and deposition capabilities to scale density and performance.
 
 Etch gets a lot of attention for NAND, but notice there’s a lot of deposition too.

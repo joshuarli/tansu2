@@ -246,8 +246,8 @@ A 2N redundancy on UPS systems (i.e. “2N Distribution”) for Rated 3 datacent
 
 Source: Schneider Electric
 
-But hyperscalers typically use schemes such as 4N3R (four sets of equipment available vs three needed in normal operation) or N+2C also known as “Catcher” to increase UPS load utilization rate (better efficiency) and reduce CapEx per MW.  
-  
+But hyperscalers typically use schemes such as 4N3R (four sets of equipment available vs three needed in normal operation) or N+2C also known as “Catcher” to increase UPS load utilization rate (better efficiency) and reduce CapEx per MW.
+
 In Catcher, instead of having two UPS systems each capable of handling the full load (2\*3MW in the below example), we have an N+1 design with multiple smaller UPS (3\*1MW) and a redundant unit. We use Static Transfer Switches (STS) to instantly switch the load from one UPS to another in case of a failure – STS are much faster than ATS as they rely on power electronics instead of mechanical components. In 4N3R, we use four independent power systems from distribution to the backplane (i.e. from the power whips all the way to the generator and transformer), of which only three are needed for operation.
 
 2N distribution, however, is the simplest to understand and it is commonly used by retail and wholesale colocation operators that operated Rated 3 datacenters. In 2N distribution, the two independent power distribution systems (from the UPS down to the whips) are known as A side and B side, with the IT racks able to use one side if power supply is interrupted on the other side due to any component failures.

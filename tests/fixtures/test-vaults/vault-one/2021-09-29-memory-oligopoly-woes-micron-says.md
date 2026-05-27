@@ -11,7 +11,7 @@ Memory pricing and margins are at highs as industry consolidation and semiconduc
 While Micron did guide the next quarter down due to PC inventory concerns and prices falling slightly, the most frightening comment from their call was about wafer supply. Micron was asked about what percentage of their bit growth came from wafer supply versus technology transition. The answer was very firm.
 
 > It's all from no transitions, we're not adding wafers. We don't see, for the foreseeable future, adding wafers in either DRAM or NAND.
-> 
+>
 > \- Dave Zinsner, Micron CFO
 
 While NAND is continuing to get much higher bit per wafer through higher layer counts, DRAM has been faltering in density improvements. In the mid-2010s, the DRAM industry shifted naming schemes away from number + nanometer to 1X nm around the transition to sub 20nm nodes. This change was done and their roadmaps began plotting out 1Y nm and 1Z nm. Perhaps they were embarrassed, or perhaps they recognized that scaling slowed, but what’s certain is that the density improvements slowed dramatically. After 1Z nm, we have 1 alpha, 1 beta, and 1 gamma nm nodes.
@@ -25,13 +25,13 @@ These nodes still do not cross the “10nm” line in terms of density improveme
 SemiAnalysis believes there are headwinds for the memory industry related the PC inventory buildup, weak China mobile sales, and a [potential end to the semiconductor boom due to macroeconomics](https://semianalysis.substack.com/p/will-the-china-real-estate-meltdown). Despite these, Micron and the others in the memory oligopoly will continue to profit handsomely. Capital expenditures related to DRAM are already being cut despite gross margins on DRAM being above 50%.
 
 > We feel CapEx equipment in DRAM will be down year-over-year. We think we've made a good investment in fiscal '21 and we don't need to invest as much in fiscal '22, so that will be down.
-> 
+>
 > \- Dave Zinsner, Micron CFO
 
 To note, fiscal ’21 just ended for Micron and ’22 started about a month ago. 2022 and 2023 will be years of massive wafer expansion across most companies in the logic, analog, power and RF. Despite this, Micron and the memory oligopoly will not be increasing their wafer output. Late 2021 and early 2022 see falling DRAM prices, but due to the “disciplined” capital expenditure plans, late 2022 and beyond will likely see prices start to rise again, assuming there is no global recession.
 
 > Of course, in 2020 and 2021, PC has gone through a double-digit unit growth on a calendar year basis. We expect that to moderate in calendar year '22 to perhaps from flat to low-single-digit year-over-year growth in terms of PC units sold, yet it will be a healthy market.
-> 
+>
 > \- Dave Zinsner, Micron CFO
 
 Micron says all these things about the industry while forecasting growth in mobile, datacenter, and even PC. Most analysts have PC flat or shrinking next year as work from home booms slow down, but Micron has it up. Micron’s inventory levels are at lows of 94 days versus their stated optimal range of 100 to 105 days.
@@ -40,6 +40,6 @@ Prices have generally risen into the DDR5 ramp, and the DDR5 ramp will start tow
 
 SemiAnalysis does not recommend Micron's stock due to short term DRAM price movements, weakening PC environment, and macro-economic risks. We believe $MU will likely be attractive in the future once these short term risk are overcome.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/memory-oligopoly-woes-micron-says-they-will-not-increase-wafer-output-in-dram-or-nand-for-the-foreseeable-future/) on September 29th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/memory-oligopoly-woes-micron-says-they-will-not-increase-wafer-output-in-dram-or-nand-for-the-foreseeable-future/) on September 29th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

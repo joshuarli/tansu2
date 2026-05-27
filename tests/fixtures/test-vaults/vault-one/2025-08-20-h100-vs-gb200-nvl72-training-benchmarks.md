@@ -22,8 +22,8 @@ On the reliability front, there will continue to be significant challenges that 
 
 ## SemiAnalysis Is Hiring
 
-We are looking for a new grad engineer to join our engineering team. This is an unique opportunity to work on an high-visibility special projects with support from many industry leaders and CEOs. If you’re passionate about performance engineering, system reliability, and want to work at the intersection of hardware and software, this is a rare chance to make industry wide impact.  
-  
+We are looking for a new grad engineer to join our engineering team. This is an unique opportunity to work on an high-visibility special projects with support from many industry leaders and CEOs. If you’re passionate about performance engineering, system reliability, and want to work at the intersection of hardware and software, this is a rare chance to make industry wide impact.
+
 What you’ll work on:
 
 - Building and running large-scale benchmarks across multiple vendors (AMD, NVIDIA, TPU, Trainium, etc.

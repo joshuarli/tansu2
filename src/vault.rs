@@ -1010,15 +1010,14 @@ fn apply_text_edits(base: &str, edits: &[TextEdit]) -> Result<String> {
                 "delta edit range is reversed".to_string(),
             ));
         }
-        if let Some(previous_start) = previous_start {
-            if compare_position(&edit.start, previous_start).is_eq()
-                || compare_position(&edit.start, previous_end.expect("previous end")).is_lt()
+        if let Some(previous_start) = previous_start
+            && (compare_position(&edit.start, previous_start).is_eq()
+                || compare_position(&edit.start, previous_end.expect("previous end")).is_lt())
             {
                 return Err(Error::BadRequest(
                     "delta edits must be sorted and non-overlapping".to_string(),
                 ));
             }
-        }
         let start = text_position_to_byte_offset(&base, &edit.start)?;
         let end = text_position_to_byte_offset(&base, &edit.end)?;
         if start > end {

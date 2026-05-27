@@ -20,6 +20,6 @@ It can deposit layers as thin as 10um and do interconnect layers, low resistance
 
 The new PVD tool doesn’t come alone and comes with a combination of Applied Materials capabilities from its Display Group, including deposition, eBeam testing, SEM review and metrology, and focused ion beam for defect analysis. We are excited to see if this will be used in mega packages. Initial use cases will be as a cost optimization point for running many packages and individual products at once, but it was made clear that this is just the start.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/advanced-packaging-the-size-of-your-monitor-applied-materials-amat-modifies-panel-pvd-tool-for-60x60cm-fan-outs-to-usher-in-a-new-age-of-mega-packages/) on September 12th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/advanced-packaging-the-size-of-your-monitor-applied-materials-amat-modifies-panel-pvd-tool-for-60x60cm-fan-outs-to-usher-in-a-new-age-of-mega-packages/) on September 12th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

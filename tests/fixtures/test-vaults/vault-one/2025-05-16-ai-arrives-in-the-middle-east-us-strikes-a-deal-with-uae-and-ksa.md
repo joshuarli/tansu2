@@ -12,7 +12,7 @@ These deals do not weaken compute availability for the US, rather they strengthe
 
 The new U.S. pacts with the UAE and Saudi Arabia reshape the AI landscape on three fronts:
 
-**Macro.** By sidestepping the [old](https://semianalysis.com/2025/01/15/2025-ai-diffusion-export-controls-microsoft-regulatory-capture-oracle-tears/) *[AI‑Diffusion](https://semianalysis.com/2025/01/15/2025-ai-diffusion-export-controls-microsoft-regulatory-capture-oracle-tears/)* [export‑control framework](https://semianalysis.com/2025/01/15/2025-ai-diffusion-export-controls-microsoft-regulatory-capture-oracle-tears/), Washington has opened a trillion‑dollar floodgate of capital for AI infrastructure. That inflow outweighs any [drag from looming tariff fights](https://semianalysis.com/2025/04/10/tariff-armageddon-gpu-loopholes/) and will finance build‑outs not only in the Gulf but back home, **putting more racks of GPUs on U.S. soil.**
+**Macro.** By sidestepping the [old](https://semianalysis.com/2025/01/15/2025-ai-diffusion-export-controls-microsoft-regulatory-capture-oracle-tears/) _[AI‑Diffusion](https://semianalysis.com/2025/01/15/2025-ai-diffusion-export-controls-microsoft-regulatory-capture-oracle-tears/)_ [export‑control framework](https://semianalysis.com/2025/01/15/2025-ai-diffusion-export-controls-microsoft-regulatory-capture-oracle-tears/), Washington has opened a trillion‑dollar floodgate of capital for AI infrastructure. That inflow outweighs any [drag from looming tariff fights](https://semianalysis.com/2025/04/10/tariff-armageddon-gpu-loopholes/) and will finance build‑outs not only in the Gulf but back home, **putting more racks of GPUs on U.S. soil.**
 
 **Geopolitical.** Abu Dhabi and Riyadh are now tied more closely to U.S. technology stacks. If Washington enforces tight security protocols, the alliances will deepen the region’s reliance on American hardware and software and pull both states further into the U.S. orbit.
 
@@ -69,6 +69,7 @@ These early sites prove the model. With sovereign wealth funds joining the party
 This new money cushions AI buildouts against a tougher credit market and tariff jitters. Two forces have raised the sector’s sensitivity to financial conditions:
 
 1. **Scale.** Hyperscalers once self-funded expansions, but 2025–26 projects are too large to carry alone. Even cash-rich giants now lean on Apollo, Blackstone, Brookfield, and others.
+
 - **Neoclouds.** More than 150 GPU-cloud startups help AI labs cut time-to-market. Their weaker credit and high capital costs mean a single rate hike can kill a project.
 
 The Middle East can plug both gaps. Lowering financing costs, and keeping the AI infrastructure buildout rolling.
@@ -102,7 +103,7 @@ Nevertheless, there are ways to make sure frameworks are installed to ensure ver
 As such, physical inspections are key to ensuring the GPUs are where they are supposed to be. The White House is aware of the risks and is prepared to ensure the chips are where they are supposed to be. As Bloomberg [reported](https://www.bloomberg.com/news/articles/2025-05-15/trump-s-rush-to-cut-ai-deals-in-saudi-arabia-and-uae-opens-rift-with-china-hawks?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc0NzMyMDE0NiwiZXhwIjoxNzQ3OTI0OTQ2LCJhcnRpY2xlSWQiOiJTV0E2SjVUMEcxS1cwMCIsImJjb25uZWN0SWQiOiIwREFFQTQxQ0VDMzg0OTcxOTZCMzU2NzAzMUM4RTBBMCJ9.J68MfO3HWhas3FiXN7WtPRfaMBjAdMJTjQZD9qyc5bw&leadSource=uverify%20wall):
 
 > The policy objective of preventing diversion to countries of concern is an absolutely important objective of the United States but it is not a difficult one to achieve. The truth of the matter is that all one would have to do is send someone to a datacenter and count the server racks to make sure the chips are still there.”
-> 
+>
 > David Sacks, White House AI Czar
 
 ## Misuse Risk

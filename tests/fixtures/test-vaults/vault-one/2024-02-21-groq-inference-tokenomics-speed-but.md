@@ -19,7 +19,7 @@ This has led to an immense amount of hype regarding Groq’s hardware and infere
 These are positives for Groq, but the primary formula for evaluating if hardware is revolutionary is performance / total cost of ownership. This is something Google understands intimately.
 
 > The dawn of the AI era is here, and it is crucial to understand that the cost structure of AI-driven software deviates considerably from traditional software. Chip microarchitecture and system architecture play a vital role in the development and scalability of these innovative new forms of software. The hardware infrastructure on which AI software runs has a notably larger impact on Capex and Opex, and subsequently the gross margins, in contrast to earlier generations of software, where developer costs were relatively larger. Consequently, it is even more crucial to devote considerable attention to optimizing your AI infrastructure to be able to deploy AI software. Firms that have an advantage in infrastructure will also have an advantage in the ability to deploy and scale applications with AI.
-> 
+>
 > [Google AI Infrastructure Supremacy: Systems Matter More Than Microarchitecture](https://www.semianalysis.com/p/google-ai-infrastructure-supremacy)
 
 Google’s infrastructure supremacy is why Gemini 1.5 is significantly cheaper to serve for Google vs OpenAI GPT-4 Turbo while performing better in many tasks, especially long sequence code. Google uses far more chips for an individual inference system, but they do it with better performance / TCO.

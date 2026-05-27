@@ -42,6 +42,6 @@ There are parallels here to the EUV ramp, which is also being driven by logic. S
 
 The dry photoresist technology LAM has developed could become a multiple billion dollars business by the end of the decade. It will be a higher gross margin compared to the LAM corporate average of 46%. The financial impact of this new growth engine means a lot for investors. Investors should be very wary of TEL as this isn’t a growth area, there will be market share losses, and the bleeding could be ugly.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/lam-research-dry-deposit-and-resist-could-become-a-multi-billion-dollar-business/) on May 22nd 2020*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/lam-research-dry-deposit-and-resist-could-become-a-multi-billion-dollar-business/) on May 22nd 2020_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

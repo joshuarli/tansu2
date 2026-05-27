@@ -20,13 +20,13 @@ The other major change is that Intel dramatically increased shared L3 cache, fro
 
 DDR5 Memory support has been increased to 5600 MT/s from 4800. UPI speeds for inter-socket communications have been upgraded from 16 GT/s to 20 GT/s. Oddly, despite higher inter-socket speeds, the number of total sockets supported is down from 8 to 2. This was likely done to speed time to market as it only affects a tiny portion of the market that AMD doesn’t compete in anyways. All this is drop-in compatible with existing “Eagle Stream” platforms on the same LGA 4677 Socket E1. PCIe lane counts remain the same, although CXL bifurcation support is added finally, which was a sore spot for Sapphire Rapids.
 
-Taking a closer look at the package, we notice that Intel was able to cram more cores and a whole lot more cache into an even smaller area than SPR! Including scribe lines, two 763.03 mm² dies make a total of 1,526.05 mm², whereas SPR used four 393.88 mm² dies, totaling 1,575.52 mm². EMR is 3.14% smaller but with 10% more printed cores and 2.84x the L3 cache. This impressive feat was achieved in part by *reducing* the number of chiplets, which we will explain shortly. However, there are other factors at play that help with EMR’s area reduction.
+Taking a closer look at the package, we notice that Intel was able to cram more cores and a whole lot more cache into an even smaller area than SPR! Including scribe lines, two 763.03 mm² dies make a total of 1,526.05 mm², whereas SPR used four 393.88 mm² dies, totaling 1,575.52 mm². EMR is 3.14% smaller but with 10% more printed cores and 2.84x the L3 cache. This impressive feat was achieved in part by _reducing_ the number of chiplets, which we will explain shortly. However, there are other factors at play that help with EMR’s area reduction.
 
 While drafting floorplan mockups for EMR, we found it impossible to cram the necessary features into a small enough area to match what was revealed by Intel. We were using components from SPR as a reference, which ended up being too large. This is because Intel has optimized its physical design to make some features more compact and area efficient to achieve further area reductions. What’s more, this is not the first time Intel has changed physical design to save area.
 
 ## Sapphire Rapids Die Shrink
 
-Although not discussed much publicly, Intel also did a complete ground-up re-design of Sapphire Rapids during its [darkest days on its way to production E5 stepping](https://www.semianalysis.com/p/the-dark-side-of-the-semiconductor). Believe it or not, there are *two* different physical designs and die sizes for the Sapphire Rapids chiplets.
+Although not discussed much publicly, Intel also did a complete ground-up re-design of Sapphire Rapids during its [darkest days on its way to production E5 stepping](https://www.semianalysis.com/p/the-dark-side-of-the-semiconductor). Believe it or not, there are _two_ different physical designs and die sizes for the Sapphire Rapids chiplets.
 
 ![](z-images/d3881258711e6e819885b1448e637940.webp)
 

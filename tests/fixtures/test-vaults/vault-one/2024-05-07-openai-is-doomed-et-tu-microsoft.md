@@ -57,9 +57,9 @@ Microsoft is spending over $10 billion in capex directly for OpenAI, but they ar
 Microsoft is forced into looking for contingency plans because of OpenAI’s bizarre structure. OpenAI is a non-profit whose primary goal is creating artificial general intelligence (AGI) that is safe and benefits all of humanity. [OpenAI can and will break the agreement that enables Microsoft to have access to OpenAI’s models, with zero recourse from Microsoft.](https://openai.com/our-structure)
 
 > While our partnership with Microsoft includes a multibillion dollar investment, OpenAI remains an entirely independent company governed by the OpenAI Nonprofit. Microsoft is a non-voting board observer and has no control.
-> 
+>
 > AGI is explicitly carved out of all commercial and IP licensing agreements.
-> 
+>
 > The board determines when we've attained AGI. Again, by AGI we mean a highly autonomous system that outperforms humans at most economically valuable work. Such a system is excluded from IP licenses and other commercial terms with Microsoft, which only apply to pre-AGI technology.
 
 The most worrisome thing for Microsoft here is that OpenAI’s board can decide at any moment, with no voting input whatsoever from Microsoft, that they have achieved AGI and Microsoft is not entitled to the IP that was created with their investment dollars.
@@ -109,7 +109,7 @@ And it’s not just Meta that is mustering for battle stations – Google has us
 The other argument to be made is if compute and capital are king. In that case, [Google is king](https://www.semianalysis.com/p/google-gemini-eats-the-world-gemini) given [their hyper aggressive TPU buildout pace](https://www.semianalysis.com/p/broadcoms-google-tpu-revenue-explosion). Ironically, Google now has focus and is directing all large-scale training efforts into one combined Google Deepmind team while Microsoft is starting to lose focus by directing resources to their own internal models that compete with OpenAI.
 
 > There is a capital question. At what point does it stop being worth it to put the capital in?
-> 
+>
 > [Mark Zuckerberg](https://www.youtube.com/watch?v=bc6uFV9CJGg&t=24s)
 
 One of the biggest risks for OpenAI is that the capital game is all that matters. If that’s the case, the tech company that invests the most is the winner. While Microsoft is investing the most today, they aren’t that far ahead of Meta, Google, and Amazon/Anthropic. Meta and Google have complete focus while Amazon and Microsoft have to fight with 1 arm tied back due to their lack of control over their allied AI Lab.

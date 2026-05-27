@@ -105,7 +105,7 @@ Tiger Lake laptop chips are now at more than 100 million shipments, and so we wa
 The datacenter unit had solid revenue growth, but lower income due to poor margins and a one time charge for missing the Aurora supercomputer delivery date. The real kicker is that cloud revenue has shrank year over year for 5 quarters in a row. Enterprise and communications really bailed out Intel. Intel claims they shipped more than 1 million Ice Lake server chips which is more than they shipped in the last 3 quarters combined. Despite Ice Lake server launching in the first half of the year, the actual ramp was only Q4. Intel tried to brag with the following comment, but it really sounded pathetic because they couldn’t really say anything about preventing future share losses.
 
 > We expect that our Xeon shipments in December alone exceeded the total server CPU shipments by any single competitor for all of 2021.
-> 
+>
 > Patrick Gelsinger
 
 One very odd comment Pat Gelsinger made on the call was that Sapphire Rapids is cheaper than AMD’s Genoa and that it had a better cost structure. All I can say is that Pat is nuts if he thinks Sapphire will command better margins. It should be cheaper to manufacture (there are multiple configs, not just the 1600mm2 behemoth), but it will not be able to command the same price bracket as Genoa.

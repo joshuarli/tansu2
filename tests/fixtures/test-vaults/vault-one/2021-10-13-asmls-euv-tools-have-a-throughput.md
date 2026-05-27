@@ -16,6 +16,6 @@ TSMC N3 will have about 20-25 EUV exposures per wafer. A TSMC fab with 10 EUV ma
 
 The synchrotron almost looks like a particle accelerator. It accelerates the electrons, spins them around and focuses them. Using magnets, the electrons are wiggled around, and this causes them to emit photons. The light can be collected, focuses, and used for a variety of experiments. While this is a large machine at 5 meters by 12 meters, it is smaller than gargantuan EUV machines that they should fit into. Lyncean has demonstrated and sold 2Kw EUV light sources and can scale this much further. This would be 4x what ASML and Trumpf are attempting to ship in 2025. They can stack 4 of these light sources fairly easily as well. The pricing is $30M-$50M. SemiAnalysis doesn’t think this will replace the current method of generating EUV light anytime soon due to collection issues, but we thought the technology was really cool, so we had to share!
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/asmls-euv-tools-have-a-throughput-problem-but-lyncean-has-the-answer-by-scaling-euv-light-source-power-an-order-of-magnitude/) on October 12th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/asmls-euv-tools-have-a-throughput-problem-but-lyncean-has-the-answer-by-scaling-euv-light-source-power-an-order-of-magnitude/) on October 12th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

@@ -17,7 +17,7 @@ Then Nvidia attempted to acquire Arm. Part of that deal included a sweetheart lo
 Furthermore, some Arm’s largest customers like Qualcomm are working on custom core architectures. Most customers utilize Arm’s off-the-shelf cores through a technology licensing agreement (TLA). These earn much higher royalties than a custom core which is developed through an architecture licensing agreement (ALA). Some of Arm’s most important Arm customers such as Apple, Nvidia, and Qualcomm all have ALA custom architectures and/or sweetheart deals which limits Arm’s future growth and profitability.
 
 > **Royalty rates are generally lower under ALAs and higher under TLAs**, because the TLA royalties account for ARM’s work in developing complete CPUs, whereas the licensees under an ALA make the significant investment to develop their own CPUs.
-> 
+>
 > With the Phoenix (custom) Core, Qualcomm will begin incorporating more of its own custom CPUs in its products. Qualcomm is making this change because it believes its own innovation will generate better performing cores than ARM’s cores. This paradigm change will mean **Qualcomm will in the future pay to ARM the lower royalty rate** under its ALA for these custom CPUs, rather than the higher royalty rates under Qualcomm’s TLA.
 
 We believe this lawsuit by Arm is primarily attempting to renegotiate with Qualcomm in order to extract higher licensing revenue.
@@ -67,9 +67,9 @@ This was probably the spiciest quote from the entire document.
 Qualcomm’s claim is they do not need their consent as Arm does not own or have any rights to the IP that was transferred from Nuvia to Qualcomm.
 
 > First, it was attempting to secure supplemental payments and royalties for rights for which Qualcomm had already paid or was continuing to pay under its own license agreements. Qualcomm’s license agreements, on their face, make clear that Qualcomm’s use of ARM Technology in connection with the further development of the technology it acquired from NUVIA would be covered by Qualcomm’s pre-existing license agreements. For example, Therefore, NUVIA’s technology was fully licensed under Qualcomm’s license agreements as soon as Qualcomm acquired NUVIA. Nonetheless, and although not necessary, Qualcomm sought ARM’s consent to assign NUVIA’s ARM licenses to Qualcomm.
-> 
+>
 > Second, ARM was claiming a right to control the transfer of NUVIA technology when NUVIA’s ALA provided no such rights to ARM
-> 
+>
 > Third, ARM was trying to interfere with Qualcomm’s business by preventing Qualcomm engineers from working for three years with absolutely no basis for such a demand in NUVIA’s or Qualcomm’s license agreements.
 
 These are some very large demands Arm has. Most likely they are overbearing in order to get Qualcomm to come back to the negotiation table.
@@ -95,7 +95,7 @@ Talk about spicy!
 A bit of a timeline.
 
 > on April 1, 2022, NUVIA certified that it had destroyed and quarantined all NUVIA-acquired ARM Confidential Information.
-> 
+>
 > on April 12, 2022, just a few weeks after NUVIA made its certification, ARM accepted test results verifying that the implementation of the Phoenix Core in the Server SoC complied with the requirements necessary to execute the ARM instruction set. ARM confirmed that “Qualcomm... has validated their CPU core in accordance with the Verification requirements set out in the Architecture agreement.” ARM explicitly confirmed that the validation testing was conducted under Qualcomm’s ALA. Therefore, ARM was not only well aware that Qualcomm was working on the Phoenix Core under Qualcomm’s license agreements, but ARM also affirmed this work and understood that Qualcomm had implemented of the ISA.
 
 Qualcomm is arguing that Arm had full knowledge and even acted in a way that approved their development of the core and validated it as a rightful use of the license.

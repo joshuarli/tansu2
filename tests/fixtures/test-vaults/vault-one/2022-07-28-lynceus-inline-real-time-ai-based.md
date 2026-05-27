@@ -44,4 +44,4 @@ Lynceus’s manufacturing quality prediction software is designed to predict the
 
 Lynceus can help a fab get more good dies per wafer, lower their cost of goods sold, and achieve higher gross margins. While some larger advanced fabs such as Intel and TSMC are doing similar work for internal use only, most fabs have not implemented models as sophisticated as Lynceus. They are primarily targeting automotive involved fabs as an initial market as there are a large amount of regulatory, test, and quality validation metrics. Once proved here, they can spread further to markets.
 
-*As a side node, we have enjoyed being able work with David Meyer, CEO and co-founder of Lynceus as well as the rest of the Lynceus team as they spread their wings and grow into more fabs.*
+_As a side node, we have enjoyed being able work with David Meyer, CEO and co-founder of Lynceus as well as the rest of the Lynceus team as they spread their wings and grow into more fabs._

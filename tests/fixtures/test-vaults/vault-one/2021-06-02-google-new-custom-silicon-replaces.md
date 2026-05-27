@@ -54,6 +54,6 @@ What’s next for Google VCU? The next generation is already under the works acc
 
 The 10 million CPU savings are tangible now, but enabling these next generation features would be absolutely impossible without Google custom silicon. This will drive a tangible lead in video workloads over other tech companies, not just in cost, but also in capabilities. Amazon with Twitch.tv and Facebook/Instagram need to work on their own silicon for this workload or else they will be left in the dust competitively. [TikTok’s owner ByteDance is even working on their own silicon tailored to their video workloads.](https://www.bloomberg.com/opinion/articles/2021-03-17/bytedance-move-into-chips-will-find-backing-in-china-s-tech-independence-drive) Merchant silicon vendors such as Intel, Nvidia, and AMD are going to find themselves completely kicked out of the worlds largest tech companies video based workloads.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/google-new-custom-silicon-replaces-10-million-intel-cpus-google-argos-vpu/) on June 2nd 2021*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/google-new-custom-silicon-replaces-10-million-intel-cpus-google-argos-vpu/) on June 2nd 2021_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

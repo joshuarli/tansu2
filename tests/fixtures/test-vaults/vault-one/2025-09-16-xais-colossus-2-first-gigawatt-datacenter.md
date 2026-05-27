@@ -92,7 +92,7 @@ Source: SemiAnalysis Datacenter Industry Model
 
 The newly formed JV already spent $112 million in capital expenditures in Q2 2025. After a slow Q3, spending will pick up again in Q4 2025 and Q1 2026. Solaris expects to have over 1.1GW of fully operating turbines for xAI by Q2 2027. There remains ~425MW available for contracting, and we think xAI will likely pull the trigger to get to over 1.5GW of total gross power. Solaris also appears to temporarily lease power generation capacity from third parties to deliver faster:
 
-> *During the second quarter, the Power Solutions segment generated revenue from approximately 600 megawatts of capacity, an increase of greater than 50% from the prior quarter. This increase was driven by increased demand from our customers, which we are meeting using a combination of new equipment deliveries as well **as selective short-term sourcing of third-party power generation capacity**.*
+> _During the second quarter, the Power Solutions segment generated revenue from approximately 600 megawatts of capacity, an increase of greater than 50% from the prior quarter. This increase was driven by increased demand from our customers, which we are meeting using a combination of new equipment deliveries as well **as selective short-term sourcing of third-party power generation capacity**._
 
 Solaris Energy Infrastructure, Q2 2025
 

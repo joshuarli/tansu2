@@ -6,7 +6,7 @@ author: "Dylan Patel"
 description: "Tesla hosted their AI Day and revealed the innerworkings of their software and hardware infrastructure."
 ---
 
-Tesla hosted their AI Day and revealed the innerworkings of their software and hardware infrastructure. Part of this reveal was the previously teased Dojo AI training chip. Tesla claims their D1 Dojo chip has a GPU level compute, CPU level flexibility, with networking switch IO. [A few weeks ago, we speculated on the packaging of this system being a TSMC Integrated Fan Out System on Wafer (InFO\_SoW).](https://www.semianalysis.com/p/tesla-ai-day-supercomputer-chip-teaser) We explained the benefits of this type of packaging alongside the cooling and power consumption involved with this huge scale up training chip. Additionally, we estimated that this package would outperform Nvidia systems in performance. All of this seemed to be valid speculation based on the reveal. Today we will dive more into the semiconductor specifics of the reveal.
+Tesla hosted their AI Day and revealed the innerworkings of their software and hardware infrastructure. Part of this reveal was the previously teased Dojo AI training chip. Tesla claims their D1 Dojo chip has a GPU level compute, CPU level flexibility, with networking switch IO. [A few weeks ago, we speculated on the packaging of this system being a TSMC Integrated Fan Out System on Wafer (InFO_SoW).](https://www.semianalysis.com/p/tesla-ai-day-supercomputer-chip-teaser) We explained the benefits of this type of packaging alongside the cooling and power consumption involved with this huge scale up training chip. Additionally, we estimated that this package would outperform Nvidia systems in performance. All of this seemed to be valid speculation based on the reveal. Today we will dive more into the semiconductor specifics of the reveal.
 
 ![](z-images/6e5b036235dbc4cbf4e6aaa1bbdcb78a.webp)
 
@@ -44,7 +44,7 @@ Tesla connects the compute plane of Dojo chips to interface processors which con
 
 ![](z-images/46405d7fdf1c9067df7ca07855fc5835.webp)
 
-25 D1 chips are packaged as a “fan out wafer process” called a training tile. Tesla didn’t confirm that this packaging is TSMC’s integrated fan out system on wafer (InFO\_SoW) like we speculated a few weeks ago, but it seems highly likely given the insane interchip bandwidth and the fact they specifically said fan out wafer.
+25 D1 chips are packaged as a “fan out wafer process” called a training tile. Tesla didn’t confirm that this packaging is TSMC’s integrated fan out system on wafer (InFO_SoW) like we speculated a few weeks ago, but it seems highly likely given the insane interchip bandwidth and the fact they specifically said fan out wafer.
 
 Tesla developed a proprietary high bandwidth connector that preserves the off chip bandwidth between these tiles. Each tile has an impressive 9 PFlops of BF16/CFP8 and 36 TB/s of off-tile bandwidth. This far surpasses the off-wafer bandwidth of Cerebras, and enables the Tesla system to scale out better than even scale out designs such as the Tenstorrent architecture.
 
@@ -76,6 +76,6 @@ Model parallelism can scale across chip boundaries easily unlocking the next lev
 
 Rolling it all up, cost equivalent versus Nvidia GPU, Tesla claims they can achieve 4x the performance, 1.3x higher performance per watt, and 5x smaller footprint. Tesla has a TCO advantage that is nearly an order magnitude better than an Nvidia AI solution. If their claims are true, Tesla has 1 upped everyone in the AI hardware and software field. I'm skeptical, but this is also a hardware geek's wet dream. SemiAnalysis is trying to calm down and tell ourselves to wait and see when it is actually deployed in production.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/tesla-dojo-ai-super-computer-unique-packaging-and-chip-design-allow-an-order-magnitude-advantage-over-competing-ai-hardware/) on August 20th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/tesla-dojo-ai-super-computer-unique-packaging-and-chip-design-allow-an-order-magnitude-advantage-over-competing-ai-hardware/) on August 20th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

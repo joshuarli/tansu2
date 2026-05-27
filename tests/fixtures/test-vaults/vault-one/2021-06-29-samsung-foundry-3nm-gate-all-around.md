@@ -39,7 +39,7 @@ The current 5LPE node being succeeded by 5LPP (previously 4LPE) and 4LPP points 
 Dr. Chidi Chidambaram is the VP of Engineering and leads the company's process technology and foundry engineering team. He would have direct and intimate knowledge with foundry process roadmaps. He recently spoke at an event by Applied Materials, a critical semiconductor capital equipment provider. At this event, he was asked about the productization timelines for gate all around transistor technology.
 
 > “I think you know, ‘24, ‘23 productions. The earliest could be ‘23, but ‘24 production is reasonable, I think”
-> 
+>
 > Dr. Chidi Chidambaram
 
 Dr. Chidi Chidambaram is likely under NDAs for process roadmaps which would explain why he had to be vague. His teams would have directly gone through the failure that was “first customer tape outs in 2020” for the 3GAE node that Samsung loudly proclaimed in 2019. They also have evaluated both TSMC and Samsung for 2022 and 2023 designs. His teams would be in charge of making the decisions on which process technology to utilize for these designs. He seems to be hedging the bet that 2023 is possible, but 2024 is the most reasonable timeline.
@@ -52,10 +52,10 @@ This would be a similar time frame to TSMC’s 2nm process node which will utili
 
 Samsung and Intel continue to slip further behind TSMC in leading edge technology. Will they ever be able to catch up?
 
-*The following edit is an after the original publishing, but we felt it was important to update that Samsung has officially delayed to 2023.*
+_The following edit is an after the original publishing, but we felt it was important to update that Samsung has officially delayed to 2023._
 
 ![](z-images/4c8d6e33e371f0d6fc4ce7c66c47bf79.webp)
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/samsung-foundry-3nm-gate-all-around-process-node-3gae-delayed-to-2024/) on June 29th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/samsung-foundry-3nm-gate-all-around-process-node-3gae-delayed-to-2024/) on June 29th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

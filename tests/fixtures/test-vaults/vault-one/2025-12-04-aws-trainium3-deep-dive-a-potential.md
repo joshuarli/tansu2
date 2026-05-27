@@ -300,7 +300,7 @@ However, consider three cases where Trainiums on different switch planes or rack
 - Path A: A total of 1 hop from Trainium3 A in Rack A’s Node 1 to Trainium3 A in Rack A’s Node 16
 - Path B: A total of 2 hops from Trainium3 A in Rack A’s Node 1 to Trainium3 B in Rack A’s Node 2
 - Path C: A total of 3 hops from Trainium3 A in Rack A’s Node 1 to Trainium3 B in Rack B’s Node 2
-![](z-images/24887ac5b754796c0c18450a1c499da5.webp)
+  ![](z-images/24887ac5b754796c0c18450a1c499da5.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -308,7 +308,7 @@ Because Trainium3 chips offer an auto forwarding capability and collectives’ l
 
 The most obvious approach is to deploy Expert Parallelism (EP) within a rack and then use Tensor Parallelism (TP) between the Trainium3s across the racks “paired together” via AECs. Another obvious parallelism strategy is to use expert parallelism within a rack and employ Context Parallelism between pairs of racks.
 
-Yet another potential parallelism strategy is to use full EP across both racks but plan around the extra hops. This strategy could work well for very sparse models where the model would be unable to implement TP across racks because the d\_model dim is too small. So – even the additional latency of the extra hop passing through an immediately connected Trainium3 would be worth it.
+Yet another potential parallelism strategy is to use full EP across both racks but plan around the extra hops. This strategy could work well for very sparse models where the model would be unable to implement TP across racks because the d_model dim is too small. So – even the additional latency of the extra hop passing through an immediately connected Trainium3 would be worth it.
 
 ## Trainium3 NL72x2 Switched on Gen1 Switch Trays
 
@@ -331,7 +331,7 @@ Where Trainium3s are not on the same switch plane, the number of switch hops is 
 - Path A: A total of 1 hop from Trainium3 A in Rack A’s Node 1 to Trainium3 A in Rack A’s Node 2
 - Path B: A total of 3 hops from Trainium3 A in Rack A’s Node 1 to Trainium3 C in Rack A’s Node 2
 - Path C: A total of 4 hops from Trainium3 A in Rack A’s Node 1 to Trainium3 C in Rack B’s Node 2
-![](z-images/288c676eb78c1527b0f3d681de9a03bc.webp)
+  ![](z-images/288c676eb78c1527b0f3d681de9a03bc.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -405,8 +405,8 @@ Source: SemiAnalysis AI Networking Model, SemiAnalysis BoM Model
 
 ## Trainium3 Rack Power Budget and Bill of Materials
 
-We have built out a detailed list of parts and headline power budgets for the major groups of components within the different Trainium systems. Subscribers of our [AI TCO Model and our AI Hardware Bill of Materials (BoM) Model](https://semianalysis.com/ai-cloud-tco-model/) can see granular details on quantities, ASPs and total system cost.  
-  
+We have built out a detailed list of parts and headline power budgets for the major groups of components within the different Trainium systems. Subscribers of our [AI TCO Model and our AI Hardware Bill of Materials (BoM) Model](https://semianalysis.com/ai-cloud-tco-model/) can see granular details on quantities, ASPs and total system cost.
+
 The Trainium3 NL72x2 Switched system naturally has a higher total system power because it features 144 chips across the two rack system vs the 64 chips across two racks that the Trainium3 NL32x2 Switched system features. However, once one normalizes to power per chip, the 64 chip Trainium3 NL32x2 Switched SKU and the 144 chip Trainium3 NL72x2 Switched SKU are actually very similar in power per chip as the Trainium3 chip TDP is the largest driver of the overall power budget. Per rack power density is naturally higher for the Trainium3 NL72x2 Switched as it fits 64 chips into a rack vs the 32 of the Trainium3 NL32x2 Switched.
 
 ![](z-images/db31487fd6ad9986376e9c7df537c5cd.webp)
@@ -483,8 +483,8 @@ In the Microsoft article, we also discuss how Hyperscalers are, at the behest of
 
 Source: SemiAnalysis AI Networking Model
 
-AWS’s approach for AI networking has already cut to the chase and uses 100G logical ports by default. This has two main benefits:  
-  
+AWS’s approach for AI networking has already cut to the chase and uses 100G logical ports by default. This has two main benefits:
+
 1\. AWS can build large networks with only 12.8T Switches.
 
 If we stick with the traditional approach and use logical port sizes that match GPU NICs, 400G in many cases, we find that only using 12.8T switches would result in a network that is prohibitively small. For a two-layer network built up entirely of 12.8T switches, we can only connect 512 GPUs at most. However, if we instead use 100G logical ports, a two-layer network can reach 8,192 GPUs and a three-layer network can reach 524,288 GPUs – matching the size of today’s largest multi-building clusters.
@@ -493,7 +493,7 @@ If we stick with the traditional approach and use logical port sizes that match 
 
 Source: SemiAnalysis AI Networking Model
 
-But why build a network out of 12.8T switches? In fact, there is no such focus. AWS’s mantra is to minimize total cost of ownership and flex their procurement decisions around this north star. Metaphorically speaking, to AWS – it doesn’t matter whether the cat is black or white, [as long as it catches mice](https://en.wikipedia.org/wiki/Cat_theory_\(Deng_Xiaoping\)). So, AWS will go with any switch option, 12.8T, 25.6T or 51.2T or 400G DR4, 800G DR8 optics, as long as it delivers the lowest cost of ownership.
+But why build a network out of 12.8T switches? In fact, there is no such focus. AWS’s mantra is to minimize total cost of ownership and flex their procurement decisions around this north star. Metaphorically speaking, to AWS – it doesn’t matter whether the cat is black or white, [as long as it catches mice](<https://en.wikipedia.org/wiki/Cat_theory_(Deng_Xiaoping)>). So, AWS will go with any switch option, 12.8T, 25.6T or 51.2T or 400G DR4, 800G DR8 optics, as long as it delivers the lowest cost of ownership.
 
 2\. AWS can achieve even larger scale on only two layers if we bring in 25.6T and 51.2T switches.
 
@@ -608,7 +608,7 @@ Now that we have gone through the basic building blocks of the Trainium3 microar
 
 For Trainium3 as in Trainium2, there are dozens of dedicated collective communication cores solely devoted to communicating with other chips. This is an excellent innovation as this allows for compute-communication overlapping without any contention between compute resources and communication resources.
 
-In contrast, on Nvidia and AMD GPUs, communication operations run on the same cores (SMs) as the compute operations. Thus, the end user needs to carefully balance the ratio of SMs running communication ops with the SMs running compute ops. On GPUs, this is done using the “NCCL\_MIN\_CTA” env flag and is in practice involves fairly complex tuning. Due to this complexity, only the most advanced users will be doing comms/compute SMs ratio tuning.
+In contrast, on Nvidia and AMD GPUs, communication operations run on the same cores (SMs) as the compute operations. Thus, the end user needs to carefully balance the ratio of SMs running communication ops with the SMs running compute ops. On GPUs, this is done using the “NCCL_MIN_CTA” env flag and is in practice involves fairly complex tuning. Due to this complexity, only the most advanced users will be doing comms/compute SMs ratio tuning.
 
 ## Near-Memory Compute and Auto Forwarding
 
@@ -636,7 +636,7 @@ AWS adding this new hardware tensor dereferencing dynamism feature in Trainium3 
 
 ## PyTorch Native Backend Support
 
-AWS is carrying out a massive course correction to their software strategy, and we believe it will be incredibly positive towards increasing the wider adoption of Trainium3. The first phase of this strategy starts with focusing on supporting PyTorch natively instead of duct-taping Trainium to PyTorch with the PyTorch/XLA project. This new PyTorch backend is meant for the non-advanced Anthropic kernel engineers of the world. In the past, users would have to rely on a lazy tensor graph capture using PyTorch/XLA instead of having a first-class eager execution mode available. Furthermore, PyTorch/XLA did not support PyTorch native distributed APIs (torch.distributed.\*), nor did it support PyTorch native parallelism APIs (DTensor, FSDP2, DDP, etc). It instead relied on strange out of tree XLA SPMD APIs (torch\_xla.experimental.spmd\_fsdp, torch\_xla.distributed.spmd, etc.). For users trying to switch to Trainium, this has led to a subpar non-native experience given that these users are accustomed to the native PyTorch CUDA.
+AWS is carrying out a massive course correction to their software strategy, and we believe it will be incredibly positive towards increasing the wider adoption of Trainium3. The first phase of this strategy starts with focusing on supporting PyTorch natively instead of duct-taping Trainium to PyTorch with the PyTorch/XLA project. This new PyTorch backend is meant for the non-advanced Anthropic kernel engineers of the world. In the past, users would have to rely on a lazy tensor graph capture using PyTorch/XLA instead of having a first-class eager execution mode available. Furthermore, PyTorch/XLA did not support PyTorch native distributed APIs (torch.distributed.\*), nor did it support PyTorch native parallelism APIs (DTensor, FSDP2, DDP, etc). It instead relied on strange out of tree XLA SPMD APIs (torch_xla.experimental.spmd_fsdp, torch_xla.distributed.spmd, etc.). For users trying to switch to Trainium, this has led to a subpar non-native experience given that these users are accustomed to the native PyTorch CUDA.
 
 ![](z-images/6cbe68a497b56b10484f31a2ecd7c58e.webp)
 
@@ -644,7 +644,7 @@ Source: Github
 
 This week, AWS announced that it will be releasing and open sourcing their native PyTorch backend that supports native PyTorch Aten op eager mode through the “PrivateUse1” TorchDispatch key. They will also support torch.compile APIs by plugging their graph compiler stack in using the [torch compiler custom backend function](https://docs.pytorch.org/docs/stable/torch.compiler_custom_backends.html). AWS will also support all of the native torch.distributed and parallelism APIs. There will also be DTensor, FSDP1, FSDP2, and SimpleFSDP support for eager mode. Day 0 torch.compile support will be limited to SimpleFSDP only though as it is the most compiler friendly package. However, Trainium’s torch.compile will not offer Day 0 support for capturing data dependent conditions nor will it support while loops on Day 0. This will lead to graph breaks being triggered.
 
-AWS also claims that it will support torch native aten groupgemm MoE ops and MoE Dispatch native ops (torch.all\_to\_all\_vdev\_2d), and MoE Combine native ops (torch.all\_to\_all\_vdev\_2d\_offset) on Day 0. Even AMD does not have these MoE communication ops supported yet! AWS will also offer Flex Attention support from Day 0 - this feature is needed for any ML Scientists that don’t want to just train models with vanilla causal attention.
+AWS also claims that it will support torch native aten groupgemm MoE ops and MoE Dispatch native ops (torch.all_to_all_vdev_2d), and MoE Combine native ops (torch.all_to_all_vdev_2d_offset) on Day 0. Even AMD does not have these MoE communication ops supported yet! AWS will also offer Flex Attention support from Day 0 - this feature is needed for any ML Scientists that don’t want to just train models with vanilla causal attention.
 
 ![](z-images/938136a8691b8d5240f4a9f7646d6787.webp)
 

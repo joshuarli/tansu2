@@ -81,6 +81,6 @@ This spells trouble for real value of GlobalFoundries. Mubadala knows they canno
 
 Edit: Mubala only offloaded a tiny portion of the company, as expected. One big new detail revealed is that they will go from 84% utilization rates to fully booked for 2022 and 2023. That will do very interesting things for their margins, GlobalFoundries will finally be financially stable due to the operating margin expansion.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/globalfoundries-gfs-ipo-mubadala-lost-over-22-4b-now-they-are-hoping-public-markets-bail-them-out/) on October 6th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/globalfoundries-gfs-ipo-mubadala-lost-over-22-4b-now-they-are-hoping-public-markets-bail-them-out/) on October 6th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

@@ -8,7 +8,7 @@ description: "Fab Cost, SRAM Scaling, WFE Implications, Backside Power Details, 
 
 ## Fab Cost, SRAM Scaling, WFE Implications, Backside Power Details, TSMC, Samsung, Intel, Rapidus
 
-TSMC won FinFET. All noteworthy leading edge logic designs, *even Intel’s*, are manufactured on TSMC’s N5 and N3 process in southern Taiwan. Competitors have been left in the dust. Samsung has had poor performance and poor yields since their 7nm, Intel is still early in its journey to recovery with Intel 4 and 3; neither have major external or internal customers ordering on these nodes in volume.
+TSMC won FinFET. All noteworthy leading edge logic designs, _even Intel’s_, are manufactured on TSMC’s N5 and N3 process in southern Taiwan. Competitors have been left in the dust. Samsung has had poor performance and poor yields since their 7nm, Intel is still early in its journey to recovery with Intel 4 and 3; neither have major external or internal customers ordering on these nodes in volume.
 
 Future dominance is not guaranteed for TSMC. FinFETs, cannot scale further and SRAM shrink has been dead for a few nodes. The industry is at a crucial inflection point. Leading-edge logic must adopt two new paradigms in the next 2-3 years: gate all around (GAA) and backside power delivery (BSPDN or backside power delivery network).
 

@@ -11,7 +11,7 @@ Pat Gelsinger laid it all out on the table and stopped the charade. He was once 
 Pat Gelsinger minced no words when stating 2022 would be a bad year. Revenue will shrink from $77.7B to ~$74B and gross margins will fall all the way to 51% to 53% for the next few years. These failures were a long time coming due to prior poor leadership and engineering failures.
 
 > Near-term, we could have chosen a more conservative route with modestly better financials, but instead, the board, the management team, and this is why I came back to the Company, choosing to invest, to maximize the long range business that we have.
-> 
+>
 > Pat Gelsinger, Intel CEO
 
 Intel finally learned their lesson. Instead of continuing to milk the cow, they realize it’s time to put the pedal to the metal. After a decade of poor leadership under investing, they have woken up that technology leadership and investments are the only way forward. These investments are not coming lightly either.
@@ -19,13 +19,13 @@ Intel finally learned their lesson. Instead of continuing to milk the cow, they 
 Intel will be spending $25B-$28B in capital expenditure alone plus another ~$15B of R&D each year. This amount will be spent on additional fabs, process technologies R&D, improving the design, and other intellectual property. In just the last 8 months since Pat Gelsinger joined Intel, they have hired an additional 6,000 engineers. Meanwhile every division has been reorganized. The datacenter group, client group, and HPC and accelerated computing groups have had their design organization and product organization split to increase accountability. The manufacturing leadership has been reorganized for many of the same reasons.
 
 > A roadmap that brings us to performance parity in 24 and clear leadership in 25. I am happy to share that Intel 7, Intel 4, Intel 3, Intel 20A, and Intel 18A are all on or ahead of the timelines we set out in July.
-> 
+>
 > Pat Gelsinger, Intel CEO
 
 Intel’s plan just feels insane to us. “5 nodes in 4 years.” After the firm struggled on the 14nm replacement for nearly a decade, to believe they can execute on this vision takes a whole lot of kool-aid. What we can believe is that Intel will spend a lot on wafer fabrication equipment. Executives and shareholders in firms like Applied Materials, Lam Research, KLA, ASML, and Tokyo Electron are likely cheering about Intel not backing down in the face of adversity. Pat will take the lower margins, but instead of figuring out how to cut costs like all prior leadership since and including Paul Otellini, he is willing to potentially light money on fire.
 
 > Since March, we have shipped our first IFS packaging units for revenue. Engage with well over a hundred potential customers, including several large customers, who are working with us on our leading-edge Intel 18A. And we have multiple customers planning test trips on Intel 16 that will be in our factories early next year.
-> 
+>
 > Pat Gelsinger, Intel CEO
 
 Foundry is a core tenet of this strategy. They have already started making revenue from packaging services which indicates this deal is older than Gelsinger’s tenure. They indicate that 22nm FFL, now called Intel 16nm, will be the first major foundry process node. Intel believes long term that they can make similar margins to TSMC in their foundry business which seems like an optimistic reading.
@@ -39,9 +39,9 @@ We are very skeptical this can be executed on. There’s no way to emphasize how
 Instead of that conservative route, they are going to bet the farm, spend every dime Intel makes on investing in more manufacturing, design, and in general catching up in technology. This is perhaps the riskiest bet in technological history. If it fails, America fully cedes manufacturing of semiconductors to the east. Tens of billions of dollars will be spent with no results, but if it succeeds, Intel is back. We doubt 100% success from Intel, but we will leave it off with a quote from the man himself.
 
 > This is a tremendous period of time. We're seizing the opportunity. Carpe Diem.
-> 
+>
 > Pat Gelsinger, Intel CEO
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/intel-betting-the-farm-shrinking-business-margins-down-for-few-years-but-aggressively-investing-40b-43b-a-year-and-more-with-subsidies/) on October 22th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/intel-betting-the-farm-shrinking-business-margins-down-for-few-years-but-aggressively-investing-40b-43b-a-year-and-more-with-subsidies/) on October 22th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

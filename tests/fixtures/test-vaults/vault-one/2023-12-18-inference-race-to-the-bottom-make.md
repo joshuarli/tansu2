@@ -6,7 +6,7 @@ author: "Dylan Patel"
 description: "Mixtral Inference Costs on H100, MI300X, H200, A100, Speculative Decoding"
 ---
 
-There are now five companies besides OpenAI that have models that can beat GPT-3.5 in a variety of benchmarks: Mistral Mixtral, Inflection-2, Anthropic Claude 2, Google Gemini Pro, and X.AI Grok. More amazingly, both Mistral and X.AI achieved these stellar results with a team of less than 20 people. Additionally, we also expect Meta, Databricks, 01.AI (Yi), Baidu, and Bytedance to also hit >GPT 3.5 performance very soon. Of course, that’s in benchmarks, and a couple of these folks allegedly train on eval… but never mind that ***small*** detail.
+There are now five companies besides OpenAI that have models that can beat GPT-3.5 in a variety of benchmarks: Mistral Mixtral, Inflection-2, Anthropic Claude 2, Google Gemini Pro, and X.AI Grok. More amazingly, both Mistral and X.AI achieved these stellar results with a team of less than 20 people. Additionally, we also expect Meta, Databricks, 01.AI (Yi), Baidu, and Bytedance to also hit >GPT 3.5 performance very soon. Of course, that’s in benchmarks, and a couple of these folks allegedly train on eval… but never mind that **_small_** detail.
 
 For those keeping score, there will be a total of 11 firms in just a handful of months from now. It’s clear that pre-training of a GPT-3.5 caliber model has become completely commoditized. OpenAI is still the king of the hill with GPT-4, but that lead has been compressed significantly. While we believe that most of the long-term value will be captured by the highest-end models, it’s also clear that the next tier down in model quality and cost will enable a multi-billion-dollar niche in the marketplace, especially when fine-tuned.
 

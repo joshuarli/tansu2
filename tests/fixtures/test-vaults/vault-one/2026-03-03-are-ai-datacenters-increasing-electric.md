@@ -8,7 +8,7 @@ description: "Power prices misconception, PJM's poor market design, Capacity pri
 
 ### Power prices misconception, PJM's poor market design, Capacity prices 9.3x growth, ERCOT vs PJM grid reliability and expansion
 
-*SemiAnalysis x Fluidstack is launching GTC with a 48-hour, full-stack AI infrastructure hackathon on March 15th from Power to Prefill, Dirt to Decode. With speakers from OpenAI, GPU MODE, and Thinking Machines, plus compute grants and GPU cluster access, come build with the best: [APPLY HERE](https://luma.com/SAxFSHack).*
+_SemiAnalysis x Fluidstack is launching GTC with a 48-hour, full-stack AI infrastructure hackathon on March 15th from Power to Prefill, Dirt to Decode. With speakers from OpenAI, GPU MODE, and Thinking Machines, plus compute grants and GPU cluster access, come build with the best: [APPLY HERE](https://luma.com/SAxFSHack)._
 
 The topic of datacenter load growth and impact on power prices remains broadly misunderstood, akin to the [water consumption myth that we debunked recently](https://newsletter.semianalysis.com/p/from-tokens-to-burgers-a-water-footprint). It was at the forefront of the 2025 New Jersey elections, after a [~20% jump](https://www.pa.gov/governor/newsroom/2025-press-releases/gov-shapiro-s-legal-action-again-averts-historic-price-spike-acr) in residential electricity rates overnight in June 2025. Some even began finger-pointing at the 300MW Nebius AI Datacenter for Microsoft in the state, a laughable claim given [\>85% of its power is self-generated](https://newsletter.semianalysis.com/p/how-ai-labs-are-solving-the-power). Are AI datacenters really causing households to pay electricity 20% more expensive?
 
@@ -40,7 +40,7 @@ For institutions looking for deeper analysis, subscribe to our [Energy Model](ht
 
 Let’s start with a brief explainer of what “capacity” actually is, how it flows to your monthly bill, and then dig further into market designs.
 
-*This report is a collaboration between SemiAnalysis and Archer Daniels Midland Investor Services (ADMIS), a leading futures brokerage and clearing firm.*
+_This report is a collaboration between SemiAnalysis and Archer Daniels Midland Investor Services (ADMIS), a leading futures brokerage and clearing firm._
 
 ## Capacity: paying for power plants to sit idle 95% of the time
 
@@ -268,23 +268,23 @@ Paid subscribers can scroll down below the disclaimers to access the rest of the
 ## SemiAnalysis Disclaimer
 
 > **Analyst Certifications and Independence of Research.**
-> 
+>
 > Each of the analysts whose names appear in this report hereby certify that all the views expressed in this Report accurately reflect our personal views about any and all of the subject securities or issuers and that no part of our compensation was, is, or will be, directly or indirectly, related to the specific recommendations or views of in this Report.
-> 
-> SemiAnalysis LLC (the “Company”) is an independent equity research provider. The Company is not a member of the FINRA or the SIPC and is not a registered broker dealer or investment adviser. SemiAnalysis has no other regulated or unregulated business activities which conflict with its provision of independent research.  
->   
+>
+> SemiAnalysis LLC (the “Company”) is an independent equity research provider. The Company is not a member of the FINRA or the SIPC and is not a registered broker dealer or investment adviser. SemiAnalysis has no other regulated or unregulated business activities which conflict with its provision of independent research.
+>
 > **Limitation of Research and Information.**
-> 
+>
 > This Report has been prepared for distribution to only qualified institutional or professional clients of SemiAnalysis LLC. The contents of this Report represent the views, opinions, and analyses of its authors. The information contained herein does not constitute financial, legal, tax or any other advice. All third-party data presented herein were obtained from publicly available sources which are believed to be reliable; however, the Company makes no warranty, express or implied, concerning the accuracy or completeness of such information. In no event shall the Company be responsible or liable for the correctness of, or update to, any such material or for any damage or lost opportunities resulting from use of this data.
-> 
+>
 > Nothing contained in this Report or any distribution by the Company should be construed as any offer to sell, or any solicitation of an offer to buy, any security or investment. Any research or other material received should not be construed as individualized investment advice. Investment decisions should be made as part of an overall portfolio strategy and you should consult with a professional financial advisor, legal and tax advisor prior to making any investment decision. SemiAnalysis LLC shall not be liable for any direct or indirect, incidental or consequential loss or damage (including loss of profits, revenue or goodwill) arising from any investment decisions based on information or research obtained from SemiAnalysis LLC.
-> 
+>
 > **Reproduction and Distribution Strictly Prohibited.**
-> 
+>
 > No user of this Report may reproduce, modify, copy, distribute, sell, resell, transmit, transfer, license, assign or publish the Report itself or any information contained therein. Notwithstanding the foregoing, clients with access to working models are permitted to alter or modify the information contained therein, provided that it is solely for such client’s own use. This Report is not intended to be available or distributed for any purpose that would be deemed unlawful or otherwise prohibited by any local, state, national or international laws or regulations or would otherwise subject the Company to registration or regulation of any kind within such jurisdiction.
-> 
+>
 > **Copyrights, Trademarks, Intellectual Property.**
-> 
+>
 > SemiAnalysis LLC, and any logos or marks included in this Report are proprietary materials. The use of such terms and logos and marks without the express written consent of SemiAnalysis LLC is strictly prohibited. The copyright in the pages or in the screens of the Report, and in the information and material therein, is proprietary material owned by SemiAnalysis LLC unless otherwise indicated. The unauthorized use of any material on this Report may violate numerous statutes, regulations and laws, including, but not limited to, copyright, trademark, trade secret or patent laws.
 
 **ADMIS Disclaimer**
@@ -301,13 +301,13 @@ Sources & References:
 
 4\. [https://insidelines.pjm.com/maintaining-grid-reliability-through-highest-peaks-in-a-decade/](https://insidelines.pjm.com/maintaining-grid-reliability-through-highest-peaks-in-a-decade/)
 
-5\. [https://www.monitoringanalytics.com/reports/reports/2025/IMM\_Analysis\_of\_the\_20252026\_RPM\_Base\_Residual\_Auction\_Part\_G\_20250603\_Revised.pdf](https://www.monitoringanalytics.com/reports/reports/2025/IMM_Analysis_of_the_20252026_RPM_Base_Residual_Auction_Part_G_20250603_Revised.pdf)
+5\. [https://www.monitoringanalytics.com/reports/reports/2025/IMM_Analysis_of_the_20252026_RPM_Base_Residual_Auction_Part_G_20250603_Revised.pdf](https://www.monitoringanalytics.com/reports/reports/2025/IMM_Analysis_of_the_20252026_RPM_Base_Residual_Auction_Part_G_20250603_Revised.pdf)
 
 6\. [https://www.pa.gov/governor/newsroom/2025-press-releases/gov-shapiro-s-legal-action-again-averts-historic-price-spike-acr](https://www.pa.gov/governor/newsroom/2025-press-releases/gov-shapiro-s-legal-action-again-averts-historic-price-spike-acr)
 
 7\. [https://www.ercot.com/files/docs/2025/04/29/Long-term-Load-Forecast-RPG.pdf](https://www.ercot.com/files/docs/2025/04/29/Long-term-Load-Forecast-RPG.pdf)
 
-8\. [https://www.ercot.com/files/docs/2025/05/15/CapacityDemandandReservesReport\_May2025.pdf](https://www.ercot.com/files/docs/2025/05/15/CapacityDemandandReservesReport_May2025.pdf)
+8\. [https://www.ercot.com/files/docs/2025/05/15/CapacityDemandandReservesReport_May2025.pdf](https://www.ercot.com/files/docs/2025/05/15/CapacityDemandandReservesReport_May2025.pdf)
 
 9\. [https://www.ercot.com/files/docs/2025/06/17/ERCOT-Monthly-Operational-Overview-May-2025.pdf](https://www.ercot.com/files/docs/2025/06/17/ERCOT-Monthly-Operational-Overview-May-2025.pdf)
 
@@ -319,7 +319,7 @@ Sources & References:
 
 13\. [https://www.rtoinsider.com/121911-pjm-capacity-auction-clears-max-price-falls-short-reliability-requirement/](https://www.rtoinsider.com/121911-pjm-capacity-auction-clears-max-price-falls-short-reliability-requirement/)
 
-14\. [https://elibrary.ferc.gov/eLibrary/docinfo?accession\_number=20241230-5225](https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20241230-5225)
+14\. [https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20241230-5225](https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20241230-5225)
 
 15\. [https://www.reuters.com/business/energy/power-prices-surge-winter-storm-spikes-demand-us-data-center-alley-2026-01-25/](https://www.reuters.com/business/energy/power-prices-surge-winter-storm-spikes-demand-us-data-center-alley-2026-01-25/)
 

@@ -11,7 +11,7 @@ Taiwanese Semiconductor Manufacturing Company, $TSM, is the world’s largest co
 Recently, Morgan Stanley analysts have downgraded the company’s stock in an 83-page report which caused it’s market cap to tumble by $25 billion. The main reason?
 
 > We think TSMC can barely maintain its 50% gross margin in a semi up-cycle – let alone in a down-cycle, as we expect in 2022
-> 
+>
 > Morgan Stanley
 
 TSMC has been extending their lead over competition such as Intel, Samsung, and GlobalFoundries. Their customers such as Apple, AMD, Nvidia, and Amazon are fully disrupting the industry and growing market share like mad. These firms are powered by leading edge silicon from TSMC. Why would their single enabler suddenly start having worse gross margins?
@@ -37,7 +37,7 @@ The demand from TSMC clients is there, and that is with the 5nm node commanding 
 **Strike 2 Morgan Stanley.**
 
 > We think the cycle peak could happen as early as in 4Q21 when foundry tightness starts to ease
-> 
+>
 > Morgan Stanley
 
 As an independent analyst I have been able to do channel checks that validate 2022 is still part of this super cycle. I shudder at the fact that 5 different analysts at Morgan Stanley could not pick up their phone and call people within the ecosystem. Leadtime’s for components are not 25 weeks. Many components are ranging from more than 30 weeks. Some are even backed up over a year. This is for existing orders. TSMC has already negotiated wafer supply for 2022 and are working on 2023 with major clients according to local Taiwanese media.
@@ -53,7 +53,7 @@ So no, Morgan Stanley, there is no possibility of foundry tightness easing in Q4
 This is where I would say “ **You’re out!**”, but the report is 83 pages and still has a few hilarious complete misunderstandings that I want to point out.
 
 > 5G migration is already halfway through
-> 
+>
 > Morgan Stanley
 
 Morgan Stanley likely looks at the number of phones sold with 5G and called it a day. About half of phones sold do have 5G. That does not mean that all 5G smartphone solutions are built equal. Many existing 5G sales will transition to higher performance modems, transceivers, and mmWave antennas over time. China is going to light up mmWave in 2022 or 2023. These all drive silicon up for TSMC despite having already made the switch to 5G.
@@ -75,7 +75,7 @@ We will try not to rant about why Applied Materials belongs in the “tech innov
 **Strike 5 Morgan Stanley**
 
 > Advanced 3D packaging to dilute the value of monolithic scaling. The world is changing from monolithic integration (or conventional Moore's Law scaling) to multi-die and multi-chip systems, which is what AMD and Intel call "chiplets." That would dilute TSMC's value added in leading-edge foundry business.
-> 
+>
 > Morgan Stanley
 
 Morgan Stanley just dismissed 3D packaging as hurting TSMC's lead on the leading edge. This makes absolutely no sense at all. 3D packaging is a front-end technology. One cannot simply order chiplets from a foundry and choose to use low margin outsourced test and assembly firms to package these chips together. 3D packaging is primarily a way of bringing more transistors closer together. 3D does not allow trailing edge content to replace leading edge. TSMC's 3D technology dubbed SoIC is only available on 7nm and more advanced process technologies. Furthermore, even in 2D chiplet technologies such as current AMD datacenter CPUs, leading edge content isn't skimped in favor of leading edge. They are additive.
@@ -85,7 +85,7 @@ AMD will be releasing the industries first 3D hybrid bonded CPUs alongside TSMC 
 **Strike 6 Morgan Stanley**
 
 > However, an innovation in system architecture can easily boost system/chip performance 50-100%, some with much lower costs. NVIDIA has been the slowest adopter of TSMC's leading-edge node, by upgrading its GPU architecture every year
-> 
+>
 > Morgan Stanley
 
 Nvidia is on a 2 year cycle for both gaming and datacenter GPUs. Morgan Stanley somehow could not even look at Nvidia’s history of products or their public roadmaps. Nvidia has adopted the most advanced node that TSMC offers for their datacenter product every release. They work closely with TSMC in the past to build the largest monolithic chip possible because their demands require it. They work closely with TSMC to stack this massive GPU on top of a silicon interposer and package HBM memory. They are working with TSMC on 5nm GPUs with more advanced packaging for datacenter next year which will increase leading edge silicon beyond the monolithic realm limits.
@@ -98,6 +98,6 @@ We are just on page 19 folks, and for our sanity, we will stop here for this not
 
 “Hanlon’s Razer” says they are just incompetent, but I must go with “Occam’s Razer” here. They may be somewhat incompetent, but they also wanted to go against the tide of the market and claim something bombastic because it is II Voting Season. They certainly achieved what they wanted. Most institutional investors invested in TSMC read this piece of crap report. Some of them relied on this and sold the stock causing the valuation of TSMC to fall by $25 billion. Now these Morgan Stanley analysts are fresh on their mind during II Voting Season.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/morgan-stanley-just-reduced-tsmcs-value-by-25b-while-demonstrating-a-complete-lack-of-semiconductor-knowledge/) on June 23rd 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/morgan-stanley-just-reduced-tsmcs-value-by-25b-while-demonstrating-a-complete-lack-of-semiconductor-knowledge/) on June 23rd 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

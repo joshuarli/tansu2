@@ -28,7 +28,7 @@ There are multiple components for this supply chain, from lasers, DSPs, TiAs, dr
 
 The [DSP is mainly dominated by Marvell](https://www.semianalysis.com/i/107160162/the-war-on-marvell), although [Broadcom is gaining a bit of share](https://www.semianalysis.com/i/107160162/the-war-on-marvell), and there are also [linear direct drive optics coming which remove the DSP](https://www.semianalysis.com/i/107160162/the-war-on-marvell), starting to bleed in next year. This segment is generally very strong, but tremendous weakness in Marvell’s other businesses such as storage and telecom carrier infrastructure could mask some of the positives over the near term.
 
-*We will be hosting [AI and Semiconductor Symposium in Taiwan](https://www.eventbrite.com/e/ai-and-semiconductor-symposium-tickets-692838296997) with on September 3rd with many foundry, packaging, ODM suppliers, and buyside in attendance. Topics covered include the future of AI infrastructure, the next-generation model architectures employed by Google’s Gemini/Future OpenAI GPT, Chinese analog/power semi fab buildouts, and Nvidia’s current acquisition target. Speakers include multiple members of SemiAnalysis, [FabricatedKnowledge](https://www.fabricatedknowledge.com/), [Asianometry](https://www.asianometry.com/), [Alethia Capital](https://www.aletheia-capital.com/), and the CEO and Chairman of Andes, the highest volume RISC-V based firm in the world with over 1 billion cores shipped a year. [Register here](https://www.eventbrite.com/e/ai-and-semiconductor-symposium-tickets-692838296997) if you can come!*
+_We will be hosting [AI and Semiconductor Symposium in Taiwan](https://www.eventbrite.com/e/ai-and-semiconductor-symposium-tickets-692838296997) with on September 3rd with many foundry, packaging, ODM suppliers, and buyside in attendance. Topics covered include the future of AI infrastructure, the next-generation model architectures employed by Google’s Gemini/Future OpenAI GPT, Chinese analog/power semi fab buildouts, and Nvidia’s current acquisition target. Speakers include multiple members of SemiAnalysis, [FabricatedKnowledge](https://www.fabricatedknowledge.com/), [Asianometry](https://www.asianometry.com/), [Alethia Capital](https://www.aletheia-capital.com/), and the CEO and Chairman of Andes, the highest volume RISC-V based firm in the world with over 1 billion cores shipped a year. [Register here](https://www.eventbrite.com/e/ai-and-semiconductor-symposium-tickets-692838296997) if you can come!_
 
 ![](z-images/20d2cb987cb946179fa26b7fc8512bdd.webp)
 
@@ -39,7 +39,7 @@ Lumentum, the largest laser manufacturer in the world was one such AI-headfake. 
 However, there is some silver lining. The company believes that:
 
 > Telecom and Datacom revenue will be up in calendar ’24 compared to calendar ’23.
-> 
+>
 > We expect to start ramping shipments of 200-gig EML products in calendar ‘24, and customer qualifications of 800G and 1.6-terabit transceiver designs are well underway.
 
 200G per lane is still a bit aways and isn’t expected to ship at any reasonable volume only starting at the tail end of 2024, probably alongside Nvidia’s next generation GPU and NVSwitch.

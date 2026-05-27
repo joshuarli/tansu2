@@ -13,7 +13,7 @@ This will be our second post of this type for the flurry of semiconductor earnin
 While Tesla isn’t purely a semiconductor company, they do have some really interesting semi ambitions as part of their larger overarching goals. We have talked about the semiconductor design ambitions in 3 separate articles last year, but I’m not here to talk about Tesla today. I just want to lighten the mood by quoting Elon from the recent earnings call.
 
 > Like that little chip that allows you to move your seat back and forth, that actually was a big problem. But a lot of these things are alleviating. I think there's some degree of the toilet paper problem as well where there was a toilet paper shortage during COVID. Obviously, it wasn't really certainly a tremendous enhanced need for ass wiping. It's just people panicked and got every paper product you could possibly wipe your ass with basically. And I wasn't sure, is this like a real thing or not? I actually took my kids to the H-E-B and Walmart in Texas to just confirm if it was real. Indeed, it was. And there's plenty of food and everything else but just nothing, no paper products. That didn't cause us \[plenty\].
-> 
+>
 > An odd choice for people to panic about, yes, because these things are -- actually, if end of the world is coming, I think toilet paper is the least of your problems. So I think we saw just a lot of companies over-order chips and then buffer the chips. And so we should see, and we are seeing, alleviation in almost every area. But the output of the vehicle goes with the least lucky. What are the most problematic items in an entire car? There seems like at least 10,000 unique parts in the car, way more than that if you go further up the supply chain. And so which one is going to be the least lucky one this time? It's hard to say.
 
 Okay you had your laugh? Now back to the serious business.
@@ -53,7 +53,7 @@ Process control intensity seems to continue to increase in the long term. I do e
 H2 is going be to be strong given how weak Q1 is due to shipping nightmares and Malasyia/China covid shut downs. I like KLA, but I think it is still a little too expensive compared to peers. It’s also not that expensive given the wafer fab equipment spend environment going forward... They are only trading at 17x consensus forward, and consensus for all semicap is a bit low. KLA has grown 7 years in a row now, so… they probably deserve to not be looped in with other players who are a bit more cyclical. KLA also has better margins. Services and software are a bigger part of metrology and inspection versus other types of semiconductor capital equipment.
 
 > But in a historical context, if you went up as much as our revenues have, we would see volume discounting happening with our suppliers, which would bring down some of the costs, and that's not really happening in this environment.
-> 
+>
 > So there's a little bit of a cascading that happens whenever you have a disruption in a facility that's already running full out, I mean, equipment is running 24/7, people are working up to legal limits in terms of overtime.
 
 This environment is nuts!
@@ -85,7 +85,7 @@ On trailing edge semi supply:
 We missed this, but MACOM sold their stake in Ampere and recorded a nice profit. Very curious to know which party had the call option on the stake. They must be incredibly bullish. SemiAnalysis has heard some great things about the 5nm based Siryn which utilizes a custom developed core that can be deployed in huge core counts without sacrificing too much silicon area.
 
 > Next, I'd like to provide some additional information regarding the December 2021 sale of our less than 10% equity interest in Ampere Compute Holdings or $127.8 million. Our equity interest in Ampere was established back in 2017 when MACOM divested applied Microcircuit Corporation's Arm-based compute business. MACOM was a passive investor in Ampere, not involved in its operations, and we had limited rights.
-> 
+>
 > One of Ampere's other limited liability members exercised its call option, which was established in 2017. The $127.8 million cash consideration amount was also established back in 2017. Our fiscal Q1 2022 financials reflect a $118.2 million GAAP gain recorded as other income. This gain represents the difference between the $127.8 million of proceeds and our approximate $9.6 million carrying value of the investment. There was substantially no tax impact as we were able to utilize net operating losses to offset the gain. This transaction further strengthens MACOM's financial position.
 
 **Silicon Motion Technology**
@@ -97,9 +97,9 @@ Client SSD market share now sits at 35% to 40%, sounds great, but long term I wo
 The wafer supply story is quite interesting. Silicon Motion is actually receiving less supply in Q1 sequentially, but in the 2nd half, they will receive a solid uptick. The firm pretty firmly says their bottleneck to growth is wafer supply, and this isn’t just short term, but the next 3 to 5 years. Wow. Talk about a long, protracted, tight market. Later on in the call, the founder/CEO backpeddled to say they can keep the trajectory if they can keep execution going, recruit talent in R&D, and get sufficient wafer supply.
 
 > We are in severe shortage in certain technology nodes, including 55-nanometer and all advanced technology nodes, 16-nanometer and 12-nanometer. However, I think we are comfortable in 28-nanometer wafer supply. We are just balancing \[40/45-nanometer\].
-> 
+>
 > Frankly speaking, all the major new PCIe Gen4 are 12-nanometer technology node. And we just don't have enough wafer to support the demand to fill. If we have sufficient, I think we will revise guide immediately. For -- in addition is our UFS controller is 3.1 that uses TSMC 16-nanometer. We also have a severe shortage. Even TSMC increased in amount compared with the 2021, but they're not enough to meet our customer demand in 2022. So we'll continue to work with our customers, with TSMC together to gain additional wafer supply.
-> 
+>
 > As I mentioned, 28-nanometer, we are a little comfortable. We could do a better wafer allocation in 28-nanometer to gain incremental sales revenue even without the additional allocation in advanced technology nodes.
 
 This isn’t perfectly applicable to TSMC’s utilization or overbooked rates. From other channel checks, 28nm and 40/45nm are the tightest and 16/12nm is also fully booked, but not by as much. Wafer price increases confirm our view, but these comments surely put our view into question.

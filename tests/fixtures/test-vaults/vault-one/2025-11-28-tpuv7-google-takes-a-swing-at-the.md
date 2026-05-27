@@ -289,7 +289,7 @@ The building block of Google’s ICI scale-up network for TPUv7 is a 4x4x4 3D to
 
 Source: Google, SemiAnalysis
 
-The TPUs are connected to each other in a 3D torus configuration, with each TPU connecting to 6 neighbors total – 2 *logically* adjacent neighboring TPUs for each of the X, Y and Z axes.
+The TPUs are connected to each other in a 3D torus configuration, with each TPU connecting to 6 neighbors total – 2 _logically_ adjacent neighboring TPUs for each of the X, Y and Z axes.
 
 Each TPU is always connected to 2 other TPUs via PCB traces within the compute tray but depending on where the TPU is located within the 4x4x4 cube, it will connect to 4 other neighbors either via Direct Attach Copper (DAC) cables or via an Optical Transceiver.
 
@@ -351,8 +351,8 @@ While Google can innovatively achieve an impressive scale-up cluster of 9,216 TP
 
 Source: Google
 
-For slices that can fit entirely within a 4x4x4 Cube, we can simply carve these slices out of that cube using the copper interconnects within the rack as well as the optical transceivers on the face/edge/corner of the cube to wrap around and complete the 3D Torus if needed.  
-  
+For slices that can fit entirely within a 4x4x4 Cube, we can simply carve these slices out of that cube using the copper interconnects within the rack as well as the optical transceivers on the face/edge/corner of the cube to wrap around and complete the 3D Torus if needed.
+
 To see how wraparound and inter-cube connections are made, let’s start by looking at how we would create a 64 TPU slice in a 4x4x4 topography. We can use the unit 4x4x4 cube of 64 TPUs corresponding to one physical 64 TPU rack to build up this topography. All 8 TPUs in the interior of the 4x4x4 cube can fully connect to all 6 neighbors using copper. If a TPU does not have an interior neighbor along a given axis, it will wrap around and connect to a TPU on the opposite side of the cube. For example, TPU 4,1,4 has no interior neighbor in the Z+ direction, so it will use one 800G optical transceiver to connect to an OCS assigned to the Z-axis, with the OCS configured to direct this connection to the Z- side of the cube, connecting to TPU 4,1,1. In the Y- direction, TPU 1,1,1 will use an optical transceiver to connect to a Y-axis OCS to link to the Y+ side of TPU 1,4,1 and so on.
 
 ![](z-images/151907a1041a715053de281cc85e5eb7.webp)
@@ -421,8 +421,8 @@ The Datacenter Network (DCN) is a network separate to ICI that serves the role o
 
 As discussed in our earlier post on Mission Apollo, [where Google proposed replacing the Electronic Packet Switch (EPS)-containing spine layer of the traditional “Clos” architecture with Paloma Optical Circuit Switches (OCS)](https://newsletter.semianalysis.com/p/google-apollo-the-3-billion-game), Google’s DCN consists of an optically switched Datacenter Network Interconnect (DCNI) layer that combines several aggregation blocks, each of which connects several 9,216 TPU ICI clusters.
 
-In 2022, Google’s Apollo project proposed a DCN architecture that described using 136x136 OCS switches for TPUv4 pods with a pod size of 4,096 TPUs. OCS switches at the DCNI layer were organized into 4 Apollo zones, each containing a maximum of 8 racks of 8 OCS switches for a total of 256 OCS switches. When it comes to Ironwood, to support up to 147k TPUv7s on the same network, we hypothesize that the number of ports on the OCS will nearly double as opposed to increasing the maximum number of OCS switches.  
-  
+In 2022, Google’s Apollo project proposed a DCN architecture that described using 136x136 OCS switches for TPUv4 pods with a pod size of 4,096 TPUs. OCS switches at the DCNI layer were organized into 4 Apollo zones, each containing a maximum of 8 racks of 8 OCS switches for a total of 256 OCS switches. When it comes to Ironwood, to support up to 147k TPUv7s on the same network, we hypothesize that the number of ports on the OCS will nearly double as opposed to increasing the maximum number of OCS switches.
+
 The diagram below illustrates what an Ironwood DCN network using 32 racks holding 256 300x300 OCS switches could look like. Assuming that there is no oversubscription between the spine layers of each aggregation block, a maximum of 16 ICI pods can be connected in the DCN with 4 aggregation blocks connecting 4 ICI pods each – a total of 147,456 TPUs.
 
 The DCNI layer connects the 4 aggregation blocks – depicted as the top layer in the diagram below. As with ICI, FR Optics are used to connect to the OCSs in order to maximize bandwidth per port on each OCS.
@@ -456,7 +456,7 @@ The externalization strategy is clear to see by looking at the number of contrib
 
 Source: GitHub, SemiAnalysis
 
-Traditionally, Google only had first class support on the Jax/XLA:TPU stack (and TensorFlow/TF-Mesh RIP), but treated PyTorch on TPU as second class citizen. It relied on lazy tensor graph capture through PyTorch/XLA instead of having a first-class eager execution mode. Furthermore, it did not support PyTorch native distributed APIs (torch.distributed.\*) or support PyTorch native parallelism APIs (DTensor, FSDP2, DDP, etc), but relied on weird out of tree XLA SPMD APIs (torch\_xla.experimental.spmd\_fsdp, torch\_xla.distributed.spmd, etc.). This has led to a subpar non-native experience for external users that are used to the native PyTorch CUDA backend on GPUs and trying to switch to TPUs.
+Traditionally, Google only had first class support on the Jax/XLA:TPU stack (and TensorFlow/TF-Mesh RIP), but treated PyTorch on TPU as second class citizen. It relied on lazy tensor graph capture through PyTorch/XLA instead of having a first-class eager execution mode. Furthermore, it did not support PyTorch native distributed APIs (torch.distributed.\*) or support PyTorch native parallelism APIs (DTensor, FSDP2, DDP, etc), but relied on weird out of tree XLA SPMD APIs (torch_xla.experimental.spmd_fsdp, torch_xla.distributed.spmd, etc.). This has led to a subpar non-native experience for external users that are used to the native PyTorch CUDA backend on GPUs and trying to switch to TPUs.
 
 ![](z-images/6cbe68a497b56b10484f31a2ecd7c58e.webp)
 

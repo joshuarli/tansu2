@@ -8,7 +8,7 @@ description: "How ChatGPT will monetize free users, Router is the Release, AIs w
 
 ### How ChatGPT will monetize free users, Router is the Release, AIs will serve Ads, Google's moat eroded?, The shift of purchasing intent queries
 
-To many power users (Pro and Plus), GPT5 was a disappointing release. But with closer inspection, the real release is focused on the vast majority of ChatGPT’s users, which is the 700m+ free userbase that is growing rapidly. Power users should be disappointed; *this release wasn’t for them*. The real consumer opportunity for OpenAI lies with the largest user base, and getting the unmonetized users who currently use ChatGPT infrequently in their day-to-day to indirectly pay is their largest opportunity.
+To many power users (Pro and Plus), GPT5 was a disappointing release. But with closer inspection, the real release is focused on the vast majority of ChatGPT’s users, which is the 700m+ free userbase that is growing rapidly. Power users should be disappointed; _this release wasn’t for them_. The real consumer opportunity for OpenAI lies with the largest user base, and getting the unmonetized users who currently use ChatGPT infrequently in their day-to-day to indirectly pay is their largest opportunity.
 
 Analysts focused on the model capabilities are missing the much larger context of network effects that ChatGPT is gaining quickly. In November of 2023, ChatGPT wasn’t even in the top 100 websites; now it is number 5. Larger than X/Twitter, Reddit, Whatsapp, Wikipedia, and quickly approaching Instagram, Facebook, Youtube and Google. On the top 10 list, every single property is much older than ChatGPT.com, and the sheer number of unmonetized users is staggering.
 
@@ -46,13 +46,13 @@ But in recent interviews his tone has now shifted. There is clearly a lot of tho
 
 > “I am not totally against it… if you compare us to social media or web search where you can kinda tell that you are being monetized… we would hate to ever modify anything in the stream of an LLM… maybe if you click on something in there that is going to be there we’d show anyway, we’ll get a bit of transaction revenue and it’s a flat thing for everything, maybe that could work. It’s clearly possible to be a good ad driven company but there are obviously issues to it.
 
-Compared to the previous conversation, when he was dismissive, his most recent thoughts clearly shows that Sam Altman is thinking about monetizing free users. He mentions a take rate a potential affiliate model. And as a response, the interviewer (*Andrew Mayne of OpenAI*) literally says, “I would love to do all my purchasing through ChatGPT because often times I feel like I am not making the most informed decisions,” as a response in the conversation. This is likely the direction OpenAI is taking.
+Compared to the previous conversation, when he was dismissive, his most recent thoughts clearly shows that Sam Altman is thinking about monetizing free users. He mentions a take rate a potential affiliate model. And as a response, the interviewer (_Andrew Mayne of OpenAI_) literally says, “I would love to do all my purchasing through ChatGPT because often times I feel like I am not making the most informed decisions,” as a response in the conversation. This is likely the direction OpenAI is taking.
 
-The Router release can now understand the *intent* of the user’s queries, and importantly, can decide how to respond. It only takes one additional step to decide whether the query is economically monetizable or not. Today we will make our case for how ChatGPT's monetized free end state could look like an Agentic super-app for the consumer. This is only possible because of routing.
+The Router release can now understand the _intent_ of the user’s queries, and importantly, can decide how to respond. It only takes one additional step to decide whether the query is economically monetizable or not. Today we will make our case for how ChatGPT's monetized free end state could look like an Agentic super-app for the consumer. This is only possible because of routing.
 
 We believe that display ads are unlikely. Perplexity has tried this, and it doesn’t seem to be going that well. Instead of inserting a paid feature into the query, we believe it’s more likely that they will pursue a take-rate based model.
 
-Now let's discuss, because it looks like an Agentic *Assistant* is a way that could align Sam Altman's vision of AI being helpful, as well as monetizing via a transaction take rate.
+Now let's discuss, because it looks like an Agentic _Assistant_ is a way that could align Sam Altman's vision of AI being helpful, as well as monetizing via a transaction take rate.
 
 ## Agentic Advice and Purchasing, Supply and Demand Dynamics
 
@@ -77,7 +77,7 @@ The search query on the other hand has a fixed cost. It would show a page rankin
 
 Source: SemiAnalysis
 
-So now let's bring in the higher value query, the DUI Lawyer question. As you may know, this is an *extremely valuable* *question*. Today on search, this is one of the higher cost per click keywords, and it is plastered with ads. In a world of dynamic supply, ChatGPT can not only answer this question, it could realize this is a very valuable question and answer this question at the level of a human. It could throw $50 dollars of compute if there is a belief of high conversion, because that transaction is worth $1000s of dollars.
+So now let's bring in the higher value query, the DUI Lawyer question. As you may know, this is an _extremely valuable_ _question_. Today on search, this is one of the higher cost per click keywords, and it is plastered with ads. In a world of dynamic supply, ChatGPT can not only answer this question, it could realize this is a very valuable question and answer this question at the level of a human. It could throw $50 dollars of compute if there is a belief of high conversion, because that transaction is worth $1000s of dollars.
 
 The router makes this possible. ChatGPT 5 could decide to allocate $50 to the query, create a plan, gather information about the incident, research local lawyers, consider who is likely to answer fastest, consider your budget, and then contact multiple lawyers on your behalf. It could even **Agentically reach out to lawyers on behalf of the free user knowing that the conversion ratio of this query is even higher**. This version of ChatGPT is highly helpful, aligns with the user's query, and is a valuable referral to the seller of the services or goods. This wouldn't be intrusive in the current format, and many free users would use this instantly.
 
@@ -101,7 +101,7 @@ Companies would flock quickly to this large new purchasing habit. Booking flight
 
 And while we are far from this future, the router is the necessary step to begin the sorting of high and low compute, and eventually commercial intent queries. None of this is possible without a single unified interface routing dynamic responses to users.
 
-This would fulfill a vision for non-intrusive ads by Sam Altman, as well as continue to enable ChatGPT to be a trusted advisor to users for free. ChatGPT will become an agent to help users make one of the most important decisions in their day-to-day lives: *buying stuff*. OpenAI and Shopify are already working on a [checkout integration today](https://www.retailtouchpoints.com/topics/digital-commerce/openai-shopify-reportedly-working-on-chatgpt-checkout-integration).
+This would fulfill a vision for non-intrusive ads by Sam Altman, as well as continue to enable ChatGPT to be a trusted advisor to users for free. ChatGPT will become an agent to help users make one of the most important decisions in their day-to-day lives: _buying stuff_. OpenAI and Shopify are already working on a [checkout integration today](https://www.retailtouchpoints.com/topics/digital-commerce/openai-shopify-reportedly-working-on-chatgpt-checkout-integration).
 
 ## From Today to Agentic Purchasing End State
 

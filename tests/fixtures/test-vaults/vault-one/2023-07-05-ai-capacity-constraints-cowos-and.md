@@ -87,7 +87,7 @@ It was only in 2018 that Micron started to pivot away from HMC and invest into H
 In their most recent earnings call Micron made some bold statements about their HBM roadmap: they believe they will go from laggard to leader with their HBM3E in 2024. HBM3E is expected to start to ship in Q3/Q4 for Nvidia’s next generation GPU.
 
 > Our ramp of HBM3, actually the sort of the next generation of HBM3, which is a much higher level of performance, bandwidth and lower power than what is in production in HBM3 today in the industry. That product, our industry-leading product will be ramping in volume starting CQ1 of 2024, and will be meaningful in revenue for fiscal year '24 and then substantially larger in 2025, even from those 2024 levels. And we will -- **we are targeting a very robust share in HBM higher than unnatural supply share for DRAM in the industry**.
-> 
+>
 > Sumit Sadana, Micron Chief Business Officer
 
 The statement that they will have higher market share in HBM versus their general DRMA marketshare is very bold. Given they still struggle to manufacture top bin HBM2E at high volume, we find it hard to believe Micron’s claim that they will ship leading edge HBM3 in early 2024 and even be the first to HBM3E. It feels to us as though Micron is trying to change the narrative away from being an [AI loser](https://www.semianalysis.com/p/ai-server-cost-analysis-memory-is) despite dramatically lower memory content per Nvidia GPU server versus Intel/AMD CPU server.
@@ -111,7 +111,7 @@ While 3D packaging technologies such as TSMC's SoIC enable stacking dies directl
 While there are some other applications that use CoWoS like networking (and some of these are [adopted for networking GPU clusters like Broadcom’s Jericho3-AI](https://www.semianalysis.com/p/nvidias-infiniband-problem-qmx-ai)), supercomputing, and FPGAs, the vast majority of CoWoS demand comes from AI. Unlike other parts of the semiconductor supply chain, where weakness in other major end markets means there is plenty of slack to absorb the enormous pickup in GPU demand, CoWoS and HBM are already majority AI-facing technologies, so all slack was already absorbed in Q1. With GPU demand exploding, these are the parts of the supply chain that just cannot keep up and are bottlenecking GPU supply.
 
 > Just recently in these 2 days I received a customer's phone call requesting a big increase on the backend capacity, especially in the CoWoS. We are still evaluating that.
-> 
+>
 > C.C Wei, TSMC CEO
 
 TSMC has been getting ready for more packaging demand but probably did not expect this wave of generative AI demand to come so quickly. [In June, TSMC announced they have opened their Advanced Backend Fab 6 in Zhunan.](https://pr.tsmc.com/english/news/3033) This fab has an area of 14.3 hectares which would be enough cleanroom space for potentially 1 million wafers per year of 3D Fabric capacity. This includes not only CoWoS but also SoIC and InFO technologies. Interestingly this fab is larger than the rest of TSMC’s other packaging fabs combined. While this is just cleanroom space and far from fully tooled to actually provide that much capacity, it’s clear that TSMC is getting ready in anticipation of more demand for its advanced packaging solutions.

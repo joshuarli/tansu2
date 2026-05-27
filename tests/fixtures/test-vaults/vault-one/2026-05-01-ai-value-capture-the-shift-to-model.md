@@ -38,7 +38,7 @@ During this same period, gross margins for all the model creators and inference 
 
 ## Agentic AI Has Changed the Game
 
-The world changed in December 2025, when Agentic AI began to *really work*. SemiAnalysis has [written](https://newsletter.semianalysis.com/p/claude-code-is-the-inflection-point) [and](https://www.youtube.com/watch?v=MhedMJqzReo&pp=0gcJCdQKAYcqIYzv) [talked](https://open.spotify.com/episode/7kwRL8e3fOvJf3XzIY9fhC?si=d66a1bf0a29a4249) extensively about [our Claude Code usage](https://x.com/dylan522p/status/2047104466512400639?s=20), but it is important to emphasize that agentic AI is no longer limited to just coding. Our analysts are using agents every day to convert excel models into dashboards, create charts for all our notes, build financial models and analyze company earnings, and much more. These are all tasks that either 1) we simply wouldn’t have been able to do before or 2) would’ve previously taken our junior analysts many hours, taking them away from far more value added tasks.
+The world changed in December 2025, when Agentic AI began to _really work_. SemiAnalysis has [written](https://newsletter.semianalysis.com/p/claude-code-is-the-inflection-point) [and](https://www.youtube.com/watch?v=MhedMJqzReo&pp=0gcJCdQKAYcqIYzv) [talked](https://open.spotify.com/episode/7kwRL8e3fOvJf3XzIY9fhC?si=d66a1bf0a29a4249) extensively about [our Claude Code usage](https://x.com/dylan522p/status/2047104466512400639?s=20), but it is important to emphasize that agentic AI is no longer limited to just coding. Our analysts are using agents every day to convert excel models into dashboards, create charts for all our notes, build financial models and analyze company earnings, and much more. These are all tasks that either 1) we simply wouldn’t have been able to do before or 2) would’ve previously taken our junior analysts many hours, taking them away from far more value added tasks.
 
 The table below shows a handful of real examples from our own workflows, comparing token spend against what the equivalent human labor would have cost:
 
@@ -76,7 +76,7 @@ Source: SemiAnalysis InferenceX
 
 Many were surprised when Anthropic released Opus 4.5 at a price of $5 per million input tokens and $25 per million output tokens in late November 2025. Previous Opus models such as 4 and 4.1 (released May 2025 and August 2025 respectively) were priced 3x higher at $15/$75.
 
-However, we think Anthropic’s margins have actually *increased* on Opus tokens despite the lower ASP thanks to software improvements across Trainium and Nvidia GPUs as well as replacing Hoppers with Blackwells.
+However, we think Anthropic’s margins have actually _increased_ on Opus tokens despite the lower ASP thanks to software improvements across Trainium and Nvidia GPUs as well as replacing Hoppers with Blackwells.
 
 Anthropic’s margin expansion so far has come from cost reductions; they can generate the same tokens for cheaper. Despite the Opus price cut, their ASP/token has also actually gone up because most of the volume shifted from Sonnet to Opus.
 
@@ -136,8 +136,8 @@ Put simply, even if Nvidia raises server pricing and infrastructure providers in
 
 The next question after whether Nvidia can raise prices is where within the system it is most effective to do so.
 
-At the system level, memory is the most natural point of control. Rubin-class systems embed significantly more memory into an already constrained supply chain, and unlike compute, memory can be more cleanly segmented and continuously repriced.  
-  
+At the system level, memory is the most natural point of control. Rubin-class systems embed significantly more memory into an already constrained supply chain, and unlike compute, memory can be more cleanly segmented and continuously repriced.
+
 This is because memory on VR NVL72 is a socketed LPDDR-based memory solution called SOCAMM (System-On-Chip Attached Memory Module). SOCAMM is designed for Nvidia’s rack-scale systems, enabling higher capacity, modularity, power efficiency, and independent pricing of memory alongside compute.
 
 This makes SOCAMM one of the most important variables in understanding Nvidia’s pricing strategy. Two factors ultimately determine system-level pricing outcomes: the cost Nvidia secures for SOCAMM, and the markup applied when reselling that memory to customers. Developing a precise view of Nvidia’s pricing and BoM for its rack-scale systems is not an easy task, given the complexity of its “extreme co-design” approach and intricate supply chain dynamics.

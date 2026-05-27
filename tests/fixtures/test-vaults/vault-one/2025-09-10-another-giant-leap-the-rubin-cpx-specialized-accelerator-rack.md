@@ -124,7 +124,7 @@ At the front, the VR NVL144 CPX design is modular made up of 7 daughter card mod
 - One daughter card in the middle of the chassis (lower center of the diagram below) houses the Bluefield-4 Module, which contains one grace CPU and one CX-9 NIC.
 - One daughter card stacked on top of this Bluefield-4 module houses the power delivery board (PDB). The PDB is responsible for stepping down power from 48-54V to 12-13.5V as it enters the chassis from the busbar connector at the back.
 - The last daughter card is much smaller and is placed just to the right of the Bluefield-4 module. It is much slimmer and houses the utility management module containing items such as the BMC, HMC, DC-SCM, and management I/O.
-![](z-images/3f09edff91a12ba9ac50a8ef60a88cc3.webp)
+  ![](z-images/3f09edff91a12ba9ac50a8ef60a88cc3.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
@@ -262,7 +262,7 @@ We estimate that the total NVLink Scale-up cost to the end system owner (inclusi
 
 Source: SemiAnalysis
 
-However, attempting to use Expert Parallelism with lower speed networking connectivity will lead to latency issues and bottlenecks. Communications need scale with respect to the product of top\_k times number of layers. DeepSeek V3 has a top\_k of 8 and has 61 layers, so a back of the envelope calculation would indicate that using EP over PP would increase communications requirements by ~488x.
+However, attempting to use Expert Parallelism with lower speed networking connectivity will lead to latency issues and bottlenecks. Communications need scale with respect to the product of top_k times number of layers. DeepSeek V3 has a top_k of 8 and has 61 layers, so a back of the envelope calculation would indicate that using EP over PP would increase communications requirements by ~488x.
 
 ### One More Thing on Scaling and Huang’s Law
 
@@ -300,8 +300,8 @@ There will be major time to market challenges for AWS for its VR 144 CPX due to 
 
 We believe that they will continue using EFA and overcome this challenge by disaggregating their EFA NICs into an EFA NIC only sidecar rack and use external PCIe AEC cables to connect between the VR 144 CPX rack and the EFA NIC only sidecar rack. Furthermore, since they will not use the ConnectX-9 NIC, which has an integrated PCIe switch, they would also need to use Astera Labs’ dedicated PCIe switches to connect between the Vera CPU, local NVMe, Rubin CPX GPU as well as the external PCIe AEC cable to the EFA NIC in the sidecar rack.
 
-MTIAv4’s SUE72 (featuring a 72-logical GPU with all to all switched scale-up size just like the VR200 NVL144) design similarly can lean on Meta internal inference workloads. Even emerging designs such as OpenAI’s chip with Broadcom stand to compete given they will be codesigned with Frontier Models in mind and with an internal workload as a backstop.  
-  
+MTIAv4’s SUE72 (featuring a 72-logical GPU with all to all switched scale-up size just like the VR200 NVL144) design similarly can lean on Meta internal inference workloads. Even emerging designs such as OpenAI’s chip with Broadcom stand to compete given they will be codesigned with Frontier Models in mind and with an internal workload as a backstop.
+
 Despite enjoying the benefit of internal demand, the MTIAv3 is excluded from this category due to its small 16 GPU world size. It will effectively now need to develop prefill-only silicon to even have a shot at parity with upcoming Nvidia systems.
 
 ### AMD MI400 Series UALoE72 and MI500 UAL256

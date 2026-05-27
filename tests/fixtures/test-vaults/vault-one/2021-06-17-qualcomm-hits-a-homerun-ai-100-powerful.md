@@ -48,6 +48,6 @@ The development pipeline is quite user friendly, only second to Nvidia in the AI
 
 Qualcomm’s solution for inference combines high efficiency with high performance and low latency to make a compelling hardware solution. The clean and well-designed software tools have helped distinguish them from the pack and gain strong market traction starting later this year. Qualcomm seems poised to take large amounts of share in the blooming inference market in DLRNs and NLP. They can leverage their prowess in edge and 5G to offer the best integrated solution for edge AI inference. As this product gets qualified over time and Qualcomm’s ADAS solution is brought up, Cloud AI 100 will make its way into automotive as well. Qualcomm has hit a home run with the Cloud AI 100 because they truly understand the hardware and software co-design that is needed.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/qualcomm-hits-a-homerun-ai-100-powerful-ai-inference-acceleration-for-the-edge/) on June 17th 2021*.
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/qualcomm-hits-a-homerun-ai-100-powerful-ai-inference-acceleration-for-the-edge/) on June 17th 2021_.
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

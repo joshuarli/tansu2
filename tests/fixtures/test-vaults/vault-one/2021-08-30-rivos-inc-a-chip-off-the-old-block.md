@@ -40,6 +40,6 @@ We have done a lot of waffling about how storied and successful the personnel ma
 
 SemiAnalysis is getting Dejavu, anyone else?
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/a-chip-off-the-old-block-new-risc-v-startup-garners-many-senior-cpu-architects-from-apple-google-marvell-qualcomm-intel-and-amd/) on August 30th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/a-chip-off-the-old-block-new-risc-v-startup-garners-many-senior-cpu-architects-from-apple-google-marvell-qualcomm-intel-and-amd/) on August 30th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

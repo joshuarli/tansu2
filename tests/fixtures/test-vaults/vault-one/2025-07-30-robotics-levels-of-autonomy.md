@@ -134,7 +134,7 @@ Because retrofit costs vary widely, let’s ground this in a concrete scenario o
 
 Source: KUKA, Body-in-white assembly line
 
-Typically, the same system integrator and robot brand+software will have to be used to ensure no chance of breaking the factory’s flow with new systems. The total integration can cost roughly 4x-6x the robots themselves in the end. Construction and deployment of cells, configuring related systems like (PLCs, conveyor/line tracks, MES, etc), and installation + testing racks up a big pricetag. A Proof of Principle (PoP), like a physical mockup of the line, can be built first to test out the system (which most *should* do), but most opt out of this unless it’s highly unique, like for pharmaceuticals. We remark that for standardized automotive solutions, this may run rather ~70% of the robot CapEx.
+Typically, the same system integrator and robot brand+software will have to be used to ensure no chance of breaking the factory’s flow with new systems. The total integration can cost roughly 4x-6x the robots themselves in the end. Construction and deployment of cells, configuring related systems like (PLCs, conveyor/line tracks, MES, etc), and installation + testing racks up a big pricetag. A Proof of Principle (PoP), like a physical mockup of the line, can be built first to test out the system (which most _should_ do), but most opt out of this unless it’s highly unique, like for pharmaceuticals. We remark that for standardized automotive solutions, this may run rather ~70% of the robot CapEx.
 
 ![](z-images/f57c1289597e3c41883fa78668b32aca.webp)
 
@@ -169,7 +169,7 @@ The fundamental difficulty of Level 0 is the robot’s total lack of Autonomy. T
 Source: SemiAnalysis Wafer Fab Equipment Model
 
 - **Capital Incineration:** A small error in programming, poor integration, or failure of two systems to sync can render an entire multi-million dollar factory non-functional. The factory now turns into an industrial engineering project, and this risk is too high for smaller companies, **cutting them out of the automation market**
-- **Inflexibility:** Amazon, a powerhouse of industrial engineering, has to build their fulfillment centers around these non-autonomous robots. In fact, instead of making the robots more collaborative/intelligent, they found it easier to change the *workers* by designing a special [safety vest](https://techcrunch.com/2019/01/18/amazon-built-an-electronic-vest-to-improve-worker-robot-interactions/), slowing the robots when the worker was nearby.
+- **Inflexibility:** Amazon, a powerhouse of industrial engineering, has to build their fulfillment centers around these non-autonomous robots. In fact, instead of making the robots more collaborative/intelligent, they found it easier to change the _workers_ by designing a special [safety vest](https://techcrunch.com/2019/01/18/amazon-built-an-electronic-vest-to-improve-worker-robot-interactions/), slowing the robots when the worker was nearby.
 
 ## Looking Forward
 
@@ -183,7 +183,7 @@ Source: Ark Invest, FRED
 
 This would lower the barriers to entry for a much wider market, enabling a broader adoption of robots performing Level 0 tasks without requiring industrial engineering prowess or massive CapEx.
 
-Additionally, most provide an equipment monitoring system, like FANUC’s [Zero Downtime](https://www.fanucamerica.com/products/robots/zdt-zero-down-time) solution. These enable the robots to predict their failures ahead of time, reducing the need for constant oversight and bolstering dark factory potential. While substantial, they are fairly [new](https://www.fanucamerica.com/news-resources/fanuc-america-press-releases/2018/03/22/fanuc-america-s-robot-linki-zero-down-time-\(zdt\)-available-on-all-fanuc-robots), and constantly improving themselves.
+Additionally, most provide an equipment monitoring system, like FANUC’s [Zero Downtime](https://www.fanucamerica.com/products/robots/zdt-zero-down-time) solution. These enable the robots to predict their failures ahead of time, reducing the need for constant oversight and bolstering dark factory potential. While substantial, they are fairly [new](<https://www.fanucamerica.com/news-resources/fanuc-america-press-releases/2018/03/22/fanuc-america-s-robot-linki-zero-down-time-(zdt)-available-on-all-fanuc-robots>), and constantly improving themselves.
 
 Finally, integration of these robots might be streamlined through a more “unified” industrial software. Instead of deploying only one brand of robot, system integrators could then plug-and-play multiple brands/setups, creating less finicky automation systems faster and cheaper.
 
@@ -291,7 +291,7 @@ Nonetheless, the autonomy of these robots was still too low. Employees often wer
 
 ### Implications: A Narrow Market of Profitability
 
-The promise of Level 1 was enormous: the automation of low-skill, high-turnover pick-and-place jobs-- a new market for the robots. The task’s basic nature made it seem like a good fit for a robot that could do just that: Pick and place. Businesses had large incentives for automation, as wages were packed with “loaded costs.” For example, we’ve heard Amazon sees a turnover rate of 2%-4% **per week**. This means that for every 100 workers on the floor, by year’s end **104 workers** may have quit. Thus having to constantly hire, onboard, train, and ramp up productivity renders the wage **56%** higher than with no attrition in the workforce. In fact, Amazon currently has a crisis of having already cycled through *every* low-wage worker in some regions.
+The promise of Level 1 was enormous: the automation of low-skill, high-turnover pick-and-place jobs-- a new market for the robots. The task’s basic nature made it seem like a good fit for a robot that could do just that: Pick and place. Businesses had large incentives for automation, as wages were packed with “loaded costs.” For example, we’ve heard Amazon sees a turnover rate of 2%-4% **per week**. This means that for every 100 workers on the floor, by year’s end **104 workers** may have quit. Thus having to constantly hire, onboard, train, and ramp up productivity renders the wage **56%** higher than with no attrition in the workforce. In fact, Amazon currently has a crisis of having already cycled through _every_ low-wage worker in some regions.
 
 ![](z-images/5dbf63d1142cdee2a30a888b5ae03b78.webp)
 
@@ -311,7 +311,7 @@ Dividing cumulative picks by cumulative cost, we show below how cost per pick ev
 
 Source: SemiAnalysis Estimates
 
-E-commerce-like warehouse lines posed an interesting challenge for our intelligent pick and place robots: matching a human accurately picking multiple items. While a human may pick 5 items at once, these robots would likely pick one at a time, falling short of human throughput. Then, if the robot *could* pick fast enough, the surrounding conveyor and pre/post-processing systems would be locked at certain speeds, or clogged by the humans on either end, limiting throughput again. The warehouse could potentially make up for this by installing more robots, but the cost grows prohibitively. Worse, the “high-mix” of items is likely to bring **too novel** of an object/scene to grasp successfully, so many *had* to reach 99%+ to mitigate the six minute downtimes. All in all, this configuration of specifics made it difficult to justify the cost of intelligent pick and place robots.
+E-commerce-like warehouse lines posed an interesting challenge for our intelligent pick and place robots: matching a human accurately picking multiple items. While a human may pick 5 items at once, these robots would likely pick one at a time, falling short of human throughput. Then, if the robot _could_ pick fast enough, the surrounding conveyor and pre/post-processing systems would be locked at certain speeds, or clogged by the humans on either end, limiting throughput again. The warehouse could potentially make up for this by installing more robots, but the cost grows prohibitively. Worse, the “high-mix” of items is likely to bring **too novel** of an object/scene to grasp successfully, so many _had_ to reach 99%+ to mitigate the six minute downtimes. All in all, this configuration of specifics made it difficult to justify the cost of intelligent pick and place robots.
 
 ![](z-images/cf2999df9ba840e7c40e562969fc5129.webp)
 
@@ -533,7 +533,7 @@ A robot may perceive an object well, but this doesn’t mean the robot has the n
 
 Source: A brief review of affordance in robotic manipulation research
 
-Level 3 marks the first generation of general-purpose robots that ***can*** target trades, moving from basic tasks in Level 1 toward skills, like cooking or cleaning. Early pilot programs are underway in domains like kitchens, laundromats, factories, and warehouses. However, their low-skill tasks, which we call **"advanced pick and place,"** are modest, longer-horizon tasks: manipulate/pick an object, **potentially** locomote elsewhere, and perform further manipulation, or "place" the object. While modest, this capability is being used for cooking, folding laundry, and sorting/organizing non-delicate goods. Deployment in Level 3 is drop-in, the robot learns from human teleoperation --controlling the robot remotely-- and interfaces -- like tablets-- instead of months of time and millions of dollars of engineering.
+Level 3 marks the first generation of general-purpose robots that **_can_** target trades, moving from basic tasks in Level 1 toward skills, like cooking or cleaning. Early pilot programs are underway in domains like kitchens, laundromats, factories, and warehouses. However, their low-skill tasks, which we call **"advanced pick and place,"** are modest, longer-horizon tasks: manipulate/pick an object, **potentially** locomote elsewhere, and perform further manipulation, or "place" the object. While modest, this capability is being used for cooking, folding laundry, and sorting/organizing non-delicate goods. Deployment in Level 3 is drop-in, the robot learns from human teleoperation --controlling the robot remotely-- and interfaces -- like tablets-- instead of months of time and millions of dollars of engineering.
 
 General-purpose robots fulfilling Level 3 tasks can automate a distinct slice of global labor, albeit not the full spectrum of human labor-- an implication promised by **Level 4**. Currently, the aforementioned early pilot use cases for Level 3 are showing themselves to work, and their tasks fall under the following conditions:
 

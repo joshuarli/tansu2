@@ -21,13 +21,13 @@ Designing specific chips with the exact computational resources for each workloa
 Instead of designing chips for entire workloads, it would be far more cost-effective to design chips for classes of computation and connect them in whatever configuration the specific workload desires.
 
 > It may prove to be more economical to build large systems out of smaller functions, which are separately packaged and interconnected. The availability of large functions, combined with functional design and construction, should allow the manufacturer of large systems to design and construct a considerable variety of equipment both rapidly and economically.
-> 
+>
 > Dr. Gordon Moore In The Original Paper Which Predicted “Moore’s Law” – “Cramming more components onto integrated circuits” – 1965
 
 The change in how systems are built moves the unit of compute up from a single chip or server to the entire datacenter.
 
 > The datacenter is the new unit of computing.
-> 
+>
 > Jensen Huang
 
 Connecting chips within a server has typically been done with PCI Express. The biggest drawback is that this standard lacked [cache coherency](https://en.wikipedia.org/wiki/Cache_coherence) and [memory coherence](https://en.wikipedia.org/wiki/Memory_coherence). A non-technical analogy for these two concepts is if you think about servers like a post office. Letters are coming in asynchronously, often days after new information has made the letter containing the original information obsolete. Coherency helps manage and equalize this.

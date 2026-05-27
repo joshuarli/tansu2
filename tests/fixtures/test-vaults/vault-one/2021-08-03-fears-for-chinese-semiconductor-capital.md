@@ -38,6 +38,6 @@ The battle started with Chen Hang talking up Chinese photoresist, but Yang quick
 
 This is a cautionary tale. We at SemiAnalysis pride ourselves on being very close to the nitty gritty details but have fallen prey to this as well. Company statements and market research only go so far. The ultimate tool for discovery is talking to technology experts and channel checks. [The second-best tool is talking to us, because we do that work.](https://semianalysis.com/contact/)
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/fears-for-chinese-semiconductor-capital-equipment-and-chemical-supply-chain-are-overblown-cautionary-tale-on-trusting-industry-analysts/) on August 3rd 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/fears-for-chinese-semiconductor-capital-equipment-and-chemical-supply-chain-are-overblown-cautionary-tale-on-trusting-industry-analysts/) on August 3rd 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

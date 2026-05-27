@@ -34,7 +34,7 @@ To keep that trajectory, Anthropic is betting hard on [Scaling Laws](https://sem
 
 Source: SemiAnalysis Datacenter Industry Model
 
-To understand and forecast GPU/XPU power capacity by AI Lab broken down by Cloud Provider, we rely on our proprietary [Datacenter Industry Model](https://www.semianalysis.com/p/datacenter-model) powered by real-time satellite imagery. Trusted by all hyperscalers, AI labs, and the world’s largest investors, it *provides a **quarterly building-by-building datacenter forecast** for OpenAI, Anthropic, xAI, Meta Superintelligence, Google DeepMind, and more. [Contact us for more information](https://newsletter.semianalysis.com/p/Sales@SemiAnalysis.com).*
+To understand and forecast GPU/XPU power capacity by AI Lab broken down by Cloud Provider, we rely on our proprietary [Datacenter Industry Model](https://www.semianalysis.com/p/datacenter-model) powered by real-time satellite imagery. Trusted by all hyperscalers, AI labs, and the world’s largest investors, it _provides a **quarterly building-by-building datacenter forecast** for OpenAI, Anthropic, xAI, Meta Superintelligence, Google DeepMind, and more. [Contact us for more information](https://newsletter.semianalysis.com/p/Sales@SemiAnalysis.com)._
 
 ## Trainium vs GPUs
 
@@ -134,7 +134,7 @@ Let’s try to make some sense of their bet by digging into Trainium’s TCO and
 
 ## Trainium2 TCO analysis – how Anthropic’s big bet could pay off
 
-Trainium2 supply chain signals are currently extremely strong. Our industry-leading [AI Accelerator Model](https://semianalysis.com/accelerator-industry-model/) track both the package shipments and the system/rack shipments and they’ve surged since the beginning of the year. It *provides quarterly volume forecasts for the 10+ SKUs comprising the Trainium2 and Trainium3 product family and calls out suppliers set to disproportionately benefit from specific SKUs. [Contact us for more information](https://newsletter.semianalysis.com/p/Sales@SemiAnalysis.com).*
+Trainium2 supply chain signals are currently extremely strong. Our industry-leading [AI Accelerator Model](https://semianalysis.com/accelerator-industry-model/) track both the package shipments and the system/rack shipments and they’ve surged since the beginning of the year. It _provides quarterly volume forecasts for the 10+ SKUs comprising the Trainium2 and Trainium3 product family and calls out suppliers set to disproportionately benefit from specific SKUs. [Contact us for more information](https://newsletter.semianalysis.com/p/Sales@SemiAnalysis.com)._
 
 ![](z-images/70566923c4342a81c89eb7612be4942b.webp)
 

@@ -30,12 +30,12 @@ Regardless, Qualcomm throwing down the gauntlet like this would signal big belie
 
 > Just given the recent Intel announcement where you're partnering with Intel on IFS, what sort of commitment is this on your part? Is that sort of a volume commitment at this point? I realize it's some ways out, but would it be fair to say that it's going to service the U.S. consumer?
 
-**Answer: Cristiano Amon** -- *President and Chief Executive Officer*
+**Answer: Cristiano Amon** -- _President and Chief Executive Officer_
 
 > Thanks for the question. Look, it's actually very simple. Qualcomm, we're probably one of the few companies that, given our scale, is able to have multi-sourcing at the leading node. We have two strategic partners today, which is TSMC and Samsung.
-> 
+>
 > And we're very excited and happy about Intel deciding to become a foundry and investing in leading node technology to become a foundry. I think that's great news for the United States fabless industry. We are engaged. **We are evaluating their technology.**
-> 
+>
 > **We don't yet have a specific product plan at this point**, but we're pretty excited about Intel entering the space. I think we all determined that semiconductors are important and resilient supply chain is only going to benefit our business.
 
 **Qualcomm has no product plans! They are simply discussing and evaluating the technology with Intel!** If this is enough for Intel to call them a customer, how far along are discussions with the 100+ potential customers they touted. To SemiAnalysis, Qualcomm sounds like they are just another a potential customer. There isn’t any actual foundry deal in place.
@@ -58,6 +58,6 @@ He also said during the announcement that the Qualcomm deal involved a "major mo
 
 We thought Pat Gelsinger would stop the charades with investors, but after Monday’s announcement, we are quite disappointed some of them are continuing. Let's cross our fingers and hope this gross exaggeration doesn't lend itself to the claims about packaging and process technology as well.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/intel-grossly-exaggerates-foundry-wins-with-qualcomm-and-amazon-there-are-no-deals-for-manufacturing-chips/) on July 29th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/intel-grossly-exaggerates-foundry-wins-with-qualcomm-and-amazon-there-are-no-deals-for-manufacturing-chips/) on July 29th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

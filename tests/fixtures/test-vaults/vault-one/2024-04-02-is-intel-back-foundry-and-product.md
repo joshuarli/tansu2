@@ -141,7 +141,7 @@ Other than the formidable government support, there are plenty of levers to pull
 While Intel has ~$120B of capital to tap, to get to our 150,000+ wafers a month sustainable target, they may need more than that. We are not sure where they can get this cash from. The process technology we believe is there. We aren’t sure who is willing to front the rest of these costs, as further financing would likely be a poison pill.
 
 > The biggest part of our net book value is obviously our PP and E \[plant property and equipment\] and most of that shows up in the foundry side. So I would say within a couple of years, that's like $100,000,000,000 number net book value for just Intel foundry. And I think your knock on question here might be, well, how do you look at that in terms of valuation? And even the worst foundries are getting 2 times net book value and the best, of course, is getting 5 plus net book value. So this is where we think a lot of the value unlock in the business will come from is that net book value generating a good return.
-> 
+>
 > Pat Gelsinger, Intel CEO
 
 One interesting lever that Pat is already trying to pull is that bad foundries should be valued at 2x book valued. Perhaps this means Intel could tap capital markets to plug the capital gap.

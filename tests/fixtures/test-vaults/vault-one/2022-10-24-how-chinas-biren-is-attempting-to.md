@@ -23,13 +23,13 @@ This immediately rules out the BR100 which packages 2 of these dies for a total 
 The IO speed limitation is met by the BLink and CXL 2.0 alone. The US regulations had a very extensive definition of TOPS, which differs from how Biren defines its TOPS figure.
 
 > The threshold of 4800 bits x TOPS can be met with 600 tera integer operations at 8 bits or 300 tera FLOPS at 16 bits.
-> 
+>
 > US Bureau of Industry and Security
 
 The BR100 is clearly excluded, but the BR104 has half of most of these specs. While that would place it firmly above the TOPS requirement. The full chip would be bandwidth would be 896GB/s of die-to-die interconnect (inactive), 256GB/s of BLink, 128GB/s of CXL 2.0, and 819GB/s of memory bandwidth.
 
 > Integrated circuits that have or are programmable to have an aggregate bidirectional transfer rate over all inputs and outputs of 600 Gbyte/s \[GB/s\] or more to or from integrated circuits other than volatile memories
-> 
+>
 > US Bureau of Industry and Security
 
 The US government’s definition does not count the memory bandwidth of the product as IO. The interpretation of the regulation does not define if this refers to die/chiplets or completed packages either.

@@ -58,8 +58,7 @@ We received two clear pieces of feedback when we released the first version of C
 
 1. People who saw only the results table wondered why, exactly, a given cloud had been given a certain rating.
 2. People who read the first article (an estimated 76 minute read with over 20,000 words) wanted even more detailed information on our experience.
-	1. For reference, Animal Farm checks in at 29,800 words and the dialogue of the movie “Social Network” about Zuck co-founding Facebook is 34,000 words
-		2. This ClusterMAX 2.0 article is over 46,000 words
+   1. For reference, Animal Farm checks in at 29,800 words and the dialogue of the movie “Social Network” about Zuck co-founding Facebook is 34,000 words 2. This ClusterMAX 2.0 article is over 46,000 words
 
 In this article we attempt to strike the balance between useful summary information and detailed technical information that accurately describes our experience. More information is always available upon request to [clustermax@semianalysis.com](mailto:clustermax@semianalysis.com).
 
@@ -118,17 +117,22 @@ For those curious, a full, live, and regularly updated list of itemized criteria
 Our itemized list looked like this when it went out on August 6 <sup>th</sup>:
 
 1. **Security**
+
 - Do you have relevant attestation in place from a third-party auditor that your company processes meet basic standards? (SOC2 Type 1, ISO 27001, etc.)
 - Do you have more specific compliance in place for global customers (i.e.can you sell services globally?)
 - Is your backend network setup securely for multi-tenant users (InfiniBand Pkeys, VLANs)
 - Are drivers and firmware up to date, and what is the process for notification and patching of future vulnerabilities?
+
 2. **Lifecycle**
+
 - Is it easy to onboard and offboard to the service, are there hidden costs?
 - How easy is it to create a cluster?
 - Is it easy to expand a cluster over time?
 - Is it easy to use the cluster? (i.e. download speed, upload speed)
 - How good is the support experience?
+
 3. **Orchestration**
+
 - Is the cluster setup properly with reasonable defaults? (OS version, sudo, ssh, basic packages pre-installed like git, vim, nano, python, docker)
 - How easy is it to add/remove users, groups and permissions?
 - Can you enforce RBAC on the cluster’s compute and storage resources
@@ -137,54 +141,66 @@ Our itemized list looked like this when it went out on August 6 <sup>th</sup>:
 - For Kubernetes: easy to download and use kubeconfig, cni configured, arbitrary helm charts, GPUOperator and NetworkOperator able to request resources easily, default ReadWriteMany StorageClass available, metallb or external LoadBalancer, node-problem-detector (or equivalent), all configured correctly
 - On both slurm and kubernetes: nccl-tests or rccl-tests runs at full expected bandwidth, multinode torchtitan training job runs at expected MFU (via pytorchjob, jobset, volcano batch or other equivalent CRD for k8s training)
 - For kubernetes only: multi-node p-d disagg serving with llm-d works at expected throughput
+
 4. **Storage**
+
 - POSIX-compliant filesystem available (e.g.Weka, VAST, DDN)
 - S3-compatible object storage available (i..easy to use AWS S3, Azure Blob, GCS, R2, CAIOS, Scality)
 - Mounts available for /home and /data (or equivalent) on slurm, default RWM SC on k8s
 - Local drives or distributed local fs available for caching on /lvol (or equivalent)
 - Storage is scalable and performant
+
 5. **Networking**
+
 - InifiniBand or RoCEv2 available
 - MPI implementation available (i.e.hpc-x available via default mpirun)
 - Default NCCL configuration in /etc/nccl.conf is reasonable
-- nccl-tests or rccl-tests or stas all\_reduce\_benchmark.py runs at full bandwidth
+- nccl-tests or rccl-tests or stas all_reduce_benchmark.py runs at full bandwidth
 - multinode torchtitan training job runs at expected MFU
 - SHARP support for improved nccl performance at scale
 - NCCL monitoring plugin available
 - NCCL straggler detection available
+
 6. **Reliability**
+
 - Hardware uptime SLA is available and reasonable (i.e.99.9% on compute nodes, 99% on racks)
 - 24x7 support is available, 15-minute response SLA
 - No link flapping on the interconnect network
 - No filesystems unmounting randomly
 - WAN connection is stable over time, upload/download speed is reasonable
 - Full suite of Passive Health Checks
-	- https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html#background-health-checks
-		- Detect and drain when: GPUs fall of the bus, PCIe errors, IB or RoCEv2 events/link flaps, thermals out of range, ECC errros on GPU or CPU memory, XID or SXID’s, NCCL/RCCL stalls
+  - https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html#background-health-checks
+    - Detect and drain when: GPUs fall of the bus, PCIe errors, IB or RoCEv2 events/link flaps, thermals out of range, ECC errros on GPU or CPU memory, XID or SXID’s, NCCL/RCCL stalls
 - Full suite of Active Health Checks
-	- Lightweight test suites run in prolog/epilog or hourly/daily in a low-priority partition on idle nodes
-		- Aggressive test suite runs weekly on idle nodes
-		- DCGM level 1, 2, 3 with EUD, DtoH and HtoD bandwidth, local NCCL test, local IB test, pairwise GPU and CPU ib\_write\_bw, ib\_write\_latency, GPUBurn or GPU Fryer, NVIDIA TinyMeg2, UberGEMM, multinode megatron or torchtitan job matches reference numbers
+  - Lightweight test suites run in prolog/epilog or hourly/daily in a low-priority partition on idle nodes
+    - Aggressive test suite runs weekly on idle nodes
+    - DCGM level 1, 2, 3 with EUD, DtoH and HtoD bandwidth, local NCCL test, local IB test, pairwise GPU and CPU ib_write_bw, ib_write_latency, GPUBurn or GPU Fryer, NVIDIA TinyMeg2, UberGEMM, multinode megatron or torchtitan job matches reference numbers
+
 7. **Monitoring**
+
 - Grafana or an equivalent dashboard is pre-installed and accessible with high-level and low-level view of cluster information
 - Easy to configure custom alerting
 - SLURM integration for job stats, resource usage, summaries (sacct)
 - Kubernetes integration (kube-state-metrics, node-exporter, dcgm-exporter, cAdvisor)
 - DCGM information available
-	- SM Active monitoring via DCGM\_FI\_PROF\_SM\_ACTIVE
-		- SM Occupancy monitoring via DCGM\_FI\_PROF\_SM\_OCCUPANCY
-		- TFLOPs estimation via DCGM\_FI\_PROF\_PIPE\_TENSOR\_ACTIVE
-		- PCIe AER rates monitoring via DCGM\_FI\_DEV\_PCIE\_REPLAY\_COUNTER
-		- GPU and CPU memory errors via DCGM\_FI\_DEV\_ECC\_SBE\_VOL\_TOTAL
-		- Node level health status: power draw, fan speed, temperatures (CPU, RAM, NICs, trasceivers, etc.)
-		- PCIe, NVLink or XGMI, InfiniBand/RoCEv2 throughput
-		- dmesg logs (i.e.promtail)
+  - SM Active monitoring via DCGM_FI_PROF_SM_ACTIVE
+    - SM Occupancy monitoring via DCGM_FI_PROF_SM_OCCUPANCY
+    - TFLOPs estimation via DCGM_FI_PROF_PIPE_TENSOR_ACTIVE
+    - PCIe AER rates monitoring via DCGM_FI_DEV_PCIE_REPLAY_COUNTER
+    - GPU and CPU memory errors via DCGM_FI_DEV_ECC_SBE_VOL_TOTAL
+    - Node level health status: power draw, fan speed, temperatures (CPU, RAM, NICs, trasceivers, etc.)
+    - PCIe, NVLink or XGMI, InfiniBand/RoCEv2 throughput
+    - dmesg logs (i.e.promtail)
+
 8. **Pricing**
+
 - Generally, lower prices per GPU-hr are better for end users, assuming the quality does not change
 - Consumption models (1 month, 3 month, 6 month, 1 year, 2 year, 3 year)
 - Individual charges for storage, compute nodes, network, etc.or bundled
 - Expansion and extension of existing contracts
+
 9. **Partnerships**
+
 - AMD or NVIDIA investment
 - NVIDIA NCP certification
 - NVIDIA exemplar cloud performance certification
@@ -192,7 +208,9 @@ Our itemized list looked like this when it went out on August 6 <sup>th</sup>:
 - Knowledge of security updates (e.g., follow Wiz)
 - SchedMD partnership (makers of SLURM)
 - Participation in industry events, ecosystem support
+
 10. **Availability**
+
 - Total GPU Quantity and Cluster Scale Experience
 - On-demand availability, utilization, capacity blocks
 - Latest GPU Models Available (H100, H200, B200, MI300X, MI325X, MI355X)
@@ -281,7 +299,7 @@ Finally, Slinky from SchedMD, the original creators of slurm, gatekeepers of the
 At this time, Slinky is broken into separate projects, most importantly [slurm-operator](https://github.com/SlinkyProject/slurm-operator), which is a set of custom controllers and CRDs capable of running the core slurm services on a Kubernetes cluster, instead of directly on bare metal or VMs. These slurm services are:
 
 - slurmctld – the slurm controller which manages what jobs run on what slurm workers in the cluster, and what the health state of these workers are. On kuberenetes this is  
-	slurmd – the slurm worker nodes themselves
+  slurmd – the slurm worker nodes themselves
 - slurmrestd – provides an API endpoint for slurmctld
 - slurmdbd – a database to store job stats, i.e. who ran what
 
@@ -468,16 +486,16 @@ Specifically, Partition Keys (PKeys) are the standard InfiniBand mechanism for n
 
 However, PKeys alone are an insufficient security boundary for a robust multi-tenant environment. PKeys are managed by a central Subnet Manager (SM). A compromised tenant node could potentially send malicious Subnet Management Packets (SMPs) to query fabric topology or, in a poorly secured fabric, even attempt to reconfigure PKeys and break tenant isolation.
 
-True, hardware-enforced isolation is described in detail by Nvidia in this blog: [https://docs.nvidia.com/networking/display/nvidiamlnxgwusermanualfornvidiaskywayappliancev822302lts/configuring+partition+keys+(pkeys)](https://docs.nvidia.com/networking/display/nvidiamlnxgwusermanualfornvidiaskywayappliancev822302lts/configuring+partition+keys+\(pkeys\)) which we encourage all providers deploying InfiniBand to review in detail.
+True, hardware-enforced isolation is described in detail by Nvidia in this blog: [https://docs.nvidia.com/networking/display/nvidiamlnxgwusermanualfornvidiaskywayappliancev822302lts/configuring+partition+keys+(pkeys)](<https://docs.nvidia.com/networking/display/nvidiamlnxgwusermanualfornvidiaskywayappliancev822302lts/configuring+partition+keys+(pkeys)>) which we encourage all providers deploying InfiniBand to review in detail.
 
 The blog describes a multi-layered approach to InfiniBand security. The result is a one-time setup that includes:
 
-- **M\_Key:** Management key that prevents rogue hosts from altering device configurations. If the key doesn’t match, the request is dropped.
-- **P\_Key:** Partition key analogous to VLANs. These keys define which devices can “see” or talk to each other, creating strict traffic isolation across the fabric.”
-- **SA\_Key:** For sensitive operations in the Subnet Administrator (adding or removing records, for example)
-- **VS\_Key:** For vendor tools like ibdiagnet
-- **C\_Key and N2N\_Key:** Secure communication manager traffic and node-to-node messaging
-- **AM\_Key (only when SHARP is enabled):** Specific to SHARP aggregation, ensuring data is only reduced by authorized switches
+- **M_Key:** Management key that prevents rogue hosts from altering device configurations. If the key doesn’t match, the request is dropped.
+- **P_Key:** Partition key analogous to VLANs. These keys define which devices can “see” or talk to each other, creating strict traffic isolation across the fabric.”
+- **SA_Key:** For sensitive operations in the Subnet Administrator (adding or removing records, for example)
+- **VS_Key:** For vendor tools like ibdiagnet
+- **C_Key and N2N_Key:** Secure communication manager traffic and node-to-node messaging
+- **AM_Key (only when SHARP is enabled):** Specific to SHARP aggregation, ensuring data is only reduced by authorized switches
 
 Providers who rely solely on basic PKey configuration without these additional layers are offering a demonstrably weaker security posture. We believe that the additional complexity associated with InfiniBand, due primarily to poor documentation from Nvidia, has led to a significant lack of strong skillsets in the industry amongst full time employees and contractors for hire.
 
@@ -485,7 +503,7 @@ Providers who rely solely on basic PKey configuration without these additional l
 
 Security in the Neocloud space has rapidly escalated from a checkbox item to a critical differentiator. The recent discovery of [NVIDIAScape (CVE-2025-23266)](https://www.wiz.io/blog/nvidia-ai-vulnerability-cve-2025-23266-nvidiascape) by security firm Wiz served as a wake-up call for many in the industry. This vulnerability allows a user running inside a container to “escape” their container and escalate to full root access on the underlying host node, a huge security vulnerability in any multi-tenant environment where customer workloads run alongside each other, only isolated via containers on the same underlying host. Most notably, the vulnerability can be exploited with a simple three-line script, easily baked into a docker image in the software supply chain.
 
-As a POC during our testing, we built this exploit into custom containers built on base images from vLLM, and nvidia pytorch. Running it is dead simple, just pull the container and run. Clearly, any provider running an out-of-date container toolkit version and allowing arbitrary containers from public registries to be executed puts their customers at risk of persistent backdoors, data exfiltration, ransomware, cryptojacking, and more. During our testing, we demonstrated this exploit was effective on over a dozen providers who were not up-to-date on their nvidia-container-toolkit (version 1.17.8 or later as described here: [https://nvidia.custhelp.com/app/answers/detail/a\_id/5659](https://nvidia.custhelp.com/app/answers/detail/a_id/5659) ).
+As a POC during our testing, we built this exploit into custom containers built on base images from vLLM, and nvidia pytorch. Running it is dead simple, just pull the container and run. Clearly, any provider running an out-of-date container toolkit version and allowing arbitrary containers from public registries to be executed puts their customers at risk of persistent backdoors, data exfiltration, ransomware, cryptojacking, and more. During our testing, we demonstrated this exploit was effective on over a dozen providers who were not up-to-date on their nvidia-container-toolkit (version 1.17.8 or later as described here: [https://nvidia.custhelp.com/app/answers/detail/a_id/5659](https://nvidia.custhelp.com/app/answers/detail/a_id/5659) ).
 
 Most importantly, this is not just an Nvidia-specific problem. The AMD ecosystem has historically lacked a robust, secure container runtime, leaving many deployments insecure by default. The recent development of the ROCm container-toolkit is a direct response. However, these incidents underscore the critical importance of vendor security embargo programs, customer communication, and remediation.
 
@@ -543,7 +561,7 @@ The website leads users to the following:
 - **Try Nvidia DGX Cloud Now** - NIMs page on NGC, which is an API for model endpoints
 - **Use Nvidia DGX Cloud Serverless Inference** - sign-up page for a 30-day preview of serverless inference powered by Nvidia Cloud Functions, which seems to be an API for model endpoints
 - **Explore Nvidia DGX Cloud Create** - a sign-up page to “talk to us”
-- **Deploy Globally with Nvidia DGX Cloud Lepton** - a sign-up page to apply for access to DGX Lepton. But if you’re a GPU cloud provider (maybe trying to provide your compute to the marketplace?) you can email the NVIDIA Cloud Partner address: [dgxc\_lepton\_ncp\_ea@nvidia.com](mailto:dgxc_lepton_ncp_ea@nvidia.com)
+- **Deploy Globally with Nvidia DGX Cloud Lepton** - a sign-up page to apply for access to DGX Lepton. But if you’re a GPU cloud provider (maybe trying to provide your compute to the marketplace?) you can email the NVIDIA Cloud Partner address: [dgxc_lepton_ncp_ea@nvidia.com](mailto:dgxc_lepton_ncp_ea@nvidia.com)
 - **Request Nvidia DGX Cloud With NVIDIA GB200** - a circular link back to the DGX Cloud homepage
 - **Get Nvidia Omniverse on DGX Cloud** - a link to a DGX Cloud tile on the Azure Marketplace, which requires a sign up link, and probably sends your information to someone in Nvidia sales
 
@@ -852,7 +870,7 @@ AI-generated content may be incorrect.](z-images/604f1a9df6dbf7b056c133d1523d2dd
 
 Source: The Llama 3 Herd of Models https://arxiv.org/abs/2407.21783
 
-This section of this paper has also become infamous for two other reasons: a mention of the “diurnal 1-2% throughput variation based on time-of-day” (i.e. GPUs get hotter in the middle of the day and perform worse) and a comment on how “tens of thousands of GPUs may increase or decrease power consumption at the same time (…) can result in instant fluctuations of power consumption across the data center on the order of tens of megawatts, stretching the limits of the power grid” which resulted in the accidental upstream of the PYTORCH\_NO\_POWERPLANT\_BLOWUP=1 environment variable at some point by a Meta engineer.
+This section of this paper has also become infamous for two other reasons: a mention of the “diurnal 1-2% throughput variation based on time-of-day” (i.e. GPUs get hotter in the middle of the day and perform worse) and a comment on how “tens of thousands of GPUs may increase or decrease power consumption at the same time (…) can result in instant fluctuations of power consumption across the data center on the order of tens of megawatts, stretching the limits of the power grid” which resulted in the accidental upstream of the PYTORCH_NO_POWERPLANT_BLOWUP=1 environment variable at some point by a Meta engineer.
 
 ![A close-up of a text
 
@@ -1155,7 +1173,7 @@ This kicked off a rapid-fire feedback loop that defined our testing period:
 
 Performance Tuning: We noted that the Nvidia HPC-X toolkit was missing from the base image, which is necessary for optimal nccl performance at medium message sizes. While it was available within NGC containers, not all users leverage pyxis/enroot. Within 24 hours, the Fluidstack team had deployed HPC-X to the base image on our cluster and added it to their standard deployment pipeline for all customers.
 
-Monitoring Dashboards: The Grafana dashboard was solid, but we identified missing graphs for NVLink Rx/Tx utilization and incorrect DCGM metrics for tensor core pipes (they were capturing SIMT units instead of tensor core-specific pipes like DCGM\_FI\_PROF\_PIPE\_TENSOR\_HMMA\_ACTIVE). The team implemented the correct DCGM metrics the following day.
+Monitoring Dashboards: The Grafana dashboard was solid, but we identified missing graphs for NVLink Rx/Tx utilization and incorrect DCGM metrics for tensor core pipes (they were capturing SIMT units instead of tensor core-specific pipes like DCGM_FI_PROF_PIPE_TENSOR_HMMA_ACTIVE). The team implemented the correct DCGM metrics the following day.
 
 Security Posture: This was the most critical finding. We discovered the cluster was running a version of the nvidia-container-toolkit vulnerable to NVIDIAScape (CVE-2025-23266). The team patched the vulnerability on our cluster within minutes of us reporting it. While the immediate fix was impressive, our feedback focused on the larger operational need for automated dependency scanning and a proactive security process, such as enrolling in Nvidia’s security embargo program. This prompted a healthy discussion on their software supply chain security strategy.
 
@@ -1281,7 +1299,7 @@ During our review of the monitoring dashboard, we noted a bug in their Grafana m
 
 For passive health checks, we expect checks run continuously in the background to detect failures on live nodes. This is where the gap between their current implementation and a fully automated system is most clear. Together has implemented detection for many critical issues, including GPUs falling off the bus, PCIe errors, InfiniBand link flaps, high GPU thermals, and high ECC memory error rates. A baseline Kubernetes node health check is also in place. However, the most critical missing piece is automated remediation. While they can detect most of the issues above, the logic to automatically drain a faulty node is still on the roadmap for everything except for GPUs falling off the bus in slurm. Other crucial features on the roadmap include detecting uncorrectable Nvidia XID errors, identifying stalled NCCL jobs, and implementing AI/ML-based predictive failure analysis.
 
-For active health checks, Together has currently implemented a comprehensive suite of tests for single-node validation. It includes Nvidia’s DCGM diagnostics (level 3), PCIe bandwidth tests, single-node NCCL and InfiniBand all-reduce tests to validate local interconnects, and GPU stress tests like GPUBurn. However, key multi-node and application-level tests are still on the roadmap. This includes pairwise ib\_write tests to validate the InfiniBand fabric under load, hardware correctness validation with Nvidia’s TinyMeg2, and full-stack performance tests with models like Megatron to ensure TFLOPs and loss convergence match reference numbers. We have previously noted how important these tests are during burn-in and during cluster operation, as they stress both the GPUs and the interconnect at the same time, for an extended period of time, resulting in thermal expansion and contraction of the entire cluster, similar to normal operation. We encourage Together to prioritize implementing these active health checks, as we believe it will help them improve reliability, especially when working with datacenter partners that are not under their direct control.
+For active health checks, Together has currently implemented a comprehensive suite of tests for single-node validation. It includes Nvidia’s DCGM diagnostics (level 3), PCIe bandwidth tests, single-node NCCL and InfiniBand all-reduce tests to validate local interconnects, and GPU stress tests like GPUBurn. However, key multi-node and application-level tests are still on the roadmap. This includes pairwise ib_write tests to validate the InfiniBand fabric under load, hardware correctness validation with Nvidia’s TinyMeg2, and full-stack performance tests with models like Megatron to ensure TFLOPs and loss convergence match reference numbers. We have previously noted how important these tests are during burn-in and during cluster operation, as they stress both the GPUs and the interconnect at the same time, for an extended period of time, resulting in thermal expansion and contraction of the entire cluster, similar to normal operation. We encourage Together to prioritize implementing these active health checks, as we believe it will help them improve reliability, especially when working with datacenter partners that are not under their direct control.
 
 In summary, Together continues to operate on a solid foundation for managed clusters. They have a large and growing customer base for both their clusters, and serverless inference endpoint products. Their active, single-node health checks are strong. However, the system is not yet complete. We believe that the gap between detecting node failures passively, instead of automatically remediating them proactively is a key reason for the reliability issues users experience today.
 
@@ -1323,7 +1341,7 @@ Lambda’s Kubernetes product feels like an early-stage offering, marked by tech
 
 For monitoring, Lambda uses a mix of open-source tools, including LeptonAI’s gpud for GPU device management and node-problem-detector for health checks, but the integration is not seamless into their monitoring dashboards for the new or old mk8s products. Dashboards are easy to access, but missing integration to the metrics without an install of an agent that is not documented, and upon further inspection, still in development.
 
-For slurm, Lambda’s offering is a more recent addition, and the onboarding process was fraught with issues. The initial setup process was cumbersome: ssh keys were not correctly provisioned on the cluster, the default home directory was not shared across nodes by default, requiring data to be moved manually. New user account creation is a headache, requiring workarounds like unsetting environment variables (XDG\_DATA\_HOME) to function correctly.
+For slurm, Lambda’s offering is a more recent addition, and the onboarding process was fraught with issues. The initial setup process was cumbersome: ssh keys were not correctly provisioned on the cluster, the default home directory was not shared across nodes by default, requiring data to be moved manually. New user account creation is a headache, requiring workarounds like unsetting environment variables (XDG_DATA_HOME) to function correctly.
 
 To their credit, once these initial hurdles were overcome, the cluster’s performance was strong. We observed expected allreduce, allgather and alltoall bandwidth on nccl-tests and were able to achieve full MFU on an example torchtitan training workloads. Lambda also provides some useful, albeit hard to find, tooling. For example, a welcome message (which was invisible in some SSH clients like Cursor or VSCode) contained custom instructions for a grafana-access command to quickly view performance metrics.
 
@@ -1399,7 +1417,7 @@ GCP’s focus on production AI workloads is evident the [GKE Inference Gateway](
 
 In contrast, GKE’s implementation of prefix-aware routing is mature and well-documented. Unlike common patterns that require a user-managed proxy to route requests to inference engines like vLLM or SGLang for KV cache reuse, GKE integrates this routing logic directly into its managed L7 load balancer. This design eliminates a user-managed component from the serving stack, reducing operational complexity. GKE provides a robust inference networking layer, but there is a clear distinction between its stable, integrated features like managed routing and its not-quite-documented capabilities like PD disaggregation with llm-d.
 
-For monitoring, google integrates DCGM metrics right into the main cluster dashboard. This is a great UX when compared to a separate grafana instance, with things like authN and authZ being wired up automatically to the same intuitive console where the cluster was deployed. This also allows for some customization We suggested adding a TFLOP estimator via DCGM\_FI\_PROF\_PIPE\_TENSOR\_ACTIVE \* peak\_fp8\_flops. For example, for H200, it would be 1979 TFLOPS.
+For monitoring, google integrates DCGM metrics right into the main cluster dashboard. This is a great UX when compared to a separate grafana instance, with things like authN and authZ being wired up automatically to the same intuitive console where the cluster was deployed. This also allows for some customization We suggested adding a TFLOP estimator via DCGM_FI_PROF_PIPE_TENSOR_ACTIVE \* peak_fp8_flops. For example, for H200, it would be 1979 TFLOPS.
 
 ![A screenshot of a computer
 
@@ -1439,7 +1457,7 @@ Our experience with the world’s biggest cloud has been full of headache. AWS o
 
 Our initial setup process following the primary documentation path for creating a slurm cluster through the SageMaker console. This path proved to be a dead end. The only successful method for provisioning a functional cluster was to abandon the standard documentation and instead use a CloudFormation stack from an official AWS workshop at http://catalog.workshops.aws/sagemaker-hyperpod. This approach pre-provisions the entire required infrastructure stack, including the VPC, IAM roles, S3 bucket, and FSx for Lustre file system, before attempting to create the cluster itself. Effectively, the default console setup does not correctly configure the necessary dependencies.
 
-With that said, the process to get the CloudFormation scripts to work correctly requires navigating multiple documents to correct IAM policies (AmazonSageMakerClusterInstanceRolePolicy), request quotas of all sorts, and upload/run lifecycle scripts.Notably, these scripts are buried five directories deep in an unrelated GitHub repository: [https://github.com/aws-samples/awsome-distributed-training/blob/main/1.architectures/5.sagemaker-hyperpod/LifecycleScripts/base-config/lifecycle\_script.py](https://github.com/aws-samples/awsome-distributed-training/blob/main/1.architectures/5.sagemaker-hyperpod/LifecycleScripts/base-config/lifecycle_script.py) and are incredibly brittle.
+With that said, the process to get the CloudFormation scripts to work correctly requires navigating multiple documents to correct IAM policies (AmazonSageMakerClusterInstanceRolePolicy), request quotas of all sorts, and upload/run lifecycle scripts.Notably, these scripts are buried five directories deep in an unrelated GitHub repository: [https://github.com/aws-samples/awsome-distributed-training/blob/main/1.architectures/5.sagemaker-hyperpod/LifecycleScripts/base-config/lifecycle_script.py](https://github.com/aws-samples/awsome-distributed-training/blob/main/1.architectures/5.sagemaker-hyperpod/LifecycleScripts/base-config/lifecycle_script.py) and are incredibly brittle.
 
 ![A screenshot of a computer
 
@@ -1461,7 +1479,7 @@ In total, we worked on provisioning this cluster for 14 straight hours, with int
 
 In addition, the standard, documented path for getting started with a single GPU instance does not actually produce a working GPU instance. Following the console guide results in a GPU instance provisioned without any Nvidia drivers installed, and a default root volume size of 8GB, which is insufficient to even install the required drivers manually. We believe this is a primary reason why various marketplaces reselling GPU compute in AWS datacenters such as lightning.ai and Qubrid have able to maintain a business: the AWS UI is just so hard to use.
 
-On the HyperPod cluster, AWS (like other hyperscalers) removes public IPs in favor of a proprietary SSH wrapper script easy\_ssh.sh [https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-run-jobs-slurm-access-nodes.html](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-run-jobs-slurm-access-nodes.html). Unfortunately, this easy\_ssh.sh is not easy, instead requiring an Access Token to be retrieved from the AWS console as they are cycled every 24 hours by default, and use the AWS SSM approach for access. This wastes time and is annoying, let alone the process to manage users with add\_users.sh or plugging the cluster into an IAM provider.
+On the HyperPod cluster, AWS (like other hyperscalers) removes public IPs in favor of a proprietary SSH wrapper script easy_ssh.sh [https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-run-jobs-slurm-access-nodes.html](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-run-jobs-slurm-access-nodes.html). Unfortunately, this easy_ssh.sh is not easy, instead requiring an Access Token to be retrieved from the AWS console as they are cycled every 24 hours by default, and use the AWS SSM approach for access. This wastes time and is annoying, let alone the process to manage users with add_users.sh or plugging the cluster into an IAM provider.
 
 Uniquely, AWS is the only cloud where account managers pestered one of our team members relentlessly for payment on a capacity block that they had provided us directly for our testing. While this did get rectified, the experience speaks to the fact that the AWS organization is a behemoth, and customers need to push hard to get the left hand to speak to the right.
 
@@ -1487,9 +1505,9 @@ AWS markets this disaggregated design as a strategic choice for resiliency, clai
 
 However, this JBOK design also enables a long-overdue shift to a rail-optimized network topology, which is critical for the performance of MoE models heavy on All-to-All collectives. But this obsession with reliability at the component level leads to a shockingly inefficient operational model at the system level. An entire GB200 rack (or logical rack, as AWS is going for NVL36x2, just like Google) is treated as a single failure domain called an “Ultraserver.” This means a single faulty compute sled requires draining workloads from all 18 nodes in the rack before any repair can be attempted. This is a stark contrast to the hot-swappable serviceability customers expect and receive from other GB200 NVL72 rack-scale providers. In the worst case, this policy has brutal TCO implications as it demands entire “spare” racks to maintain capacity SLAs, a cost inevitably passed on to the customer via poor SLA penalties, or higher prices.
 
-For users of EFA, debugging is also incredibly challenging. First, in a traditional HPC environment using InfiniBand or RoCEv2 (Converged Ethernet), engineers have a standard toolkit: ib\_write\_bw, ib\_ping, ibv\_devinfo, and ibdiagnet for direct testing of the physical layer. However with EFA, your access ends at the EFA driver on the host. Second, since NCCL does not communicate with EFA directly there are multiple layers of abstraction to contend with. The communication path is a complex chain of software shims:
+For users of EFA, debugging is also incredibly challenging. First, in a traditional HPC environment using InfiniBand or RoCEv2 (Converged Ethernet), engineers have a standard toolkit: ib_write_bw, ib_ping, ibv_devinfo, and ibdiagnet for direct testing of the physical layer. However with EFA, your access ends at the EFA driver on the host. Second, since NCCL does not communicate with EFA directly there are multiple layers of abstraction to contend with. The communication path is a complex chain of software shims:
 
-*NCCL → aws-ofi-nccl Plugin → Libfabric API → EFA Libfabric Provider → Custom ibverbs provider in RDMA Core Library → EFA Kernel Driver → AWS Hardware*
+_NCCL → aws-ofi-nccl Plugin → Libfabric API → EFA Libfabric Provider → Custom ibverbs provider in RDMA Core Library → EFA Kernel Driver → AWS Hardware_
 
 When a NCCL collective (like an AllReduce) hangs or performs poorly, the error message is often generic, like a timeout or a provider error. Pinpointing the source of the problem is a nightmare: is it a bug in NCCL itself? Is it an incompatibility or bug in the aws-ofi-nccl plugin? Is Libfabric misconfigured or hitting a corner case? Is the EFA provider encountering an issue with the SRD protocol (e.g., congestion, retransmissions)? Is there a physical hardware problem on the NICs, switches or cables? Without deep introspection tools for each of these layers, debugging becomes a process of managing support tickets with AWS.
 
@@ -1593,7 +1611,7 @@ This level of investment in monitoring at the physical layer is how Firmus plans
 
 GMO Cloud, part of the sprawling Japanese conglomerate GMO Internet Group, presents a highly opinionated approach targeting their domestic market. The offering is built on a foundation of security that for us is so stringent it alters the user experience, while still providing solid performance.
 
-We focused on slurm as kubernetes is not available, and quickly found that sinfo and scontrol are completely disabled for end-users. This decision, presumably made in the name of security, caused us issues with pre-baked scripts that depend on scontrol show hostnames $SLURM\_JOB\_NODELIST and other basic convenience functions. It also resulted in us having to modify some of our standard debugging practices, since users are unable to inspect the cluster state or topology. Thankfully, GMO provides a convenience command “snodes”, and a custom script, “get\_master\_addr.sh” which got us running jobs at expected performance.
+We focused on slurm as kubernetes is not available, and quickly found that sinfo and scontrol are completely disabled for end-users. This decision, presumably made in the name of security, caused us issues with pre-baked scripts that depend on scontrol show hostnames $SLURM_JOB_NODELIST and other basic convenience functions. It also resulted in us having to modify some of our standard debugging practices, since users are unable to inspect the cluster state or topology. Thankfully, GMO provides a convenience command “snodes”, and a custom script, “get_master_addr.sh” which got us running jobs at expected performance.
 
 ![A screenshot of a computer
 
@@ -1677,8 +1695,8 @@ Source: Spinning up a SonK cluster in Voltage Park, right from the console
 
 Inside the intended container environment, the setup is more robust. We found a correctly configured topology.conf for network-aware scheduling, SLURM prolog and epilog scripts in place, and a modern container toolkit with pyxis and enroot installed. Interconnect performance was strong, running collectives at expected bandwidth. We also saw good download speeds, and a reasonably fast shared filesystem.
 
-Operationally, we encountered two major points of concern. First, Voltage Park’s dashboard has a “Shutdown” function that is distinct from “Terminate”. “Shutdown” halts the instances but continues to bill for the reserved capacity, a nuance that is not made sufficiently clear in the UI, and we expect is a disaster waiting to happen. Notably, not a single other provider offers these distinct “Shutdown” and “Terminate” options, and even after discussing the purpose of the “Shutdown” button with the Voltage Park team, it is still very confusing to us what the intended use case is. We recommend  
-  
+Operationally, we encountered two major points of concern. First, Voltage Park’s dashboard has a “Shutdown” function that is distinct from “Terminate”. “Shutdown” halts the instances but continues to bill for the reserved capacity, a nuance that is not made sufficiently clear in the UI, and we expect is a disaster waiting to happen. Notably, not a single other provider offers these distinct “Shutdown” and “Terminate” options, and even after discussing the purpose of the “Shutdown” button with the Voltage Park team, it is still very confusing to us what the intended use case is. We recommend
+
 Second, their process for handling hardware failures in on-demand clusters is manual, requiring operator intervention to cycle nodes out of a user’s cluster. This is a far cry from the automated, resilient systems offered by top-tier providers. This is also demonstrated by a lack of up-to-date security patches. The cluster was also pre-installed with an nvidia container toolkit version (1.17.4) that was out-of-date by 9 months, and as discussed previously in this article, victim to CVE-2025-23266 (NVIDIAScape) and CVE-2025-23267, with CVSS scores of 9.0 and 8.5 out of 10 respectively (“Critical”).
 
 In conclusion, we believe that Voltage Park now has a solid technical foundation to carry forward and recover from reputational issues. We are encouraged by the execution of the technical team, and look forward to seeing more improvements in the future.
@@ -1717,7 +1735,7 @@ A screenshot of a computer AI-generated content may be incorrect.
 
 One of our GMI nodes, with 1.9TB of shared storage, and 27.9TB of local storage, matching NVIDIA’s DGX specification perfectly
 
-On the positive side, the underlying hardware appears to be configured correctly for high-performance workloads. A check for nvidia\_peermem confirmed that GPUDirect RDMA is enabled, and the team confirmed that their interconnect network is built on InfiniBand with PKeys for network segmentation.
+On the positive side, the underlying hardware appears to be configured correctly for high-performance workloads. A check for nvidia_peermem confirmed that GPUDirect RDMA is enabled, and the team confirmed that their interconnect network is built on InfiniBand with PKeys for network segmentation.
 
 We also found no evidence of active or passive health checks, and no monitoring dashboards were provided to give visibility into cluster state or job performance.
 
@@ -1727,7 +1745,7 @@ In the future, when we can confirm that the Slurm offering is working well, deve
 
 STN is second in our list of providers that should be in the silver tier if our testing went better. By comparison, STN is similar to Cirrascale, which is to say STN offers dedicated managed services for clusters that are built-to-order for individual customers. There is no “public” cloud experience, and frankly not much about this is “cloud”. But customers who want a high-touch experience can get it here. In our testing, the STN platform is undermined by significant configuration errors and reliability problems, landing STN in our Bronze tier.
 
-Onboarding is entirely manual, requiring phone calls to review PDFs and set up accounts. We were given a 4-node B200 cluster with impressive hardware, including four network fabrics (RoCEv2 for interconnect and storage) and 25TB of VAST. However, this high-end hardware was let down by basic configuration mistakes. For example, we found seven local NVMe drives unmounted on each node. The Slurm environment was also missing key components for performance: no topology.conf, GPUDirect RDMA was disabled (nvidia\_peermem not loaded), and MPI was not installed.
+Onboarding is entirely manual, requiring phone calls to review PDFs and set up accounts. We were given a 4-node B200 cluster with impressive hardware, including four network fabrics (RoCEv2 for interconnect and storage) and 25TB of VAST. However, this high-end hardware was let down by basic configuration mistakes. For example, we found seven local NVMe drives unmounted on each node. The Slurm environment was also missing key components for performance: no topology.conf, GPUDirect RDMA was disabled (nvidia_peermem not loaded), and MPI was not installed.
 
 Unfortunately, STN’s biggest weakness was reliability. During testing, we saw two different nodes go into a “down” state, one of which stayed “down” for over two days. Since the STN repair process is entirely manual, it requires customers to spot and report failures themselves. Notably, dcgm health -c is enabled on the nodes, but it is not plugged into Slurm as a HealthCheckProgram.
 
@@ -1891,7 +1909,7 @@ In our testing, the container-centric design prevents the use of standard HPC an
 
 In our testing of Runpod’s Slurm offering (still in Beta), we initially used a cluster directly from another provider, FarmGPU, and gave feedback on a number of issues we found. The Runpod technical team was responsive, took the feedback, and committed to actively incorporate this feedback in their next development cycle. A few weeks later, different Runpod team members insisted that we re-test with a different bare metal provider, directly from their console. While we appreciate their engagement, all the core issues we found on the first round of testing remained.
 
-The default user is root, with no way to add additional users, enforce RBAC, or use an external IAM provider. The default home directory (~) is not on a shared filesystem, forcing users to navigate to a separate /workspace directory. More critically, the environment lacks essential tooling. We found no pre-installed MPI, and initial attempts to run MPI-based jobs using srun failed due to a required hostfile modification, specifying external container hostnames and routes, since these are not updated in DNS or standard IPs. Specifically, we had to export NCCL\_SOCKET\_IFNAME=”ens1” because it was not pre-populated in /etc/nccl.conf, export HF\_HOME=/workspace/.cache/huggingface because /root is the default workdir, not /workspace, run head\_node\_ip=$(srun --nodes=1 --ntasks=1 -w “$head\_node” ip addr show ens1 | grep “inet “ | awk ‘{print $2}’ | cut -d’/’ -f1) and include --hostfile hostfile in mpirun commands, instead of much simpler options on standard clusters. Even with knowledge of these custom approaches going into the second round of testing, it is currently still poorly documented and clearly a beta feature.
+The default user is root, with no way to add additional users, enforce RBAC, or use an external IAM provider. The default home directory (~) is not on a shared filesystem, forcing users to navigate to a separate /workspace directory. More critically, the environment lacks essential tooling. We found no pre-installed MPI, and initial attempts to run MPI-based jobs using srun failed due to a required hostfile modification, specifying external container hostnames and routes, since these are not updated in DNS or standard IPs. Specifically, we had to export NCCL_SOCKET_IFNAME=”ens1” because it was not pre-populated in /etc/nccl.conf, export HF_HOME=/workspace/.cache/huggingface because /root is the default workdir, not /workspace, run head_node_ip=$(srun --nodes=1 --ntasks=1 -w “$head_node” ip addr show ens1 | grep “inet “ | awk ‘{print $2}’ | cut -d’/’ -f1) and include --hostfile hostfile in mpirun commands, instead of much simpler options on standard clusters. Even with knowledge of these custom approaches going into the second round of testing, it is currently still poorly documented and clearly a beta feature.
 
 On monitoring and health checks, we expect it will continue to be difficult for Runpod to ensure the reliability and performance required for large scale training. We have heard from multiple Runpod customers that since Runpod does not explicitly state which underlying hardware provider you’re going to land on (aside from specifying a “region”, and a binary “secure” or “community” cloud) that they effectively feel like they’re spinning a roulette wheel to try and “get a good pod”. In other words, users waste a bunch of time spinning up/down pods based on their perception of quality, because price-per-value information is not available to them in the console.
 
@@ -1922,9 +1940,9 @@ Overall, with working B200 instances available, and comprehensive slurm install,
 We have heard about reliability issues from various Verda customers, both at the hardware level and with respect to their WAN connectivity. Specifically, Verda customers have told us that entire sites can go dark with no explanation. While things like this happen, the more serious issue is in response. Unfortunately, we have seen Verda charge their customers for GPU time even when instances are down or entire sites are inaccessible. To us, this is an offensive business practice. Our basic expectation for all cloud providers is to commit to their SLAs in written form, with penalties in the form of credits or deductions off a customer’s monthly bill in the event of a breach. Not upholding a written SLA undermines many of the technical benefits and attractive pricing that we have seen from Verda during our testing.
 
 > Note: since publishing this article we’ve discussed this issue in detail with Verda. Verda is committed to compensate any customers who experience downtime with at least 2x the cost of running any instances in the form of a credit. Customers contacting technical support via chat get an automatic message stating that all downtime will be compensated. Verda typically issues refunds within 24 hours of the downtime occurrence during weekdays, and on the following Monday for downtimes occurring during weekends. For customers billed monthly, any downtime or defects are compensated by subtracting the corresponding amount from the monthly invoice.
-> 
+>
 > Frankly, we think this is an excellent response.
-> 
+>
 > In general, SemiAnalysis recommends that customers be sure to keep server logs, screenshots, and other information readily available if they are pursuing downtime claims from their provider. At this time we have only seen gold or platinum tier providers proactively issue credits without customers asking for them.
 
 Overall we recommend that Verda shore up their reliability challenges, finalize their slurm offering currently in beta, improve the monitoring dashboard, and continue development of their kubernetes offering. We look forward to seeing more from Verda in the future.
@@ -2705,8 +2723,8 @@ GreenAI cloud is another Swedish-based cloud provider focused on sustainability 
 
 ## Disclaimer
 
-*The logos and associated trademarks are displayed herein solely for editorial and informational purposes, consistent with the principles of fair use under applicable law. No ownership, affiliation, sponsorship or endorsement by any of the associated Companies is expressed or implied herein. All rights, title and interest in and to the logos and associated trademarks remain the exclusive property of the Companies.*
+_The logos and associated trademarks are displayed herein solely for editorial and informational purposes, consistent with the principles of fair use under applicable law. No ownership, affiliation, sponsorship or endorsement by any of the associated Companies is expressed or implied herein. All rights, title and interest in and to the logos and associated trademarks remain the exclusive property of the Companies._
 
-*The content, methodology, and data presented in ClusterMAX™ are the intellectual property of SemiAnalysis. Any use of this work, in whole or in part, for the creation, structuring, issuance, or valuation of financial products, including but not limited to derivative instruments, investment funds, indices, exchange-traded products, or structured notes, requires prior written consent from the author.*
+_The content, methodology, and data presented in ClusterMAX™ are the intellectual property of SemiAnalysis. Any use of this work, in whole or in part, for the creation, structuring, issuance, or valuation of financial products, including but not limited to derivative instruments, investment funds, indices, exchange-traded products, or structured notes, requires prior written consent from the author._
 
-*Unauthorized use for commercial or financial purposes, including the creation of derivative or investment instruments based on these ratings, is strictly prohibited. Licensing inquiries and partnership proposals may be directed to clustermax@semianalysis.com*
+_Unauthorized use for commercial or financial purposes, including the creation of derivative or investment instruments based on these ratings, is strictly prohibited. Licensing inquiries and partnership proposals may be directed to clustermax@semianalysis.com_

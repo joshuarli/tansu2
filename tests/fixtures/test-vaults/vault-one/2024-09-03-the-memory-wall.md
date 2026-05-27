@@ -52,12 +52,12 @@ Basic DRAM circuit: an array of memory cells connected with a wordline along eac
 
 Wordlines (WL) connect all cells in a single row; they control the access transistor for each cell. Bitlines (BL) connect all cells in a single column; they connect to the source of the access transistor. When a worline is energized, the access transistors for all cells in the row open and allow current flow from the bitline into the cell (when writing to the cell) or from the cell to the BL (when reading from the cell). Only 1 worlined and 1 bitline will be active at once, meaning only the 1 cell where the active word- and bitlines intersect will be written or read.
 
-*Charge is allowed to flow from bitline to capacitor or vice versa when the access transistor is turned on by the wordline Source: [Branch Education](https://www.youtube.com/watch?v=7J7X7aZvMXQ)*
+_Charge is allowed to flow from bitline to capacitor or vice versa when the access transistor is turned on by the wordline Source: [Branch Education](https://www.youtube.com/watch?v=7J7X7aZvMXQ)_
 
 DRAM is a volatile memory technology: the storage capacitors leak charge, and thus require frequent refreshes (as often as every ~32 milliseconds) to maintain stored data. Each refresh reads the contents of a cell, boosts the voltage on the bitline to an ideal level, and lets that refreshed value flow back into the capacitor. Refreshes happen entirely inside the DRAM chip, with no data flowing in or out of the chip. This minimizes wasted power, but refreshes can still come to 10%+ of total DRAM power draw.
 
-Capacitors, much like transistors, have been shrunk to nanoscopic width but also with extreme aspect ratios ~1,000nm high but only 10s of nm in diameter – aspect ratios are approaching 100:1, with capacitance on the order of 6-7 fF (femto-Farad). Each capacitor stores an extremely small charge, about 40,000 electrons when freshly written.  
-  
+Capacitors, much like transistors, have been shrunk to nanoscopic width but also with extreme aspect ratios ~1,000nm high but only 10s of nm in diameter – aspect ratios are approaching 100:1, with capacitance on the order of 6-7 fF (femto-Farad). Each capacitor stores an extremely small charge, about 40,000 electrons when freshly written.
+
 The cell must get electrons in and out via the bitline, but voltage put onto the bitline is diluted by all the other cells attached to the same bitline. Total bitline capacitance may total more than 30fF – a 5x dilution. The bitline is also very thin which slows the electrons. Finally, the cell may have drained significantly if it has not been refreshed recently, so has only a fraction of charge to deliver.
 
 All these factors mean that discharging a cell to read its value can result in a very weak signal which must be amplified. To this end sense amplifiers (SA) are attached at the end of each bitline to detect the extremely small charges read from the memory cells and amplify the signal to a useful strength. These stronger signals can then be read elsewhere in the system as a binary 1 or 0.
@@ -184,7 +184,7 @@ Despite the high costs and yield challenges HBM3E is, for now, the most valuable
 
 HBM dominates in bandwidth and packaging density. Source: SemiAnalysis
 
-In short, high bandwidth and very high bandwidth density along with best energy per bit and true ECC capability makes HBM3E the clear winner, *for now*, for AI Accelerators. This is why products like Nvidia’s H100 and AMD’s MI300X use it. GDDR6/X comes in a distant second by the same metrics albeit with tiny capacity. LPDDR5 and DDR5 are even worse, neither is suited to accelerator needs.
+In short, high bandwidth and very high bandwidth density along with best energy per bit and true ECC capability makes HBM3E the clear winner, _for now_, for AI Accelerators. This is why products like Nvidia’s H100 and AMD’s MI300X use it. GDDR6/X comes in a distant second by the same metrics albeit with tiny capacity. LPDDR5 and DDR5 are even worse, neither is suited to accelerator needs.
 
 The current HBM solution is expensive and will be increasingly difficult to scale. How did we end up in this situation?
 
@@ -260,13 +260,13 @@ The DRAM chip is totally dependent on the host: all commands are funneled throug
 
 This is exacerbated by using an ancient half-duplex interface: a DRAM chip can read or write data but not both concurrently. The host has an exact model of the DRAM and must predict if the interface should be set to read or write for every clock cycle. Commands and data are sent on separate wires, which reduces timing complexity but increases the wire counts and “beach front” crowding on the GPU or CPU. Overall, the memory interface has dropped an order of magnitude below the bit rates, beach density, and efficiency of alternative PHYs used by logic chips.
 
-The upshot of these disadvantages is that DDR5 DIMMs, the most common on servers, expend more than *99%* of read or write energy in the host controller and interface. Other variants are slightly better – HBM energy use is roughly 95% interface, 5% memory cell read/write – but still nowhere near the full potential of DRAM.
+The upshot of these disadvantages is that DDR5 DIMMs, the most common on servers, expend more than _99%_ of read or write energy in the host controller and interface. Other variants are slightly better – HBM energy use is roughly 95% interface, 5% memory cell read/write – but still nowhere near the full potential of DRAM.
 
 Functionality is simply in the wrong place. Naturally, the solution is to move it to the correct one: the control logic should be on-chip with the memory. This is Compute in Memory (CIM).
 
 ## Compute in Memory: Unleash the Banks
 
-DRAM banks have *incredible* performance potential that goes almost completely to waste because of interfaces.
+DRAM banks have _incredible_ performance potential that goes almost completely to waste because of interfaces.
 
 Banks are the basic unit of DRAM construction. They comprise 8 sub-banks each with 64Mb (8k rows by 8k bits) of memory. The bank activates and refreshes 1 row of 8k bits at once but transfers just 256 of them in or out in any I/O operation. This limitation is due to external connections from sense amplifiers: while the row is supported by 8k sense amplifiers, only 1 in 32 sense amplifiers (256) are connected out of the sub-bank, meaning read or write operation are limited to 256 bits
 
@@ -278,7 +278,7 @@ The sense amps are in a canyon surrounded by tall capacitors. In the FIB teardow
 
 Even with this limited interface, 1 in 32 accessible at any one time, the peak read/write capacity of a bank is roughly 256Gb/s, with an average closer to 128 Gb/s as at least 50% of time is used in switching to a new active row. With 32 banks per 16Gb chip the full potential of one chip is 4TB/s.
 
-Further up the hierarchy, banks are connected in bank groups, which in turn connect to the interface out of the DRAM chip. In HBM, each die has 256 data lines with a peak throughput of 256 GB/s per die. This bottleneck can utilize only *1/16 <sup>th</sup>* of the underlying potential of the banks.
+Further up the hierarchy, banks are connected in bank groups, which in turn connect to the interface out of the DRAM chip. In HBM, each die has 256 data lines with a peak throughput of 256 GB/s per die. This bottleneck can utilize only _1/16 <sup>th</sup>_ of the underlying potential of the banks.
 
 ![](z-images/e437a673739c6902f32709daade00f13.webp)
 
@@ -312,6 +312,6 @@ Source: SemiAnalysis
 
 We already see real change possible in HBM4 with the acceptance of 3 <sup>rd</sup> party base chips, which is bound to unleash experiments. We will likely see offloaded channel control, pure fabric extension on the interconnect, reduced energy per bit over centimeters of distance, and daisy chaining to other rows of HBM further from the host, or to 2 <sup>nd</sup> tier memory like banks of LPDDR.
 
-In this way designs can sidestep the power limits of trying to do compute inside the memory stack and instead use a modernized interface on the base chip to allow neighboring chips the bandwidth and low energy per bit for compute *as-if* in memory.
+In this way designs can sidestep the power limits of trying to do compute inside the memory stack and instead use a modernized interface on the base chip to allow neighboring chips the bandwidth and low energy per bit for compute _as-if_ in memory.
 
 Below we’ll cover the coming revolution in DRAM: 3D. This will mean a tectonic shift for the memory manufacturers and wafer fab equipment - we’ll discuss basics, how it’s manufactured, and likely winners (and losers).

@@ -50,6 +50,6 @@ Only the rouge Arm China entity controlled by Allen Wu can create agreements for
 
 Update 8/31/21: Emphasizing that IP has not been stolen or stopped according to Arm, SemiAnalysis maintains that a heist has occurred regarding control of the Arm China entity.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/the-semiconductor-heist-of-the-century-arm-china-has-gone-completely-rogue-operating-as-an-independent-company-with-their-own-ip/) on August 27th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/the-semiconductor-heist-of-the-century-arm-china-has-gone-completely-rogue-operating-as-an-independent-company-with-their-own-ip/) on August 27th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

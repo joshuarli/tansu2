@@ -76,6 +76,6 @@ The catalyst for Nvidia’s stock price correction is the split. As we approach 
 
 We like Nvidia and if the price is right, would recommend buying it, but that price is not the current one.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/nvidias-2021-bubble-eerily-similar-to-other-bubbles-that-came-before/) on July 6th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/nvidias-2021-bubble-eerily-similar-to-other-bubbles-that-came-before/) on July 6th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

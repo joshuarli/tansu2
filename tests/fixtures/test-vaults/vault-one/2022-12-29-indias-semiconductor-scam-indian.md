@@ -15,7 +15,7 @@ India has been [attempting to woo a commercial semiconductor fab](https://swaraj
 In May 2014, the current Prime Minister of India, Narendra Modi, took charge. He [quickly launched the “Make in India” campaign](https://www.makeinindia.com/). While this campaign has seen success in some other industries, there was no progress for semiconductor manufacturing in India for his first term. His second term has been playing out differently. Nirmala Sitharaman was appointed to be the finance minister of India. In one of her first speeches about the 2019-2020 budget, the semiconductor industry was directly called out.
 
 > In order to boost economic growth and Make in India, the government will launch a scheme to invite global companies through a transparent competitive bidding to set up mega-manufacturing plants in sunrise and advanced technology areas such as Semiconductor Fabrication (FAB)
-> 
+>
 > [Budget 2019 – 2020](https://www.indiabudget.gov.in/budget2019-20/doc/Budget_Speech.pdf)
 
 While a fab established in India could cater to the global export markets, policymakers in India focused on creating a domestic market for India as well. The prevailing belief is that “low-hanging fruit” such as low-value assembly can create many jobs and help move India up the supply chain. This is generally correct if we look at the development of various global economies. Economies often transition from assembly to packaging to fabrication and design.
@@ -23,7 +23,7 @@ While a fab established in India could cater to the global export markets, polic
 The Indian government, through its Ministry for Electronics and Information Technology (MEITY), launched efforts such as the “Production Linked Incentives” (PLI) in 2020 to increase “Assemble-in-India” An article published soon after the launch of the initial set of PLI schemes summarized it thus:
 
 > The idea is that focusing on assembly units, that is, ‘last-mile industries’, would eventually help develop deep backward linkages, thus inducing industrialization. The need of the hour is to promote semiconductor manufacturing alongside assembly units in India
-> 
+>
 > [Why India must manufacture microchips](https://www.thehindubusinessline.com/opinion/why-india-must-manufacture-microchips/article32131506.ece)
 
 In December 2020, about a year and a half after the initial budgetary announcement, MEITY released “ [Expression of Interest for Setting up of Semiconductor FAB](https://www.meity.gov.in/content/expression-interest-setting-semiconductor-fab),” which kicked off the rush for proposals. While many discussions were happening in the background, some of those also bubbled up to credible media outlets.
@@ -85,7 +85,7 @@ Most of the criticisms of this project come from the political side, clamoring t
 Every statement from Anil Agarwal gets quoted by the media without considering whether it makes technical and practical sense. These media appearances often have contradictions to earlier statements. For example, in [an interview in August](https://timesofindia.indiatimes.com/city/bengaluru/chip-plant-will-create-another-silicon-valley/articleshow/93382603.cms), he said, “We may not go for the 28nm chip, we may go for 45nm” and that “28nm is still in the innovation stage.”
 
 > First products should be out in the market in two years.
-> 
+>
 > [Anil Agarwal in September](https://www.cnbctv18.com/business/companies/vedanta-foxconn-semiconductor-plant-gujarat-anil-agarwal-independent-agency-selects-location-14722131.htm)
 
 This claim is quite literally impossible. Even TSMC, the most well-run and highest volume foundry in the world, has only ever taken as little as ~3 years for a brand-new facility from breaking ground to production.
@@ -101,7 +101,7 @@ Foxconn’s semiconductor experience is entirely limited to their acquisition of
 There has been some murmuring that this is a quid pro quo for increasing [India’s share of assembly in electronics.](https://timesofindia.indiatimes.com/business/india-business/india-second-largest-phone-manufacturer-globally-shows-govt-data/articleshow/93102348.cms) The Indian government has recently [approved another INR 357.17 crore](https://pib.gov.in/PressReleaseIframePage.aspx?PRID=1885189) of incentives to Foxconn for mobile assembly. India has aspirations of becoming the largest in the electronics assembly world, and convincing Foxconn to move over is a big part of this.
 
 > All approvals are in place.
-> 
+>
 > [Anil Agarwal in September](https://www.cnbctv18.com/business/companies/vedanta-foxconn-semiconductor-plant-gujarat-anil-agarwal-independent-agency-selects-location-14722131.htm)
 
 Assuming Anil Agarwal isn’t lying, then India has just been duped into funding an unfeasible semiconductor fab. A well-connected Indian mining tycoon and Foxconn, a pro-CCP assembly company with no relevant semiconductor experience, would operate this fab.

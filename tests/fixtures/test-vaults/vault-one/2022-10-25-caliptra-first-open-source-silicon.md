@@ -37,7 +37,7 @@ This split also enables the hardware architecture of Caliptra to be implementabl
 Caliptra’s open-source status enables it to be highly transparent and guarantees implementation consistency. Limiting the scope to the detection model enables easy implementation and a high degree of reusability across designs.
 
 > It is not a story of differentiation. It is a story of consistency. Caliptra is not a landing pad for vendor “value adds”
-> 
+>
 > Hemaprabhu Jayanna, AMD Director of Product Security - Architecture & Engineering
 
 ![](z-images/4dc4436cd692aed521fcc0d631ed4e84.webp)
@@ -49,7 +49,7 @@ There are two pathways for deployment. Regardless of the pathway, Caliptra will 
 Proprietary/OEM-signed forked firmware is not allowed.
 
 > Manufacturers get the ability to ensure, on their device, only authentic code can run, and then the owner gets the right that only authorized authentic code can run on that device. Caliptra is not running any proprietary firmware that’s OEM signed or cloud-signed exclusively. Its always got the device manufacturer and it has to be open-source firmware. One of the goals for this route of trust for measurement is to ensure that we have consistency and transparency. We want to avoid fragmentation and forking and pollution of other capabilities into security technologies. Often we see over time, great security technologies getting compromised by other great ideas from management and other things that you can put inside that secure boundary. Then before you know you have this bloat on a security technology and of course it starts to weaken its security posture because it's now doing more than security. We want to keep Caliptra very clean and lean.
-> 
+>
 > Bryan Kelly, Microsoft Principal Firmware Engineer – Lead Hardware Security Architecture
 
 ![](z-images/66d4a1b26db7538fcdf38561084d2ac7.webp)

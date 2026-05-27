@@ -16,12 +16,12 @@ readable without trying to align browser and server clocks.
 
 Logging is controlled by `TANSU2_LOGS`:
 
-| Value    | Behavior                                      |
-| -------- | --------------------------------------------- |
-| `off`    | Disable logging.                              |
-| `buffer` | Keep the in-memory log buffer only.           |
+| Value    | Behavior                                                  |
+| -------- | --------------------------------------------------------- |
+| `off`    | Disable logging.                                          |
+| `buffer` | Keep the in-memory log buffer only.                       |
 | `pretty` | Keep the buffer and print colored timestamped text lines. |
-| `json`   | Keep the buffer and print newline JSON.       |
+| `json`   | Keep the buffer and print newline JSON.                   |
 
 Defaults and commands:
 

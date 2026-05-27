@@ -25,7 +25,7 @@ Now let’s get into projections. Even the industry group, Semi, has [cut their 
 The lion in the room is, of course, memory. Micron, Samsung, SK Hynix, Kioxia, and Western Digital.
 
 > We made significant reductions to CapEx and now expect fiscal 2023 CapEx to be around $8 billion, down more than 30% year-over-year. WFE CapEx will decline nearly 50% year-over-year, and reflects a much slower ramp of our 1-beta DRAM and 232-layer NAND versus prior expectations.
-> 
+>
 > Sanjay Mehrotra, Micron CEO
 
 The other memory vendors will follow suit, with [Samsung](https://www.kedglobal.com/korean-chipmakers/newsView/ked202209300015) and [Kioxia](https://www.kioxia.com/en-jp/about/news/2022/20220930-1.html) announcing cuts to pricing, wafer starts, and/or fabrication equipment spending. It should be noted that Micron and others will continue to build the fab facilities and keep existing EUV orders in place. They will be delaying equipment spending on DUV and other fabrication tools significantly. There will be a [different spending profile and degree of cuts with NAND](https://semianalysis.substack.com/p/2022-nand-process-technology-comparison) versus DRAM industry.
@@ -33,13 +33,13 @@ The other memory vendors will follow suit, with [Samsung](https://www.kedglobal.
 On the Intel side, there are many questions about whether or not Intel will cut spending on their capacity expansion as their business slows down significantly. This week, Dr. Randhir Thakur and Pat Gelsinger responded to these questions at the Intel Innovation conference.
 
 > When is the last time that a recession lasts for four or five years? Its impact on the industry may last several quarters like two, three or four quarters. You cannot be driven by near-term financials. We are investing for the long term. That’s our strategy.
-> 
+>
 > Pat Gelsinger, Intel CEO
 
 This quote is in stark contrast to what they are telling some suppliers. We know suppliers who have already received cancellations in orders. Others have already received pushbacks in order delivery dates. These cuts pertain to both the Malaysia packaging facility build-out and wafer fabs in other geographies. While most media fawned over the prior quote as proof Intel will not waiver on spending, we want to draw special attention to this portion of that same response.
 
 > Yes, we need to manage our cash carefully.
-> 
+>
 > Pat Gelsinger, Intel CEO
 
 Intel must manage its working capital very closely due to the implosion of the PC business and major share losses in servers. We believe the “short-term” business issues have affected their original buildout plans. Through multiple sources within the supply chain, SemiAnalysis can confirm that the recent significant demand decrease is causing Intel to undergo a review of all supplier purchase orders. Intel is at least partially driven by short-term working capital concerns.

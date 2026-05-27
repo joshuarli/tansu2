@@ -12,9 +12,9 @@ Every 6 months or so, we see another round of headlines about nanoimprint lithog
 
 Source: Bloomberg, Financial Times, The Economist
 
-It makes for good clickbait but is just not true. The technology has many interesting and valid applications, but nothing like what EUV can do. *Theoretically*, NIL could match or even exceed EUV capabilities. *Practically*, there are serious issues for NIL without any clear way forward.
+It makes for good clickbait but is just not true. The technology has many interesting and valid applications, but nothing like what EUV can do. _Theoretically_, NIL could match or even exceed EUV capabilities. _Practically_, there are serious issues for NIL without any clear way forward.
 
-We’ll explain those differences in theory versus actual in-fab practice in this report. We’ll also detail the key players in the market and the likely applications where it *will* work. To start, let’s cover the basics of what NIL is and what it can do:
+We’ll explain those differences in theory versus actual in-fab practice in this report. We’ll also detail the key players in the market and the likely applications where it _will_ work. To start, let’s cover the basics of what NIL is and what it can do:
 
 ## NIL Basics & History
 
@@ -154,7 +154,7 @@ How long does that stamp last? Right now, about 50 wafers.
 
 Canon claims more than 10x that number, but customers demoing the tool say otherwise. Compare that to a photolithography mask which has a lifetime of well over 100,000 wafers. It creates a massive problem with template inspection and defectivity:
 
-Fabs have to inspect masks before they are first used, and occasionally through their lifetime. This is because any defect on the mask will be printed to *every* field imaged with that mask. An undiscovered “repeater defect” like this can easily run up millions of dollars in scrap wafers.
+Fabs have to inspect masks before they are first used, and occasionally through their lifetime. This is because any defect on the mask will be printed to _every_ field imaged with that mask. An undiscovered “repeater defect” like this can easily run up millions of dollars in scrap wafers.
 
 The traditional solution is mask inspection. This is slow and expensive, but the economics make sense for a photomask which costs $100k - $1M+ and will support months of production.
 

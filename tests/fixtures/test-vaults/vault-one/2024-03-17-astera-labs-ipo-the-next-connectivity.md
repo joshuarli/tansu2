@@ -27,7 +27,7 @@ Before getting to that, let’s first review Astera Lab’s history.
 Astera Labs was established in 2017 in a garage, in typical Silicon Valley fashion. The co-founders, Jitendra Mohan, Sanjay Gajendra, and Casey Morrison, were at Texas Instrument’s High Speed Interface business. They saw the world with increasing connectivity bottlenecks, due to the exponential growth in compute and the need for heterogenous computing driven by AI workloads and Hyperscale Cloud Computing.
 
 > Astera Labs is in the business of removing bottlenecks, wherever they appear in a system
-> 
+>
 > Jitendra Mohan
 
 The below image shows 3 major bottlenecks that Astera Labs aims to solve.

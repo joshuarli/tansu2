@@ -107,7 +107,7 @@ Even ignoring the leading edge, the majority of shipments into China are for the
 Company executives explained that the vast majority of DUV system shipments were to support trailing edge and mature nodes as opposed to advanced processes, driven mainly by electric vehicle, communications, industrial IOT and renewable energy end use cases as well as an overall strategy of reducing reliance on imported chips. They characterized demand from China as highly sustainable because of goal of achieving a level of self-sufficiency – and its current distance from that goal and explained that neither 2023 or 2024 would see a peak in demand from China:
 
 > So there is a lot of semiconductor need, and this is exactly when we look at the expansion plans of our Chinese customers. It's exactly what they -- where they are putting their capacity at work in these areas. And if you look at the total consumption of semiconductors by the Chinese manufacturing industry, then China imports more semiconductors than they import oil. On top of that, you see the significant increase in these new transitions. That means that if China wants to come to a certain level of self-sufficiency, yeah, have still a huge gap to cover to be completely self-sufficient. So it's also logical that they actually invest in this type of semiconductor technology because it's for internal use. And I think so it's -- I don't think we will see a peak this year and next year, but I think there will be going forward a significant demand coming out of China for mid-critical and mature technology, and for all the reasons that I just mentioned.
-> 
+>
 > Peter Wennink, CEO of ASML
 
 As for the surge in deliveries to China in 2023, this was explained as being due to ASML seizing the opportunity to fulfil orders for Chinese customers given the push back in demand from other customers, with such surge in demand again for use in trailing edge and mature processes as opposed to any concerted effort by China based clients to beat future equipment bans. Convenient to say the least.
@@ -117,7 +117,7 @@ As for the surge in deliveries to China in 2023, this was explained as being due
 The story is similar at Lam Research, the largest etch company. Their revenue soared 102% quarter on quarter from China to $1,671M, primarily off the backs of rush orders before any potential bans. Management went to great lengths to assure investors of the sustainability of revenue from China:
 
 > I don't know if China is up now on our sideways next tier, but it's not going away. When we talk to our customers in China, they all communicate roadmaps that have multiyear horizons in front of them. Nothing new came from the regulations that you saw yesterday. So I see a level of sustainability in China as we go into next year and frankly, beyond. They have long-term objectives.
-> 
+>
 > Doug Bettinger, CFO of Lam Research
 
 A key theme driving these long-term plans is highlighted regionalization leading to sustained demand for investment in mature nodes from China for the next several years.

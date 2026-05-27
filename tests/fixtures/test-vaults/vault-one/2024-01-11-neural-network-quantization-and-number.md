@@ -30,16 +30,16 @@ What’s important is how each individual element in the output matrix is comput
 
 Typically, this is done in hardware by initializing an accumulator register to zero, then repeatedly
 
-- multiplying x\_i \* w\_i
+- multiplying x_i \* w_i
 - adding it to the accumulator
 
 all with a throughput of 1 per cycle. After ~12288 cycles, the accumulation of a single element of the output matrix is complete. This “fused multiply-add" operation (FMA) is the fundamental unit of computation for machine learning: with many thousands of FMA units on the chip strategically arranged to reuse data efficiently, many elements of the output matrix can be calculated in parallel to reduce the number of cycles required.
 
 All numbers in the diagram above need to be represented in some way in bits somewhere inside the chip:
 
-- x\_i, the input activations
-- w\_i, the weights
-- p\_i, the pairwise products
+- x_i, the input activations
+- w_i, the weights
+- p_i, the pairwise products
 - All intermediate partially-accumulated sums before the entire output is finished accumulating
 - The final output sum
 
@@ -92,7 +92,7 @@ More generally, this is a helpful strategy that we’ll revisit a lot in this ar
 
 ### Floating Point
 
-Fixed point has some disadvantages though, particularly for multiplication. Let’s say you need to calculate one trillion times one *trillionth* – the huge difference in size is an example of high \*dynamic range\*. Then both 10 <sup>12</sup> and 10 <sup>-12</sup> must be represented by our number format, so it’s easy to calculate how many bits you need: count from 0 to 1 trillion in increments of one trillionth, you need 10^24 increments, log2(10^24) ~= 80 bits to represent the dynamic range with the level of precision we would like.
+Fixed point has some disadvantages though, particularly for multiplication. Let’s say you need to calculate one trillion times one _trillionth_ – the huge difference in size is an example of high \*dynamic range\*. Then both 10 <sup>12</sup> and 10 <sup>-12</sup> must be represented by our number format, so it’s easy to calculate how many bits you need: count from 0 to 1 trillion in increments of one trillionth, you need 10^24 increments, log2(10^24) ~= 80 bits to represent the dynamic range with the level of precision we would like.
 
 80 bits for every single number is pretty wasteful in obvious ways. You don’t necessarily care about the absolute precision, you care about the relative precision. So even though the above format is able to distinguish between exactly 1 trillion and 999,999,999,999.999999999999, you generally don’t need to. Most of the time, you’re instead concerned with the amount of error relative to the size of the number.
 
@@ -104,7 +104,7 @@ So in addition to the sign and value, we now have an exponent as well. IEEE 754-
 - The exponent bits are interpreted as an unsigned integer, e, and represent the scale factor 2 <sup>e-127</sup>, which can take on a value somewhere between 2 <sup>-126</sup> and 2 <sup>127</sup>. More exponent bits would mean more dynamic range.
 - The mantissa bits represent the value 1.<mantissa bits>. More mantissa bits means more relative precision.
 
-*This is somewhat simplified – some special cases (subnormals, infinities, and nans) exist but are a story for another time. Just know that floating point is complicated and has special cases that need to be handled separately by the hardware.*
+_This is somewhat simplified – some special cases (subnormals, infinities, and nans) exist but are a story for another time. Just know that floating point is complicated and has special cases that need to be handled separately by the hardware._
 
 ![](z-images/e46df1537373bacec943921858444f34.webp)
 

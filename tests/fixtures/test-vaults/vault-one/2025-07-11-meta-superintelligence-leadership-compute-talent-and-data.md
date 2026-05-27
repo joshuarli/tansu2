@@ -3,7 +3,7 @@ title: "Meta Superintelligence - Leadership Compute, Talent, and Data"
 date: "2025-07-11T20:12:19.000Z"
 url: "https://newsletter.semianalysis.com/p/meta-superintelligence-leadership-compute-talent-and-data"
 author: "Dylan Patel"
-description: "AI Datacenter Titanomachy, \"The Tent\", AI Data and Talent Wars, Zuck Founder Mode, Behemoth 4 Post-Mortem, OBBB Tax Windfall, AI and Reality Labs"
+description: 'AI Datacenter Titanomachy, "The Tent", AI Data and Talent Wars, Zuck Founder Mode, Behemoth 4 Post-Mortem, OBBB Tax Windfall, AI and Reality Labs'
 ---
 
 ### AI Datacenter Titanomachy, "The Tent", AI Data and Talent Wars, Zuck Founder Mode, Behemoth 4 Post-Mortem, OBBB Tax Windfall, AI and Reality Labs
@@ -38,9 +38,9 @@ Source: Company filings
 
 While Meta is arguably more insulated from GenAI disruption than Google, LLM efforts at both companies have been somewhat disappointing. One reason is the allocation of capital primarily for the core business rather than pursuing superintelligence.
 
-> **“Our CapEx growth this year is going toward both generative AI and core business needs with the majority of overall CapEx** ***supporting the core*****.”**
-> 
-> *Source: Meta Q1 2025 earnings call, emphasis SemiAnalysis*
+> **“Our CapEx growth this year is going toward both generative AI and core business needs with the majority of overall CapEx** **\*supporting the core\*\*\***.”\*\*
+>
+> _Source: Meta Q1 2025 earnings call, emphasis SemiAnalysis_
 
 GenAI acts as an extension to these tech giants’ businesses. They don’t have the same existential need to dominate new use cases like OpenAI in chatbots and Anthropic in coding APIs. This is readily apparent in the compute vs human capital allocation of a leading AI foundation lab like OpenAI compared to Meta. Zuck's impact on competing offers and inflation of salary will hurt badly.
 

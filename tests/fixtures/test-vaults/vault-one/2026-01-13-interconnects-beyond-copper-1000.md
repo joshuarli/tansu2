@@ -23,13 +23,13 @@ In the case of SK Hynix, the 321-layer process has 44% more memory per wafer tha
 We’ve written in detail about [NAND scaling methods](https://newsletter.semianalysis.com/i/175661041/the-avenues-of-nand-scaling), as a quick recap:
 
 > There are 4 main avenues for scaling the storage capacity of NAND Flash per wafer.
-> 
+>
 > 1\. Logical scaling – The number of bits stored per cell. This requires storing 2^n voltage levels per cell.
-> 
+>
 > 2\. Vertical scaling – The number of NAND cells stacked vertically
-> 
+>
 > 3\. Lateral scaling – The size/number of cells that can be fit on the 2D vector
-> 
+>
 > 4\. Architecture scaling – Various techniques to increase density and reduce overhead from cells/periphery.
 
 ![](z-images/e8332afbea369450a647903ad658f4fd.webp)
@@ -231,4 +231,4 @@ Finally, the pace of 2D TMD development is gated by physical modeling maturity, 
 
 Taken together, the 2D FET results highlighted this year read less like a celebration of a new material and more like a checklist of what has to become boringly repeatable before 2D logic can matter. Wafer-scale integration pathways and the hard limits of transfer scaling. Low-bias contact resistance targets that look like product constraints rather than lab bias points. P-type performance as a first-order bottleneck driven by pinning and interface effects, not a minor lag. Layer control and defect damage as variability problems that will dominate distributions even when headline curves look impressive. Even as the scaling narrative stays anchored in stacked GAA nanosheets and tunneling suppression, the same studies implicitly concede that Vt control and doping are immature and will require interface- and dielectric-based strategies. Contact geometry pragmatics and modeling toolchains are the enabling infrastructure for future credible progress.The next meaningful milestone is not another record transfer curve. It is a wafer-scale, low-bias, statistically credible demonstration where integration, contacts, polarity symmetry, and variability all move together in the right direction.
 
-*Next, we’ll cover the most important topic at the conference, the post-GAA inflection point in advanced logic: CFET. We’ll cover imec’s roadmap including when CFET will replace GAA and how many nodes it might be extended. Another imec paper detailed a clever new integration scheme to maximize both p- and n-type transistor performance in a CFET without requiring hybrid bonding. But first, the most important paper: TSMC made much further progress than anyone expected…*
+_Next, we’ll cover the most important topic at the conference, the post-GAA inflection point in advanced logic: CFET. We’ll cover imec’s roadmap including when CFET will replace GAA and how many nodes it might be extended. Another imec paper detailed a clever new integration scheme to maximize both p- and n-type transistor performance in a CFET without requiring hybrid bonding. But first, the most important paper: TSMC made much further progress than anyone expected…_

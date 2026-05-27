@@ -339,7 +339,7 @@ Lastly, 8 small dies can be seen beside the I/O dies next to where the DDR5 inte
 
 AMD Venice Performance Claims. Source: AMD
 
-On the performance front, AMD claims the top 256-core variant is over 1.7x better in performance per watt than the top 192-core Turin in SPECrate®2017\_int\_base, meaning an even higher performance per core thanks to the new Zen 6 core microarchitecture with higher Instructions per Clock (IPC). Zen 6 also introduces new instructions for AI datatypes including AVX512\_FP16, AVX\_VVNI\_INT8 and a new AVX512\_BMM instruction for Bit Matrix Multiplication and bit reversal operations on the CPU’s floating point unit.
+On the performance front, AMD claims the top 256-core variant is over 1.7x better in performance per watt than the top 192-core Turin in SPECrate®2017_int_base, meaning an even higher performance per core thanks to the new Zen 6 core microarchitecture with higher Instructions per Clock (IPC). Zen 6 also introduces new instructions for AI datatypes including AVX512_FP16, AVX_VVNI_INT8 and a new AVX512_BMM instruction for Bit Matrix Multiplication and bit reversal operations on the CPU’s floating point unit.
 
 For BMM, the FPU registers store 16x16 binary matrices and computes BMM accumulates using OR and XOR operations. Binary matrices are far easier to compute than floating point matrices, and could offer large efficiency gains for software that can make use of it such as Verilog simulations. However, BMMs do not have sufficient precision for LLMs, and so we believe adoption of this instruction will be limited.
 
@@ -353,7 +353,7 @@ AMD is also doubling down where Intel is pulling out. While Intel cancels its 8-
 
 AMD Venice BoM Costing. Source: SemiAnalysis Estimates sales@semianalysis.com
 
-*SemiAnalysis offers detailed Bill of Materials costing based on our extensive knowledge of the supply chain. To understand exact die sizes, configurations, topologies, performance estimates and competitiveness with Hyperscaler ARM CPUs, please contact us at [Sales@SemiAnalysis.com](mailto:Sales@SemiAnalysis.com) for bespoke consulting and competitive analysis services. We have detailed costing and breakdowns of AMD Turin, Venice, Intel Granite Rapids, Diamond Rapids, NVIDIA Grace, Vera and hyperscale ARM CPUs from AWS, Microsoft, Google and more.*
+_SemiAnalysis offers detailed Bill of Materials costing based on our extensive knowledge of the supply chain. To understand exact die sizes, configurations, topologies, performance estimates and competitiveness with Hyperscaler ARM CPUs, please contact us at [Sales@SemiAnalysis.com](mailto:Sales@SemiAnalysis.com) for bespoke consulting and competitive analysis services. We have detailed costing and breakdowns of AMD Turin, Venice, Intel Granite Rapids, Diamond Rapids, NVIDIA Grace, Vera and hyperscale ARM CPUs from AWS, Microsoft, Google and more._
 
 ## Nvidia Grace
 

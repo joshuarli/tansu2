@@ -54,7 +54,7 @@ Tokens are the fundamental building blocks of AI models. AI models can learn thr
 
 When Jensen talks about datacenters becoming AI factories, the input and output of these factories are tokens. Much like a physical factory, AI factories make money with a P x Q equation: P is the price per token and Q is the quantity of input and output tokens.
 
-Unlike a normal factory, the token price is a variable that model providers can *solve for* based on the other attributes of the model. We list the key KPIs below
+Unlike a normal factory, the token price is a variable that model providers can _solve for_ based on the other attributes of the model. We list the key KPIs below
 
 1. **Latency or Time-to-First-Token**: how long a model takes to generate a token. This is also known as ‘time to first token’ or approximately how long it takes the model to complete the prefill stage (ie encoding input tokens into the KVCache) and start producing the first token in the decode stage.
 2. **Interactivity**: how fast each token is produced, oftentimes measured in tokens per second per user. Some providers also talk about the inverse of interactivity which is the average time between each output token (time per output token or TPOT). Human reading speed is 3-5 words per second but most model providers have settled on output speeds of around 20-60 tokens per second.

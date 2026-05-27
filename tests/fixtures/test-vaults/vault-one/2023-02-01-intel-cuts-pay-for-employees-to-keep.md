@@ -25,11 +25,11 @@ We will leave you with [our rant from July of 2022 after Intel cut fab buildout 
 > “Intel could follow the path of many other American goliaths such as IBM and General Electric. A slow slide to irrelevancy, spinning off business, and bringing shame to what was once pride for American ingenuity. Instead of that conservative route, they are going to bet the farm, spend every dime they make on investing in more manufacturing, design, and in general catching up in technology.”
 
 > We even believed that Pat Gelsinger was [changing the culture](https://semianalysis.substack.com/p/intel-is-throwing-the-kitchen-sink) that Intel has and was [throwing everything including the kitchen sink](https://semianalysis.substack.com/p/intel-is-throwing-the-kitchen-sink) at restoring Intel to their former standing. We want to apologize to as we were wrong.
-> 
+>
 > This action shows Pat Gelsinger is very similar to the prior Intel CEO who was a career Chief Financial Officer at multiple publicly traded companies. It’s a disgrace that Intel has decided to cut fab buildouts while begging the US government for subsidies through the chips act and committing to growing their dividend.
-> 
+>
 > This attitude by American executives is exactly [why the US will lose in the semiconductor industry](https://semianalysis.substack.com/p/why-america-will-lose-semiconductors). Moves like the CHIPS Act are only band-aids to the problem and do not structurally change the [policy issues](https://semianalysis.substack.com/p/why-america-will-lose-semiconductors) in the US. We will do doing an objective deep dive on the [1,054 page CHIPS Act](https://www.commerce.senate.gov/services/files/CFC99CC6-CE84-4B1A-8BBF-8D2E84BD7965) that recently passed, but it doesn’t even prevent Intel from continuing their [plans of purchasing semiconductor manufacturing tools from a new Chinese supplier](https://semianalysis.substack.com/p/acm-research-chinas-most-successful).
-> 
+>
 > Intel’s financial model seems ignorant of what is happening in the macro economy and with their competition. Our financial model shows Intel will be free cashflow negative in 2023.
-> 
+>
 > Even with billions in subsidies from the US and EU CHIPS Act’s, Intel faces a difficult choice due to deteriorating financials.

@@ -18,7 +18,7 @@ The chart below tells the story: in Texas alone, **tens of gigawatts of datacent
 
 Source: ERCOT 2024 Large Flexible Load Task Force (LFLTF)
 
-However, AI infrastructure cannot wait for the grid’s multiyear transmission upgrades. An AI cloud can generate revenue of $10-12 billion dollars per gigawatt, *annually*. Getting a 400 MW datacenter online even six months earlier is worth billions. Economic need dwarfs problems like an overloaded electric grid. The industry is already searching for new solutions.
+However, AI infrastructure cannot wait for the grid’s multiyear transmission upgrades. An AI cloud can generate revenue of $10-12 billion dollars per gigawatt, _annually_. Getting a 400 MW datacenter online even six months earlier is worth billions. Economic need dwarfs problems like an overloaded electric grid. The industry is already searching for new solutions.
 
 Eighteen months ago, Elon Musk shocked the datacenter industry by building a 100,000-GPU cluster in four months. Multiple innovations enabled this incredible achievement, but the energy strategy was the most impressive. xAI entirely bypassed the grid and generated power onsite, using truck-mounted gas turbines and engines. As shown below, xAI has already deployed over 500MW of turbines near its datacenters. In a world where [AI Labs are racing to be first with a Gigawatt datacenter](https://newsletter.semianalysis.com/p/xais-colossus-2-first-gigawatt-datacenter), **speed is the moat**.
 
@@ -81,9 +81,9 @@ Source: 2025 ITP portfolio
 When hundreds of developers simultaneously submit interconnection requests, the system seizes up. It becomes a prisoner’s dilemma:
 
 - If everyone coordinated, the grid could handle more requests faster.
-	- FERC Order 2023 has pushed grid operators to adopt **cluster studies** for this purpose, but those reforms were solidified only in 2025.
+  - FERC Order 2023 has pushed grid operators to adopt **cluster studies** for this purpose, but those reforms were solidified only in 2025.
 - In practice, “gold rush” behavior means developers submit multiple speculative requests to different utilities simultaneously
-	- For example as of mid-2024, AEP Ohio had **35 GW of load requests** —and 68% didn’t even have land control
+  - For example as of mid-2024, AEP Ohio had **35 GW of load requests** —and 68% didn’t even have land control
 - Speculative requests clog the queue for everyone, encouraging more speculative requests elsewhere
 - The vicious cycle accelerates
 
@@ -97,7 +97,7 @@ The supply side is equally constrained. The timeline from interconnection reques
 
 Souce: Lawrence Berkeley National Lab
 
-AI infrastructure developers cannot wait five years. In many cases, they cannot wait six months, because *waiting six months costs billions of dollars of lost opportunities.*
+AI infrastructure developers cannot wait five years. In many cases, they cannot wait six months, because _waiting six months costs billions of dollars of lost opportunities._
 
 ### Enter BYOG - Bring Your Own Generation
 
@@ -154,13 +154,13 @@ Understanding which solutions are the best fit for certain use-cases requires di
 
 - **Cost:** Usually listed as $/kW. These cost estimates vary wildly and are consistently rising across every generator category. Note that maintenance expenses are also relevant: certain systems have lower useful life, i.e. higher annual maintenance costs.
 - **Lead Time (shipment and installation):** Usually listed in months or years. Lead times are increasing across every generator category as demand growth outstrips supply.
-	- Note that other factors outside generator availability can affect time-to-power. Most notably, air permitting for onsite generation can take a year or more, even in fast-to-permit states like Texas.
-		- In addition, installation time varies widely across systems. Some can take barely a few weeks from delivery onsite to power generation, such as small truck-mounted turbines or engines, as well as fuel cells. Large CCGTs can take over 24 months to assemble.
+  - Note that other factors outside generator availability can affect time-to-power. Most notably, air permitting for onsite generation can take a year or more, even in fast-to-permit states like Texas.
+    - In addition, installation time varies widely across systems. Some can take barely a few weeks from delivery onsite to power generation, such as small truck-mounted turbines or engines, as well as fuel cells. Large CCGTs can take over 24 months to assemble.
 - **Redundancy & uptime**: the expected availability of the generator, expressed in % of uptime over a year, or in “nines” of uptime. The US Electric grid averages 99.93% (3 nines) over the last ten years, with some areas even higher. For an onsite power plant, redundancy can be managed by adding hot spares and cold spares, or by having additional backup power. The larger the individual turbines, the more difficult managing spares & backup is.
 - **Ramp Rate:** Measured as minutes between cold start and maximum output. A ramp rate of less than 10 minutes makes a generator eligible as reserve generation for an electric grid or backup power. A slow ramp-rate means that the unit is primarily focused on baseload power.
 - **Land Use:** Measured as MW/acre. This matters more in space-constrained areas. Water use for small generation systems is insubstantial, even as a fleet. However, very large turbines do require significant water use for cooling.
 - **Heat Rate and Fuel Efficiency:** Measured as BTU of natural gas per kWh. A higher heat rate means lower efficiency—more fuel in, same electricity out, more waste left behind. Nameplate heat rate assumes “peak” operating conditions, typically maximum output. Efficiency drops substantially below 50% output.
-	- Many of these onsite gas systems can be configured as **combined heat and power (CHP)** systems. For datacenters, this would entail using the waste heat from a gas generator for an **absorption cooling** system, allowing for reduced electricity use in cooling the datacenter.
+  - Many of these onsite gas systems can be configured as **combined heat and power (CHP)** systems. For datacenters, this would entail using the waste heat from a gas generator for an **absorption cooling** system, allowing for reduced electricity use in cooling the datacenter.
 
 In reality, we observe that whoever has an open orderbook and can provide good timelines tends to win deals, regardless of most other specs!
 
@@ -381,7 +381,7 @@ They typically sign long-term PPAs with customers who pay for electric service �
 
 A key challenge when deploying off-grid generation is managing redundancy. For example, the 1.4GW Vantage DC campus in Shackelford County, TX will deploy 2.3GW of VoltaGrid systems. These systems being small facilitates redundancy – but if you were to deploy onsite power with large heavy duty turbines, redundancy might be to simply have two power plants, if not more.
 
-Generation vendors will suggest at minimum an N+1 configuration, if not an N+1+1 configuration. An N+1 configuration maintains full generation capacity even if one generator unexpectedly shuts down, whereas an N+1+1 configuration enables this flexibility *while also* keeping another generator on standby to enable maintenance cycles. It’s the equivalent of driving a car with a spare tire *and* a tire repair kit. Note that N+1 or N+1+1 does not necessarily refer to a literal count of generators, given that datacenter loads are typically much larger than individual onsite gas generators. For example, consider a datacenter with an all-in (IT + non-IT) power demand of 200 MW:
+Generation vendors will suggest at minimum an N+1 configuration, if not an N+1+1 configuration. An N+1 configuration maintains full generation capacity even if one generator unexpectedly shuts down, whereas an N+1+1 configuration enables this flexibility _while also_ keeping another generator on standby to enable maintenance cycles. It’s the equivalent of driving a car with a spare tire _and_ a tire repair kit. Note that N+1 or N+1+1 does not necessarily refer to a literal count of generators, given that datacenter loads are typically much larger than individual onsite gas generators. For example, consider a datacenter with an all-in (IT + non-IT) power demand of 200 MW:
 
 ### Example 1: 11-MW RICEs
 
@@ -482,7 +482,7 @@ Megapacks + MACROHARD
 Current lead times for gas generation systems are unprecedented. Historically, gas turbine manufacturers have only taken orders on average 20 months in advance of shipment from factories, but now the Big Three of manufacturers, GE Vernova, Siemens Energy, and Mitsubishi Power, are accepting orders into 2028 and 2029, with nonrefundable reservation slots beyond that Every public manufacturer of gas systems reports rising datacenter demand, but most are responding with caution, not a full-send buildout.
 
 - **GE Vernova** has promised to increase production to **24 GW/year**, but that only returns them to its 2007–2016 levels. They are investing in new staff in machinery, but do not intend to increase factory footprint.
-- **Siemens Energy** also plans to invest in production *without* increasing factory footprint. They are instead prioritizing price increases, leaning on service revenue, and prioritizing investments with short payback periods. They plan to scale annual capacity from ~20GW to >30GW by 2028-30.
+- **Siemens Energy** also plans to invest in production _without_ increasing factory footprint. They are instead prioritizing price increases, leaning on service revenue, and prioritizing investments with short payback periods. They plan to scale annual capacity from ~20GW to >30GW by 2028-30.
 - **Mitsubishi Heavy Industries** has guided to increase gas turbine & combined-cycle production by **30%** in recent earnings calls, contrary to [Bloomberg reporting](https://www.bloomberg.com/news/articles/2025-08-31/mitsubishi-heavy-to-double-gas-turbine-capacity-as-demand-soars) about plans to double capacity by 2027.
 - **Caterpillar** plans to double engine production and 2.5x turbine production between 2024 and 2030, but their Solar-branded turbine production averaged ~600 MW/year between 2020–2024, with a 2022 peak production of 1.2 GW.
 - **Wärtsilä** has promised only incremental expansion, preferring to “wait and see” on datacenter demand and preserve relationships with marine customers.
@@ -491,7 +491,7 @@ Of the major gas generation manufacturers, only Bloom Energy, Caterpillar, and n
 
 ## The Two Boom-Bust Cycles of Gas Turbines
 
-Since the mid-‘90s, the gas turbine industry has seen *two* boom-bust cycles rock the industry. The first boom, between 1997 and 2002, was driven by electric power deregulation in parts of the United States, which pulled in new companies as **independent power producers**, as well as (ironically enough) high expectations of electric demand growth coming from the dotcom bubble, as popularized by the Huber and Mills paper “The Internet Begins with Coal.” Large players like Calpine, Duke, Williams, and NRG placed block orders for turbines, sending GE Vernova (then GE Power) and Siemens Energy (then Siemens AG’s power segment) into lunar order volumes. GE shipped more than **60 GW** of gas turbines in 2001; Siemens peaked at **20+ GW** in 2002.
+Since the mid-‘90s, the gas turbine industry has seen _two_ boom-bust cycles rock the industry. The first boom, between 1997 and 2002, was driven by electric power deregulation in parts of the United States, which pulled in new companies as **independent power producers**, as well as (ironically enough) high expectations of electric demand growth coming from the dotcom bubble, as popularized by the Huber and Mills paper “The Internet Begins with Coal.” Large players like Calpine, Duke, Williams, and NRG placed block orders for turbines, sending GE Vernova (then GE Power) and Siemens Energy (then Siemens AG’s power segment) into lunar order volumes. GE shipped more than **60 GW** of gas turbines in 2001; Siemens peaked at **20+ GW** in 2002.
 
 ![](z-images/b2f2bc3aabe6187dc4ee8fb0c53e1d9d.webp)
 
@@ -499,7 +499,7 @@ Source: Energy Information Administration
 
 The crash came fast. The dot-com bubble burst, the Enron scandal shook the power trading business, and orders dried up, leaving GE and Siemens in a manufacturing winter for the next few years. The second “boom” in the gas turbine industry was less a boom than a stabilization of orders. Between 2006 and 2016, GE averaged about **20 GW/year** of turbine shipments, and Siemens about **15 GW/year**. Then, between 2017 and 2022, the bottom fell out on the market, with both GE and Siemens seeing production lows under 10 GW/year.
 
-These two large companies have both institutional memory of the Y2K gas turbine boom and recent memory of generationally low sales. Notably, Mitsubishi Heavy Industries has largely escaped these boom-bust cycles. Until extremely recently, MHI has sold a fraction of the hardware of GE Vernova and Siemens Energy. It has only become part of a “Big Three” because the larger companies have shrunk to its sales volume *and* other players like Alstom Energy and Westinghouse have shuttered or been acquired. This may in part explain MHI’s interest in expansion, although its supposed doubling plan has not been corroborated in earnings calls.
+These two large companies have both institutional memory of the Y2K gas turbine boom and recent memory of generationally low sales. Notably, Mitsubishi Heavy Industries has largely escaped these boom-bust cycles. Until extremely recently, MHI has sold a fraction of the hardware of GE Vernova and Siemens Energy. It has only become part of a “Big Three” because the larger companies have shrunk to its sales volume _and_ other players like Alstom Energy and Westinghouse have shuttered or been acquired. This may in part explain MHI’s interest in expansion, although its supposed doubling plan has not been corroborated in earnings calls.
 
 ## Supply Chain Bottlenecks
 

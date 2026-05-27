@@ -19,7 +19,7 @@ const RESULTS_DIR = resolve(import.meta.dirname, "../../../../bench/results");
 function fixtureCorpus(): string {
   return readdirSync(FIXTURE_VAULT)
     .filter((name) => name.endsWith(".md"))
-    .sort((a, b) => a.localeCompare(b))
+    .toSorted((a, b) => a.localeCompare(b))
     .map((name) => readFileSync(resolve(FIXTURE_VAULT, name), "utf8"))
     .join("\n\n");
 }

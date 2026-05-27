@@ -148,16 +148,16 @@ Crucially, this cycle reset industry behavior and expectations. Memory suppliers
 
 ## AI-Driven Memory Supercycle: Bigger, Longer, and a Shortage that is Harder to Solve
 
-For those who have lived through multiple memory cycles, the central question when it comes to this supercycle is the same: *when will this cycle peak?* It is natural that both investors and the supply chain remain cautious, particularly as memory stocks rally sharply over short periods. In our view, however, while there are clear similarities to prior cycles, this supercycle is shaping up to be both larger and longer in duration, driven by dynamics that are very much unique to this cycle.
+For those who have lived through multiple memory cycles, the central question when it comes to this supercycle is the same: _when will this cycle peak?_ It is natural that both investors and the supply chain remain cautious, particularly as memory stocks rally sharply over short periods. In our view, however, while there are clear similarities to prior cycles, this supercycle is shaping up to be both larger and longer in duration, driven by dynamics that are very much unique to this cycle.
 
 Currently, the DRAM industry is operating in a deeply supply-constrained environment, and based on our [Memory Industry Model](https://semianalysis.com/memory-model/), we believe the supply–demand imbalance is deteriorating rather than normalizing. Total DRAM supply is projected to remain approximately…
 
-*Below, we share:*
+_Below, we share:_
 
-- *Our forecast for DRAM and HBM supply/demand mismatch from our Memory Industry Model, through 2027*
-- *HBM4 qualification: how is each supplier doing, market share % for Rubin*
-- *DRAM wafer- and bit-capacity data with HBM broken out*
-- *Upgrades forecast: trends in wafer capacity by node with fab-by-fab details*
-- *DRAM pricing forecast out through 2027*
-- *Last, we discuss the factors and timing for the end of the cycle*
-- *As a bonus, we’ve also included DRAM EUV layer trends and WFE capex forecasts*
+- _Our forecast for DRAM and HBM supply/demand mismatch from our Memory Industry Model, through 2027_
+- _HBM4 qualification: how is each supplier doing, market share % for Rubin_
+- _DRAM wafer- and bit-capacity data with HBM broken out_
+- _Upgrades forecast: trends in wafer capacity by node with fab-by-fab details_
+- _DRAM pricing forecast out through 2027_
+- _Last, we discuss the factors and timing for the end of the cycle_
+- _As a bonus, we’ve also included DRAM EUV layer trends and WFE capex forecasts_

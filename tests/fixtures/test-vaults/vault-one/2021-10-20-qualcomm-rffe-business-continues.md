@@ -38,6 +38,6 @@ This filter will likely help Qualcomm penetrate deeper into Wi-Fi. Broadcom isnâ
 
 Qualcommâ€™s overarching goal is not to offer components for smartphone OEMs, IoT, Automotive, etc to build radio solutions. The real end goal is to offer pre-qualified, pre-approved vertical RF solutions from the modem to antenna. This extends beyond client side. They want to offer this [vertical solution for small cells with leadership products such as FSM200xx](https://semianalysis.com/qualcomm-mwc-2021-network-infrastructure-and-edge-5g-get-supercharged-fsm200-du-x100-accelerator-and-range-of-features/). In general, Qualcomm will continue to gobble up SAM in RFFE. SemiAnalysis believes Qualcomm will move well above 20% share in RFFE in a few years. The RFFE will help stem the upcoming share losses on the application processor side and allow for meaningful earnings growth even as smartphone volumes stagnate.
 
-*This article was originally published on [SemiAnalysis](https://semianalysis.com/qualcomm-rffe-business-continues-relentless-pace-with-ultrabaw-filters-8b-segment-by-2025/) on October 20th 2021.*
+_This article was originally published on [SemiAnalysis](https://semianalysis.com/qualcomm-rffe-business-continues-relentless-pace-with-ultrabaw-filters-8b-segment-by-2025/) on October 20th 2021._
 
-*Clients and employees of SemiAnalysis may hold positions in companies referenced in this article*.
+_Clients and employees of SemiAnalysis may hold positions in companies referenced in this article_.

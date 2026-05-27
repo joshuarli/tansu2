@@ -233,11 +233,11 @@ Let’s now discuss chillers, typically the single most energy-intensive compone
 
 1. Vapor can absorb more heat than liquid
 2. Temperature and pressure have a linear relationship in a closed system, i.e. the higher the pressure, the higher the temperature. A chiller’s refrigeration cycle works as follows:
-	- Inside a chiller flows a “refrigerant”: a specific fluid (e.g., R134a or R123ze) with a much lower boiling point than water, to take advantage of the 1st property (vapor absorbs more heat than liquid).
-		- A chiller has two heat exchangers, the “evaporator” and the “condenser”. In the evaporator, the fluid refrigerant absorbs heat from the indoors cooling unit and evaporates, turns into gas/vapor.
-		- The refrigerant in vapor form then goes through a compressor, significantly increasing pressure and temperature. The hotter the refrigerant, the greater its capacity to transfer heat.
-		- In the condenser, the high-pressure and high temperature refrigerant transfers heat to a separate medium – typically air (i.e. air-cooled chiller) or water – the latter involves a separate cooling loop with a cooling tower.
-		- An expansion valve reduces pressure and thereby temperature – the refrigerant returns to a liquid state at a very low temperature.
+   - Inside a chiller flows a “refrigerant”: a specific fluid (e.g., R134a or R123ze) with a much lower boiling point than water, to take advantage of the 1st property (vapor absorbs more heat than liquid).
+     - A chiller has two heat exchangers, the “evaporator” and the “condenser”. In the evaporator, the fluid refrigerant absorbs heat from the indoors cooling unit and evaporates, turns into gas/vapor.
+     - The refrigerant in vapor form then goes through a compressor, significantly increasing pressure and temperature. The hotter the refrigerant, the greater its capacity to transfer heat.
+     - In the condenser, the high-pressure and high temperature refrigerant transfers heat to a separate medium – typically air (i.e. air-cooled chiller) or water – the latter involves a separate cooling loop with a cooling tower.
+     - An expansion valve reduces pressure and thereby temperature – the refrigerant returns to a liquid state at a very low temperature.
 
 ![](z-images/320f2facd0bed257ae4ded03f8bd61bf.webp)
 
