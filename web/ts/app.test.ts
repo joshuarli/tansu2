@@ -1,3 +1,4 @@
+import { it, vi, afterEach, expect, describe, beforeEach } from 'vitest';
 import type { CachedNoteBody } from "./note-cache.ts";
 import type {
   BootstrapResponse,
@@ -49,13 +50,13 @@ const api = vi.hoisted(() => ({
   uploadImage: vi.fn(),
 }));
 
-vi.mock("./api.ts", () => api);
+vi.mock(import('./api.ts'), () => api);
 
 const htmlImport = vi.hoisted(() => ({
   pickHtmlImport: vi.fn(),
 }));
 
-vi.mock("./html-import.ts", () => htmlImport);
+vi.mock(import('./html-import.ts'), () => htmlImport);
 
 const noteCache = vi.hoisted(() => ({
   cacheNoteBody: vi.fn(async () => {}),
@@ -63,10 +64,10 @@ const noteCache = vi.hoisted(() => ({
   getCachedNoteBody: vi.fn(async (): Promise<CachedNoteBody | null> => null),
 }));
 
-vi.mock("./note-cache.ts", () => noteCache);
+vi.mock(import('./note-cache.ts'), () => noteCache);
 
 const editorMock = vi.hoisted(() => ({
-  instances: [] as Array<{
+  instances: [] as {
     applyFormat: ReturnType<typeof vi.fn>;
     containsEditableTarget: ReturnType<typeof vi.fn>;
     destroy: ReturnType<typeof vi.fn>;
@@ -85,10 +86,10 @@ const editorMock = vi.hoisted(() => ({
     config: Record<string, unknown>;
     contentEl: HTMLElement;
     sourceEl: HTMLTextAreaElement;
-  }>,
+  }[],
 }));
 
-vi.mock("./editor/index.js", () => ({
+vi.mock(import('./editor/index.js'), () => ({
   createCalloutExtension: vi.fn(() => ({})),
   createEditor: vi.fn((_mount: HTMLElement, config: Record<string, unknown> = {}) => {
     const instance = {
@@ -134,7 +135,7 @@ vi.mock("./editor/index.js", () => ({
 
 const { TansuApp, startApp } = await import("./app.ts");
 
-describe("TansuApp note loading", () => {
+describe("tansuApp note loading", () => {
   beforeEach(() => {
     vi.useFakeTimers();
     vi.clearAllMocks();
@@ -753,7 +754,7 @@ describe("TansuApp note loading", () => {
     });
     (editor.config["onChange"] as () => void)();
     vi.advanceTimersByTime(900);
-    await flushUntil(() => api.saveNoteDelta.mock.calls.length >= 1);
+    await flushUntil(() => api.saveNoteDelta.mock.calls.length > 0);
     expect(api.saveNoteDelta).toHaveBeenCalledTimes(1);
 
     editor.getSnapshot.mockReturnValue({
@@ -1049,7 +1050,7 @@ describe("TansuApp note loading", () => {
 
     const activeEditor = editorMock.instances.at(-1)!;
     root.querySelector<HTMLButtonElement>('[title="Source"]')?.click();
-    expect(activeEditor.toggleSourceMode).toHaveBeenCalled();
+    expect(activeEditor.toggleSourceMode).toHaveBeenCalledWith();
     for (const title of [
       "Bold",
       "Italic",

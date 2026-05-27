@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { highlightCode } from "../highlight.ts";
 
 describe("unknown language", () => {
@@ -110,7 +111,7 @@ describe("brackets", () => {
   });
 });
 
-describe("HTML escaping", () => {
+describe("hTML escaping", () => {
   it("html escape lt", () => {
     expect(highlightCode("x < y && z > 0", "js")).toContain("&lt;");
   });
@@ -164,7 +165,7 @@ describe("partial keyword match", () => {
   });
 });
 
-describe("JSON", () => {
+describe("jSON", () => {
   it("json key string", () => {
     expect(highlightCode('{"key": "value"}', "json")).toContain(
       '<span class="hl-str">&quot;key&quot;</span>',
@@ -181,7 +182,7 @@ describe("JSON", () => {
   });
 });
 
-describe("YAML", () => {
+describe("yAML", () => {
   it("yaml comment", () => {
     expect(highlightCode("key: value # comment", "yaml")).toContain(
       '<span class="hl-cmt"># comment</span>',
@@ -195,7 +196,7 @@ describe("YAML", () => {
   });
 });
 
-describe("TOML", () => {
+describe("tOML", () => {
   it("toml comment", () => {
     expect(highlightCode("# comment", "toml")).toContain('<span class="hl-cmt"># comment</span>');
   });
@@ -232,7 +233,7 @@ describe("language aliases", () => {
   });
 });
 
-describe("C/C++", () => {
+describe("c/C++", () => {
   it("c type", () => {
     expect(highlightCode("int main() {}", "c")).toContain('<span class="hl-type">int</span>');
   });

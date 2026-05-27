@@ -160,7 +160,7 @@ export function tabIsDirty(tab: Tab): boolean {
 }
 
 export function normalizeMarkdownNewlines(markdown: string): string {
-  return markdown.replace(/\r\n?/g, "\n");
+  return markdown.replaceAll(/\r\n?/g, "\n");
 }
 
 export function sessionFromState(state: State): SessionState {

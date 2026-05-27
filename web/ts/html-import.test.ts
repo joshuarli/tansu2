@@ -1,11 +1,12 @@
+import { beforeEach, vi, describe, expect, it } from 'vitest';
 import type { NoteMeta } from "./types.generated.ts";
 
 const defuddle = vi.hoisted(() => ({
   parseAsync: vi.fn(),
 }));
 
-vi.mock("defuddle/full", () => ({
-  default: vi.fn(function Defuddle() {
+vi.mock(import('defuddle/full'), () => ({
+  default: vi.fn(function () {
     return defuddle;
   }),
 }));
@@ -34,7 +35,7 @@ describe("HTML import", () => {
       contentMarkdown: "Body text",
     });
 
-    await expect(pickHtmlImport([note("saved-page.md"), note("Saved Page.md")])).resolves.toEqual({
+    await expect(pickHtmlImport([note("saved-page.md"), note("Saved Page.md")])).resolves.toStrictEqual({
       path: "Saved Page 2.md",
       content:
         "# Saved Page\n\nTitle: Saved Page\nAuthor: Ada\nSite: Example\nPublished: 2026-05-20\nDescription: Imported description\n\nBody text\n",
@@ -52,7 +53,7 @@ describe("HTML import", () => {
     mockPickedFile(new File(["<article>body</article>"], "clip.html", { type: "text/html" }));
     defuddle.parseAsync.mockResolvedValueOnce({ title: "Clip", contentMarkdown: "# Clip\n\nBody" });
 
-    await expect(pickHtmlImport([])).resolves.toEqual({
+    await expect(pickHtmlImport([])).resolves.toStrictEqual({
       path: "Clip.md",
       content: "Title: Clip\n\n# Clip\n\nBody\n",
     });

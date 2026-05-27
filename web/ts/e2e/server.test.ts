@@ -1,3 +1,4 @@
+import { expect, afterAll, describe, beforeAll, it } from 'vitest';
 import { execFileSync, spawn, type ChildProcess } from "node:child_process";
 import { mkdtemp, writeFile } from "node:fs/promises";
 import net from "node:net";
@@ -74,7 +75,7 @@ describe("real server harness", () => {
       headers: { "X-Tansu-Vault": "0" },
     }).then((response) => response.json() as Promise<{ notes: TestNoteMeta[] }>);
     const notesByPath = new Map(vaultOneBootstrap.notes.map((note) => [note.path, note]));
-    expect([...notesByPath.keys()]).toEqual(
+    expect([...notesByPath.keys()]).toStrictEqual(
       expect.arrayContaining(["one.md", "search.md", "visual.md"]),
     );
     const seededDocuments = new Map<string, string>();
@@ -95,7 +96,7 @@ describe("real server harness", () => {
     const sample = await fetch(
       `${baseUrl}/api/assets?name=${encodeURIComponent("z-images/sample.webp")}&vault=0`,
     );
-    expect(sample.ok).toBe(true);
+    expect(sample.ok).toBeTruthy();
     expect((await sample.arrayBuffer()).byteLength).toBeGreaterThan(0);
 
     const page = await browser!.newPage();
@@ -133,16 +134,14 @@ describe("real server harness", () => {
     await page.waitForSelector(".main");
     await page.locator('.note-row[title="one.md"]').first().click();
     await page.waitForSelector(".workspace > .toolbar");
-    expect(await page.locator(".workspace > .toolbar").count()).toBe(1);
-    expect(await page.locator(".section-title", { hasText: "Notes" }).count()).toBe(0);
-    expect(await page.locator('.toolbar [title="Source"] svg').count()).toBe(1);
-    expect(await page.locator('.toolbar [title="Save"] svg').count()).toBe(1);
-    expect(await page.locator('.toolbar [title="Highlight"] svg').count()).toBe(1);
-    expect(await page.locator('.toolbar [title="Strikethrough"] svg').count()).toBe(1);
-    expect(await page.locator('.toolbar [title="Highlight"] svg [fill="#ffe16a"]').count()).toBe(1);
-    expect(
-      await page.evaluate(() => getComputedStyle(document.querySelector(".tabs")!).scrollbarWidth),
-    ).toBe("none");
+    await expect(page.locator(".workspace > .toolbar").count()).resolves.toBe(1);
+    await expect(page.locator(".section-title", { hasText: "Notes" }).count()).resolves.toBe(0);
+    await expect(page.locator('.toolbar [title="Source"] svg').count()).resolves.toBe(1);
+    await expect(page.locator('.toolbar [title="Save"] svg').count()).resolves.toBe(1);
+    await expect(page.locator('.toolbar [title="Highlight"] svg').count()).resolves.toBe(1);
+    await expect(page.locator('.toolbar [title="Strikethrough"] svg').count()).resolves.toBe(1);
+    await expect(page.locator('.toolbar [title="Highlight"] svg [fill="#ffe16a"]').count()).resolves.toBe(1);
+    await expect(page.evaluate(() => getComputedStyle(document.querySelector(".tabs")!).scrollbarWidth)).resolves.toBe("none");
 
     await page.locator('.sidebar-controls [title="New note"]').click();
     await page.waitForSelector(".note-dialog-panel");
@@ -185,7 +184,7 @@ describe("real server harness", () => {
     expect(
       (await page.locator(".search-snippet b").first().textContent())?.toLowerCase(),
     ).toContain("alpha");
-    expect(await page.locator(".search-score").first().textContent()).toContain("content");
+    await expect(page.locator(".search-score").first().textContent()).resolves.toContain("content");
     await page.locator(".overlay-backdrop").click({ position: { x: 4, y: 4 } });
     await page.waitForSelector(".search-panel", { state: "detached" });
 
@@ -227,7 +226,7 @@ describe("real server harness", () => {
     }).then((response) => response.json());
     expect(
       afterDelete.notes.some((note: { path: string }) => note.path === "renamed-note.md"),
-    ).toBe(false);
+    ).toBeFalsy();
     await page.close();
   });
 
@@ -950,12 +949,12 @@ describe("real server harness", () => {
     const body = request.postDataJSON() as {
       content?: string;
       contentHash?: string;
-      edits?: Array<{ start: unknown; end: unknown; text: string }>;
+      edits?: { start: unknown; end: unknown; text: string }[];
     };
 
     expect(body.content).toBeUndefined();
     expect(body.contentHash).toMatch(/^sha256:/);
-    expect(body.edits).toEqual([
+    expect(body.edits).toStrictEqual([
       {
         start: { line: 1, character: 6 },
         end: { line: 1, character: 6 },
@@ -1065,14 +1064,14 @@ describe("real server harness", () => {
       .poll(() => selectBlockRangeAndCopy(page, "Heading", "paragraph"))
       .toBe("# Heading\n\nparagraph\n");
     await page.keyboard.type("replacement");
-    await expect.poll(() => page.locator(".app-editor").innerText()).toContain("replacement");
+    await expect.poll(() => page.locator(".app-editor").textContent()).toContain("replacement");
     await expect.poll(() => page.locator(".app-editor h1").count()).toBe(0);
     await expect.poll(() => page.locator(".app-editor li").count()).toBe(2);
 
     await expect.poll(() => copyBlockByText(page, "replacement")).toBe("replacement\n");
     await page.keyboard.press("Escape");
     await page.keyboard.type("!");
-    await expect.poll(() => page.locator(".app-editor").innerText()).toContain("!replacement");
+    await expect.poll(() => page.locator(".app-editor").textContent()).toContain("!replacement");
 
     await expect.poll(() => copyBlockByText(page, "one")).toBe("- one\n- two\n");
     await page.keyboard.press("Delete");
@@ -1099,7 +1098,7 @@ describe("real server harness", () => {
       .poll(() =>
         page
           .locator(".app-editor")
-          .innerText()
+          .textContent()
           .then((text) => text.trim()),
       )
       .toBe("");
@@ -1108,7 +1107,7 @@ describe("real server harness", () => {
       .poll(() =>
         page
           .locator(".app-editor")
-          .innerText()
+          .textContent()
           .then((text) => text.trim()),
       )
       .toBe("alpha");
@@ -1119,9 +1118,9 @@ describe("real server harness", () => {
     await page.keyboard.press("Enter");
     await page.keyboard.type("beta");
     await page.keyboard.press("Backspace");
-    await expect.poll(() => page.locator(".app-editor").innerText()).toContain("bet");
+    await expect.poll(() => page.locator(".app-editor").textContent()).toContain("bet");
     await undoEditor(page);
-    await expect.poll(() => page.locator(".app-editor").innerText()).toContain("beta");
+    await expect.poll(() => page.locator(".app-editor").textContent()).toContain("beta");
     await redoEditor(page);
     await expectEditorSource(page, "alpha\nbet");
 
@@ -1153,11 +1152,11 @@ describe("real server harness", () => {
 
   it("keeps rapid typing responsive in a large visual note", async () => {
     const content =
-      "# Stress\n\n" +
+      `# Stress\n\n${ 
       Array.from(
         { length: 500 },
         (_, i) => `paragraph ${i} with enough text to make DOM walks expensive`,
-      ).join("\n");
+      ).join("\n")}`;
     await fetch(`${baseUrl}/api/notes`, {
       method: "POST",
       headers: {
@@ -1203,8 +1202,7 @@ describe("real server harness", () => {
   it("streams vault-scoped note changes over SSE", async () => {
     const page = await browser!.newPage();
     await page.goto(baseUrl);
-    const eventPromise = page.evaluate(() => {
-      return new Promise<string>((resolve) => {
+    const eventPromise = page.evaluate(() => new Promise<string>((resolve) => {
         const source = new EventSource("/events?vault=0");
         source.addEventListener(
           "open",
@@ -1233,8 +1231,7 @@ describe("real server harness", () => {
             resolve(payload.kind);
           }
         });
-      });
-    });
+      }));
     await expect(eventPromise).resolves.toBe("note_changed");
     await page.close();
   });
@@ -1242,8 +1239,7 @@ describe("real server harness", () => {
   it("reconciles external filesystem edits for the active vault", async () => {
     const page = await browser!.newPage();
     await page.goto(baseUrl);
-    const eventPromise = page.evaluate(() => {
-      return new Promise<string>((resolve) => {
+    const eventPromise = page.evaluate(() => new Promise<string>((resolve) => {
         const source = new EventSource("/events?vault=0");
         source.addEventListener("message", (event) => {
           const payload = JSON.parse((event as MessageEvent<string>).data) as {
@@ -1258,8 +1254,7 @@ describe("real server harness", () => {
             resolve(payload.kind);
           }
         });
-      });
-    });
+      }));
     await new Promise((resolve) => setTimeout(resolve, 900));
     await writeFile(join(vaultOnePath, "outside.md"), "# Outside\n\nedit\n", "utf8");
     await expect(eventPromise).resolves.toBe("vault_changed");
@@ -1312,19 +1307,22 @@ describe("real server harness", () => {
     const asset = await fetch(
       `${baseUrl}/api/assets?name=${encodeURIComponent(uploaded.name)}&vault=0`,
     );
-    expect(asset.ok).toBe(true);
-    expect(await asset.arrayBuffer()).toHaveProperty("byteLength", 3);
+    expect(asset.ok).toBeTruthy();
+    await expect(asset.arrayBuffer()).resolves.toHaveProperty("byteLength", 3);
   });
 });
 
 function browserTypeFromEnv(): BrowserType {
   switch (process.env["TANSU2_E2E_BROWSER"]) {
-    case "firefox":
+    case "firefox": {
       return firefox;
-    case "webkit":
+    }
+    case "webkit": {
       return webkit;
-    default:
+    }
+    default: {
       return chromium;
+    }
   }
 }
 
@@ -1928,9 +1926,7 @@ async function redoEditor(page: Page): Promise<void> {
 }
 
 async function selectedBlockCount(page: Page): Promise<number> {
-  return page.locator(".app-editor").evaluate((editor) => {
-    return editor.querySelectorAll(".md-block-selected").length;
-  });
+  return page.locator(".app-editor").evaluate((editor) => editor.querySelectorAll(".md-block-selected").length);
 }
 
 async function syntheticCopy(page: Page): Promise<string> {

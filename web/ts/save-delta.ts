@@ -56,17 +56,17 @@ export async function canonicalContentHash(content: string): Promise<string> {
 }
 
 function canonicalMarkdownString(content: string): string {
-  return normalizeMarkdownNewlines(content).replace(/\n/g, "\r\n");
+  return normalizeMarkdownNewlines(content).replaceAll(/\n/g, "\r\n");
 }
 
 function normalizeMarkdownNewlines(markdown: string): string {
-  return markdown.replace(/\r\n?/g, "\n");
+  return markdown.replaceAll(/\r\n?/g, "\n");
 }
 
 function commonPrefixLength(left: string, right: string): number {
   const limit = Math.min(left.length, right.length);
   let index = 0;
-  while (index < limit && left.charCodeAt(index) === right.charCodeAt(index)) {
+  while (index < limit && left.codePointAt(index) === right.codePointAt(index)) {
     index += 1;
   }
   return index;
@@ -77,7 +77,7 @@ function commonSuffixLength(left: string, right: string, prefixLength: number): 
   let suffix = 0;
   while (
     suffix < limit &&
-    left.charCodeAt(left.length - suffix - 1) === right.charCodeAt(right.length - suffix - 1)
+    left.codePointAt(left.length - suffix - 1) === right.codePointAt(right.length - suffix - 1)
   ) {
     suffix += 1;
   }
@@ -88,7 +88,7 @@ function offsetToPosition(content: string, offset: number): TextPosition {
   let line = 0;
   let lineStart = 0;
   for (let index = 0; index < offset; index++) {
-    if (content.charCodeAt(index) === 10) {
+    if (content.codePointAt(index) === 10) {
       line += 1;
       lineStart = index + 1;
     }
@@ -100,8 +100,8 @@ function retreatToCodePointBoundary(content: string, offset: number): number {
   if (
     offset > 0 &&
     offset < content.length &&
-    isHighSurrogate(content.charCodeAt(offset - 1)) &&
-    isLowSurrogate(content.charCodeAt(offset))
+    isHighSurrogate(content.codePointAt(offset - 1)) &&
+    isLowSurrogate(content.codePointAt(offset))
   ) {
     return offset - 1;
   }
@@ -124,7 +124,7 @@ function isCodePointBoundary(content: string, offset: number): boolean {
   return (
     offset <= 0 ||
     offset >= content.length ||
-    !(isHighSurrogate(content.charCodeAt(offset - 1)) && isLowSurrogate(content.charCodeAt(offset)))
+    !(isHighSurrogate(content.codePointAt(offset - 1)) && isLowSurrogate(content.codePointAt(offset)))
   );
 }
 

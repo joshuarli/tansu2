@@ -1,3 +1,4 @@
+import { expect, describe, it } from 'vitest';
 import { escapeHtml, stemFromPath } from "../util.ts";
 
 describe("escapeHtml", () => {

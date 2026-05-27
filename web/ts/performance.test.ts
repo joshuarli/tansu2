@@ -1,3 +1,4 @@
+import { vi, afterEach, describe, expect, it } from 'vitest';
 import { markNextPaint, markPerformance } from "./performance.ts";
 
 describe("performance marks", () => {

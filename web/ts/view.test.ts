@@ -1,3 +1,4 @@
+import { vi, expect, describe, it } from 'vitest';
 import type { CommandItem, ViewEvent } from "./app/events.ts";
 import { createState, tabFromDocument, tabFromMeta, type State } from "./state.ts";
 import type { BootstrapResponse, NoteMeta, RevisionMeta } from "./types.generated.ts";
@@ -104,14 +105,14 @@ describe("view rendering", () => {
     const vaultOptions = root.querySelectorAll<HTMLButtonElement>(".vault-option");
 
     vaultControl.click();
-    expect(vaultControl.classList.contains("open")).toBe(true);
+    expect(vaultControl.classList.contains("open")).toBeTruthy();
     expect(vaultControl.getAttribute("aria-expanded")).toBe("true");
-    expect([...vaultOptions].map((option) => option.textContent)).toEqual(["Work"]);
+    expect([...vaultOptions].map((option) => option.textContent)).toStrictEqual(["Work"]);
 
     vaultOptions[0]!.click();
     expectDispatched(actions, { type: "vault.switch", index: 1 });
     expect(root.querySelector<HTMLElement>(".vault-label")!.textContent).toBe("Work");
-    expect(vaultControl.classList.contains("open")).toBe(false);
+    expect(vaultControl.classList.contains("open")).toBeFalsy();
   });
 
   it("renders reading mode with minimal editing chrome", () => {
@@ -149,7 +150,7 @@ describe("view rendering", () => {
       const tab = root.querySelector<HTMLButtonElement>(".tab")!;
       const hint = root.querySelector<HTMLElement>(".tab-close-tooltip")!;
       tab.dispatchEvent(new MouseEvent("mouseenter", { clientX: 112, clientY: 18 }));
-      expect(hint.classList.contains("visible")).toBe(true);
+      expect(hint.classList.contains("visible")).toBeTruthy();
       expect(hint.parentElement).toBe(document.body);
       expect(hint.style.left).toBe("112px");
       expect(hint.style.top).toBe("18px");
@@ -161,7 +162,7 @@ describe("view rendering", () => {
       root.querySelector<HTMLButtonElement>(".tab-close")!.click();
       expectDispatched(actions, { type: "tab.close", noteId: "n1" });
       expect(hint.parentElement).toBeNull();
-      expect(hint.classList.contains("visible")).toBe(false);
+      expect(hint.classList.contains("visible")).toBeFalsy();
       actions.dispatch.mockClear();
 
       tab.dispatchEvent(new MouseEvent("mouseenter", { clientX: 112, clientY: 18 }));
@@ -172,7 +173,7 @@ describe("view rendering", () => {
       });
       editor.dispatchEvent(closeEvent);
       expectDispatched(actions, { type: "tab.close", noteId: "n1" });
-      expect(closeEvent.defaultPrevented).toBe(true);
+      expect(closeEvent.defaultPrevented).toBeTruthy();
       expect(editorKeydown).not.toHaveBeenCalled();
     } finally {
       root.remove();
@@ -235,7 +236,7 @@ describe("view rendering", () => {
     expect(root.textContent).toContain("Settings");
     expect(root.textContent).toContain("Conflict Draft");
     expect(root.textContent).toContain("Saved");
-    expect(actions.commandItems).toHaveBeenCalled();
+    expect(actions.commandItems).toHaveBeenCalledWith();
     expectDispatched(actions, { type: "search.overlayInput", query: "beta" });
     expectDispatched(actions, { type: "note.open", noteId: "n1" });
     expectDispatched(actions, { type: "revisions.select", eventId: 7 });

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import {
   createWikiLinkExtension,
   createWikiImageExtension,
@@ -274,7 +275,7 @@ describe("nested inline", () => {
   });
 });
 
-describe("HTML escaping", () => {
+describe("hTML escaping", () => {
   it("no raw script tag", () => {
     expect(renderMarkdown('<script>alert("xss")</script>')).not.toContain("<script>");
   });

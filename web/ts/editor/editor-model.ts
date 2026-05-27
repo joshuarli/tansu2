@@ -93,7 +93,7 @@ function createId(prefix: string): string {
 }
 
 export function normalizeMarkdownNewlines(md: string): string {
-  return md.replace(/\r\n?/g, "\n");
+  return md.replaceAll(/\r\n?/g, "\n");
 }
 
 export function markdownToDoc(md: string): EditorDoc {

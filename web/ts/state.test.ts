@@ -1,3 +1,4 @@
+import { expect, describe, it } from 'vitest';
 import {
   activeTab,
   createState,
@@ -49,7 +50,7 @@ describe("state helpers", () => {
 
     expect(tab.doc).toBe(document);
     expect(tab.draft).toBe("# One\n");
-    expect(sessionFromState(state)).toEqual({
+    expect(sessionFromState(state)).toStrictEqual({
       openTabs: [{ noteId: "n1", title: "One", path: "one.md", cursorOffset: 5, sourceMode: true }],
       activeNoteId: "n1",
       closedTabs: state.closedTabs,

@@ -1,3 +1,4 @@
+import { it, vi, afterEach, expect, describe, beforeEach } from 'vitest';
 import type { ApiErrorResponse } from "./types.generated.ts";
 
 const {
@@ -34,7 +35,7 @@ describe("generated API error types", () => {
   });
 });
 
-describe("API client", () => {
+describe("aPI client", () => {
   beforeEach(() => {
     sessionStorage.clear();
     vi.stubGlobal(
@@ -128,7 +129,7 @@ describe("API client", () => {
       jsonResponse({ name: "z-images/a.webp", markdown: "![[a]]" }),
     );
 
-    await expect(uploadImage(new Blob(["x"], { type: "image/png" }), 4)).resolves.toEqual({
+    await expect(uploadImage(new Blob(["x"], { type: "image/png" }), 4)).resolves.toStrictEqual({
       name: "z-images/a.webp",
       markdown: "![[a]]",
     });
@@ -161,7 +162,7 @@ describe("API client", () => {
     expect(fetchCall(6)[1].method).toBe("POST");
     expect(fetchCall(7)[1].method).toBe("DELETE");
     expect(source.url).toBe("/events?vault=9");
-    expect(event).toEqual({ kind: "x" });
+    expect(event).toStrictEqual({ kind: "x" });
   });
 
   it("throws upload errors with parsed response payloads", async () => {

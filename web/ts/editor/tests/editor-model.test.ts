@@ -1,3 +1,4 @@
+import { expect, describe, it } from 'vitest';
 import {
   createTextSelection,
   deleteBackward,
@@ -33,13 +34,13 @@ describe("editor model", () => {
     ["foo\n\nbar\n\n", ["foo", "", "bar", "", ""]],
   ])("preserves markdown lines for %j", (md, expectedLines) => {
     const doc = markdownToDoc(md);
-    expect(doc.lines.map((line) => line.text)).toEqual(expectedLines);
+    expect(doc.lines.map((line) => line.text)).toStrictEqual(expectedLines);
     expect(docToMarkdown(doc)).toBe(md);
   });
 
   it("normalizes CRLF and CR before entering the model", () => {
     const doc = markdownToDoc("a\r\nb\rc");
-    expect(doc.lines.map((line) => line.text)).toEqual(["a", "b", "c"]);
+    expect(doc.lines.map((line) => line.text)).toStrictEqual(["a", "b", "c"]);
     expect(docToMarkdown(doc)).toBe("a\nb\nc");
   });
 
@@ -51,9 +52,9 @@ describe("editor model", () => {
     expect(positionToOffset(doc, { line: 2, column: 0 })).toBe(5);
     expect(positionToOffset(doc, { line: 3, column: 0 })).toBe(6);
 
-    expect(offsetToPosition(doc, 4)).toEqual({ line: 1, column: 0 });
-    expect(offsetToPosition(doc, 5)).toEqual({ line: 2, column: 0 });
-    expect(offsetToPosition(doc, 6)).toEqual({ line: 3, column: 0 });
+    expect(offsetToPosition(doc, 4)).toStrictEqual({ line: 1, column: 0 });
+    expect(offsetToPosition(doc, 5)).toStrictEqual({ line: 2, column: 0 });
+    expect(offsetToPosition(doc, 6)).toStrictEqual({ line: 3, column: 0 });
   });
 
   it("clamps positions and offsets to valid text locations", () => {
@@ -61,16 +62,16 @@ describe("editor model", () => {
 
     expect(positionToOffset(doc, { line: 0, column: 99 })).toBe(3);
     expect(positionToOffset(doc, { line: 99, column: 99 })).toBe(7);
-    expect(offsetToPosition(doc, -10)).toEqual({ line: 0, column: 0 });
-    expect(offsetToPosition(doc, 99)).toEqual({ line: 1, column: 3 });
+    expect(offsetToPosition(doc, -10)).toStrictEqual({ line: 0, column: 0 });
+    expect(offsetToPosition(doc, 99)).toStrictEqual({ line: 1, column: 3 });
   });
 
   it("converts text selections to markdown offsets", () => {
     const doc = markdownToDoc("foo\nbar");
     const selection = createTextSelection(doc, 1, 6);
 
-    expect(selectionToOffsets(doc, selection)).toEqual({ start: 1, end: 6 });
-    expect(offsetsToSelection(doc, 1, 6)).toEqual({
+    expect(selectionToOffsets(doc, selection)).toStrictEqual({ start: 1, end: 6 });
+    expect(offsetsToSelection(doc, 1, 6)).toStrictEqual({
       kind: "text",
       anchor: { line: 0, column: 1 },
       focus: { line: 1, column: 2 },
@@ -104,7 +105,7 @@ describe("editor model", () => {
       ].join("\n"),
     );
 
-    expect(doc.blocks.blocks.map((block) => block.kind)).toEqual([
+    expect(doc.blocks.blocks.map((block) => block.kind)).toStrictEqual([
       "heading",
       "blank",
       "paragraph",
@@ -139,14 +140,14 @@ describe("editor model", () => {
         anchorBlockId: first.id,
         focusBlockId: second.id,
       }),
-    ).toEqual({ start: 0, end: 5 });
+    ).toStrictEqual({ start: 0, end: 5 });
     expect(
       selectionToOffsets(doc, {
         kind: "block",
         anchorBlockId: third.id,
         focusBlockId: third.id,
       }),
-    ).toEqual({ start: 5, end: 12 });
+    ).toStrictEqual({ start: 5, end: 12 });
   });
 
   it("inserts text through a text selection and preserves pasted blank lines", () => {
@@ -154,9 +155,9 @@ describe("editor model", () => {
 
     const result = insertText(state, "\n\nx");
 
-    expect(result.changed).toBe(true);
+    expect(result.changed).toBeTruthy();
     expect(docToMarkdown(result.state.doc)).toBe("foo\n\nx\nbar");
-    expect(selectionToOffsets(result.state.doc, result.state.selection)).toEqual({
+    expect(selectionToOffsets(result.state.doc, result.state.selection)).toStrictEqual({
       start: 6,
       end: 6,
     });
@@ -175,7 +176,7 @@ describe("editor model", () => {
     const result = replaceSelection(state, "there");
 
     expect(docToMarkdown(result.state.doc)).toBe("hello there");
-    expect(selectionToOffsets(result.state.doc, result.state.selection)).toEqual({
+    expect(selectionToOffsets(result.state.doc, result.state.selection)).toStrictEqual({
       start: 11,
       end: 11,
     });
@@ -188,7 +189,7 @@ describe("editor model", () => {
     state = insertParagraph(state).state;
 
     expect(docToMarkdown(state.doc)).toBe("foo\n\n");
-    expect(state.doc.lines.map((line) => line.text)).toEqual(["foo", "", ""]);
+    expect(state.doc.lines.map((line) => line.text)).toStrictEqual(["foo", "", ""]);
   });
 
   it("continues unordered, ordered, and task list lines", () => {
@@ -209,7 +210,7 @@ describe("editor model", () => {
     const state = insertListParagraph(stateFrom("- ", 2)).state;
 
     expect(docToMarkdown(state.doc)).toBe("");
-    expect(state.doc.lines.map((line) => line.text)).toEqual([""]);
+    expect(state.doc.lines.map((line) => line.text)).toStrictEqual([""]);
   });
 
   it("deletes an empty list item on Backspace", () => {
@@ -245,7 +246,7 @@ describe("editor model", () => {
     const result = replaceSelection(state, "x\n");
 
     expect(docToMarkdown(result.state.doc)).toBe("x\nbar");
-    expect(selectionToOffsets(result.state.doc, result.state.selection)).toEqual({
+    expect(selectionToOffsets(result.state.doc, result.state.selection)).toStrictEqual({
       start: 2,
       end: 2,
     });
@@ -256,9 +257,9 @@ describe("editor model", () => {
 
     const result = replaceLineText(state, 1, "middle", 6);
 
-    expect(result.renderHint).toEqual({ kind: "lines", startLine: 1, endLine: 2 });
+    expect(result.renderHint).toStrictEqual({ kind: "lines", startLine: 1, endLine: 2 });
     expect(docToMarkdown(result.state.doc)).toBe("foo\nmiddle\nbar");
-    expect(selectionToOffsets(result.state.doc, result.state.selection)).toEqual({
+    expect(selectionToOffsets(result.state.doc, result.state.selection)).toStrictEqual({
       start: 10,
       end: 10,
     });

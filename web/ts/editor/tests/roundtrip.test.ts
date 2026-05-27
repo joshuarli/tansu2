@@ -1,3 +1,4 @@
+import { expect, afterAll, describe, beforeAll, it } from 'vitest';
 /// Roundtrip tests: markdown → HTML → markdown.
 /// Verifies that domToMarkdown(renderMarkdown(md)) produces equivalent output.
 

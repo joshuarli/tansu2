@@ -1,3 +1,4 @@
+import { expect, describe, it } from 'vitest';
 import {
   editableMarkdown,
   frontmatterSupportsTags,
@@ -9,10 +10,10 @@ import { tabFromDocument } from "./state.ts";
 
 describe("markdown tag frontmatter", () => {
   it("treats plain markdown and tags-only frontmatter as editable", () => {
-    expect(frontmatterSupportsTags("# Note\n")).toBe(true);
-    expect(frontmatterSupportsTags("---\ntags:\n  - alpha\n---\n\n# Note\n")).toBe(true);
-    expect(frontmatterSupportsTags("---\ntitle: Note\n---\n\n# Note\n")).toBe(false);
-    expect(frontmatterSupportsTags("---\ntags:\n  - alpha\n")).toBe(false);
+    expect(frontmatterSupportsTags("# Note\n")).toBeTruthy();
+    expect(frontmatterSupportsTags("---\ntags:\n  - alpha\n---\n\n# Note\n")).toBeTruthy();
+    expect(frontmatterSupportsTags("---\ntitle: Note\n---\n\n# Note\n")).toBeFalsy();
+    expect(frontmatterSupportsTags("---\ntags:\n  - alpha\n")).toBeFalsy();
   });
 
   it("strips supported frontmatter before editor display", () => {

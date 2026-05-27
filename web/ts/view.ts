@@ -16,7 +16,7 @@ export type ViewActions = {
   commandItems: () => CommandItem[];
 };
 
-export function renderApp(state: State, actions: ViewActions): Array<HTMLElement> {
+export function renderApp(state: State, actions: ViewActions): HTMLElement[] {
   return [
     renderSidebar(state, actions),
     renderMain(state, actions),
@@ -607,7 +607,7 @@ function searchHitRow(hit: SearchHit, actions: ViewActions): HTMLElement {
 }
 
 function renderScore(hit: SearchHit): HTMLElement {
-  const scores: Array<[string, number]> = [
+  const scores: [string, number][] = [
     ["title", hit.fieldScores.title],
     ["headings", hit.fieldScores.headings],
     ["tags", hit.fieldScores.tags],
@@ -631,9 +631,9 @@ function renderSnippet(snippet: string): HTMLElement {
   return element;
 }
 
-function parseHighlightedSnippet(snippet: string): Array<{ text: string; highlight: boolean }> {
+function parseHighlightedSnippet(snippet: string): { text: string; highlight: boolean }[] {
   const parts = snippet.split(/(<b>|<\/b>)/);
-  const result: Array<{ text: string; highlight: boolean }> = [];
+  const result: { text: string; highlight: boolean }[] = [];
   let highlight = false;
   for (const part of parts) {
     if (part === "<b>") {
@@ -872,15 +872,18 @@ function toolIcon(iconName: ToolIcon): SVGSVGElement {
 
 function iconPaths(iconName: ToolIcon): SVGElement[] {
   switch (iconName) {
-    case "bold":
+    case "bold": {
       return [iconPath("M8 5h5a3 3 0 0 1 0 6H8zM8 11h6a4 4 0 0 1 0 8H8zM8 5v14")];
-    case "italic":
+    }
+    case "italic": {
       return [iconPath("M10 5h7M7 19h7M14 5l-4 14")];
-    case "strikethrough":
+    }
+    case "strikethrough": {
       return [
         iconPath("M7 7.5A4 4 0 0 1 11 5h5M8 17a5 5 0 0 0 4 2h1.5a3.5 3.5 0 0 0 0-7H6M5 12h14"),
       ];
-    case "highlight":
+    }
+    case "highlight": {
       return [
         iconShape("path", {
           d: "M7 18.5h4.5L20 10l-2.8-2.8-11.7 9.3z",
@@ -890,30 +893,38 @@ function iconPaths(iconName: ToolIcon): SVGElement[] {
         iconPath("M14 4l6 6-8.5 8.5H7.5l-2-2z", "#d88b18"),
         iconPath("M5 20h11", "#d88b18"),
       ];
-    case "heading":
+    }
+    case "heading": {
       return [iconPath("M6 5v14M18 5v14M6 12h12M14 19h7")];
-    case "undo":
+    }
+    case "undo": {
       return [iconPath("M9 7l-5 5 5 5M4 12h10a5 5 0 1 1-3.5 8.5")];
-    case "redo":
+    }
+    case "redo": {
       return [iconPath("M15 7l5 5-5 5M20 12H10a5 5 0 1 0 3.5 8.5")];
-    case "code":
+    }
+    case "code": {
       return [iconPath("M9 7l-5 5 5 5M15 7l5 5-5 5")];
-    case "save":
+    }
+    case "save": {
       return [
         iconShape("rect", { x: "9", y: "15", width: "6", height: "5", fill: "#dfe7f2" }),
         iconPath("M5 4h12l2 2v14H5zM8 4v6h8V4M8 20v-6h8v6"),
       ];
-    case "eye":
+    }
+    case "eye": {
       return [
         iconPath("M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"),
         iconPath("M12 9.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"),
       ];
-    case "eyeOff":
+    }
+    case "eyeOff": {
       return [
         iconPath("M3 3l18 18"),
         iconPath("M10.7 5.2A10.7 10.7 0 0 1 12 5c6 0 9.5 7 9.5 7a17.8 17.8 0 0 1-3.2 4.1"),
         iconPath("M6.5 6.9A17.6 17.6 0 0 0 2.5 12s3.5 7 9.5 7c1.7 0 3.2-.4 4.5-1"),
       ];
+    }
   }
 }
 

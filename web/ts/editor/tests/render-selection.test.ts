@@ -1,3 +1,4 @@
+import { expect, beforeAll, afterAll, describe, expectTypeOf, it } from 'vitest';
 /// Tests for renderMarkdownWithSelection.
 
 import { setupDOM } from "./test-helper.ts";

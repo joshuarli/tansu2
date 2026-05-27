@@ -14,30 +14,30 @@ The frontend stores the active vault index in `sessionStorage` as
 
 ## Endpoints
 
-| Method   | Path                                            | Purpose                        |
-| -------- | ----------------------------------------------- | ------------------------------ |
-| `GET`    | `/api/health`                                   | health                         |
-| `GET`    | `/api/bootstrap`                                | initial vault metadata         |
-| `GET`    | `/api/notes/:noteId`                            | open one note                  |
-| `POST`   | `/api/notes`                                    | create note                    |
+| Method   | Path                                            | Purpose                                     |
+| -------- | ----------------------------------------------- | ------------------------------------------- |
+| `GET`    | `/api/health`                                   | health                                      |
+| `GET`    | `/api/bootstrap`                                | initial vault metadata                      |
+| `GET`    | `/api/notes/:noteId`                            | open one note                               |
+| `POST`   | `/api/notes`                                    | create note                                 |
 | `PUT`    | `/api/notes/:noteId`                            | save full content with `baseSeq`/`baseHash` |
 | `PATCH`  | `/api/notes/:noteId`                            | save exact deltas with `baseSeq`/`baseHash` |
-| `DELETE` | `/api/notes/:noteId`                            | tombstone note                 |
-| `POST`   | `/api/notes/:noteId/rename`                     | rename path                    |
-| `GET`    | `/api/notes/:noteId/revisions`                  | list revisions                 |
-| `GET`    | `/api/notes/:noteId/revisions/:eventId`         | read revision                  |
-| `POST`   | `/api/notes/:noteId/revisions/:eventId/restore` | restore revision               |
-| `GET`    | `/api/notes/:noteId/conflicts/:draftId`         | read conflict draft            |
-| `POST`   | `/api/notes/:noteId/conflicts/:draftId/restore` | restore conflict draft         |
-| `POST`   | `/api/notes/:noteId/pin`                        | pin                            |
-| `DELETE` | `/api/notes/:noteId/pin`                        | unpin                          |
-| `GET`    | `/api/search?q=...`                             | search                         |
-| `GET`    | `/api/settings`                                 | read settings                  |
-| `PUT`    | `/api/settings`                                 | write settings                 |
-| `PUT`    | `/api/session`                                  | write session                  |
-| `POST`   | `/api/images`                                   | upload active-vault WebP       |
-| `GET`    | `/api/assets?name=...&vault=...`                | read active-vault image        |
-| `GET`    | `/events?vault=...`                             | SSE                            |
+| `DELETE` | `/api/notes/:noteId`                            | tombstone note                              |
+| `POST`   | `/api/notes/:noteId/rename`                     | rename path                                 |
+| `GET`    | `/api/notes/:noteId/revisions`                  | list revisions                              |
+| `GET`    | `/api/notes/:noteId/revisions/:eventId`         | read revision                               |
+| `POST`   | `/api/notes/:noteId/revisions/:eventId/restore` | restore revision                            |
+| `GET`    | `/api/notes/:noteId/conflicts/:draftId`         | read conflict draft                         |
+| `POST`   | `/api/notes/:noteId/conflicts/:draftId/restore` | restore conflict draft                      |
+| `POST`   | `/api/notes/:noteId/pin`                        | pin                                         |
+| `DELETE` | `/api/notes/:noteId/pin`                        | unpin                                       |
+| `GET`    | `/api/search?q=...`                             | search                                      |
+| `GET`    | `/api/settings`                                 | read settings                               |
+| `PUT`    | `/api/settings`                                 | write settings                              |
+| `PUT`    | `/api/session`                                  | write session                               |
+| `POST`   | `/api/images`                                   | upload active-vault WebP                    |
+| `GET`    | `/api/assets?name=...&vault=...`                | read active-vault image                     |
+| `GET`    | `/events?vault=...`                             | SSE                                         |
 
 ## High-Risk Flows
 

@@ -821,46 +821,59 @@ export class TansuApp {
   private executeCommand(id: CommandId): void {
     this.state.commandOpen = false;
     switch (id) {
-      case "open":
+      case "open": {
         this.commandOpen();
         return;
-      case "create":
+      }
+      case "create": {
         void this.commandCreate();
         return;
-      case "save":
+      }
+      case "save": {
         void this.manualSave();
         return;
-      case "rename":
+      }
+      case "rename": {
         this.commandRename();
         return;
-      case "delete":
+      }
+      case "delete": {
         this.commandDelete();
         return;
-      case "pin":
+      }
+      case "pin": {
         void this.commandPin();
         return;
-      case "reopen":
+      }
+      case "reopen": {
         void this.commandReopenClosed();
         return;
-      case "reading":
+      }
+      case "reading": {
         this.toggleReadingMode();
         return;
-      case "search":
+      }
+      case "search": {
         this.state.searchOpen = true;
         this.render();
         return;
-      case "import":
+      }
+      case "import": {
         void this.commandImportHtml();
         return;
-      case "revisions":
+      }
+      case "revisions": {
         void this.commandRevisions();
         return;
-      case "settings":
+      }
+      case "settings": {
         this.commandSettings();
         return;
-      case "source":
+      }
+      case "source": {
         this.toggleSourceMode();
         return;
+      }
     }
   }
 
@@ -1114,140 +1127,178 @@ export class TansuApp {
 
   private dispatch(event: ViewEvent): void {
     switch (event.type) {
-      case "vault.switch":
+      case "vault.switch": {
         this.services.api.setActiveVault(event.index);
         void this.boot();
         return;
-      case "search.input":
+      }
+      case "search.input": {
         this.state.searchQuery = event.query;
         void this.updateSearch();
         return;
-      case "search.open":
+      }
+      case "search.open": {
         this.state.searchOpen = true;
         this.state.commandOpen = false;
         this.state.searchOverlayQuery = this.state.searchQuery;
         this.state.searchOverlayHits = this.state.searchHits;
         this.render();
         return;
-      case "search.overlayInput":
+      }
+      case "search.overlayInput": {
         this.state.searchOverlayQuery = event.query;
         void this.updateSearchOverlay();
         return;
-      case "command.open":
+      }
+      case "command.open": {
         this.state.commandOpen = true;
         this.state.searchOpen = false;
         this.state.commandFilter = "";
         this.render();
         return;
-      case "command.filter":
+      }
+      case "command.filter": {
         this.state.commandFilter = event.query;
         this.render();
         return;
-      case "command.run":
+      }
+      case "command.run": {
         this.executeCommand(event.id);
         return;
-      case "dialog.input":
+      }
+      case "dialog.input": {
         if (this.state.noteDialog?.kind === "create" || this.state.noteDialog?.kind === "rename") {
           this.state.noteDialog.title = event.value;
         } else if (this.state.noteDialog?.kind === "tag") {
           this.state.noteDialog.value = event.value;
         }
         return;
-      case "dialog.submit":
+      }
+      case "dialog.submit": {
         void this.submitNoteDialog(event.value);
         return;
-      case "settings.submit":
+      }
+      case "settings.submit": {
         void this.saveSettingsFromModal(event.settings);
         return;
-      case "overlay.close":
+      }
+      case "overlay.close": {
         this.closeOverlays();
         return;
-      case "context.close":
+      }
+      case "context.close": {
         this.closeContextMenu();
         return;
-      case "context.open":
+      }
+      case "context.open": {
         this.openNoteContextMenu(event.noteId, event.x, event.y);
         return;
-      case "tab.activate":
+      }
+      case "tab.activate": {
         void this.activateTab(event.noteId);
         return;
-      case "tab.close":
+      }
+      case "tab.close": {
         this.closeTab(event.noteId);
         return;
-      case "note.open":
+      }
+      case "note.open": {
         void this.openInTab(event.noteId);
         return;
-      case "note.rename":
+      }
+      case "note.rename": {
         this.commandRename(event.noteId);
         return;
-      case "note.delete":
+      }
+      case "note.delete": {
         this.commandDelete(event.noteId);
         return;
-      case "note.pin":
+      }
+      case "note.pin": {
         void this.commandPin(event.noteId);
         return;
-      case "note.addTag":
+      }
+      case "note.addTag": {
         void this.commandAddTag();
         return;
-      case "tags.update":
+      }
+      case "tags.update": {
         this.updateActiveTags(event.tags);
         return;
-      case "reading.toggle":
+      }
+      case "reading.toggle": {
         this.toggleReadingMode();
         return;
-      case "editor.toolbar":
+      }
+      case "editor.toolbar": {
         this.dispatchEditorToolbar(event.command);
         return;
-      case "revisions.open":
+      }
+      case "revisions.open": {
         void this.commandRevisions();
         return;
-      case "revisions.select":
+      }
+      case "revisions.select": {
         void this.selectRevision(event.eventId);
         return;
-      case "revisions.restore":
+      }
+      case "revisions.restore": {
         void this.restoreSelectedRevision();
         return;
-      case "conflict.view":
+      }
+      case "conflict.view": {
         void this.viewActiveConflictDraft();
         return;
-      case "conflict.restore":
+      }
+      case "conflict.restore": {
         void this.restoreActiveConflictDraft();
         return;
-      case "render.request":
+      }
+      case "render.request": {
         this.render();
         return;
+      }
     }
   }
 
   private dispatchEditorToolbar(command: EditorToolbarCommand): void {
     switch (command) {
-      case "bold":
+      case "bold": {
         this.editor?.applyFormat(toggleBold);
         return;
-      case "italic":
+      }
+      case "italic": {
         this.editor?.applyFormat(toggleItalic);
         return;
-      case "highlight":
+      }
+      case "highlight": {
         this.editor?.applyFormat(toggleHighlight);
         return;
-      case "strikethrough":
+      }
+      case "strikethrough": {
         this.editor?.applyFormat(toggleStrikethrough);
         return;
-      case "heading":
+      }
+      case "heading": {
         this.editor?.applyFormat((md, start) => toggleHeading(md, start, 1));
         return;
-      case "undo":
+      }
+      case "undo": {
         this.editor?.undo();
         return;
-      case "redo":
+      }
+      case "redo": {
         this.editor?.redo();
         return;
-      case "source":
+      }
+      case "source": {
         this.toggleSourceMode();
         return;
-      case "save":
+      }
+      case "save": {
         void this.manualSave();
         return;
+      }
     }
   }
 
@@ -1296,9 +1347,9 @@ function slugifyTitle(title: string): string {
   const slug = title
     .trim()
     .toLowerCase()
-    .replace(/['"]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replaceAll(/['"]/g, "")
+    .replaceAll(/[^a-z0-9]+/g, "-")
+    .replaceAll(/^-+|-+$/g, "");
   return slug || "untitled";
 }
 

@@ -1,8 +1,9 @@
+import { expect, describe, it } from 'vitest';
 import { buildSaveNoteDeltaRequest, canonicalContentHash, computeTextEdits } from "./save-delta.ts";
 
 describe("save delta", () => {
   it("computes a single exact replacement edit", () => {
-    expect(computeTextEdits("# One\n\nbody\n", "# One\n\nchanged\n")).toEqual([
+    expect(computeTextEdits("# One\n\nbody\n", "# One\n\nchanged\n")).toStrictEqual([
       {
         start: { line: 2, character: 0 },
         end: { line: 2, character: 4 },
@@ -12,14 +13,14 @@ describe("save delta", () => {
   });
 
   it("handles insertions, deletions, and trailing newlines", () => {
-    expect(computeTextEdits("a\nb\n", "a\nb\nc\n")).toEqual([
+    expect(computeTextEdits("a\nb\n", "a\nb\nc\n")).toStrictEqual([
       {
         start: { line: 2, character: 0 },
         end: { line: 2, character: 0 },
         text: "c\n",
       },
     ]);
-    expect(computeTextEdits("a\nb\nc\n", "a\nc\n")).toEqual([
+    expect(computeTextEdits("a\nb\nc\n", "a\nc\n")).toStrictEqual([
       {
         start: { line: 1, character: 0 },
         end: { line: 2, character: 0 },
@@ -29,7 +30,7 @@ describe("save delta", () => {
   });
 
   it("does not split UTF-16 surrogate pairs", () => {
-    expect(computeTextEdits("emoji 😀\n", "emoji 😁\n")).toEqual([
+    expect(computeTextEdits("emoji 😀\n", "emoji 😁\n")).toStrictEqual([
       {
         start: { line: 0, character: 6 },
         end: { line: 0, character: 8 },

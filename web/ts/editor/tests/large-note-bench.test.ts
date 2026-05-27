@@ -1,3 +1,4 @@
+import { expect, afterAll, describe, beforeAll, it } from 'vitest';
 import { performance } from "node:perf_hooks";
 
 import { createEditor } from "../editor.ts";
@@ -39,7 +40,7 @@ benchDescribe("Tansu editor large note benchmark", () => {
     cleanup();
   });
 
-  it("reports render, serialize, and editor roundtrip timings", () => {
+  test("reports render, serialize, and editor roundtrip timings", () => {
     const markdown = makeLargeNote();
 
     const renderStart = performance.now();

@@ -179,8 +179,7 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       );
     });
     out.ssePropagation = await measure(async () => {
-      await page.evaluate(() => {
-        return new Promise((resolve, reject) => {
+      await page.evaluate(() => new Promise((resolve, reject) => {
           const source = new EventSource("/events?vault=1");
           const timer = setTimeout(() => {
             source.close();
@@ -205,8 +204,7 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
               resolve(null);
             }
           });
-        });
-      });
+        }));
     });
     out.watcherExternalEdit = await measure(async () => {
       const path = join(fixture.mediumVault, "external-bench.md");
@@ -392,7 +390,7 @@ function summarizeResults(results) {
 
 function flattenMetrics(value, path, out) {
   if (Array.isArray(value)) {
-    const sorted = [...value].sort((a, b) => a - b);
+    const sorted = [...value].toSorted((a, b) => a - b);
     out[path.join(".")] = {
       medianMs: percentile(sorted, 0.5),
       p95Ms: percentile(sorted, 0.95),
@@ -474,7 +472,7 @@ function rssBytes(pid) {
 }
 
 function cssEscape(value) {
-  return value.replaceAll("\\", "\\\\").replaceAll('"', '\\"');
+  return value.replaceAll("\\", String.raw`\\`).replaceAll('"', String.raw`\"`);
 }
 
 function parseArgs(values) {

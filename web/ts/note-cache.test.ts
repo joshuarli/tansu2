@@ -1,3 +1,4 @@
+import { afterEach, describe, expect, it } from 'vitest';
 import { cacheNoteBody, deleteCachedNoteBodies, getCachedNoteBody } from "./note-cache.ts";
 import type { NoteDocument, NoteMeta } from "./types.generated.ts";
 

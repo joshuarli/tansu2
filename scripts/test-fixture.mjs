@@ -2,7 +2,7 @@ import { cp, mkdir, rm, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const REPO_ROOT = resolve(import.meta.dirname, "..");
 const SOURCE_ROOT = join(REPO_ROOT, "tests", "fixtures", "test-vaults");
 
 export async function createTestFixture(root) {

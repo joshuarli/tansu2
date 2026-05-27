@@ -1,3 +1,4 @@
+import { expect, beforeAll, it, describe, vi, afterAll, beforeEach, afterEach, expectTypeOf } from 'vitest';
 /// Tests for createEditor() wiring layer.
 
 import { createEditor } from "../editor.ts";
@@ -81,7 +82,7 @@ describe("createEditor", () => {
 
     const sel = window.getSelection()!;
     expect(sel.anchorNode).not.toBeNull();
-    expect(handle.contentEl.querySelector("h1")!.contains(sel.anchorNode)).toBe(false);
+    expect(handle.contentEl.querySelector("h1")!.contains(sel.anchorNode)).toBeFalsy();
     expect(handle.contentEl.querySelector("h1 + p")).not.toBeNull();
     handle.destroy();
   });
@@ -103,9 +104,9 @@ describe("createEditor", () => {
 
     expect(snapshot.markdown).toBe("foo\n\nbar");
     expect(snapshot.cursorOffset).toBe(3);
-    expect(snapshot.selection).toEqual({ start: 3, end: 3 });
+    expect(snapshot.selection).toStrictEqual({ start: 3, end: 3 });
     expect(snapshot.revision).toBeGreaterThan(0);
-    expect(snapshot.sourceMode).toBe(false);
+    expect(snapshot.sourceMode).toBeFalsy();
     handle.destroy();
   });
 
@@ -203,7 +204,7 @@ describe("createEditor", () => {
     expect(handle.contentEl.querySelector("[data-md-block-id]")!.classList).toContain(
       "md-block-selected",
     );
-    expect(handle.getSnapshot().selection).toEqual({ start: 0, end: 6 });
+    expect(handle.getSnapshot().selection).toStrictEqual({ start: 0, end: 6 });
 
     const clipboard = new DataTransfer();
     handle.contentEl.dispatchEvent(
@@ -215,7 +216,7 @@ describe("createEditor", () => {
       new KeyboardEvent("keydown", { key: "Delete", bubbles: true, cancelable: true }),
     );
     expect(handle.getValue()).toBe("\nbeta");
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith();
     handle.destroy();
   });
 
@@ -224,7 +225,7 @@ describe("createEditor", () => {
     handle.setValue("foo\n\nbar");
     const blank = handle.contentEl.querySelector('[data-md-blank="true"]');
     expect(blank).toBeInstanceOf(HTMLElement);
-    expect((blank as HTMLElement).hidden).toBe(false);
+    expect((blank as HTMLElement).hidden).toBeFalsy();
     expect((blank as HTMLElement).dataset["mdBlankRole"]).toBe("separator");
     expect((blank as HTMLElement).contentEditable).toBe("false");
     handle.destroy();
@@ -248,8 +249,8 @@ describe("createEditor", () => {
     });
     const dispatched = handle.contentEl.dispatchEvent(event);
 
-    expect(dispatched).toBe(false);
-    expect(event.defaultPrevented).toBe(true);
+    expect(dispatched).toBeFalsy();
+    expect(event.defaultPrevented).toBeTruthy();
     expect(handle.getValue()).toBe("foo\n\nbar");
     handle.destroy();
   });
@@ -272,8 +273,8 @@ describe("createEditor", () => {
     });
     const dispatched = handle.contentEl.dispatchEvent(event);
 
-    expect(dispatched).toBe(false);
-    expect(event.defaultPrevented).toBe(true);
+    expect(dispatched).toBeFalsy();
+    expect(event.defaultPrevented).toBeTruthy();
     expect(handle.getValue()).toBe("foo\n\nx\nbar");
     handle.destroy();
   });
@@ -286,7 +287,7 @@ describe("createEditor", () => {
 
     const anchor = window.getSelection()!.anchorNode;
     expect(anchor).not.toBeNull();
-    expect(blank.contains(anchor)).toBe(false);
+    expect(blank.contains(anchor)).toBeFalsy();
     handle.destroy();
   });
 
@@ -433,8 +434,8 @@ describe("createEditor", () => {
     });
     const dispatched = handle.contentEl.dispatchEvent(event);
 
-    expect(dispatched).toBe(false);
-    expect(event.defaultPrevented).toBe(true);
+    expect(dispatched).toBeFalsy();
+    expect(event.defaultPrevented).toBeTruthy();
     expect(handle.getValue()).toBe("foo\n");
     handle.destroy();
   });
@@ -457,7 +458,7 @@ describe("createEditor", () => {
     });
     handle.contentEl.dispatchEvent(event);
 
-    expect(event.defaultPrevented).toBe(true);
+    expect(event.defaultPrevented).toBeTruthy();
     expect(handle.getValue()).toBe("- foo\n- ");
     expect(handle.contentEl.querySelectorAll("li")).toHaveLength(2);
     handle.destroy();
@@ -480,7 +481,7 @@ describe("createEditor", () => {
     });
     handle.contentEl.dispatchEvent(event);
 
-    expect(event.defaultPrevented).toBe(true);
+    expect(event.defaultPrevented).toBeTruthy();
     expect(handle.getValue()).toBe("");
     expect(handle.contentEl.querySelector("ul")).toBeNull();
     handle.destroy();
@@ -497,8 +498,8 @@ describe("createEditor", () => {
     });
     const dispatched = handle.contentEl.dispatchEvent(event);
 
-    expect(dispatched).toBe(false);
-    expect(event.defaultPrevented).toBe(true);
+    expect(dispatched).toBeFalsy();
+    expect(event.defaultPrevented).toBeTruthy();
     expect(handle.getValue()).toBe("foo\n\nbar");
     handle.destroy();
   });
@@ -526,7 +527,7 @@ describe("createEditor", () => {
 
     expect(handle.getValue()).toBe("hello文");
     expect(handle.contentEl.querySelector("p")).toBe(paragraph);
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith();
     handle.destroy();
   });
 
@@ -630,7 +631,7 @@ describe("createEditor", () => {
     handle.setValue("second");
     onChange.mockClear();
     handle.undo();
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith();
     handle.destroy();
   });
 
@@ -642,7 +643,7 @@ describe("createEditor", () => {
     handle.undo();
     onChange.mockClear();
     handle.redo();
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith();
     handle.destroy();
   });
 
@@ -743,7 +744,7 @@ describe("createEditor", () => {
     handle.setValue("hello");
     onChange.mockClear();
     handle.contentEl.dispatchEvent(new Event("input", { bubbles: true }));
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith();
     handle.destroy();
   });
 
@@ -754,7 +755,7 @@ describe("createEditor", () => {
     handle.toggleSourceMode();
     onChange.mockClear();
     handle.sourceEl.dispatchEvent(new Event("input", { bubbles: true }));
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith();
     handle.destroy();
   });
 
@@ -839,7 +840,7 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
-  it("HTML paste uses setHTML when available", async () => {
+  it("hTML paste uses setHTML when available", async () => {
     const elementPrototype = Element.prototype as Element & {
       setHTML?: (html: string) => void;
     };
@@ -878,7 +879,7 @@ describe("createEditor", () => {
     }
   });
 
-  it("HTML paste falls back to manual sanitization when setHTML is unavailable", async () => {
+  it("hTML paste falls back to manual sanitization when setHTML is unavailable", async () => {
     const elementPrototype = Element.prototype as Element & {
       setHTML?: (html: string) => void;
     };
@@ -914,7 +915,7 @@ describe("createEditor", () => {
     }
   });
 
-  it("HTML paste inserts copied editor fragments with root text nodes", async () => {
+  it("hTML paste inserts copied editor fragments with root text nodes", async () => {
     const handle = createEditor(container);
     handle.setValue("");
 
@@ -934,7 +935,7 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
-  it("HTML paste falls back to plain text when rich serialization is empty", async () => {
+  it("hTML paste falls back to plain text when rich serialization is empty", async () => {
     const handle = createEditor(container);
     handle.setValue("");
 
@@ -998,7 +999,7 @@ describe("createEditor", () => {
       height: 10,
       close: vi.fn(),
     })) as unknown as typeof createImageBitmap;
-    globalThis.OffscreenCanvas = vi.fn(function OffscreenCanvas() {
+    globalThis.OffscreenCanvas = vi.fn(function () {
       return {
         getContext: () => ({ drawImage: vi.fn() }),
         convertToBlob: async () => new Blob(["webp"], { type: "image/webp" }),
@@ -1040,7 +1041,7 @@ describe("createEditor", () => {
     }
   });
 
-  it("Ctrl+Z keydown triggers undo", () => {
+  it("ctrl+Z keydown triggers undo", () => {
     const handle = createEditor(container);
     handle.setValue("first");
     handle.setValue("second");
@@ -1051,7 +1052,7 @@ describe("createEditor", () => {
     handle.destroy();
   });
 
-  it("Ctrl+Y keydown triggers redo", () => {
+  it("ctrl+Y keydown triggers redo", () => {
     const handle = createEditor(container);
     handle.setValue("first");
     handle.setValue("second");
@@ -1127,7 +1128,7 @@ describe("createEditor", () => {
     );
     expect(handle.getValue()).toBe("# Heading\n");
     expect(handle.contentEl.querySelector("h1 + p")).not.toBeNull();
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith();
     handle.destroy();
   });
 
@@ -1147,7 +1148,7 @@ describe("createEditor", () => {
     );
     expect(handle.contentEl.querySelector("ul")).toBeNull();
     expect(handle.getValue()).toBe("");
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith();
     handle.destroy();
   });
 

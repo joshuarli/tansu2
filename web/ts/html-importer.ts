@@ -61,8 +61,8 @@ function uniqueImportPath(title: string, notes: Iterable<NoteMeta>): string {
   const stem =
     title
       .trim()
-      .replace(/[^\d A-Za-z._-]+/g, "")
-      .replace(/\s+/g, " ")
+      .replaceAll(/[^\d A-Za-z._-]+/g, "")
+      .replaceAll(/\s+/g, " ")
       .trim() || "Imported";
   let path = `${stem}.md`;
   let suffix = 2;

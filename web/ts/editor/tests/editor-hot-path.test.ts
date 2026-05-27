@@ -1,3 +1,4 @@
+import { expect, describe, it, beforeEach, vi, afterAll, beforeAll, afterEach } from 'vitest';
 import { setupDOM } from "./test-helper.ts";
 
 describe("editor hot paths", () => {
@@ -25,7 +26,7 @@ describe("editor hot paths", () => {
     const domToMarkdown = vi.fn(() => {
       throw new Error("domToMarkdown should not be called on editor hot paths");
     });
-    vi.doMock("../serialize.ts", async (importOriginal) => ({
+    vi.doMock(import('../serialize.ts'), async (importOriginal) => ({
       ...((await importOriginal()) as object),
       domToMarkdown,
     }));
@@ -49,7 +50,7 @@ describe("editor hot paths", () => {
 
     expect(handle.getValue()).toBe("hello!\nworld");
     expect(handle.getSnapshot().markdown).toBe("hello!\nworld");
-    expect(handle.getSelectionOffsets()).toEqual({ start: 6, end: 6 });
+    expect(handle.getSelectionOffsets()).toStrictEqual({ start: 6, end: 6 });
     expect(handle.getCursorOffset()).toBe(6);
 
     handle.toggleSourceMode();

@@ -16,7 +16,7 @@ export function button(
 export function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
   className: string,
-  ...children: Array<Node | string>
+  ...children: (Node | string)[]
 ): HTMLElementTagNameMap[K] {
   const element = document.createElement(tag);
   element.className = className;
