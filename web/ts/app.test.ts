@@ -544,6 +544,8 @@ describe("tansuApp note loading", () => {
     api.searchNotes.mockClear();
     root.querySelector<HTMLButtonElement>('[title="Search notes"]')?.click();
     const overlaySearch = root.querySelector<HTMLInputElement>(".command-input")!;
+    expect(overlaySearch.value).toBe("");
+    expect(root.querySelector(".search-result-row")).toBeNull();
     overlaySearch.value = "al";
     overlaySearch.dispatchEvent(new Event("input", { bubbles: true }));
     await flushAsync();

@@ -306,15 +306,7 @@ function renderOverlays(state: State, actions: ViewActions): HTMLElement {
       actions.dispatch({ type: "search.overlayInput", query: input.value });
     });
     const list = el("div", "command-list");
-    if (state.searchOverlayQuery.trim() === "") {
-      for (const noteId of state.notes.keys()) {
-        const note = state.notes.get(noteId);
-        if (note === undefined) {
-          continue;
-        }
-        list.append(searchNoteRow(note.noteId, note.title, note.path, actions));
-      }
-    } else {
+    if (state.searchOverlayQuery.trim() !== "") {
       for (const hit of state.searchOverlayHits ?? []) {
         list.append(searchHitRow(hit, actions));
       }

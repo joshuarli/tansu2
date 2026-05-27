@@ -272,9 +272,8 @@ describe("view rendering", () => {
     state.noteDialog = { kind: "delete", noteId: toNoteId("n1") };
     let actions = actionSpies();
     let root = render(state, actions);
-    root.querySelector<HTMLButtonElement>(".search-result-row")!.click();
+    expect(root.querySelector(".search-result-row")).toBeNull();
     root.querySelector<HTMLButtonElement>(".danger-button")!.click();
-    expectDispatched(actions, { type: "note.open", noteId: toNoteId("n1") });
     expectDispatched(actions, { type: "dialog.submit" });
 
     state.noteDialog = { kind: "tag", value: "" };

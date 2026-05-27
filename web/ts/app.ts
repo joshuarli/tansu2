@@ -151,8 +151,8 @@ export class TansuApp {
         event.preventDefault();
         this.state.searchOpen = true;
         this.state.commandOpen = false;
-        this.state.searchOverlayQuery = this.state.searchQuery;
-        this.state.searchOverlayHits = this.state.searchHits;
+        this.state.searchOverlayQuery = "";
+        this.state.searchOverlayHits = null;
         this.render();
         return;
       }
@@ -798,8 +798,8 @@ export class TansuApp {
     this.logCommand("open");
     this.state.searchOpen = true;
     this.state.commandOpen = false;
-    this.state.searchOverlayQuery = this.state.searchQuery;
-    this.state.searchOverlayHits = this.state.searchHits;
+    this.state.searchOverlayQuery = "";
+    this.state.searchOverlayHits = null;
     this.render();
   }
 
@@ -1381,8 +1381,8 @@ export class TansuApp {
       case "search.open": {
         this.state.searchOpen = true;
         this.state.commandOpen = false;
-        this.state.searchOverlayQuery = this.state.searchQuery;
-        this.state.searchOverlayHits = this.state.searchHits;
+        this.state.searchOverlayQuery = "";
+        this.state.searchOverlayHits = null;
         this.render();
         return;
       }
