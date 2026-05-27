@@ -37,7 +37,7 @@ async function main() {
     ["run", "--quiet", "--bin", "tansu2", "--", "--port", String(port)],
     {
       cwd: REPO_ROOT,
-      env: { ...process.env, XDG_CONFIG_HOME: fixture.configHome },
+      env: { ...process.env, XDG_CONFIG_HOME: fixture.configHome, XDG_DATA_HOME: fixture.dataHome },
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
@@ -68,7 +68,7 @@ async function main() {
     results.metrics.productionBundleBytes = [
       await fileSize(join(REPO_ROOT, "web", "static", "app.js")),
     ];
-    results.metrics.catalogBytes = [await directorySize(join(fixture.vaultOne, ".tansu"))];
+    results.metrics.catalogBytes = [await directorySize(join(fixture.dataHome, "tansu"))];
     const rss = server.pid === undefined ? null : rssBytes(server.pid);
     if (rss !== null) {
       results.metrics.serverRssBytes = [rss];
@@ -271,7 +271,7 @@ async function measure(fn) {
 }
 
 async function createBenchmarkFixture(root) {
-  return await createTestFixture(root);
+  return await createTestFixture(root, { copyVaults: true });
 }
 
 async function fetchJson(url, options = {}) {

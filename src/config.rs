@@ -15,6 +15,7 @@ pub struct Config {
 pub struct VaultConfig {
     pub name: String,
     pub path: PathBuf,
+    pub state_path: PathBuf,
     pub excluded_folders: Vec<String>,
 }
 
@@ -32,14 +33,7 @@ struct RawVault {
 }
 
 pub fn default_config_path() -> Result<PathBuf> {
-    let base = match std::env::var_os("XDG_CONFIG_HOME") {
-        Some(value) => PathBuf::from(value),
-        None => {
-            let home = std::env::var_os("HOME")
-                .ok_or_else(|| Error::BadRequest("HOME is not set".to_string()))?;
-            PathBuf::from(home).join(".config")
-        }
-    };
+    let base = xdg_path("XDG_CONFIG_HOME", ".config")?;
     Ok(base.join("tansu").join("config.toml"))
 }
 
@@ -65,14 +59,17 @@ pub fn parse_config(text: &str) -> Result<Config> {
             "config must contain at least one vault".to_string(),
         ));
     }
+    let data_root = xdg_path("XDG_DATA_HOME", ".local/share")?.join("tansu");
     let vaults = raw
         .vaults
         .into_iter()
         .map(|vault| {
             let path = expand_tilde(&vault.path)?;
+            let state_path = data_root.join(state_dir_name(&vault.name));
             Ok(VaultConfig {
                 name: vault.name,
                 path,
+                state_path,
                 excluded_folders: vault.excluded_folders,
             })
         })
@@ -91,6 +88,33 @@ fn expand_tilde(path: &str) -> Result<PathBuf> {
     Ok(PathBuf::from(path))
 }
 
+fn xdg_path(env_name: &str, home_suffix: &str) -> Result<PathBuf> {
+    match std::env::var_os(env_name) {
+        Some(value) => Ok(PathBuf::from(value)),
+        None => {
+            let home = std::env::var_os("HOME")
+                .ok_or_else(|| Error::BadRequest("HOME is not set".to_string()))?;
+            Ok(PathBuf::from(home).join(home_suffix))
+        }
+    }
+}
+
+fn state_dir_name(name: &str) -> String {
+    let sanitized = name
+        .chars()
+        .map(|ch| match ch {
+            '/' | '\\' | ':' | '\0' => '_',
+            ch => ch,
+        })
+        .collect::<String>();
+    let trimmed = sanitized.trim();
+    if trimmed.is_empty() || trimmed == "." || trimmed == ".." {
+        "vault".to_string()
+    } else {
+        trimmed.to_string()
+    }
+}
+
 fn validate_vaults(vaults: &[VaultConfig]) -> Result<()> {
     for (index, vault) in vaults.iter().enumerate() {
         for other in vaults.iter().skip(index + 1) {
@@ -100,6 +124,13 @@ fn validate_vaults(vaults: &[VaultConfig]) -> Result<()> {
                     vault.path.display(),
                     other.path.display(),
                     PathValidationReason::NestedVault
+                )));
+            }
+            if normalize_for_compare(&vault.state_path) == normalize_for_compare(&other.state_path)
+            {
+                return Err(Error::BadRequest(format!(
+                    "vault state paths must be unique: {}",
+                    vault.state_path.display()
                 )));
             }
         }
@@ -136,6 +167,7 @@ mod tests {
         let config = parse_config("[[vaults]]\nname='Main'\npath='~/notes'\n").unwrap();
         assert_eq!(config.vaults[0].name, "Main");
         assert!(config.vaults[0].path.ends_with("notes"));
+        assert!(config.vaults[0].state_path.ends_with("tansu/Main"));
     }
 
     #[test]
@@ -157,6 +189,21 @@ mod tests {
 
         let error = parse_config("vaults=[]").unwrap_err();
         assert!(error.to_string().contains("at least one vault"));
+    }
+
+    #[test]
+    fn sanitizes_and_requires_unique_state_paths() {
+        let config = parse_config("[[vaults]]\nname='A/B'\npath='/tmp/a'\n").unwrap();
+        assert!(config.vaults[0].state_path.ends_with("tansu/A_B"));
+
+        let dot = parse_config("[[vaults]]\nname='..'\npath='/tmp/a'\n").unwrap();
+        assert!(dot.vaults[0].state_path.ends_with("tansu/vault"));
+
+        let error = parse_config(
+            "[[vaults]]\nname='A/B'\npath='/tmp/a'\n[[vaults]]\nname='A:B'\npath='/tmp/b'\n",
+        )
+        .unwrap_err();
+        assert!(error.to_string().contains("state paths"));
     }
 
     #[test]

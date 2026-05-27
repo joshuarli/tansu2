@@ -7,4 +7,5 @@ bindings
 coverage/
 .dev/
 bench/results/
-tests/fixtures/test-vaults/vault-one/z-images/
+tests/fixtures/test-vaults/vault-one/z-images/*
+!tests/fixtures/test-vaults/vault-one/z-images/sample.webp

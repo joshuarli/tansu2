@@ -40,8 +40,8 @@ struct SearchDoc {
 }
 
 impl SearchIndex {
-    pub fn open(root: &Path) -> Result<Self> {
-        let path = root.join(".tansu").join("search");
+    pub fn open(state_root: &Path) -> Result<Self> {
+        let path = state_root.join("search");
         std::fs::create_dir_all(&path)?;
         let (schema, fields) = search_schema();
         let directory =

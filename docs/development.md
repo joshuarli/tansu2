@@ -34,9 +34,10 @@ pnpm run playwright:install
 make dev
 ```
 
-`make dev` regenerates `.dev/` from versioned fixtures, bundles the frontend, and
-runs the server on port `3000` with `XDG_CONFIG_HOME=.dev/config`. It does not
-read the user's real config.
+`make dev` regenerates isolated dev config/data under `.dev/`, points vaults at
+the versioned fixture content, bundles the frontend, and runs the server on port
+`3000` with `XDG_CONFIG_HOME=.dev/config` and `XDG_DATA_HOME=.dev/data`. It does
+not read the user's real config or app data.
 
 See [Logging](logging.md) for dev/e2e server, browser, and harness logs.
 
@@ -106,7 +107,9 @@ generated file.
 ## Real Vault Config
 
 The server reads `$XDG_CONFIG_HOME/tansu/config.toml`, then
-`~/.config/tansu/config.toml`.
+`~/.config/tansu/config.toml`. Per-vault catalog, history, session, settings,
+and search state are stored under `$XDG_DATA_HOME/tansu/<vault-name>`, or
+`~/.local/share/tansu/<vault-name>` when `XDG_DATA_HOME` is unset.
 
 ```toml
 [[vaults]]
@@ -121,10 +124,10 @@ path = "~/work-notes"
 
 Nested vaults are rejected before startup.
 
-## Generated Outputs
+## Generated Local Files
 
-- `.dev/`: generated dev/test runtime state
+- `.dev/`: generated dev-only config/data
 - `web/static/app.js`: generated frontend bundle
 - `bindings/`: ignored `ts-rs` output
 
-Do not commit generated runtime state.
+Do not commit generated local state.

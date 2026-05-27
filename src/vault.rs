@@ -28,6 +28,7 @@ pub struct VaultRuntime {
     pub index: usize,
     pub name: String,
     pub root: PathBuf,
+    state_root: PathBuf,
     catalog: Mutex<Catalog>,
     search: Mutex<SearchIndex>,
     op_lock: Mutex<()>,
@@ -47,17 +48,17 @@ enum SearchJob {
 impl VaultRuntime {
     pub fn open(index: usize, config: &VaultConfig, logs: LogHub) -> Result<Self> {
         fs::create_dir_all(&config.path)?;
-        fs::create_dir_all(config.path.join(".tansu"))?;
-        let mut catalog = Catalog::open(&config.path.join(".tansu").join("vault.db"))?;
+        initialize_state_dir(&config.path, &config.state_path)?;
+        let mut catalog = Catalog::open(&config.state_path.join("vault.db"))?;
         let settings = catalog.settings()?;
         let excluded = if settings.excluded_folders.is_empty() {
             config.excluded_folders.clone()
         } else {
             settings.excluded_folders
         };
-        reconcile_vault(&config.path, &mut catalog, &excluded)?;
+        reconcile_vault(&config.path, &config.state_path, &mut catalog, &excluded)?;
         let notes = catalog.live_notes()?;
-        let mut search = SearchIndex::open(&config.path)?;
+        let mut search = SearchIndex::open(&config.state_path)?;
         if search.rebuild(&config.path, &notes).is_err() {
             catalog.set_search_dirty(true, true)?;
         }
@@ -74,6 +75,10 @@ impl VaultRuntime {
                     ),
                     ("vault", serde_json::json!(index)),
                     ("path", serde_json::json!(config.path.to_string_lossy())),
+                    (
+                        "statePath",
+                        serde_json::json!(config.state_path.to_string_lossy()),
+                    ),
                     ("notes", serde_json::json!(notes.len())),
                 ]),
             );
@@ -82,6 +87,7 @@ impl VaultRuntime {
             index,
             name: config.name.clone(),
             root: config.path.clone(),
+            state_root: config.state_path.clone(),
             catalog: Mutex::new(catalog),
             search: Mutex::new(search),
             op_lock: Mutex::new(()),
@@ -112,15 +118,15 @@ impl VaultRuntime {
 
     pub fn start_watcher(self: &Arc<Self>) -> Result<()> {
         let root = self.root.clone();
+        let state_root = self.state_root.clone();
         let (tx, rx) = mpsc::channel::<()>();
         let mut watcher =
             notify::recommended_watcher(move |result: notify::Result<notify::Event>| {
                 if let Ok(event) = result {
-                    if event
-                        .paths
-                        .iter()
-                        .any(|path| path.components().any(|part| part.as_os_str() == ".tansu"))
-                    {
+                    if event.paths.iter().any(|path| {
+                        path.starts_with(&state_root)
+                            || path.components().any(|part| part.as_os_str() == ".tansu")
+                    }) {
                         return;
                     }
                     let _ = tx.send(());
@@ -175,7 +181,7 @@ impl VaultRuntime {
         let meta = catalog
             .note_by_id(note_id)?
             .ok_or_else(|| Error::NotFound(note_id.to_string()))?;
-        let content = read_visible_or_snapshot(&self.root, &meta)?;
+        let content = read_visible_or_snapshot(&self.root, &self.state_root, &meta)?;
         catalog.touch_recent(note_id)?;
         self.log_note_read("open", &meta, Some(content.len()));
         Ok(NoteDocument { meta, content })
@@ -218,7 +224,7 @@ impl VaultRuntime {
             }
             Err(error) => return Err(error),
         };
-        history::write_snapshot(&self.root, &note_id, &content)?;
+        history::write_snapshot(&self.state_root, &note_id, &content)?;
         history::write_visible_atomic(&visible_path(&self.root, &path), &content)?;
         let meta = catalog
             .note_by_id(&note_id)?
@@ -270,7 +276,7 @@ impl VaultRuntime {
                 return Err(Error::NotFound(note_id.to_string()));
             }
         }
-        let base = match history::read_snapshot(&self.root, note_id, &request.base_hash) {
+        let base = match history::read_snapshot(&self.state_root, note_id, &request.base_hash) {
             Ok(base) => base,
             Err(Error::NotFound(_)) => {
                 return Err(Error::BadRequest("base snapshot not found".to_string()));
@@ -316,7 +322,7 @@ impl VaultRuntime {
                     let visible_content = history::validate_and_canonicalize(&bytes)?;
                     if history::content_hash(&visible_content) == current_row.visible_hash {
                         let accepted = history::read_snapshot(
-                            &self.root,
+                            &self.state_root,
                             &current.note_id,
                             &current.content_hash,
                         )?;
@@ -330,7 +336,7 @@ impl VaultRuntime {
             let document = if include_document {
                 Some(NoteDocument {
                     meta: current.clone(),
-                    content: read_visible_or_snapshot(&self.root, &current)?,
+                    content: read_visible_or_snapshot(&self.root, &self.state_root, &current)?,
                 })
             } else {
                 None
@@ -344,17 +350,17 @@ impl VaultRuntime {
         if current.seq != base_seq || current.content_hash != base_hash {
             let draft =
                 catalog.create_conflict_draft(note_id, base_seq, base_hash, &submitted_hash)?;
-            history::write_conflict_draft(&self.root, note_id, draft.draft_id, &content)?;
+            history::write_conflict_draft(&self.state_root, note_id, draft.draft_id, &content)?;
             let current_doc = NoteDocument {
                 meta: current.clone(),
-                content: read_visible_or_snapshot(&self.root, &current)?,
+                content: read_visible_or_snapshot(&self.root, &self.state_root, &current)?,
             };
             return Err(Error::api(ApiErrorKind::SaveConflict {
                 current: Box::new(current_doc),
                 draft,
             }));
         }
-        history::write_snapshot(&self.root, note_id, &content)?;
+        history::write_snapshot(&self.state_root, note_id, &content)?;
         let parsed = parse_markdown(&current.path, &content);
         let meta = catalog.update_note_content(
             note_id,
@@ -426,7 +432,7 @@ impl VaultRuntime {
             history::sync_parent_dir(&old_visible)?;
             history::sync_parent_dir(&new_visible)?;
         }
-        let content = read_visible_or_snapshot(&self.root, &meta)?;
+        let content = read_visible_or_snapshot(&self.root, &self.state_root, &meta)?;
         let sync_version = catalog.sync_version()?;
         drop(catalog);
         self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
@@ -610,7 +616,7 @@ impl VaultRuntime {
             .content_hash
             .as_deref()
             .ok_or_else(|| Error::NotFound(format!("revision {event_id}")))?;
-        let content = history::read_snapshot(&self.root, note_id, hash)?;
+        let content = history::read_snapshot(&self.state_root, note_id, hash)?;
         if self.logs.enabled() {
             self.logs.server_event(
                 LogLevel::Info,
@@ -646,7 +652,7 @@ impl VaultRuntime {
             .content_hash
             .as_deref()
             .ok_or_else(|| Error::NotFound(format!("revision {event_id}")))?;
-        let content = history::read_snapshot(&self.root, note_id, hash)?;
+        let content = history::read_snapshot(&self.state_root, note_id, hash)?;
         let parsed = parse_markdown(&current.path, &content);
         let meta = catalog.update_note_content(
             note_id,
@@ -684,8 +690,12 @@ impl VaultRuntime {
         let draft = catalog
             .conflict_draft(note_id, draft_id)?
             .ok_or_else(|| Error::NotFound(format!("conflict draft {draft_id}")))?;
-        let content =
-            history::read_conflict_draft(&self.root, note_id, draft.draft_id, &draft.content_hash)?;
+        let content = history::read_conflict_draft(
+            &self.state_root,
+            note_id,
+            draft.draft_id,
+            &draft.content_hash,
+        )?;
         Ok(crate::api_types::ConflictDraftDocument { draft, content })
     }
 
@@ -702,9 +712,13 @@ impl VaultRuntime {
         let draft = catalog
             .conflict_draft(note_id, draft_id)?
             .ok_or_else(|| Error::NotFound(format!("conflict draft {draft_id}")))?;
-        let content =
-            history::read_conflict_draft(&self.root, note_id, draft.draft_id, &draft.content_hash)?;
-        history::write_snapshot(&self.root, note_id, &content)?;
+        let content = history::read_conflict_draft(
+            &self.state_root,
+            note_id,
+            draft.draft_id,
+            &draft.content_hash,
+        )?;
+        history::write_snapshot(&self.state_root, note_id, &content)?;
         let parsed = parse_markdown(&current.path, &content);
         let meta = catalog.update_note_content(
             note_id,
@@ -855,7 +869,12 @@ impl VaultRuntime {
             .map(|note| note.note_id)
             .collect::<std::collections::HashSet<_>>();
         let settings = catalog.settings()?;
-        reconcile_vault(&self.root, &mut catalog, &settings.excluded_folders)?;
+        reconcile_vault(
+            &self.root,
+            &self.state_root,
+            &mut catalog,
+            &settings.excluded_folders,
+        )?;
         let notes = catalog.live_notes()?;
         let after = notes
             .iter()
@@ -965,11 +984,15 @@ impl VaultRuntime {
     }
 }
 
-fn read_visible_or_snapshot(root: &std::path::Path, meta: &NoteMeta) -> Result<String> {
+fn read_visible_or_snapshot(
+    root: &std::path::Path,
+    state_root: &std::path::Path,
+    meta: &NoteMeta,
+) -> Result<String> {
     let visible = visible_path(root, &meta.path);
     match fs::read(&visible) {
         Ok(bytes) => history::validate_and_canonicalize(&bytes),
-        Err(_) => history::read_snapshot(root, &meta.note_id, &meta.content_hash),
+        Err(_) => history::read_snapshot(state_root, &meta.note_id, &meta.content_hash),
     }
 }
 
@@ -1059,6 +1082,42 @@ fn utf16_character_to_byte_offset(line: &str, character: usize) -> Result<usize>
             "delta edit position is outside the base document".to_string(),
         ))
     }
+}
+
+fn initialize_state_dir(root: &Path, state_root: &Path) -> Result<()> {
+    let legacy = root.join(".tansu");
+    let should_copy_legacy = legacy.join("vault.db").exists()
+        && !state_root.join("vault.db").exists()
+        && (!state_root.exists() || state_dir_is_empty(state_root)?);
+    if should_copy_legacy {
+        copy_dir_recursive(&legacy, state_root)?;
+    } else {
+        fs::create_dir_all(state_root)?;
+    }
+    Ok(())
+}
+
+fn state_dir_is_empty(path: &Path) -> Result<bool> {
+    match fs::read_dir(path) {
+        Ok(mut entries) => Ok(entries.next().is_none()),
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => Ok(true),
+        Err(error) => Err(Error::Io(error)),
+    }
+}
+
+fn copy_dir_recursive(from: &Path, to: &Path) -> Result<()> {
+    fs::create_dir_all(to)?;
+    for entry in fs::read_dir(from)? {
+        let entry = entry?;
+        let source = entry.path();
+        let target = to.join(entry.file_name());
+        if source.is_dir() {
+            copy_dir_recursive(&source, &target)?;
+        } else {
+            fs::copy(&source, &target)?;
+        }
+    }
+    Ok(())
 }
 
 fn normalize_asset_path(path: &str) -> Result<PathBuf> {
@@ -1375,7 +1434,7 @@ mod tests {
         assert!(response.document.is_none());
         assert_eq!(
             history::read_snapshot(
-                &vault.root,
+                &vault.state_root,
                 &created.meta.note_id,
                 &response.meta.content_hash
             )
@@ -1499,13 +1558,46 @@ mod tests {
         assert!(vault.read_asset("../bad.webp").is_err());
     }
 
+    #[test]
+    fn state_lives_outside_vault_and_legacy_dot_tansu_is_copied() {
+        let dir = tempfile::tempdir().unwrap().keep();
+        let legacy_state = dir.join(".tansu");
+        fs::write(dir.join("A.md"), "# A\n").unwrap();
+        let mut catalog = Catalog::open(&legacy_state.join("vault.db")).unwrap();
+        reconcile_vault(&dir, &legacy_state, &mut catalog, &[]).unwrap();
+        let legacy_note = catalog.live_notes().unwrap().remove(0);
+        drop(catalog);
+
+        let state_path = dir.join("state");
+        let vault = VaultRuntime::open(
+            0,
+            &VaultConfig {
+                name: "Test".to_string(),
+                path: dir.clone(),
+                state_path: state_path.clone(),
+                excluded_folders: Vec::new(),
+            },
+            LogHub::new(crate::logging::LogMode::Off),
+        )
+        .unwrap();
+
+        assert!(state_path.join("vault.db").exists());
+        assert!(state_path.join("history").exists());
+        assert_eq!(
+            vault.bootstrap(vec![], 0).unwrap().notes[0].note_id,
+            legacy_note.note_id
+        );
+    }
+
     fn test_vault() -> VaultRuntime {
         let dir = tempfile::tempdir().unwrap().keep();
+        let state_path = dir.join("state");
         VaultRuntime::open(
             0,
             &VaultConfig {
                 name: "Test".to_string(),
-                path: dir,
+                path: dir.clone(),
+                state_path,
                 excluded_folders: Vec::new(),
             },
             LogHub::new(crate::logging::LogMode::Off),

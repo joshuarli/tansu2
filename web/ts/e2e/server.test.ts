@@ -24,6 +24,7 @@ const e2eBrowser = browserTypeFromEnv();
 
 type TestFixture = {
   configHome: string;
+  dataHome: string;
   vaultOne: string;
   vaultTwo: string;
 };
@@ -52,7 +53,7 @@ describe("real server harness", () => {
   beforeAll(async () => {
     const root = await mkdtemp(join(tmpdir(), "tansu2-e2e-"));
     const fixture = JSON.parse(
-      execFileSync(process.execPath, ["scripts/test-fixture.mjs", root], {
+      execFileSync(process.execPath, ["scripts/test-fixture.mjs", root, "--copy-vaults"], {
         cwd: process.cwd(),
         encoding: "utf8",
       }),
@@ -62,7 +63,12 @@ describe("real server harness", () => {
     baseUrl = `http://127.0.0.1:${port}`;
     server = spawn("cargo", ["run", "--quiet", "--bin", "tansu2", "--", "--port", String(port)], {
       cwd: process.cwd(),
-      env: { ...process.env, TANSU2_LOGS: "buffer", XDG_CONFIG_HOME: fixture.configHome },
+      env: {
+        ...process.env,
+        TANSU2_LOGS: "buffer",
+        XDG_CONFIG_HOME: fixture.configHome,
+        XDG_DATA_HOME: fixture.dataHome,
+      },
       stdio: ["ignore", "pipe", "pipe"],
     });
     server.stdout?.on("data", (chunk: Buffer) => serverOutput.push(chunk.toString("utf8")));

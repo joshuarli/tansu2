@@ -1,7 +1,7 @@
 # Migration
 
 Tansu2 can open an existing Markdown vault by scanning `.md` files and assigning
-new hidden `noteId`s in `.tansu/vault.db`.
+durable `noteId`s in app-managed vault state.
 
 ## Safe First Run
 
@@ -14,20 +14,23 @@ new hidden `noteId`s in `.tansu/vault.db`.
 6. Start Tansu2 and let startup reconciliation complete before editing.
 7. Inspect any unresolved notes before making app-driven changes.
 
-## Files Created
+## State Created
 
-Tansu2 creates `.tansu/` inside the vault:
+Tansu2 keeps Markdown and assets in the vault, and stores runtime state under
+`$XDG_DATA_HOME/tansu/<vault-name>` or `~/.local/share/tansu/<vault-name>`:
 
 ```text
-.tansu/
+~/.local/share/tansu/Personal/
   vault.db
   history/
-  conflict-drafts/
   search/
 ```
 
 Markdown files are not modified to add hidden IDs. Existing `z-images/` assets
 remain ordinary vault files.
+
+If an older vault-local `.tansu/` exists and no app-data state exists yet, Tansu2
+copies that legacy state into the app data directory on startup.
 
 ## First Scan Behavior
 

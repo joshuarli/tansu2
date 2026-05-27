@@ -46,4 +46,5 @@ leak into each other.
 - `make test`
 - `make test-e2e`
 
-`make dev` runs against generated `.dev` test vaults, not the user's real config.
+`make dev` points at the shared fixture vaults and uses generated `.dev`
+config/data, not the user's real config or app data.

@@ -36,11 +36,7 @@ pub fn content_hash(content: &str) -> String {
 
 pub fn write_snapshot(root: &Path, note_id: &str, content: &str) -> Result<String> {
     let hash = content_hash(content);
-    let dir = root
-        .join(".tansu")
-        .join("history")
-        .join("snapshots")
-        .join(note_id);
+    let dir = root.join("history").join("snapshots").join(note_id);
     fs::create_dir_all(&dir)?;
     let path = dir.join(hash_filename(&hash));
     write_compressed_atomic(&path, &canonical_markdown_bytes(content))?;
@@ -49,7 +45,6 @@ pub fn write_snapshot(root: &Path, note_id: &str, content: &str) -> Result<Strin
 
 pub fn read_snapshot(root: &Path, note_id: &str, hash: &str) -> Result<String> {
     let path = root
-        .join(".tansu")
         .join("history")
         .join("snapshots")
         .join(note_id)
@@ -80,11 +75,7 @@ pub fn write_conflict_draft(
     content: &str,
 ) -> Result<String> {
     let hash = content_hash(content);
-    let dir = root
-        .join(".tansu")
-        .join("history")
-        .join("conflicts")
-        .join(note_id);
+    let dir = root.join("history").join("conflicts").join(note_id);
     fs::create_dir_all(&dir)?;
     let path = dir.join(format!("{draft_id}.lz4"));
     write_compressed_atomic(&path, &canonical_markdown_bytes(content))?;
@@ -98,7 +89,6 @@ pub fn read_conflict_draft(
     expected_hash: &str,
 ) -> Result<String> {
     let path = root
-        .join(".tansu")
         .join("history")
         .join("conflicts")
         .join(note_id)
@@ -210,7 +200,6 @@ mod tests {
         let hash = write_snapshot(dir.path(), "note", "hello\n").unwrap();
         let path = dir
             .path()
-            .join(".tansu")
             .join("history")
             .join("snapshots")
             .join("note")

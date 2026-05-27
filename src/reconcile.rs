@@ -11,10 +11,11 @@ use crate::{Error, Result};
 
 pub fn reconcile_vault(
     root: &Path,
+    state_root: &Path,
     catalog: &mut Catalog,
     excluded_folders: &[String],
 ) -> Result<()> {
-    let files = walk_markdown(root, excluded_folders)?;
+    let files = walk_markdown(root, state_root, excluded_folders)?;
     let mut seen_keys: HashMap<String, Vec<FileRecord>> = HashMap::new();
     for file in files {
         seen_keys
@@ -27,7 +28,12 @@ pub fn reconcile_vault(
         records.sort_by(|a, b| a.path.cmp(&b.path));
         if records.len() > 1 {
             for record in records.iter().skip(1) {
-                insert_unresolved(root, catalog, record, UnresolvedReason::CaseFoldCollision)?;
+                insert_unresolved(
+                    state_root,
+                    catalog,
+                    record,
+                    UnresolvedReason::CaseFoldCollision,
+                )?;
             }
         }
     }
@@ -51,8 +57,11 @@ pub fn reconcile_vault(
                 catalog.mark_unresolved(&row.meta.note_id, reason)?;
             } else if file.hash != row.meta.content_hash {
                 if row.visible_hash != row.meta.content_hash && file.hash == row.visible_hash {
-                    let content =
-                        history::read_snapshot(root, &row.meta.note_id, &row.meta.content_hash)?;
+                    let content = history::read_snapshot(
+                        state_root,
+                        &row.meta.note_id,
+                        &row.meta.content_hash,
+                    )?;
                     history::write_visible_atomic(
                         &crate::paths::visible_path(root, &row.meta.path),
                         &content,
@@ -60,7 +69,7 @@ pub fn reconcile_vault(
                     catalog.record_visible_hash(&row.meta.note_id, &row.meta.content_hash)?;
                 } else {
                     let parsed = parse_markdown(&file.path, &file.content);
-                    history::write_snapshot(root, &row.meta.note_id, &file.content)?;
+                    history::write_snapshot(state_root, &row.meta.note_id, &file.content)?;
                     catalog.update_note_content(
                         &row.meta.note_id,
                         &parsed.title,
@@ -78,7 +87,7 @@ pub fn reconcile_vault(
             consumed.insert(file.path_key.clone());
             catalog.rename_note(&row.meta.note_id, &file.path, &file.path_key)?;
         } else if let Ok(content) =
-            history::read_snapshot(root, &row.meta.note_id, &row.meta.content_hash)
+            history::read_snapshot(state_root, &row.meta.note_id, &row.meta.content_hash)
         {
             if should_repair_missing_visible(catalog, &row.meta.note_id)? {
                 history::write_visible_atomic(
@@ -103,7 +112,7 @@ pub fn reconcile_vault(
             continue;
         }
         if let Some(reason) = file.unresolved.clone() {
-            insert_unresolved(root, catalog, &file, reason)?;
+            insert_unresolved(state_root, catalog, &file, reason)?;
             continue;
         }
         if catalog.note_by_path_key(&file.path_key)?.is_some() {
@@ -120,7 +129,7 @@ pub fn reconcile_vault(
             source: NoteEventSource::External,
             unresolved: None,
         })?;
-        history::write_snapshot(root, &note_id, &file.content)?;
+        history::write_snapshot(state_root, &note_id, &file.content)?;
     }
     Ok(())
 }
@@ -134,14 +143,19 @@ struct FileRecord {
     unresolved: Option<UnresolvedReason>,
 }
 
-fn walk_markdown(root: &Path, excluded_folders: &[String]) -> Result<Vec<FileRecord>> {
+fn walk_markdown(
+    root: &Path,
+    state_root: &Path,
+    excluded_folders: &[String],
+) -> Result<Vec<FileRecord>> {
     let mut out = Vec::new();
-    walk_dir(root, root, excluded_folders, &mut out)?;
+    walk_dir(root, state_root, root, excluded_folders, &mut out)?;
     Ok(out)
 }
 
 fn walk_dir(
     root: &Path,
+    state_root: &Path,
     dir: &Path,
     excluded_folders: &[String],
     out: &mut Vec<FileRecord>,
@@ -153,11 +167,14 @@ fn walk_dir(
         let entry = entry?;
         let path = entry.path();
         let file_name = entry.file_name().to_string_lossy().to_string();
+        if path.starts_with(state_root) {
+            continue;
+        }
         if file_name == ".tansu" || excluded_folders.iter().any(|folder| folder == &file_name) {
             continue;
         }
         if path.is_dir() {
-            walk_dir(root, &path, excluded_folders, out)?;
+            walk_dir(root, state_root, &path, excluded_folders, out)?;
             continue;
         }
         if path.extension().and_then(|value| value.to_str()) != Some("md") {
@@ -225,7 +242,7 @@ fn should_repair_missing_visible(catalog: &Catalog, note_id: &str) -> Result<boo
 }
 
 fn insert_unresolved(
-    root: &Path,
+    state_root: &Path,
     catalog: &mut Catalog,
     record: &FileRecord,
     reason: UnresolvedReason,
@@ -245,7 +262,7 @@ fn insert_unresolved(
         unresolved: Some(reason),
     })?;
     if !record.content.is_empty() {
-        let _ = history::write_snapshot(root, &note_id, &record.content);
+        let _ = history::write_snapshot(state_root, &note_id, &record.content);
     }
     Ok(())
 }
@@ -262,12 +279,12 @@ mod tests {
     fn exact_hash_external_rename_preserves_note_id() {
         let dir = tempfile::tempdir().unwrap();
         fs::write(dir.path().join("A.md"), "# A\n\nsame\n").unwrap();
-        let mut catalog = Catalog::open(&dir.path().join(".tansu").join("vault.db")).unwrap();
-        reconcile_vault(dir.path(), &mut catalog, &[]).unwrap();
+        let mut catalog = Catalog::open(&dir.path().join("state").join("vault.db")).unwrap();
+        reconcile_vault(dir.path(), &dir.path().join("state"), &mut catalog, &[]).unwrap();
         let before = catalog.live_notes().unwrap().remove(0);
 
         fs::rename(dir.path().join("A.md"), dir.path().join("Renamed.md")).unwrap();
-        reconcile_vault(dir.path(), &mut catalog, &[]).unwrap();
+        reconcile_vault(dir.path(), &dir.path().join("state"), &mut catalog, &[]).unwrap();
         let after = catalog.live_notes().unwrap().remove(0);
 
         assert_eq!(after.note_id, before.note_id);
@@ -278,13 +295,13 @@ mod tests {
     fn moved_and_edited_file_becomes_delete_plus_new_note() {
         let dir = tempfile::tempdir().unwrap();
         fs::write(dir.path().join("A.md"), "# A\n\nsame\n").unwrap();
-        let mut catalog = Catalog::open(&dir.path().join(".tansu").join("vault.db")).unwrap();
-        reconcile_vault(dir.path(), &mut catalog, &[]).unwrap();
+        let mut catalog = Catalog::open(&dir.path().join("state").join("vault.db")).unwrap();
+        reconcile_vault(dir.path(), &dir.path().join("state"), &mut catalog, &[]).unwrap();
         let original = catalog.live_notes().unwrap().remove(0);
 
         fs::remove_file(dir.path().join("A.md")).unwrap();
         fs::write(dir.path().join("Moved.md"), "# A\n\nchanged\n").unwrap();
-        reconcile_vault(dir.path(), &mut catalog, &[]).unwrap();
+        reconcile_vault(dir.path(), &dir.path().join("state"), &mut catalog, &[]).unwrap();
         let live = catalog.live_notes().unwrap();
         let rows = catalog.all_rows().unwrap();
 
@@ -300,9 +317,9 @@ mod tests {
     fn invalid_utf8_file_is_unresolved_and_excluded_from_live_notes() {
         let dir = tempfile::tempdir().unwrap();
         fs::write(dir.path().join("Bad.md"), [0xff, 0xfe]).unwrap();
-        let mut catalog = Catalog::open(&dir.path().join(".tansu").join("vault.db")).unwrap();
+        let mut catalog = Catalog::open(&dir.path().join("state").join("vault.db")).unwrap();
 
-        reconcile_vault(dir.path(), &mut catalog, &[]).unwrap();
+        reconcile_vault(dir.path(), &dir.path().join("state"), &mut catalog, &[]).unwrap();
 
         assert!(catalog.live_notes().unwrap().is_empty());
         let rows = catalog.all_rows().unwrap();
@@ -314,11 +331,12 @@ mod tests {
     fn interrupted_user_save_repairs_visible_file_from_latest_snapshot() {
         let dir = tempfile::tempdir().unwrap();
         fs::write(dir.path().join("A.md"), "# A\n\nold\n").unwrap();
-        let mut catalog = Catalog::open(&dir.path().join(".tansu").join("vault.db")).unwrap();
-        reconcile_vault(dir.path(), &mut catalog, &[]).unwrap();
+        let mut catalog = Catalog::open(&dir.path().join("state").join("vault.db")).unwrap();
+        reconcile_vault(dir.path(), &dir.path().join("state"), &mut catalog, &[]).unwrap();
         let note = catalog.live_notes().unwrap().remove(0);
         let accepted = "# A\n\nnew\n";
-        let accepted_hash = history::write_snapshot(dir.path(), &note.note_id, accepted).unwrap();
+        let accepted_hash =
+            history::write_snapshot(&dir.path().join("state"), &note.note_id, accepted).unwrap();
         let parsed = parse_markdown(&note.path, accepted);
         catalog
             .update_note_content(
@@ -331,7 +349,7 @@ mod tests {
             )
             .unwrap();
 
-        reconcile_vault(dir.path(), &mut catalog, &[]).unwrap();
+        reconcile_vault(dir.path(), &dir.path().join("state"), &mut catalog, &[]).unwrap();
 
         let visible = fs::read_to_string(dir.path().join("A.md")).unwrap();
         assert_eq!(visible, history::canonical_markdown_string(accepted));
@@ -344,11 +362,12 @@ mod tests {
     fn external_edit_after_accepted_save_is_preserved_when_visible_hash_changed() {
         let dir = tempfile::tempdir().unwrap();
         fs::write(dir.path().join("A.md"), "# A\n\nold\n").unwrap();
-        let mut catalog = Catalog::open(&dir.path().join(".tansu").join("vault.db")).unwrap();
-        reconcile_vault(dir.path(), &mut catalog, &[]).unwrap();
+        let mut catalog = Catalog::open(&dir.path().join("state").join("vault.db")).unwrap();
+        reconcile_vault(dir.path(), &dir.path().join("state"), &mut catalog, &[]).unwrap();
         let note = catalog.live_notes().unwrap().remove(0);
         let accepted = "# A\n\nnew\n";
-        let accepted_hash = history::write_snapshot(dir.path(), &note.note_id, accepted).unwrap();
+        let accepted_hash =
+            history::write_snapshot(&dir.path().join("state"), &note.note_id, accepted).unwrap();
         let parsed = parse_markdown(&note.path, accepted);
         catalog
             .update_note_content(
@@ -362,7 +381,7 @@ mod tests {
             .unwrap();
         fs::write(dir.path().join("A.md"), "# A\n\nexternal\n").unwrap();
 
-        reconcile_vault(dir.path(), &mut catalog, &[]).unwrap();
+        reconcile_vault(dir.path(), &dir.path().join("state"), &mut catalog, &[]).unwrap();
 
         let live = catalog.live_notes().unwrap().remove(0);
         assert_eq!(live.note_id, note.note_id);

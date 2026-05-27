@@ -21,7 +21,7 @@ async function main() {
 
   const root = await mkdtemp(join(tmpdir(), "tansu2-cache-bench-"));
   const fixture = JSON.parse(
-    execFileSync(process.execPath, ["scripts/test-fixture.mjs", root], {
+    execFileSync(process.execPath, ["scripts/test-fixture.mjs", root, "--copy-vaults"], {
       cwd: REPO_ROOT,
       encoding: "utf8",
     }),
@@ -33,7 +33,7 @@ async function main() {
     ["run", "--quiet", "--bin", "tansu2", "--", "--port", String(port)],
     {
       cwd: REPO_ROOT,
-      env: { ...process.env, XDG_CONFIG_HOME: fixture.configHome },
+      env: { ...process.env, XDG_CONFIG_HOME: fixture.configHome, XDG_DATA_HOME: fixture.dataHome },
       stdio: ["ignore", "pipe", "pipe"],
     },
   );

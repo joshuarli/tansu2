@@ -1,8 +1,9 @@
 # Architecture
 
 Tansu2 is a Rust server, static TypeScript frontend, and in-repo Markdown editor.
-Markdown files remain normal files; `.tansu/` holds catalog, history, conflicts,
-search, settings, session, pins, recents, and repair state.
+Markdown files remain normal files. App-managed catalog, history, conflicts,
+search, settings, session, pins, recents, and repair state live under
+`$XDG_DATA_HOME/tansu/<vault-name>` or `~/.local/share/tansu/<vault-name>`.
 
 ## What Must Not Break
 

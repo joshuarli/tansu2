@@ -550,6 +550,7 @@ mod tests {
             }
             config_vaults.push(VaultConfig {
                 name: (*name).to_string(),
+                state_path: root.path().join(format!("state-{index}")),
                 path,
                 excluded_folders: Vec::new(),
             });

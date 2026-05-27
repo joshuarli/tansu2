@@ -1,10 +1,11 @@
 NAME := tansu2
 DEV_DIR := $(CURDIR)/.dev
 DEV_CONFIG_HOME := $(DEV_DIR)/config
+DEV_DATA_HOME := $(DEV_DIR)/data
 
 dev: types dev-config
 	pnpm run bundle-dev
-	TANSU2_LOGS=pretty XDG_CONFIG_HOME="$(DEV_CONFIG_HOME)" cargo run --bin $(NAME) -- --port 3000
+	TANSU2_LOGS=pretty XDG_CONFIG_HOME="$(DEV_CONFIG_HOME)" XDG_DATA_HOME="$(DEV_DATA_HOME)" cargo run --bin $(NAME) -- --port 3000
 
 dev-config:
 	node scripts/test-fixture.mjs "$(DEV_DIR)"
