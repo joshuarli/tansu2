@@ -16,8 +16,8 @@ check: types-check
 lint: lint-ts lint-rs
 
 lint-ts: types-check
-	pnpm exec oxfmt --check --config oxfmt.config.mjs
-	pnpm exec oxlint
+	pnpm exec oxfmt --write --config oxfmt.config.mjs
+	pnpm exec oxlint --fix --config oxlint.config.mjs
 	pnpm exec knip --reporter compact
 
 lint-rs:
