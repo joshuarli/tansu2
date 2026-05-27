@@ -27,7 +27,7 @@ This enables the following use cases:
 
 The below figure tells part of the story: CXL could solve the latency and bandwidth gaps between main system memory, and storage, to enable a new memory tier.
 
-![](https://substackcdn.com/image/fetch/$s_!y9Yl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fccd5ab9c-add7-4a0c-bc41-1411531124b4_1281x737.png)
+![](z-images/34eea115e3a644bf24c00ed5b4ec738b.webp)
 
 [SNIA](https://www.snia.org/education/what-is-persistent-memory)
 
@@ -39,7 +39,7 @@ Currently, CXL availability is the main issue, as Nvidia GPUs don't support it, 
 
 The two main issues are related to PCIe SerDes and beachfront or shoreline area. IO for chips generally must come from the edges of the chip. The below picture from Nvidia shows the H100 in a cartoonized format. The center has all the compute. The top and and bottom sides are 100% dedicated to HBM. As we move forward from the H100 to B100, the number of HBM grows to 8, requiring even more shore line area on it. Nvidia continues to consume two entire sides of their 2 die package with HBM.
 
-![](https://substackcdn.com/image/fetch/$s_!FqEs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe170cc94-ccfa-4092-9855-6a5f24fcffdf_1874x1501.jpeg)
+![](z-images/0892e0e61f2eff04b8f2dd1c1fcb6390.webp)
 
 [Locuza](https://locuza.substack.com/p/nvidias-ad102-officially-revealed)
 
@@ -51,13 +51,13 @@ Therefore, if you are a chip designer in a bandwidth constrained world, you are 
 
 The main scale up and scale out interconnects for AI Clusters will be proprietary protocols such as Nvidia NVlink and Google ICI, or Ethernet and Infiniband. This is due to [intrinsic PCIe SerDes limitations](https://www.semianalysis.com/i/137826061/roadmap-b-x-h-hbme-g-serdes-pcie-co-packaged-optics-optical-switch) even in scale up formats. Due to diverging latency goals, PCIe and Ethernet SerDes have dramatically different bit-error-rate (BER) requirements.
 
-![](https://substackcdn.com/image/fetch/$s_!Ry-c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3796b781-3761-44dc-a77d-8bacb81b8a37_1913x800.png)
+![](z-images/d05a261cc35b267b5a3eb9c8e912d038.webp)
 
 Astera Labs
 
 PCIe 6 requires a BER of < 1e-12 while Ethernet requires 1e-4. This massive 8 orders of magnitude difference is due to PCIe's strict latency requirements, necessitating an extremely light forward error correction (FEC) scheme. FECs digitally add redundant parity bits/information at the transmitter which is used by the receiver to detect and correct errors (bit flips) much like ECC in memory systems. Heavier FECs add more overhead, occupying space that could be used for data bits instead. More importantly, FECs add a large amount of latency on the receiver. This is why PCIe has avoided having any FEC up until Gen6.
 
-![](https://substackcdn.com/image/fetch/$s_!wjJ2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F82f10c09-e16c-4951-8f86-e42363196829_2103x803.png)
+![](z-images/16951ab05f777b3a48f9699e3941d271.webp)
 
 **[Wikipedia](https://en.wikipedia.org/wiki/PCI_Express)**
 
@@ -69,6 +69,6 @@ Ethernet-style SerDes are much less constrained by stringent PCIe specifications
 
 AMD’s lack of high quality SerDes are severely limiting them in the competitiveness of their products long term. They have come up with the Open xGMI / Open Infinity Fabric / Accelerated Fabric Link, because CXL is not the correct protocol for AI. While it is primarily based on PCIe, it does eschew some of the standard features of PCIe 7.0 and CXL for time to market, performance, coherence, and reach reasons.
 
-![](https://substackcdn.com/image/fetch/$s_!JYNs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb3db5561-633e-4f4e-ad99-9ed9e61c6d69_1200x675.jpeg)
+![](z-images/38c330f6612d7d25365f6a6b3554ecc9.webp)
 
 What about CXL memory bandwidth expansion for AI? What about the custom AI hyperscaler chips adoption? What about the other custom silicon chips from other vendors such as the Marvell Google CXL chip? We will address those questions and review the more classic Memory Pooling and Memory Expansion use-cases.

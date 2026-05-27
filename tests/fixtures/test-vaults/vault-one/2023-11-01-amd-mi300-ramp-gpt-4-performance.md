@@ -22,7 +22,7 @@ Note she is actually sandbagging MI300 here by only saying >$2 billion. We will 
 
 Positing away from AMD’s current <0.1% market share in LLM training and inference, AMD continues to gain market share steadily in datacenter. That will continue through next year with Turin and Turin-Dense launching in the middle of next year.
 
-![](https://substackcdn.com/image/fetch/$s_!4myy!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5e8343b-6377-4a84-bbf2-69f7cf841403_2658x1256.png)
+![](z-images/34a4f7ca7a388a7de37d89ea7e835637.webp)
 
 There are two angles to go at to arrive at AMD’s revenue from MI300 next year. These are how much supply AMD can secure, and how much major customers will order.
 

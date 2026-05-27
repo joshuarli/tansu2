@@ -8,7 +8,7 @@ description: "Faster than Nvidia? Dissecting the economics"
 
 Groq, an AI hardware startup, has been making the rounds recently because of their extremely impressive demos showcasing the leading open-source model, [Mistral Mixtral 8x7b on their inference API](https://www.semianalysis.com/p/inference-race-to-the-bottom-make). They are achieving up to 4x the throughput of other inference services while also charging less than 1/3 that of Mistral themselves.
 
-![](https://substackcdn.com/image/fetch/$s_!SnZL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa8206116-08c4-45b0-b6fd-da72d829f5e8_1262x689.png)
+![](z-images/b387e26c65e8b3adf770e9f2d608e9c7.webp)
 
 [https://artificialanalysis.ai/models/mixtral-8x7b-instruct](https://artificialanalysis.ai/models/mixtral-8x7b-instruct)
 
@@ -28,7 +28,7 @@ Performance in this context isn’t just the raw tokens per second for a single 
 
 As we discussed in [the Inference Race to the Bottom analysis](https://www.semianalysis.com/p/inference-race-to-the-bottom-make), many firms are genuinely losing money on their Mixtral API inference service. Some also have very low-rate limits to limit the amount they lose. We dove deeper into [quantization and other hardware GPU options such as MI300X in the report](https://www.semianalysis.com/p/inference-race-to-the-bottom-make), but the key takeaway is those serving an unmodified model (FP16) required batch sizes of 64+ to turn a profit. We believe that Mistral, Together, and Fireworks are serving Mistral at breakeven to slight profit margins.
 
-![](https://substackcdn.com/image/fetch/$s_!DArF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1600d6ac-269a-4303-9c61-12da206617c4_1607x970.png)
+![](z-images/8136ab016638a9448adc94ba06bed30d.webp)
 
 The same cannot be said for others offering Mixtral APIs. They are either lying about quantization, or lighting VC money on fire to acquire a customer base. Groq, in a bold move, is matching these folks on pricing, with their extremely low $0.27 per million token pricing.
 
@@ -38,11 +38,11 @@ Or is it subsidized to drive hype? Note that Groq’s last round was in 2021, wi
 
 Let’s walk through Groq’s chip, system, a costing analysis, and how they achieve this performance.
 
-![](https://substackcdn.com/image/fetch/$s_!VEMf!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffea52d37-f371-4feb-b6e4-16897425def7_2072x1040.png)
+![](z-images/ece93b439b13a00331402f6fb362601e.webp)
 
 Groq’s chip has a fully deterministic VLIW architecture, with no buffers, and it reaches ~725mm <sup>2</sup> die size on Global Foundries 14nm process node. It has no external memory, and it keeps weights, KVCache, and activations, etc all on-chip during processing. Because each chip only has 230MB of SRAM, no useful models can actually fit on a single chip. Instead, they must utilize many chips to fit the model and network them together.
 
-![](https://substackcdn.com/image/fetch/$s_!GLD2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0ce1a99e-2e75-4fc1-8ec6-76582cd07929_1938x1264.png)
+![](z-images/aaa668df04d6ddc6c6c8d937e66e22d7.webp)
 
 In the case of the Mixtral model, Groq had to connect 8 racks of 9 servers each with 8 chips per server. That’s a total of 576 chips to build up the inference unit and serve the Mixtral model. Compare that to Nvidia where a single H100 can fit the model at low batch sizes, and two chips have enough memory to support large batch sizes.
 
@@ -52,7 +52,7 @@ Furthermore, Nvidia buys 80GB of HBM from SK Hynix for ~$1,150 for each H100 chi
 
 The table below presents three deployments, one is for Groq, with their current pipeline parallelism and with batch size 3, which we we hear they will implement in production next week, and the others outline a latency optimized H100 inference deployment with speculative decoding as well as a throughput optimized H100 inference deployment.
 
-![](https://substackcdn.com/image/fetch/$s_!pYgt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff61a6c18-b094-487e-9fd8-5a63d4a26fef_1365x637.png)
+![](z-images/9da510faf48c5a7bb565143e796c6745.webp)
 
 The table above greatly simplifies the economics (while ignoring significant amounts of system level costs which we will dive into later, and it also ignores Nvidia’s massive margin). The point here is to show that Groq has a chip architectural advantage in terms of dollars of silicon bill of materials per token of output versus a latency optimized Nvidia system.
 
@@ -68,7 +68,7 @@ In a throughput optimized system, the economics change significantly. Nvidia sys
 
 Once we account for these factors, the Tokenomics (cred swyx for swanky new word), look very different. On the Nvidia side we will use the GPU cloud economics explained [here](https://www.semianalysis.com/p/gpu-cloud-economics-explained-the) and shown below.
 
-![](https://substackcdn.com/image/fetch/$s_!q_a0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0cc61d8b-27a4-486e-b557-15488db10ab7_1912x1365.png)
+![](z-images/3c9a053876a3c9e7aa7dd34afa7865c6.webp)
 
 The cost of capital includes the hurdle rate, that is – accounting for the return on investment someone presenting this business case would expect to earn in order to justify the project’s risk.
 
@@ -76,6 +76,6 @@ Nvidia applies a huge gross margin to their GPU baseboards. Furthermore, this $3
 
 For Groq, we are estimating system costs and are factoring in details regarding the chip, package, networking, CPUs, memory, while assuming a lower overall ODM margin. We are not including Groq’s margin charged for selling hardware either, so while it may seem Apples vs Oranges, it’s also a fair comparison of Groq’s cost vs an Inference API provider’s costs, as both are serving up the same product/model.
 
-![](https://substackcdn.com/image/fetch/$s_!Qwjk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3bd31f8d-5815-4e0c-90d9-688f4e19ae21_1900x1318.png)
+![](z-images/39d0b50fbd283441fcbb2685c656cb8b.webp)
 
 It’s noteworthy that 8 Nvidia GPUs only need 2 CPUs, but Groq’s 576 chip systems currently have 144 CPUs, and 144TBs of RAM.

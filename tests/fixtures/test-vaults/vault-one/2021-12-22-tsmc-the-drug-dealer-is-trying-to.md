@@ -31,7 +31,7 @@ For AMD, these supply issues deal more with substrates and externally at server 
 
 Both MediaTek and AMD also work very closely with TSMC on customizing process nodes. MediaTek has been in the driver seat for the N6 and N4 node evolutions. MediaTek has been the first customer to use these process nodes by about 6 months. AMD also designs their own custom libraries. They worked on this some at N7, but especially so at the N5 process node. AMD is more so a trailblazer on packaging. TSMC’s has a testbed and ramp partner for 3D hybrid bonding packaging. This is AMD. Volumes here very small, but AMD has a more than 6 months head start on shipping the technology.
 
-![](https://substackcdn.com/image/fetch/$s_!BjiC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb7a7b3d-d67b-403f-b100-e90176d7e81f_1024x427.png)
+![](z-images/3159fcafb0916b0b36631abe3bd5c5e4.webp)
 
 TSMC Q3 2021 Financial Filings
 
@@ -55,7 +55,7 @@ Qualcomm has played this relationship masterfully, but they have also had a rece
 
 This was a great arrangement up until just recently where MediaTek came roaring back. [In July, SemiAnalysis exclusively detailed MediaTek’s usage of N4 for a new flagship SOC.](https://semianalysis.substack.com/p/mediatek-officially-enters-the-flagship) We detailed the exact CPU configuration and cache details many months before MediaTek’s own announcement. At the time we believed that MediaTek may take the Android CPU crown away from Qualcomm, and that seems to have come true. Benchmarks show MediaTek has a 17% MT performance advantage and a 34% power efficiency advantage on the CPU.
 
-![](https://substackcdn.com/image/fetch/$s_!0ZmI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F42feb3b6-f1de-4ed6-b7c4-4a7a0a35a2f0_1024x588.png)
+![](z-images/bd13af2bfef13d489fee60cd7604548b.webp)
 
 Qualcomm uses the same stock Arm cores as MediaTek and has also recognized the performance deficit was coming. As such they are doing something completely unprecedented by switching nodes mid-generation. The S8G1, 2022 flagship SOC, is currently on a Samsung node, but mid-year 2022, they will release a version that is on TSMC’s N4 process node. This will allow all efficiency and performance deficits to be reclaimed. H1 will be a tough comparison for them due to this loss in the CPU category. Of course, heterogenous compute reigns supreme and Qualcomm has a better chip outside this, but they had to scramble. In 2023, Qualcomm will move the entire high end and flagship lineups to TSMC entirely.
 

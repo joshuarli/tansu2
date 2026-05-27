@@ -12,7 +12,7 @@ It’s not all roses and sunshine though. All the other titans in networking inc
 
 The biggest question is where technology roadmaps, deployments, market share, and revenue share goes. Today, we want to answer these questions and discuss the numerous challenges facing Marvell that could knock their current dominance down a couple of pegs.
 
-![](https://substackcdn.com/image/fetch/$s_!EC41!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff0061a02-b5d2-43fc-bdea-c371f5bd5633_2098x648.png)
+![](z-images/22196907ccbbbe20f8cfe0bbcfd98340.webp)
 
 Before we dive into the business implications and changes in technology, first let’s explain the basics of datacenter networking. If you already know this, scroll down to “The War On Marvell” section. The majority of this post is about the current and future market/technology.
 

@@ -10,7 +10,7 @@ There is finally news of orders being cut in the semiconductor supply chain. A b
 
 India is the most impacted region as factories have shuttered and sales have tanked. Other developing economies are also being affected. TrendForce has estimated 12 million fewer phones will be produced in Q2/Q3 of this year.
 
-![](https://substackcdn.com/image/fetch/$s_!IGbU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd9bd10f2-2de8-4b2e-b493-1cb52d6012a3_654x306.png)
+![](z-images/408a8b24e4e898084e9e714ab63b6270.webp)
 
 This could be a low estimate due to the banning of ships with crew from India or that have been to India. [About 240,000 of an estimated 1.6m seafarers globally are from the India, according to International Chamber of Shipping, an industry body. China has initiated this behavior and Singapore has widened its ban to cover crew from countries including Pakistan and Bangladesh.](https://www.ft.com/content/cf40d764-6ab6-4638-bea6-594cc3cd5d53) Indian factories likely will not be able to import the required materials for continuing production. In a time where inventory levels are at record lows, production cannot be sustained.
 
@@ -18,7 +18,7 @@ SemiAnalysis total phone sales projections for the year have dropped by roughly 
 
 Apple for example is already adjusting. Despite Q1 being the strongest Q1 ever, there is a large quarter over quarter decline expected for Q2. In fact, SemiAnalysis believes it will be the largest quarterly decline ever on a percentage basis from Q1 to Q2 in iPhone sales history. This isn’t only due to Covid in the developing economy, but also in China and Europe. Furthermore, a higher percentage of these sales are iPhone SE and the lower end 12 lineup.
 
-![](https://substackcdn.com/image/fetch/$s_!TKnO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff68f5483-6db1-45cc-b21e-ff1ffc9082c3_1407x948.png)
+![](z-images/f2370729a57fc45cba4667fb2840633d.webp)
 
 Outside the Apple world, the reduced orders of components particularly will hit MediaTek the hardest as they have been the wining the most share and are dominant in the most affected markets. SemiAnalysis continues to expect Qualcomm to be unable to supply demand for their products until next year despite these reduced orders.
 

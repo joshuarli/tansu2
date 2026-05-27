@@ -16,11 +16,11 @@ Furthermore, they cherry picked submissions further by only submitting results t
 
 Even with the selective cherry-picking of benchmarks that were clearly very hand tuned, GraphCore tried to call this a win. These results by the way were really bad even when looking at their marketing.
 
-![](https://substackcdn.com/image/fetch/$s_!nhcw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Faef5df7e-1faa-4fc8-963d-7abcde8c930c_1024x580.jpeg)
+![](z-images/f78b9ac72e95e1e9977412e8d8919d48.webp)
 
 And they get worse as you scale up from the tiny ResNet50 to the slighty larger, but still small BERT model.
 
-![](https://substackcdn.com/image/fetch/$s_!DVXa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F27261d44-bf1a-4b20-bbd9-d9cf94afe876_1024x552.jpeg)
+![](z-images/c18172f87524ae00fd7d14ae78d26d6f.webp)
 
 Graphcore created these marketing images to tout their results, but there are a variety of issues with the comparison.
 
@@ -32,7 +32,7 @@ Graphcore created these marketing images to tout their results, but there are a 
 
 If we compare to an A100 system to a 3rd party commercially available SuperMicro system, the results look quite different. Instead of a 1.6x Price/$ advantage in ResNet model and 1.3x advantage in BERT model, we get a loss for Graphcore.
 
-![](https://substackcdn.com/image/fetch/$s_!rAeM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F2e9a8b22-3c37-4929-818a-7816e877564e_1024x160.png)
+![](z-images/567ecf6e6b3c58a821988772f3a97726.webp)
 
 Graphcore wins turn into losses. These results look even worse as we scale up and compare to the 64 IPU system results. Graphcore’s list of disadvantages are the following.
 

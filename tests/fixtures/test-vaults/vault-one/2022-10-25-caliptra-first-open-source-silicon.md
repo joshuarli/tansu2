@@ -20,19 +20,19 @@ It is vital that this effort gains traction beyond these 4 major companies liste
 
 A root of trust is a block of IP that creates a chain of trust during the boot procedure. It ensures the firmware loaded by the bootloader is signed and trusted. If that firmware is trusted, then it will continue to load other software such as the operating system. Each root of trust has a unique signature that is created during the manufacturing process. The root of trust can protect against supply chain level attacks such as unauthorized chips in servers as well as tampered firmware.
 
-![](https://substackcdn.com/image/fetch/$s_!s5Yl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F20bd854e-588f-49cc-a28c-8bbe3369b1c1_1355x850.png)
+![](z-images/8cefd691fe0a5f36d6adcbdd32640e16.webp)
 
 Currently, Microsoft, Google, HPE, Dell, etc all integrate a separate die that establishes root of trust on a server level, but there still is no standardized device on the chip level. As SoCs get more complex with more functions and [composable server architecture becomes more common](https://semianalysis.substack.com/p/cxl-deep-dive-future-of-composable), security will be more difficult to handle.
 
-![](https://substackcdn.com/image/fetch/$s_!Vp44!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Feda7a4b7-ad62-470b-bb8c-c83b62b9c7fb_1353x856.png)
+![](z-images/d2d0c9f5122e09a905525007ed9de281.webp)
 
 Each processor which exists in the data plane must have a standardized method for detecting, measuring, verifying, and testing the security of that chip and the firmware running on it. The Caliptra project wants to decouple the protection and recovery aspect of a root of trust from the detection aspect of a root of trust. Think of Caliptra as a secure island that then boots the rest of the SoC it is integrated into. By having a root of trust directly integrated into the SoC, it is much harder to fool the bus or extract the cryptographic signature with a firmware or supply chain-based attack.
 
-![](https://substackcdn.com/image/fetch/$s_!o9l5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6834bbcb-5c6d-4005-9a5d-d39f189e7104_1521x692.png)
+![](z-images/562af3241b00cd0fd7bf63c27beb09cd.webp)
 
 This split also enables the hardware architecture of Caliptra to be implementable easily by a variety of fabless design companies. There is no need for those designers to add capabilities related to update, fallback, A/B recovery, TPM, and ownership flows. This simplicity also keeps the die area of Caliptra well under 1mm2 on a 7nm class node as per an engineer who works on this product that we spoke with. Below is a block diagram of the hardware block. It is a self-contained island with its own RISC-V core, read-only memory, IO, and crypto subsystem.
 
-![](https://substackcdn.com/image/fetch/$s_!Z7fU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff29dab11-786a-4a7a-be8f-f57081e77908_1345x843.png)
+![](z-images/0ab89e852c884bd3e3ba97ee4269e6a6.webp)
 
 Caliptra’s open-source status enables it to be highly transparent and guarantees implementation consistency. Limiting the scope to the detection model enables easy implementation and a high degree of reusability across designs.
 
@@ -40,11 +40,11 @@ Caliptra’s open-source status enables it to be highly transparent and guarante
 > 
 > Hemaprabhu Jayanna, AMD Director of Product Security - Architecture & Engineering
 
-![](https://substackcdn.com/image/fetch/$s_!ol8S!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2f5fe1e-5518-4997-b5ed-18fdc2f995fc_1353x827.png)
+![](z-images/4dc4436cd692aed521fcc0d631ed4e84.webp)
 
 There are two pathways for deployment. Regardless of the pathway, Caliptra will own and derive identity, measure and attest blobs, and enforce volatile ownership. In legacy-style server deployments, the legacy SoC BROM is trusted and owns the firmware sequencing. In new deployments, the Caliptra open-source root of trust will own the boot IO, firmware layout, SoC sequencing, resets, and DMA islands.
 
-![](https://substackcdn.com/image/fetch/$s_!RYMa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F93832b56-7966-41ed-aca1-bb7a453824f2_1351x847.png)
+![](z-images/008711b58d604bbebc491b1fb23c213a.webp)
 
 Proprietary/OEM-signed forked firmware is not allowed.
 
@@ -52,7 +52,7 @@ Proprietary/OEM-signed forked firmware is not allowed.
 > 
 > Bryan Kelly, Microsoft Principal Firmware Engineer – Lead Hardware Security Architecture
 
-![](https://substackcdn.com/image/fetch/$s_!GIWO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1482f7af-4384-4f67-8716-99deb7c0ccd5_1351x847.png)
+![](z-images/66d4a1b26db7538fcdf38561084d2ac7.webp)
 
 We are excited about this and believe it will come to fruition. If you are a hardware or security architect, you should strongly consider joining the project. Eventually, Caliptra will have to be implemented into future designs that are sold to Microsoft and Google.
 

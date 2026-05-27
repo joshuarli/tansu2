@@ -64,7 +64,7 @@ The other category of restrictions surrounds manufacturing. While EUV is still n
 
 Furthermore, NAND equipment is banned for processes with 128-layers or more, and DRAM equipment is banned for 18nm half-pitch. On the DRAM side of things, this presumably means China is stuck at 2016 technology.
 
-![](https://substackcdn.com/image/fetch/$s_!947J!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6f667cfc-b72e-4f35-965e-70af807a23fe_2290x1132.png)
+![](z-images/d26997a21542782b4669c0ec332b48a5.webp)
 
 The problem with these restrictions is that there is no such thing as equipment for 16nm or less or NAND equipment suitable for less than 128-layers, but not more. For example, a 5nm node could be made entirely with DUV tools, even if it isn’t economically viable. A 232-layer NAND node could be made with the same tools as a 64-layer NAND node. There were no details such as overlay accuracy for lithography or selectivity regarding etch and deposition, so this is a very blurry line. It will be near impossible for regulatory actions to be consistent, which puts companies and the US government in a tough place.
 

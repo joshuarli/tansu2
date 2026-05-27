@@ -12,7 +12,7 @@ Last week the US government launched the latest return salvo in the 21 <sup>st</
 
 The restrictions around AI semiconductors are very strong and close most of the loopholes. The previous test was aggregate bidirectional transfer rate of 600 GB/s AND aggregate TOPS x bit length of 4800 or more. This meant that companies could easily release new chips with slightly lower aggregate bidirectional bandwidth while maintaining near identical performance in actual AI applications. This is what Nvidia did with the H800 and A800 modifications of their H100 and A100, which have shipped hundreds of thousands of units to China.
 
-![](https://substackcdn.com/image/fetch/$s_!zg6l!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe65e4641-61be-4879-8463-55cfcdbdd6e0_2249x1037.jpeg)
+![](z-images/71c9e0757e9df55c66c054f5f701ebd4.webp)
 
 Lennart Heim
 
@@ -22,7 +22,7 @@ While total chip performance is important to restrict, the government recognized
 
 As such, there is also a new performance density threshold too. Performance density is TPP divided by die area. This prevents shipments of chips with smaller die size that have less absolute compute power alone but are still dense/efficient from a computing standpoint. These figures stand at 5.92 for an absolute ban and 3.2 for license. They also come with a few tiered performance levels as well.
 
-![](https://substackcdn.com/image/fetch/$s_!8_oF!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc26396a6-eed0-4395-9943-31304c88cb5e_4096x2434.jpeg)
+![](z-images/81b3e9198bcd5e08a4ff8e75ff630de7.webp)
 
 CSIS
 
@@ -30,7 +30,7 @@ This new ruling is incredibly strict. It blocks a variety of GPUs that we believ
 
 Furthermore, the restriction surprisingly blocks the L4, a GPU that is significantly under the bar that even China hawks want restricted. It should be noted that this is due to the GPU’s performance and density. There is a lower bar that would require a license for GPUs such as the 4090, L40, and AMD MI210. Based on our reading, and the lines about being designed for the datacenter, we believe the 4090 will be granted a license.
 
-![](https://substackcdn.com/image/fetch/$s_!rvIm!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F568d9635-a34b-430b-a441-e39bcef206d0_1273x380.png)
+![](z-images/5477a3cf70f8df52aa562f511e33511e.webp)
 
 Furthermore, some viewpoints of the new rules could consider [the 320 TFLOPS of FP8 matmul + FP16 accumulate as surpassing the restrictions on even the RTX 4080](https://www.techpowerup.com/gpu-specs/docs/nvidia-ada-architecture.pdf), and as such also require a license. Given it is not designed for the datacenter, again, we would expect the government to grant a license here.
 
@@ -40,7 +40,7 @@ The short answer is, no. Nvidia has no way to really game these rules even with 
 
 Currently, the industry [overfits](https://x.com/soumithchintala/status/1716502678602416316?s=20) to exploring AI techniques that work well on existing chips, i.e Nvidia GPUs/Google TPUs running variants of transformers. [With the AI Accelerator sanctions on China](https://twitter.com/soumithchintala/status/1716502678602416316), one interesting result might be that China forks silicon and explores a different idea-space in AI techniques than the rest of the world. After all, the brain and the signals propagating on it look nothing like our current hardware/software architectures either.
 
-![](https://substackcdn.com/image/fetch/$s_!udqt!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff020f6b0-65a4-439f-bcd8-7ba53639b6ee_2826x1364.png)
+![](z-images/ad7b3f8e0a3decc2ae51b8ebb2a19f01.webp)
 
 Jim Keller – TensTorrent, interesting talk he gave, even if we don’t agree with the premise
 
@@ -54,7 +54,7 @@ Hawuei’s Ascend 910 from 2019 already breaks the current regulations, so a dom
 
 We believe the changes to the control list for equipment are much less impactful than those for AI chips. While many areas were tightened, there are still some holes, which enable the various equipment companies such as Applied Materials, Lam Research, Tokyo Electron, [Kokusai Electric](https://www.semianalysis.com/p/going-vertical-gate-all-around-3d), KLA, Onto, Screen, ASML, etc to continue to ship tens of billions of dollars of tools to China. This includes over $7 billion of equipment for DRAM fabrication that is slated to go to CXMT, more than US headquartered Micron will spend on the same technology. CXMT is also clearly building what the US considers restricted technologies, yet blind eyes are being turned.
 
-![](https://substackcdn.com/image/fetch/$s_!ayZ6!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fddc1c572-b462-4598-9b9c-3c39add11382_2850x1497.jpeg)
+![](z-images/4360f3ea6af9906add0ac0c93d6407c8.webp)
 
 Micron D1 Beta is the densest shipping DRAM and it utilizes DUV SAQP. CXMT has D1 Beta on their roadmap.
 
@@ -64,7 +64,7 @@ One puzzling aspect of the 2022 rules was the very limited scope of etch tools t
 
 For wet etch, only wet etch tools that have “SiGe to Si etch selectivity ratio of at least 100:1” is added. Specifically, the process that would be targeted is the removal of the sacrificial SiGe layers used to form the nanosheets for GAA transistors.
 
-![](https://substackcdn.com/image/fetch/$s_!gj3X!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a08271d-81b3-40d2-adc2-a0bf10b4e21e_3262x2046.png)
+![](z-images/4751cc5988e818cb77d64c7ea79787e1.webp)
 
 Caption: Process flow for GAA gate metal stack. Wet SiGe required in steps (b) and (g). Must be highly selective in terms of only removing the SiGe, not the Si in the lattice.
 
@@ -96,7 +96,7 @@ In ASML’s October 18 <sup>th</sup> earnings call, held just a day after the re
 
 Note that ASML had 46% of their revenue come from China in the most recent quarter, due to a huge influx of rush orders before the long since rumored banned. This means only 5% to 7% of their total revenue in this rush order quarter would have been blocked under the new rules.
 
-![](https://substackcdn.com/image/fetch/$s_!Vcrp!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdbef8e97-81a8-487b-80a1-a1b16a074aef_1523x949.png)
+![](z-images/50c21b1ef8007bf491abb73485ae78ba.webp)
 
 In Millions of Dollars
 
@@ -142,16 +142,16 @@ Looking at revenue trends for four major SemiCap companies in the past seven yea
 
 The upcycle into 2023 so far, however, has been something else entirely – from a low of $3.7B in 1Q23, combined sales to China have surged to $5.1B in 2Q23, not far off from the prior high watermark of $5.8B seen in 2Q21. Assuming that Applied Materials and Tokyo Electron (which have yet to report earnings for calendar 3Q23) have a similar proportion of sales to China in 3Q23 as did Lam Research and ASML (at 48% and 46% respectively), **combined sales to China would reach $8.7B in 3Q23, 50% higher than the prior high watermark from 2Q21.**
 
-![](https://substackcdn.com/image/fetch/$s_!w_dF!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F29cbe93c-431d-41ac-8621-7897cccf33fa_943x1124.png)
+![](z-images/9ecbd7a9c9bfe1c51a15b5b936bcda84.webp)
 
 End product markets tend to be global and interrelated, so it makes sense that the SemiCap investment cycle within China and outside of China has largely been in sync.
 
 We are nearly two years into the current semiconductor downturn (excluding AI-related chips of course) and while industry participants may feel that a rebound should be imminent, there hasn’t been any sharp uptick in actual investment so far, especially ex-China.
 
-![](https://substackcdn.com/image/fetch/$s_!nJNL!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ba31cf8-d9a8-4ac2-9b02-32c06c99d7e5_1634x1027.png)
+![](z-images/a3dc58bd5d3db6dcad8b613b2791dfdf.webp)
 
 That is – except for China, where SemiCap investment has rebounded dramatically and well ahead of the rest of the world. Granted, local auto manufacturers and manufacturing in general in China is shifting away from using western suppliers of mature node and analog semiconductors and is spending 30 years of capex in just a few to achieve that goal, but it seems possible that the near doubling of capex in just a few quarters is also due to something else.
 
-![](https://substackcdn.com/image/fetch/$s_!NRXZ!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc58eb3b5-8ca4-41e2-904c-84ebd2ac22fb_1631x1039.png)
+![](z-images/63d5c434778029678efb8844727d5d70.webp)
 
 Next we will share a bit about China’s retaliation. This restriction on AI chips and manufacturing equipment is not going untouched.

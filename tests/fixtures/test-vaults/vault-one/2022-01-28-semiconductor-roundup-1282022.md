@@ -74,7 +74,7 @@ Moving forward to MKS Instruments, the largest subcomponent/system supplier to s
 
 A big chink of revenue is coming straight from metrology and inspection tool providers. This unit grew 50% year over year organically, but with an acquisition, it grew 90% inorganically. I like MKSI, but I would simply caution do not go to crazy trying to understand every single segment, subsegment, and competitive/pricing dynamics within them. Trust me, you never will. It’s a deep dark rabbit hole.
 
-![](https://substackcdn.com/image/fetch/$s_!qPQQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F44b3dc53-bd62-4e42-9b2e-8bb6d41a62e2_2707x1370.png)
+![](z-images/1a8c37241c836e7b6cb2fbd6d3825b80.webp)
 
 On trailing edge semi supply:
 

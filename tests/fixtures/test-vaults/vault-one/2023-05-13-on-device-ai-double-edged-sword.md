@@ -32,7 +32,7 @@ The highest-end client mobile devices will come with ~50 billion transistors and
 
 GPT-style models are trained to predict the next token (~= word) given the previous tokens. To generate text with them, you feed it the prompt, then ask it to predict the next token, then append that generated token into the prompt, then ask it to predict the next token, and keep on going. In order to do this, you have to send all the parameters from RAM to the processor every time you predict the next token. The first problem is that you have to store all these parameters as close as possible to the compute. The other problem is that you have to be able to load these parameters from compute onto the chip exactly when you need them.
 
-![](https://substackcdn.com/image/fetch/$s_!U0qU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c034e5a-0d7a-4b83-988f-ceac6c1439b7_704x513.jpeg)
+![](z-images/a0847d4e83e84cac80e3148b5712fc3b.webp)
 
 In the memory hierarchy, caching frequently accessed data on chip is common across most workloads. The problem with this approach for on-device LLM is that the parameters take too large of memory space to cache. A parameter stored in a 16-bit number format such as FP16 or BF16 is 2 bytes. Even the smallest “decent” generalized large language models is LLAMA at a minimum of 7 billion parameters. The larger versions are **significantly** higher quality. To simply run this model requires at minimum 14GB of memory at 16-bit percision. While there are a variety of techniques to reduce memory capacity, such as [transfer learning, sparsification, and quantization](https://www.semianalysis.com/i/98654125/sparsity), these don’t come for free and do impact model accuracy.
 
@@ -46,7 +46,7 @@ This then brings up the question. Why can’t we go down another layer in the hi
 
 Unfortunately, this is far too slow. A 7 billion parameter model at FP16 requires 14GB/s of IO just to stream the weights in to produce 1 token (~4 characters)! The fastest PC storage drives are at best 6GB/s, but most phones and PCs come in south of 1GB/s. At 1GB/s, at 4-bit quantization, the biggest model that can be run would still only be in the range of ~2 billion parameters, and that’s with pegging the SSD at max for only 1 application with no regard for any other use-case.
 
-![](https://substackcdn.com/image/fetch/$s_!XFkV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3acdf863-fa8e-461f-8c96-6a5221bcf2d4_1010x735.png)
+![](z-images/f9047e31723269c6fec2d35e6400aa53.webp)
 
 Unless you want to be stuck waiting 7 seconds for half a word to be spit out on the average device, storing parameters in storage is not an option. They must be in RAM.
 
@@ -54,7 +54,7 @@ Unless you want to be stuck waiting 7 seconds for half a word to be spit out on 
 
 The average person reads at ~250 words per minute. As a lower bound for good user experience, an on-device AI must generate 8.33 tokens per second, or once every 120ms. Skilled speed readers can reach 1,000 words per minute, so for an upper bound, on-device AI must be capable of generating 33.3 tokens per second, or once per 30ms. The chart below assumes the lower bound of average reading speed, not speed reading.
 
-![](https://substackcdn.com/image/fetch/$s_!rkRG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F194956ff-1cd2-43c1-996d-041c607c0b0e_1701x790.png)
+![](z-images/8180ceb5f4e7130d517d3f0ceda6b69d.webp)
 
 If we conservatively assume normal, non-AI applications as well as [activations/kv cache](https://kipp.ly/blog/transformer-inference-arithmetic/) consume half of all bandwidth, then the largest feasible model size on an iPhone 14 is ~1 billion FP16 parameters, or ~4 billion int4 parameters. This is the fundamental limits on smartphone-based LLMs. Any larger would exclude such a large part of the installed base, that it wouldn’t be able to be adopted.
 
@@ -68,7 +68,7 @@ Due to the extreme memory capacity and bandwidth requirements, generative AI is 
 
 Our data shows that HBM memory is nearly half the manufacturing costs of a server-class AI chip like the H100 or TPUv5. While client-side compute does get to use significantly cheaper DDR and LPDDR memory (~4x per GB), that memory cost cannot be amortized over multiple concurrent inferences. Batch size cannot be pumped to infinity because that introduces another difficult problem, which is that any single token has to wait for every other token to be processed before it can append its results and work on the generation of the new token.
 
-![](https://substackcdn.com/image/fetch/$s_!9KuW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbb322200-39e6-42e0-b8e8-98d2502a2236_468x373.png)
+![](z-images/f55f9e01b0a6340224789a77bfad7d71.webp)
 
 This is solved by splitting the model across many chips. The above chart is the latency for generating 20 tokens. Conveniently, the PaLM model hits the 6.67 tokens per second, or a ~200 words per minute minimum viable target, with 64 chips running inference at a batch size of 256. This means each time a parameter is loaded, it is utilized for 256 different inferences.
 

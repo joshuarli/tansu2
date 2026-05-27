@@ -30,21 +30,21 @@ After five years of ownership, KKR has turned to an exit via KE’s IPO, in whic
 
 Kokusai Electric (‘KE’) is positioned as a specialist in the deposition of thin films. Specifically, KE sells batch deposition tools with a specific focus on batch Atomic Layer Deposition (ALD), the most selective/precise form of deposition. KE also has a presence in surface treatment, though in terms of revenue exposure for this is a distant second to deposition.
 
-![](https://substackcdn.com/image/fetch/$s_!JCwm!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcca7f698-fdf0-4472-9cad-dcb08abfde88_1096x652.png)
+![](z-images/8a75fc9405f29792fb875d7852263b00.webp)
 
 Around 30% of their revenue is also service related, but it should be noted that within KE’s service segment, there is a portion of legacy 200mm equipment sales. This means that KE currently has lower service intensity compared to the other deposition players, which is good for fabs total cost of ownership (TCO), but maybe a drag on financials. With that said, KE’s new mini-batch tool is 4x the service attach rate and the best TCO tool they’ve ever released.
 
 KE is more memory focused. NAND is their largest application for their equipment, followed by DRAM and then logic. This likely begins to shift with the adoption of Gate All Around. We will go through more on that later.
 
-![](https://substackcdn.com/image/fetch/$s_!HCvY!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcf3c8b5f-9b93-45c0-a288-4ffee060e5c3_1060x639.png)
+![](z-images/21f43d06f20ad43bd30cc90b344a32e0.webp)
 
 KE’s specialty is not involved in all Chemical Vapor Deposition (CVD) and Atomic Layer Deposition (ALD) but specifically **batch** **CVD/ALD** tools. The other major toolmakers (Tokyo Electron, Applied Materials, Lam Research, ASMI) all offer ALD tools but they mostly focus on single wafer offerings, IE processing 1 wafer per chamber instead of multiple (batch). KE dominates the batch ALD process with ~70% market share, the remainder belongs mostly to TEL (and ASMI having a slither).
 
-![](https://substackcdn.com/image/fetch/$s_!e7K1!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7f4f1d77-34c6-42cc-b588-46fe0ed4b609_1127x671.png)
+![](z-images/f5c87f0e245b635432aa7630f94f7faf.webp)
 
 While KE emphasizes their share in ALD, they still have exposure to batch CVD tools. KE’s blended market share in batch deposition is “only” ~46% (compared to ~70% in batch ALD). TEL is only slightly larger in the total batch deposition market, but we believe that will flip soon and KE will become larger.
 
-![](https://substackcdn.com/image/fetch/$s_!Agcv!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fef65cc27-df30-4e4d-ad25-75fb6da1f43e_1386x688.png)
+![](z-images/448037f7a6a80325ca73c2b5c55ebee1.webp)
 
 This is a very strong position in the market, and explains why Applied Materials wanted to acquire KE. AMAT already has a strong ALD portfolio. AMAT has a number of Processes of Record (POR) for next generation Gate All Around (GAA) logic ALD steps despite the market’s impression that ALD leader, ASMI, is going to completely dominate and continue to grow share.
 
@@ -60,13 +60,13 @@ There are a few forms of deposition that are used to deposit different materials
 
 Electroplating is a common technique used to deposit metal films onto another metal surface, and the basic concept remains the same in semiconductor manufacturing. Electroplating is commonly used to deposit copper, for example to build interconnects for the metal layers, or to fill though-silicon vias. The wafer and copper source are placed in a bath of a liquid that is electrically conductive. Both the wafer and source are connected to a power source. Current is applied and the flow of current from the power source dissolves ions from the source and deposits the source ions onto the wafer.
 
-![](https://substackcdn.com/image/fetch/$s_!Z1h_!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff677f8df-92fc-480e-8f68-25d5228185bc_950x287.jpeg)
+![](z-images/ba166f3586f0f82203c199a2ace650f2.webp)
 
 #### Physical Vapor Deposition / Sputtering
 
 Physical Vapor Deposition (PVD) creates a metal vapor from a target material by using plasma (in a similar mechanism to a plasma etch). The kinetic energy of the plasma sputters the target material to land on the wafer and be deposited. PVD is often used to deposit barriers and copper seeds for metal interconnect layers, and various forms of nitride liners.
 
-![](https://substackcdn.com/image/fetch/$s_!aRBz!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F180c89fd-2132-4b12-82a7-910bc6707722_3598x1457.png)
+![](z-images/13b36621edd3b23533be0d8da3132c54.webp)
 
 #### Chemical Vapor Deposition
 
@@ -82,15 +82,15 @@ SiH <sub>4</sub> + O <sub>2</sub> → SiO <sub>2</sub> + 2 H <sub>2</sub>
 
 The key feature of ALD is that it is a self-limiting process. Only one single layer of atoms is deposited at a time. Once the surface is saturated, the precursor cannot be deposited anymore. This is what makes ALD attractive as a deposition method.
 
-![](https://substackcdn.com/image/fetch/$s_!djF1!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4c90595-3bf1-4a8a-aa07-32bb7a5e0557_1290x901.png)
+![](z-images/fc568e3bf6f33c2f992c80c92b0caf9d.webp)
 
 It results in films that have very high conformality, step coverage, no pinholes, and allows for precise film thickness control. These are all common defects that other forms of deposition face. ALD is especially important for more challenging deposition tasks: very thin film depositions and deposition on surfaces with complicated topography (ie. non-planar surfaces) such as 3D or very high aspect ratio structures.
 
-![](https://substackcdn.com/image/fetch/$s_!04Ie!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F290b1143-177a-4417-bb4a-333dcb29ab26_950x284.jpeg)
+![](z-images/820dc9024ed6230596ae7f2199c4b240.webp)
 
 Basically, ALD is superior in terms of deposition quality compared to conventional CVD in every single way. The catch 22 is that ALD throughput is much lower, IE costs more floor space, tool time, and money. Only one gas precursor is being emitted at a time, and then the purge processes to get rid of excess precursor and by-product also adds additional process time. This involves multiple steps as compared to traditional CVD which is accomplished in one step. All this only results in a single atomic layer being deposited. This is less of a problem for very thin films but makes ALD less attractive for thicker films. To address poor throughput, one solution is to batch this process.
 
-![](https://substackcdn.com/image/fetch/$s_!hrC_!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffdc63bbd-f725-474d-9900-b84e972edb06_1020x775.png)
+![](z-images/9d13500e7542f6c09d6845439685227e.webp)
 
 ## To batch or not to batch? That is the question.
 
@@ -110,7 +110,7 @@ Primarily, the main feature that adds to deposition time is high aspect ratio (�
 
 [Another reason is depth loading, which we discussed as a challenge for NAND etching and why Tokyo Electron can gain share from Lam Research in 3D NAND.](https://www.semianalysis.com/i/134997222/nand-etch-a-sketch-the-icy-battle-for-nand-supremacy) The same principle applies to deposition. Basically, it takes much longer for a gas to penetrate a deep and narrow trench. However, unlike etch, the solution isn’t performing the process in cryogenic temperatures as ALD needs to happen at above room temperature.
 
-![](https://substackcdn.com/image/fetch/$s_!072V!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F293f7b74-db10-4889-a2c1-04b4deb59a44_3511x1831.png)
+![](z-images/ee21300f0830fc3599c8f4b7c4671283.webp)
 
 Depth loading affects etch time but a similar principle applies to deposition
 
@@ -118,11 +118,11 @@ KE has a large batch tool, the AdvancedAce which can batch up to 175 wafers at a
 
 We commonly see high aspect ratio structures in memory as opposed to logic. In the case of NAND this is the channel hole with an aspect ratio of >70:1. DRAM also has high aspect ratio trenches for capacitors.
 
-![](https://substackcdn.com/image/fetch/$s_!oUfP!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3f863056-172b-4550-962b-416a5e902659_1193x623.png)
+![](z-images/8c65cac1b117d2469729cf4d08abbda8.webp)
 
 Case in point is that batch ALD has lower throughput than single wafer for 48-layer 3D NAND, due to process throughput being high enough. Due to depth loading, the two become on par at 64-layer. Beyond that, batch has become more productive for higher layers with the gap between the two widening. Why? More layers mean higher aspect ratio channel holes. Higher aspect ratio holes mean a longer process time. Longer process times flip the throughput equation in favor of batching over single-wafer.
 
-![](https://substackcdn.com/image/fetch/$s_!QdlJ!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcddbcfa7-96d6-4933-b667-89c4748de1ff_1067x651.png)
+![](z-images/6bcfc1d9d22d3d9d0c2d533c84d94303.webp)
 
 There are also other factors that make batch more prevalent in memory. Batch tools see higher downtime as the chamber only runs once full. Wafers can sit idle in the process chamber as they wait for other wafers to go through other preparation steps before deposition. This is less of a problem in memory as there will be high homogeneity of wafers vs a logic foundry that is running multiple different wafers.
 
@@ -154,13 +154,13 @@ Etch gets a lot of attention for NAND, but notice there’s a lot of deposition 
 
 This image below is cross-section of a 3D NAND memory cell. You can see that there are a lot of different materials used. There are six thin films that require ALD: blocking oxide, charge trap nitride, tunnel oxide, channel silicon. This is in addition to the base silicon layers and the Tungsten fill in the wordline. For the blocking oxide, charge trap nitride and tunnel oxide, KE’s batch ALD is the process tool of record among ALL of the top 5 NAND players. For channel silicon, blocking metal and barrier metal, KE has some presence here and there, but really KE dominates the first 3 steps.
 
-![](https://substackcdn.com/image/fetch/$s_!qtkI!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F491d7cf3-04cb-40b0-9342-13f09294f024_602x576.png)
+![](z-images/9fb2799c4b9e80ad8e8311f34c55db03.webp)
 
 Often, when the topic of competition between semicap makers comes up, we say that the market is complicated. It is difficult to categorize deposition as just one market as there are many different subsegments and niches, each with their own leaders.
 
 There is a lot less competition that people realize. This is a great example. For these few specific NAND deposition steps, KE clearly dominates.
 
-![](https://substackcdn.com/image/fetch/$s_!_Un7!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F17eee0c3-8d58-495b-904d-ea44285d06dc_1445x575.png)
+![](z-images/a8fa349ad5d7574ed018ae476c25c4fb.webp)
 
 Proportion of KE PORs for NAND memory cell deposition among NAND manufacturers
 
@@ -170,15 +170,15 @@ In DRAM, the high aspect ratio feature is the capacitor. Each bit of data is sto
 
 The capacitor itself is a long cylindrical structure that has a high aspect ratio. It is filled with a metal-insulator-metal stack. The insulator is a high-k zirconium dioxide to prevent leakage while maintaining capacitance. It is this MIM stack that requires ALD due to the need for a well-controlled, conformal film in a high aspect ratio structure. This is the step where KE has a strong presence in DRAM. For example, we know that KE’s batch ALD is used for certain parts of the high-k deposition with Samsung and potentially with other DRAM makers as well.
 
-![](https://substackcdn.com/image/fetch/$s_!dhkU!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d49cf51-4617-4de0-b3af-9741ac4966f9_1407x781.png)
+![](z-images/0781f24e722f5e211a08dfc7c5ac5d86.webp)
 
 Currently, the key challenge to scaling DRAM further is scaling the capacitors. Any further shrink of the capacitors will render the capacitors unable to hold a charge and therefore useless. Like NAND, 3D DRAM is being proposed as the future architecture to enable continued cost scaling.
 
-![](https://substackcdn.com/image/fetch/$s_!Zd_2!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbeb150c5-a534-4093-9e89-4daebf7674e1_392x290.png)
+![](z-images/9533230475f9c2209bb3e6165f4c60ee.webp)
 
 Most equipment makers think 3D DRAM will be in mass production in the second half of the decade (except ASML who insist on it being well beyond 2030). It is not yet settled what the exact 3D DRAM architecture looks like as there are few potential workable architectures. It is an opportunity for ALD and etch, but it is also be a threat for certain tool makers as it will result in a reshuffling of market share.
 
-![](https://substackcdn.com/image/fetch/$s_!DZsz!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3e8b7b3-70e2-45c9-a0a6-206bd2254912_1193x623.png)
+![](z-images/8c65cac1b117d2469729cf4d08abbda8.webp)
 
 ## Logic Usage Of ALD
 
@@ -186,27 +186,27 @@ ALD’s first major entry into logic fabrication was in 2007, when Intel introdu
 
 It was Intel’s 45nm node that introduced the revolutionary High-K Metal Gate (HKMG) structure that substantially reduced current leakage and a key enabling feature for scaling beyond the 65nm node. The HKMG structure replaced the traditional insulating silicon oxide with hafnium oxide and used a metal for the gate instead of polysilicon. The High K dielectric was enabled by use of ALD. The hafnium film needed to be highly conformal, pinhole free, with tight thickness control to achieve its insulating purpose which was a task very well suited for ALD. In addition, ALD also won out because the more standard CVD process left excess particles for hafnium oxide deposition.
 
-![](https://substackcdn.com/image/fetch/$s_!JWjC!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9835b30b-5a4d-42a5-ae4d-a384e4aa17d4_550x252.jpeg)
+![](z-images/d04fc59fafea7a73abbeecf3a367b646.webp)
 
 Then, as logic entered the FinFET era with transistors becoming 3D as opposed to planar, the need for ALD increased further. We can see for a FinFET, the gate wraps around the channel on three sides which protrude as fins. The effect is that the gate can better control current flow through the transistor so that leakage is reduced, and a lower voltage is needed to power the transistor. The gate oxide also wraps around and is no longer a planar film anymore, this makes achieving step coverage more difficult. While already a task that was handled by ALD, we can see that this new more challenging topology only makes ALD even more well suited for the task.
 
-![](https://substackcdn.com/image/fetch/$s_!4Syh!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3b82218-8d73-49af-8135-d9f88463e141_664x883.jpeg)
+![](z-images/d6950ea54eef5f0f972bb6d9e1e20fc1.webp)
 
 Overall, in logic we don’t see structures anywhere near as high aspect ratio as in memory. Still, batch ALD is used with **TSMC being KE’s second largest customer**. There are films that need ALD but are simpler (as opposed to the very complicated and critical films where an ASM single wafer tool be used) and are reoccurring processes that would be required multiple times per wafer making batching beneficial when considering the total cost of ownership.
 
-![](https://substackcdn.com/image/fetch/$s_!9NUI!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0983d2a1-f35e-496e-b4f2-62a491d48228_950x258.jpeg)
+![](z-images/c14f9063da40101660a96103df8ae9d2.webp)
 
 In this case, KE and TEL’s batch ALD tools are more of the workhorse deposition tool compared to a specialized single wafer tools from ASMI, Lam Research, and AMAT. One such example is batch ALD is used for deposition of the spacer that is on the sidewalls of the FinFET gate. The purpose of the spacer is to reduce the capacitance between gates and is a low-k film. As you can see, the spacer needs to be deposited on top of the protruding gate which is relatively higher aspect ratio compared to the high-k dielectric between the gate and channel.
 
 This is where batching and KE’s tools are present in logic. Another feature Batch ALD is well suited to is gap fill for trench isolation. Shallow trench isolation is a technique used to prevent unwanted electromechanical interference and parasitic leakage between individual circuits. Trenches are created via an etch process and then filled with a dielectric like silicon dioxide which can be completed via batch ALD.
 
-![](https://substackcdn.com/image/fetch/$s_!sMUV!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F256c531c-30df-410a-b3b5-caf69921c8c5_1156x901.png)
+![](z-images/4695d501b405541b947a6d5a4e822973.webp)
 
 With FinFET, we saw that wrapping the gate around the channel on 3 sides improved electrical characteristics, so wouldn’t coverage on all four sides be even better? Basically, yes it would be better. This is the approach for next generation Gate All Around (GAA) transistor architecture. The channel becomes a series of multiple vertically stacked nanosheets inside the gate. The gate now wraps around the channel in all four directions as opposed to just three in FinFETs, allowing for even greater drive current and leakage control for improved power consumption.
 
 Looking more closely at the gate, it is actually a high-k metal gate stack that surrounds each nanosheet (denoted in the below diagram as the “Epi Si”). There are several dipole and work function metal layers that are needed to control threshold voltage.
 
-![](https://substackcdn.com/image/fetch/$s_!OCI3!,w_2184,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee04293d-10e8-4883-9287-a193e6295bc8_575x470.png)
+![](z-images/09a52f99bc80626db2be9afa216fb334.webp)
 
 Cross section of the gate metal stack in GAA
 

@@ -8,45 +8,45 @@ description: "SemiAnalysis has been bullish about Kulicke and Soffa Industries s
 
 SemiAnalysis has been bullish about Kulicke and Soffa Industries since late 2020 on back channels with projections/models. We also have been discussing KNS publicly on [Twitter](https://twitter.com/dylan522p), and SemiAnalysis has also written two quick public notes about them in [April](https://semianalysis.substack.com/p/trailing-edge-is-going-gangbusters) and [August](https://semianalysis.substack.com/p/kulicke-and-soffa-industries-klic). The pushback SemiAnalysis has received is mostly related to KNS historically being the most cyclical semiconductor supply chain firm out there. The main criticism of KNS is that their core business is the production of wire bonders. Wire bonding is the old way of packaging and it has an ~80% market share of total packaging, but it is losing ground to flip chip and advanced packaging. Despite the criticism, there is much more to this company and stock than meets the eye.
 
-![](https://substackcdn.com/image/fetch/$s_!GBrP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F5b2e527e-5086-4f66-903e-c746fe49c969_1023x571.png)
+![](z-images/4e7c7fd619cf5ab15720ea8e45f130cd.webp)
 
 Despite concerns about wire bonding, $KLIC has nearly tripled in the last year. Despite these huge gains, it is still trading at 10x-11x earnings. The management has consistently been very timid with projections due to the historical volatility related to the wire bonder business. KNS has consistently raised crushed expectations and upped guidance this year. The tightest part of the semiconductor supply chain in the current shortage is MCUs and other trailing edge components. This just so happen to be the most likely components to be packaged with wire bonding. It isn’t rocket science to see why an equipment provider in this space is growing so much. Every time $KLIC gave guidance, we showed SemiAnalysis clients estimates above KNS guidance, and KNS still consistently beat it.
 
-![](https://substackcdn.com/image/fetch/$s_!yqoy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F59f0e19d-bb40-4685-9df6-f0026cacc681_1022x286.png)
+![](z-images/08776b3882177872a2c2a139d70e904c.webp)
 
 Wire bonders and trailing edge wafer fabrication plants were underinvested for a years. Now, the pendulum is swinging the other way. SemiAnalysis tracks fab plans and production increases worldwide, and our data shows more than 750,000 8” equivalent wafers per month capacity will be added in the next few years. More than 380,000 of these reside in China and are focused trailing edge nodes. The majority of which will eventually be packaged using KNS tools.
 
 The old dichotomy is dead. We no longer live in a world where leading edge receives the majority of new investment and trailing edge gets hand me down fabs. We now live in a world where trailing edge wafer counts are growing faster than leading edge. This was obvious in hindsight with the death of Moore’s Law cost scaling. The costs for design and production are simply much lower on the trailing edge, and China can and should enter this field. Packaging intensity is also going up as even the simplistic wire bonded packages move to multiple dies within a package.
 
-![](https://substackcdn.com/image/fetch/$s_!Jp-y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F426687f9-a43e-4aee-9b85-8b978a8f9073_1024x575.png)
+![](z-images/7ec8db46836ebf4fba7e729ba6d07035.webp)
 
 SemiAnalysis also believes that KNS main segment of wire bonders is becoming less cyclical. Unlike most semiconductor equipment firms, KNS customer concentration is not as high. KNS has over 1,900 customers and their top 10 customers change frequently. This is very different than the major semiconductor capital equipment firms such as Applied Materials, Lam Research, and ASML who have most their business flow through titans of the industry such as TSMC, Intel, and Samsung.
 
 Beyond the huge growth in the core wire bonder market, the firm is transforming beyond the wire bonder market. KNS are adapting tools and improving their capabilities to enter the fields of battery manufacturing, micro-LED, and mini-LED displays. In addition to selling tools, they are starting to build out a services and consumable segment. The combination of all this is that their addressable market is going through the roof.
 
-![](https://substackcdn.com/image/fetch/$s_!Xk3C!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F5a04b096-887c-40f1-846d-0b54e04169b4_900x1024.png)
+![](z-images/a612a00438058fcef087b0649f297e97.webp)
 
 The services and consumables angle is one which KNS lagged versus other semiconductor equipment companies historically. This business is accelerating and that is great because it is more durable during a down cycle. The services and consumables business should go from ~13% to ~17% of total revenue over the next few years.
 
 Consumables are tools used in the backend assembly equipment. This includes capillaries, wedges, dicing blades, and new consumables related to advanced LED tools. The services business includes service agreements, repairs and upgrades, and training. In addition, their recently released software platform, KNEXT, is in this segment. It is a cloud-based platform that assists with real time advanced process control, custom visualizations, analytics, and product traceability. It will enable the development of predictive maintenance and control over tools in operation.
 
-![](https://substackcdn.com/image/fetch/$s_!5Z5S!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff257c676-f80f-48b1-835f-af0f419ca897_1024x576.png)
+![](z-images/afeb768c8cf2efd27c55ee4e1e57a497.webp)
 
 The most exciting business at KNS is advanced LED displays. In this very competitive field, KNS is supplying tools for the current mini-LED ramp. Mini-LED is the natural progression of normal LED backlights LCD displays. Mini-LED replaces the uniform LED backlight with local dimming zones of mini-LED that can be turned on and off. This increases contrast by making blacks deeper and can also increase brightness. These mini-LED backlit screens can be found on certain high-end TVs, laptops, and tablets.
 
 The most well-known use case is with Apple’s newest iPad Pro. The mini-LED ramp has run into many issues related to yields which has caused devices that were planning to use mini-LED to drop it. An example of this is the iPad Mini, which Ming Chi Kuo and Digitimes both reported was initially planned to come with a mini-LED display. In other cases, products are being delayed. The redesigned Macbook Pro 14” and 16” was pushed out of the first half of the year to Q4. Furthermore, the redesigned Macbook Air has been rumored to be delayed to as late as Q3 2022 from late 2021.
 
-![](https://substackcdn.com/image/fetch/$s_!4V_E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fec0ca3be-dcf8-496a-9daf-cc587a61e7b1_1024x574.png)
+![](z-images/2fdb663fafc95e694ddca3fb95e6d58f.webp)
 
 This benefits KNS because KNS modified wire bonders to create the Pixalux tool. Currently this tool has leading market share for the mini-LED transfer process. This tool does a mechanical transfer of the individual mini-LED to the display substrate. Pixalux is incredibly fast and does 50 mini-LED per second. That sounds great, but each iPad Pro display has over 10,000 mini-LED. Even if failure rates are miniscule, yields for entire panels could still be low. Epistar is the main manufacturer of mini-LED and they have designed KNS into their processes.
 
-![](https://substackcdn.com/image/fetch/$s_!ha5A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F44d1b174-d5ad-4754-b1d2-83aaec561c3f_1024x576.png)
+![](z-images/0c953eefadb9ce136307bcd1ee42e714.webp)
 
 That brings about the Luminex which just shipped its first unit. It is a non-mechanical process and in the next generation can even do multiple mini-LED at a time. In the process of making the LED, the die are sorted according to the wavelength of light they produce, a process similar to binning. The Pixalux only does transfer mechanically. The Luminex does sorting, re-pitching/PAM, and transfer. It transfers the mini-LED to the display substrate with a laser. There’s quite a bit of complex science here, but in essence, a tape is attached to the mini-LED. This tape absorbs the laser, heats up, a gas is formed, which propels the mini-LED into the display substrate at an extremely high accuracy.
 
 They have a roadmap for the next generation which will increase throughput to over 10,000 mini-LED per second and improve the accuracy of the placement as well. It gets them into an additional process step and could bring about cost effective advanced micro-LED panels. micro-LED has long been hailed as the holy grail of all display technology, and we are hopeful this will finally make it cost effective for some applications. SemiAnalysis believes this will be a $300M+ business unit within the next couple years through maintaining majority market share and moving beyond placement.
 
-![](https://substackcdn.com/image/fetch/$s_!1Xr_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fafcaf257-11d5-45b7-aecd-621e9d36f221_1023x575.png)
+![](z-images/7ad39b0d7b46a1e39d53e6680bbd9dfa.webp)
 
 Another emerging application for KNS is in batteries and automotive. Discrete power semiconductors, MCUs, and many other components within vehicles are wire bonded. They have adapted their wire bonders to also used in battery interconnects. KNS has been designed into battery manufacturing processes from major companies in the US, Europe, and Asia.
 
@@ -56,15 +56,15 @@ Tesla and Rivian use cylindrical for their vehicles, but most other automakers a
 
 Currently pouch and prismatic style batteries are used in phones and cars like the Chevy Bolt and Porsche Taycan. Much of the industry outside of Tesla has settled on prismatic cells because they believe it will offer higher density and lower cost per pack in the long run.
 
-![](https://substackcdn.com/image/fetch/$s_!09rv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3b930b4b-322c-463b-88a4-5045f30b22a8_1024x576.png)
+![](z-images/9376b94ec3c355e26de058ddf13dfed9.webp)
 
 Beyond Tesla, KNS is becoming heavily embedded in Korean companies’ prismatic cells production with the new tools. As CATL and other Chinese firms advance their capabilities beyond volume, into more technologically advanced processes and chemistries, it’s very likely KNS gets design wins. This will be another growth angle in an emerging field as battery production ramps to ridiculous proportions. The conservative SemiAnalysis estimate has the battery business growing $50M, but there is huge opportunity for this figure to be crushed. The early success they have in prismatic despite having just entered the field lends credibility to possibility of outperformance. KNS is probably the cheapest company embedded in the battery manufacturing supply chain.
 
-![](https://substackcdn.com/image/fetch/$s_!45bE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe26124dc-bc5c-4d20-a4c6-6b6789b0b1af_1024x574.png)
+![](z-images/d0bbd8f74418b68a6f3035238f8c954e.webp)
 
 They are attempting to move into more advanced packaging such as with TCB bonders in silicon photonics, and even hybrid bonding. We are currently forecasting minimal growth from this due to stiff competition. TCB bonders are dominated by Besi and ASM. Hybrid bonders are dominated by the Besi and AMAT partnership. If KNS can get market share here, then that’s a lot of gravy.
 
-![](https://substackcdn.com/image/fetch/$s_!eL4s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F94ee9502-1cf6-46b3-a6cb-efca42826a7e_896x1024.png)
+![](z-images/a1868ade5bc55eb080b8cd8175985a02.webp)
 
 With growth coming from services, consumables, mini-LED, micro-LED, and battery production, KNS is well geared to outperform. Even with conservative growth projections in those fields and with 0 gains in TCB Bonders and Hybrid Bonders, SemiAnalysis believes the non-core will grow $400M by 2024.
 

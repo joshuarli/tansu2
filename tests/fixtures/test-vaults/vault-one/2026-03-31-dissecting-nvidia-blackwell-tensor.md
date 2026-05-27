@@ -27,9 +27,9 @@ Finally, we’d like to thank all our reviewers and external collaborators:
 - Hardik Bishnoi - Arcee AI
 - And many anonymous reviewers
 
-![](https://substackcdn.com/image/fetch/$s_!eHLl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e5c8ca9-ca65-4217-94fb-3c5fd9946bc1_200x200.png)
+![](z-images/ed7c5885545c9c6f754ca9528d97c22e.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!ibuq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44d04885-53a0-4567-bd9f-d2ebb5a712c8_200x200.png)
+![](z-images/ecb399e9e6c75031e1b7ad36c6fd133f.webp)
 
 ## Future Work
 
@@ -58,7 +58,7 @@ The number of yielded SMs per GPCs is not fixed, not the same between GPCs on th
 
 We prompted Claude to write a utility to reverse-engineer the mapping of SMs to GPCs by launching clusters of various sizes and using PTX `%%smid` to record which SMs appear in the same GPC. The result is a list of logical groupings of TPCs into GPCs. The list is longer than the 8 GPCs present in Hopper/Blackwell because there are some TPCs which seem to occupy their own logical GPC, and are never co-scheduled with any other TPCs.
 
-![](https://substackcdn.com/image/fetch/$s_!VqPc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4647ae85-dc9e-4c79-a203-47909a997e1b_1184x268.png)
+![](z-images/655bcac4acbd835f2a7d0231fae6d185.webp)
 
 As of SM100, NVIDIA has provided a solution to this quantization issue so that kernels can get the benefit of larger clusters while still making use of all the available SMs. Kernels can be launched with two cluster sizes: a preferred cluster size and a fallback cluster size. In general, to use the whole GPU, the fallback cluster should be size 2 or size 1.
 
@@ -75,7 +75,7 @@ The groupings of TPCs into GPCs we presented above are *logical* groupings. They
 
 To discover more information about the physical layout of the SMs, we have every SM traverse a pointer-chase array that fills L2 cache, measuring the latency of each load. For each address, we compare the latency seen from each SM to the latency seen by every other SM, to produce an SM<->SM distance matrix. X and Y axes are SM ID.
 
-![](https://substackcdn.com/image/fetch/$s_!1JbI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59a90c5b-7a40-4984-9872-717122402fe0_1600x1353.png)
+![](z-images/5f773a3713898056c4e98557329c4344.webp)
 
 We can see two clear sets of SMs, separated by >300 cycles average distance to L2; this must be the die-to-die crossing. We’ve also labeled the SMs with their logical GPC groupings as identified in the last section; interestingly, the singleton TPCs are close together and seem to correlate well with GPC0 in this benchmark, so one might guess that those TPCs physically reside on GPC0.
 
@@ -87,7 +87,7 @@ Based on this information, we can refine the list of yielded TPCs for each GPC, 
 
 Additionally, though in a roundabout way, we can conclude that the die-to-die latency penalty is roughly 300 cycles. This is also evident when looking at the latency profile for a singular SM from the benchmark (which also includes a lot of L2 congestion):
 
-![](https://substackcdn.com/image/fetch/$s_!U0jj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbec3b195-e042-4f89-b7b7-52e79a20d31b_2048x1015.png)
+![](z-images/d7f6c2c5269117e36f56c6519d33e773.webp)
 
 We would like to thank Orian from Decart AI for the benchmark inspiration.
 
@@ -110,7 +110,7 @@ We plot throughput versus bytes-in-flight per SM, the total number of bytes conc
 
 Although different load sizes converge to similar throughput at the same bytes-in-flight, we prefer 16-byte loads. 16-byte loads achieve slightly higher throughput at similar bytes-in-flight while using less execution resources. For example, at 32 KiB in flight, 8B load uses 4 stages, while 16B load uses 2 stages. This saves the memory space for 2 memory barrier objects and reduces instruction issue pressure.
 
-![](https://substackcdn.com/image/fetch/$s_!wD4E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F763336d2-7438-44f3-879b-f3116360c0ac_1600x1033.png)
+![](z-images/4f3193a1bd7377b6f020d1776b7ef89d.webp)
 
 Overall, we see memory throughput with `LDGSTS` saturating at around 6.6 TB/s at 32 KiB in flight.
 
@@ -123,13 +123,13 @@ We also benchmark config space multi-latent attention (MLA) kernels use:
 
 Our experiments show that increasing the number of stages achieves higher throughput at higher bytes-in-flight, and that increasing threads per CTA strictly improves performance across all configurations. Interestingly, MLA uses 2 warps and 12 stages, landing at about 2.2 TB/s. We believe this is due to softmax warps needing the most registers, and increasing warp count reduces register allocation per thread.
 
-![](https://substackcdn.com/image/fetch/$s_!Lvbe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F337b9825-d13a-44ed-85f5-df0aec71ba9b_1600x684.png)
+![](z-images/caf4a09b138f06d0c45f318f78d0ecad.webp)
 
 We benchmarked the latency of the same set of configurations. We see that `LDGSTS` has a baseline latency of ~600 nanoseconds and nearly doubles after 8 KiB in flight. This is because we need to use a large number of threads for `LDGSTS` to achieve high bytes in flight, leading to a high number of warps stalled due to MIO (memory input output) throttle.
 
-![](https://substackcdn.com/image/fetch/$s_!pE_H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9381e20a-0318-4284-af11-d1cf13a4c450_1600x977.png)
+![](z-images/bcf3c9fd2baffdf1cfab86b5f7da3bcf.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!tjkZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7888d3c1-270d-4d5e-a940-301c70813f89_1544x206.png)
+![](z-images/98ae7f864255a76eb9de51370131871f.webp)
 
 ## Tensor Memory Accelerator (TMA)
 
@@ -143,7 +143,7 @@ We benchmark TMA with the following configuration:
 - Threads per CTA: 128 (4 warps)
 - TMA box dimensions: 2D shapes increasing from size 32x8 to 128x128
 
-![](https://substackcdn.com/image/fetch/$s_!IhCY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a47a042-7c59-4cc1-8459-665852a23321_1600x720.png)
+![](z-images/7cbf8e20795cae46555027e2e5cfdfef.webp)
 
 Peak throughput is reached far later than `LDGSTS`.
 
@@ -153,9 +153,9 @@ Deep learning kernel libraries like FlashInfer use both TMA and async copy for l
 
 We see that throughput-wise, async copy slightly outperforms TMA at less than 32 bytes in flight, but TMA catches up after that and can continue scaling to 128 KiB. Latency-wise, we see async copy having slightly lower latency than TMA before 12 KiB in flight, but TMA latency greatly increases after that.
 
-![](https://substackcdn.com/image/fetch/$s_!mtqT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F74e024c1-60ab-44e4-8acb-69760e4fcba2_1600x678.png)
+![](z-images/cbdeee36788e1b2ec38c998fb9b4e1e4.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!ax25!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F838e8420-6671-4ffe-afdd-66c2581ada03_1600x677.png)
+![](z-images/37caa0fa8b06a795de0cdb18447b6bb2.webp)
 
 In reality, Blackwell MLA kernels use async copy for dynamically loading pages, while its MHA kernels use only TMA. Most of FlashInfer’s Blackwell MHA kernels are contributed by TRT-LLM, so we can only speculate what the kernels do by investigating the binaries. We found that similar to Hopper, all Blackwell TRT-LLM kernels use TMA. We suspect that for dynamic page loading, those kernels follow Hopper kernels, where they use 4D TMA with page index as the last dimension and index into the `TensorMap` object when needed. To understand the exact mechanics of the kernels, we urge NVIDIA to open source the FlashInfer TRT-LLM kernels for the benefit of the community.
 
@@ -177,7 +177,7 @@ Here, we compare three cases:
 
 TMA multicast allows for much higher load bandwidth to fill SMEM buffers, even if data is not already in L2. For known traffic patterns, explicit TMA multicast instructions perfectly eliminate L2 traffic, resulting in the ideal “1 / cluster\_size” L2 bytes per SMEM byte. We also observe that for this simple benchmark, we achieve nearly the same SMEM fill throughput in both the explicit and the implicit case. However, we can see the LRC is not perfect; the L2 receives a bit more traffic in the implicit case, especially as the total volume increases.
 
-![](https://substackcdn.com/image/fetch/$s_!Kl4E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3b833880-e9f9-4018-b7cf-d8f8cc9f95c7_1600x1309.png)
+![](z-images/7c1b1f4ccf900de6190769133a7e24ca.webp)
 
 Implicit multicast performs on par with explicit in terms of effective memory throughput. However, for L2 cache traffic reduction, implicit multicast loses effectiveness after more than 64 bytes in-flight.
 
@@ -189,7 +189,7 @@ We experimented with a few different PTX patterns for interacting with DSMEM. An
 
 The peak throughput we achieved when using each PTX pattern is below, expressed as bytes per clock cycle (B/clk) to align with the known max achievable in SM-local SMEM.
 
-![](https://substackcdn.com/image/fetch/$s_!eyO7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd6c7444e-7004-4e9a-ab21-c0d92e2cbbe7_1512x284.png)
+![](z-images/0ab8a3b072ea9cd1a9d72d201f206752.webp)
 
 ## Tensor Core 5th Generation MMA
 
@@ -199,21 +199,21 @@ Blackwell comes with 2SM MMA, a new type of MMA instruction (`.cta_group::2`) wh
 
 We benchmarked MMA performance with a configuration space below:
 
-![](https://substackcdn.com/image/fetch/$s_!Vi8a!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3b115c81-e5c1-4904-a640-9d239536fbd1_1342x412.png)
+![](z-images/70c9a6550b3635563519a8e42f6212b6.webp)
 
 ## Throughput
 
 NVIDIA claims specific throughput performance for different input data types, and here we show their claims for each (format + CTA group) and compare them with the max achievable throughput. We show that UMMA achieves near peak throughput for all formats and CTA groups, and even on 2SM versions where coordination overhead may be a concern.
 
-![](https://substackcdn.com/image/fetch/$s_!gMEj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd489809c-16d0-40d2-a3a5-030760568f0f_1600x800.png)
+![](z-images/ef4d9b23eb7385d42bfbef72bcb15a55.webp)
 
 For 1SM MMA across all N sizes, we see that the smaller M=64 achieves max 50% theoretical peak throughput, and the larger M=128 achieves near 100%. This confirms that M=64 is utilizing half of the datapath. For 2SM MMA, we see that M=128 throughput starts at 90% peak for N=64 and reaches near 100% for all other N sizes. M128N64 throughput must be bound at a different hardware unit such as TMEM, L2, SMEM, etc. Meanwhile, M=256 sustains near 100% peak throughput across all configurations, this is because M=256 is M=128 per SM, which can utilize the full datapath. We note that throughput is identical across formats with the same data type bit width, and micro-scaling data types have virtually no overhead.
 
-![](https://substackcdn.com/image/fetch/$s_!7P-g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F17602e21-9606-451d-a8bc-3899ae442688_1600x695.png)
+![](z-images/b6732a097a2651b2256cf9410622b021.webp)
 
 MMA supports two different AB layouts: Both input matrices stored in SMEM (SS), and matrix A stored in TMEM and matrix B stored in SMEM (TS). We observed that for M=128, while ABLayout=TS achieves near peak throughput, ABLayout=SS underperforms in smaller N sizes and catches up at N=128.
 
-![](https://substackcdn.com/image/fetch/$s_!V8NQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F314106a3-52a8-427e-9fcf-8be00badccc9_1600x617.png)
+![](z-images/e736890178c5d2338a64e80a2901233d.webp)
 
 We can show that this is because the instruction itself is SMEM bandwidth bound below N=128 for SS mode. For example, for FP16 we know the hardware can do 8192 MMA FLOPs per cycle per SM, and the SMEM bandwidth is 128 B/cycle (per SM). So for M=128 N=64 K=16, we have:
 
@@ -227,21 +227,21 @@ We can show that this is because the instruction itself is SMEM bandwidth bound 
 
 We compute this for increasing N and find we are finally Math limited starting from the N=128 instruction.
 
-![](https://substackcdn.com/image/fetch/$s_!xHgb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3700253d-db8b-462b-bdaa-6b03e9c1578d_1188x562.png)
+![](z-images/1c1af7c68062c1bb3008ddb615323ddb.webp)
 
 The same is true for other datatypes - MMA instructions with both operands in SMEM are SMEM-bound below N=128.
 
 To further illustrate the point, we plot the roofline for all shapes of FP8 1SM MMA. We see clearly that the N < 256 is at the memory-bounded region, and the slope is roughly 128 bytes / cycle, the SMEM bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!-agO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2b6f6282-c294-432c-97fe-6646a3b9bacd_1517x948.png)
+![](z-images/4385ff8b485ca9ac04025992b15c22ff.webp)
 
 2SM MMA achieves perfect weak scaling across all formats and shapes, reaching 2x speedup when using 2x the amount of compute resources than 1SM MMA. In smaller shapes of ABLayout=SS, we observe over 2x speedup, which again happens because the instruction is SMEM bound below N=128 for SS and the 2SM version splits operand B between the two SMs.
 
-![](https://substackcdn.com/image/fetch/$s_!pG8O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc143b70f-f950-4e8f-a9de-7ce2d956f605_1600x1020.png)
+![](z-images/b1e63ad16279f3b8461c4cf2e839f883.webp)
 
 SS mode: Over 2x speedup for N < 128 due to being SMEM bound
 
-![](https://substackcdn.com/image/fetch/$s_!CSsj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F76693f90-cbc0-428e-a2fd-84e872810fa8_1600x1020.png)
+![](z-images/def135cc57fb6be9c70e6ce27f2fb819.webp)
 
 TS mode: Near-perfect 2x speedup
 
@@ -251,7 +251,7 @@ These experiments show that you should always use the largest instruction shape 
 
 We benchmarked single MMA instruction latency, and we plot the comparison below. Across all configurations, we see latency linearly increases from N=64 to 128, and the spike at N=256 is likely due to the jump from 128 to 256. For individual CTA group MMAs, 1SM MMA M=64 and M=128 have similar latencies across N sizes, whereas in 2SM MMA, M=256 latency grows slightly faster than M=128, which matches our theoretical estimations. Comparing data types, we see little difference for 1SM but clear separation for 2SM MMAs.
 
-![](https://substackcdn.com/image/fetch/$s_!21tK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6a0575f8-c15a-4688-943c-2331a0a753ce_1600x695.png)
+![](z-images/c99152a1b4e39f534ee79e2d838ce459.webp)
 
 We notice a small but consistent pattern of the order of latency:
 
@@ -259,7 +259,7 @@ We notice a small but consistent pattern of the order of latency:
 
 We believe integer operations being more power efficient leads to S8 being the fastest, and scale factor computation introduces a minor overhead for MXF8 and MXF4.
 
-![](https://substackcdn.com/image/fetch/$s_!8pOu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4812fa68-0ae7-40d9-920c-2eb1f55b2d51_1600x1020.png)
+![](z-images/0dc004836bcfdc26d6b57f59bb4c7895.webp)
 
 ## Throughput at Different In-Flight Instruction Count
 
@@ -267,10 +267,10 @@ In our throughput benchmark, we set high numbers of in-flight instructions to am
 
 Across all configurations, we see the same N and in-flight MMAs achieve similar percentages of Speed-of-Light (SoL). Notably, only the largest N reaches 90% SoL, while the smallest N achieves only about 70%. Comparing 1SM and 2SM MMA, we see 1SM achieves around 5% higher SoL throughput than its 2SM counterpart. For the same data format and CTA group MMA, the throughput for larger N is always higher than smaller N sizes. Finally, we observe that the throughput SoL percentages for 4 in-flight MMAs caps out at 78% - 80%.
 
-![](https://substackcdn.com/image/fetch/$s_!zi4B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa662dd8a-5747-43e1-8fc4-8e0a73599bcf_1600x635.png)
+![](z-images/12d1520353a1e965c97f6089a3ebdb3e.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!bQr2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c7ae14b-4955-43db-a8b2-5673ff661d72_1600x635.png)
+![](z-images/87934c38feab779b0fb80b8746eeb98a.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!hvag!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1f518e0-ccbe-48de-ace9-1dd5264df6d5_1600x635.png)
+![](z-images/71eeecdabe4d6b9a22f23eafe2a0b07b.webp)
 
 Below we discuss real-world use cases with kernel writing library CUTLASS. We also discuss throughput, multi-cast, and floorplans.

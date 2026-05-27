@@ -22,19 +22,19 @@ We can fault Wall Street for **A LOT** of things, but its ability to project dec
 
 The most intriguing aspect of Wall Street's behavior is that if we examine every period of industry decline over the past several decades, we see that stock prices reach their lowest point when the industry only starts to experience a fall in earnings, well before the trough of earnings. The stocks were already recovering and surging by the time layoffs and consolidation occurred.
 
-![](https://substackcdn.com/image/fetch/$s_!os3P!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83c04174-7f76-48f7-b074-9c91e7635b9e_1256x980.jpeg)
+![](z-images/494a873849ea5db39a543b5b6f8c1e19.webp)
 
 This is no different in this cycle; over the last three months, the primary semiconductor ETF, $SOXX, **is up 37%**. This is a tremendous rebound, as earnings cuts are only getting started.
 
 Wall Street is getting ahead of itself and trading on historical norms rather than the business fundamentals over the next year. They raced to call the bottom of the market, but they cannot fathom a cycle deviating from that norm. This norm will be tested and broken as this cycle will be longer than ~6 months.
 
-![](https://substackcdn.com/image/fetch/$s_!PgWF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a9fb4d7-a043-4844-b045-58c39a5faa3c_3842x1844.png)
+![](z-images/8947d9956965e8713825a36a620f7dcb.webp)
 
 Days of inventory are currently at all-time highs. Even higher than the Dot-com bubble and the 2008 financial crisis. This inventory will take a lot longer than two quarters to digest. While companies want to hold higher inventory levels to avoid future supply chain disruptions, this growth level is unsustainable. Clearing these record inventory levels will take low utilization rates for more than a few quarters. Days of inventory will keep growing in the Q4 quarter for nearly every company based on our channel checks.
 
 Firms like [UMC are already at 70% utilization rates, their lowest since the Dot-com bubble](https://www.fabricatedknowledge.com/p/executive-transitions-amd-and-txn), but inventory levels have yet to start to fall. Furthermore, the market dynamics are very different from prior cycles regarding capacity additions. A [tremendous oversupply of certain process technologies will depress pricing and margins for the medium term.](https://www.semianalysis.com/p/tsmc-says-they-will-sidestep-the) Some foundries are even [forcing their customers to take mountains of inventory](https://www.semianalysis.com/p/globalfoundries-stuffing-customers), but this trend will revert soon.
 
-![](https://substackcdn.com/image/fetch/$s_!Jn2C!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e090863-a3c1-4d79-9c71-13b643886cc5_4203x1832.png)
+![](z-images/6637819ff752aa22a07b5198b2b36ec3.webp)
 
 The ~37% increase in semiconductor equities is based on the belief that the semiconductor down cycle bottoms in Q2 2023, but this would only make sense if the current down cycle was typical.
 

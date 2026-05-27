@@ -14,7 +14,7 @@ In 2015, Lam Research had $5.26B of revenue, and they are expected to earn nearl
 > 
 > Lam Research (2022)
 
-![](https://substackcdn.com/image/fetch/$s_!jJ0V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fba2caf25-96ad-4101-b295-7f59c8ccdcc9_936x524.png)
+![](z-images/8f6c17d8a82e35a27647f89e6153aebb.webp)
 
 The opening of the facility in Batu Kawan Penang, Malaysia late last year almost single-handedly grew Lam Research’s total manufacturing square footage by nearly 50%! As such, Lam Research has been shy to state how large this facility is relative to their other facilities.
 
@@ -28,7 +28,7 @@ The opening of the facility in Batu Kawan Penang, Malaysia late last year almost
 
 We went through various company information as well as to various local county assessor’s office information to pin down how large the existing facilities are. Here is a list of manufacturing and warehouse growth over the last handful of years for Lam Research. These facilities are what’s enabled Lam Research to more than triple their revenue since 2016.
 
-![](https://substackcdn.com/image/fetch/$s_!5nKf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7b004606-21d6-4215-8bbd-4f976cb7ef03_1351x517.png)
+![](z-images/0fd86711216f51d15317664de298125a.webp)
 
 Malaysia stands out as much larger than other facilities. Furthermore, Lam Research has only said it is for manufacturing where as some of the other larger new facilities include descriptions of operations and logistics. In 2021, Lam Research added ~845,000 square feet of manufacturing space which increased Lam Research’s total manufacturing and warehousing square footage by nearly 50%. As such it stands to reason more than 1/3 of Lam Research’s future manufacturing capacity will be in Malaysia.
 

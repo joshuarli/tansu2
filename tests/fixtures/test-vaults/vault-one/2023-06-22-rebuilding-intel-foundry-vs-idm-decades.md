@@ -10,23 +10,23 @@ Intel holds a unique position in the semiconductor industry as the only major In
 
 Theoretically, Intel can optimize their manufacturing and designs for each other more closely than a competitor like AMD can with TSMC due to being a single firm with fewer data-sharing restrictions. They can price their final chips lower than AMD can because there is no external TSMC foundry tax to pay.
 
-![](https://substackcdn.com/image/fetch/$s_!pIgi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0583331a-48ef-4dc0-ac08-96e80ca3cb90_1492x766.png)
+![](z-images/80ee2e64c79e33fd3651e802028db9bc.webp)
 
 For decades this model worked and held true. Intel had a huge process node lead over all of its competitors and therefore was able to dominate. They consistently had higher margins than firms like TSMC and AMD. The image below shows what a combined foundry + fabless company would look like if they were hypothetically the same company versus Intel.
 
-![](https://substackcdn.com/image/fetch/$s_!G49i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F49bdbe62-bd7e-41b7-a38c-8aece2b24361_1363x730.png)
+![](z-images/6fa9878d2ca74b35902a031345136fae.webp)
 
 The process node advantage began showing cracks in the early 2010s with 14nm, but then it fell completely apart at the 10nm transition, originally scheduled for 2016. The foundries raced ahead through 16nm, 10nm, and 7nm lapping up Intel’s 3-year lead and turning it into a 3-year deficit.
 
 Some of these cracks were due to being a massive IDM. Responsibility and accountability were not properly pushed down to individual teams and business units. Sections of Intel withered away and were behind the industry in performance or cost, but no one could tell because Intel was in its own la-la-land of overwhelming engineering dominance.
 
-![](https://substackcdn.com/image/fetch/$s_!BFCw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F70575cf4-384f-4701-8f0a-b1a745c3b1c3_1480x742.png)
+![](z-images/f7fd40dd9642a350e810b0ed01cf5986.webp)
 
 Once Intel lost that lead, the inefficiencies became clear. Today, Intel is significantly less efficient at manufacturing wafers than TSMC. Intel requires more fab space for the same output due to lower tool utilization rates and worse yields.
 
 Meanwhile Intel’s design teams are meaningfully behind AMD’s, requiring larger cores with more transistors that guzzle more power to achieve similar performance. Furthermore, Intel’s design teams take many more years and higher cost to reach production for a new architecture [due to their inferior design methodology.](https://www.semianalysis.com/p/the-dark-side-of-the-semiconductor)
 
-![](https://substackcdn.com/image/fetch/$s_!epPp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc55be01d-0218-4337-aff1-5bfc085ece37_1633x870.png)
+![](z-images/1efe76f5783ddc9fc7a2995049d52d0c.webp)
 
 One of Intel’s solutions for these issues is to catch up on process nodes, by shrinking twice in rapid succession (Intel 4/3 and Intel 20A/18A). That alone won’t solve the issues, though, as they still lack the scale, customer base, and operating efficiencies.
 
@@ -118,7 +118,7 @@ Much like TSMC, Intel will also begin to charge teams for their utilization and 
 
 This change will help increase tool utilization due to being able to plan better production, which will also be a massive saving.
 
-![](https://substackcdn.com/image/fetch/$s_!C3Qi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8dbeaf6f-a5a6-41eb-a624-f1e74db9e62e_1473x751.png)
+![](z-images/337aa918b047ed8ada6daa01efe7149e.webp)
 
 Overall, Intel has a lot of claims on cost savings from various changes to the internal foundry model.
 

@@ -10,7 +10,7 @@ When the [US dropped updated AI restrictions](https://www.semianalysis.com/p/waf
 
 Furthermore, one of the China specific GPUs is over **20% faster than the H100 in LLM inference**, and is [more similar to the new GPU that Nvidia is launching early next year than to the H100](https://www.semianalysis.com/i/137826061/roadmap-b-x-h-hbme-g-serdes-pcie-co-packaged-optics-optical-switch)! Today we will share details about Nvidia’s new GPUs, the H20, L20, and L2. The detailed specs include FLOPS figures, NVLink bandwidth, power consumption, memory bandwidth, memory capacity, die size, and more. We will also discuss performance in more detail. The simple specs are here:
 
-![](https://substackcdn.com/image/fetch/$s_!X7AO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0282b549-fe48-439d-ac73-e9912dc94e67_2612x874.png)
+![](z-images/0ede842bc1c6cf741875af9529776b37.webp)
 
 For an explanation of the US controls, [see here.](https://www.semianalysis.com/p/wafer-wars-deciphering-latest-restrictions) In short, Nvidia is perfectly straddling the line on peak performance and performance density with these new chips to get them through the new US regulations.
 

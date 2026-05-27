@@ -8,19 +8,19 @@ description: "Intel drew up a big stir recently when they announced their proces
 
 Intel drew up a big stir recently when they announced their process technology and packaging roadmaps. Possibly the most exiting news of the Intel Accelerate 2021 event was that they had over 100 customers in the pipeline with 2 wins already. Amazon and Qualcomm were becoming customers of Intel Foundry Services. While at first glance these names seem like huge wins, the size and scope of these agreements are much smaller than Intel portrays.
 
-![](https://substackcdn.com/image/fetch/$s_!TBZm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F411147e4-6097-4360-94c6-95fe2dcd724a_960x536.png)
+![](z-images/cd64d7daad99e4f2807aa2eb7d479ed2.webp)
 
 Amazon is only a packaging customer. A big positive for Intel´s packaging prowess, but this explicitly means that Amazon will not be manufacturing chips at Intel. The chips themselves will still be fabricated at other foundries such as TSMC. We believe this win is specifically related to networking and silicon photonics.
 
-![](https://substackcdn.com/image/fetch/$s_!p2xa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F485d0228-7213-468c-9c11-dd6c8b4e8f34_700x478.jpeg)
+![](z-images/9839a050ea057fb4a759d10a893ce61f.webp)
 
 Amazon has a robust pipeline of Network Interface Controllers (NICs) development with 400Gbe already deployed. These NICs run their own proprietary protocol which is touted as better than the standard Ethernet or InfiniBand protocols. The Intel competencies around co-packaged optics are likely driving wins here for future Switch and 800Gbe+ NICs.
 
-![](https://substackcdn.com/image/fetch/$s_!9JLW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F78ce3b28-42ca-4f93-b1de-b1098872ab78_638x359.jpeg)
+![](z-images/e47babf05f39cd95609bc5083d698c5d.webp)
 
 [We wrote about their technology lead in silicon photonics and explained why it is Intel’s Trojan Horse for entering the foundry business model.](https://semianalysis.substack.com/p/intels-trojan-horse-into-the-foundry) While it is a nice win, packaging for specific datacenter infrastructure hardware is not anywhere close to as important as manufacturing chips or selling merchant silicon directly to Amazon.
 
-![](https://substackcdn.com/image/fetch/$s_!OsHl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa381e8f9-8f65-4fa6-a51b-8870f185ffff_960x543.png)
+![](z-images/46115bbeca7fc22fda0ff43b58615b0b.webp)
 
 The bigger exaggeration is the Qualcomm announcement. Intel touted them as a customer for their 20A node. This seems like a massive win given Qualcomm is a top 5 fabless semiconductor company and a fast mover to new process technologies. If Intel were to manufacture leading edge smartphone chips for Qualcomm, that would be a huge check mark for the validity of their claims. Unfortunately, 20A is a 2025 process technology assuming no delays, which puts actual chips many years away. In the past, Qualcomm stated similar things about the Samsung 7nm, but they used it on a single chip, 735G, which was an upper midrange SOC that was relatively low volume.
 
@@ -44,7 +44,7 @@ What was the motivation for claiming a customer here when its clearly still in t
 
 Pretty simple, Intel gets to tout the win and keep pushing the narrative that Intel is on the comeback after stagnating for years. Intel’s 20A node looks like a real technology rather than a node with huge unproven technologies such as RibbonFET and PowerVia. The narrative shifts and Intel stock holders can be excited about the future, even if the actual business is losing market share rapidly.
 
-![](https://substackcdn.com/image/fetch/$s_!G20t!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9f914e4d-3efb-4796-8dc2-ee467b0e7ad0_1022x558.png)
+![](z-images/3b5b5bd402d8edbb560c33342ef17b0b.webp)
 
 Qualcomm on the other hand gets to use this as a negotiation point with their existing foundries. It is no secret that Qualcomm has heavily utilized Samsung and TSMC while playing them off each other. This allows them to choose the most cost-effective process nodes for the technology goals they have. Another bargaining chip will keep TSMC on their toes for technological development and ensure Samsung continues to undercut on wafer pricing.
 

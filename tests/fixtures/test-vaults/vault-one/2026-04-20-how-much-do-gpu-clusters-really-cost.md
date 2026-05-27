@@ -22,7 +22,7 @@ Modern GPUs are unbelievably expensive. A single Blackwell GPU costs more than t
 
 Traditionally, when deciding where to get a cluster to solve that first category, companies evaluate neoclouds on a cost-per-hour basis, focusing on the most expensive line item: the GPUs. However, focusing solely on the price per GPU-hour a provider offers can be misleading. In practice, two cloud offerings with identical pricing per GPU-hour can have very different TCO, once you account for everything that goes into training a model or building inference endpoints. Factors such as downtime, setup time, debugging time, and required performance tuning of networking and storage can dramatically impact how much useful work users can do per dollar spent. Additional costs for non-GPU expenses such as CPU compute, networking, storage, orchestration software, and support can also be hidden and not considered. In other words, what appears to be a cheaper cluster can in many cases end up being more expensive.
 
-![](https://substackcdn.com/image/fetch/$s_!jmbh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9711ce3a-5fdb-4b51-ad00-334528b270d3_573x193.png)
+![](z-images/232dceeb43907f469b61c227aab22707.webp)
 
 Source: [SemiAnalysis Cluster TCO Calculator](http://clustermax.ai/tco)
 
@@ -44,7 +44,7 @@ To evaluate GPU cloud offerings on equal footing, we break down the TCO of a GPU
 
 ![A graph on a black background
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!NbVA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd13bd49-7e07-4c10-8247-c97371f5fb0c_977x561.jpeg)
+AI-generated content may be incorrect.](z-images/fdf10e1090fabc885db66108951565d8.webp)
 
 A graph on a black background AI-generated content may be incorrect.
 
@@ -54,7 +54,7 @@ Source: [SemiAnalysis GPU Rental Price Dashboard](https://semianalysis.com/gpu-p
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!c1lJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F189bd99b-e480-48be-93a3-a67f3c43e708_904x783.png)
+AI-generated content may be incorrect.](z-images/dcee293f4152b4b7bf0435a5d9c6a876.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -68,7 +68,7 @@ Source: [SemiAnalysis Cluster TCO Calculator](http://clustermax.ai/tco)
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!tpwq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbbaf9d05-00af-43f2-86ac-b0bdb5d1e234_814x286.png)
+AI-generated content may be incorrect.](z-images/05d3330343c471930f2fb5202398ea63.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -78,7 +78,7 @@ Source: [SemiAnalysis Cluster TCO Calculator](http://clustermax.ai/tco)
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!zp6O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff6d490b6-40ee-4d39-bb73-0c588e63060e_797x818.png)
+AI-generated content may be incorrect.](z-images/4557a8241069e2cdf6416a75f085f30a.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -116,7 +116,7 @@ As we explained in [ClusterMAX 2.0](https://newsletter.semianalysis.com/i/178057
 
 Here we use a convenient table to illustrate the concept. As node failures get more common (moving down the y-axis of the chart) and cluster size gets bigger (moving to the right across the x-axis of the chart), the time between failures (MTBF) gets smaller and smaller.
 
-![As cluster sizes grow, the probability and frequency of failures can increase.](https://substackcdn.com/image/fetch/$s_!wy3h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6580e998-15cd-4ed3-8303-f8ae728257ac_1024x656.png)
+![As cluster sizes grow, the probability and frequency of failures can increase.](z-images/8b8bec4f8c5a51ddd43345fac7c8a039.webp)
 
 As cluster sizes grow, the probability and frequency of failures can increase.
 
@@ -146,7 +146,7 @@ Individual terms are…
 
 Notably, from the user’s perspective, there are two very different approaches at the software level that we have observed on training clusters. The first is checkpoint restart (still the most common option for small and medium-scale clusters), and the second is fault tolerant training frameworks. In both cases, the inputs to the calculations depend on the approach of recovering from idle nodes vs pre-emption vs relying on the provider, and how long repair/replace flows actually take.
 
-![](https://substackcdn.com/image/fetch/$s_!9EGD!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57f3828f-49e0-4cb7-bb8c-b7cc0262dd89_1006x660.png)
+![](z-images/5ac60c879246c342dd99fd0cc7b0c8b6.webp)
 
 Source: Meta, https://arxiv.org/abs/2410.21680v2
 
@@ -162,7 +162,7 @@ TorchFT is the open source standard for fault tolerant training frameworks. The 
 
 ![A diagram of a lighthouse
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!jj_9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F47a9d347-63ee-40aa-b9c4-cec6ae6704c9_632x633.png)
+AI-generated content may be incorrect.](z-images/e07a4ff33b73a4e800132a3556f5e948.webp)
 
 A diagram of a lighthouse AI-generated content may be incorrect.
 
@@ -174,7 +174,7 @@ Specific to FSDP, the relevant failure domain is the communication group, not ju
 
 This has a tradeoff. When a replica group dies, you lose that whole group’s GPUs until the node is replaced, a surviving group serializes its full model + optimizer state via `state_dict()`, serves it over HTTP to the recovering group, calls `load_state_dict()`, syncs its step counter, and rejoins the quorum. This whole process is orchestrated by the TorchFT lighthouse server, which you must install on the cluster.
 
-![](https://substackcdn.com/image/fetch/$s_!DjjN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc1691f96-d240-4f0a-bd5f-4816491156db_2090x606.png)
+![](z-images/0666d6dbc4eb53661e4a874a0e7574f2.webp)
 
 Source: Source: Meta, https://arxiv.org/abs/2410.21680v2
 
@@ -198,13 +198,13 @@ There is a clear tradeoff for memory overhead here. To quote AWS docs: “The hi
 
 ![A screenshot of a recovery process
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!icOo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd63ab319-0125-404a-803e-9033225d89d3_1112x375.png)
+AI-generated content may be incorrect.](z-images/6302f7a6634ce505ccb86b25d1c462fa.webp)
 
 A screenshot of a recovery process AI-generated content may be incorrect.
 
 ![A screenshot of a recovery results
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!2GQU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5639d8d5-96c6-4473-a883-5aeb7c773d99_1478x705.png)
+AI-generated content may be incorrect.](z-images/5ed1017caddda36b1ee88e0fda7bcd14.webp)
 
 A screenshot of a recovery results AI-generated content may be incorrect.
 
@@ -222,7 +222,7 @@ The results are clear when compared to checkpoint restart and TorchFT with perfo
 
 ![A graph showing a graph of a graph
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!qZ2J!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb390c571-f8cd-42a4-9cb6-14f57a1c4241_2270x1106.jpeg)
+AI-generated content may be incorrect.](z-images/02d1b249ac5e616dca6f26d5ee03212a.webp)
 
 A graph showing a graph of a graph AI-generated content may be incorrect.
 
@@ -250,7 +250,7 @@ These are not direct comparisons, but rather an amalgamation of the average expe
 > 
 > Silver-tier = Together + Lambda + Vultr + Voltage Park + Cirrascale + Gcore + Firmus + GMO + Tensorwave
 
-![](https://substackcdn.com/image/fetch/$s_!U0Ze!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ddf8386-6bac-4368-aa96-68de740b124b_3132x1574.png)
+![](z-images/bb61f5ea15b1ea93933216d1a0bccef3.webp)
 
 Figure 1: SemiAnalysis ClusterMAX 2.1 Rankings, April 2026
 
@@ -272,7 +272,7 @@ In order to explore a broad range of typical customer requirements, we calculate
 
 Below we walk through these scenarios using screenshots from our [GPU Cluster TCO Calculator](https://www.clustermax.ai/tco) and our [Goodput Calculator](https://www.clustermax.ai/tco). We release both of these calculators for free on our ClusterMAX website so that users can plug in their own values for custom scenarios and see the results with relevant inputs.
 
-![](https://substackcdn.com/image/fetch/$s_!EBG_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd7b369ef-17b5-4a29-9a4b-a5368030da3f_824x345.png)
+![](z-images/180dfed4972c49ada9c83c49ad1cf801.webp)
 
 Source: SemiAnalysis ClusterMAX Website
 
@@ -298,7 +298,7 @@ Subtotals are available in each tier on the calculator:
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!2sBQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb80aba2-a7cb-4232-ac9b-110aa0ec0863_973x841.png)
+AI-generated content may be incorrect.](z-images/db27a971e74a4638f7ba0b303b8b8e24.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -312,13 +312,13 @@ For the Silver-tier neocloud, the 15% price discrepancy is primarily attributed 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!YBbE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7696e5a2-87ee-4247-a328-1b1c302d2ca0_1211x331.png)
+AI-generated content may be incorrect.](z-images/c0294f29231b40aa5ee0998ca51c4249.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!YAaK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd95ec027-2da6-4e1f-93f7-3cb19a04f1a9_1211x400.png)
+AI-generated content may be incorrect.](z-images/adde161dc7e7e677654c973093fdcb7f.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -334,7 +334,7 @@ The results are a significant difference between the three providers: 6.14%, 10.
 
 ![A screenshot of a calculator
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!gLrG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb5c164ad-c9ad-41c0-bb77-d6f9222735f6_713x730.png)
+AI-generated content may be incorrect.](z-images/aec94149b551032ff048d4a89ccd7419.webp)
 
 A screenshot of a calculator AI-generated content may be incorrect.
 
@@ -360,7 +360,7 @@ Subtotals are available in each tier on the calculator:
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!zpDJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa50b85f-376f-4e4b-8f55-95c8a96b3958_970x687.png)
+AI-generated content may be incorrect.](z-images/eeae9c5fd44dd5629a39130ec7cd81b8.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -370,7 +370,7 @@ Overall, the discrepancy in price when comparing Gold-tier, Hyperscaler, and Sil
 
 ![A screenshot of a graph
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Cy0y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d20335f-027b-43fd-b79d-165ba35fc746_1214x777.png)
+AI-generated content may be incorrect.](z-images/331b3b9cb64608874603d1b00c6e591a.webp)
 
 A screenshot of a graph AI-generated content may be incorrect.
 
@@ -384,7 +384,7 @@ The results are a small difference between the three providers: 0.23% to 0.96%, 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!uny6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78b79a3d-d312-4b20-bf27-4139dcaeb63e_713x732.png)
+AI-generated content may be incorrect.](z-images/2724bcbfad896bcfec0645f98ed8a9f1.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -406,7 +406,7 @@ In addition, we
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!WpFE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcad2a30a-e708-4231-9a61-9364e0a252e3_969x687.png)
+AI-generated content may be incorrect.](z-images/8325bc7854cbae7c381045db2b45982f.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -416,7 +416,7 @@ Overall, the discrepancy in price when comparing Gold-tier, Hyperscaler, and Sil
 
 ![A screenshot of a graph
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!kW9L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F38749407-0b0d-4c34-808a-892a2b366aeb_1213x777.png)
+AI-generated content may be incorrect.](z-images/283209dbacf9c88d630c52be27d84d8f.webp)
 
 A screenshot of a graph AI-generated content may be incorrect.
 
@@ -430,7 +430,7 @@ Notably, this doesn’t make much of a difference on the total Goodput Expense. 
 
 ![A screenshot of a calculator
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!V-Mc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb25b0369-df66-40b3-8ee7-077a22e96c58_714x729.png)
+AI-generated content may be incorrect.](z-images/9cf81053000e42f29c855da4016b3f99.webp)
 
 A screenshot of a calculator AI-generated content may be incorrect.
 
@@ -458,7 +458,7 @@ This update adds a small set of new providers to the ClusterMAX rating system. T
 
 Without further ado:
 
-![](https://substackcdn.com/image/fetch/$s_!U0Ze!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ddf8386-6bac-4368-aa96-68de740b124b_3132x1574.png)
+![](z-images/bb61f5ea15b1ea93933216d1a0bccef3.webp)
 
 Source: SemiAnalysis ClusterMAX 2.1 Ratings (April 2026)
 

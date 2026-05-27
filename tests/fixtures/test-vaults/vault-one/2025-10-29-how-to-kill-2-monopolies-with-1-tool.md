@@ -8,7 +8,7 @@ description: "Substrate X-Ray Lithography, a New American Foundry, $10k Logic Wa
 
 The chipmaking industry is, surprisingly, ripe for disruption. Technical decisions at incumbents are often driven by inertia, “that’s what we’ve always done.” Regression is feared above all else. Something as simple as fab lighting color cannot be changed: traditional yellow lights are still used in photolithography lines even though fabs will readily tell you it no longer has any risk of affecting the photoresist.
 
-![](https://substackcdn.com/image/fetch/$s_!1z1H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F87e16a64-12d2-4562-b9c9-5025b270e7b8_2476x1435.png)
+![](z-images/b4bffa4dc5fed3afd300e43b9d34515f.webp)
 
 A TSMC fab cleanroom. The yellow lighting tint hasn’t been necessary for decades. Source: TSMC
 
@@ -32,7 +32,7 @@ It appears Substrate has overcome these x-ray challenges at least partially, and
 - Capable of complex, arbitrary patterns
 - Overlay <= 1.6 nm, full-wafer CDU 0.25 nm, line edge roughness (LER) <= 1 nm, LCDU <= 1.5 nm
 - **Leading edge wafers will be produced at 50% less than existing options**
-![](https://substackcdn.com/image/fetch/$s_!OC7z!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0d76a80b-13d2-42bd-b3b9-ca8357ae9b9e_4480x4000.png)
+![](z-images/86c251c982c1cd59f6068ee3d6246293.webp)
 
 Images of single exposure patterning on Substrate’s XRL tool. 12nm lines with 13nm tip-to-tip distance and random vias, 12nm CD (diameter) at 30nm minimum pitch. Source: Substrate
 
@@ -62,7 +62,7 @@ The answer is similar to what you’d say if a high-NA tool cost <<$40M rather t
 
 It would open the floodgates in process node design flexibility. Continued device area scaling would no longer be limited by lithography cost but on transistor design, materials and electrical characteristics.
 
-![](https://substackcdn.com/image/fetch/$s_!gidZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F98cfa06c-b7b4-44ca-91ff-4a4c78ff7f6c_3438x1911.jpeg)
+![](z-images/a9c8909ade2f89a8013fbbfa50133290.webp)
 
 Source: ASML
 
@@ -70,13 +70,13 @@ Take one example: the M0 layer. Typically, pitches of the lowest metal layer (M0
 
 Current 23 nm M0 pitches from TSMC already rely on multi-patterning with low-NA EUV with additional cut masks to achieve close tip-to-tip spacing. Intel’s 32 nm M0 on 18A uses with single patterning low-NA and [pattern shaping](https://newsletter.semianalysis.com/p/euv-requirements-halved-applied-materials?r=329z6u&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) tools to narrow T2T spacing, with backside power delivery allowing a one-time relaxation of M0 pitch. We are not expecting M0 for their 14A node to go below 26 nm given the modest area scaling targets, which allows them to deploy high-NA EUV single patterning in a cost-effective manner with assistance from [Directed Self Assembly](https://newsletter.semianalysis.com/p/intels-14a-magic-bullet-directed).
 
-![](https://substackcdn.com/image/fetch/$s_!FaK3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F20632fb2-7ca5-44ce-a16c-690dc5a6a348_3114x1692.jpeg)
+![](z-images/f0336d0be9e59fe2a6121f4d061621b0.webp)
 
 Potential benefits of single patterning at high-NA resolutions. Substrate promises the same great taste but without $400M in calories. Source: Intel
 
 With Substrate’s tool, multi-patterning complexity can be replaced with a single exposure while also freeing up many design rule restrictions on metal line placement. Area scaling could be more aggressive to offer dense low power libraries for mobile and AI accelerators. At 20 nm metal and 30 nm via pitches, the 1 nm-generation process nodes for 2030 could stay at single exposure with Substrate’s tool.
 
-![](https://substackcdn.com/image/fetch/$s_!B53F!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79d26399-d6d9-42d6-8d23-4fdd99271130_10423x3505.png)
+![](z-images/50955c37f74641f4785061d7edeebefe.webp)
 
 Simplified process flow of common multipatterning schemes. Multipatterning incurs extra process steps beyond just litho exposures. Source: SemiAnalysis
 
@@ -130,7 +130,7 @@ The company is also strongly committed to avoiding the mistakes of the EUV progr
 
 Comparisons naturally come up with xLight, a startup attempting to build and commercialize free electron laser (FEL) light sources. Both Substrate and xLight’s devices are capable of sub-EUV wavelengths, but that’s where the similarities end.
 
-![](https://substackcdn.com/image/fetch/$s_!66qo!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d43eee9-6e4d-47dc-95f5-aab914b07abe_853x480.gif)
+![](z-images/409766a15dd3c26e667e5043965fc055.gif)
 
 xLight EUV source architecture. An FEL outside the fab provides light for up to 20 EUV scanners. Source: xLight
 

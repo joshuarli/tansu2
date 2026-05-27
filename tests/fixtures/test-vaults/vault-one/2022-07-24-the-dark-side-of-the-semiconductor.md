@@ -8,7 +8,7 @@ description: "We are in the midst of a semiconductor design renaissance."
 
 We are in the midst of a semiconductor design renaissance. Nearly every major company in the world has their own silicon strategy as they try to become vertically integrated. There are also more chip startups than ever. The industry is rapidly shifting away from using Intel CPUs for everything. As Moore’s law slows, design is flocking towards heterogeneous architectures which are more specialized for their specific task. Specialized chips massively outperform CPUs if software challenges are solved, but there is a dark side to this specialization strategy. Fixed cost are exploding, and volumes are driven down massively for these designs. Semiconductors are an industry of economies of scale, and this is only becoming more apparent with each new technology generation.
 
-![](https://substackcdn.com/image/fetch/$s_!8MCK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fddefd035-f1c1-4e62-b752-8217a4d8a48a_1024x1024.jpeg)
+![](z-images/18ef67bf9e698a7eed39009b4175ba17.webp)
 
 SONY DSC
 
@@ -18,13 +18,13 @@ There are many clever tricks that are being used to lower costs of designing tha
 
 *Special thanks to the SPIE Advanced Lithography + Patterning for providing many great presentations focused on masks, lithography, patterning, and metrology that identify this cost issue and how to scale from here.*
 
-![](https://substackcdn.com/image/fetch/$s_!eDpk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcfddb567-1f1f-4128-aaf5-43f700c8b7ec_898x702.png)
+![](z-images/c913ab001fb279a765c2fffcb1a5c6c8.webp)
 
 Wafer prices are increasing, but the cost of a mask set is increasing much more rapidly. The chart above from IC Knowledge demonstrates the conundrum. Volumes have to be significantly higher across eras of process technology to take advantage of the economic improvement from shrinking transistors.
 
 Some folks are under the impression that transistor cost stopped falling at various process nodes such as 28nm, 7nm, 5nm, etc. The number of people claiming transistor cost have stopped falling and started increasing is seemingly doubling on a pace faster than Moore’s Law. To be clear, cost per transistor continues to fall even at 5nm and even 3nm foundry, but this is relegated to those who have large wafer volume. Chip design is expensive, but it is nowhere close to what IDC and McKinsey pretend it is. See the incorrect chart from them below.
 
-![](https://substackcdn.com/image/fetch/$s_!O95B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb93fa74f-3623-4842-b790-bee03d0ec070_1024x525.png)
+![](z-images/d9cfdb0d856151908589d833e03ccfa8.webp)
 
 We have worked with multiple chip startups who have created leading edge chips on TSMC 7nm $50M to $75M. This cost includes their entire range of software, design, and tape out costs. These costs will vary wildly depending on the type of chip made.
 

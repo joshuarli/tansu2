@@ -24,7 +24,7 @@ Fab 18 in the Tainan Science Park is also the primary location for producing the
 
 This would be the first time TSMC has shared a complete cost comparison between fabs of different generations at the same site. With rumors of cost overruns, TSMC’s N5 fab costs may have increased to ~$13B from the original ~$12B. Most likely, these costs are somewhere in the middle of that range.
 
-![](https://substackcdn.com/image/fetch/$s_!ueIB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb670a3bd-5f5f-4fd8-9f19-47c633f7c8ab_1697x362.png)
+![](z-images/a634e6acd1b3f717175fede92bc90f2d.webp)
 
 The total spend per wafer starts per month and increases from 38% to 55%. This ties nicely with the other rumors we have heard for N3E pricing being ~35% more than N5. Contrary to the [DigiTimes rumors,](https://www.digitimes.com/news/a20221121PD217/tsmc.html) the wafer prices are not $20,000. Also, N3B is a decent bit more expensive than N3E.
 
@@ -32,7 +32,7 @@ The story of N3 is a complex one. Initially, N3 was challenging to yield and exp
 
 In addition to N3 being pushed out from 2022 iPhones to 2023 Pro iPhones, many other customers have also backed away from their original N3 plans. Many rumors exist about Zen 5, Intel GPUs, and some Broadcom custom ASICs. These companies are rumored to have opted to stick with N5 class process nodes or move on to the relaxed N3E process. The original N3 is called N3B by most and will not ramp much beyond Apple. We will dive into the technical differences later in this report, but N3E shares the same SRAM bit-cell size as N5 class process nodes and reduces the number of EUV exposures.
 
-![](https://substackcdn.com/image/fetch/$s_!SU0z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F233344b5-d8e5-4dbe-84a0-8e8e1b5deaa0_1725x487.png)
+![](z-images/11439fe473afb6868ddaccebfde1e85f.webp)
 
 The density improvements are, at best, slightly better than the wafer cost increases. With the FinFlex 2-1 implementation, density improvements are ~56%, with a ~35% cost increase. This results in an ~15% cost per transistor improvement, the weakest ever scaling for a major process technology in 50+ years.
 
@@ -70,13 +70,13 @@ N5 has a minimum metal pitch on M0 of 28nm, a 30% reduction over N7. This will h
 
 N5P is a process optimization of N5. Through enhancements of the FEOL and MOL of the process, TSMC eked out 7% higher performance and 15% lower power. While this may not seem like much, the benefit is that this process optimization is IP-compatible with N5. Any N5 designs can easily be ported to N5P and see these gains. With the [soaring fixed costs of semiconductor design](https://www.semianalysis.com/p/the-dark-side-of-the-semiconductor), the impact of this cannot be understated.
 
-![](https://substackcdn.com/image/fetch/$s_!Jisx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fde785c50-edc9-4a92-8fda-396a9f6dd7a8_1379x776.png)
+![](z-images/8ef25fcf04b4a7ebcd4f288f67e23bc9.webp)
 
 N4 is another process optimization of N5, but it comes with a small design shrink. This is also referred to as a “nodelet.” Through optimizations in the standard cell library, a small optical shrink, and changes in design rules, N4 achieves better area efficiency. N4 also reduces the number of masks and process complexity. This enables TSMC to produce N4 at a lower cost than N5 per wafer.
 
 There was [a rumor started by Nikkei Asia that the Apple A16 cost 2x as much to fab](https://asia.nikkei.com/Business/Technology/iPhone-14-teardown-reveals-parts-20-costlier-than-previous-model), but that is completely false. Much like N5P, power and performance characteristics were improved through improvements in the FEOL and MOL.
 
-![](https://substackcdn.com/image/fetch/$s_!5r2M!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F11cfcfd8-16e4-4139-814e-2d5b1efeffad_603x339.png)
+![](z-images/17c55f6dd1a444982c66773fc5b6d6d2.webp)
 
 Like TSMC’s other nodelet, N6, N4 offers two approaches for migration from an existing N5 design. Both have their trade-offs. First is the RTO or re-tapeout, which involves using the same design rules as N5. This is cheaper, requires less engineering, and provides less of the benefits of N4. This is how MediaTek was able to release the Dimensity 9000 on “N4” so soon after it reached risk production.
 
@@ -92,19 +92,19 @@ To achieve such high frequencies, it is likely that some design rules have been 
 
 Now, we shall discuss the critical pitches of the N5 family of nodes and exclusively detail the pitches of TSMC’s N4 node. N5’s high density (HD) library has a fin pitch of 28nm, with 8 diffusion lines for a cell height of 210nm. The contacted gate pitch (CGP) is 51nm. N5’s high performance (HP) library has the same pitch, but adds 2 diffusion lines for a cell height of 280nm. The high-performance library also relaxes the CGP slightly to 57nm, enabling higher performance. As stated by TSMC, N4 offers a 6% area reduction through optical shrinks. To achieve this, the HD and HP libraries’ cell height has shrunk to 206nm and 274nm, respectively. Moreover, the CGP has shrunk to 49nm and 55nm.
 
-![](https://substackcdn.com/image/fetch/$s_!3Tiw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1e4d0b50-b46b-4991-9968-b0e108c18c63_1593x478.png)
+![](z-images/639a6872c8e52a820b314235a417fbc0.webp)
 
 N5 offers a pitch of 28nm for its lowest metal layer, the smallest in production. This is also the minimum metal pitch for the node. It also offers a metal 2 pitch of 35nm, the smallest in production.
 
 As we mentioned, N5 has the densest bit-cell in production in each 6T HD and HP bit-cell category. With an assist circuitry overhead of 30%, this lands their HD SRAM density at 31.8 Mib/mm2 and their HP SRAM Density at 26.7 Mib/mm2. Although N4 did not bring further reductions in the size of the SRAM bit-cell, TSMC remains in the lead.
 
-![](https://substackcdn.com/image/fetch/$s_!_Oj_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fadcba5d3-9bb8-4597-b23f-af0c0c2ea53b_1338x416.png)
+![](z-images/1208dbfd6702b538cff7e241dcb888f1.webp)
 
 Now, onto the main attraction, logic density. While this may be the most attention-grabbing number, it does not describe a node on its own. Every other characteristic must be considered, from its SRAM bit-cell to power and performance. These metrics are calculated with the Bohr formula, which assigns a weight of 60% to small, undense NAND2 cells and 40% to large, but dense Scan Flip-Flop cells. TSMC leads in this metric, though less than in other factors.
 
 While the density of its HD library is the highest in production, the density of its HP library lags Intel 4’s HP. To be clear, Intel 4 is “manufacturing-ready,” according to Intel, but true high-volume manufacturing is still a couple of quarters away. Nevertheless, density is one of the most enticing reasons to use TSMC’s N5 family of nodes.
 
-![](https://substackcdn.com/image/fetch/$s_!sHC1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcaa013b3-531d-42d0-9234-479e8569327c_1523x420.png)
+![](z-images/ea3e37efab52e8f347106bb4c3e47f34.webp)
 
 TSMC’s N5 family is an excellent set of nodes, and these metrics alone do not do it justice. Its combination of power, performance, area, ease of use, IP ecosystem, and cost are unmatched.
 
@@ -116,7 +116,7 @@ At IEDM 2022, TSMC revealed some aspects of N3B. N3B features a CGP of 45nm, 0.8
 
 In recent years, chip designers have leaned heavily on SRAM to improve performance. The death of SRAM scaling takes away a big lever for increasing performance and will increase the importance of architecture in improving power and performance characteristics.
 
-![](https://substackcdn.com/image/fetch/$s_!zDTI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F5ab7ba7b-5da3-489a-ba1e-304a61f3f8ee_451x230.png)
+![](z-images/24da58b154c80c7790c65c227ce7d731.webp)
 
 Compared to N5, TSMC initially stated that N3 would increase performance by about 12% at the same power and a power reduction of 27% at the same performance. This would have come with a 1.2× SRAM density and 1.1× analog density.
 
@@ -128,7 +128,7 @@ During IEDM, TSMC revealed that N3B has a CGP of 45nm, the densest revealed thus
 
 While the increase in logic density is undoubtedly promising, the low SRAM density gain means that SRAM-heavy designs will likely experience significant cost increases. N3B also has poor yields and metal stack performance. For these reasons, N3B will not be the primary node for TSMC.
 
-![](https://substackcdn.com/image/fetch/$s_!P52H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff91ee269-2e2f-48fc-9be5-fb9ba7a240ad_450x245.png)
+![](z-images/879ce4de0fd4a99abfb6f2f28d6dff6c.webp)
 
 With N3B failing to reach TSMC’s targets for performance, power, and yield, N3E was developed. Its purpose was to fix the shortcomings of N3B. The first significant change is a slight relaxation of the metal pitches. Instead of using multi-patterning EUV on the contacts, V1, V2, M0, M1, and M2 metal layers, TSMC backed off and switched to single patterning.
 

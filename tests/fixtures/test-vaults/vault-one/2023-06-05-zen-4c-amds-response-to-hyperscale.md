@@ -16,7 +16,7 @@ Bergamo, AMD’s upcoming 128-core server part sets new heights in x86 CPU perfo
 
 In this deep dive, we will share out analysis on Zen 4c architecture, market impact, ASP, volumes, order switches from hyperscalers, and how AMD is able to halve core area while keeping the same core functionality and performance. We will examine why AMD is pursuing this new path in CPU design in their response to market demands and the competition from ARM-based chips from [Amazon](https://www.semianalysis.com/p/amazons-cloud-crisis-how-aws-will), [Google](https://www.semianalysis.com/p/google-ai-infrastructure-supremacy), [Microsoft](https://semianalysis.sharepoint.com/:w:/s/Confidential/EeVJIcFY-7dFsfjT6D0coHQBkvpnm7ym5dsItRd7EtKNLw), [Alibaba](https://www.semianalysis.com/i/122267137/ipo-hyperscale-in-house-chips-and-amdintel-competition), [Ampere Computing](https://www.semianalysis.com/p/sound-the-siryn-ampereone-192-core), as well as Intel’s x86 Atom E-cores.
 
-![](https://substackcdn.com/image/fetch/$s_!Bn-p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6308e8a6-3049-481b-a73b-8c406889761e_1885x1800.png)
+![](z-images/7b46005af12852ad9525604b56db57b0.webp)
 
 Finally, we look at Bergamo’s reduced production costs and expected sales volumes, and the adoption of dense-core variants across AMD’s line-up in client, embedded, and datacenter going forward. Before diving into those market and architecture details, let’s first share higher-level background.
 
@@ -36,7 +36,7 @@ The trend is that performance per Watt in any given workload is the most importa
 
 Consequently, CPU architects must be careful in balancing their core designs to optimize for performance per Watt. At the same time, cost per transistor is flat-lining with new process nodes as Moore’s Law slows, so the task gets more difficult as transistor budgets and core sizes needs to be kept in check.
 
-![](https://substackcdn.com/image/fetch/$s_!aJwM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8390270a-072e-4335-b486-dd8f5af1f4e3_1379x776.png)
+![](z-images/c28386ae32eef1d95ce81784675f07a9.webp)
 
 The fundamental design decisions that engineers make multi-variable trade-offs with imperfect information around the performance, power consumption, area, and more. On one end of the Performance, Power, Area (PPA) curve is IBM’s Telum, focusing on maximum performance per core for legacy mainframe-style applications. To improve the product for their banking, airline, and governmental customers, IBM must engineer gigantic cores, 5GHz+ clock speeds, and ultimate reliability that are too costly for newer containerized distributed workloads.
 
@@ -54,7 +54,7 @@ Next let’s cover the nitty gritty technical details before finally zooming out
 
 ## AMD EPYC 9004 “Bergamo” Specifications
 
-![](https://substackcdn.com/image/fetch/$s_!Olnm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ef557e3-9436-407c-a915-6f6872be9f44_683x868.png)
+![](z-images/64c700760cb851362b8150f96dcb90eb.webp)
 
 Here is the spec table for Bergamo and its differences to Genoa. Two Models will be launching in June: The fully enabled 128-core EPYC 9754 and the cut down 112-core EPYC 9734, with 1/8 <sup>th</sup> of the Zen 4c cores disabled. Comparing to Genoa’s best 96-core EPYC 9654, Zen 4c enables Bergamo to fit 1.33x the number of cores in the same SP5 socket and 360W TDP. Zen 4c has the same amount of private cache as Zen 4, with identical L1 and 1MB L2. Keeping a sufficiently large private cache is important in cloud and virtualized environments. This helps to maintain performance consistency by reducing dependence on shared resources and the impact of ‘noisy neighbors’.
 
@@ -66,7 +66,7 @@ The performance implications of this will be detailed below. While Bergamo still
 
 Bergamo uses the same IO Die as Genoa, so the SP5 socket IO is identical with 12 channels of DDR5-4800, 128 PCIe 5.0 lanes, and dual-socket capability. However, Bergamo’s IO Die only connects to 8 CCDs vs 12 on Genoa, which brings the question: Could AMD have done a 12 CCD, 192-core Bergamo? Other than a much lower power budget and memory bandwidth per core, the silicon could theoretically support it. However, the package cannot.
 
-![](https://substackcdn.com/image/fetch/$s_!buSp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F551f3f7b-e607-450c-9469-54f9c57e9fd8_1885x1800.png)
+![](z-images/8435dcca03559e3a544cc9d41b651c7f.webp)
 
 The IO die has 12 Global Memory Interconnect 3 (GMI3) chiplet links, routed through the package substrate. In Genoa, the GMI3 wires for CCDs farther away from the IO Die are routed underneath the L3 cache area of the nearer CCDs. As it turns out, this is more difficult on Bergamo, as the Zen 4c CCD’s higher density means the wires must be routed under the smaller L3 of the nearer CCD using more layers. We can see the visual result of this with the CCD die placement. On Genoa, there are groups of 3 CCDs placed right beside each other, while there is a gap between CCDs on Bergamo to make space for routing. The package also routes PCIe through the middle and DDR5 above and below, so the available space is insufficient for 12 Zen 4c CCDs.
 
@@ -74,7 +74,7 @@ The IO die has 12 Global Memory Interconnect 3 (GMI3) chiplet links, routed thro
 
 Here is the dieshot of Bergamo’s Zen 4c CCD, codename “Vindhya”. This was made with assets from the Zen 4 CCD, codename “Durango”, provided by AMD at ISSCC 2023. Notice the two 8-core CCX Compute Complexes beside each other, each with 16MB of shared L3. The L3 also lacks the arrays of Through-Silicon Vias (TSV) for 3D V-Cache, giving a small area saving. This makes sense as cloud workloads do not stand to benefit as much from large amounts of shared cache.
 
-![](https://substackcdn.com/image/fetch/$s_!tBH3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd3ae5eac-9709-443c-80d2-978f24ee65f8_1059x1751.png)
+![](z-images/f986d7034eafc5965c2ce7f95a23a2e6.webp)
 
 B. Munger et al., "“Zen 4”: The AMD 5nm 5.7GHz x86-64 Microprocessor Core," 2023 IEEE International Solid- State Circuits Conference (ISSCC), San Francisco, CA, USA, 2023, pp. 38-39, doi: 10.1109/ISSCC42615.2023.10067540.
 
@@ -82,11 +82,11 @@ However, the truly stunning thing here is the die size. 16 Zen 4c cores are bare
 
 With regards to the chiplet interconnect, the Infinity Fabric on Package (IFOP) is the same on both dies, comprising two GMI3-Narrow links. However, while the die supports it, there does not appear to be a Zen 4c model that uses both GMI3 links. Instead, signals from the two independent CCX are muxed through a single link to the IO Die.
 
-![](https://substackcdn.com/image/fetch/$s_!16yB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff7e48eab-af56-435b-9680-1ecfd901835b_1200x1502.png)
+![](z-images/f4affea4a24cb82fe937c22e1bbbb981.webp)
 
 A closer look at the cores reveals the stark difference in design and layout. Here is a table with an area breakdown of Zen 4c, codename “Dionysus”, compared to Zen 4, codename “Persephone”.
 
-![](https://substackcdn.com/image/fetch/$s_!CJBP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F741b5e8f-787f-430d-813f-77882cc48724_673x382.png)
+![](z-images/b0ed28e778cb774523e110af8428b840.webp)
 
 Core Area dropped by 35.4% for Zen 4c vs Zen4, which is remarkable as it is inclusive of the 1MB L2 cache on each. While this means the L2 SRAM Cells take up the same area, AMD were able to reduce the area of the L2 Region by making the L2 control logic more compact. Excluding the L2 and Chip Pervasive Logic (CPL) Regions, the core shrank by an incredible 44.1%, with the engine (Front End + Execution) area nearly being cut in half.
 
@@ -96,25 +96,25 @@ This is what Papermaster is referring to, an amazing feat of engineering as Zen 
 
 AMD created Zen 4c by taking the exact same Zen 4 Register-Transfer Level (RTL) description, which describes the logical design of the Zen 4 core IP, and implementing it with a far more compact physical design. The design rules are the same as both are on TSMC N5, yet the area difference is massive. We detail the three key techniques of device Physical Design that enables this.
 
-![](https://substackcdn.com/image/fetch/$s_!ZEbH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9fdde53d-3f5a-4884-aadb-cb48bab1934b_1419x853.png)
+![](z-images/ebfde620014d976f68560537d504f51e.webp)
 
 S. -Y. Wu et al., "A 3nm CMOS FinFlex™ Platform Technology with Enhanced Power Efficiency and Performance for Mobile SoC and High Performance Computing Applications," 2022 International Electron Devices Meeting (IEDM), San Francisco, CA, USA, 2022, pp. 27.5.1-27.5.4, doi: 10.1109/IEDM45625.2022.10019498.
 
 First, lowering the clock target of a design can lead to reduced area when the core is synthesized. Here is a Speed vs Area curve for an ARM Cortex-A72 CPU Core synthesized on TSMC’s N5 and N3E nodes. Even with the same core design on the same node, there is a choice with the area of the core and the clock speed achievable on it. With a lower clock target, designers have more working room with the design of critical paths, simplifying timing closure and reducing the number of additional buffer cells required to clear relaxed timing constraints. With most designs nowadays being limited by routing density and congestion, a lower operating clock enables designers to squeeze signal paths closer together and improve standard cell density.
 
-![](https://substackcdn.com/image/fetch/$s_!jeZK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3b95171e-fe67-4b9b-822e-7ccc66504e27_762x800.png)
+![](z-images/65988691145a17229606583898f41065.webp)
 
 T. Singh et al., "2.1 Zen 2: The AMD 7nm Energy-Efficient High-Performance x86-64 Microprocessor Core," 2020 IEEE International Solid- State Circuits Conference - (ISSCC), San Francisco, CA, USA, 2020, pp. 42-44, doi: 10.1109/ISSCC19947.2020.9063113.
 
 Standard cell density refers to the proportion of placeable area in a design that is occupied by standard cells. Standard cells are functional circuits such as Flip Flops and inverters that are repeated throughout a design and combined to form complex digital logic. These come in many different sizes as seen in this closeup view from placement software. Blue rectangles are the standard cells, while the black regions are unfilled. We have highlighted a region with low cell density, about 50% area utilization, and another with high cell density, above 90%. Standard cells with a high number of input and output signal pins can strain wire routing resources nearby, effectively blocking the adjacent space for standard cell placement.
 
-![](https://substackcdn.com/image/fetch/$s_!5Z-y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F801b27ef-a97e-4ad2-b49c-6421d932c139_1591x1162.png)
+![](z-images/3d6b1d14e7905ebfb4c4fe93d3b81170.webp)
 
 E-Core Implementation in Intel 4 with PowerVia (Backside Power) Technology” – Intel Corp, Paper T1-1 VLSI 2023
 
 Zooming out to view the core as a whole, a cell density plot can be generated that gives an overview of regions where standard cells are tightly packed (orange, yellow), and regions with lower area utilization (green, blue). The black rectangles are large SRAM macros that are positioned before the standard cells are placed. What all this means is AMD could have taken their Zen 4 core and done a direct shrink by moving down the Speed vs Area curve, and the core would look largely similar but with higher cell density. However, Zen 4c looks very different due to the next Physical Design approach.
 
-![](https://substackcdn.com/image/fetch/$s_!yrSS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7a32d84-9799-462b-90ab-7e9eb9ced469_2150x900.png)
+![](z-images/8f4734fc5cd29155089329dfb1c2969c.webp)
 
 I. Kang, "The Art of Scaling: Distributed and Connected to Sustain the Golden Age of Computation," 2022 IEEE International Solid- State Circuits Conference (ISSCC), San Francisco, CA, USA, 2022, pp. 25-31, doi: 10.1109/ISSCC42614.2022.9731536.
 
@@ -124,7 +124,7 @@ Intentionally separating timing critical regions can also help with routing cong
 
 As seen in our Zen 4 core annotations, there are numerous partitions for each logical block within the core, but this is drastically reduced in Zen 4c with just 4 partitions (L2, Front End, Execution, FPU). By merging those partitions from Zen 4, the regions can be packed closer together, adding another avenue of area saving by further boosting standard cell density. One can say that AMD’s Zen 4c ‘looks like an ARM Core’.
 
-![](https://substackcdn.com/image/fetch/$s_!7EHN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbdde045e-ee01-4da0-a79d-39596eefcf1a_602x362.png)
+![](z-images/23c25baf2e676160ae92c90628aa8bca.webp)
 
 The final method of area reduction is by using denser memory. Zen 4c has a reduction in SRAM area within the core itself, as AMD has switched to using a new type of SRAM bitcell. Pictured is a diagram of an 8T SRAM circuit with 8 transistors. The 4 transistors in the middle are used to store 1 bit of information, while 2 pairs of access transistors feed 2 pairs of wordlines and bitlines. High-performance Out-of-Order cores have multiple functions that read and write from the same piece of memory, so these 8T dual-port bitcells are used. These take up more area and require double the signal routing resources compared to denser 6T single port bitcells.
 

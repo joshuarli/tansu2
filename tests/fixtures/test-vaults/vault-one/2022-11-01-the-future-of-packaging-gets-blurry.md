@@ -16,25 +16,25 @@ Fanout RDL (Laminate with epoxy mold compounds) – The most well-known forms ar
 
 Build-up ABF substrate (copper-core clad with Ajinomoto build-up film layers and RDL layers) – The most well-known forms are [Intel and AMD PC and Datacenter chips](https://www.semianalysis.com/p/advanced-packaging-part-2-review).
 
-![](https://substackcdn.com/image/fetch/$s_!Bhko!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc80695c0-28cb-4b94-8969-affae1a9b67b_935x673.png)
+![](z-images/d6a529561b2eb468f5fb115c0bc94031.webp)
 
 In most cases of advanced packaging, a build-up ABF substrate is still utilized. These are called hybrid substrates.
 
 Another source of ambiguity with advanced packaging is that engineers often use the word organic substrate. Both the ABF and core fanouts contain organic epoxy chemistries.
 
-![](https://substackcdn.com/image/fetch/$s_!hKP6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F333e628a-cc9c-43e1-992e-092d419db493_897x290.jpeg)
+![](z-images/40a7c24352e752969c3541ef1b29aa3c.webp)
 
 The categorization across 2.5D to 3D seems simple, but there are many permutations of packaging varieties that blur the lines between 2.3D and 2.1D. Furthermore, as these 2.3D and 2.1D packages advance in capabilities, 2.5D will cede market share.
 
-![](https://substackcdn.com/image/fetch/$s_!2uPe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F444bc464-2149-44d0-b4e5-8ef166fead08_2022x1348.png)
+![](z-images/0c2e0e1bfa051bd47b59422f1585c2ca.webp)
 
 With Intel’s EMIB, a silicon bridge is placed inside a cavity in a build-up ABF substrate. The primary purpose is to avoid using an expensive silicon interposer and to grow packages [beyond the reticle limit](https://www.semianalysis.com/p/die-size-and-reticle-conundrum-cost). EMIB technically isn’t 2.5D packaging, but it does bring many of the purported benefits. How does it compare to a pure 2.5D silicon interposer or a high-density fanout in cost and performance? The jury is still out on future generations, but the first generation does not compare favorably.
 
-![](https://substackcdn.com/image/fetch/$s_!Wl1w!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F23801996-c530-4ace-ad58-0839701d22d6_1003x897.png)
+![](z-images/f96e96fba4b53b08fa61b9aa06c596bd.webp)
 
 AMD’s MI250X GPU (annotated above) and Apple’s M1 Ultra are examples of multiple types of packaging in one product. Instead of using a silicon interposer to connect the GPU die to the HBM, there are silicon bridges between the GPU die and each HBM. Fanouts with embedded bridges are similar to Intel’s EMIB, but the manufacturing flow is entirely different, fanout RDL vs build-up substrate.
 
-![](https://substackcdn.com/image/fetch/$s_!HebO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4f00408-d47e-4ab6-8609-ffb923fd5a17_842x319.jpeg)
+![](z-images/00ba9ea21f10d388c50aa8362b95ceb3.webp)
 
 In the case of MI250X, two separate fanout RDL assemblies with the silicon bridges and GPU/HBM are packaged on top of a large ABF substrate.
 
@@ -42,11 +42,11 @@ While costs are theoretically lower with this approach due to minimizing the use
 
 Fanout RDL is not a single process. It can be built with a few different material types. Furthermore, it can be RDL-first or Chip-first flow.
 
-![](https://substackcdn.com/image/fetch/$s_!5AYj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8152caca-45b3-46e6-a661-9fe33d741498_631x538.png)
+![](z-images/2109b25bf649e08b79b9875e2e72c856.webp)
 
 Whether an RDL-first or Chip-first process flow for fanout RDL is utilized, the completed hybrid substrate cannot be tested before dies are placed. Good dies can be lost if the fanout to substrate bonding process. Yield loss is the primary reason silicon interposers continue to be used despite the theoretically lower cost of fanout RDL especially with panel level fanout. These yield issues can extend to substrate warping due to the coefficient of thermal expansion (CTE) mismatch between fanout RDL materials, build-up substrates, and silicon.
 
-![](https://substackcdn.com/image/fetch/$s_!C4rt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F63aef1a1-717b-4811-a242-236cb3e4a464_1052x742.png)
+![](z-images/67cf3b6f70f6793702d45e9f926a6aec.webp)
 
 Samsung, Shinko, Unimicron, SPIL, and TSMC have been researching packaging processes where the fanout RDL is fabricated first; then, the fanout RDL is bonded on a build-up ABF substrate. The bonded hybrid substrate is then tested before finally having the chips bonded to it. This is called fanout (RDL-First or Chip-Last), Chip Bonding Last. Each firm has its tweaks, with some using organic or inorganic materials. Higher assembly yields and logistics associated with having known good substrates for advanced packaging presents a huge advantage.
 
@@ -54,31 +54,31 @@ The datacenter and PC industries have traditionally operated with a supply chain
 
 IC integration with fanout (chip-first) process is simpler with lower cost than fan-out (chip-last or RDL-first) processes. The issue is that chip first means more known good die will be lost to packaging yield. As the industry moves to more expensive process technologies, this packaging yield loss continues to dominate most increases in packaging process cost. Furthermore, fanout (chip-last) integration has other advantages, such as larger die sizes, larger package sizes, less die shift issues, and finer metal L/S for the RDLs. L/S is the line space, which refers to the width of the metal interconnects and the space between them.
 
-![](https://substackcdn.com/image/fetch/$s_!nCNS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F810a4142-a0b3-4a0f-886a-5f1e456d2f51_1037x785.png)
+![](z-images/d51ea0d8bb15a25858c1d58d527b717b.webp)
 
 Furthermore, non-fanout technologies are also improving. Cisco has demonstrated research related to coreless organic substrates. The major manufacturing steps for making this organic interposer are the same as those for build-up package substrate, except there is no copper core. Cisco demonstrated 10 routing layers with a denser L/S compared to standard build-up ABF substrates with a core.
 
-![](https://substackcdn.com/image/fetch/$s_!OJLE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3d553074-859f-4ed9-bcc5-30f88d07904f_1506x841.png)
+![](z-images/02f79bc3b8bf0e61f19c8b1af95bc0ef.webp)
 
 Nowadays, build-up ABF substrates have an L/S as dense as 10-micron; the Cisco research shows the organic substrate going down to 6-micron L/S. The core fanout market has L/S in the 15-micron range. Some advanced fanouts, such as [AMD’s RDNA 3 GPUs](https://www.semianalysis.com/p/ada-lovelace-gpus-shows-how-desperate) and [a MediaTek network processor](https://www.semianalysis.com/p/packaging-developments-from-ectc?s=w), go down to 2-micron L/S. EMIB reaches 5-micron L/S with the first generation and is rumored to reach 2-micron L/S with future generations.
 
 The core fanout and HD fanout market is getting somewhat cannibalized outside of mobile applications as build-up ABF substrates improve. Regarding dielectric materials, photo-imageable dielectrics (PID) are currently able to reach finer pitches. Despite this, ABF has many advantages regarding surface variation, as shown by Unimicron.
 
-![](https://substackcdn.com/image/fetch/$s_!MHKw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7b66e587-4d85-4be7-975d-fa307c5dbd1c_1496x732.png)
+![](z-images/a250d95560ee7ffffc836150f7f6f114.webp)
 
 Unimicorn looks to stick with a modified ABF as that is their core competency. Fine-pitch coreless ABF sticks with its existing business model of delivering known good (hybrid) substrates. They can achieve a 3-micron L/S with better surface variation, which allows scaling to higher layer counts. Their coreless ABF substrate could be very competitive with current advanced fanouts. It is done on panels, so competitive with wafer level and approaching future panel fanouts. While it is limited to 3 RDL layers, the path to scaling to more layers is easier than that of fanout RDL.
 
-![](https://substackcdn.com/image/fetch/$s_!3Q5f!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb38cc4c7-42cf-4588-8550-78e0d9140b30_1017x687.png)
+![](z-images/4928bc85727ae6386b15751c6871749b.webp)
 
 The coreless ABF substrate is thicker, which can be an issue for mobile applications, but the reliability and performance should be better for high-performance applications.
 
 When chasing L/S, Amkor SLIM and ASE SPIL NTI can achieve 0.4-micron and 0.5-micron. Both are limited to these fine pitches on only the first layer.
 
-![](https://substackcdn.com/image/fetch/$s_!rZjf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F2cb12591-fa11-4731-94b4-2f0259745d93_792x595.png)
+![](z-images/87fdb4dd04db3a0628fdb2d9e97e5f1d.webp)
 
 ASE SPIL presented their fanout RDL as more performant than a 2.5D advanced package for connecting HBM dies to a SOC. ASE SPIL claimed a better eye height and less loss reduction, allowing higher signaling rates with less noise through the package.
 
-![](https://substackcdn.com/image/fetch/$s_!Q4zW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4dd4dc43-b0a9-48b6-a856-d0da019e7c09_3437x1986.png)
+![](z-images/498ca096fc1bfc31b6b3d8e05a671e27.webp)
 
 While build-up ABF substrates will remain the base of the advanced packaging market, they are moving up in performance and density with the transition to coreless substrates. Furthermore, these ABF-based substrates can reach higher layer counts, as shown by Cisco, due to the superior surface variation characteristics shown by Unimicron. ABF substrates are catching up and surpassing fanout RDLs for many use cases.
 

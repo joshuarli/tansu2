@@ -16,7 +16,7 @@ Hilariously, it makes economic sense for OpenAI to use Google Cloud with the TPU
 
 Before we dive in, we just want to assuage [Sam Altman’s concerns](https://twitter.com/sama/status/1696340377098453440). This is in no way Google marketing, and we have no contacts at Google marketing or HR departments. They don’t pay us outside of subscribing to the newsletter. This is analysis based on factual data from Google and a 3 <sup>rd</sup> party AI startup using TPUv5e. The prior he’s referring to are shipments for the full size TPUv5, from supply chain.
 
-![](https://substackcdn.com/image/fetch/$s_!KdS4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa5fd870b-0f16-4d01-8de4-bf9bdb4a5387_1800x1358.png)
+![](z-images/f28bccffd2942dd8215b5982527f46f6.webp)
 
 To answer Elon, they are not wrong.
 
@@ -28,21 +28,21 @@ In Nvidia’s model, due to their massive gross margins on the hardware, has the
 
 Google’s TPUs have either one or two Tensor Cores that operate inside of it. This applied to the TPUv4 and the TPUv4i (lite). The TPUv5e (lite) likewise takes a step back from the unannounced TPU v5 (Viperfish). The TPUv5e only a single Tensor Core, unlike TPU v5 which includes two. Furthermore it is half the HBM stacks and at lower speeds. Lastly, the networking is neutered. Each Tensor Core has 4 Matrix Multiply Units (MXU), a vector unit, and a scalar unit. The MXU is based on 128 x 128 multiply/accumulators in a systolic array. MXUs provide the bulk of the compute power in a Tensor Core. Each MXU can perform 16,000 multiply-accumulate operations per cycle. The TPUv5e has 197 BF16 TFLOPS and 393 Int8 TOPS.
 
-![](https://substackcdn.com/image/fetch/$s_!snSP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c31617f-364f-433a-884a-a397a127b1b2_406x246.png)
+![](z-images/2ea8062e98e1ee020d6f627417ff6f06.webp)
 
 The Tensor Cores communicate with 16 GB of HBM2E memory running at 3200MT/s, for a total memory bandwidth of 819.2GB/s There are up to 256 TPUv5e chips in a pod, there’s which are 4 dual-sided rack unit with 8 TPUv5e sleds per each side. The system had four TPU chips in it, along with a CPU and a 100G NIC. Each 4 TPUs shares 112 vCPUs. These are actually 64C AMD chips, so it appears that Google still requires CPU cores for the hypervisor, and is unable to run it on their NICs.
 
-![](https://substackcdn.com/image/fetch/$s_!IIgt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d534aa6-6601-4c67-8d59-0ad16250ce8c_3200x1695.jpeg)
+![](z-images/c2b34889b29bcec63ae93256b31fe709.webp)
 
 Google lets you rent up from 1 to 256 TPUv5e with linear cost scaling as you add chips.
 
-![](https://substackcdn.com/image/fetch/$s_!LOW6!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F199b08d7-66e2-42e1-aa14-604133559455_709x516.png)
+![](z-images/27de8277e66b3a9ff24a40274776f833.webp)
 
 Each TPU connects to 4 other TPUs, to the north, south, east, and west at 400Gbps (400G Tx, 400G Rx) via their inter-chip interconnect (ICI). This gives each TPU a staggering 1.6T aggregate bandwidth, which is very high relative to the compute and memory bandwidth of the TPUv5e. Google paid special care to [minimizing the number of the number of optics, in a way others don’t](https://www.semianalysis.com/p/nvidias-optical-ascent-1b-revenue), to further reduce the costs. Unlike the [TPUv4 and TPUv5, there is no OCS in the ICI inside the pod. The topology is flat. No twisted Torus or anything fancy](https://www.semianalysis.com/p/google-ai-infrastructure-supremacy). This saves a lot on the system level.
 
 Multiple pods can be connected over the Datacenter spine network. The 100G NIC per TPUv5e sled means there is 6.4T pod to pod ethernet based interconnect. In addition, Google has multi-pod available. These inter-pod connections go through the OCS.
 
-![](https://substackcdn.com/image/fetch/$s_!kU2J!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1eb5a1c-fad8-4d77-9f3f-58deea078817_1600x658.png)
+![](z-images/e7c9dbaf00bb36b46f0512f4005a2818.webp)
 
 Google shared figures for performance scaling all the way up to 4096 TPUv5e’s which is 16 total TPUv5e pods. While that indicates Google has 16 of these pods in 1 datacenter, we believe they have more than 128 TPUv5e pods (32k TPUv5e) in just one [datacenter based on the video](https://www.youtube.com/watch?v=FsxthdQ_sL4) they released.
 

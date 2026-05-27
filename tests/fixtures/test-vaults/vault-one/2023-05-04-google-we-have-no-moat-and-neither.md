@@ -30,7 +30,7 @@ While our models still hold a slight edge in terms of quality, the [gap is closi
 - **Giant models are slowing us down.** In the long run, the best models are the ones
 	which can be iterated upon quickly. We should make small variants more than an afterthought, now that we know what is possible in the <20B parameter regime.
 
-![](https://substackcdn.com/image/fetch/$s_!_tGS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F241fe3ef-3919-4a63-9c68-9e2e77cc2fc0_1366x588.png)
+![](z-images/9ff34a335faffb1da3ccc478566051e9.webp)
 
 https://lmsys.org/blog/2023-03-30-vicuna/
 

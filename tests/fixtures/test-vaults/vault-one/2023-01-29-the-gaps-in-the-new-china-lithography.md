@@ -18,7 +18,7 @@ Furthermore, [the world’s largest equipment maker, ASML,](https://www.semianal
 
 This is despite ASML’s source engineering being done in San Diego by a US company they acquired, Cymer.
 
-![](https://substackcdn.com/image/fetch/$s_!uABF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fde949071-ea42-4cc4-becc-47fe415089f5_3435x1902.png)
+![](z-images/73adf1f71d22b0512361b9a2174fd7ba.webp)
 
 Furthermore, mask-related and OPC software required to operate lithography tools is also engineered in the US. While the US certainly has options to make ASML comply with technology restrictions due to its high US-based technology content, the US has chosen the diplomatic route.
 
@@ -28,7 +28,7 @@ The US, Japan, and the Netherlands have been hosting discussions to restrict Chi
 
 The primary avenue to restrict China’s access to semiconductors is with equipment. While there is a tri-lateral agreement for blocking access to DUV lithography, there is no mention of how far back this goes. DUV is a very broad technology that includes Krypton fluoride (KrF), Argon Fluoride (ArF), and Argon Fluoride Immersion (ArFi) lithography.
 
-![](https://substackcdn.com/image/fetch/$s_!PchP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9e9b6aad-c10d-47a6-abdb-f8aef3356e03_685x368.png)
+![](z-images/bfe09bd7b47f3a6aaca6928e77883dc6.webp)
 
 Nikon released the first DUV tool called NSR-1505EX in 1988 using KrF lithography. It initially had a resolution of 500nm, but over time it was upgraded to be capable of [250nm with an overlay of 100nm](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=b819ca5055576d79426c7b9d7b9652334e4a7dac). The newly agreed restrictions by the US, Netherlands, and Japan does not cover technology this old. On the other hand, ASML’s NXT 2100i, released in 2022, has an overlay of 1.5nm and can pattern the minimum features required for advanced nodes.
 
@@ -44,7 +44,7 @@ The 28nm minimum metal pitch used on TSMC’s N5 could be manufactured without E
 
 If the goal is to prevent China from achieving high volume 7nm process technology, then all tools that can achieve a 40nm minimum metal pitch used on TSMC 7nm class process technologies must be blocked. The new restrictions would include ArFi lithography, but they would also need to extend further. SAQP using dry argon fluoride ArF lithography (NA=0.93, λ=193nm) can produce this feature size with a k1 of 0.385. Again, this isn’t going to be as economical as Intel, TSMC, and SMIC’s ArFi DUV “7nm,” but it is achievable, especially given the importance of national security. The cost delta would be [significantly less than that of the subsidies for a nuclear power plant in the US.](https://apnews.com/article/business-environment-united-states-georgia-atlanta-7555f8d73c46f0e5513c15d391409aa3)
 
-![](https://substackcdn.com/image/fetch/$s_!YGqW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F971e19ab-b0eb-454d-af31-224e6af0f77c_2048x932.jpeg)
+![](z-images/4e18e403e14835012c2a7bb2acd16d4d.webp)
 
 If the goal is to prevent China from expanding their high volume 14nm process technology, then all tools that can achieve a minimum metal pitch of 64nm used on nodes, such as TSMC’s 16nm and 12nm and Samsung’s 14nm, must be blocked. Not only should these restrictions, if adequately enforced, include ArF lithography tools, but they would also need to extend further to some types of Krypton fluoride (KrF) tools. Krypton fluoride has a λ=248nm, but there were multiple generations of the lens stack. In each generation, NA improved from 0.6 to 0.8 to 0.93.
 

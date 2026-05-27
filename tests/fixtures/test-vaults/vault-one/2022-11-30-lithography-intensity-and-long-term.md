@@ -16,11 +16,11 @@ ASML just hosted its annual investor day. Included in the day were many claims a
 
 First, ASML showed their estimates for millions of wafers per year. These are quite interesting to dive into.
 
-![](https://substackcdn.com/image/fetch/$s_!Ho4R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F268cd23b-b876-4a60-83b8-14457e39f852_1353x366.png)
+![](z-images/e627b3553e1d3f3ca67d9be2b1a059ef.webp)
 
 The growth rates from 2015 to 2020, 2020 to 2025, and 2025 to 2030 are noteworthy.
 
-![](https://substackcdn.com/image/fetch/$s_!Qrzu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdc7e9df1-583c-4033-9710-7ee85a052441_1628x362.png)
+![](z-images/3a6e50d4067bee45205125d061c380d3.webp)
 
 Mature logic acceleration is the obvious oddball when comparing the last decade to this one. In advanced logic, the denominator is shifting from nothing to something much larger, so not that crazy. What we find very noteworthy is the DRAM figure. DRAM shrinks slowed down a lot in the early to the middle part of the last decade. ASML sees the wafer volumes growing rapidly in the 2025 to 2020 period, which is required if bit growth remains at 10% to 15% annually.
 
@@ -30,7 +30,7 @@ NAND, on the other hand, despite having tremendous density increases, which are 
 
 Inefficient wafers are a significant point of concern with ASML’s estimates.
 
-![](https://substackcdn.com/image/fetch/$s_!cNiI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F89841ecb-fafe-4d89-bf06-c55547d8aba9_1402x406.png)
+![](z-images/ce74f6a562c06f2024fad727489a2f68.webp)
 
 ASML’s argument around more inefficient wafers due to technological sovereignty and foundry competition is reasonable, but only to some extent. They argue that 10% of total installed capacity worldwide will be inefficient by the decade’s end.
 
@@ -42,13 +42,13 @@ How is none of the buy side or sell side screaming about this massive risk to th
 
 ASML’s wafer capacity model is questionable. The stool's other leg is the wafer mix's lithography intensity.
 
-![](https://substackcdn.com/image/fetch/$s_!A-ji!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F30b3c69b-25e1-46b4-8630-beed2d49a603_1595x548.png)
+![](z-images/b33bd2d191860ccfc00b31407aad2f2e.webp)
 
 With mature process technologies, there is tremendous wafer growth, but some of it is in areas where Nikon, Canon, SMEE, EVG, and others are competing. SMEE, China’s lithography champion, is a dark horse that could take a significant share in I-Line and KrF. SMEE’s ArF and ArFi tools still do not work, but that could change over the next handful of years. Despite Nikon's rapid improvement in recent years, we still assume ASML controls most of the ArF and ArFi markets.
 
 Most lithography demand will come from advanced logic, DRAM, and NAND. We will start with NAND first, as that is the process technology group with the lowest lithography intensity at 10% to 12%
 
-![](https://substackcdn.com/image/fetch/$s_!67YO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1f8d7eaf-9e38-4f16-991c-5fc51e6186f6_620x602.png)
+![](z-images/accd59786768260028671d7de14f73e3.webp)
 
 The secular trend in NAND is that lithography spend will continue to scale slower than the rest of the process cost. ASML projects >10% growth in lithography cost per node. Outside of separating CMOS and cell wafers and increases in deck count, there doesn’t seem to be much driving lithography intensity up. In the latter half of the decade, lithography tools may fall under 10% of the total cost of a NAND fab from a WFE perspective.
 

@@ -84,7 +84,7 @@ Prices for NAND continue to fall. They didn’t give a number, but based on our 
 
 Makes sense with DRAM market under tight oligopolistic control and everyone having very low capex node transition from 128 layer to 176
 
-![](https://substackcdn.com/image/fetch/$s_!oon6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Faf30e38e-0661-45a3-b718-275ba0000293_1024x706.jpeg)
+![](z-images/db6e1ad0d6dfc44a0ff507f056567546.webp)
 
 > The 176 layer NAND, which started mass production in Q4 last year, is based on the same tech platform as the 128 layer.
 
@@ -102,13 +102,13 @@ Lastly, SKHynix says they expect 3D DRAM in the late 2020’s. ASM International
 
 Lasertec absolutely crushed it on orders. They have a meaningful technology advantage over KLA within the EUV mask inspection world. Lasertec is essentially a levered bet on EUV.
 
-![](https://substackcdn.com/image/fetch/$s_!YAHN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4bafc7c5-e2a5-448e-9ff0-bccd33940ae5_1023x573.png)
+![](z-images/bc9c545feec5c5d41882ae5649c22181.webp)
 
 KLA is scrambling to catch up to them in this subsegment and trying to hire like mad. Lasertec has a multiyear runway with their technology advantage.
 
 We have been working on a new article about masks, mask making, and mask inspect. This discussion will be continued on there, so look forward to it.
 
-![](https://substackcdn.com/image/fetch/$s_!bfoe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F583530a8-c0b1-4ce6-aaf7-89523e102e27_1023x572.png)
+![](z-images/2ea68bbfd399ce6cb23f6b381a47a10c.webp)
 
 This table is really good and highlights the difference in spend per node. Note the huge spend increase on trailing edge. The table is before TSMC threw down the [capex gauntlet.](https://semianalysis.substack.com/p/tsmc-throws-down-a-40b-44b-gauntlet) At the time of this chart being made, Semi had them penned in at ~$36B, not $40B-$44B
 

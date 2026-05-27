@@ -40,7 +40,7 @@ Please challenge our assumptions; we would love to make this more accurate, alth
 
 If the ChatGPT model were ham-fisted into Google’s existing search businesses, the impact would be devastating. There would be a $36 Billion reduction in operating income. This is $36 Billion of LLM inference costs. Note this is not what search would look like with LLMs, [that analysis is here.](https://www.semianalysis.com/p/peeling-the-onions-layers-large-language)
 
-![](https://substackcdn.com/image/fetch/$s_!d_Ao!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41a1d485-53c4-4291-8a7b-e04583bf428e_2101x692.png)
+![](z-images/2099d6f09fd20be05e1e11e3695a3849.webp)
 
 Deploying current ChatGPT into every search done by Google would require 512,820.51 A100 HGX servers with a total of 4,102,568 A100 GPUs. **The total cost of these servers and networking exceeds $100 billion of Capex alone**, of which Nvidia would receive a large portion. This is never going to happen, of course, but fun thought experiment if we assume no software or hardware improvements are made. We also have inference costs using Google’s TPUv4 and v5 modeled in the subscriber section, which are pretty different. We also have some H100 LLM inference performance improvement figures as well.
 
@@ -88,7 +88,7 @@ Since Google’s search revenue is derived from ads, different users generate di
 
 [
 
-![X avatar for @dylan522p](https://substackcdn.com/image/fetch/$s_!TnFC!,w_40,h_40,c_fill,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Favatars%2Fdefault-light.png)
+![X avatar for @dylan522p](z-images/be4381e113eb5a4053a300726de24dfc.webp)
 
 Dylan Patel@dylan522p
 

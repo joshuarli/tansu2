@@ -8,19 +8,19 @@ description: "Stargate, OpenAI, ByteDance, Unique Datacenter Strategy, Investmen
 
 Oracle's Cloud Infrastructure business is firing on all cylinders and is greatly outpacing expectations. All eyes are on the [high-profile Stargate JV](https://semianalysis.com/2025/01/23/openai-stargate-joint-venture-demystified/) and the massive Abilene, Texas datacenter, which [our September 2024 Multi-Datacenter Training report](https://semianalysis.com/2024/09/04/multi-datacenter-training-openais/#how-openai-and-microsoft-plan-to-beat-google) called out as a GW-scale training hub for OpenAI. But Oracle has many additional growth engines beyond this massive campus.
 
-![](https://substackcdn.com/image/fetch/$s_!OqBX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F66edfa5e-5414-4f18-a73a-9f021c7c1cdc_1841x1091.jpeg)
+![](z-images/1cc069d1ee7aa0e9261c17dc6d0ca736.webp)
 
 Source: SemiAnalysis Datacenter Model – June 11th, 2025 picture
 
 We believe the most underappreciated aspect of Oracle's growth story is its **relationship with ByteDance**. It has triggered the rise of **Johor, Malaysia as the world's second largest AI hub**, and we expect the partnership to develop across many other countries, with [expansion already well underway](https://www.semianalysis.com/p/datacenter-model).
 
-![](https://substackcdn.com/image/fetch/$s_!miIR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ab9d829-2b40-4bf6-b8c7-652550fe814c_1327x1123.png)
+![](z-images/21390ec46b81327bec7a94a21068a339.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 With both flagship customers among the world's largest and fastest-growing GPU renter and significant additional pipeline ahead, we forecasted a **stellar CapEx ramp back in February 2025**. The announcements made two weeks ago by Larry Ellison, forecasting >$130B of contracts to be booked in the next twelve months, confirm our expectations. And our [new month-by-month GB200/300 rack orders and shipments tracker](https://semianalysis.com/accelerator-industry-model/) confirms extreme demand from Oracle. This is not only driven by the largest customers, but also a large number of smaller firms going to Oracle for their technical expertise. Oracle recently earned a Gold [ClusterMAX rating](https://semianalysis.com/2025/03/26/the-gpu-cloud-clustermax-rating-system-how-to-rent-gpus/) based on independent testing of software, networking, security, lifecycle, storage, etc.
 
-![](https://substackcdn.com/image/fetch/$s_!7fw8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e2d0d12-9d5d-4ea1-8c8d-d29e646ca8d2_1791x453.png)
+![](z-images/d6ec33b77546b10c184c576da13a1d4f.webp)
 
 Source: SemiAnalysis Core Research, Hyperscaler CapEx Annual Estimates for AI Servers, DC Infrastructure, and Total CapEx - February 13 th, 2025
 
@@ -44,7 +44,7 @@ As Cloud Computing began to accelerate in the early 2010s, AWS and Azure posed a
 
 To support their Cloud transition, the two software giants began building their own compute infrastructure, and CapEx surged in the mid-2010s.
 
-![](https://substackcdn.com/image/fetch/$s_!GOtl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F165bb709-7944-4ac5-8ce4-8880f5ec4fcf_1330x803.png)
+![](z-images/4006590e8f84554a03159f7661417b26.webp)
 
 Source: SAP, Oracle
 
@@ -54,7 +54,7 @@ Oracle took the opposite journey. It launched Oracle Cloud Infrastructure (OCI) 
 
 Importantly, OCI also invested significant resources in Cloud High-Performance-Computing (HPC), with important consequences today. Through the acquisition of Sun Microsystems in 2009, it acquired HPC and networking expertise and built the high-performance storage system Exadata, and developed high-speed RDMA over Converged Ethernet (RoCE v2) to connect multiple nodes. While Oracle ended selling a lot of Sun's HPC assets, the networking capabilities remained and were key to Oracle's launch of Cloud HPC in 2017-18, using RoCEv2 networking through Mellanox ConnectX systems. Oracle also began deploying Nvidia GPUs and expanded the partnership in 2020, being among the first to deploy the A100.
 
-![](https://substackcdn.com/image/fetch/$s_!JqVW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bec09f6-a492-4be4-8e49-edf6d02ea7ab_1920x1080.png)
+![](z-images/b06ead97410952a80acfd6a9126ffb0e.webp)
 
 Source: Infolob Global
 
@@ -64,7 +64,7 @@ Looking deeper at Oracle’s datacenter strategy before GenAI, it resembles more
 
 Oracle’s contracts with Digital Realty historically had a weighted average **lease term of 2-3 years until mid-2022, much lower than Microsoft’s 8-9 years**. Due to its much lower scale, Oracle didn't have the need to contract large-scale capacity in the tens of megawatts, which typically requires a much longer contractual commitment. While OCI did grow to a multibillion dollar business by 2022, it remained an order of magnitude smaller than Azure and AWS. It was gaining share, but from a low base, and more by benefitting from its customer's Cloud transition than by winning new customers and/or moving them off AWS and Azure.
 
-![](https://substackcdn.com/image/fetch/$s_!Q8yo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff24f6101-e240-435c-ad43-4f58eefeaed1_1322x821.png)
+![](z-images/7c470df5a09e1e61cf3198bafed617bd.webp)
 
 Source: Digital Realty, SemiAnalysis Datacenter Model
 
@@ -78,7 +78,7 @@ Larry Ellison was willing to take that risk, and committed to >2GW of capacity f
 
 And the growth of its backlog shown below demonstrates that it was immediately able to sell GPU clusters to customers.
 
-![](https://substackcdn.com/image/fetch/$s_!Sq92!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F40a10f93-d861-444c-96a7-9cb1d2f92041_1323x859.png)
+![](z-images/f1f8705f79873dd54d26b494f2a62118.webp)
 
 Source: Oracle, SemiAnalysis Datacenter Model
 
@@ -99,13 +99,13 @@ Note that being close to end customers is a great fit with the “Cloud mindset�
 
 As the AI race kicked off, hyperscalers accelerated self-build and began construction of several gigawatt-scale datacenters towards the end of 2023. Oracle initially responded by growing with its traditional colocation partners, such as Digital Realty and QTS around big metros. We show below one of their AI campuses in a Tier 1 market.
 
-![](https://substackcdn.com/image/fetch/$s_!TG0D!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2041953a-0e89-4da0-b858-f70d9a85a646_1192x745.png)
+![](z-images/c397de35e5c7ee98e755a9bbdc11bf6f.webp)
 
 Source: SemiAnalysis Datacenter Model – June 23rd, 2025 picture
 
 It also took capacity in less established markets, such as the Salt Lake City area. But with Tier 1 markets being overly crowded, and many Tier 2 locations struggling to keep up with power demand, it was hard to get anything close to a gigawatt-scale datacenter to secure the largest AI contracts. [The rare suitable sites were all pre-leased by Microsoft in 2023 and early 2024](https://www.semianalysis.com/p/datacenter-model).
 
-![](https://substackcdn.com/image/fetch/$s_!HMtw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7f4f2ba9-136c-457d-840d-537563e80c33_859x1063.png)
+![](z-images/a8444226c2b4554c4e04efc78053e754.webp)
 
 Source: SemiAnalysis Datacenter Model – June 3 rd, 2025 picture
 
@@ -118,7 +118,7 @@ Oracle saw this gap as an opportunity to participate in the market for huge AI c
 
 Said differently: Oracle committed to **paying over a billion dollars per year, for fifteen years, to an unexperienced developer.** It is hard to understate how bold the bet was! Even with OpenAI committed to buying all the compute capacity from that campus, these five-year contracts sum up to close to $10B annual expense for OpenAI, a startup that was generating around 2 billion dollars of annualized revenue mid-2024, and highly unprofitable. There were **both credit risks and duration risks** associated with Oracle's bet.
 
-![](https://substackcdn.com/image/fetch/$s_!BrTw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbef2a188-85d1-4530-a294-9b1ce4b61dc4_1841x1091.png)
+![](z-images/56b2c8783726f5befd9ee7638a27454b.webp)
 
 Source: SemiAnalysis Datacenter Model – June 11th, 2025 picture
 
@@ -130,7 +130,7 @@ Questions remain on how much exacly Oracle will benefit. With Larry Ellison publ
 
 But we don’t think that is reality. As far as we know, Stargate (the JV) doesn’t really exist, and hasn’t done anything meaningful – so Larry is factually correct. On the other hand, the ~880MW OpenAI deal located in the Crusoe/Lancium campus in Abilene, Texas (often called Stargate) is very real… and already in Oracle’s books. We believe that Phase 2 was booked in January 2025, and it shows on both Oracle’s leasing activity, and RPO growth in that specific quarter. The first phase was booked two quarters before.
 
-![](https://substackcdn.com/image/fetch/$s_!4Yry!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa368b280-01f3-4a93-85c6-6f2449fcafa3_886x859.png)
+![](z-images/5e210b977f08bca7069fb80d4a02ee81.webp)
 
 Source: Oracle, SemiAnalysis Datacenter Model
 
@@ -148,25 +148,25 @@ Calling Stargate incremental to OpenAI contracts suggests that these deals would
 
 While Abilene and the OpenAI deal are catching all the headlines, the scale of the Oracle and Bytedance partnership remains under the radar. We believe that **TikTok’s parent is one of the world’s largest and fastest-growing users of GPUs**, of comparable scale to US hyperscalers, and is Oracle’s largest GPU customer today. We think they have a few sizeable deals in the US, notably in Northern Virginia, but more impressive is their ASEAN growth which led to the emergence of the World’s second largest AI datacenter hub: the Singapore-Johor-Batam hub, shown below. It is widely believed that most of Oracle’s ASEAN GPU capacity is allocated to Bytedance.
 
-![](https://substackcdn.com/image/fetch/$s_!DwZ7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc4e52755-01b8-4948-b6a4-635e5a36fb0f_1327x1122.png)
+![](z-images/54711f7e1bb03021edf7be8005fa997d.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 We show below what we believe to be their largest “co-cluster”, set to reach 600-700MW within a year, and potentially up to 2GW by 2028.
 
-![](https://substackcdn.com/image/fetch/$s_!S5OG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5bde452f-2d08-4f6a-b83b-4b26a42d825a_1389x1117.png)
+![](z-images/464aa10e621f4efcfa86539d6a35a2ef.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 One of Oracle's key APAC datacenter partners is GDS International. Rebranded DayOne in January, its largest customer (by committed power) is, by far, Bytedance. Oracle ranks second, and is DayOne’s only large western customer, as far as we know ([but there will be a second one soon](https://www.semianalysis.com/p/datacenter-model)). DayOne has demonstrated an expertise in building datacenters from “zero” to full operations in less than 12 months – as shown below with close to 100MW. Note that this isn't unique to DayOne: Chinese Hyperscalers have adopted modular datacenter construction techniques for several years already, and are renowned for their ability to deploy extremely fast.
 
-![](https://substackcdn.com/image/fetch/$s_!W15h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F203484e7-2b6e-49d5-827a-b9e079b2ba6e_1999x818.png)
+![](z-images/fdab4352f23a9402f1bbdf3dd6b2aab4.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 Given aggressive growth plans in ASEAN and Europe, we expect the firm to continue to grow extremely fast, with >1GW of total committed power likely within a year, and half of it operational. Most of it will serve its two key customers.
 
-![](https://substackcdn.com/image/fetch/$s_!VVXY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcd06e3ad-c18a-4fed-af4e-54f1bc495242_1324x811.png)
+![](z-images/bced1c769aea11693c619b5fe3d5266b.webp)
 
 Source: GDS
 
@@ -187,13 +187,13 @@ We think Oracle’s cost advantages are threefold:
 
 We show below how Oracle's optimized networking configuration, alongside cheaper server price, enables a 20% CapEx advantage over a Neocloud Giant. Our newly-launched [AI Networking Model](https://semianalysis.com/ai-networking-model/) provides detailed cluster networking configurations as well as line by line costing for items building up this network. Clients can also use this model to build up estimates for the number of switches Arista might sell into operators like Oracle and ultimately Arista’s overall switching opportunity for the next few years.
 
-![](https://substackcdn.com/image/fetch/$s_!zEMO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93faa91d-5cc5-47cd-8f2e-e04ce4fc9c00_2150x850.png)
+![](z-images/8ce3394a6b2f6ecc2bf7ee7bd701c614.webp)
 
 Source: SemiAnalysis AI Networking Model
 
 Oracle’s networking capabilities are one of its strong suits and is one of the key reasons why it [earned a ClusterMAX™ Gold rating](https://semianalysis.com/2025/03/26/the-gpu-cloud-clustermax-rating-system-how-to-rent-gpus/#oracle-cloud-infrastructure) in our inaugural ratings exercise. From our testing on H100 and H200 clusters, we noticed that OCI’s RoCEv2 networking was very competitive with Spectrum-X Ethernet, delivering very strong NCCL-test performance.
 
-![](https://substackcdn.com/image/fetch/$s_!8dmK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2e7bfaf8-ff8e-483c-8023-1e0b98ee499f_1010x1126.png)
+![](z-images/e28a7067b4202aff975183c1974c20d9.webp)
 
 Source: SemiAnalysis ClusterMAX rating
 

@@ -14,7 +14,7 @@ No. We didn’t make it up, but we wish we did!
 
 [Eroom’s Law](https://www.nature.com/articles/d41573-020-00059-3.epdf?no_publisher_access=1&r3_referer=nature), in an ironic twist, revolves around the concept that the cost of developing a new drug tends to double approximately every nine years.
 
-![](https://substackcdn.com/image/fetch/$s_!Oij_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd441a7fa-a5e1-4d41-8247-ddb3af4acc1e_1864x1796.png)
+![](z-images/efa4966dd427f6e7ea0fe4a9a0112393.webp)
 
 Source: Diagnosing the decline in pharmaceutical R&D efficiency - Eroom’s Law vs Moore’s Law – In Moore’s law we produce more transistors per dollar spent over time, while in Eroom’s law we spend more dollars per drug discovery over time.
 
@@ -32,7 +32,7 @@ Transcending Eroom’s law, and putting improvement in healthcare back on track 
 
 Though the pharmaceutical industry has taken several steps to improve the drug discovery process and probability of success for new therapeutic modalities, the overall ratio of research and development cost to revenue in the pharmaceutical industry continues to creep higher. This trend has continued despite growth in healthcare costs (and also pharmaceutical company revenues) well above the consumer price index (CPI) average. This is largely because predicting if a drug will make it through the incredibly lengthy and costly clinicals is difficult due to our lack of understanding of biology and various interactions between systems.
 
-![](https://substackcdn.com/image/fetch/$s_!A97h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd950242c-741f-40b1-8828-b2de3cc646e4_1843x1177.png)
+![](z-images/dc9547ca255936553a4138d076c832b1.webp)
 
 Source: CBO - Research and Development in the Pharmaceutical Industry
 
@@ -40,7 +40,7 @@ A large reason for the diminishing return on investment in recent years is the f
 
 An empirical manifestation of Eroom’s law can be seen in the fact that healthcare outcomes have seen diminishing returns on investment, with life expectancy in the US only increasing from 70 years to 79 years from 1960 to 2019 despite per capita healthcare expenditure increasing from [~5% to ~20% of the US GDP](https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/historical). The 21st century has seen costs get exponentially worse and therefore less accessible in the developed world.
 
-![](https://substackcdn.com/image/fetch/$s_!phQ7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F457a458b-760b-41ae-b4a2-48859b5a6a1f_2480x1354.png)
+![](z-images/0e90a4a7acf74f2aa7e7db04f43e1944.webp)
 
 Source: CMS National Healthcare Expenditure
 
@@ -50,7 +50,7 @@ In the field of medical records, despite electronic health record (EHR) adoption
 
 However most data generated in an EHR is [unstructured](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4287068/) data such as physician notes, insurance company data, and billing data. Most of the immense volume of healthcare data being generated, estimated to have reached [2,314 exabytes of data by 2020](https://catalyst.nejm.org/doi/full/10.1056/CAT.18.0290), goes unharnessed.
 
-![](https://substackcdn.com/image/fetch/$s_!LvFD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb9e872dd-0346-4c4c-af18-77e65a21e7b9_2182x1084.png)
+![](z-images/f4c49f471c8e0f900b80034da2fe9595.webp)
 
 Source: Bureau of Labor Statistics
 
@@ -64,7 +64,7 @@ Our friend Gaurav at [GettingClinical](https://gettingclinical.substack.com/) ex
 
 While healthcare costs have increased, there are fields within the healthcare industry that have in fact exhibited better than Moore’s Law scaling. The first human genome was sequenced in 2003, [cost $3B, and took 13 years of work](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-8-125#:~:text=In%20fact%2C%20the%20cost%20of,and%2013%20years%20to%20complete.) by multiple institutions. By 2008, the cost of sequencing a whole genome was $2M, by 2014 this fell to $1,000 and is quoted at $200-$600 today.
 
-![](https://substackcdn.com/image/fetch/$s_!hCZM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F69c7750d-b57e-4ee5-8a01-a4517d7b1abb_2492x1362.png)
+![](z-images/f3385b8b68aad59cf36c1cffa2f21bc1.webp)
 
 Source: NIH – DNA Sequencing Costs: Data
 
@@ -72,13 +72,13 @@ The huge drop in cost per sequencing has led to an exponential growth in genomic
 
 Between [2018 (~100 Petabytes)](https://s24.q4cdn.com/526396163/files/doc_presentations/ILMN-at-Barclays-13-March-2019.pdf) and [2021 (280 PB)](https://www.illumina.com/company/news-center/press-releases/2022/4ea79eed-e630-4f50-b6b3-c7f11a8780cc.html#:~:text=\(Nasdaq%3A%20ILMN\)%20will%20host,Time%20in%20San%20Diego%2C%20CA.), data created on instruments sold by Illumina, the leading gene sequencing machine company, exhibited a Compound Annual Growth Rate (CAGR) of 41%, a doubling every 2 years. This trend is only accelerating.
 
-![](https://substackcdn.com/image/fetch/$s_!MccD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4f7c2b0a-0674-452d-be51-93336f6526f5_2019x1107.png)
+![](z-images/1fb4d94deded5e6f8190c4d686b93f96.webp)
 
 Source: Illumina Company Overview – Dec 2022, Illumina Barclays 2019 Healthcare Conference Presentation
 
 The volume of data generated from genomics projects is immense, and is estimated to require up to [40 Exabytes](https://www.genome.gov/about-genomics/fact-sheets/Genomic-Data-Science) of [annual storage needs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4494865/) by 2025, an order of magnitude larger than annual storage needs estimated at YouTube in 2025 and a volume of data that is 8x larger than would be needed to store [every word spoken in history](https://blogs.nvidia.com/blog/2023/02/24/how-ai-is-transforming-genomics/).
 
-![](https://substackcdn.com/image/fetch/$s_!b4u_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fba36d525-b05d-4c47-9244-2bf90ef4f993_2227x739.png)
+![](z-images/21f20bb91fe44c14237504edcc634baf.webp)
 
 Source: Big Data: Astronomical or Genomical?
 
@@ -86,13 +86,13 @@ If we consider Data as the new Oil, and the potential for large language models 
 
 This proliferation of genomics data has the potential to unlock applications in disease diagnosis, personalized medicine, screening and prevention, cures for intractable diseases, cancer treatment, and in critical care settings. It should be noted that genomic data is not yet directly related to drug discovery and Eroom’s law, but it is a factor, and genomics has already began bending the curve with advancements such as [DECLs](https://en.wikipedia.org/wiki/DNA-encoded_chemical_library). Furthermore, time to market is the largest cost in drug development, and genomics progress will help accelerate cost improvements.
 
-![](https://substackcdn.com/image/fetch/$s_!EJ3r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe276e4ee-5f8f-445e-8983-66bfcd5ef91a_1954x979.png)
+![](z-images/ada292bee6f555db641028070f7f80eb.webp)
 
 Source: Nvidia Investor Day 2022
 
 Just as AI required Moore’s Law to drive down the cost of compute low enough to enable image nets then eventually language models, a high unit cost of sequencing a human genome is no longer the hurdle limiting advancements as it once was in the past. Today, [less than 10%](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-8-125) of the total cost of sequencing the human genome is related to the actual act of sequencing DNA. [More than 90%](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-8-125) of the cost is associated with gathering samples, data management, data reduction, and secondary analysis.
 
-![](https://substackcdn.com/image/fetch/$s_!8Vs0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3c12385-79b9-4083-9d2c-ad909f0bb1ee_1356x858.png)
+![](z-images/4b100960bb5ddea475164f119ebee4bd.webp)
 
 Source: The real cost of sequencing: higher than you think!
 
@@ -100,7 +100,7 @@ The missing piece of the puzzle is in further developing the data analysis infra
 
 For example, Oncology is a whopping $78B Genomics opportunity, yet penetration of genomics use within this field is only ~2%.
 
-![](https://substackcdn.com/image/fetch/$s_!2N53!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbfe379ce-e322-41a7-ada5-4cca3ed94581_2164x1178.png)
+![](z-images/0e1fb43563948f565afb6860db41075c.webp)
 
 Source: NHS, NSF, NIH, UN, WHO, Illumina
 
@@ -112,7 +112,7 @@ However, the more we learn about genomics and the more treatments we develop to 
 
 From the human genome to metabolic pathways, scientists are gleaning a deeper and deeper understanding of the human body. The data we are gathering about previously disparate disciplines such as genomics and proteomics are increasingly intertwined.
 
-![](https://substackcdn.com/image/fetch/$s_!7L-e!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1fd1aa3a-ca6b-4a23-b784-79b686b1b515_2500x2236.jpeg)
+![](z-images/61cd7d57b1ea1f5d41651d1fbff65979.webp)
 
 Source: AI-powered therapeutic target discovery
 
@@ -140,7 +140,7 @@ Genomics is the study of the entirety of an organism’s DNA sequence (its “ge
 
 Samples come in many shapes, sizes, and states. In their existing form our ability to interrogate them and draw insights is limited. Blood is red. Saliva is wet. Tissues are squishy. We like to think of gene samples as “analog samples” and sequencing as a form of analog to digital conversion. Genomics enables a host of research applications from AlphaFold to gene therapies.
 
-![](https://substackcdn.com/image/fetch/$s_!8tMz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F15d332ec-bd41-4d23-a74a-9fccb766b7fd_1920x1081.jpeg)
+![](z-images/ecd979af1f151998372c5162fb9a6fca.webp)
 
 Source: National Human Genome Research Institute
 
@@ -158,7 +158,7 @@ Choosing between the two modalities comes down to the specific goals users are t
 
 The market is generally dominated by Illumina who focuses on short-read machines. The UK Competition and Market Authority (CMA) estimates Illumina has 80-90% market share of the worldwide sequencing market.
 
-![](https://substackcdn.com/image/fetch/$s_!zD9p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F920400f4-c7a4-46e4-b94d-8c6e6fec2bd9_2690x656.png)
+![](z-images/a61a120b5c052ac045ffc86f388983f7.webp)
 
 Source: UK CMA – Anticipated acquisition by Illumina of Pacific Biosciences
 
@@ -176,7 +176,7 @@ Though each platform possesses its own strengths and weaknesses, the underlying 
 
 The quote above shows remarkable foresight in the face of declining Human Genome sequencing costs that outpace Moore's Law. This, combined with demand's price elasticity, results in a data production surge due to the cost of Human Genome sequencing costing only $200 now. However, these gains now face Eroom's Law as sequencers generate raw data. Scientists rely on extensive computational processes for contextual insight and analysis, known as secondary or downstream analysis. The cost and time of secondary analysis far outstrips sequencing, representing future opportunities for Nvidia to *flip the script* on Eroom’s Law.
 
-![](https://substackcdn.com/image/fetch/$s_!Pfv3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd597c47-2c05-4b5f-a69f-643d33e99e8e_1941x1014.png)
+![](z-images/dc22421778839988483c21facbe79be3.webp)
 
 Source: Ultrarapid Nanopore Genome Sequencing in a Critical Care Setting
 
@@ -192,13 +192,13 @@ PacBio, a prominent manufacturer of long-read sequencing machines, recently intr
 
 > By using advanced GPUs from Nvidia, our team began **moving workloads to GPU, starting with the GPU polish step, which had consumed over 80% of the CPU time on the Sequel IIe system. …** our team was able to move additional compute steps to GPU, and was ultimately able to **deliver an implementation of CCS (circular consensus sequencing) that could complete its task in 2.5 hours, generating considerable headroom for us to do even more with the newly available onboard compute afforded by adding GPU**.
 
-![](https://substackcdn.com/image/fetch/$s_!i9RT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd601a7ff-8bda-44c1-8217-8414bdb7a319_1489x763.png)
+![](z-images/51d9c006b659897d3d23a0751116b3e0.webp)
 
 Source: Scaling long-read sequencing throughput and accessibility with deep learning and Nvidia
 
 Integrating Nvidia’s GPUs *flipped the script* for PacBio. Compared to prior generations of instruments, the Revio produces 12x the amount of data in 20% less time (15x faster). To provide context, the [NovaSeq X](https://www.genengnews.com/news/illumina-reveals-new-high-throughput-instrument-novaseq-x/#:~:text=Although%20the%20instruments%20have%20the,ultra%2Dhigh%20density%20flow%20cells.), the new instrument from Illumina highlighted earlier, relies on CPUs to produce 2.5x the amount of data compared to prior generations (16Tb vs. 6Tb), but it requires 10% more time (48 vs. 44 hours).
 
-![](https://substackcdn.com/image/fetch/$s_!wZI3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83b40f39-9e97-4b26-83cb-0d3586476a62_2077x874.png)
+![](z-images/271c143c3cc4baaeac38cb4fde1f7bb6.webp)
 
 Source: PacBio Revio System
 
@@ -214,7 +214,7 @@ Central to this advancement was integrating machine-based and cloud-based comput
 
 In [one case](https://www.youtube.com/watch?v=maKeF2FYtxc), a thirteen-year-old boy was brought to Stanford Hospital with symptoms of rapidly progressing heart failure. There were two possible causes, either an irreversible genetic heart defect requiring heart transplantation or an often self-limiting and treatable inflammatory condition known as myocarditis. The team utilized this ultrarapid sequencing process to achieve a sequencing time of 11.25 hours, beating the prior world record by 8 hours and standard of care testing by almost 2 months. They were able to determine the presence of a cardiac genetic defect and the patient subsequently underwent successful heart transplantation, ultimately saving his life. In this case, timely diagnosis was vital for appropriate and definitive treatment, highlighting just one of the many potential uses of this technology.
 
-![](https://substackcdn.com/image/fetch/$s_!jxro!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F15bbeb12-474e-4ed8-a406-1f4d164713c5_1375x693.png)
+![](z-images/8d6878000757a4480c0a84fef30e2aef.webp)
 
 Source: The potential of ultrarapid nanopore genome sequencing for critical care medicine
 
@@ -228,7 +228,7 @@ Nvidia is addressing computational bottlenecks in base calling, alignment, and v
 
 A [study completed by AWS and Nvidia](https://pages.awscloud.com/rs/112-TZM-766/images/AWS_NVIDIA%20Genomics%20Solution%20Brief_FINAL.pdf) provides a detailed look at CPU-based analysis versus GPU-based analysis. What took 1,800 minutes of compute on CPU-based Amazon EC2, took 76 minutes on Nvidia T4 GPU, and 25 minutes on Nvidia A100 GPU. Total cost was reduced by 90-95% when running on GPU-based EC2.
 
-![](https://substackcdn.com/image/fetch/$s_!PILu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73a63dec-fe79-4b4c-af39-246ae067d5fa_2514x510.png)
+![](z-images/a25232b4bcef5c373498fd101b2e416a.webp)
 
 Source: AWS Accelerated genomics analysis, without compromise
 
@@ -270,7 +270,7 @@ These platforms go a long way to enabling various applications, but there are al
 > 
 > *Nvidia at JP Morgan Healthcare Conference 1/12/23*
 
-![](https://substackcdn.com/image/fetch/$s_!-fYG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8cb2c200-501c-4709-a9d7-a498a24963ab_2142x1480.png)
+![](z-images/8417b6c6bea88899edb994239f334887.webp)
 
 Nvidia's acquisition of Illumina completes the puzzle in their healthcare push, linking upstream genomics data with downstream AI-driven analysis to create a new industry standard for healthcare.
 

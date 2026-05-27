@@ -8,11 +8,11 @@ description: "Wins At Nvidia, Broadcom, Marvell, Cisco, Macom, Ayar Labs, Lightm
 
 GlobalFoundries has put out press release about their silicon photonics (SiPho) solutions and partnerships with some industry leaders, but this announcement deserves more attention and analysis. In the past, we have talked a lot about silicon photonics. We [wrote extensively about GlobalFoundries capabilities as a foundry](https://semianalysis.substack.com/p/globalfoundries-gfs-ipo-mubadala). In particular, this article from last year where we stated they are a [leading-edge foundry due to their 90WG and 45CLO process nodes for photonics.](https://semianalysis.substack.com/p/globalfoundries-is-a-leading-edge) In addition, we wrote that SiPho is [Intel’s trojan horse into the foundry business.](https://semianalysis.substack.com/p/intels-trojan-horse-into-the-foundry) We believe these announcements from GlobalFoundries position them as the leading silicon photonics foundry in the world, ahead of TSMC or Intel.
 
-![](https://substackcdn.com/image/fetch/$s_!P43q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3c9d0cf9-a0ed-4eac-b2c1-45322db2f1e0_1024x554.png)
+![](z-images/57e3fd7788d2a54f75e022ff40e2c70b.webp)
 
 Silicon photonics is one of the fastest growth areas and it will reshape the way semiconductors will be designed. The needs for input and output of data are soaring as humanity generates and processes more data. Power per bit of data transferred is not falling at a similar rate to these IO increases. As semiconductors continue to scale in performance and IO, power dedicated to the IO of data makes an increasingly larger portion of a processors power consumption. The industry can use [advanced packaging](https://semianalysis.substack.com/p/advanced-packaging-part-1-pad-limited) to increase the efficiency and amount of IO, but the ultimately it will need to be combined with a transition from electron based IO to photon based.
 
-![](https://substackcdn.com/image/fetch/$s_!XWGU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1ef43ac8-fba9-4ca1-a6af-e7bb01f8d42e_1024x530.jpeg)
+![](z-images/f92a418a6b7a38019adf6187092e7ae9.webp)
 
 In comes GlobalFoundries Fotonix platform. Although GlobalFoundries hasn’t explicitly said, we presume this is the marketing name for a [their 90WG and 45CLO process nodes as well as packaging options.](https://semianalysis.substack.com/p/globalfoundries-is-a-leading-edge) The companies partnering with GlobalFoundries on the Fotonix platform includes Broadcom, Marvell, Cisco, Nvidia, Macom, Ayar Labs, Lightmatter, PsiQuantum, Ranovus, Xanadu, Ansys, Cadence, and Synopsys. These partnerships include 3 of 4 top photonics transceivers suppliers, 4 of 5 of the top networking firms, 3 of the 4 leading EDA and simulation firms, and some of the most promising photonics-based startups. Intel is the only major firm involved in photonics that is missing. They are using their own in-house platform.
 
@@ -30,13 +30,13 @@ Marvell is the leader in TIAs and DSPs that accompany all optical transceivers v
 > 
 > Dr. Loi Nguyen, executive vice president, Optical and Copper Connectivity Group, Marvell
 
-![](https://substackcdn.com/image/fetch/$s_!Cz9O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F953e2794-37c6-441b-91dc-a8b6b7dec7b9_1024x575.png)
+![](z-images/ed9e68480fa2d86bb26fb6e9ae380712.webp)
 
 Nvidia is a top networking vendor due to their acquisition of Mellanox. In addition, they have acquired a few photonics firms including, OptiGOT from Sweden. Nvidia networking also does some design for photonics transceivers used in Infiniband networks. Nvidia has the full array of IP for switches as well. Due to their position as the leading firm for AI training and accelerated computing, they run into the problem of IO power scaling the hardest in relation to compute applications.
 
 Each generation of Nvida’s GPUs has doubled the IO via the custom NVLink interconnect. Nvidia likely can only do this 1 more generation before it significantly impacts their processors energy efficiency. Due to the nature of how new AI models have been exploding in parameter count, Nvidia is stuck in between a rock and a hard place with performance and power. Nvidia needs co-packaged optics to continue to scale in AI.
 
-![](https://substackcdn.com/image/fetch/$s_!m3se!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1ac7efc-54af-48eb-8dab-14c3f5cb4245_1024x580.png)
+![](z-images/36dccc313168ab2867320c3dc363238f.webp)
 
 Nvidia has presented research related to co-packaged photonics before. We have always been concerned about how they would manufacture with photonics because most manufacturing IP is held by non-foundry firms. The GlobalFoundries Fotonix platform answers this issue.
 
@@ -46,11 +46,11 @@ Nvidia has presented research related to co-packaged photonics before. We have a
 
 It seems as though Nvidia is announcing a brand-new technology via the press-release of a partner, which is very odd. Given Nvidia’s graphics technology conference is very soon, we hope to hear more about this platform then. As for a bit of speculation, we expect TSMC to still do most of the logic fabrication and advanced packaging over the long term. TSMC would likely ship diced chip on wafer assemblies which GlobalFoundries could then co-package these with optical tiles.
 
-![](https://substackcdn.com/image/fetch/$s_!uT5X!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1cee5242-298d-4648-81e2-db392f3de01d_1024x576.png)
+![](z-images/2817681f25269c4722cabed31c501209.webp)
 
 GlobalFoundries is championing the ability to do 500Gbps per fiber as their technical superiority over other players. For reference, the most advanced datacenter 800G transceivers typically do 8x100Gbps fibers. GlobalFoundries is positioning themselves as the leader by being able to deliver 1.6 to 3.2Tbps optical chiplets. For reference, an Nvidia A100 GPU delivers 4.8Tbps of NVLink IO. If Nvidia doubles this rate as expected with their next generation Hopper GPU architecture, then it would need as many as 6 optical tiles. If GlobalFoundries research into 500Gbps fibers is realized to production, then they would only need 4 fibers coming out of each GPU, which could potentially be achieved with a single optical tile. While Hopper will be able to get away without co-packaged optical tiles, the generation after that will surely integrate this sort of technology.
 
-![](https://substackcdn.com/image/fetch/$s_!MCfM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Faa8b4930-6af3-46da-b2b7-a82be9e0e338_1024x512.jpeg)
+![](z-images/af6750ec7b539e71c47e4323f4750755.webp)
 
 Ayar Labs is perhaps the most promising startup related to co-packaged optics. They have already shipped co-packaged optics with Intel FPGAs, and they continue to get more wins and traction. They currently manufacture with GlobalFoundries and seem to have no intention of leaving. GlobalFoundries has developed many of their key packaging technologies by using Ayar as a ramp partner. These include the copper pillar technology and v-groove fiber attach technology. Macom makes external lasers that are then coupled with this fiber off package. On die vs off package laser is an interesting debate, but GlobalFoundries supports both these technologies and has customers using both.
 
@@ -58,7 +58,7 @@ Ayar Labs is perhaps the most promising startup related to co-packaged optics. T
 > 
 > Charles Wuischpard, CEO, Ayar Labs
 
-![](https://substackcdn.com/image/fetch/$s_!Xw6m!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F213de9d1-ecd8-416a-9447-afd31b31576a_1023x767.jpeg)
+![](z-images/b03812f3d0e850f81a248ffeec05eb41.webp)
 
 Ranovus is another co-packaged optics firm. They have partnered with AMD for co-packaged optics on FPGAs. This partnership could extend beyond, but it may also be similar to the Ayar and Intel collaboration where it is short lived. AMD lacks photonics IP, so this would be a natural long term partnership or acquisition target for them.
 
@@ -68,11 +68,11 @@ Ranovus is another co-packaged optics firm. They have partnered with AMD for co-
 
 Macom is generally a provider of TIAs and other amplifiers, but they also are involved in other parts of silicon photonics. They are also working with GlobalFoundries. We doubt they will be manufacturing with GlobalFoundries, so it is likely more of a validation and testing relationship to integrate Macom’s external TIAs into the Fotonix ecosystem. GlobalFoundries also offers EIC capabilities so it’s possible they will be displaced in the long run by more vertically integrated EIC designs.
 
-![](https://substackcdn.com/image/fetch/$s_!foDq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F58586455-1c8a-4c73-b78d-f1fcff8764ef_1024x526.png)
+![](z-images/3b33d42680ad7b45458b1091f5496359.webp)
 
 Lightmatter is one of the most interesting AI start-ups due to the use of the 90WG process for tensor cores. They are working on a next generation product which is likely on the 45CLO process. Their technology has the possibility to completely revolutionize processors, but more likely they will be acquired for their mixed signal IP and expertise. We would bet on Intel or Nvidia as a natural acquisition target. It’s possible this was in the works, but then fell apart because there have been some major personnel defections from Lightmatter in recent months.
 
-![](https://substackcdn.com/image/fetch/$s_!mQ_K!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0b542c2-c8c8-4cae-9fc3-55fde665305c_1024x768.jpeg)
+![](z-images/0e86e1782d5be862708189dc164cd039.webp)
 
 PsiQuantum is one of the most promising quantum computing firms. While we won’t pretend to be experts in the industry at all, they have a unique approach that uses light rather than electrons for entanglement. In addition, they are one of the most well-funded quantum computing startups. PsiQuantum funded 6 new tools for GlobalFoundries to use in their co-designed custom manufacturing process.
 
@@ -80,7 +80,7 @@ PsiQuantum is one of the most promising quantum computing firms. While we won’
 > 
 > Fariba Danesh, chief operating officer of PsiQuantum
 
-![](https://substackcdn.com/image/fetch/$s_!iaLC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7ae08e4e-09a7-41f7-861a-090dd62aec8d_959x540.jpeg)
+![](z-images/9db9945550b730f04e260dab8ea0bece.webp)
 
 Xanadu is using a similar approach with photonics, but we have less details on the exact implementation.
 

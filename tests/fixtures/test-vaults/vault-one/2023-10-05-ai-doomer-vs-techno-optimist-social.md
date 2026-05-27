@@ -32,7 +32,7 @@ Many Asian cultures traditionally prefer male offspring due to expectations of f
 
 The natural sex ratio at birth typically ranges from 103 to 105 boys for every 100 girls. This slight male birth prevalence is biological in nature and believed to be because of the relatively higher male mortality rates observed, from infancy through adulthood.
 
-![](https://substackcdn.com/image/fetch/$s_!Xjsg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F69f35741-eeec-4929-80c2-bba4c2fc9069_2194x1288.png)
+![](z-images/f81597f28bb6b6b0209a902ea0381b08.webp)
 
 Source: Marriage Squeeze in China: Past, Present, and Future - Kuangshi Huang
 
@@ -46,7 +46,7 @@ This problem is not too big of a deal, until these cohorts come of age.
 
 As the cohorts age, generally they want to get married, but due to decades earlier shifts in the sex-birth ratios, the problem of the “ **Marriage Squeeze** ” arises. A 120 to 100 ratio is bad enough on its own, but that only scratches the surface of the problem. As people pair off, there will be a segment of the population that remains in the market that continues to look for a spouse.
 
-![](https://substackcdn.com/image/fetch/$s_!q0t0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F92b1da4f-cd50-436b-af25-5922817c0fa3_2240x1232.png)
+![](z-images/c3ef317f34d49a6e1807000c9ae18e80.webp)
 
 Source: Marriage Squeeze in China: Past, Present, and Future - Kuangshi Huang
 
@@ -58,7 +58,7 @@ China will have about as many men who can never get married as entire countries 
 
 In general, people pursue significant others of similar or higher socio-economic status. In China, income, education, and ultimately socioeconomic status generally correlate with urban vs rural divides. Due to the huge surplus in marriage age males, females generally have the option of marrying higher-income and status urban males.
 
-![](https://substackcdn.com/image/fetch/$s_!ACdm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45300837-7be8-4e6b-8020-910ddbcff58b_2274x1268.png)
+![](z-images/0fd7539973464f2e7d30ffa70d45d7d4.webp)
 
 Source: Being a single man in rural China - Isabelle Attané
 
@@ -66,7 +66,7 @@ As such, there is a larger influx of rural females migrating to Tier 1 and Tier 
 
 This system is essentially a household registration system that serves as a domestic passport, regulating population distribution and rural-to-urban migration. Every individual is assigned a hukou at birth, which is categorized into either a rural or urban hukou, and it is attached to their place of origin. While there is some relaxation of these rules in recent years, in general, it is still very difficult for a single male to immigrate to a city, while a rural female can immigrate if they are marrying an urban male.
 
-![](https://substackcdn.com/image/fetch/$s_!-7kF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a4674a4-7796-4dd5-8d9f-3e1875e01367_2324x1266.png)
+![](z-images/3d6f7d0c837809ddf610cecf14bec9b8.webp)
 
 Source: Being a single man in rural China - Isabelle Attané
 
@@ -76,7 +76,7 @@ Recall earlier, that the number of surplus males jumps 3 fold to 30 million surp
 
 The demographic ratios reach a breaking point with cohorts that comes of age in 2028. **16% of males that come to marriage age in 2028 will never have a chance of getting married** according to nuptiality tables calculated by [Quanbao Jiang, Marcus W Feldman, and Shuzhuo Li.](https://pubmed.ncbi.nlm.nih.gov/24634556/)
 
-![](https://substackcdn.com/image/fetch/$s_!iGbx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F845f73c7-de24-4e47-aa50-4e19c545fe6e_2630x1300.png)
+![](z-images/9a033d03cbc9ea40e076c634afdfce26.webp)
 
 Source: Marriage Squeeze, Never-Married Proportion, and Mean Age at First Marriage in China
 

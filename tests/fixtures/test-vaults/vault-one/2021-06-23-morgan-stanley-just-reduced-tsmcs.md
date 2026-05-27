@@ -18,7 +18,7 @@ TSMC has been extending their lead over competition such as Intel, Samsung, and 
 
 Morgan Stanley believes that because Moore’s law is slowing down, and transistor cost scaling has stopped, TSMC’s pricing pressure will diminish. Morgan Stanley justified this by including a laughable chart that showed transistor costs on 5nm being lower than 7nm. This in stark contrast to industry experts. Cost per transistor stalled with the introduction of FinFET nodes, 7nm completely plateaued, and with 5nm they are higher than ever before. Our readers can do the math, N7 wafers are ~$9,500 and N5 wafers are ~$16,000. Apple’s die size barely fell.
 
-![](https://substackcdn.com/image/fetch/$s_!OUhp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F177ad977-51e4-4f1a-a7b0-7edfd6a594f4_1024x263.png)
+![](z-images/2b834ea377198a0b8496722cb583b22e.webp)
 
 Based on this we can see costs per transistors have already begun to rise at the N5 node.
 
@@ -62,7 +62,7 @@ Half of all networks have not made the switch to 5G either. China, USA, Japan, S
 
 **Strike 4 Morgan Stanley**
 
-![](https://substackcdn.com/image/fetch/$s_!NlKi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7278d130-fa95-4644-948f-0409432fc662_582x1024.jpeg)
+![](z-images/cc092f81cd129043a911dd9c3ec879a0.webp)
 
 Morgan Stanley
 

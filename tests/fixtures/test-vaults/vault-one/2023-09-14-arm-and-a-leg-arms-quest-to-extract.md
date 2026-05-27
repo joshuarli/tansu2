@@ -28,7 +28,7 @@ Whereas other companies tend to grow by upselling products and services to their
 
 For example, Qualcomm has been a purchaser of fully off the shelf cores. However, after acquiring datacenter CPU startup Nuvia who are designing fully custom Arm-based Phoenix cores, Qualcomm expressed their intention to use Phoenix Cores in their Snapdragon APs in the future. No doubt, [this is part of the dispute between Qualcomm and Arm as this would be a way for Qualcomm to basically sidestep paying Arm for technology.](https://www.semianalysis.com/p/arms-nuclear-option-qualcomm-must)
 
-![](https://substackcdn.com/image/fetch/$s_!JOiY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc8b1592f-6a61-4be3-9b2c-3ccc33a74d7d_2560x1440.jpeg)
+![](z-images/489e372f5d823f7610c1168c39aecefa.webp)
 
 The compute subsystems are also a way for Arm to absorb more design effort from customers. By offering the compute subsystem as a whole, switching to in-house architecture is more difficult because a whole host of verification, validation, and NOC IP must be brought up.
 
@@ -42,7 +42,7 @@ For off-the-shelf cores, Arm’s main product is the Cortex line of CPU cores. A
 
 A relatively recent initiative for Arm has been designing cores tailored for datacenters and the cloud. The Neoverse cores were first introduced in 2019 and they have seen adoption within hyperscalers, featuring in AWS Graviton and Nvidia Grace to name a few examples.
 
-![](https://substackcdn.com/image/fetch/$s_!XQJX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8656c424-f7ce-44b2-9ece-85f4473a6b2b_602x365.png)
+![](z-images/48c149b56bbc105e5a37334e5fb489a2.webp)
 
 ## Arm’s Growth Opportunities (or lack thereof)
 
@@ -62,15 +62,15 @@ We will first discuss the short-term rationale for conducting the IPO before tur
 
 A key external factor driving these changes and the IPO transaction itself is to boost the fortunes of Softbank’s Vision Fund and Softbank Group Corp which have been struggling. Softbank Vision Fund 1 is up $12.4B inception to date on $90B of investments, a sub-optimal return for a 6-year-old fund, while Softbank Vision Fund 2 is down $18.6B inception to date.
 
-![](https://substackcdn.com/image/fetch/$s_!Ly8y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb3b307c7-f366-4f24-acdc-5ed2cba4f51e_903x504.png)
+![](z-images/95fa1afcfb1760b1be25a707c322a8ba.webp)
 
 In 2017, Softbank sold 25% of Arm to Vision Fund 1 for $8.2B only to buy back this same stake for $16.1B in August 2023, on the eve of the IPO. Thus, 65% of Vision Fund 1’s inception to-date gains are from Softbank Group effectively cashing out Vision Fund 1 at a $64.4B USD valuation for Arm in anticipation of the IPO. This transfer valuation is 2x Softbank’s purchase price for Arm back in 2016 and is not far off from the $50B+ likely pricing valuation and the low potential free float of 8-9% could also push Arm’s market cap above $60B post-listing. Therefore, the $64.4B valuation doesn’t appear to be egregiously off-market, though we could say that Softbank Group is doing Vision Fund 1 a solid by allowing the fund to lock in those potential gains before the IPO, albeit via instalments paid by Softbank Group over a two-year period.
 
-![](https://substackcdn.com/image/fetch/$s_!qK6p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F17a30ca4-f969-4f88-aa0c-b4d3e1e69031_903x502.png)
+![](z-images/846a6736f2eac66081f034e70bc1507e.webp)
 
 The IPO, should it perform well, could also generate significant NAV gains for Softbank Group given it carries Arm at approximately $50B on its books. The listing will also meaningfully boost the proportion of Softbank’s NAV that are held in listed shares, an important prerequisite for boosting Softbank’s flagging credit ratings.
 
-![](https://substackcdn.com/image/fetch/$s_!-lpQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59e9bf31-df5f-4f49-ad9a-5072be66d737_903x207.png)
+![](z-images/cbfeb0db578e679979c80f542a50d8ea.webp)
 
 One attempt was to sell Arm to Nvidia but after that failed due to antitrust concerns, Softbank installed completely new management. Long-running CEO Simon Segars was replaced by Rene Haas. In addition, other C-Suite execs left including former CTO Dipesh Patel. It seems there is a desire for Arm to change its mindset of long-term technology investment to profit maximization.
 
@@ -108,7 +108,7 @@ We segment smartphone shipments into the high-end, mid-end and low-end units exc
 
 This sounds ridiculous when anchoring to Arm’s current pricing strategy. But if we go back and try to answer the question: “what is Arm’s IP worth to a customer?”, from first principles we don’t think there is a significant counter argument to easily dismiss this line of reasoning.
 
-![](https://substackcdn.com/image/fetch/$s_!Bnzj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8688dd3c-a02a-4d9c-8b5b-a0d5f3895d65_1758x313.png)
+![](z-images/0a2e24dfa3bd5422dc7f76369d515a0d.webp)
 
 Of course, this is an optimistic scenario, and it would take a lot of time to get there. Customers will try to fight back. Currently Arm will not be able to raise rates on Qualcomm as long as they are able to integrate their custom core over the next couple years and the lawsuit fails. But this should provide a sense of what investors are playing for and that the ceiling for Arm’s profitability is much higher than where it is now. We can now see the valuation start to make sense instead of focusing on the historical earnings power and growth rates or earnings forecasts for the next year or two.
 

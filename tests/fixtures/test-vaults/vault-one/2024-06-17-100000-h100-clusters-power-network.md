@@ -8,7 +8,7 @@ description: "Frontier Model Scaling Challenges and Requirements, Fault Recovery
 
 There is a camp that feels AI capabilities have stagnated ever since GPT-4’s release. This is generally true, but only because no one has been able to massively increase the amount of compute dedicated to a single model. Every model that has been released is roughly GPT-4 level (~2e25 FLOP of training compute). This is because the training compute dedicated to these models have also been roughly the same level. In the case of Google’s Gemini Ultra, Nvidia Nemotron 340B, and Meta LLAMA 3 405B, the FLOPS dedicated were of similar magnitude or even higher when compared to GPT-4, but an inferior architecture was utilized, resulting in these models falling short of unlocking new capabilities.
 
-![](https://substackcdn.com/image/fetch/$s_!wijJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fce07f3c8-eaf9-4152-9ca9-581eac73ba04_1252x741.png)
+![](z-images/af8bc2eabf0e868b71a9914f6ce40c9d.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -18,7 +18,7 @@ The obvious next step for AI is to train a multi-trillion parameter multimodal t
 
 [Multiple large AI labs including but not limited to OpenAI/Microsoft, xAI, and Meta](https://www.semianalysis.com/p/accelerator-model) are in a race to build GPU clusters with over 100,000 GPUs. These individual training clusters cost in excess of $4 billion of server capital expenditures alone, but they are also [heavily limited by the lack of datacenter capacity and power](https://www.semianalysis.com/p/ai-datacenter-energy-dilemma-race) as GPUs generally need to be co-located for high-speed chip to chip networking. A 100,000 GPU cluster will require >150MW in datacenter capacity and guzzle down 1.59 terawatt hours in a single year, costing $123.9 million at a standard rate of $0.078/kWh.
 
-![](https://substackcdn.com/image/fetch/$s_!N30T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fed6477c4-c1ec-4d91-ac90-b23667b849fd_1032x455.png)
+![](z-images/7c15e5af948f312afb9774e010612f0d.webp)
 
 Source: SemiAnalysis, US EIA
 
@@ -26,7 +26,7 @@ Today we will dive into large training AI clusters and the infrastructure around
 
 To put in perspective how much compute a 100,000 GPU cluster can provide, [OpenAI’s training BF16 FLOPS for GPT-4 was ~2.15e25 FLOP (21.5 million ExaFLOP),](https://www.semianalysis.com/p/gpt-4-architecture-infrastructure) on ~20,000 A100s for 90 to 100 days. That cluster only had 6.28 BF16 ExaFLOP/second peak throughput. On a 100k H100 cluster, this number would soar to 198/99 FP8/FP16 ExaFLOP/second. This is a 31.5x increase in peak theoretical AI training FLOPs compared to the 20k A100 cluster.
 
-![](https://substackcdn.com/image/fetch/$s_!j4s_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7010330-0448-4c8f-8120-8ba71a0986b5_1065x325.png)
+![](z-images/1fdb4710b735e1f8f7ea6069d297175d.webp)
 
 Source: Nvidia, SemiAnalysis
 
@@ -40,13 +40,13 @@ One major power challenge is that currently no single datacenter building has th
 
 These clusters are networked with optical transceivers, which come on a sliding scale of cost vs reach. Longer range “single mode” DR and FR transceivers which can reliably transmit signals ~500 meters to ~2km but can cost 2.5x as much as “multi-mode” SR and AOC transceivers which only support only up to ~50 meters reach. Furthermore, [campus level “coherent” 800G transceivers](https://www.marvell.com/products/optical-modules.html) with over 2km of range also exist albeit at 10x+ higher pricing.
 
-![](https://substackcdn.com/image/fetch/$s_!BS6g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f7943c7-7aab-4356-b7c9-f78c1ce9b4ff_1292x835.jpeg)
+![](z-images/c078a2abc48b0c1b5af8f07bcc4f6a55.webp)
 
 Small clusters of H100’s generally connect every GPU at 400G to every other GPU with only multi-mode transceivers through just a layer or two of switches. With large clusters of GPUs, more layers of switching must be added, and the optics becomes exorbitantly expensive. The network topology of such a cluster will differ broadly based on preferred vendor, current and future workloads, and capex.
 
 Each building will generally contain a pod or multiple pods of compute connected with cheaper copper cables or multi-mode transceivers. They will then use longer range transceivers in order to interconnect between “islands” of compute. The image below shows 4 islands of compute that have high bandwidth within the island but lower bandwidth outside the island. 155MW is challenging to deliver in a single location, but we are [tracking over 15 Microsoft, Meta, Google, Amazon, Bytedance, X.AI, Oracle, etc data center build outs](https://www.semianalysis.com/p/datacenter-model) that will have that much space for AI servers and networking.
 
-![](https://substackcdn.com/image/fetch/$s_!TcyV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa27fcbdb-9a97-4276-acf6-dc6e94f1f3cb_2908x1334.png)
+![](z-images/2a1b8d3bb68f7bfa1576a3e9b048bfe5.webp)
 
 Source: SemiAnalysis
 
@@ -58,25 +58,25 @@ To understand network design, topology, reliability concerns, and checkpointing 
 
 Data Parallelism is the simplest form of parallelism in which each GPU holds the entire copy of the model weights and each GPU (rank) receives a different subset of the data. This type of parallelism has the lowest level of communication since just the gradients needs to be summed up (all reduce) between each GPU. Unfortunately, data parallelism only works if each GPU has enough memory to store the entire model weights, activations, optimizer state. For a 1.8 trillion parameter model like GPT-4, just the model weights and optimizer state can take as much as 10.8 Terabytes of memory for training.
 
-![](https://substackcdn.com/image/fetch/$s_!v4e9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67e4e5ab-db0d-4899-9c15-b528082d721f_1776x1686.png)
+![](z-images/113b0aeb59f22c4efe137e54a59b547c.webp)
 
 Source: ColossalAI
 
 In order to overcome these memory constraints, tensor parallelism is used. In tensor parallelism, every layer has its work and model weights distributed across multiple GPUs generally across the hidden dimension. Intermediate work is exchanged via all-reductions across devices multiple times across self-attention, feed forward network, and layer normalizations for each layer. This requires high bandwidth and especially needs very low latency. In effect, every GPU in the domain works together on every layer with every other GPU as if there were all one giant GPU. Tensor parallelism reduces the total memory used per GPU by the number of tensor parallelism ranks. For example, it is common to use 8 tensor parallelism ranks today across NVLink so this will reduce the used memory per GPU by 8.
 
-![](https://substackcdn.com/image/fetch/$s_!fAQS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9d3e375e-b61a-4e83-809b-da0a49154618_1456x823.webp)
+![](z-images/861c0b187a15f36def334a7d071ce3d4.webp)
 
 Source: Accelerating Pytorch Training
 
 Another technique to overcome the challenges of each GPU not having enough memory to fit the model weights and optimizer state is by using pipeline parallelism. With Pipeline Parallelism, each GPU only has a subset of the layers and only does the computation for that layer and passes the output other the next GPU. This technique reduces the amount of memory needed by the number of pipeline parallelism ranks. Pipeline parallelism has heavy communication volume requirements, but not as heavy as tensor parallelism.
 
-![](https://substackcdn.com/image/fetch/$s_!3d0r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fea55868d-fb43-4da0-bef3-691b03437d5d_1563x1053.png)
+![](z-images/042c3568d962c12010302359a6d762ee.webp)
 
 Source: ColossalAI
 
 In order to maximize Model FLOP Utilization (MFU), companies generally combine all three forms of parallelism to form 3D Parallelism. Then they apply Tensor Parallelism to GPUs within the H100 server, then use Pipeline Parallelism between nodes within the same Island. Since Data Parallelism has the lowest communication volume and the networking between islands is slower, data parallelism is used between islands.
 
-![](https://substackcdn.com/image/fetch/$s_!Xbiq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3f4644a7-ec37-4f5a-bc9f-de64d0071a46_960x1050.png)
+![](z-images/b94439569a403779153e17d5afb393b2.webp)
 
 Source: Optimus-CC
 
@@ -88,7 +88,7 @@ Networks are designed with parallelism schemes in mind. If every GPU connected t
 
 As such, noone deploys full fat tree architectures for large GPU clusters. Instead, they rely on making islands of compute that have full fat tree architectures alongside lesser bandwidth between these islands. There are a variety of ways to do this, but most firms are choosing to “oversubscribe” the top layer of networking. For example see Meta’s last generation architecture for GPU clusters up to 32,000. There are 8 total islands with full fat bandwidth between them, then another layer of switching on top that has 7:1 over subscription. The networking between islands is 7x slower compared to the networking within the island.
 
-![](https://substackcdn.com/image/fetch/$s_!reNI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F82f1ba98-e3d3-4001-9a62-746c2fbe74f2_1920x1080.png)
+![](z-images/ce5424f819dfb5a4ae0b70d183e3b9a7.webp)
 
 Source: Meta
 
@@ -100,7 +100,7 @@ Furthermore, some folks do not even have islands with bandwidth oversubscribed a
 
 One major firm trains across multiple InfiniBand islands with frontend Ethernet. This is because the cost for frontend networking is much cheaper and can utilize existing datacenter campus networking between buildings and region routing.
 
-![](https://substackcdn.com/image/fetch/$s_!LTZq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feca81978-a5e8-4871-8d77-2bbc2268292b_2272x960.png)
+![](z-images/5ec6689abc9b47082092f51508990e84.webp)
 
 Source: SemiAnalysis
 
@@ -108,7 +108,7 @@ Unfortunately, as model size grow faster due to sparse techniques like MoE, the 
 
 It should be noted that Google exclusively uses front end networking for their multi-TPU pod training runs. Their “compute fabric” known as ICI only scales up to a maximum of 8960 chips with costly 800G optics and optical circuit switches connecting each 64 TPU watercooled rack. As such Google must compensate by making the TPU front end network beefier than most GPU front end networks.
 
-![](https://substackcdn.com/image/fetch/$s_!RQ4v!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F717a31e1-5d6b-4647-a16f-2d1fbf220ee2_1744x988.jpeg)
+![](z-images/7e756a7731a53bbed4c9e80e588cd940.webp)
 
 Source: Google at MLSys24
 
@@ -118,7 +118,7 @@ The frontend networking is also responsible for loading in data. As we move towa
 
 The alternative would be a 4 tier InfiniBand network with a 7:1 oversubscription with 4 pods with each pod having 24,576 H100s with a non-blocking 3 tier system. This allows for much greater flexibility for future bandwidth increases compared to using your frontend networking as it is way easier to add more fiber optics transceivers from a switch in building A to another switch in building B compared to doing a full frontend network NIC upgrade in every single chassis of the cluster to upgrade it from 100G to 200G, etc.
 
-![](https://substackcdn.com/image/fetch/$s_!O2d0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F49f79933-ce8a-4884-805c-56abc9cbbafb_2445x790.png)
+![](z-images/93c71216e4b2cfef0266fd27ea6f527c.webp)
 
 Source: SemiAnalysis
 
@@ -128,13 +128,13 @@ This creates a more stable network pattern as your frontend network can solely f
 
 To improve maintainability and increase the use of copper networking (< 3 meters) and multimode networking (< 50 meters), some customers are opting to ditch the NVIDIA recommended rail optimized design and instead of opting to do a Middle of Rack designs.
 
-![](https://substackcdn.com/image/fetch/$s_!_kG6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59f8507f-c26f-4567-9254-791aa1ff538a_1371x808.png)
+![](z-images/6060e5b1d21a5c8f77e1e5f6a1ab7f87.webp)
 
 Source: Nvidia
 
 Rail optimized is a technique to have each H100 server connect to 8 different leaf switches (instead of all connecting to the same middle of rack switch) such that each GPU can talk to more distant GPUs with only 1 switch hop. This allows an increase in real world all to all collective performance increase. All-to-All collective communication is used heavily in mixture of experts (MoE) expert parallelism.
 
-![](https://substackcdn.com/image/fetch/$s_!j3Ru!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd7de6797-6277-4fdc-8a94-19d14895f343_2222x1252.png)
+![](z-images/8856ca8099374b2de59f7ce32dec3290.webp)
 
 Source: Crusoe
 
@@ -142,19 +142,19 @@ The downside of rail optimized designs is that you must connect to different lea
 
 By using a non rail-optimized design, you can replace 98,304 optical transceivers connecting GPUs to leaf switches with cheap direct attached copper, leading to 25-33% of your GPU fabric being copper. As you can see from the below rack diagram, instead of each GPU to leaf switch connection going up to the cable tray then sideways 9 racks to a dedicated rail optimized leaf switch rack, the leaf switches are now in the middle of the rack allowing for each GPU to use DAC copper cables.
 
-![](https://substackcdn.com/image/fetch/$s_!noX6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F343d24d1-f631-41f6-bac1-1e33c7e81b0a_1750x1302.png)
+![](z-images/044795478f1183081ef00bbc475c9b39.webp)
 
 Non-rail optimized middle of rack, Source: SemiAnalysis
 
 DAC copper cables run cooler, use less power, and are much cheaper compared to optics. Since DAC cables run coolers, use less power, and are more reliable, this leads to less flapping (a network link going down intermittently) and failures, which is a major problem for all high-speed interconnects using optics. A Quantum-2 IB spine switch uses 747 Watts when using DAC copper cables. When using multimode optical transceivers, power consumption increases to up to 1,500 Watts.
 
-![](https://substackcdn.com/image/fetch/$s_!dM4i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9ece0f7-1490-4063-baaf-4d543e854a92_1932x1298.png)
+![](z-images/b8dbc0469eb274fb2c99b389c62507bc.webp)
 
 Rail optimized end of row, Source: SemiAnalysis
 
 Furthermore, initial cabling for a rail optimized design is extremely time consuming for datacenter technicians since the ends of each link are up to 50 meters away and not on the same rack. Compared to a middle of rack design where you have your leaf switch in the same rack as all of your GPUs that connect to the leaf switch. In a middle of rack design, you can even test the compute node to leaf switch links at the integration factory since it is all within the same rack.
 
-![](https://substackcdn.com/image/fetch/$s_!ls6n!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4fe509fa-92e7-4d32-8489-6623ac2b939a_633x765.png)
+![](z-images/42b2ecb3f7143f56ba8da77de63ad09f.webp)
 
 Rail optimized end of row water cooled, Source: SemiAnalysis
 
@@ -174,13 +174,13 @@ The other approach to fault recovery is to have your spare nodes just RDMA copy 
 
 Most leading AI labs have implemented this, but many smaller firms still stick to using the heavy, slow, inefficient technique of restarting from checkpoints for all failures due to simplicity. Implementing fault recovery through memory reconstruction can add multiple percentage points to MFU for a large training run.
 
-![](https://substackcdn.com/image/fetch/$s_!cNm2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0f64ae95-3b5f-4f25-887d-3b75019f6f4f_2048x1152.webp)
+![](z-images/2f4020bc95616b9a3030ffcf26e81e6f.webp)
 
 Source: Meta
 
 One of the most common problems encountered is Infiniband/RoCE link failure. Even if each NIC to leaf switch link had a mean time to failure rate of 5 years, due to the high number of transceivers, it would only take 26.28 minutes for the first job failure on a brand new, working cluster. Without fault recovery through memory reconstruction, more time would be spent restarting the training run in 100,000 GPU clusters due to optics failures, than it would be advancing the model forward.
 
-![](https://substackcdn.com/image/fetch/$s_!1J8d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85f790a8-0726-4871-b8c5-7d8a6a9052fa_1106x349.png)
+![](z-images/e4b872ca3403a56e16c08c2da54c0027.webp)
 
 Source: SemiAnalysis
 
@@ -194,13 +194,13 @@ Nvidia has noticed this major problem and added a dedicated engine for reliabili
 
 Another cost optimization that some customers like Microsoft/Openai are doing is by [using the Cedar Fever-7 networking module per server instead of using 8 PCIe form factor ConnectX-7 networking cards](https://pytorchtoatoms.substack.com/p/nvidia-connectx-7-16tbits-cedar-fever). One of the main benefits of using a Cedar Fever module is that it allows for just using 4 OSFP cages instead of 8 OSFP cages thus allowing for the use of twin port 2x400G transceivers on the compute node end too, instead of just the switch end. This reduces the transceiver count to connect to the leaf switches from 8 transceivers to 4 transceivers per H100 node. The total compute node end transceiver counts to connect GPUs to leaf switch reduces from 98,304 to 49,152.
 
-![](https://substackcdn.com/image/fetch/$s_!5szD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd16dedc-78f0-4ddd-abce-e5f68c59f819_936x522.png)
+![](z-images/8cbfcbbf2554de9face5cf6e3ac86b15.webp)
 
 Source: Nvidia
 
 Since the GPU to leaf switch links are cut in half, this also helps with the estimated time to first job failure. We estimate that each twin port 2x400G link has a mean time to failure per link of 4 years (vs. 5 years of single port 400G link) and this will bring the estimated time to first job failure to 42.05 minutes, this is way better than the 26.28 minutes without Cedar-7 modules.
 
-![](https://substackcdn.com/image/fetch/$s_!i9Lr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93f5d025-1487-4d6b-bc28-6c7751270b07_936x624.png)
+![](z-images/247491c1110cfcee67f965ee6ce849a0.webp)
 
 Source: ServeTheHome
 
@@ -214,13 +214,13 @@ A fully interconnected 100k cluster can be 3 tiers instead of 4 tiers. Having 4 
 
 The main advantage of Spectrum-X over other vendors is that Spectrum-X is supported first class by NVIDIA libraries such as NCCL and Jensen pushes you up the allocation queue to being one of the first customers for their new product line vs. with the Tomahawk 5 chips, you need a lot of in house engineering effort to optimize your network with NCCL in order to achieve max throughput.
 
-![](https://substackcdn.com/image/fetch/$s_!RPFv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdaf4f025-3f0e-4795-9771-e337c066c33d_2179x998.png)
+![](z-images/7b608151839109a8475e1fdea9fc9097.webp)
 
 Source: SemiAnalysis
 
 An unfortunate downside of using Ethernet instead of InfiniBand for your GPU fabric is that Ethernet does not currently support SHARP in network reductions. In-network reductions work by performing the summation of each GPU by having the network switch run those computations. The theoretical network bandwidth increase of SHARP is 2x as it reduces the number of sends and writes each GPU has to do by 2x.
 
-![](https://substackcdn.com/image/fetch/$s_!57Yz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5dd30b88-0ba2-4b54-9f9a-8fad97f21195_1946x875.png)
+![](z-images/5e8237dc2245c995c6e7c3965d7f804a.webp)
 
 Source: Nvidia
 
@@ -234,7 +234,7 @@ Most customers are partnering directly with ODMs such as Celestica for switches 
 
 The unfortunate downside of this is that you need to have enough engineering capacity to patch and optimize NCCL communication collectives for the Tomahawk 5. Out of the box, NCCL communication collectives is only optimized for Nvidia Spectrum-X and Nvidia InfiniBand. The good news is that if you have 4 billion dollars for a 100k cluster, you have enough engineering capacity to patch NCCL and write the optimizations. Of course software is hard, and Nvidia is always on the bleeding edge, but generally we expect every hyperscaler to make these optimizations and switch away from InfiniBand.
 
-![](https://substackcdn.com/image/fetch/$s_!V0h1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc8e1b68-1b4f-489f-a55c-93f9f084133d_2179x998.png)
+![](z-images/19d783243f88b6f9f3ae15cb80ff5491.webp)
 
 Source: SemiAnalysis
 

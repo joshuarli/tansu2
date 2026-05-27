@@ -16,7 +16,7 @@ TSMC also talked about a fab cancellation and how an expansion is now no longer 
 
 The headline number for the quarter was that revenue was down to $16.72 billon for Q1 2023, down 4.8% year on year. Furthermore, TSMC’s Q2 guidance implies the picture gets much worse and falls to $15.6 billion at the midpoint, a 14.6% decrease year on year. With that said, TSMC shared their full year guidance, which allows us to back into the following estimates. We will share more on this later with regard to 5nm and 3nm ramps.
 
-![](https://substackcdn.com/image/fetch/$s_!cV-L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5bb3e9d5-d9b3-49c5-8abc-b77898a78e8a_1168x702.png)
+![](z-images/e2597ff3d7be444a6a69d3b8be85bc1f.webp)
 
 Q2, Q3, Q4 SemiAnalysis expected
 
@@ -46,7 +46,7 @@ Now, SemiAnalysis data indicates that the 7nm utilization rates were below 70% i
 
 TSMC’s pricing has declined for the first time in many years. Even though wafer shipments fell from nearly 4 million wafers a quarter to 3.7 million in Q4 2022, pricing continues to increase. In Q1 2023, shipments continued to tank to 3.2 million.
 
-![](https://substackcdn.com/image/fetch/$s_!OtY6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa5fbd6f2-b14f-45f8-bc6c-52aa86b1b19a_1393x658.png)
+![](z-images/a42c1499c4011947690b792c4576ffe8.webp)
 
 This pricing decrease is mostly a result of poor utilization of TSMC’s N7 process node family. TSMC is not reducing pricing to customers in 2023. We have multiple major fabless firms who confirm this for both trailing edge and 5nm class nodes.
 
@@ -56,7 +56,7 @@ TSMC reiterated their statements given in previous quarters surrounding their fu
 
 This is exacerbated by N3’s slower ramp and smaller wafer volumes compared to N5 in their respective first year of shipments. Apple’s recent change of including the latest chip only on the Pro models and the much higher ASP per N3 wafer vs N5 indicates that the wafers per month (WPM) ramp on N3 will trail N5 by some margin.
 
-![](https://substackcdn.com/image/fetch/$s_!Jxvv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc72a99db-888e-4d73-a7f1-01b7c1969635_1356x682.png)
+![](z-images/b08556e88e7c902d4d1ecc334a1baa52.webp)
 
 SemiAnalysis estimate on 1 st- year wafer shipments of N3 vs N5, Y-Axis kept confidential
 

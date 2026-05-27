@@ -36,7 +36,7 @@ The research arm of SemiAnalysis has done surveys of many startups and enterpris
 
 ## Current State-Of-The-Art Models
 
-![](https://substackcdn.com/image/fetch/$s_!0ysd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d30755f-7ece-47d4-bb91-acad82473df8_3362x2035.png)
+![](z-images/c85bdf2fab3eeefb6a20f0c94bc6d63e.webp)
 
 The above chart shows publicized state-of-the-art models with their respective parameter counts and tokens (units of training data). The line is [Google DeepMind’s Chinchilla scaling observation](https://arxiv.org/pdf/2203.15556.pdf) (smoothing out the large error bars). Each point on the line shows the theoretical FLOPS required to train a model with that parameter and token count. The FLOPS figure shown ignores any recompute of activations, checkpointing, etc.
 
@@ -46,7 +46,7 @@ Once you know the parameter count, token count, and model architecture, you can 
 
 ## State-Of-The-Art Training Costs
 
-![](https://substackcdn.com/image/fetch/$s_!VGD9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F95802dd0-c7c3-4fc0-9bef-be31971cbf85_1677x822.png)
+![](z-images/fbf507203ce2dd7ff24c3f2adfc0a8f4.webp)
 
 This table is a theoretical optimal cost to train the model on Nvidia A100s. It does not account for the people required, ML Ops tools, data gathering/preprocessing, failure restoration, one-shot/few-shot learning examples, inference, etc. Many of these components are incredibly costly. In this context, [MosaicML’s cost of $450k for GPT-30B and $2.5M for GPT-70B](https://www.mosaicml.com/blog/gpt-3-quality-for-500k) are close to the optimal training costs of $326k and $1.75M. It should be noted that Mosaic’s prices include many of those ML Ops tools, which significantly reduces the personnel required to train a model reliably.
 
@@ -56,7 +56,7 @@ Nowadays, most will train dense models more in accordance with the [Chinchilla s
 
 ## The Dense Transformer Scaling Wall
 
-![](https://substackcdn.com/image/fetch/$s_!Tc2l!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e394df3-9c1e-435e-9968-d9c48f803bed_1691x692.png)
+![](z-images/d1e0f65e2d6fbf9aa1318ba5abfc6a82.webp)
 
 Regarding parameter counts growth, the industry is already reaching the limits for current hardware with dense models—a 1 trillion parameter model costs ~$300 million to train. With 100,000 A100s across 12,500 HGX / DGX systems, this would take about ~3 months to train. This is certainly within the realm of feasibility with current hardware for the largest tech companies. The cluster hardware costs would be a few billion dollars, which fits within the datacenter Capex budgets of titans like Meta, Microsoft, Amazon, Oracle, Google, Baidu, Tencent, and Alibaba.
 

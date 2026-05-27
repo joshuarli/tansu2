@@ -16,7 +16,7 @@ Onto is looking to change this with their Atlas V product line. They are beating
 
 While FinFETs utilize multiple P and N-type fins placed next to each other to form transistors. In the nanosheet architecture, multiple P or N-type nanosheets are built vertically. This provides more contact area per silicon area, improving performance and enabling higher density.
 
-![](https://substackcdn.com/image/fetch/$s_!z1fl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1597f65-f03a-4b15-8e72-3f059d73c174_904x345.png)
+![](z-images/69ac86450c289d9ad6dd8af73530cdd0.webp)
 
 Intel, TSMC, and Samsung gate all around process nodes will have similar process flows for building nanosheets. The two most critical steps in building these nanosheets are the epitaxial growth of alternating silicon-germanium and silicon layers, and the anisotropic etch nanosheet release process. Each nanosheet's thickness and channel variation is critical as transistor power and performance will directly relate to these metrics. There is a vital need for inspection and metrology tools to control the process conditions for optimal nanosheet fabrication.
 

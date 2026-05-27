@@ -10,7 +10,7 @@ description: "China Abundance of Power, 100% Optics, 0% Copper, Power Inefficien
 
 Huawei is making waves with its new AI accelerator and rack scale architecture. Meet China’s newest and most powerful Chinese domestic solution, the CloudMatrix 384 built using the Ascend 910C. This solution competes directly with the GB200 NVL72, and in some metrics is more advanced than Nvidia’s rack scale solution. The engineering advantage is at the system level, not just at the chip level, with innovation at the networking, optics, and software layers.
 
-![](https://substackcdn.com/image/fetch/$s_!5dtP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc395d1e6-7a89-4eb5-b54d-10a13df2347e_1080x524.png)
+![](z-images/0215c1f59ddee1709157f8c3cdb63e28.webp)
 
 Source: Huawei
 
@@ -22,7 +22,7 @@ Huawei is a generation behind in chips, but its scale-up solution is arguably a 
 
 The CloudMatrix 384 consists of 384 Ascend 910C chips connected through an all-to-all topology. The tradeoff is simple: having five times as many Ascends more than offsets each GPU being only one-third the performance of an Nvidia Blackwell.
 
-![](https://substackcdn.com/image/fetch/$s_!h7gO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec70db4a-8695-4864-a756-e740da2fece7_794x528.png)
+![](z-images/1147b0dbc4758154e0bbae8524b57705.webp)
 
 Source: SemiAnalysis, Nvidia, Huawei
 
@@ -38,7 +38,7 @@ The drawback here is that it takes **4.**1 **x the power of a GB200 NVL72**, wit
 
 The common refrain in the West is that [AI is power-limited](https://www.semianalysis.com/p/datacenter-model), but in China, this is the opposite. The West has spent the last decade shifting a primarily coal-based power infrastructure to greener natural gas and renewable power generation paired with more efficient energy usage on a per capita basis. This is the opposite in China, where rising lifestyles and continued heavy investment mean massive power generation demand.
 
-![](https://substackcdn.com/image/fetch/$s_!eloJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7b977aa8-9e8b-4996-ac88-6a67c69953c7_1855x598.png)
+![](z-images/4c6ae0edf5097105dc767ab1a975a94d.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -52,7 +52,7 @@ One common misconception is that Huawei’s 910C is made in China. It is entirel
 
 While SMIC, the largest foundry in China, does have 7nm, the vast majority of Ascend 910B and 910C are made with TSMC’s 7nm. In fact, the US Government, TechInsights, and others have acquired Ascend 910B and 910C and every single one used TSMC dies. Huawei was able to circumvent the sanctions on them against TSMC by purchasing ~$500 million of 7nm wafers through another company, Sophgo.
 
-![](https://substackcdn.com/image/fetch/$s_!YTAd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa1896a04-96ed-4eaa-a0a2-d0a8d818d5c6_927x590.png)
+![](z-images/608188f5d527c87c1ff3e615a6f30981.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -66,7 +66,7 @@ Furthermore, this banned HBM is still being re-exported to China. The HBM export
 
 Faraday then ships this system in package to China, which is technically allowed, but Chinese companies can then recover the HBM by desoldering. We think they employ techniques to make it very easy for the HBM to be extracted from the package, like using very weak low-temperature solder bumps, so when we say it is “packaged,” we mean this in the loosest way possible.
 
-![](https://substackcdn.com/image/fetch/$s_!36WI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73215cc0-7d0f-4900-a0a8-69818f3b5a3e_1648x978.png)
+![](z-images/d52a7fb758b5cda0b3c2d6ae9cb5b9bc.webp)
 
 Source: CoAsia Electronics
 
@@ -78,7 +78,7 @@ Foreign production is still required, but China’s domestic semiconductor suppl
 
 Both SMIC and CXMT have received [tens of billions of dollars worth of tools](https://semianalysis.com/2024/10/28/fab-whack-a-mole-chinese-companies/), and they still receive [significant volumes of sole sourced chemicals and materials](https://semianalysis.com/2024/10/28/fab-whack-a-mole-chinese-companies/) from foreign countries despite sanctions.
 
-![](https://substackcdn.com/image/fetch/$s_!BBsn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0abc690-f0d0-4459-8b4a-298f89941032_1294x433.png)
+![](z-images/85888123636fbc4b49cdaba31adc94db.webp)
 
 Source: SemiAnalysis
 
@@ -92,7 +92,7 @@ Next let’s dive into the CloudMatrix 384 architecture, scale up networking, sc
 
 A full CloudMatrix system is spread across 16 racks, with each of the 12 compute rack containing 32 GPUs. In the middle of these 16 racks is 4 racks of scale up switches. To bring up world size, Huawei is scaling up across multiple racks and to do that Huawei has had to use optics. Getting to 100s of GPUs in an all-to-all scale up like Huawei is not an easy feat.
 
-![](https://substackcdn.com/image/fetch/$s_!2-06!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44796b8e-8a32-4b20-ae39-c4c0f50cefec_2560x884.png)
+![](z-images/c30ca95aec5a6a64cbee5020b96e9bd8.webp)
 
 Source: SemiAnalysis
 
@@ -100,7 +100,7 @@ Source: SemiAnalysis
 
 [Back in 2022, Nvidia had announced DGX H100 NVL256 “Ranger” Platform](https://pytorchtoatoms.substack.com/p/why-dgx-h100-nvl256-never-shipped), but decided to not bring it to production due to it being prohibitively expensive, power hungry, and unreliable due to all the optical transceivers required and the two tiers of network. The CloudMatrix Pod requires an incredible 6,912 400G LPO transceivers for networking, the vast majority of which are for the scaleup network.
 
-![](https://substackcdn.com/image/fetch/$s_!yKSN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F803dd96a-d9ca-41d4-8de8-871ac8a3ab03_1430x804.png)
+![](z-images/046b79ca46b339752ae255c351f22d6e.webp)
 
 Source: Nvidia HotChips
 

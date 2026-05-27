@@ -16,11 +16,11 @@ While Micron did guide the next quarter down due to PC inventory concerns and pr
 
 While NAND is continuing to get much higher bit per wafer through higher layer counts, DRAM has been faltering in density improvements. In the mid-2010s, the DRAM industry shifted naming schemes away from number + nanometer to 1X nm around the transition to sub 20nm nodes. This change was done and their roadmaps began plotting out 1Y nm and 1Z nm. Perhaps they were embarrassed, or perhaps they recognized that scaling slowed, but what’s certain is that the density improvements slowed dramatically. After 1Z nm, we have 1 alpha, 1 beta, and 1 gamma nm nodes.
 
-![](https://substackcdn.com/image/fetch/$s_!zD_v!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7a857c94-2af4-4353-b6bb-dc93e4295b1d_1024x576.png)
+![](z-images/f5cd5dcac30c28400e5d928e9aaed1ae.webp)
 
 These nodes still do not cross the “10nm” line in terms of density improvements. They are all incremental improvements on cost, performance, cycle times, and density. Even with the insertion of EUV, Samsung roadmaps have not broken past this barrier either. Despite the lack of future density gains, Micron believes that they will not increase the number of wafers they produce in DRAM for the foreseeable future. Micron states they will increase supply by ~20% in DRAM and high 30% in NAND off the backs of density improvements alone in 2022. Nothing screams that the memory market went from commodity to oligopoly more than this chart they presented to investors yesterday.
 
-![](https://substackcdn.com/image/fetch/$s_!Ybaq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7ef84c48-d3b3-47f4-8ef8-1baa246e4769_1024x525.png)
+![](z-images/c528ebb9986aa9c147fbbf9c7a3c10b5.webp)
 
 SemiAnalysis believes there are headwinds for the memory industry related the PC inventory buildup, weak China mobile sales, and a [potential end to the semiconductor boom due to macroeconomics](https://semianalysis.substack.com/p/will-the-china-real-estate-meltdown). Despite these, Micron and the others in the memory oligopoly will continue to profit handsomely. Capital expenditures related to DRAM are already being cut despite gross margins on DRAM being above 50%.
 

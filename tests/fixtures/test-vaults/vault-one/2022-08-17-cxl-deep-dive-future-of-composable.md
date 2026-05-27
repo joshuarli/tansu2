@@ -42,7 +42,7 @@ CXL makes the transition to heterogeneous compute possible due to establishing a
 
 AMD’s Genoa and Intel’s Sapphire Rapids will support CXL 1.1 in late 2022/early 2023. CXL 1.1 comes with 3 buckets of support, CXL.io, CXL.cache, and CXL.mem. CXL.io can be thought of as a similar but improved version of standard PCIe. CXL.cache allows a CXL device to coherently access and cache a host CPU’s memory. CXL.mem allows the host CPU to access the device’s memory coherently. More detailed explanations are included in the bullet points below. Most CXL devices will use a combination of CXL.io, CXL.cache, and CXL.mem
 
-![](https://substackcdn.com/image/fetch/$s_!2Qv7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb956a77c-ba15-4e39-a8d1-a510beaf54b4_1536x814.jpeg)
+![](z-images/e9a2f7002bbce39b743f48f69cc7971a.webp)
 
 ###### · CXL.io is the protocol used for initialization, link-up, device discovery and enumeration, and register access. It provides an interface for I/O devices and is similar to PCIe Gen5. It also is mandatory that CXL devices support CXL.io.
 
@@ -52,7 +52,7 @@ AMD’s Genoa and Intel’s Sapphire Rapids will support CXL 1.1 in late 2022/ea
 
 So far, we have mostly talked about heterogeneous compute, but the real kicker for CXL will be regarding memory. In the past, we discussed this in our article explaining [Marvell’s purchase of Tanzanite Silicon and competition in memory accelerators from Astera Labs and Rambus](https://semianalysis.substack.com/p/marvell-acquires-tanzanite-silicon?s=w). We expanded on this idea in [our dive into Microsoft’s memory pooling solution](https://semianalysis.substack.com/p/cxl-enables-microsoft-azure-to-cut). We will do a more detailed overview heredirect-attached.
 
-![](https://substackcdn.com/image/fetch/$s_!PrTY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcc8ca0ad-b4d7-4df2-9501-f1507120a75f_1510x800.png)
+![](z-images/c5a1b37b853f8962926f8c742d9224b5.webp)
 
 Datacenters have a massive memory problem. Core counts have grown rapidly since 2012, but the memory bandwidth per core and capacity has not increased commensurately. The memory bandwidth per core has fallen somewhat since 2012, and this trend will continue in the future. Furthermore, there is a massive gap in latency and cost between direct-attached DRAM and SSDs. Lastly, the costly memory resources often have poor utilization, which is a killer. Low utilization rates are a significant drag for any capital-intensive industry, and the data center business is one of the most capital-intensive industries in the world.
 
@@ -60,7 +60,7 @@ Datacenters have a massive memory problem. Core counts have grown rapidly since 
 
 Imagine if this memory could instead live on a connected network and be dynamically assigned to VMs across multiple CPUs and servers, rather than sitting at each CPU. Memory bandwidth could grow and shrink based on the demands of a workload. This would massively increase utilization rates.
 
-![](https://substackcdn.com/image/fetch/$s_!-FvO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7307a123-3511-4766-a420-7623e5e09075_3171x1011.png)
+![](z-images/50a0ebb858aabf5fb6fe73a9438f04cd.webp)
 
 This concept isn’t limited only to memory but also to all forms of compute and networking. Composable server architectures are when servers are broken apart into their various components and placed in groups where these resources can be dynamically assigned to workloads on the fly.
 
@@ -68,29 +68,29 @@ The datacenter rack becomes the unit of compute. Customers could choose an arbit
 
 This vision is the holy grail of server design and cloud computing. There are many complex engineering problems associated with this; many centered around [the latency and cost of building the network](https://semianalysis.substack.com/p/ayar-labs-co-packaged-optics-revolution) to hook everything up. These must be critically examined, but the protocol must come first, which is what CXL 2.0 and 3.0 bring.
 
-![](https://substackcdn.com/image/fetch/$s_!KBGG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F963b9999-15fe-48ba-a329-e74187feb6bb_3001x664.png)
+![](z-images/700c3bc88a410c0e6d782eb57ce05fca.webp)
 
 The headline features for CXL 2.0 are that memory pooling and switching are supported. CXL switches can connect multiple hosts and devices, allowing the number of devices connected on a CXL network to grow significantly. The new multiple logical devices feature allows numerous hosts and devices to all be linked and communicate with each other without the master-slave relationship that has been mandated historically. The network of resources will be orchestrated by the fabric manager, which is a standard API to control and manage this system. Fine-grained resource allocation, hot plug, and dynamic capacity expansion allow hardware to be dynamically assigned and shifted between various hosts without any restarts.
 
-![](https://substackcdn.com/image/fetch/$s_!gCg3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe4915cd2-cec6-400d-b3f4-5f68811763a0_1067x805.png)
+![](z-images/e8da4a3d11c297c4c9acc241e4bd66a9.webp)
 
 A picture is worth a thousand words, so let’s discuss the image above. Multiple hosts can be connected to switches. The switch is then connected to various devices, SLD (single logical device) or MLD (multiple logical devices). MLD are designed to couple to multiple hosts for memory pooling.
 
 The MLDs show up as multiple SLDs. This allows them to pool the memory between hosts or even pool accelerator compute resources. The FM (fabric manager) is in the control plane. It is the orchestrator, allocating memory and devices. The fabric manager can sit on a separate chip or in the switch; it doesn’t need to be high performance as it never touches the data plane. This can also be achieved without a switch if that CXL device is multi-headed and connects to the root port of multiple hosts.
 
-![](https://substackcdn.com/image/fetch/$s_!M0tg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F29f7f564-758e-4433-8cca-bd956f304a18_841x756.png)
+![](z-images/f1756471d8201ca77b527eb8b9818044.webp)
 
 Tying it all together, Microsoft demonstrated the potential [to reduce DRAM deployed by 10% and save 5% on total server costs by pooling DRAM](https://semianalysis.substack.com/p/cxl-enables-microsoft-azure-to-cut). This was on the first-generation CXL solution without utilizing CXL switches.
 
 CXL 3.0 brings about even more improvements that help extend the ability to create heterogeneous composable server architectures. The main focus is extending CXL from the scale of servers to the scale of a rack. This is achieved by moving from a host-device model to making CPUs just another device on the network.
 
-![](https://substackcdn.com/image/fetch/$s_!U0Ix!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8dce0af4-3537-4b5c-86dd-1c5d4eada152_3013x1549.png)
+![](z-images/b53a9245234a5877522a5febbfcffbb8.webp)
 
 CXL switches now can support an array of topologies. Previously in CXL 2.0, only fan-out with CXL.mem devices was possible. A rack or many racks of servers can now be networked with leaf and spine or all to all topologies. The theoretical limit of devices/hosts/switches/switch ports is 4,096 with CXL 3.0. These changes dramatically expand the potential size of a CXL network from a few servers to many racks of servers.
 
 In addition, multiple devices of all types can sit on a single root port of CXL from a host. This was previously a major limitation as a single root port could only address a single device type. If a host connected to a switch with a single root port of CXL, that host could only access one type of device sitting off the switch.
 
-![](https://substackcdn.com/image/fetch/$s_!dBCD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fea431bf6-0610-4574-a47a-ce2052936146_3024x1531.png)
+![](z-images/2e134ec3f68ee1e939c955b2cb4ff102.webp)
 
 The most important changes in CXL 3.0 are memory sharing and device-to-device communications. Hosts CPUs and devices can now work together on the same datasets without needlessly shuffling and duplicating data. One example is a common AI workload like the multi-billion parameter deep learning recommendation systems employed by titans like Google and Meta. The same model data is duplicated across many servers. Users’ requests come in, and inference operations are run. If CXL 3.0 memory sharing existed, a large AI model could live in a few central memory devices with many other devices accessing it. This model can be constantly trained with live user data, and updates can be pushed across CXL switch networks. This could reduce DRAM costs by as much as an order of magnitude and improve performance.
 

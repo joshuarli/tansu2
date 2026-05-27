@@ -14,7 +14,7 @@ Tesla currently has a very small amount of AI infrastructure in-house, with only
 
 Now the story is changing, and quickly.
 
-![](https://substackcdn.com/image/fetch/$s_!4TAt!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb5e3f75f-41fe-4c23-8b9f-7f390c0471ce_2880x1621.jpeg)
+![](z-images/2f111183c310367d6e72aea16522833f.webp)
 
 SemiAnalysis Projected AI Infrastructure Capacity for Tesla
 
@@ -22,7 +22,7 @@ Tesla is massively increasing it’s AI capacity by a factor of more than 10x in
 
 The story of the D1 training chip is a long and arduous one. It’s faced issues from silicon design to power delivery, but now Tesla claims it is ready for the limelight and started volume production. For a bit of a refresher, Tesla has been designing in-house AI silicon for their cars since ~2016 and for datacenter applications since ~2018. We [exclusively disclosed the special packaging technology they utilize before the chip was announced](https://www.semianalysis.com/p/tesla-ai-day-supercomputer-chip-teaser). That technology is called InFO SoW. For simplicities sake, think of it as a fan-out package the size of a wafer. This is similar to what Cerebras does in principle, but with the advantage of [allowing known good die testing.](https://www.semianalysis.com/p/advanced-packaging-part-1-pad-limited) It is the most unique and interesting aspect of Tesla’s architecture as 25 chips are built into this InFO-SoW with no memory directly attached.
 
-![](https://substackcdn.com/image/fetch/$s_!I-XM!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fddf6b0ba-cc6c-4bf5-9312-68050478375a_872x872.jpeg)
+![](z-images/232192cb498b5760ca689f988534ca5c.webp)
 
 We also discussed both the [pro’s](https://www.semianalysis.com/p/tesla-dojo-unique-packaging-and-chip) and [con’s](https://www.semianalysis.com/p/the-tesla-dojo-chip-is-impressive) of their chip architecture in more detail back in 2021. The most interesting aspect since is that disclosure is Tesla had to make another chip that sits on a PCIe card to provide memory connectivity as on-chip memory was not enough.
 
@@ -40,7 +40,7 @@ The second-generation has been shipping in cars since February of 2023, the chip
 
 The most important part of the second-generation FSD chip is three NPU cores. The three cores use 32 MiB of SRAM each for storing model weights and activations. Each cycle, 256 bytes of activation data and 128 bytes of weight data are read from the SRAM to the Multiply Accumulate units (MACs). The MACs design is a grid, with each NPU core having a 96x96 grid for a total of 9,216 MACs and 18,432 operations per clock cycle. With three NPUs per chip running at 2.2 GHz frequency, the total compute power is 121.651 trillion operations per second (TOPS).
 
-![](https://substackcdn.com/image/fetch/$s_!9Ffg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F66139cf6-86f3-4c62-b959-1a83f8f035fa_859x682.png)
+![](z-images/78c51eb3bb73de4d4edac346372de0bc.webp)
 
 The second generation FSD has 256GB of NVMe storage and 16GB Micron GDDR6 at 14Gbps sitting on 128-bit memory bus providing 224GB/s bandwidth. The latter is the most noteworthy change as bandwidth has gone up ~3.3x gen on gen. The increase in FLOPs vs bandwidth indicates that HW3 had difficulty being fully utilized. There are two FSD chips per HW 4.0.
 
@@ -50,7 +50,7 @@ Despite the performance increases with HW4, Tesla wants to enable HW3 to achieve
 
 The infotainment system utilizes an AMD GPU/APU. That is also now on the same board as the FSD chips, compared to the last generation, which had a separate daughterboard.
 
-![](https://substackcdn.com/image/fetch/$s_!eueR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbb8cc3e1-dab6-40a3-a592-1d1a333bbd1f_1500x874.jpeg)
+![](z-images/b2c9c0ecd0e4be2e70f75c31a7f47d53.webp)
 
 The HW4 platform has support for 12 cameras, one of which is used for redundancy purposes, so 11 cameras are in active use. In the old setup, the front camera hub used three lower-resolution 1.2-megapixel cameras. The new platform uses two higher-resolution 5-megapixel cameras.
 

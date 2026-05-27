@@ -38,7 +38,7 @@ If you don’t believe us and think this all seems crazy, we get it. This is wha
 > 
 > Qualcomm is licensed for several years past 2025 under its ALA, which provides Qualcomm with the unilateral right to extend the contract past the initial term for several more years. Specifically, the ALA states:
 
-![](https://substackcdn.com/image/fetch/$s_!79-J!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9fed9dde-5e4c-4cb5-8078-62f92882e6db_932x238.png)
+![](z-images/e5136530463b8cc08f2f3f8cb2a0627f.webp)
 
 Unfortunately, that section is redacted.
 
@@ -80,7 +80,7 @@ Arm is going to try get their pound of flesh, even if that means their previousl
 > 
 > h. designs or technology that Qualcomm acquired from NUVIA.
 
-![](https://substackcdn.com/image/fetch/$s_!0Cy0!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fattachment_icon.svg)
+![](z-images/d1820578f18f0795e55771355252f5c5.webp)
 
 Arm Qc Answer And Defenses And Amended Cc Redacted Version
 

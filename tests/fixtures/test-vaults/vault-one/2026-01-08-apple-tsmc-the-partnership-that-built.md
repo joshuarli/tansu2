@@ -10,7 +10,7 @@ description: "Wafer demand model, node economics, and the shifting power dynamic
 
 In 2013, TSMC made a $10 billion bet on a single customer. Morris Chang committed to building 20nm capacity with uncertain economics on the promise that Apple would fill those fabs. “ *I bet the company, but I didn’t think I would lose*,” Chang later said. He was right. Apple’s A8 chip launched in 2014, and TSMC never looked back.
 
-![](https://substackcdn.com/image/fetch/$s_!PHO_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F92bb7233-a323-461e-88e7-d88343c7eab1_2077x1421.png)
+![](z-images/58b0bda5a3966823d956190b9a21e785.webp)
 
 Apple’s annual spend at TSMC grew from $2B in 2014 to $24B in 2025. That is 12x in 12 years. Apple went from 9% of TSMC revenue to 25% at its peak and settled to 20% in 2025. More striking is Apple’s dominance at node launches: consistently >50% since 20nm and in some cases near 100%. Apple effectively funded the yield learning curve for every major node transition since 20nm.
 
@@ -86,11 +86,11 @@ Wafer Demand
 
 · HPC Revenue %: 36% (Q1 2020) to 58% (Q4 2025) = HPC now dominates
 
-![](https://substackcdn.com/image/fetch/$s_!HhW4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa5b0042c-e3b4-44ac-bfac-5fbc2b48193e_3155x2049.png)
+![](z-images/1c2cb4baaa6fc4baf61ba81597d5e19a.webp)
 
 ## The Five Phases of Apple-TSMC Evolution
 
-![](https://substackcdn.com/image/fetch/$s_!0uZo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F69fbfcbe-e7c8-4de6-899d-8cd0d36222ea_2058x769.png)
+![](z-images/9b7d5275745e79aedcf7fe08dc8e6e11.webp)
 
 ### Phase 1: Why Apple started making its own chips and Apple’s courtship
 
@@ -126,11 +126,11 @@ Apple COO Jeff Williams met with Chang over dinner and pitched TSMC to build 20n
 
 Apple’s A8 chip launched in 2014, and TSMC never looked back. Over the next six years, Apple drove TSMC to invest $60-80 billion in leading-edge capacity. Apple’s volume justified every major node transition: N16, N7, N5. Without the iPhone’s annual 200M unit baseline, TSMC could not have afforded the R&D velocity that left Intel and Samsung behind.
 
-![](https://substackcdn.com/image/fetch/$s_!nT85!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F47553882-9fa3-4886-aa11-d4452f22c7b0_2052x1518.png)
+![](z-images/4e241436db0cdad278e5614537e136cf.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!Yiqb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd291825b-404c-4788-aab4-e2c4d580bfb6_2029x1529.png)
+![](z-images/e1c20ebfdb73d0d51b962dd49868455b.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!VYK-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fef47eb93-cb92-4fc3-8c57-06eae322a16f_2184x1599.png)
+![](z-images/cdc4093e2ce416f299e6654846468317.webp)
 
 In 2016, Apple funded the development of InFO (Integrated Fan-Out) packaging. This allowed for thinner phones with better thermals and created the advanced packaging ecosystem that now powers AI accelerators.
 
@@ -154,11 +154,11 @@ By 2020, the partnership had evolved from mutually beneficial to co-dependence. 
 
 TSMC could not lose Apple. The iPhone brought 22-25% of total revenue and filled 70%+ of 3nm capacity. Apple orders were known three years in advance, allowing TSMC to plan capex with the confidence of a utility company.
 
-![](https://substackcdn.com/image/fetch/$s_!HMKq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd65f4565-f831-4d47-9b4c-694760524e65_2106x757.png)
+![](z-images/dbbed36649de99ac09070415eeff95b0.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!uSih!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d2fb8af-38d8-4f06-b8b8-cb361db6f7c0_2109x754.png)
+![](z-images/fc414155538dccd36064d6978dd75428.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!_7t3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0f07975e-d2f2-4742-9214-0a645bef2ecd_1999x938.png)
+![](z-images/04c85b982199482f6c0360ae53084714.webp)
 
 A more serious risk is timing. Apple’s product cadence is synchronized to TSMC’s node roadmap. Moving to Intel or Samsung would mean 2-3 years of inferior products while yield learning catches up. Product upgrade cycles, most importantly the annual iPhone refresh synced with holidays, would also be at risk.
 
@@ -172,7 +172,7 @@ While Apple also contributes to TSMC’s HPC segment through its tablet/PC chips
 
 Apple acts as the predictable baseline that justifies the massive, fixed costs of new fabs. NVIDIA provides the high-margin upside that drives profitability growth. TSMC now has two anchor tenants instead of one.
 
-![](https://substackcdn.com/image/fetch/$s_!CVJM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff3b95f45-de84-447b-90af-77247fc8c80f_2077x1421.png)
+![](z-images/aac2a4c858e830d44f2dcc11612d4866.webp)
 
 #### The AI Divergence: Wafers vs. Packaging
 
@@ -180,9 +180,9 @@ The distinction lies in what these customers are buying. Apple buys leading-edge
 
 Apple was TSMC’s first advanced packaging customer at scale. InFO revenue grew from $1.8B in 2018 to >$3.5B in 2024, driven entirely by A-series and M-series chips. But CoWoS, TSMC’s AI packaging platform, has surpassed it. CoWoS revenue hit $9.6B in 2025, 2.5x InFO, fueled by Nvidia and AMD demand.
 
-![](https://substackcdn.com/image/fetch/$s_!3bJr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb421a17a-6967-40f7-b81d-01cb526a084f_2074x1421.png)
+![](z-images/439b8925df6c620882623e5e6a49d920.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!Vy_p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb53c83b2-99cc-439f-ac68-2db99feae73b_2211x1456.png)
+![](z-images/51edd9908bd89972d1d9992eb93e798b.webp)
 
 This creates a bifurcation in TSMC’s capacity planning. Apple is no longer the sole driver of capex. TSMC’s capital expenditure is now split between chasing Moore’s Law (2nm for Apple) and chasing packaging density (CoWoS-L for NVIDIA). Apple acts as the predictable baseline that justifies the massive fixed costs of new fabs, while NVIDIA provides the high-margin upside that drives profitability growth. The power dynamic has shifted from a unipolar world (Apple) to a bipolar world (Apple + AI), where TSMC can now arbitrage demand between the two sectors to maintain pricing power.
 
@@ -194,9 +194,9 @@ Intel’s 18A-P process (shipping late 2026) represents the first theoretically 
 
 Intel missed Apple once before in 2014. The door hasn’t fully closed. The key question is: would Apple actually use it?
 
-![](https://substackcdn.com/image/fetch/$s_!Mkbg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fad4827a2-9eae-4c49-a03d-f03042610f99_1878x915.png)
+![](z-images/f1bcaa0ccb59341692411b560c6e07ba.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!3RG5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F784cd775-1a9c-48be-9969-5bd5e6bcbad3_2328x633.png)
+![](z-images/fc86c1d2efe987d366f2ecfb36913a17.webp)
 
 But, 18A-P on base M-series chips makes sense. If Apple were to shift 20% of base M-series wafers to Intel 18A-P, it would imply $630M in foundry revenue for Intel at an $18k ASP.
 
@@ -212,7 +212,7 @@ There are a few lower impact possibilities too: while the Intel16 mature node in
 
 Apple’s actual foundry diversification isn’t about moving leading-edge A-series/M-series away from TSMC. Non-Pro versions, Peripheral chips and packaging are all candidates for foundry diversification.
 
-![](https://substackcdn.com/image/fetch/$s_!g79U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a3272c5-453b-4dae-9970-bee96c35b5f9_2316x1026.png)
+![](z-images/bff75d4618f37800e0648bfdd38f89ec.webp)
 
 **Where diversification makes sense: PMICs, Display Drivers**, **Audio/Connectivity**
 
@@ -226,7 +226,7 @@ Apple has signed a strategic deal with Samsung Foundry to manufacture advanced C
 
 We estimate Samsung could capture 20-30% of Apple’s CIS volume by 2027 (150M-200M sensors annually), offering $1-$1.5B foundry revenue to Samsung.
 
-![](https://substackcdn.com/image/fetch/$s_!zvqD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffa633537-4571-40e0-88ac-6a5e45b9625e_1770x1211.png)
+![](z-images/0278742a87fe52af4be65be9c6aab278.webp)
 
 ## The Manufacturing Footprint
 
@@ -234,23 +234,23 @@ We estimate Samsung could capture 20-30% of Apple’s CIS volume by 2027 (150M-2
 
 To understand the relationship, one must understand the physical reality of where these chips are made. TSMC’s dispersed network of GigaFabs, each specializing in specific nodes and packaging technologies, churn out over a billion chips for Apple each year. Apple’s supply chain is deeply entrenched in Taiwan’s western corridor, but geopolitical hedging is forcing a costly expansion to Arizona.
 
-![](https://substackcdn.com/image/fetch/$s_!j0vc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ce6de05-07de-4fc3-a8fb-2eeab978904d_2122x1037.png)
+![](z-images/f2bc5d4732d63a861652ff420037ca82.webp)
 
 ### The Critical Back-End: Advanced Packaging
 
 Advanced packaging is an area where the divergence between Apple and NVIDIA is most acute. Apple relies on **InFO-PoP** (Integrated Fan-Out Package-on-Package), which stacks DRAM directly on top of the SoC to minimize thickness for iPhones. This technology was pivotal in Apple’s decision to leave Samsung, as it allowed for thinner phones with better thermal dissipation. NVIDIA, on the other hand, relies on **CoWoS**, which places HBM (High Bandwidth Memory) side-by-side with the GPU on a silicon interposer for maximum bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!AzhN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbcaf8167-7def-4e49-b5a4-4be445ee4d9a_2200x1021.png)
+![](z-images/eb762b3a7e2461165a7d12f56299e471.webp)
 
 Apple and NVIDIA do not compete for the same packaging lines today. Apple dominates AP3 (InFO), while NVIDIA fights for AP5/AP6 (CoWoS). However, as Apple moves toward M5/M6 Ultra chips utilizing SoIC (System on Integrated Chips) and WMCM, they will begin to compete for the same advanced 3D packaging resources in AP6 and AP7. This convergence of roadmaps poses a future risk for capacity allocation.
 
 Fab 18 in Tainan is TSMC’s flagship facility for leading-edge production and it’s essentially “Apple’s fab.” The A19 Pro, A18 Pro, M3, M4 and M5 all come from Fab 18’s 3nm lines. This concentration in southern Taiwan is one of the key geopolitical vulnerabilities in Apple’s supply chain.
 
-![](https://substackcdn.com/image/fetch/$s_!EigO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3704d0d1-ac28-4a70-80d6-072f950f608a_2118x695.png)
+![](z-images/b60d375a463c535b9dd90eaa627881ad.webp)
 
 ## Geographic Concentration Risk
 
-![](https://substackcdn.com/image/fetch/$s_!1UnP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44cf0d07-c0c8-4f99-9061-fe3e452808dd_1749x753.png)
+![](z-images/c5845de2b859107fef131fb3dbe1519b.webp)
 
 Apple’s Taiwan concentration is the elephant in the room. Nearly all of Apple’s chip production, including every leading-edge A-series and M-series chip, happens on a single island 100 miles from mainland China.
 
@@ -260,17 +260,17 @@ TSMC Arizona provides token diversification, but at current ramp rates, it won�
 
 Apple’s overarching semiconductor philosophy is simple but ruthless: control the “primary technologies” that differentiate the product. This journey, which began with the A4 in 2010, has evolved into a comprehensive internalization strategy. It’s not just about the CPU (A-series/M-series); Apple has systematically replaced suppliers for almost every critical subsystem, developing custom silicon for Audio (H-series), Security (T-series), Wireless (W-series), Ultra-Wideband (U-series), and now Spatial Computing (R-series). The acquisition of Intel’s modem business in 2019 was the final piece of this puzzle, aiming to displace Qualcomm and complete the complete silicon independence.
 
-![](https://substackcdn.com/image/fetch/$s_!T7QL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F525ffa40-53d6-4bb0-b973-29dfacb9ebf1_1428x1299.png)
+![](z-images/09d524501d43bf845ba42d9291dd21b7.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!Ucm1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d4acf1b-5410-4bd3-92ba-06c13b9cae5d_2546x728.png)
+![](z-images/aa3f5dae32d0f8483a161dfe38119f25.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!kX3T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d0e0494-d6e0-4615-aaaa-8e13050a8c93_2546x671.png)
+![](z-images/1e50c546e5c83487bee313156e89265f.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!TRXa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8abc4e05-96d6-4198-aaf9-d36aba20cba4_2546x600.png)
+![](z-images/96d0088f967d2cb10b2271a41f6d388f.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!qiO_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F54e3d4f8-4dd7-4145-9be2-e499a9f727f2_2548x722.png)
+![](z-images/2d569f8f8d40caf7a8eccdf3060e75a4.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!D3JM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F84ad5390-5034-4b76-8fe9-06e27a069db4_2544x851.png)
+![](z-images/9e53d4a2d9336e320bedad62f7f92679.webp)
 
 1. **P.A. Semi (2008, $278M): The Foundation**
 	P.A. Semi was a boutique chip design firm founded by Dan Dobberpuhl, one of the most respected processor architects in the industry (creator of DEC Alpha, StrongARM). The company had 150 engineers designing low-power, high-performance processors.
@@ -295,7 +295,7 @@ Apple’s overarching semiconductor philosophy is simple but ruthless: control t
 
 Apple operates 8,000+ chip engineers across 15+ design centers on four continents:
 
-![](https://substackcdn.com/image/fetch/$s_!L_yD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F66058ace-743d-430d-9cb3-fc188726f24a_2364x878.png)
+![](z-images/0873ec6b4d3d41186ecb7e7579446572.webp)
 
 Israel is where Apple’s CPU performance leadership is designed. The Herzliya team, many recruited from Intel Israel, which created Pentium M, Core, and Sandy Bridge architectures, designs the Firestorm, Avalanche, and Everest cores that dominate benchmarks.
 
@@ -315,11 +315,11 @@ The result of this manufacturing dominance is a performance lead that has compou
 
 The transistor count growth is linear, but performance per watt is the real metric. The shift to N3E in the A18/M4 generation prioritized cost and yield over pure density scaling (compared to N3B), which explains the relatively modest transistor count jumps compared to previous generations. The Neural Engine has seen the most exponential growth, jumping from 0.6 TOPS in A11 to 35 TOPS in A17/A18, reflecting Apple’s strategic pivot to on-device AI years before the “AI PC” hype cycle began.
 
-![](https://substackcdn.com/image/fetch/$s_!jU4H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5db79be6-7c20-4af5-bf20-073e6fcdbd56_3234x2067.png)
+![](z-images/4a01be545ee83dff16d4d27fe967b890.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!IUPy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F176c3a2f-dde5-4573-a923-db0b5925c877_3270x1031.png)
+![](z-images/70eacfa481503d075312eb54a61d3bf2.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!Ci1L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F02d45a1f-87c8-4119-91a9-bedde9bd8070_3322x1110.png)
+![](z-images/1efec3b91a85a72e61e455e07c05e4a4.webp)
 
 Since 2013, Apple has consistently shipped industry-first features 12-24 months ahead of competitors.
 
@@ -331,7 +331,7 @@ Apple’s performance leadership stems from architectural bets made a decade ago
 
 Apple introduced 8-wide decode with A14/M1 in 2020, four years ahead of competitors. But by 2025, the competitors caught up.
 
-![](https://substackcdn.com/image/fetch/$s_!00WK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F488a6e86-3660-419e-933b-dcd1883c81f4_1612x846.png)
+![](z-images/f23f6820cfa3aed73f7f795bb099bfd6.webp)
 
 Decode width is no longer Apple’s moat. The advantage has shifted to cache hierarchy, vertical integration and extremely efficient smaller E-cores.
 
@@ -339,11 +339,11 @@ Decode width is no longer Apple’s moat. The advantage has shifted to cache hie
 
 Apple’s philosophy: massive fast L1, large shared L2, and a System-Level Cache (SLC) before DRAM. The SLC allows CPU, GPU, and Neural Engine to share data without hitting slow system memory.
 
-![](https://substackcdn.com/image/fetch/$s_!GAx7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8af7977b-b9e9-42a2-b60b-6bf8b9bad677_2000x985.png)
+![](z-images/86a7ae6acbb79cb323515609d35a61ce.webp)
 
 Apple’s SLC advantage is 3-4x larger than competitors with full CPU/GPU sharing. AMD’s Strix Halo matches on size but CPU cores cannot access it.
 
-![](https://substackcdn.com/image/fetch/$s_!zTFs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb09390ab-b7c5-4d9c-97e6-dc7718a72be5_1610x674.png)
+![](z-images/62cf7810d4a8592f1e8374996ff63515.webp)
 
 Apple and Qualcomm Oryon match on L1 size, latency and cache hierarchy, as the original Nuvia design team was largely poached from Apple. Intel’s L0/L1.5 tier structure adds latency.
 

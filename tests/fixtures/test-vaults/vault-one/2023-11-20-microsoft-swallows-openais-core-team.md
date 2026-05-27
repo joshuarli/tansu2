@@ -16,7 +16,7 @@ To quickly recap for those who weren’t caught in the drama loop and enjoyed th
 
 Mira Murati, the CTO, was [appointed as the interim CEO](https://openai.com/blog/openai-announces-leadership-transition). On Saturday night, in what we are calling [the night of a hundred hearts](https://twitter.com/E0M), most OpenAI employees, [including Mira](https://x.com/miramurati/status/1726126391626985793?s=20), publicly [gave their support to Sam and Greg](https://twitter.com/E0M). The employees and Microsoft wanted Sam back.
 
-![](https://substackcdn.com/image/fetch/$s_!068V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F86b3a1a4-5f69-417a-8fad-812d996a1e23_1036x340.png)
+![](z-images/db3fc6688dca9ad192b504dd3aed8abc.webp)
 
 This was the most entertaining weekend on Twitter ever, in terms of memes too, not just serious things like the above.
 

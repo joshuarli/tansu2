@@ -10,7 +10,7 @@ Marvell recently hosted us at their headquarters in Santa Clara. They described 
 
 They likely will be part of all these chips, but not as the sole firm involved. Being the leader in infrastructure requires deep and custom collaboration with the end markets in a way many other semiconductor companies are not technically and culturally set up to do.
 
-![](https://substackcdn.com/image/fetch/$s_!-2Nm!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F48d921e6-0802-44b2-8f7b-faa5ad60a108_2000x1125.png)
+![](z-images/879801836cab34f6c3433671e970e067.webp)
 
 The culture of Marvell will be an exciting case study one day. They have doubled their employee count since 2018. The current culture isn’t like the acquired firms or the old Marvell. From talking to many at the firm over the last year, it seems like the culture is a blend of the many people from acquisitions over the previous few years. While everyone got to Marvell with a different path and heritage, the various IP teams still collaborate cohesively.
 
@@ -22,7 +22,7 @@ This report will also share our FY 2023, 2024, and 2025 revenue and EPS estimate
 
 Marvell highlighted the transformation of the business under this framework. In 2019, Marvell had very little penetration in the cloud, only 1 carrier infrastructure OEM partner, a new entrant into automotive, and a distant 2nd in enterprise networking behind Broadcom. This is very different from the Marvell of today.
 
-![](https://substackcdn.com/image/fetch/$s_!JFM5!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff97031ea-2779-4cde-9222-aabb68880253_2000x1125.png)
+![](z-images/e108c53de00a91cd9bd1817ef017b257.webp)
 
 The Marvell of 2022 is now a leader in many aspects of storage like it always has been by maintaining a #1 position in SSD and HDD controllers and a distant 2nd place to Broadcom. Networking is where Marvell has reshaped their company. The acquisition of Innovium has helped Marvell enter the crowded hyperscale datacenter switch market where Broadcom takes the commanding leadership role and Nvidia, Cisco, and Intel all slug it out. Marvell’s legacy business and the Aquantia-acquired business have a higher share in the enterprise switch market. That Aquantia business is also helping Marvell enter automotive ethernet.
 
@@ -30,7 +30,7 @@ The fantastic Inphi acquisition is helping Marvell lead the PAM4 DSP/TIA and coh
 
 The IP war chest, alongside a collaborative and aggressive culture, makes Marvell one of the foremost semiconductor companies.
 
-![](https://substackcdn.com/image/fetch/$s_!yYgX!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb8ca820-a10e-4b1c-b367-3ab815f2babe_2000x1125.png)
+![](z-images/c74c8f9de51217b4a672dc5de7a535b2.webp)
 
 By combining some of the industry’s best SerDes, design techniques, verification, and advanced process technology, Marvell can target datacenter, carrier infrastructure, automotive, and enterprise networking. There was a big transition for Marvell with the 5nm process technology. Before with 7nm and 16nm, Marvell didn’t run their first test chips until more than a year after the process node went to high-volume manufacturing (HVM). Now with 5nm and 3nm, Marvell is running their first shuttles as soon as TSMC allows them to.
 
@@ -38,7 +38,7 @@ In April 2020, Marvell had a 112G SerDes on TSMC’s N5P process node. We presum
 
 It is noteworthy that Marvell has had 2 tapeouts >700mm^2 in just the last 6 months. More on that custom silicon effort later.
 
-![](https://substackcdn.com/image/fetch/$s_!wn_V!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0e63f6fa-59f7-42ac-bc65-a9e465e42b6a_2000x1125.png)
+![](z-images/536361291f5adbc9e084df19c39c47ad.webp)
 
 Marvell is heavily focused on system modeling, emulation, formal verification, and hybrid emulation of their silicon before they spend the massive amount required for a complete mask set. Marvell is setting itself up to avoid the dark side of the semiconductor renaissance that has plagued Intel and many other design organizations.[SemiAnalysis](https://www.semianalysis.com/p/the-dark-side-of-the-semiconductor?utm_source=substack&utm_campaign=post_embed&utm_medium=web)
 
@@ -50,7 +50,7 @@ We are in the midst of a semiconductor design renaissance. Nearly every major co
 
 Marvell also strives to be the leader in the electro-optical domain. Inphi has that leadership for the ethernet world, and with the right investments and engineering, this could be extended beyond to all electrical and optical connections between packages and on-package.
 
-![](https://substackcdn.com/image/fetch/$s_!3D11!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa448e582-3dcd-4b91-aa1e-ff568057a820_2000x1125.png)
+![](z-images/799a46cdc2c90057aa653a5044abe4c6.webp)
 
 For the long-reach optical market, Marvell dominates 112G PAM4 DSPs and TIAs and is trying to set itself up to do the same with the next-generation 224G. In the extremely long-reach coherent module market, Marvell is focused on maintaining leadership in 400G QAM 16 and next-generation 800G DSP, TIA, and pluggable transceivers. We are more skeptical of this working out in the co-packaged optics era with such stiff competition. Multiple companies such as Broadcom, Intel, Nvidia, and Ayar Labs are ahead of Marvell in productization timelines.
 
@@ -66,11 +66,11 @@ Advanced packaging has been an increasingly common theme with semiconductors ove
 
 One of the most important business units for Marvell is that of DPUs. It is the heart of infrastructure processing and is multi-faceted from 5G processing to networking cards and everything in between.
 
-![](https://substackcdn.com/image/fetch/$s_!Vnm7!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ffff3e03c-6ed5-455b-ac77-d4259097f779_2000x1125.png)
+![](z-images/33917fa8bfece74b9f4badf651078550.webp)
 
 The DPU is a catch-all term for any product with compute, accelerators, and networking interfaces required for a specific task in a single package. Compare that to a standard CPU that doesn’t have accelerators or networking on the same chip—relying on external chips for accelerators and networking results in a solution that consumes too much power, limiting use in infrastructure platforms.
 
-![](https://substackcdn.com/image/fetch/$s_!MR99!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8116c416-f887-4808-bcb6-93a483cadccb_5000x2813.png)
+![](z-images/b268b2e9b7f4a89745d10e61788c29ce.webp)
 
 The history of the DPU is fascinating. Nvidia popularized the use of the word with the marketing of their Bluefield 2 DPU, but Marvell argues they have had DPUs for ~17 years via the Cavium legacy. The Cavium legacy is also where the security business and capabilities come from.[SemiAnalysis](https://www.semianalysis.com/p/marvells-next-1b-business-is-security?utm_source=substack&utm_campaign=post_embed&utm_medium=web)
 
@@ -84,13 +84,13 @@ This generation of DPUs is quite versatile. Marvell’s use of Arm’s N2 core, 
 
 In addition, they have stacked up multiple offerings in this space, having taped out 4 different dies for the market, while every other firm has taped out 1 die. This enables Marvell to cover a much more comprehensive array of use cases. The CN102 is 16 to 24 cores depending on the configuration, in addition to 6 channels of DDR5, 48MB of cache, and 200G Ethernet, all in a TDP of ~40W. This chip can also be co-packaged with a switch which gives it nearly 1Tb of ethernet switching capacity.
 
-![](https://substackcdn.com/image/fetch/$s_!g8c3!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F198318d9-9adc-43da-a49a-d0f3cbcf94b1_1250x601.png)
+![](z-images/7d95d6c7d94d3ccdda4bca87bd91ee68.webp)
 
 The lower-end CN103 and CN102 chips target significantly lower power and performance levels. Furthermore, there is a 4th product line for the 5G. There is a different DPU400 listed on that product sheet, but it is much further away from productization. The tapeout timeline for DPU400 is more like mid to late next year.
 
 The target areas for these DPUs include cloud datacenters, the core network, edge datacenters, enterprise, and small businesses, and telecommunications networks. This includes virtual firewalls, load balancers, network security, vRAN at the edge, content distribution networks, channel management, routing, beamforming, and smartNIC use cases.
 
-![](https://substackcdn.com/image/fetch/$s_!ei9c!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F294d2694-8d5f-4c6e-82c8-9a6b8730d061_2000x1125.png)
+![](z-images/18148c2f7ab22d26cb6de3ecac0be4c4.webp)
 
 Marvell talked a lot about the open software stack they support, but many users have been disappointed by the software quality of the DPUs. It will be interesting to see how they will improve the software. The slides don’t mention IPDK, but Marvell is a founding member of the OPI and will be supporting IPDK longer term.
 
@@ -98,7 +98,7 @@ It should also be noted that for cloud hyperscale DPU use cases, it seems as tho
 
 More about this topic will be covered in the custom silicon section. Marvell’s strategy with future generation DPU’s is a lot more compelling.
 
-![](https://substackcdn.com/image/fetch/$s_!0rCS!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fff8c3fe6-e325-4daa-8bee-10a1ba786fcf_2000x1125.png)
+![](z-images/f062a9e643ab40bdda1b856a970ffc5b.webp)
 
 The performance metrics they showed were mostly in comparison to the competing DPUs from Intel and Nvidia in the CPU core department. Marvell also compared their crypto accelerator to that of Intel’s in their Icelake Xeon D lineup.
 
@@ -106,13 +106,13 @@ The performance metrics they showed were mostly in comparison to the competing D
 
 The 5G market is one that Marvell is gaining share rapidly. While the hype cycle for 5G has reached a trough, the network buildout are nowhere close to complete, even in developed markets. The number of 5G subscribers is ~10%, but by 2025, that number will reach 25% and the total traffic of that 25% is estimated to be 45% of traffic.
 
-![](https://substackcdn.com/image/fetch/$s_!xJm9!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6c2ff10a-3972-4102-9827-02c5d306c947_2000x1125.png)
+![](z-images/9b91b276d86815bf62c22f26b86edbbd.webp)
 
 With 6 million macro radios deployed annually, the potential volume and sales for telecom-focused silicon could be huge. The compute demands for beamforming and L1, L2, and L3 processing are huge as channels go from 20MHz to 100MHz and MIMO goes from 4x4 to 32x32. While the 5G hype cycle went into overdrive, the upgrades that happen to networks over the next decade will unlock all the value that people shilled 5G as adding from day 1.
 
 The radio access network dominates the power consumption of mobile telecom networks, so the accelerators for it are critical.
 
-![](https://substackcdn.com/image/fetch/$s_!nxYL!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F56b59c76-229c-4c9e-aafb-fa1b4c665af8_2000x1125.png)
+![](z-images/17552c50add08e2fff74d97275f77bc5.webp)
 
 Marvell is one of the only companies besides Intel currently offering accelerated L1 processing and robust CPU cores for L2 and L3 with powerful networking. The difference is that Marvell’s acceleration is inline instead of lookaside.
 
@@ -120,7 +120,7 @@ Inline accelerators are integrated into the main processing path, allowing it to
 
 Contrast that with the current offering by Intel, which uses lookaside. The accelerator is not integrated into the main processing path. Instead, the main processor sends data to the accelerator for processing and retrieves the results, which are stored in a separate memory location. This provides less significant speedup and power benefits compared to inline acceleration, but it can also be more flexible and easier to implement. It should be noted that Intel will be [adding inline acceleration while retaining flexibility with custom CPU instructions in Sapphire Rapids EE](https://www.semianalysis.com/p/how-nvidias-empire-could-be-eroded).
 
-![](https://substackcdn.com/image/fetch/$s_!_Uf9!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F399c1d2a-8a33-4850-9ffc-0ca9b9f4c8e5_2000x1125.png)
+![](z-images/2a70617fb3415ad31dfb5d4d78796ce3.webp)
 
 While the number of radio units being deployed is going to go down, the content per radio unit is going to soar. As the complexity increases, as will the amount of processing that occurs in the radio unit versus the distributed unit.
 
@@ -130,7 +130,7 @@ Marvell also happened to land Nokia as a client in their custom silicon division
 
 PHY is a type of integrated circuit that is designed to handle the physical layer of networking responsible for converting digital data into a physical form that can be transmitted over a communication channel. In the case of Ethernet, for example, the PHY chip would convert digital data into electrical signals that can be sent over a copper wire.
 
-![](https://substackcdn.com/image/fetch/$s_!kbdz!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F98275175-9819-4c44-9ff6-dd3a29c25698_2000x1125.png)
+![](z-images/9f0549181475562d1f4569e62fe4acd4.webp)
 
 PHYs can range from those on chips for driving direct attached passive copper to active cabling to retimers to PAM4 DSPs to coherent DSPs.
 
@@ -138,7 +138,7 @@ Marvell’s PHY business is central to all its business units, from custom ASICs
 
 One of the interesting areas Marvell is attacking is active electrical cables. While direct attached copper is the most common form of cabling and optical has traditionally been used for long-distance runs, active electrical cables are still relatively new for datacenter communications.
 
-![](https://substackcdn.com/image/fetch/$s_!JBvI!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9888b64f-716f-4082-b5f7-2f4e67eba9c5_2000x1125.png)
+![](z-images/900643f95d4f81ebde777582987fedee.webp)
 
 Active electrical cables contain electronic components that allow the cable to perform additional functions, such as amplifying or conditioning the electrical signal transmitted through the cable. In general, active electrical cables are more expensive than passive cables, which do not contain any built-in electronic components. However, they can offer improved performance and additional functionality while being cheaper than optical.
 
@@ -150,17 +150,17 @@ The PHY business and electro-optical connectivity both come from the Inphi acqui
 
 PAM4 is a signaling technique used in high-speed communication systems, such as Ethernet. PAM stands for pulse amplitude modulation, and the "4" in PAM4 refers to the number of levels used to encode the data. In PAM4 signaling, each bit of digital data is represented by one of four different amplitude levels, rather than the two levels used in traditional binary signaling (0 and 1), allowing more data to be transmitted over a given channel compared to conventional NRZ signaling.
 
-![](https://substackcdn.com/image/fetch/$s_!898t!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fac507077-523f-4325-94f2-de51639fdd2a_2000x1125.png)
+![](z-images/33c3fa4c506969763d10d4532d0a14e3.webp)
 
 PAM4 gives 30% lower power and cost per bit of data transferred. Marvell is now shipping 800G, and the primary market for this is AI clusters. BW demands have generally doubled every 3 years, but AI is at the beginning of its S curve and is accelerating those demands. Broadcom is bringing very strong competition in this market, although they currently have a much lower share in 400G PAM4.
 
-![](https://substackcdn.com/image/fetch/$s_!auAf!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fce9e67b3-0886-4b22-af65-0e20999f962f_2000x1125.png)
+![](z-images/16df33c63f3de556ae4b8674866dee22.webp)
 
 Marvell showed the progression of the in-datacenter pluggable market with a nice matrix. NRZ (2 bits per clock) at 25G data rate with 4 lanes was what the 100G generation was based on. 200G moved to PAM4, allowing each lane to be driven twice as fast. This is when the Inphi business took off. Microsoft was a big adaptor of 200G PAM4 from Inphi due to the superior cost and power. All the other hyperscalers followed soon after.
 
 400G doubled the data rate. 800G doubled the number of lanes to 8. The 1.6T generation is under contention. Some companies want to move to 16 lanes, while Marvell is pushing for doubling the datarate of the PHYs to 224G PAM4 from 112G PAM4. Marvell is sampling this product today.
 
-![](https://substackcdn.com/image/fetch/$s_!ZqG9!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F76f42919-2282-43ee-b6a0-d44099a67737_2000x1125.png)
+![](z-images/777dac6637695b8f8cf13e43b7629d70.webp)
 
 One interesting observation is that Marvell offers DSPs and TIAs externally for others to integrate into pluggable transceivers, but in the coherent optical market, they mostly sell their in-house pluggable transceivers.
 
@@ -168,13 +168,13 @@ One interesting observation is that Marvell offers DSPs and TIAs externally for 
 
 Marvell’s most recent acquisition was for Innovium and their Teralynx switch lineup. Marvell, despite having two other switch lineups, acquired a 3rd lineup. Marvell argues that the features required for datacenter switching differ significantly from those of the other markets. In the case of the datacenter market, the bandwidth demands are soaring at an exponential rate.
 
-![](https://substackcdn.com/image/fetch/$s_!ad9x!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F107d8ef0-940f-4c3c-84c8-88ca733e00ed_2000x1125.png)
+![](z-images/f925eafdc4824313436de4b6a921ad19.webp)
 
 Hyperscale datacenter switches require much lower latency and advanced telemetry for congestion management. Teralynx boasts having some of the best latency, but we have heard and seen conflicting information which shows Broadcom and Nvidia InfiniBand and much lower latency.
 
 The datacenter switching market is very competitive between Broadcom’s dominance, Nvidia’s rise with Spectrum-4 ethernet and InfiniBand, Cisco fighting aggressively to stop share losses, and Intel’s lofty aspirations with Tofino. We are skeptical of Marvell’s Teralynx ability to gain a serious amount of share.
 
-![](https://substackcdn.com/image/fetch/$s_!t7n3!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fad919c75-3db0-4570-8f74-0c477ad71412_2000x1125.png)
+![](z-images/106297ea14db3192280388ebf1d442d5.webp)
 
 This is compounded by the fact that the current generation switches from Marvell still only support 12.8T which Nvidia and Broadcom are now shipping 51.2T in small volumes. Marvell is going to try to leapfrog two generations in rapid succession, directly to 51.2T, but their entrance into the 25.6T and 51.2T generation is clearly very late, even later Intel and Cisco who are shipping 25.6T generation switches. Some of our sources say Marvell had silicon-level problems on 25.6T that required them to scrap that design.
 

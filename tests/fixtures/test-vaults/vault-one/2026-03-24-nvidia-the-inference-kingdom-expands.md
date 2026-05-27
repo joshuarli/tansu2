@@ -8,7 +8,7 @@ description: "Groq LP30, LPX Rack, Attention FFN Disaggregation, Oberon & Kyber 
 
 ### Groq LP30, LPX Rack, Attention FFN Disaggregation, Oberon & Kyber Updates, Nvidia's CPO Roadmap, Vera ETL256, CMX & STX
 
-![](https://substackcdn.com/image/fetch/$s_!dC_X!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5522a45-77c1-40f8-94c0-395f272b8db1_2709x1815.png)
+![](z-images/194bbbec24b3aded8cbc24beba19b8bf.webp)
 
 Source: Nvidia
 
@@ -28,7 +28,7 @@ Groq’s first and only publicly announced LPU architecture was detailed in thei
 
 Concretely, LPU architecture has VXM slices for vector operations, MEM slices for loading/storing data, SXM slices for tensor shape manipulation, and MXM slices for performing matrix multiplication. Spatially, the slices are laid out horizontally, allowing the data to stream horizontally. Within a slice, instructions are pumped vertically across units. Conceptually, LPU resembles a systolic array that pumps instructions vertically and data horizontally.
 
-![](https://substackcdn.com/image/fetch/$s_!0sYb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83c55dd8-42b5-4f62-9551-6668222d528b_1204x581.png)
+![](z-images/9e3ca9a2a075bc226a17399fb9c29de9.webp)
 
 Source: Groq, SemiAnalysis
 
@@ -50,13 +50,13 @@ We have written about the role of SRAM in the memory hierarchy, but the quick re
   
 SRAM machines such as Groq’s LPU therefore enable very fast time to first token and tokens per second per user but at the expense of total throughput, as their limited SRAM capacity quickly gets saturated by weights, with little left over for KVcache that grows as more users are batched. GPUs win for throughput and cost as we have shown. This is why Nvidia has decided to combine these architectures to get the best of both worlds: accelerate parts of decode that are more latency sensitive and are not as memory heavy on a low-latency SRAM-heavy chip like the LPU, while memory hungry attention is performed on GPUs that come with a lot of fast (but not SRAM fast) memory capacity.
 
-![](https://substackcdn.com/image/fetch/$s_!6Cix!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa939a961-40da-4762-b7d2-1ebb2423e9a2_2188x350.png)
+![](z-images/02c62ee8dd5a26e5c777ad4998ffc334.webp)
 
 Source: SemiAnalysis
 
 This brings us to the Groq 3 LPU or LP30, with LPU gen 2 being skipped over. This chip has no Nvidia design involvement. The SerDes issues affecting v2 appear to be fixed. Behind the paywall, we will reveal the SerDes IP vendor which may come as a surprise. Nvidia also announced an LP35 which is a minor refresh of the LP30 which will remain on SF4 and will require a new tapeout. It will incorporate NVFP4 number format but given Nvidia is prioritizing time to market we don’t expect any other drastic design changes.
 
-![](https://substackcdn.com/image/fetch/$s_!iPH0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39025ad5-927c-4619-b929-88d5555be853_1590x860.jpeg)
+![](z-images/240eb2db80af80f4dd7b7edced2a537d.webp)
 
 Source: Nvidia
 
@@ -66,13 +66,13 @@ One of the benefits of relying on SF4 is that it isn’t [constrained like TSMC�
 
 Since Nvidia has taken over, the next generation LP40 will be fabricated on TSMC N3P and use CoWoS-R, and Nvidia will contribute more of their own IP such as supporting the NVLink protocol rather than Groq’s C2C. This will be the first LPU to be extremely co-designed alongside the Feynman platform. Groq’s original plans for LPU Gen 4 was also with TSMC and Alchip as the back-end design partner. Alchip’s involvement is now redundant with Nvidia able to perform backend design on their own. One of the technical innovations planned is hybrid bonded DRAM to extend on-chip memory with only a slight decrease in latency and bandwidth vs SRAM, but much higher performance compared to DRAM. SK Hynix was tapped as the supplier of the DRAM to be used for the 3D stacking. All of this and more was detailed long ago in the [Accelerator model](https://semianalysis.com/accelerator-hbm-model/).
 
-![](https://substackcdn.com/image/fetch/$s_!4-mW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf0a9df3-57f3-43b2-a090-67f9dbdee3d9_2218x1215.png)
+![](z-images/e03aae2ef8987ec737f94869222a118d.webp)
 
 Source: Nvidia, SemiAnalysis Accelerator Model
 
 ## GPU and LPU Integration: Attention FFN Disaggregation (AFD)
 
-![](https://substackcdn.com/image/fetch/$s_!269y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F05b555ed-9d4e-45db-ad03-cbc1cc261b17_3064x1497.jpeg)
+![](z-images/ff9ce1802606599b4558190921724ec3.webp)
 
 Source: Nvidia
 
@@ -80,7 +80,7 @@ Now with an understanding of what LPUs are good for we can understand how they f
 
 As we explained in our [InferenceX article](https://newsletter.semianalysis.com/p/inferencex-v2-nvidia-blackwell-vs), LLM inference involves two phases: prefill and decode. Prefill processes the full input context: It is compute-intensive, which is suitable for GPUs. On the other hand, decode predicts new tokens and is memory-bounded. Decode is latency-sensitive because the model predicts new tokens one by one, and LPU’s high SRAM bandwidth and low-latency capabilities can help accelerate this iterative process.
 
-![](https://substackcdn.com/image/fetch/$s_!xoes!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F97ce6be2-5ef7-4770-85b8-d65ebda7c049_1887x551.jpeg)
+![](z-images/d0f6620d126aa517b52ef993e7296d7a.webp)
 
 Source: SemiAnalysis
 
@@ -88,39 +88,39 @@ Attention and FFN are subsets of operations in a model. In a model forward pass,
 
 This is something we have worked with certain hardware vendors and memory companies on [with our inference simulator for more than 6 months.](https://semianalysis.com/institutional/inference-simulator/)
 
-![](https://substackcdn.com/image/fetch/$s_!hooB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0bd1310-e0d9-4158-8959-b52bc3b65fab_577x409.jpeg)
+![](z-images/26f8d34c9dd1371e36f23b56cfd9640f.webp)
 
 Source: MegaScale-Infer, SemiAnalysis
 
 As state-of-the-art mixture-of-expert (MoE) models grow increasingly sparse, tokens can choose experts from a larger expert pool. As a result, each expert receives fewer tokens, leading to lower utilization. This motivates attention and FFN disaggregation. If a GPU only performs attention operations, its HBM capacity can be fully allocated to KV cache, increasing the total number of tokens it can process, which then increases the tokens each expert processes on average.
 
-![](https://substackcdn.com/image/fetch/$s_!ZhUl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc51c24d7-d5a7-4c99-a243-0baa24afbf08_1474x783.jpeg)
+![](z-images/87ad440d9b592ca2376ee8115310fad7.webp)
 
 Source: SemiAnalysis
 
 Comparing the two operations, we see attention is stateful due to dynamic KV cache loading patterns, whereas FFN is stateless since the computation only depends on the token inputs. Thus, we disaggregate the computation of attention and FFN. We map attention computations to GPUs, which handle dynamic workloads well. For FFNs, we map them to LPUs, since LPU architecture is inherently deterministic and benefits from static compute workloads.
 
-![](https://substackcdn.com/image/fetch/$s_!27kD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F65ead35a-ac7d-4416-b5d8-b2484e3e5a45_1217x372.jpeg)
+![](z-images/dce29a4205bcd3d5d262c2dd235eba48.webp)
 
 Source: SemiAnalysis, MegaScale-Infer
 
 With AFD, token routing from GPUs to LPUs can become the bottleneck, especially under strict latency constraints. The token routing flow involves two operations: dispatch and combine. In the dispatch step, we route each token to their top k experts with an All-to-All collective operation. After experts complete their computation, we perform the combine step, where the outputs are sent back to the source location with a reverse All-to-All collective, continuing the next layer’s computation.
 
-![](https://substackcdn.com/image/fetch/$s_!XL7s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd5a62c2-81f4-4f64-b101-6a7e9e611fe6_830x1054.jpeg)
+![](z-images/c1bebe3b353aa191e6709501170cf854.webp)
 
 Source: SemiAnalysis
 
 To hide the communication latency of dispatch and combine, we employ ping pong pipeline parallelism. In addition to splitting batches into micro-batches and computation pipelining like standard pipeline parallelism, the tokens dispatched to the LPUs are combined back to the source GPUs, so they ping pong between the GPUs and the LPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!oNdF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F15b11e7c-2540-46c1-92a2-ad4fe5b4e561_1400x673.jpeg)
+![](z-images/a4358317bab835c015f5a2e3ad526e58.webp)
 
 Source: MegaScale-Infer
 
-![](https://substackcdn.com/image/fetch/$s_!jmpy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fefbdfe32-e16d-4a9b-bfd8-725d4b880569_1381x1082.jpeg)
+![](z-images/eb3706d38b4162dc71a1a19c8c225c0c.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!G-iW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1204b3bb-7e16-4820-9a71-4171d79a719e_889x778.jpeg)
+![](z-images/b3b8012840f993ed9c841cec4c4e8fa3.webp)
 
 Source: SemiAnalysis
 
@@ -130,7 +130,7 @@ A different way LPUs could improve decode phase latencies is by accelerating a s
 
 For a decoding step of context N tokens, adding k additional tokens during forward pass (a warm prefill of k new tokens) marginally increases the latency when k << N. Using this property, speculative decoding uses a small draft model or MTP layers to predict k new tokens, saving time since small models have lower latency per decode step. To verify the draft tokens, the main model only needs one warm prefill of k new tokens, at the latency cost of roughly a single decode step. Speculative decoding usually boosts output token per decode step by 1.5 to 2 tokens, depending on the draft model / MTP accuracy. With its low latency capabilities, LPUs can further increase the latency savings and improve throughput.
 
-![](https://substackcdn.com/image/fetch/$s_!cvnL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4b9a77e7-dc29-4321-8f63-1c508cebc7e5_1335x671.jpeg)
+![](z-images/5ad0cf09f6792705f30cfeb1d4e30233.webp)
 
 Source: SemiAnalysis
 
@@ -140,7 +140,7 @@ For LPUs, deploying a draft model or MTP layers is quite different from applying
 
 Let’s look at the LPX rack system, which has interesting details. Nvidia has displayed an LPX rack with 32 1U LPU compute trays with 2 Spectrum-X switches. This 32 tray 1U version that Nvidia has shown off at GTC is very close to Groq’s original server design before the acquisition. We believe that this server configuration is not the version that will be shipped in 3Q, with Nvidia implementing changes. Here, we will detail what we know about the actual production version. This was already detailed in the [Accelerator model](https://semianalysis.com/accelerator-hbm-model/).
 
-![](https://substackcdn.com/image/fetch/$s_!_fd4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F105f4b85-95b2-49c0-ad0a-7afa73fddff1_434x860.png)
+![](z-images/d2a3149bfc07c51367d936befd9442ae.webp)
 
 Source: SemiAnalysis Accelerator Model
 
@@ -148,13 +148,13 @@ Source: SemiAnalysis Accelerator Model
 
 Each LPX compute tray or node has 16 LPUs with 2 Altera FPGAs, 1 Intel Granite Rapids host CPU and 1 BlueField-4 front-end module. As with other Nvidia systems, hyperscalers customers can and will use their own Front-end NIC of choice rather than paying for Nvidia’s BlueField.
 
-![](https://substackcdn.com/image/fetch/$s_!6E50!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45fbdc52-ed59-45e7-b666-5315c454d94b_1354x1851.png)
+![](z-images/5d48e8b60c894df6afe0059fbf337f1f.webp)
 
 Source: SemiAnalysis Accelerator Model
 
 The LPU modules are mounted in a belly-to-belly on the PCB, meaning 8 LP30 modules on the top side of the PCB and the other 8 LP30 modules on the bottom. All of the connectivity that comes out of the LPU are via PCB traces and given the dense all-to-all mesh for intra-node connections this requires a very high spec PCB to support the routing. The belly-to-belly mounting is used to reduce PCB trace lengths across the ‘X’ and ‘Y’ dimensions.
 
-![](https://substackcdn.com/image/fetch/$s_!RBl1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57bb1916-27a0-42d5-85c7-0f81c305cb3c_1839x399.png)
+![](z-images/df0d9aa878184c6e9a3f462970a58038.webp)
 
 Source: SemiAnalysis Networking Model
 
@@ -172,7 +172,7 @@ The LPU network can be divided into the scale-up ‘C2C’ network and scale-out
 
 #### Intra-Tray Topology
 
-![](https://substackcdn.com/image/fetch/$s_!i4Vn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5b18381-6c96-4d0f-912e-e7978cc30446_1414x1617.png)
+![](z-images/a165b0608b0e6380ef28c53d5c00e50e.webp)
 
 Source: SemiAnalysis Networking Model
 
@@ -182,7 +182,7 @@ The LPU also has 1x100G going to one FPGA, with each FPGA interfacing with 8 LPU
 
 #### Inter-node/Intra-rack
 
-![](https://substackcdn.com/image/fetch/$s_!xA-t!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F25d7c5ea-dce9-4703-9d95-eda3887a2e72_1066x1155.png)
+![](z-images/402683bcf78eb6a5d378f4dce13a594f.webp)
 
 Source: SemiAnalysis Networking Model
 
@@ -190,7 +190,7 @@ Each LPU connects to one LPU from each of the 15 other nodes in the server. Each
 
 #### Inter-rack
 
-![](https://substackcdn.com/image/fetch/$s_!Wn2b!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feaf1f2a7-972d-4d67-b1e8-aa596dcca070_3060x4100.png)
+![](z-images/60c531332c9fac64eed18ad9f9aeb5ea.webp)
 
 Source: SemiAnalysis Networking Model
 
@@ -200,7 +200,7 @@ Lastly, there is the inter-rack C2C. Each LPU has 4x100G lanes that go to the OS
 
 NVIDIA revealed its CPO Roadmap at the GTC Keynote 2026, with Jensen following up with additional commentary in the Financial Analyst Q+A meeting held the following day. Though many had their hopes up for CPO to be used for scale-up within the rack for Rubin Ultra Kyber, Nvidia’s focus was instead on using CPO to enable larger world size compute systems.
 
-![](https://substackcdn.com/image/fetch/$s_!7CeZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d80c4f7-60e6-41ea-859b-f4ad8ddbf5ea_2064x397.png)
+![](z-images/151bb54edcf552296a29cde0785dadf5.webp)
 
 Source: SemiAnalysis AI Networking Model, Nvidia
 
@@ -232,7 +232,7 @@ Feynman:
 - NVL72 – Oberon Rack – All Copper
 - NVL144 – Kyber Rack – All Copper
 - NVL1152 – 8xKyber Rack – Copper within rack and CPO on the switch between racks
-	![](https://substackcdn.com/image/fetch/$s_!NjAg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10cf337a-41ad-4a0e-b9a3-bd2f11c911f0_2389x905.png)
+	![](z-images/33d4f20a3f232f33c2988384fe21d06e.webp)
 	Source: SemiAnalysis, Nvidia
 
 ## Oberon and Kyber Updates, Larger World Sizes Introduced, More Networking Updates
@@ -241,13 +241,13 @@ Nvidia provided a long-awaited update on its Kyber rack form factor, the latest 
 
 The details below are based on the Rubin Kyber prototypes, but Rubin Ultra will be redone.
 
-![](https://substackcdn.com/image/fetch/$s_!57WO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6e91ff96-9d44-4d04-8a1f-eeb1575b235d_3000x4000.jpeg)
+![](z-images/2406277d2e85e4b9aa4969638caa2ed1.webp)
 
 Source: SemiAnalysis
 
 Each switch blade is also double in height vs the GTC 2025 prototype, with 6 NVLink 7 switches per switch blade, and 12 switch blades per rack, amounting to a total of 72 NVLink 7 switches per Kyber rack. The GPUs are connected all-to-all to the switch blades via 2 PCB midplanes or 1 midplane per canister.
 
-![](https://substackcdn.com/image/fetch/$s_!lj22!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c5a1ad2-cfca-47a0-be02-f39b150e8df4_3000x4000.jpeg)
+![](z-images/ddc9be34729b73b468ac45274469a5f1.webp)
 
 Kyber midplane PCB (GPU side). Source: Nvidia, SemiAnalysis
 
@@ -255,19 +255,19 @@ For Rubin Ultra NVL144 Kyber, [there will be no CPO used for scale up as we have
 
 Moving back to the Kyber Rack, each Rubin Ultra logical GPU offers 14.4Tbit/s uni-di of scale-up bandwidth, using an 80DP connector (72 DPs used x 200Gbit/s bi-di channel = 14.4Tbit/s) per GPU for connectivity to the midplane board. Connecting all 144 GPUs in an all-to-all network will require 72 NVLink 7.0 Switch Chips running at 28.8Tbit/s uni-di of aggregate bandwidth each.
 
-![](https://substackcdn.com/image/fetch/$s_!028i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa6507cbc-367c-4f8e-9f8a-6fcbccf61aa3_1513x655.png)
+![](z-images/25d77704cd76d6f5204e405b9db0a4cd.webp)
 
 Source: SemiAnalysis
 
 In the Kyber Switch Blade picture below, we can see that there are 2 separate PCBs carrying 3 Switches each. The switch blade should have 6 152DP connectors, 3 connectors serving each midplane board. The picture is a prototype blade using less dense connectors, which is why there are 12 connectors instead of the 6 that we expect in the production version.
 
-![](https://substackcdn.com/image/fetch/$s_!ET6V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1bef24fc-b8ed-4652-a928-7abd4cf2d496_4000x3000.jpeg)
+![](z-images/91fd55d87248f94cf76b5865ff4cf728.webp)
 
 Source: Nvidia, SemiAnalysis
 
 Each 28.8T NVLink Switch has 144 lanes of 200G (simultaneous bi-directional) which means each Switch has 24 lanes of 200G going to each connector. Copper flyover cables are used to connect each switch to the midplane, as the distances involved are too long for PCB traces. This is also why the switches are further away from the midplane, to provide space for the routing of the flyover cables.
 
-![](https://substackcdn.com/image/fetch/$s_!-biX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F376fc839-5860-4555-a18c-3b591ec13156_1582x1372.png)
+![](z-images/43c2b6e143e613de8d1289cd7e4db1a5.webp)
 
 Source: SemiAnalysis Networking Model
 
@@ -281,7 +281,7 @@ If Rubin Ultra NVL288 is deployed, each Rubin Ultra GPU will have a scale-up ban
 
 The radix of the 28.8T NVLink Switch limits the number of GPUs that each switch can connect while still providing for cross-rack connectivity. Either a higher radix switch will have to be used - or there will have to be a degree of oversubscription in this architecture while potentially adopting a dragonfly-like network topology. This would also require fewer DPs worth of copper cables.
 
-![](https://substackcdn.com/image/fetch/$s_!YbDc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faddf00bd-ed41-47b8-864e-35e96b6768c1_1613x1158.png)
+![](z-images/6d34dc729f7ddb845e8492edb4508094.webp)
 
 Source: SemiAnalysis
 
@@ -291,7 +291,7 @@ All current evidence in the supply chain points to NVSwitch 7 being the same ban
 
 To push the scale up world size beyond 144 GPUs and across multiple racks, optics are needed as we are approaching the maximum compute density that is within the reach of copper. Rubin Ultra NVL576 is now on the roadmap with 8 racks of lower density Oberon.
 
-![](https://substackcdn.com/image/fetch/$s_!kVKx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee215fef-65ff-41ce-be3d-1a54c3af2334_2449x1037.png)
+![](z-images/ae91053baeb6f27ffef7bb97de4a906c.webp)
 
 Source: SemiAnalysis
 
@@ -311,7 +311,7 @@ CPU demand is rising as AI workloads require more data handling, preprocessing, 
 
 The Vera standalone rack addresses this directly, achieving unprecedented density by fitting 256 CPUs into a single rack — a feat that necessitates liquid cooling. The underlying rationale mirrors the NVL rack design philosophy: pack compute tightly enough that copper interconnects can reach everything within the rack, eliminating the need for optical transceivers on the spine. The cost savings from copper more than offset the additional cooling overhead.
 
-![](https://substackcdn.com/image/fetch/$s_!KfPw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9e8a2b9-8417-41bc-aa32-1072b2e68fc0_3000x4000.jpeg)
+![](z-images/0a25c842db6b72e4e4e0301105f70e7e.webp)
 
 Source: SemiAnalysis
 
@@ -319,11 +319,11 @@ Each Vera ETL rack consists of 32 compute trays, 16 above and 16 below, arranged
 
 Networking within the rack uses a Spectrum-X multiplane topology, distributing 200 Gb/s lanes across the four switches to achieve full all-to-all connectivity while maintaining a single network tier. With each compute tray housing 8 Vera CPUs, the result is 256 CPUs per rack, all interconnected over Ethernet through a single, flat network.
 
-![](https://substackcdn.com/image/fetch/$s_!UMo8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F31febbf5-a0ec-4218-b2d0-e95e40704213_4000x3000.jpeg)
+![](z-images/2f11dbce5fc4e40eb28fd5043178414e.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!At98!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91ab19c1-1ceb-4b0b-a13e-6de00121eebd_1427x199.webp)
+![](z-images/eddb7b576f432874cadc82b667746ad3.webp)
 
 Source: Nvidia
 
@@ -339,7 +339,7 @@ KV cache grows linearly with input sequence length and number of users and is th
 
 NVIDIA introduced a “new” intermediate storage “tier G3.5” within the inference memory hierarchy at CES in January. Tier G3.5 NVMe sits in between tier G3 DRAM and tier G4 shared storage (also NVMe, or SATA/SAS SSD, or HDD). Previously referred to as **ICMS (Inference Context Memory Storage)** and now branded as the **CMX platform**, this is just another re-brand of storage servers attached to compute servers via Bluefield NICs. The only difference from NVMe architectures is the swap from Connect-X NICs to Bluefield NICs.
 
-![](https://substackcdn.com/image/fetch/$s_!wa5A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb3a0a186-dbca-4e82-b477-f41c8148e2f3_1336x1258.jpeg)
+![](z-images/dca9b3200fbc5808adb9a023c5d1aef6.webp)
 
 Source: Original NVIDIA ICMS blog in January, 2026 – updated and re-released on March 16, 2026 https://developer.nvidia.com/blog/introducing-nvidia-bluefield-4-powered-inference-context-memory-storage-platform-for-the-next-frontier-of-ai/
 
@@ -347,13 +347,13 @@ Source: Original NVIDIA ICMS blog in January, 2026 – updated and re-released o
 
 To expand the scope of CMX, NVIDIA also launched STX. STX is a reference rack architecture using Nvidia’s BF-4 based storage solution to complement VR compute racks. The reference architecture effectively specifies exactly how many drives, Vera CPUs, BF-4 DPUs, CX-9 NICs, and Spectrum-X switches are needed for a given cluster.
 
-![](https://substackcdn.com/image/fetch/$s_!p_Sv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fddb9b036-0027-4510-975b-9c707ca486c4_3000x4000.jpeg)
+![](z-images/ecb72f01a01518e9212905fc8a9b7619.webp)
 
 BF-4 in STX. Source: Nvidia, SemiAnalysis
 
 Unlike the BF-4 in the VR NVL72, which consists of a Grace CPU and a single CX-9 NIC, the BF-4 in the STX reference design includes one Vera CPU, two CX-9 NICs, and two SOCAMM modules. Each STX box contains two BF-4 units, totaling two Vera CPUs, four CX-9 NICs, and four SOCAMM modules. For the whole STX rack, it has a total of 16 boxes, implying 32 Vera CPUs, 64 CX-9 NICs, and 64 SOCAMMs.
 
-![](https://substackcdn.com/image/fetch/$s_!N7af!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F31ef2de0-8f01-45f0-bea0-0fca1c8744ee_878x1030.png)
+![](z-images/29113d81fef8dbab14611312c01f9222.webp)
 
 STX Rack (left). Source: Nvidia, SemiAnalysis
 

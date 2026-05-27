@@ -18,21 +18,21 @@ This carnage isn’t limited to the real estate industry. China’s PMI data loo
 
 China makes up over 30% of new semiconductor capital equipment and it is accelerating. For example, Tokyo Electron, a major equipment provider for manufacturing semiconductors, had [over 36%](https://www.tel.com/ir/library/report/cms-file/fy22q1presentations-e.pdf) of new equipment sales. China is also a massive market for end user demand. If consumers are discouraged, they will consume less. One such example is in smartphones. Total domestic sales from January to July totaled ~203M units. In comparison to 2018 or 2019 data, this is down significantly.
 
-![](https://substackcdn.com/image/fetch/$s_!qEHJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc425cc6c-294d-4524-90d7-8fae2703cf88_588x416.jpeg)
+![](z-images/35cb6579e047bef88e656be16b3f04f0.webp)
 
 Fine and dandy you might say. “Smartphone sales are weak, but those aren’t really in shortage. Smartphones are available at reasonable prices in stores nearby.” While these aren’t the components that are causing all the headlines for shortages, they are the largest individual semiconductor market. TSMC receives roughly half of their revenue from smartphone chips after all.
 
-![](https://substackcdn.com/image/fetch/$s_!MoKZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcf6beb8d-e376-4d5c-b737-292bb86a8943_624x347.png)
+![](z-images/6fb3ccdd0184113898ec868e3fd6ffb1.webp)
 
 Weakness here would mean excess capacity would be generated and could be regeared for other areas. And the largest smartphone market in the world is clearly weak. This weakness isn’t limited to just smartphones in China. Reports show [microcontroller pricing](https://ec.ltn.com.tw/article/breakingnews/3666465) is falling in China. In early September alone, a common STMicroelectronics controller has fallen from ~$49.60 to $42.62.
 
-![](https://substackcdn.com/image/fetch/$s_!-WtO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6ccbc9c7-e12b-461d-a0c0-1fb8bea6fe31_600x356.jpeg)
+![](z-images/aa4c871ef3d02b8c3bf0cf74ade92b80.webp)
 
 Some of it is self-induced as well. China is trying to reign in the electric vehicle sector as well. Regulators are [considering setting](https://www.bloomberg.com/news/articles/2021-09-08/china-eyeing-ways-to-better-target-resources-for-ev-production) minimum production capacity utilization rate requirements. Those provinces that do not meet this will not be allowed to approve new electric vehicle production projects until surplus capacity is utilized.
 
 **So will this end the chip shortage?**
 
-![](https://substackcdn.com/image/fetch/$s_!sefa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9af41b0-da9b-40c9-b034-01c99ce9c00d_1024x500.png)
+![](z-images/be3cfa14846cecdf3168d0c16e90542f.webp)
 
 No. Not Yet. Only if the Chinese economy continues to slide. Sorry for clickbaiting the headline, but Betteridge's law reigns supreme.
 

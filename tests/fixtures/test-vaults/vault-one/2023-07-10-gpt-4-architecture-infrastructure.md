@@ -40,7 +40,7 @@ LLM inference in most current use cases is to operate as a live assistant, meani
 
 A trillion-parameter dense model mathematically cannot achieve this throughput on even the newest Nvidia H100 GPU servers due to memory bandwidth requirements. Every generated token requires every parameter to be loaded onto the chip from memory. That generated token is then fed into the prompt and the next token is generated. Furthermore, additional bandwidth is required for streaming in the KV cache for the attention mechanism.
 
-![](https://substackcdn.com/image/fetch/$s_!iLFp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc75907e7-9a26-48eb-bdd6-c9c48597e6d6_2520x1026.png)
+![](z-images/8e747d893ea12238063db901d523c6ee.webp)
 
 This chart assumes inefficiencies from not being able to fuse every op, memory bandwidth required for the attention mechanism, and hardware overhead are equivalent to parameter reads. In reality, even with “optimized” libraries such as Nvidia’s FasterTransformer library, the total overhead is even larger.
 

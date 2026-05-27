@@ -40,7 +40,7 @@ We are very thankful to AMD and Nvidia for being supportive of our independent a
 
 Thank you to TensorWave, Nebius, Crusoe, DataCrunch, CoreWeave and Nscale for the compute and for supporting an open ecosystem that enables independent benchmarking and analysis.
 
-![](https://substackcdn.com/image/fetch/$s_!1glI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a9535a0-be72-4bb0-b4be-f13f14248943_1311x661.png)
+![](z-images/b2df291c92d3502fe7a8ed99f47038b1.webp)
 
 Source: SemiAnalysis
 
@@ -48,7 +48,7 @@ Source: SemiAnalysis
 
 The decode phase of inference tends to be memory bandwidth bound. As such, the two main system specifications that matter are HBM capacity and HBM Bandwidth. We see that a single MI300 node (with 1,536GB HBM capacity) has a clear advantage over an H100 node (with 640GB HBM capacity) as the H100 cannot even fit DeepSeek V3 FP8 within the single node. NVIDIA addressed the capacity shortcoming in Q3 2024 when they started mass production of H200, which has 144GB of memory compared to just 80GB of HBM Capacity in H100 and delivers better performance than the MI300 in our testing. AMD’s answer to H200 was the MI325X, but it unfortunately came to the market too late with customers opting to purchase the B200 instead.
 
-![](https://substackcdn.com/image/fetch/$s_!FO_c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4645470f-3848-4bd9-ab96-250c30259b73_2560x647.png)
+![](z-images/d9d932c4414bef55a8328c2d0b623397.webp)
 
 Source: SemiAnalysis
 
@@ -60,7 +60,7 @@ To be clear, production delays are not just an AMD problem, on the Nvidia side, 
 
 AMD’s market share in Datacenter AI GPUs has been increasing at a steady pace since Q1 CY2023. However, in Q1 CY2025, Nvidia’s massive Blackwell ramp commenced, and with AMD’s answer to Blackwell only coming by Q3 2025, AMD’s market share accordingly dipped in Q1 CY2025. We expect AMD’s market share to decline in Q2 CY2025. However, with AMD’s MI355X coming out later this year as well as AMD’s rapid pace of software improvement, we see the potential for AMD to recapture some market share late this year or early next year.
 
-![](https://substackcdn.com/image/fetch/$s_!t_cb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe3a4565b-b2d2-43c5-9dc0-a332baabd156_2544x1436.png)
+![](z-images/522e5c6139f77f070a9c624858937d8e.webp)
 
 Source: SemiAnalysis Accelerator Model, AMD Earnings, Nvidia Earnings
 
@@ -84,13 +84,13 @@ Understanding the balance between throughput and latency is essential for choosi
 
 **End-to-End (E2E) Latency** is calculated as E2E Latency = TTFT + (Output Sequence Length \* TBOT). It is our preferred metric to analyze user experience because it incorporates all the various sources of latency when processing requests. This is in contrast to some analyses that only compare throughput per GPU vs TBOT.
 
-![](https://substackcdn.com/image/fetch/$s_!ORFn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F313082ff-5815-4166-a20b-ca45216f6f34_2504x984.png)
+![](z-images/5b73c334ff29f3e5af7d07d18cc8bd10.webp)
 
 Source: SemiAnalysis
 
 Traditional offline benchmarks fail to model realistic user conditions by neglecting these latency interactions and concurrency effects, thus producing overly optimistic throughput numbers disconnected from real operational contexts. When offline benchmarks analyze throughput vs batch size, the results are not accurate because different AI chips could have very different latencies even when throughput per GPU is the same for a given batch size.
 
-![](https://substackcdn.com/image/fetch/$s_!fAdf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F51d56166-93e6-4516-a30b-33e44271510f_2560x1446.png)
+![](z-images/21a1acaec0ae9c113673e9c315962f98.webp)
 
 Offline Throughput Benchmark, Source: Signal65
 
@@ -120,7 +120,7 @@ For inference benchmarking on Llama3 70B and 405B, we selected vLLM as our prima
 
 TRT-LLM has gotten a lot easier to use with their new python pytorch backend, the availability of an easy one-line command line interface for launching inference instances as well as and their OpenAI compatible HTTP server. However, there are still a lot of issues with it - for example, DeepSeek is not working well on TRT-LLM, and Nvidia has also yet to publish python TRT-LLM-serve docker images, [leading to hours of wasted time installing from source](https://nvidia.github.io/TensorRT-LLM/installation/build-from-source-linux.html). We recommend the TRT-LLM team fix the DeepSeek V3 implementation and publish TRT-LLM-serve docker images.
 
-![](https://substackcdn.com/image/fetch/$s_!3KFP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F52b7789b-e48a-4a0a-aedc-301e93b478e8_1654x422.png)
+![](z-images/4d40e39c7b255b932f193662e80859ee.webp)
 
 Source: SemiAnalysis
 
@@ -142,7 +142,7 @@ Our benchmarks are made available on [Docker hub](https://hub.docker.com/r/semia
 
 ## Llama3 70B FP16 Throughput Vs Latency Results
 
-![](https://substackcdn.com/image/fetch/$s_!M1w6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F32dad280-9240-41ae-ae84-bea137bbb33a_2222x1298.png)
+![](z-images/868af0955be02278f004742aa4e1ad92.webp)
 
 Source: SemiAnalysis
 
@@ -152,13 +152,13 @@ Regarding tensor parallel (TP) size, we see TP=8 dominating low-latency scenario
 
 Overall, the H200 with TRT-LLM, denoted H200-TRT, mostly dominates the benchmark. We attribute this to NVIDIA knowing their hardware best and putting great effort into tuning the performance.
 
-![](https://substackcdn.com/image/fetch/$s_!OK_R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F014e51f7-a7cd-484a-9be2-e33d5b8c5414_2560x1297.png)
+![](z-images/2c76cdb4f096146626dd840bc6c96b36.webp)
 
 Source: SemiAnalysis
 
 For reasoning-like workloads (1k input, 4k output) on LLaMA 3 70B, the H100 severely underperforms all other GPUs, quickly plateauing at around 900 tokens per second per GPU. On the other hand, the MI325X plateaus later than all the other GPUs, which means it has the highest throughput at around 450s latency. This also explains why H200 with vLLM surpasses the MI325X at high concurrency, even though it outperforms MI325X at low latency regions. Under the sub-300-second latency scenario, we see a clear ranking of performance (best to worst) as follows: H200 with TensorRT-LLM, H200, MI325X, MI300X, and H100.
 
-![](https://substackcdn.com/image/fetch/$s_!-maX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F911030a8-dc54-4619-b4ef-9f7dc760a243_2478x1408.png)
+![](z-images/88e05ab49f8fe84914da0a5f1ebdf5f1.webp)
 
 Source: SemiAnalysis
 
@@ -166,7 +166,7 @@ When it comes to serving LLaMA 3 70B for summarization-like workloads (4k input,
 
 ## Llama3 405B FP8 Throughput Vs Latency Results
 
-![](https://substackcdn.com/image/fetch/$s_!4p3A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcc95396d-e3cf-421a-bb4f-cfb3c8e19900_2496x1412.png)
+![](z-images/928dcdd21b43e1c9c474bc1dc4d49b1f.webp)
 
 Source: SemiAnalysis
 
@@ -174,7 +174,7 @@ For serving LLaMA 3 405B at 1k input and 1k output, we see most setups plateauin
 
 Meanwhile, the H200 with TensorRT LLM again crushes its competitors. It can serve at almost 1,000 tokens per second per GPU under 150 seconds of latency, and it doesn’t show signs of plateauing with higher concurrency. We believe this is because TensorRT-LLM has better control of memory usage and as such, it can sustain higher memory utilization and improve performance.
 
-![](https://substackcdn.com/image/fetch/$s_!dK71!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85ebc10f-ce06-43da-acd9-9d9089a1aec4_2500x1420.png)
+![](z-images/e8d340714961fac37dd20f9b773a076f.webp)
 
 Source: SemiAnalysis
 
@@ -182,7 +182,7 @@ Serving LLaMA 3 405B for reasoning workloads (1k input, 4k output) shows the eff
 
 The H200 with TensorRT-LLM again shows its technical prowess, offering up to 1.5x throughput under similar latency vs the MI325X. This shows that vLLM is far from optimal, and it also shows why vLLM considers TensorRT-LLM to be its main competitor.
 
-![](https://substackcdn.com/image/fetch/$s_!lmJI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3565374f-ec88-4bb8-9027-6da12e66af1b_2422x1366.png)
+![](z-images/636b9b97bbf902a56a392b3e509942dc.webp)
 
 Source: SemiAnalysis
 
@@ -198,19 +198,19 @@ For DeepSeekv3 670B we use the SGLang inference framework and we test H200, MI30
 
 For the translation and chat applications scenario (1k input 1k output), we see that the H200 beats the MI300X across all latency levels. The MI325X is only competitive with the H200 across a small range of latencies from 25 to 35 seconds. For the rest of the latency range, the H200 wins. At low latency for high interactivity, the H200 is the clear winner when there are only 4-16 concurrency users per model replica at a time.
 
-![](https://substackcdn.com/image/fetch/$s_!kWVP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb52b1ce3-2257-4321-9153-3fb408d475ae_1832x1170.png)
+![](z-images/c37f9648c26c0ec052d592e6e4b3370e.webp)
 
 Source: SemiAnalysis
 
 We see that for the reasoning test scenario (1k input/4k output), we see that the H200 beats the MI300 across all latency ranges. But the MI325X beats the H200 beyond a latency range of 100 seconds. For latency of below 100 seconds, the H200 is the clear winner.
 
-![](https://substackcdn.com/image/fetch/$s_!qlHZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F737bf088-ab62-4cdc-993e-f095a6e86ede_2220x1348.png)
+![](z-images/7a356fe019d799232baab68d9da544de.webp)
 
 Source: SemiAnalysis
 
 When we look at the summarization task scenario (4k input, 1k output), the same story plays out when it comes to the comparison between the between H200 and MI300X - the H200 crushes the MI300X across all latency ranges. For the MI325X, after 25 seconds of latency, the MI325X starts to surpass the H200. For the more online low latency use case, the H200 beats the MI300X and MI325X.
 
-![](https://substackcdn.com/image/fetch/$s_!3lmV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb40dfd7-17e1-486c-85ae-f1e03ef990d2_2224x1340.png)
+![](z-images/554eead57c05d20bbdfe4d89af20575b.webp)
 
 Source: SemiAnalysis
 
@@ -224,41 +224,41 @@ For each latency and model test scenario, we have calculated the performance per
 
 At the end of the article, we will dive deeper into the detailed financial analysis and strategic considerations behind how we structure capex, opex and TCO calculations.
 
-![](https://substackcdn.com/image/fetch/$s_!XyZy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faf4815c0-77f8-4527-b5ea-fb96e44bc4c1_2560x445.png)
+![](z-images/d376d4ab848d7a885a4ba6431a34bbd9.webp)
 
 Source: SemiAnalysis
 
 ## Llama3 70B FP16 Cost Per Million Tokens
 
-![](https://substackcdn.com/image/fetch/$s_!9s6t!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe4e922ad-dd19-44a4-948e-80f4458c392c_2236x1306.png)
+![](z-images/93e768903ec4e1a77c8d54b9e8537e01.webp)
 
 Source: SemiAnalysis
 
 For ultra-low latency inferencing, the MI325X and MI300X surpasses all other GPUs on performance per dollar for Llama3 70B chat and translation tasks (1k input/1k output).
 
-![](https://substackcdn.com/image/fetch/$s_!qoIY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80788e72-f82c-4a2f-ae4c-db7136572a36_2226x1330.png)
+![](z-images/3eb69828c8bb61aa99e7413495da35b5.webp)
 
 Source: SemiAnalysis
 
 Zooming out and considering longer latency periods, we start seeing price differentiation when latency is greater than 20 seconds. AMD GPUs are less cost-effective than the H100 and the H200 with vLLM, but as latency increases, the MI325X becomes more economical than the H200 because of its great performance at high concurrency.
 
-![](https://substackcdn.com/image/fetch/$s_!ZEm8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b507d6e-c972-431e-8140-52ffab8d3c27_2512x1448.png)
+![](z-images/1543e30848467ce121a43e578fc9aa6a.webp)
 
 Source: SemiAnalysis
 
 Turning to our reasoning scenario (1k input, 4k output), starting with low latency applications, we see that the MI325X and MI300X wins on performance per TCO.
 
-![](https://substackcdn.com/image/fetch/$s_!qd3h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F444b938e-c5e8-4e7d-9918-c11022970254_2482x1444.png)
+![](z-images/c9fe37d78f3b38a8f6f241dd16aa5640.webp)
 
 Source: SemiAnalysis
 
 Expanding this analysis into longer latency periods, we see that serving LLaMA 3 70B on the H100 is the least cost-effective due to its weak performance. The MI300X and MI325X are more expensive than H200 with vLLM and with TensorRT LLM, but they become more competitive at higher latencies. Interestingly, serving on the MI300X costs almost the same as serving on the MI325X, indicating that the performance improvement of MI325X doesn’t justify the price increase in this case.
 
-![](https://substackcdn.com/image/fetch/$s_!_o-o!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff94ab963-8fcb-40a9-880b-072572bcb71f_2478x1436.png)
+![](z-images/f7be00f2a9aac57aed1ca936b65b13c6.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!DbdQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7a4ef0d-b23c-425e-b954-3f1b1d976eb8_2484x1446.png)
+![](z-images/1c0cb373d2633aa7946b38515de43c63.webp)
 
 Source: SemiAnalysis
 
@@ -266,33 +266,33 @@ We see a similar trend for summarization workloads. AMD GPUs are most cost-effec
 
 ## Llama3 405B FP8 Cost Per Million Tokens
 
-![](https://substackcdn.com/image/fetch/$s_!onNY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f82d4e7-fcbf-4d44-af90-323e6c16031d_2496x1442.png)
+![](z-images/09cc81acdbb5b96ea259b49f9d764eff.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!QZGo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faace9d33-171b-4140-9678-1520d0a71080_2474x1426.png)
+![](z-images/8a5e63692ece297d599c9dd78fb7cc83.webp)
 
 Source: SemiAnalysis
 
 Starting with the chat and translation scenario (1k input, 1k output, AMD GPUs being lower priced and being more performant in serving large dense models makes the cost efficiency differential more apparent. We see that the MI325X serves at a consistently lower cost than the H200 with vLLM and H100, and that the MI300X is on par with the H200 using vLLM as well. That said, the H200 with TensorRT LLM wins again after the 60-second latency mark with its superior performance.
 
-![](https://substackcdn.com/image/fetch/$s_!YguE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa87aabe1-1446-45e3-bcbe-780b2ccc33e7_2462x1424.png)
+![](z-images/078093a522ea991265dd4e8c6c7e5937.webp)
 
 Source: SemiAnalysis
 
 For ultra low latency 405B for reasoning tasks (1k input, 4k output), it is no question that the MI325X and MI300X beats H200 vLLM and H100 vLLM. It even beats the H200 on TRT-LLM!
 
-![](https://substackcdn.com/image/fetch/$s_!LHkt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7808e0ca-22f2-41ac-b2ee-5f8507bdc5ba_2468x1426.png)
+![](z-images/75f94940bc2bf8ed6a939c3f1c1318d8.webp)
 
 Source: SemiAnalysis
 
 Looking at longer latencies for the reasoning task scenario, like all previous configurations for serving large dense models, both MI300X and MI325X are more price-efficient than H100 and H200 with vLLM. The caveat is that the H200 with TensorRT LLM remains the most cost-efficient among all because the performance boost it provides is greater than the price difference between the H200 and the AMD GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!ivmT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F18ebaa27-0af1-46c1-af40-cbcc944bb1ca_2420x1376.png)
+![](z-images/38a681a05e9dedd9e6793154f974b2fe.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!mKw-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78602e26-7442-43aa-96e5-f1d5d6ee7d53_2422x1370.png)
+![](z-images/a91a715b0880fd2aa62542c1091b67bf.webp)
 
 Source: SemiAnalysis
 
@@ -300,25 +300,25 @@ Turning to the summarization scenario (4k input, 1k output) the MI325X is the cl
 
 ## DeepSeekv3 670B FP8 Cost Per Million Tokens
 
-![](https://substackcdn.com/image/fetch/$s_!1ROL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0e0acd2-58af-4d74-bfdf-e5f1b590b193_2234x1456.png)
+![](z-images/c67925f81ccee1e70425a7f0eba66573.webp)
 
 Source: SemiAnalysis
 
 For chat and translation tasks (1k input, 1k output), MI300X perf/$ is not competitive with the H200 but the MI325X is decently competitive with the H200 from 25 to 40 seconds of latency but not by much. The small gains of performance per $ is not worth the pain of switching to and adopting ROCm.
 
-![](https://substackcdn.com/image/fetch/$s_!_jV1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf3e9dd2-6f29-473a-8601-41f28b49e89a_2246x1352.png)
+![](z-images/b1c88b8ed0ec1e3e313212903396016f.webp)
 
 Source: SemiAnalysis
 
 For reasoning tasks (1k input, 4k output), we see that after 100 seconds of latency, the MI325X becomes better than the H200 – showing as much as 20% better performance per $ than H200. But we see that for low latency/medium to high interactivity cases (i.e. below 100 seconds of latency), the H200 still wins handily. The MI300X is not competitive to the H200 on reasoning tasks in terms of performance per $.
 
-![](https://substackcdn.com/image/fetch/$s_!xANM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96afe6f1-0561-42b3-975c-5a51d81c43f4_2216x1334.png)
+![](z-images/02aadb99fc0b4eb94f8358510832ed0a.webp)
 
 Source: SemiAnalysis
 
 For summarization tasks (4k input, 1k output), we see that the H200 wins for low latency/high interactivity in terms of performance per dollar.
 
-![](https://substackcdn.com/image/fetch/$s_!06je!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23cf4913-02ba-46dd-ad59-6bda2063a7d9_2224x1336.png)
+![](z-images/35739940da060e3256543f1e6cb7a7b7.webp)
 
 Source: SemiAnalysis
 
@@ -338,19 +338,19 @@ This scarcity in the rental market leads to artificially high prices for AMD GPU
 
 [In Q2 2025, the current 1m term contract market rental price for the H200 is at about $2.5/hr/gpu](https://semianalysis.com/ai-cloud-tco-model/), with wide variance and.lower pricing for low quality clouds. One-month contracts for renting the MI325X are non-existent, while one-month contracts for renting MI300X stand at over $2.5/hr, which makes the MI300X uncompetitive for renting. Below, we calculated what the approximate MI300 and MI325X 1-month rental price needs to be for the MI300X and MI325X in order for them to be competitive with renting NVIDIA H200s.
 
-![](https://substackcdn.com/image/fetch/$s_!Ufqv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2306584e-f271-4454-82c4-279da1ae0be4_1444x944.png)
+![](z-images/d23ef663074bfc29114e373b1f000d79.webp)
 
 Source: SemiAnalysis
 
 For translation and chat workloads (1k input, 1k output) MI300X rentals need to be priced at $1.9/hr in order to be competitive with the H200. The MI325X needs to be priced under $2.5/hr for a 1-month contract term to be competitive with the H200.
 
-![](https://substackcdn.com/image/fetch/$s_!UFaz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F87ffefca-6eb3-4ce7-86b5-2539231a8387_1600x954.png)
+![](z-images/37e3065aa7ecb53e241b7ec282560887.webp)
 
 Source: SemiAnalysis
 
 For reasoning inference tasks (1k input, 4k output), the MI300X needs to be priced at under $2.1-2.4/hr for 1-month contracts in order for it to have a competitive performance per dollar with H200. For the MI325, need to be priced between $2.75/hr/gpu to $3/hr/gpu, depending on interactivity, in order to be competitive.
 
-![](https://substackcdn.com/image/fetch/$s_!8kSp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1128d01e-3933-4b1d-b019-959e41916f4e_1596x950.png)
+![](z-images/1abe188af3a709c3e9aec6ccf1d4c5b7.webp)
 
 Source: SemiAnalysis
 
@@ -362,13 +362,13 @@ We didn’t include B200 in our full benchmark run due to the lack of software s
 
 While TensorRT-LLM supports B200, it’s only optimized for a small list of models, and this small list is most notably lacking DeepSeek V3 FP8. For that reason, we benchmarked B200 with TensorRT-LLM on selected models and scenarios as a sneak peek of B200’s performance. In the graph below, we present LLaMA 70B and 405B on reasoning workloads (1k input, 4k output).
 
-![](https://substackcdn.com/image/fetch/$s_!dtfB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F881a9b7e-b324-428e-95bb-a3ec37a18703_2430x1368.png)
+![](z-images/0d7ef6c65d2b46ff2d93a28450b0f74c.webp)
 
 Source: SemiAnalysis
 
 The B200 with TensorRT LLM, labeled as B200-TRT, dominates the LLaMA 70B benchmark, offering lower latency and higher throughput across the board. The MI325X and MI300X are very far from competing with the B200.
 
-![](https://substackcdn.com/image/fetch/$s_!OGZY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2ad8e41b-0db7-45e2-bffc-410c2b78cdf3_2186x1214.png)
+![](z-images/aa4a81bdc794d6d41ba53dd87077e318.webp)
 
 Source: SemiAnalysis
 
@@ -394,17 +394,17 @@ AMD’s overall continuous integration (CI) has improved a lot over the past 5 m
 
 Three weeks ago, Anush (AMD AI Czar) tasked one of their hardcore engineers to [work 996](https://en.wikipedia.org/wiki/996_working_hour_system) in order to fix SGLang CI. AMD has made some progress but unfortunately there are still dozens of missing unit tests. Without proper testing, AMD will continue to have worse software quality and plenty more bugs leading to worse developer experience and slower adoption.
 
-![](https://substackcdn.com/image/fetch/$s_!Gg2f!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7ab425d6-5c96-4722-98ee-add1ec5485f5_1762x1572.png)
+![](z-images/2cb26889cd3ecf9a6b5998bcf8549b8a.webp)
 
 Source: SemiAnalysis, SGLang, Github
 
-![](https://substackcdn.com/image/fetch/$s_!LSFt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d90ceea-bec9-4928-b825-6afd6fa628d2_1862x1548.png)
+![](z-images/74038f4f2f71caa9fd5484b888172041.webp)
 
 Source: SemiAnalysis
 
 There are also a lot of multi-GPU unit tests missing that are relevant to DeepSeekv3 such as DP attention, MoE EP tests, etc.
 
-![](https://substackcdn.com/image/fetch/$s_!AAgz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0eb8aec6-1ecd-41e0-9d1e-ccfede8e2ec0_1862x588.png)
+![](z-images/257ab07f41fbbc9b24f36b74dcfd0857.webp)
 
 Source: SemiAnalysis
 
@@ -416,7 +416,7 @@ In terms of nightly accuracy, AMD had ZERO accuracy tests until SemiAnalysis poi
 
 **AMD needs to task more 996 engineers to fix this immediately!**
 
-![](https://substackcdn.com/image/fetch/$s_!gHfU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe3a0f4f3-3d83-4c56-ae08-ffd4eda829b3_2088x708.png)
+![](z-images/571d26436e55040baa41a5af4e8afe2a.webp)
 
 Source: SemiAnalysis, SGLang, Github
 
@@ -428,7 +428,7 @@ For example, disaggregated prefill inferencing optimization has still not come t
 
 Our estimate of AMD’s internal R&D Budget comes from the fact that AMD internally has approximately 4,000 MI300Xs and it costs them $1.5/hr to rent from their hyperscalers and Neoclouds. $1.5/hr/gpu \* 4000 GPUs \* 90 days/quarter \* 24hrs/day = 13M per quarter of R&D cluster spend. While they are increasing spend, they do it through short term GPU rentals rather than having committed clusters to teams and projects for long term.
 
-![](https://substackcdn.com/image/fetch/$s_!sr0R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2d2a7041-2dc9-49de-9242-2cadddc6c979_2244x1304.png)
+![](z-images/59dbfc3bf4ce1aadab01d44df3edd42d.webp)
 
 Source: SemiAnalysis
 
@@ -440,7 +440,7 @@ Why would a customer buy a large cluster from AMD if AMD themselves haven’t do
 
 Although AMD wins for single node inferencing, AMD is currently lacking support for many inference features such as disaggregated prefill, Smart Routing, and NVMe KV Cache Tiering. Disaggregated serving has been an industry standard for years, and last month NVIDIA open-sourced Dynamo, a distributed inference framework, further democratizing this technique. Disaggregated serving uses separate compute instances to process different stages of requests, including prefill and decode.
 
-![](https://substackcdn.com/image/fetch/$s_!zygQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0e50e4b-3fcf-42a2-a278-ad175748a2ad_1024x649.webp)
+![](z-images/652688b877232717f064a0ba154a4be0.webp)
 
 Source: Peking University
 
@@ -448,7 +448,7 @@ In addition, NVIDIA has partnered with SGLang to bring disaggregated serving to 
 
 AMD is looking to provide a 16-node MI300X cluster to the SGLang maintainer team at LMSys such that they can start looking into partnering and getting disaggregated prefill to work on ROCm too. We believe that a prototype of AMD disaggregated prefill using a forked version of NVIDIA dynamo will be demoed on June 12 <sup>th</sup> at AMD’s Advancing AI event.
 
-![](https://substackcdn.com/image/fetch/$s_!M6yV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4518d3e2-38c1-40f0-9f71-54099b0d1947_2560x1323.png)
+![](z-images/f95228d5f312fe27f39157d6a2943ae0.webp)
 
 Source: LMSys
 
@@ -460,7 +460,7 @@ Similarly – in the decode phase – it is important to ensure sequence lengths
 
 The router also load balances across each replica serving the model which is something that AMD’s vLLM and many other inference engines do not support.
 
-![](https://substackcdn.com/image/fetch/$s_!k6-1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa389642-b4fe-4ab7-8be6-1c82f2f75f8e_1024x611.webp)
+![](z-images/a139de6942d1d210c7ed37dd9fc85601.webp)
 
 Source: Nvidia
 
@@ -470,13 +470,13 @@ This additionally supports changing the ratio of GPUs used for decoding and for 
 
 Unfortunately – this is not a feature that is available in the AMD ecosystem at present.
 
-![](https://substackcdn.com/image/fetch/$s_!CW20!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F33cc64af-15c3-4e82-ab6a-53135193b1ad_1170x633.webp)
+![](z-images/fa55f53eeefe4d57ecdccdf908760bc5.webp)
 
 Source: SemiAnalysis
 
 NVIDIA Dynamo’ KVCache Offload Manager allows more efficient overall execution of prefill overall by saving the KVCache from prior user conversations in NVMe storage rather than discarding it.
 
-![](https://substackcdn.com/image/fetch/$s_!saU1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb73d568e-6789-4f4f-a6e2-9a2ec1f7ab30_1159x716.webp)
+![](z-images/72c3ebb83b0ff1115aeb19802be76880.webp)
 
 Source: Nvidia
 
@@ -486,7 +486,7 @@ Instead, with Dynamo’s NVMe KVCache offload feature, when a user steps away, t
 
 This frees up capacity on the prefill nodes to handle more incoming volume, or alternative could reduce the size of the prefill deployment needed. The user will also have a much better experience with faster time to first token as there is now much less time needed to retrieve the KV Cache vs computing it.
 
-![](https://substackcdn.com/image/fetch/$s_!cLaJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd4fc943a-02ba-4aac-a118-5265dbdeb710_1014x683.webp)
+![](z-images/a8d6ef796b7d305a217a964b33faa108.webp)
 
 Source: Nvidia
 

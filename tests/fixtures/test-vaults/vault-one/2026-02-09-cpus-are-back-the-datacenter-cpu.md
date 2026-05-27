@@ -8,7 +8,7 @@ description: "RL and Agent Usage, Context Memory Storage, DRAM Pricing Impacts, 
 
 ### RL and Agent Usage, Context Memory Storage, DRAM Pricing Impacts, CPU Interconnect Evolution, AMD Venice, Verano, Florence, Intel Diamond Rapids, Coral Rapids, Arm Phoenix + Venom, Graviton 5, Axion
 
-![](https://substackcdn.com/image/fetch/$s_!Qsru!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3f9507d8-140b-4db8-9fd6-2ac28050a1ea_2016x1344.png)
+![](z-images/0f3c4c6ef61b329a5337d7d099f07d05.webp)
 
 Since 2023, the datacenter story has been simple. GPUs and networking are king. The arrival and subsequent explosion of AI Training and Inference have shifted compute demands away from the CPU. This meant that Intel, the primary supplier of server CPUs, failed to ride the wave of datacenter buildout and spending. Server CPU revenue remained relatively stagnant as hyperscalers and neoclouds focused on GPUs and datacenter infrastructure.
 
@@ -16,13 +16,13 @@ At the same time, the same hyperscalers have been rolling their own ARM-based da
 
 Over the last 6 months this has changed massively. We have posted multiple reports to [Core Research](https://semianalysis.com/core-research/) and the [Tokenomics Model](https://semianalysis.com/tokenomics-model/) about soaring CPU demand. The primary drivers we have shown and modeled are reinforcement learning and vibe coding’s incredible demand on CPUs. We have also covered major CPU cloud deals by multiple vendors with AI labs. We also have modeling of how many CPUs of what types are being deployed.
 
-![](https://substackcdn.com/image/fetch/$s_!5yS5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c9e56be-fcab-4b4a-9a66-0ead1858e8d9_1648x1629.png)
+![](z-images/787e437f11774d06c0cb1e805d7e8d5d.webp)
 
 Intel Q4’25 DCAI Revenue. Source: Intel
 
 However, Intel’s recent rallies and changing demand signals in the latter part of 2025 have shown that CPUs are now relevant again. In their latest Q4 earnings, Intel saw an unexpected uptick in datacenter CPU demand in late 2025 and are increasing 2026 capex guidance on foundry tools and prioritizing wafers to server from PC to alleviate supply constraints in serving this new demand. This marks an inflection point in the role of CPUs in the datacenter, with AI model training and inference using CPUs more intensively.
 
-![](https://substackcdn.com/image/fetch/$s_!AFjW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F066448fc-f72e-4159-aa67-e0192e2ff2ea_3023x1461.png)
+![](z-images/f5ff9f10019096cb6f57f90534503340.webp)
 
 Datacenter CPU Core Count Trend. Source: SemiAnalysis Estimates
 
@@ -38,7 +38,7 @@ For our subscribers, we provide our datacenter CPU roadmap to 2028 and detail th
 
 ## The PC Era
 
-![](https://substackcdn.com/image/fetch/$s_!cxhL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91d101af-061a-4c19-8b95-81be8c05e26f_2718x1849.png)
+![](z-images/eca8b22cb55fee1cef18e4901a205511.webp)
 
 Intel Pentium Pro. Source: Intel
 
@@ -56,7 +56,7 @@ The next major inflection point came with cloud computing in the late 2000s, and
 
 Cloud computing offered a far more palatable “pay as you use” business model with renting compute instances and running your workloads on 3rd-party hardware, which allowed spending to dynamically adjust with usage that varied over time. This scalability was more favorable than procuring one’s own servers, which needed to be utilized fully at all times to maximize ROI. The Cloud also enabled more streamlined services to emerge, such as serverless computing from the likes of AWS Lambda that automatically allocates software to computing resources, sparing the customer from having to decide on the appropriate number of instances to spin up before running a particular task. With nearly everything handled by them behind the scenes, Clouds turned compute into a commodity.
 
-![](https://substackcdn.com/image/fetch/$s_!7ZDt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e31aa5b-fd56-4674-9895-2576e448e40f_1479x1986.png)
+![](z-images/c943b8067b1f51e678690c3cfae03c3d.webp)
 
 Pat Gelsinger, VMware CEO 2012-2021, Intel CEO 2021-2024. Source: X @PGelsinger
 
@@ -85,7 +85,7 @@ The head node CPU’s role is to manage the attached GPUs and keep them fed with
 
 As GPUs hogged more datacenter power budgets, the need to serve the rest of the internet as efficiently as possible accelerated the development of “Cloud-Native” CPUs. The goal is maximum throughput and requests served per socket at the best efficiency (throughput per Watt). Instead of adding more, newer CPUs to boost total throughput, old, less efficient servers are decommissioned and replaced with a far smaller number of cloud-native CPUs that met the total throughput requirement while sipping a fraction of the power, lowering operating costs and freeing up power budget for more GPU compute.
 
-![](https://substackcdn.com/image/fetch/$s_!TfPu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbe59d15e-c167-4a38-b904-c6f6e4efa593_2821x1421.png)
+![](z-images/c068df9c12d1b9f0b912df0489a59c85.webp)
 
 AMD Turin Dense 7:1 Socket Consolidation. Source: AMD
 
@@ -95,7 +95,7 @@ Design wise, these Cloud-native CPUs target higher core counts with area and pow
 
 ## The RL and Agentic Era
 
-![](https://substackcdn.com/image/fetch/$s_!Dbd7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0ad2959c-94f2-4096-a61c-c40e46ee0dff_3092x949.png)
+![](z-images/241ce8e556eab9223e8d50518c12208d.webp)
 
 Microsoft “Fairwater” GPU and CPU buildings. Source: Google Earth
 
@@ -103,7 +103,7 @@ Now, CPU usage is accelerating again to support AI training and inference beyond
 
 The evolution of AI computing paradigms has caused this increase in CPU usage intensity. In pretraining and model fine-tuning, CPUs are used to store, shard and index data to be fed to the GPU clusters for matrix multiplication. CPUs are also used for image and video decode in multimodal models, although more fixed function media acceleration is being integrated directly into GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!QDm6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4658580c-c8cb-4753-b21a-a39831d9a3a8_2052x1554.png)
+![](z-images/66ce0acd3a45a89d411e680a952c088f.webp)
 
 Reinforcement Learning Training Loop. CPUs used in RL Environment (Green). Source: SemiAnalysis
 
@@ -117,7 +117,7 @@ As we go through 2026, the demands on datacenter CPU and DRAM are only getting s
 
 To appreciate the design changes and philosophies of the 2026 CPUs, we have to understand how multi-core CPUs work and the evolution of interconnects as core counts grew. With multiple cores comes the need to connect those cores together. Early dual-core designs such as Intel’s Pentium D and Xeon Paxville in 2005 simply consisted of two independent single cores, with core-to-core communication done off-package via the Front Side Bus (FSB) to a Northbridge chip that also housed the memory controllers. AMD’s Athlon 64 X2, also in 2005, could be considered a true dual-core processor with two cores and an integrated memory controller (IMC) on the same die, allowing the cores to communicate with each other and to memory and IO controllers directly within the silicon through on-die NoC (Network on Chip) data fabrics.
 
-![](https://substackcdn.com/image/fetch/$s_!BLWt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3fc1fbd3-39c1-4650-ab74-54f841f233fc_2329x1801.png)
+![](z-images/169b72dc4fc7c5cbd860721acc415ba3.webp)
 
 Intel Tulsa Die Shot. Source: Intel, Hot Chips 2006
 
@@ -137,7 +137,7 @@ As designers tried to increase core counts further, they ran into scaling limits
 
 The practical limit for most designs ended at 4 cores, with higher core count processors achieved with multi-chip modules and dual-core modules that shared and L2 cache and data fabric socket between core pairs. The crossbar wiring is usually done in the metal lines above the shared L3 caches, saving area. Intel’s 6-core Dunnington in 2008 used three dual-core modules with 16MB of shared L3.
 
-![](https://substackcdn.com/image/fetch/$s_!6t7R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F26443b09-cd4f-4635-8189-0a85234e9709_1504x2079.png)
+![](z-images/88b156819b38ae64d4ca91e2452cd0cf.webp)
 
 AMD Opteron Istanbul 6-core die. Source: AMD
 
@@ -145,7 +145,7 @@ AMD launched their 6-core Istanbul in 2009 with a 6-way crossbar and 6MB L3. The
 
 ## Intel’s Ring Bus
 
-![](https://substackcdn.com/image/fetch/$s_!u8AU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe4c3bb6f-9b4b-47c6-9b22-a50aecc28ea0_2424x1789.png)
+![](z-images/79b96bbc709db307642d0fe51383d573.webp)
 
 Intel Nehalem-EX Ring Interconnect. Source: Intel, Hot Chips 2009
 
@@ -155,7 +155,7 @@ Data from each ring stop’s core and L3 cache slice is queued and injected into
 
 ### Ivy Bridge-EX Virtual Rings
 
-![](https://substackcdn.com/image/fetch/$s_!4FIz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0830e24f-4740-4e69-8707-090b48c6ec4c_2332x1803.png)
+![](z-images/a804afad1c0008d49154910d32c2a20c.webp)
 
 Intel Ivytown Virtual Rings. Source: Intel, Hot Chips 2014
 
@@ -163,7 +163,7 @@ To scale core count to 15 for the Ivy Bridge generation, Intel had to get clever
 
 ### Haswell and Broadwell Dual Rings
 
-![](https://substackcdn.com/image/fetch/$s_!gHb0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5b1e5413-09bc-46c0-9cd2-64e233a613ab_2987x1679.png)
+![](z-images/004d2cded53dd01f4869ce69b2787802.webp)
 
 Haswell HCC Dual Ring Bus. Source: Intel
 
@@ -177,7 +177,7 @@ While these methods helped Intel increase core counts to 24, it was not an elega
 
 ## Intel’s Mesh Architecture
 
-![](https://substackcdn.com/image/fetch/$s_!pozD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F216a402f-a60c-42f3-b7e4-00546356b555_3010x1685.png)
+![](z-images/547de4b71d10cf8c71a9a4e7b1e7fed4.webp)
 
 Intel Knights Landing Mesh Interconnect. Source: Intel, Hot Chips 2016
 
@@ -189,7 +189,7 @@ With a mesh network and multiple memory controllers on opposite sides of the die
 
 In Knights Landing, each mesh stop housed two cores with a shared L2 cache. The mesh grid is 6 columns by 9 rows in size, with top and bottom rows more IO and MCDRAM. The mesh network runs on it’s own clock, and can dynamically adjust mesh clocks to save power. On Knights Landing, the mesh ran at 1.6GHz.
 
-![](https://substackcdn.com/image/fetch/$s_!b8mI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb55424a-5436-4909-83f4-57f750341ca1_1951x1654.png)
+![](z-images/531c43d7db0b03e19e58d3c626734de2.webp)
 
 Skylake-SP Mesh Diagram. Source: Intel
 
@@ -197,7 +197,7 @@ With Skylake-X, the 28 cores are arranged in a 6x6 mesh with a north IO cap and 
 
 The subsequent Cascade Lake and Cooper Lake processors brought minor changes with the same 28-core layout. As a side node, Intel made a 56-core dual die MCM in Cascade Lake-AP and cancelled a similar version for Cooper Lake CPX-4 in response to AMD’s datacenter return with EPYC.
 
-![](https://substackcdn.com/image/fetch/$s_!8h83!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3aeb2086-3dc2-4707-b47a-1b04ce197224_2176x1604.png)
+![](z-images/964f0562d699eda1ffc4a8925f23c9a2.webp)
 
 Ice Lake XCC 40-core Mesh Diagram. Source: Intel
 
@@ -205,11 +205,11 @@ The next Ice Lake generation benefited from a node shrink from 14nm to 10nm, all
 
 ### Disaggregated Mesh Across EMIB
 
-![](https://substackcdn.com/image/fetch/$s_!84cW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F224c3b3b-2f89-4983-baa8-ba2dfbf79771_2979x1661.png)
+![](z-images/d65943432d4516ad48422e5b9e471acf.webp)
 
 Intel Xeon’s Disaggregation Journey to Chiplets. Source: Intel
 
-![](https://substackcdn.com/image/fetch/$s_!Jaqc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcd750739-7f96-4cdb-b968-d5fccfcd99c2_2197x1895.png)
+![](z-images/cfbc75072e734fbb5e2ed015fd1fd339.webp)
 
 Sapphire Rapids XCC Topology. Source: Intel
 
@@ -225,17 +225,17 @@ The subsequent Emerald Rapids update in late 2023 kept the same core architectur
 
 ### Heterogeneous Disaggregation on Xeon 6
 
-![](https://substackcdn.com/image/fetch/$s_!uuve!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb7e1a665-9bf8-4dd2-873a-4de31bd70c7e_2802x1562.png)
+![](z-images/6f90b4cde7f07aae5408a58a0c2061bd.webp)
 
 Xeon 6 Platform Features. Source: Intel
 
-![](https://substackcdn.com/image/fetch/$s_!5cM1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb4873f4f-99fa-4a9f-9389-b3c1a35f46c6_2510x1047.png)
+![](z-images/1fc328de5a86fc2d4037ba8b88e7d537.webp)
 
 Xeon 6 Compute and I/O Die Diagrams. Source: Intel
 
 Another benefit going to a multi-die chiplet design beyond going past the reticle limit is being able to mix and match dies and share designs across different variants and configurations. For the next Xeon 6 platform in 2024, Intel went for heterogeneous disaggregation by partitioning the I/O away from the core and memory. Doing this allows the I/O dies to stay on the older Intel 7 node while the compute dies moved to Intel 3. Intel could thus reuse the I/O IP developed from Sapphire Rapids while saving cost as I/O does not benefit as much from moving to more advanced nodes. At the same time, the compute dies can be mixed and matched with both P-core Granite Rapids and E-core Sierra Forest configurations with up to 3 compute dies on the top Granite Rapids-AP Xeon 6900P series, creating a large 10x19 mesh over 5 dies, connecting 132 cores with up to 128 enabled for yield.
 
-![](https://substackcdn.com/image/fetch/$s_!Omye!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff31bc7da-3964-4e1a-a65c-22d17a7473d4_3102x2196.png)
+![](z-images/b70406af3e1d4c7ed2955867f2550461.webp)
 
 Xeon 6 Compute Die Mosaic. Clockwise from Top Left: UCC 44c, HCC 50c, HDCC 152c, LCC 20c. Source: Intel, SemiAnalysis Estimates
 
@@ -243,13 +243,13 @@ On the 144-core Sierra Forest, the E-cores are grouped into 4-core clusters that
 
 ### Clearwater Forest Failure
 
-![](https://substackcdn.com/image/fetch/$s_!-Mf7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9e7b64d4-593a-4b8e-a26c-3ddba7850e97_2543x2621.png)
+![](z-images/324a3a9d7d822bf516874b9136f0b182.webp)
 
 Twelve 24-core Clearwater Forest Compute Dies on 18A. Source: Intel, SemiAnalysis
 
 The I/O dies are also being reused in the upcoming Xeon 6+ Clearwater Forest-AP E-core processors. The compute dies debut Intel’s Foveros Direct hybrid bonding technology, stacking 18A core dies atop base dies containing the mesh, L3 cache and memory interface, bringing core counts up to 288. Vertical disaggregation allows the compute cores to move to the latest 18A logic process while keeping the mesh, cache and I/O that does not scale as well on the older Intel 3 node.
 
-![](https://substackcdn.com/image/fetch/$s_!qVHN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9fc472b-1964-4d8a-9743-0610dd8a10ba_2966x1415.png)
+![](z-images/ee8f239beef0b9bd864d5c4f7c9b1d36.webp)
 
 Clearwater Forest Performance Projections. Source: Intel
 
@@ -259,17 +259,17 @@ Despite a two-year gap with new core micro-architecture, new node, new advanced 
 
 ## AMD’s Zen Interconnect Architecture
 
-![](https://substackcdn.com/image/fetch/$s_!sC88!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7520d55a-ba5b-466e-9799-72fe683a1923_2860x1588.png)
+![](z-images/b17046f1fac1cfc460da988bb9e2ac0a.webp)
 
 AMD EPYC CPU Generations. Source: AMD
 
-![](https://substackcdn.com/image/fetch/$s_!Z99I!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc704a28b-2774-4428-9745-2cfdcf1f1573_2775x1508.png)
+![](z-images/5ac95ddabec3e4b34908e44269519d97.webp)
 
 Intel Criticizing AMD’s Naples. Source: Intel
 
 AMD’s return to the datacenter CPU market with their EPYC Naples 7001 series in 2017 caused quite a stir, with Intel mocking the design as “Four glued-together desktop die” with inconsistent performance. In reality, the small design team at AMD had to be resourceful, and could only afford to tape out a single die that had to be used for both desktop PCs, server and even embedded with integrated 10Gbit Ethernet on the same die.
 
-![](https://substackcdn.com/image/fetch/$s_!NxBd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff6de7f59-7300-4154-aba5-836eae048878_3025x1693.png)
+![](z-images/45c936053da2ee0a130293547a5326bb.webp)
 
 AMD Zeppelin SoC Architecture. Source: AMD, ISSCC 2018
 
@@ -279,7 +279,7 @@ This architecture meant that there was no unified L3 cache and core-to-core late
 
 ### EPYC Rome’s Centralized IO
 
-![](https://substackcdn.com/image/fetch/$s_!qr8U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F89034fe0-5221-40fe-9936-7e7e779456d6_2830x1602.png)
+![](z-images/82ffa2c95b8b56a24dedd3b31b614202.webp)
 
 Rome and Milan SoC Architecture. Source: AMD
 
@@ -287,7 +287,7 @@ The 2019 Rome generation saw a complete rethink of the die layout, taking advant
 
 VMs spun up on Rome had to be kept to 4 cores to avoid performance loss from cross-die communications, much like the prior Naples. This was addressed with the Milan generation in 2021 that increased CCX size to 8 cores by moving to a ring bus architecture, while reusing the same I/O die as Rome.
 
-![](https://substackcdn.com/image/fetch/$s_!yJpR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F053b0db0-b10d-46be-ab7c-6826eeb1b607_2777x1154.png)
+![](z-images/5daa9ca18ea724fb2e8201cabbc01a76.webp)
 
 AMD Turin-Dense. Source: AMD
 
@@ -297,7 +297,7 @@ The key benefit of this chiplet design is the scalability of core counts with ju
 
 ## Intel Diamond Rapids Architecture Changes
 
-![](https://substackcdn.com/image/fetch/$s_!ZcsD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73fc256f-03cf-47b4-9ac5-a6240b0c9de0_2786x1606.png)
+![](z-images/2646129e28f2222da757e5224d446868.webp)
 
 Diamond Rapids Overview. Source: HEPiX via @InstLatX64
 
@@ -309,7 +309,7 @@ The IMH dies contain the 16-channel DDR5 memory interfaces, PCIe6 with CXL3 supp
 
 Interestingly, it seems that the die to die interconnect no longer requires EMIB advanced packaging, with long traces across the package substrate connecting each CBB die to both IMH dies, allowing each CBB direct access to the entire memory and IO interface without needing a second extra hop to the other IMH. This also ensures that only 2 cross-die hops are needed for any inter-CBB communication. As a result of moving away from advanced packaging and splitting the cores across 4 dies, we expect cross-CBB latencies to be appreciably worse off, with a large difference in latency compared to staying within the same die.
 
-![](https://substackcdn.com/image/fetch/$s_!v88S!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe49ef13f-5a91-465a-af7e-3caabc9c651a_2942x1627.png)
+![](z-images/2877c7803d118827136c8c7b9bc61c12.webp)
 
 Intel removes SMT on their P-cores. Source: Intel
 
@@ -321,7 +321,7 @@ In a late move, Intel has cancelled the mainstream 8-channel Diamond Rapids-SP p
 
 ## AMD Venice Architecture Changes
 
-![](https://substackcdn.com/image/fetch/$s_!hYF-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5ccdb80a-accb-4092-90d4-09ebda6b6953_1530x1600.png)
+![](z-images/2b085a8fcb42acc333a69e46b66dd728.webp)
 
 AMD Venice die layout. Source: @HighYieldYT
 
@@ -335,7 +335,7 @@ Lower core count and frequency optimized “-F” SKUs for AI head nodes will em
 
 Lastly, 8 small dies can be seen beside the I/O dies next to where the DDR5 interface exits. These are Integrated Passive Devices (IPD) that help smooth power delivery to the chip in the heavily I/O dense area, where the SP7 package routing is saturated with memory channel fanout.
 
-![](https://substackcdn.com/image/fetch/$s_!0aVL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe982a29b-8dbe-48a8-b2d8-a5a595d09ffe_3053x1668.png)
+![](z-images/a296ea52b7052a93068f065b9f56a157.webp)
 
 AMD Venice Performance Claims. Source: AMD
 
@@ -349,7 +349,7 @@ AMD is also doubling down where Intel is pulling out. While Intel cancels its 8-
 
 ## 2026 CPU Costing Analysis
 
-![](https://substackcdn.com/image/fetch/$s_!hsEy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c0105ff-d533-4e0b-b724-ed097370cf6f_1065x1901.png)
+![](z-images/6ed148b9037e5150cc5a960587ea45ec.webp)
 
 AMD Venice BoM Costing. Source: SemiAnalysis Estimates sales@semianalysis.com
 
@@ -357,11 +357,11 @@ AMD Venice BoM Costing. Source: SemiAnalysis Estimates sales@semianalysis.com
 
 ## Nvidia Grace
 
-![](https://substackcdn.com/image/fetch/$s_!Fg1r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56be8f6f-b46d-4a8c-b042-449a59a8fe0c_1999x1018.png)
+![](z-images/37d5adb9c1429d865f66f6bbb897987a.webp)
 
 Nvidia’s Grace CPU connections. Source: NVIDIA
 
-![](https://substackcdn.com/image/fetch/$s_!oe6W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e6f2555-0038-48f1-945e-f48bdc05c2f7_1846x1046.png)
+![](z-images/786141bcd27b0eb100fba404c1051599.webp)
 
 Nvidia Grace Scalable Coherency Fabric. Source: NVIDIA
 
@@ -379,15 +379,15 @@ This is why AI workloads are currently being slowed by the Grace CPUs in GB200 a
 
 Vera takes things further in 2026 for the Rubin platform, doubling C2C bandwidth to 1.8TB/s and doubling the memory width with eight 128bit wide SOCAMM 192GB modules for 1.5TB of memory at 1.2TB/s of bandwidth. The mesh design remains, with a 7x13 grid that houses 91 cores, with up to 88 active. L3 cache increases to 162MB. NVIDIA now disaggregates the perimeter memory and I/O regions into separate chiplets, totaling 6 dies packaged with CoWoS-R (1 reticle-sized compute die on 3nm with NVLink-C2C, 4 LPDDR5 memory dies and 1 PCIe6/CXL3 IO die).
 
-![](https://substackcdn.com/image/fetch/$s_!C8_g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36a84fe6-b848-4374-9c7f-245cc317e0a3_1989x1851.png)
+![](z-images/83c9cab631268011ebfc339bfe6bdb89.webp)
 
 Vera Rubin NVLink C2C Diagram. Source: NVIDIA
 
-![](https://substackcdn.com/image/fetch/$s_!YHta!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Febce2cd3-75fb-44fe-aa0b-35a191131a98_3119x1925.png)
+![](z-images/2f945f282d523c391c539c3738045b13.webp)
 
 Vera CPU Specifications. Source: NVIDIA
 
-![](https://substackcdn.com/image/fetch/$s_!CdZY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24ed62c6-9b02-438e-8acb-1868bfd4ee81_3000x3040.jpeg)
+![](z-images/0ec1525ed7fa56adfcc9cd732a78c5a9.webp)
 
 Vera Floorplan Annotated. Source: NVIDIA, SemiAnalysis Estimates
 
@@ -395,7 +395,7 @@ Perhaps burned by the performance bottlenecks of ARM’s Neoverse cores, NVIDIA 
 
 ## AWS Graviton5
 
-![](https://substackcdn.com/image/fetch/$s_!wrPN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faf081f84-4b44-4861-83b9-7467a1b74f89_2964x1485.png)
+![](z-images/6c5af503056c4bfc1e56d8a2358fcfbe.webp)
 
 Graviton CPU History. Source: AWS
 
@@ -407,7 +407,7 @@ Graviton3’s preview in late 2021 brought several changes that focused on eleva
 
 Graviton4 continued scaling, adopting the updated Neoverse V2 core and increasing core counts and memory channels by 50% to 96 and 12-channels respectively, bringing 30-45% speedups over the previous generation. PCIe5 lane counts tripled from 32 to 96 lanes for much greater connectivity to networking and storage. Graviton4 also brought support for dual-socket configurations for even higher instance core counts.
 
-![](https://substackcdn.com/image/fetch/$s_!P_3k!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcaa991f9-af71-4c1d-b519-c7aa45b5bfac_2732x1472.png)
+![](z-images/aa615a23c75c0e4492a584dfbb7f640b.webp)
 
 Graviton5 core diagram. Source: AWS
 
@@ -419,7 +419,7 @@ Interestingly, while the PCIe lanes were upgraded to Gen6, lane counts regressed
 
 Graviton5 employs an evolved chiplet architecture and interconnect, with 2 cores now sharing the same mesh stop, arranged in an 8x12 mesh. While AWS did not show the packaging and die configurations this time, they ensured that Graviton5 does employ a novel packaging strategy, and that the CPU core mesh is split over multiple compute dies.
 
-![](https://substackcdn.com/image/fetch/$s_!0qb4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9280a965-5af9-4c30-8ae0-b107f9248e48_2697x1149.png)
+![](z-images/9c2821ba68572c25f32a0fd0525bac9e.webp)
 
 Graviton Pre-Silicon Design. Source: AWS
 
@@ -427,11 +427,11 @@ In terms of CPU usage, AWS was proud to mention that they have been using thousa
 
 ## Microsoft Cobalt 200
 
-![](https://substackcdn.com/image/fetch/$s_!VLAl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9634fe8d-37d6-4a92-87a5-1b371d9a6a4f_1920x1080.png)
+![](z-images/54a06a8c4c389f09214fd019c871373e.webp)
 
 Microsoft Cobalt 200 Server. Source: Microsoft
 
-![](https://substackcdn.com/image/fetch/$s_!nG1L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80839a8f-c1e0-44fe-ab4e-310b4427ccd1_2608x1427.png)
+![](z-images/f81d96c4666871f40650a703b66a6bdd.webp)
 
 Cobalt 200 SoC Layout. Source: Microsoft
 
@@ -441,11 +441,11 @@ Unlike Graviton5, Cobalt 200 will only be featured in Azure’s general purpose 
 
 ## Google Axion C4A, N4A
 
-![](https://substackcdn.com/image/fetch/$s_!iUhJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F05f65e22-af68-4a66-8471-20eb13de627b_3005x1594.png)
+![](z-images/3b36f378269b88cff55a8cf440284d67.webp)
 
 Axion C4A Wafer and Package. Source: Hajime Oguri, Google Cloud Next ’24
 
-![](https://substackcdn.com/image/fetch/$s_!8nFB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cca6b00-0503-42dd-b09d-15a595e864d9_1844x1814.png)
+![](z-images/9925fe9c34037a5363ba4dee6c18bfc6.webp)
 
 Axion N4A CPU. Source: Google
 
@@ -455,19 +455,19 @@ For more cost-effective scale-out web and microservices, Google’s Axion N4A in
 
 ## AmpereOne & SoftBank Acquisition
 
-![](https://substackcdn.com/image/fetch/$s_!2wN-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fae88cb59-dfc9-4ef0-82db-daeb13090a11_2774x1467.png)
+![](z-images/dfef1fe53f5881e7dea995755bddc40c.webp)
 
 AmpereOne 2024 Roadmap. Source: Ampere Computing
 
-![](https://substackcdn.com/image/fetch/$s_!tg4g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9bd4b346-265c-417c-8de2-3bb02f84db2d_2618x1683.png)
+![](z-images/1f7759dbe408e64f4e0ab0d0497bf703.webp)
 
 Ampere Altra Max (Left) and Altra (Right). Source: Ampere Computing
 
-![](https://substackcdn.com/image/fetch/$s_!67XG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F14200e92-bb26-47b1-89d4-c52dc20cccd8_1500x1852.png)
+![](z-images/879b87e2cbc2ba699d752dafe03fe308.webp)
 
 Delidded AmpereOne CPU. Source: Brendan Crain, Wikimedia
 
-![](https://substackcdn.com/image/fetch/$s_!DWkM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c471082-f099-457c-bc01-5aa2deb081cb_2923x1573.png)
+![](z-images/a656a0cfe14e2afdf48fe762297da724.webp)
 
 AmpereOne Mesh Architecture. Source: Ampere Computing, Hot Chips 2024
 
@@ -485,7 +485,7 @@ Ampere is now working on AI chips as well as CPUs under the Softbank umbrella.
 
 ## ARM Phoenix
 
-![](https://substackcdn.com/image/fetch/$s_!6xHo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44e44d5f-8aeb-4974-9868-cd834fe74993_2560x1440.png)
+![](z-images/2b2dbbac133363314b89ddf664d89adb.webp)
 
 ARM’s CSS Offerings Balance Customization with Development Cost. Source: ARM
 
@@ -503,23 +503,23 @@ China’s home grown CPU efforts are continuing apace, with both Loongson and Al
 
 Huawei’s first few generations of datacenter CPUs used the standard mobile ARM Cortex cores. The 2015 Hi1610 featured 16 A57 cores. 2016’s Hi1612 doubled core counts to 32, while the Kunpeng 916 in 2017 updated the core architecture to Cortex-A72. All three generations were fabbed on TSMC 16nm.
 
-![](https://substackcdn.com/image/fetch/$s_!nuLP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9050cd76-7b26-4fa8-b999-8b5a81a3a501_1306x2336.png)
+![](z-images/0f8f1c6b0c28e25ba8bfbfdcf69c600a.webp)
 
 Kunpeng 920 Die Shots. Source: 万扯淡
 
 The Kunpeng 920 arrived in 2019 with an ambitious multi-chiplet design and 64 custom cores. Two compute dies on TSMC 7nm each contained 8 clusters of 4 TaiShan V110 cores running on the ARM v8.2 ISA. The clusters are connected with a ring bus to four channels of DDR4 on the same die totaling 8-channels across the two compute dies. Kunpeng 920 was the first CPU to adopt TSMC’s CoWoS-S advanced packaging, with a large silicon interposer connecting 2 compute dies to an I/O die with 40 PCIe Gen 4 lanes and dual integrated 100 Gigabit Ethernet controllers using a custom die to die interface. While Kunpeng 920 integrated many novel technologies, the US sanction on Huawei which curtailed their supply of TSMC had disrupted their CPU roadmap, as the next Kunpeng 930 generation failed to release in 2021.
 
-![](https://substackcdn.com/image/fetch/$s_!J5oo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc84b6c66-8fe3-4f33-812d-aa3ddfd7c144_1300x1833.png)
+![](z-images/79bb461e5ff2438e66fe7b1c4dfb98c9.webp)
 
 Kunpeng 920B Die Shots. Source: Kurnal
 
 Instead, an updated Kunpeng 920B was quietly released in 2024 with several upgrades. The TaiShan V120 cores now support SMT, with 10 clusters of 4 on each of the two compute dies for 80 cores and 160 threads. Core interconnect and layout remained similar to the Kunpeng 920 with 8 channels of DDR5 on the compute dies. The I/O die is now split into halves with the compute dies in the middle. We believe the 5 year gap between CPU generations were the result of US sanctions and having to redesign the chip for the SMIC N+2 process.
 
-![](https://substackcdn.com/image/fetch/$s_!ZzDl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffa36c618-5da3-4cc3-9235-a3b4f5322892_3035x1034.png)
+![](z-images/eacc4d25f80e208c45d3ba1f05db9a13.webp)
 
 Huawei Kunpeng CPU Roadmap. Source: Huawei
 
-![](https://substackcdn.com/image/fetch/$s_!r1Rj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F651c2acf-e470-4797-b124-9cdd060ca65d_3065x778.png)
+![](z-images/e297f57136f3a7d42d34a12e86a6531f.webp)
 
 Huawei TaiShan 950 SuperPoD. Source: Huawei
 

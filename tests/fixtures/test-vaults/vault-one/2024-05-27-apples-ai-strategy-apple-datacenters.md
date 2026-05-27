@@ -12,13 +12,13 @@ Nvidia continues to ramp their production to service the world’s insatiable de
 
 The first thing is that multiple sources have reported that Apple is ramping up production of its M-series processors this year [to record volumes](https://www.semianalysis.com/p/accelerator-model). This is primarily Apple’s M2 Ultra SKUs which is 2 M2 Max SoCs stitched together with what Apple calls “UltraFusion.” Note that Apple’s M3 Ultra was cancelled.
 
-![](https://substackcdn.com/image/fetch/$s_!X3_O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F16fc78ce-9823-4418-a73c-2096d0c1b5b3_1010x700.jpeg)
+![](z-images/f011df74d65669b9f618fe1bef43d0a9.webp)
 
 Source: Apple
 
 Ultrafusion is Apple’s marketing name for using a local silicon interconnect (bridge die) to connect the two M2 Max chips in a package. The two chips are exposed as a single chip to many layers of software. M2 Ultra utilizes [TSMC’s InFO-LSI packaging technology](https://www.semianalysis.com/p/advanced-packaging-part-1-pad-limited). This is a similar concept as TSMC’s CoWoS-L that is being adopted by Nvidia’s Blackwell and future accelerators down the road to make large chips. The only major difference between Apple and Nvidia’s approaches are that InFO is chip-first vs CoWoS-L is chip-last process flow, and that they are using different types of memory.
 
-![](https://substackcdn.com/image/fetch/$s_!zgW7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f352fc1-a4f7-49ab-bb63-5cc969897c61_1858x628.png)
+![](z-images/a2dfeb787b5319b698eda241fee9fe4b.webp)
 
 Source: Nvidia
 
@@ -34,7 +34,7 @@ This additional production of the M2 Ultras is consistent with recent reporting 
 
 Furthermore, Apple has extensive expansion plans for their own datacenter infrastructure. We are tracking [7 different datacenter sites with over 30 buildings for Apple](https://www.semianalysis.com/p/datacenter-model) as well as their planned buildout. Their total capacity is doubling in a relatively short period of time.
 
-![](https://substackcdn.com/image/fetch/$s_!ZVcM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b0f1de1-a7a0-4001-a0c7-7bea0f45d829_2048x1487.jpeg)
+![](z-images/269f408f52c989e3a9632329e39ab502.webp)
 
 Source: SemiAnalysis Datacenter Model
 

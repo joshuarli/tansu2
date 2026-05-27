@@ -8,11 +8,11 @@ description: "Vera, Rubin, NVLink 6 Switch, ConnectX-9, BlueField-4, Spectrum-6,
 
 ### Vera, Rubin, NVLink 6 Switch, ConnectX-9, BlueField-4, Spectrum-6, Seamless Cableless Compute Tray Design, Power Rack, VR NVL72 TCO and BoM
 
-![](https://substackcdn.com/image/fetch/$s_!NB4l!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7257cc0c-a57b-4aa2-b03b-1ead3d930e8c_4800x2700.png)
+![](z-images/4f089f4b407c384023aec7cb2ea65fb4.webp)
 
 At CES 2026, Nvidia officially announced in detail all 6 Rubin platform products: the Rubin GPU, Vera CPU, NVLink 6 Switch, ConnectX-9, BlueField-4, and Spectrum-6. VR NVL72 is the second generation of Nvidia’s rack scale Oberon architecture that takes the stage. With competition catching up on rack scale game, Trainium 3 in the Gen2 UltraServer, AMD MI450X Helios Racks, and [Google’s TPU which was at rack scale even before GB200](https://newsletter.semianalysis.com/p/tpuv7-google-takes-a-swing-at-the), Nvidia answers with “extreme co-design” supremacy. With extreme co-design, Nvidia takes rack scale integration to the next level. Rack system becomes a unit of compute, a single distributed accelerator, and Nvidia designs the system.
 
-![](https://substackcdn.com/image/fetch/$s_!mG2N!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d3419ee-609e-490d-999f-2454ec532c80_2683x1577.png)
+![](z-images/d28a5e19ca1dcb154b0178d14c07b76f.webp)
 
 Source: Nvidia
 
@@ -38,7 +38,7 @@ Today we are also launching the [VR NVL72 Component BoM and Power Budget Model](
 - **Management modules**: BMC
 - **Networking**: Transceivers, CX-9
 
-![](https://substackcdn.com/image/fetch/$s_!FRrs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7563ee69-3f02-47f8-944f-a7ac5b62cf0a_3362x844.png)
+![](z-images/e3571c84c4cfd6fe2b08e6d0d3ffc34c.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -46,19 +46,19 @@ Please visit this [self service portal](https://semianalysis.com/vr-nvl72-model/
 
 ## Extreme Co-design: 6 Silicon Product Offerings under the Rubin Platform - Chip Floorplans & Specifications
 
-![](https://substackcdn.com/image/fetch/$s_!ZQyU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cdeb372-67f9-4140-889e-2f8f493cda0a_1984x1141.png)
+![](z-images/e38647d8fa99cd66e4481c3f20825431.webp)
 
 Source: SemiAnalysis, Nvidia
 
 Rubin’s dense FP4 and FP8 FLOPs increase by roughly ~3.5× versus GB200, while FP16 FLOPs rise by a more modest ~1.6x, underscoring NVIDIA’s continued emphasis on FP4/FP8 as the primary scaling vector. On the memory side, HBM capacity remains flat from GB300, while HBM bandwidth scales more aggressively at ~2.8x. Overall, the architecture prioritizes bandwidth and low-precision compute.
 
-![](https://substackcdn.com/image/fetch/$s_!m2IG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6e9330b4-7407-4dcb-8a2b-fb323371ffba_2218x1210.png)
+![](z-images/8f0d6ef9d1e48f260a05ef8ac016d808.webp)
 
 Source: SemiAnalysis, Nvidia
 
 ### Rubin
 
-![](https://substackcdn.com/image/fetch/$s_!u2L6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbe50555c-6427-42ca-b58e-97716f2558c9_4800x2700.png)
+![](z-images/4f089f4b407c384023aec7cb2ea65fb4.webp)
 
 Source: Nvidia
 
@@ -92,7 +92,7 @@ Rubin’s chip level TDP increases up to 2,300W vs 1000-1400W for Blackwell. Sup
 
 These power profiles are software managed. Users can also choose whatever max power draw they prefer (as long as it is no more than 2,300W per GPU) and this has been the case for previous GPU generations as well. Several hyperscalers and labs have chosen to run their GPUs at lower power to optimize for performance per Watt as well as taking into account power availability constraints.
 
-![](https://substackcdn.com/image/fetch/$s_!tbcG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F61396626-3359-4a08-8dfa-58f7ed911443_2012x1118.png)
+![](z-images/5e4d92757e484ce9fda0156303109443.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -102,7 +102,7 @@ For Rubin, the heat spreader lid is a module made up of two separate lids. Besid
 
 ### Vera
 
-![](https://substackcdn.com/image/fetch/$s_!XgXK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0795695-2bda-4134-a982-12e59acc76f9_3000x3040.jpeg)
+![](z-images/0ec1525ed7fa56adfcc9cd732a78c5a9.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -110,7 +110,7 @@ Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 ### NVLink 6 Switch
 
-![](https://substackcdn.com/image/fetch/$s_!p8aL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F722c91c0-0b9e-43c6-9ca6-76714eb7fa70_3000x3048.jpeg)
+![](z-images/6b425f77429b520b67215941401bcd9a.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -118,7 +118,7 @@ While the rack-level switching bandwidth has doubled, the number of NVLink Switc
 
 ### ConnectX-9
 
-![](https://substackcdn.com/image/fetch/$s_!so7W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb34a228-9fff-45eb-8851-68a1d54acf66_1781x1780.jpeg)
+![](z-images/c3f80d76b7cb5e4943e7d52f8e9286a7.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -126,7 +126,7 @@ The ConnectX-9 is largely iterative from ConnectX-8, with the same 800G networki
 
 ### BlueField-4
 
-![](https://substackcdn.com/image/fetch/$s_!Wfwi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60828488-61bb-416d-a9c8-df3e8fe3c284_2506x1673.jpeg)
+![](z-images/72cb0efa8f0bfbacc4b0bb01d60bc39f.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -134,7 +134,7 @@ BlueField-4’s design departs significantly from BlueField-3. Instead of doing 
 
 ### Spectrum-6
 
-![](https://substackcdn.com/image/fetch/$s_!qbIl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2e1932aa-e7cf-438e-bc2a-984a03d9cd25_3000x2983.jpeg)
+![](z-images/8d7971adbeae0b0e565a4a723eb54a01.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -152,7 +152,7 @@ Unlike Blackwell, Rubin is only offered in the VR NVL72 SKU. The set up is very 
 - 36 Vera CPUs
 - 36 NVLink 6 Switch ASICs
 
-![](https://substackcdn.com/image/fetch/$s_!xB_f!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F42660b70-c898-4e6b-a117-7490baf5ae4c_733x1702.png)
+![](z-images/8678506624fde794f7e9bd935151fc9f.webp)
 
 Source: Nvidia VR NVL72 BoM and Power Budget Model
 
@@ -160,7 +160,7 @@ On a side note, VR NVL72 was initially known as VR NVL144 as [Jensen math](https
 
 ### CPX Form Factor
 
-![](https://substackcdn.com/image/fetch/$s_!BH0r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F30fd28ad-beb1-46a4-844e-bab6c4d4b216_1507x1697.png)
+![](z-images/b3fde2156594481c4bc15fb48490f64b.webp)
 
 Source: Nvidia VR NVL72 BoM and Power Budget Model
 
@@ -188,7 +188,7 @@ We also think a lot this shift is driven by evolving memory economics. **Convent
 
 One of the major changes with VR NVL72 is within the compute tray. This redesign of the compute tray is centered around simplifying assembly, namely eliminating cables from the compute tray as cables have been the major point of failure of GB200/300 assembly. As Jensen put it at CES 2026, the cableless design reduces the compute tray assembly time from 2 hours to 5 minutes. To achieve this, the VR NVL72 compute tray adopts a modular design with the modules connecting to each via board-to-board connectors.
 
-![](https://substackcdn.com/image/fetch/$s_!PGJb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fff713757-9939-4bc5-a9b7-b21ea415c5bc_832x1398.png)
+![](z-images/c921b2ca1a50bb9aeada0e80d354571c.webp)
 
 Source: Nvidia VR NVL72 BoM and Power Budget Model
 
@@ -205,11 +205,11 @@ We break down these components costs and all the subcomponent costs in the [Nvid
 
 ### Strata
 
-![](https://substackcdn.com/image/fetch/$s_!3S86!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e60d518-4f27-49ac-b476-45433bca8a0a_911x1066.png)
+![](z-images/f3f339c57f60cd2b3ef9fe75135cf111.webp)
 
 Strata Module, Source: Nvidia VR NVL72 BoM and Power Budget Model
 
-![](https://substackcdn.com/image/fetch/$s_!0YnS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ccb2f3a-f952-4300-bc34-96c1470be6ba_1032x1080.png)
+![](z-images/c0c82bd9975e4585cf8b7cd7c6ef967a.webp)
 
 Bianca Module. Source: Nvidia VR NVL72 BoM and Power Budget Model
 
@@ -217,7 +217,7 @@ Situated at the back of the chassis, the Strata module of VR NVL72 is the equiva
 
 ### Orchid
 
-![](https://substackcdn.com/image/fetch/$s_!764T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F74182e8e-49ce-4a30-b7bd-c2b0a35b6419_584x1115.png)
+![](z-images/9260a2721a8e48bd865e7c832174892a.webp)
 
 Source: Nvidia VR NVL72 BoM and Power Budget Model
 
@@ -225,7 +225,7 @@ The Orchid Module houses two ConnectX-9 NICs, two 800G transceiver cages, and on
 
 ### Midplane
 
-![](https://substackcdn.com/image/fetch/$s_!bnHy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b2c77d5-6f60-4022-9753-07ffa81846fe_1089x814.png)
+![](z-images/325b4134e8c9ead81c31bd1f750892ea.webp)
 
 Source: Nvidia VR NVL72 BoM and Power Budget Model
 
@@ -233,7 +233,7 @@ The midplane acts as a bridge for the PCIe signal between the two Strata modules
 
 ### BlueField-4
 
-![](https://substackcdn.com/image/fetch/$s_!9hkF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fea791cfc-972f-4952-b1fd-283e63357743_823x1648.png)
+![](z-images/c5a2065f4929f6ea6a38d97c85cd45c5.webp)
 
 Source: Nvidia VR NVL72 BoM and Power Budget Model
 
@@ -271,11 +271,11 @@ These modules provide management security functions over the compute tray. Hyper
 
 The compute tray topology of VR NVL72 is roughly similar to that of GB200 and GB300. The three main differences to Grace Blackwell are the connections between GPU and ConnectX NICs, the connections to the local NVMe storage, and the connection between the BlueField-4 and ConnectX-9.
 
-![](https://substackcdn.com/image/fetch/$s_!9T2Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F571bad1d-efd0-4475-8d55-1563d0c00448_3772x1694.png)
+![](z-images/90f55e13e2fa8ecd3ba8eafcd0e8741d.webp)
 
 Source: Nvidia VR NVL72 BoM and Power Budget Model
 
-![](https://substackcdn.com/image/fetch/$s_!xV2T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F596ff1e3-1d12-4353-8d7f-c71ac273ae75_3105x2014.png)
+![](z-images/7d581cef4e0c008cf843a597a7eadb13.webp)
 
 Source: Nvidia VR NVL72 BoM and Power Budget Model
 
@@ -285,7 +285,7 @@ Essentially, this means ConnectX-8 has two hosts, Grace CPU and B300 GPU. This i
 
 Secondly, the local NVMe storage for Rubin has been moved to a different location from that of NVMe storage in Grace Blackwell. Previously, local NVMe storage was managed by BlueField-3. For VR NVL72, the local NVMe storage is physically on the Orchid module managed by the ConnectX-9.
 
-![](https://substackcdn.com/image/fetch/$s_!299t!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fedcb2919-19ac-481a-851c-24e14c7eedee_3422x2419.png)
+![](z-images/98d203eba6292936eae7ea4b7439b3b4.webp)
 
 Source: Nvidia, Nvidia VR NVL72 BoM and Power Budget Model
 
@@ -305,7 +305,7 @@ For the GB200/300, the most valuable cable that is exclusively supplied by Amphe
 
 Although a cableless design might initially appear unfavorable for Amphenol, it is in fact a positive. Signals between the Strata module and the daughter modules still need a physical interconnect. In this architecture, those signals exit the Strata board through Amphenol’s PaladinHD2 board-to-board connectors. The signal is then routed through a PCB midplane sitting in the middle of the chassis. On the other side of the PCB midplane, the daughter modules connect to the PCB midplane via another set of Paladin HD2 B2B connectors. In our [VR NVL72 Component BoM and Power Budget Model](https://semianalysis.com/vr-nvl72-model/) we have a detailed breakdown of Amphenol’s compute tray content in Vera Rubin NVL72. This is also discussed in more detail in our article on **[Amphenol’s AI Content.](https://semianalysis.com/institutional/amphenol-content-growth-vr-nvl144-backplane-board-to-board-connectors-dac-acc-aec-tam-kyber-midplane-backplane/)**
 
-![](https://substackcdn.com/image/fetch/$s_!Im-q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F675f09bf-ba67-4a1c-9586-eee07284d81d_2256x418.png)
+![](z-images/c474a71dadfba6a5ada7e0358d64413e.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -313,11 +313,11 @@ Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 To accommodate this cableless design, the CX-9 NICs, that would have been on the Strata modules, are relocated to the Orchid module (from the back half to the front half of the chassis) as illustrated in the diagram below.
 
-![](https://substackcdn.com/image/fetch/$s_!NMLS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9a44425c-aa7a-46e2-bc0a-9c5f1cdfce92_1354x2353.png)
+![](z-images/8bff93498fbf498b83ef658a63ab7f0e.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
-![](https://substackcdn.com/image/fetch/$s_!3ZiJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F164f7aed-a3bb-4037-be5a-039fcebf216f_1422x2419.png)
+![](z-images/c13957d448d6d5a79e322ed5e998dae5.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -331,13 +331,13 @@ Nevertheless, it is still challenging to drive a PCIe Gen6 signal over around 50
 
 First, we must understand why high-speed signals perform worse on PCB versus flyover cables. As SerDes rates increase, high-speed channels become increasingly constrained by insertion loss introduced by PCB traces, vias, dielectric materials and conductor roughness. Insertion loss is defined as the signal power that is lost as a signal is traveling through an interconnect channel.
 
-![](https://substackcdn.com/image/fetch/$s_!ty_8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc4ac828d-47ff-4fa3-953a-cc21a29d201a_1020x648.png)
+![](z-images/429a75733b5b6fb37648eea8f24230ea.webp)
 
 Source: Doosan, SemiAnalysis
 
 The three main mechanisms contributing to insertion loss in a PCB channel are conductor loss from skin effect and copper surface roughness, dielectric loss from laminate absorption, and geometry loss from discontinuities such as vias and layer changes.
 
-![](https://substackcdn.com/image/fetch/$s_!nWxq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa9047e9c-d055-47c2-b963-d09f338fb564_1199x675.png)
+![](z-images/76aba45033586b6055a6874e1310667b.webp)
 
 Source: DesignCon, Circuit Foil Luxembourg
 
@@ -357,7 +357,7 @@ For VR NVL72, the design has turned toward cableless given the higher density an
 
 PCB content value in VR NVL72 will grow significantly compared to that of GB200/GB300. The two main drivers of this content growth are significant material upgrades and the notable increase of high-end PCB area and layers. Our [VR NVL72 Component BoM and Power Budget Model](https://semianalysis.com/vr-nvl72-model/) has provides the $ content breakdown of high end CCL and PCB content for VR NVL72 vs GB200/GB300.
 
-![](https://substackcdn.com/image/fetch/$s_!ypvn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48aa0d51-0ac3-472d-8674-aa48f5fbe1c1_2710x663.png)
+![](z-images/388f0de1e1e4ea7163342c28f12c20d4.webp)
 
 Source: VR NVL72 Component BoM and Power Budget Model
 
@@ -365,13 +365,13 @@ On the material side, CCL content upgrades from M7 to M8/M9 drives material upgr
 
 The Table below shows the CCL classification and PCB specification of each main board in Blackwell versus Rubin.
 
-![](https://substackcdn.com/image/fetch/$s_!kixR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F88c63783-7d94-4c4f-a2ad-b1ca150403f5_2845x1393.png)
+![](z-images/6afac79786f75e68d2c390bfb4b643c4.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 The classification of CCL materials is determined by its dielectric constant (Dk) and dissipation factor (Df) at a given frequency. Insertion loss is lower at lower Dk and Df value. The common classification is anchored to the Megtron series from Panasonic as they have been setting the industry standard. When people describe the CCL as M7 classification it usually means it matches the same Dk and Df specifications as Megtron 7 of Panasonic.
 
-![](https://substackcdn.com/image/fetch/$s_!NIi4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b72a49b-42c7-4197-8098-dee66c98dc54_976x415.jpeg)
+![](z-images/463d71ed89af87aae24090abb1ebec46.webp)
 
 Source: Panasonic
 
@@ -385,7 +385,7 @@ Quartz cloth is the next generation material that replaces the glass fiber cloth
 
 Within VR NVL72, Quartz is initially adopted for the Orchid board and the midplane to allow the longest distance PCIe Gen 6 signal traveling through these two boards with as little insertion loss as possible. However, given the cost of the Quartz cloth and the difficulty in Q cloth processing, Nvidia is currently exploring the option of downgrading back to glass fiber cloth. The final decision is pending on the signal performance with the downgraded glass fiber cloth.
 
-![](https://substackcdn.com/image/fetch/$s_!23tC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F90d73db2-1e48-4675-8fab-46e2d57d2671_2255x1609.png)
+![](z-images/b1de4473fc7915cb83a7a9953ee4a781.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -397,25 +397,25 @@ Our [VR NVL72 Component BoM and Power Budget Model](https://semianalysis.com/vr-
 
 VR NVL72 takes liquid cooling to the next level. The VR NVL72 compute tray is 100% liquid cooled, whereas GB200 and GB300 compute trays adopt a hybrid of 85% liquid cooling and 15% air cooling. As a result of this, fans are removed from the compute tray and the cold plate coverage increases to remove heat from the front half of the chassis. An internal manifold will be placed in the middle of the chassis to distribute inlet coolant to the various modules and to collect the outlet coolant. Each of the modules within the compute tray will have a cold plate module attached. Each cold plate module connects to the internal manifolds via MQD (a smaller form factor quick disconnect specification standard by Nvidia for compact area application within the compute tray).
 
-![](https://substackcdn.com/image/fetch/$s_!Ra3T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2397b285-cb78-4081-8813-51a223db97bb_1354x2343.png)
+![](z-images/5aa1ebcab174b2d3375af1e8ecd0a461.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 The coolant enters the compute tray via UQD from the left rear side of the chassis. Then, the coolant enters the internal manifold via a tube, where the coolant is distributed to all the modules. The coolant collects the heat from the different modules and re-enters the internal manifold. Finally, the coolant exits the compute tray via UQD at the rear right side of the chassis.
 
-![](https://substackcdn.com/image/fetch/$s_!DhHR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fce22913e-61af-49e3-9487-fad91f7a8af7_2012x722.png)
+![](z-images/dd6c9fad82e8ea19131f65d5aa4fad94.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 Several upgrades are also made on the cold plate for VR NVL72. For each Strata module, the cold plate will be provided as a single module covering the entire Strata board including two Rubin GPUs, one Vera CPU, SOCAMM modules, and the various VRM components. The cold plate of the Rubin GPU is upgraded to a “micro-channel cold plate” (MCCP). Essentially, the pitch between the channels in the cold plate is reduced to to 100 micron from 150 micron. This increases the surface area and increases the thermal dissipation capacity of the cold plate. Also, there will be a layer of gold plated on the surface contacting the Rubin GPU. The reason for this is to prevent corrosion of the copper from the liquid metal Indium TIM2.
 
-![](https://substackcdn.com/image/fetch/$s_!P-4a!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78fa8a53-ba67-4917-96be-3d5da6051095_1876x584.png)
+![](z-images/71fa22fc03cf96f9e720f1d1fa7b5409.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 Beyond the Strata module, the modules at the front of the Chassis will also have a cold plate module attached. Each Orchid module will have a cold plate module covering the CX-9, the E1.S SSD, the transceiver cages and the various VRMs. The cold plate and the board will be less than 0.5U tall as two Orchid modules are stacked on top of each other in a 1U chassis. Each pair of Orchid modules shares only a pair of QD from the manifold. There will be another set of manifolds that distribute the coolant to the top and the bottom cold plates for the pair of Orchid modules. In our [VR NVL72 Component BoM and Power Budget Model](https://semianalysis.com/vr-nvl72-model/) we have the content for all the various thermal components including the cold plate modules, manifolds, and the Quick Disconnects.
 
-![](https://substackcdn.com/image/fetch/$s_!Z-zU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8e1b96be-6742-4679-8180-275aaad0521d_3164x999.png)
+![](z-images/2ec346162acfaeac471288b92a33ad0c.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -425,7 +425,7 @@ Previously, cold plates were assembled at the L10 assembly level where the vario
 
 At the compute tray level, 50VDC power enters the compute tray via the busbar clips at the back of the chassis. Then power travels to the middle of the chassis via the internal busbar cables. From the internal busbar cables, the power path is split into three destinations. The first and second path goes to the left and the right Strata Board, where the internal busbar cable feeds 50VDC power to the Strata Board directly. The third path goes to the power distribution module at the front of the chassis. The internal busbar cables will feed 50VDC power to a busbar device that travels under the PCB midplane to connect to the power distribution board (PDB) on the other side of the PCB midplane. This differs from Grace Blackwell, where 50VDC power goes directly to the PDB. Then, the PDB feeds 12VDC to all the boards in the compute tray.
 
-![](https://substackcdn.com/image/fetch/$s_!waXS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcc71c2bc-25a1-4ac8-93e1-e880143cdcee_1148x2332.png)
+![](z-images/57c9c82eca3e6c87f512521bcffda0dc.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -441,7 +441,7 @@ For the modules at the front of chassis - CX-9,BlueField-4, and management - the
 
 The mechanical components of the VR NVL72 compute tray are slightly more sophisticated than that of the Grace Blackwell. At the front of the chassis, there is a mechanical structure that separates the front into three sections, with the left and right sections housing the Orchid modules and the middle sections housing the BlueField-4, the power delivery and the management modules. Each of the modules will also have a small metal chassis. The mechanical structure provides a simple guiding mechanism that guides the modules to a blind mate process with the midplane and the internal manifolds.
 
-![](https://substackcdn.com/image/fetch/$s_!dCVe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac48da42-8603-43a2-a4b7-f852c1c09c5a_1460x922.png)
+![](z-images/1da07aa4c6ecdaa266b811625e6c2057.webp)
 
 Source: Nvidia, SemiAnalysis
 
@@ -453,13 +453,13 @@ Beyond the redesigned fanless front chassis and the 100% liquid-cooled compute t
 
 Vera Rubin will be able to operate at a 45C inlet temperature, but Blackwell is already capable of operating with inlet water temperatures above 40C (see for example Supermicro’s DLC-2 system). Major system vendors such as Lenovo and HPE have also been discussing 100% liquid-cooled architectures operating at 45C since early 2025. In 2024, HPE announced an industrial cooling system based on full liquid cooling, and similar approaches have long been used before in HPC. Lenovo discussed the next generation of its Neptune liquid solution at the 2025 OCP Summit, which is fully liquid-cooled and also uses 45C water.
 
-![](https://substackcdn.com/image/fetch/$s_!P5WH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9fe04678-76b1-406b-bb5a-c7822727bab0_1863x1070.png)
+![](z-images/7b559be7fb74f60a8dc305ede19a998a.webp)
 
 Source: HPE
 
 Consider Schneider’s GB300 Reference Design 111, presented in September 2025, as another example. In this reference design, the datacenter uses a dual-loop architecture: a chilled-water loop dedicated to air cooling (feeding the fan walls) and a separate, higher-temperature loop dedicated to liquid cooling. On the liquid side, the TCS circulates coolant to the cold plates at roughly 40C and returns it at a higher temperature, while the CDU transfers that heat into the facility water loop, which can enter the CDU at approximately 37C.
 
-![](https://substackcdn.com/image/fetch/$s_!13E2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F345a084e-4701-4993-819c-892c840fbb4d_1717x960.png)
+![](z-images/8a94051b8efa8e6e86af04338ae1f6ea.webp)
 
 Source: Schneider
 
@@ -467,13 +467,13 @@ So 45C cooling is not entirely new. Even with this capability, most operators de
 
 Now, how does Nvidia cool this heat monster, given that Vera Rubin’s power consumption and heat generation is roughly double that of Blackwell? Before answering, it is worth adding another consideration. Warmer inlet temperatures, while improving energy efficiency, can make cooling more challenging as inlet temperatures approach the maximum outlet temperature (the system’s ceiling temperature) and the delta-T tightens. With less temperature differential, you need higher water/coolant flow to remove the same amount of heat. In Blackwell reference architectures, the ceiling temperature is around 65C (e.g. see the Vertiv GB200 NVL72 reference design).
 
-![](https://substackcdn.com/image/fetch/$s_!Wxin!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8dfbf6ca-5b7c-4296-b4e3-56f41888f963_2801x1132.png)
+![](z-images/8aa5c0a4058749a7484bca015b4b966a.webp)
 
 Source: Vertiv
 
 Although NVIDIA initially did not formally publish full specifications for Vera Rubin’s liquid cooling system, we believe the platform will support maximum coolant return temperatures up to 65C. This aligns with Nvidia’s warm-water operating envelope, and while the exact implication for delta-T depends on the chosen supply setpoint and flow control strategy, we can expect a slightly tighten delta-T. The pressure envelope is expected to be unchanged versus GB200, with maximum operating pressure of 72 psig (5 bar) and minimum burst pressure of 217 psig (15 bar), aligning with OCP’s MGX rack-level liquid-cooling specification.
 
-![](https://substackcdn.com/image/fetch/$s_!SWCn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80029eec-d319-4b7a-8fa2-452e463f396e_1782x774.png)
+![](z-images/a97284782d684132b9c48ce73750fb15.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -481,7 +481,7 @@ In practice, cooling follows straightforward physics. To cool a system, you must
 
 Nvidia has indicated that Vera Rubin increases liquid flow rate and achieves nearly double the thermal performance vs Blackwell, without increasing CDU pressure head or introducing additional cooling complexity or cost. Nvidia has achieved this by optimizing the entire hydraulic path. We expect larger quick disconnects to support higher flow, as well as updated manifolds and piping. As seen in the image below, vendor roadmaps suggest that, at least for the next generation of racks, 2 inch QDs should be sufficient to accommodate higher flow while staying within pressure and flow-velocity limits.
 
-![](https://substackcdn.com/image/fetch/$s_!LwLu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00716966-64d3-4d63-b50d-823b873e285c_2026x1132.png)
+![](z-images/e4619bfc7a8bac91551450bba60b452b.webp)
 
 Source: CoolIT
 
@@ -489,7 +489,7 @@ Source: CoolIT
 
 The primary vendor implication of the updated cooling architecture and doubled power density relates to CDUs and the rack-to-CDU ratio. Today, a CDU can support around 10 GB200 racks. With a rack generating about 2x the heat, that ratio would need to decline unless CDU capacity increases, implying either more CDUs or higher-capacity CDUs. We believe most major operators expect to maintain a ratio of around 10 racks per CDU. As rack power density rises, this points to larger CDUs. Today, in-row CDUs offer cooling capacities up to roughly 2 MW, but we expect future facility CDUs to reach 3-6 MW. Delta currently leads in the CDU specialist segment, alongside Schneider Electric, Vertiv, and nVent. Foxconn and Quanta dominate the system integrator category.
 
-![](https://substackcdn.com/image/fetch/$s_!SKSV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93c57f79-8dcb-46da-985f-f026e5181a64_2740x1537.png)
+![](z-images/947f1ac1375b601dc23eba9c0f69d166.webp)
 
 Source: CoolIT
 
@@ -503,25 +503,25 @@ In the [GB200 article from 2024](https://newsletter.semianalysis.com/p/gb200-har
 
 Since the deployment of GB200, the main theme of the power delivery infrastructure evolution has been about transmission efficiency and power stability. Hyperscalers are developing power delivery infrastructure to address the challenges that comes with high density AI server racks with the roadmap set to 1MW per rack in the next couple of years. Hence, HVDC (high voltage direct current) power rack, BBU (battery back up units), CBU (capacitor backup units), liquid cooled busbar, and SST (solid state transformers) are being developed to increase transmission efficiency and power stability. These will be deployed by customers depending on their proprietary infrastructure designs. [For more detail on this, we wrote about the challenge on the grid with AI training in this report.](https://newsletter.semianalysis.com/p/ai-training-load-fluctuations-at-gigawatt-scale-risk-of-power-grid-blackout)
 
-![](https://substackcdn.com/image/fetch/$s_!YedG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F06dbd2aa-7e3c-4f9a-ab81-60bcc8b26b5c_733x1702.png)
+![](z-images/8678506624fde794f7e9bd935151fc9f.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 For the VR NVL72 reference design, the power delivery infrastructure at the rack level includes four 110kW power shelves. The VR NVL72 system has a TDP up to 220kW for the 2300W Rubin TDP SKU. The design with four 110kW power shelves is an N+1 redundancy approach. Each 110kW power shelf is 3U tall and includes six 18.3kW PSU with built in capacitors in the PSU. Each power shelf receives three phase 415VAC-480VAC of power from two 100A whips. The power shelves step down the power from 415VAC-480VAC to 50VDC and sends it to the busbar. Interestingly, the busbar of VR NVL72 is rated for 5000A+, which is much higher than that of Grace Blackwell at 2900A. Given the extremely high current and the lack of fans in the rack, the busbar has to be liquid cooled.
 
-![](https://substackcdn.com/image/fetch/$s_!mnFo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fea4bba56-9812-4977-8f9e-201a0cab7ff1_1640x940.png)
+![](z-images/4ab1907df0adc94ef8c37821ee3d1e74.webp)
 
 Source: TE Connectivity, OCP 2025
 
 For the hyperscale customers, they might choose to deploy a standalone power rack either in LVDC (low voltage direct current) or HVDC (high voltage direct current). Below we provide two possible scenarios of the power rack deployment for VR NVL72.
 
-![](https://substackcdn.com/image/fetch/$s_!HQjd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F882952fa-6781-496c-b90a-2bcb9eb0f1bc_3165x2172.png)
+![](z-images/bbad9129f628213e3100bbaae93e79bc.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 First, VR NVL72 rack with an HVDC power rack running at 800VDC (Nvidia Spec) or +/-400VDC (OCP Spec). Since the VR NVL72 rack busbar is still running at 50V and the compute tray can only take in 50V, the 800VDC from the power rack cannot be directly delivered to the busbar. There would still be DC-DC power shelves in the VR NVL72 rack. The DC-DC power shelves will step down the voltage of the current from 800VDC to 50VDC as demonstrated below.
 
-![](https://substackcdn.com/image/fetch/$s_!nFTK!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F003855a3-c39f-4c22-a4bc-3783e1b20428_1460x833.png)
+![](z-images/0a3aec4ead7bfeb3a03aead70a7efd59.webp)
 
 Source: OCP, Meta, SemiAnalysis
 
@@ -535,7 +535,7 @@ NVIDIA’s gen-on-gen innovations are evolutionary and not revolutionary. With G
 
 The below table shows the evolution of scale-up and scale-out networking speeds. NVLink 6 used in Vera Rubin doubles NVLink bandwidth by implementing bi-directional signaling over the same number of copper cables - effectively delivering 4 Lanes of 200G per NVLink. Much more on this in the following sections.
 
-![](https://substackcdn.com/image/fetch/$s_!YQB9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4e17ee04-dce9-4fde-b4fc-6b3f5dff2849_2233x1207.png)
+![](z-images/89eb62b2d8617a69212ca68837779164.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -545,7 +545,7 @@ Let’s step through key features of Rubin’s networking and the architectures 
 
 The doubling of bandwidth per logical GPU from NVLink 5 in GB300 NVL72 to NVLink 6 in Vera Rubin NVL72 are made possible by using a simultaneous bi-directional SerDes for the copper backplane instead of increasing the modulation or baud rate. Whereas NVLink 5 delivers 224G per electrical lane, NVLink 6.0 delivers 448G per electrical lane. Each electrical lane is one differential pair (DP) consisting of two conductors that carry equal magnitude, and opposite polarity signals.
 
-![](https://substackcdn.com/image/fetch/$s_!I5lb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa92bb668-9e15-45d7-91a5-ed8bba8f3e2a_1946x1300.png)
+![](z-images/04a6da6b028a2d407c8a25550f6fcaba.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -563,7 +563,7 @@ An inverted copy of the local TX must therefore be generated at the local RX for
 
 The diagram below illustrates this dynamic:
 
-![](https://substackcdn.com/image/fetch/$s_!KYxc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbefba865-35dc-46a0-b593-48fa65baa8ae_4380x2667.png)
+![](z-images/7697305e1dfafff96101892860b1a478.webp)
 
 Source: IEE Explore
 
@@ -573,7 +573,7 @@ The challenge with bidirectional signaling is that echo cancellation must be pre
 
 Cramming in approximately five thousand copper cables on the backplane at the Blackwell generation has introduced non-trivial reliability failure modes at scale. To double scale-up bandwidth while staying on regular 200G SerDes would require the backplane to double to ten thousand copper cables: only further increasing the manufacturing complexity and likelihood of failure of the system.
 
-![](https://substackcdn.com/image/fetch/$s_!RWpE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff79a0f25-17d9-4603-93ae-44a793db3705_4380x2490.png)
+![](z-images/16714b3da1083ea1dd409221fdde85ca.webp)
 
 Blackwell Copper Backplane, Source: Nvidia
 
@@ -591,13 +591,13 @@ Each VR NVL72 Switch tray contains four NVLink 6 Switch ASICs and one system man
 
 The NVLink 6 Switch board is liquid cooled and will be covered with a cold plate, which is a single module. Connected to the NVSwitch tray is the system management module (SMM) that comes with a CPU and acts as a host to the switch tray. The switch tray to SMM connection uses flyover cables, but this is the only flyover cable connection required in the entire Vera Rubin NVL72 system. Given that the PCIe connection is lower speed and the NVLink Switch tray contains relatively few modules, assembly of the switch tray is unlikely to be challenging.
 
-![](https://substackcdn.com/image/fetch/$s_!AUbf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9a0db27b-2364-4f3e-8e5b-14a31327c898_919x1501.png)
+![](z-images/ba4c1e008096e656550020c4a129357a.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 The diagram below shows how the NVLink 6 signal traverses through the tray. Each of the green lines represents nine 400G logical ports of NVLink 6, or 18 TX/RX lanes of 200G. Because there is only 1 DP per lane using bidirectional SerDes, there are a total of 18 DPs between any connector and any switch for a total of 72 DPs per connector, which is the same as prior generation of NVLink 5 Switch Tray.
 
-![](https://substackcdn.com/image/fetch/$s_!aeWB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fccd14529-356f-493a-ad9a-4fe57d339d9d_883x1485.png)
+![](z-images/792f9df0956a669d2732f7de3f80429f.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -607,11 +607,11 @@ We have more details on the switch tray and various components in the [VR NVL72 
 
 Zooming out, backplane copper cables are used to connect NVLink Switch trays to the GPU trays for the VR NVL72 system. Although the bandwidth doubles, with bi-directional SerDes, the number of cables required does not change from the GB300 backplane generation to the Vera Rubin NVL72 backplane generation. The number of connectors and the number of DPs per connector also does not change from Grace Blackwell NVL72 to VR NVL72.
 
-![](https://substackcdn.com/image/fetch/$s_!kVSj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe18bd90a-d96f-4237-bb8a-bb5b0f0e0582_3193x1126.png)
+![](z-images/dbf5e7c5b4c7c28eb7037d22a6fd6e52.webp)
 
 Grace Blackwell NVL72 Scale-up Topology. Source: SemiAnalysis AI Networking Model
 
-![](https://substackcdn.com/image/fetch/$s_!R5Gn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4533a61-ae9d-45a4-a80b-c5d76f70bd6d_3150x1090.png)
+![](z-images/e90af800c489ecad63ceab0a43004951.webp)
 
 Vera Rubin NVL72 Scale-up Topology. Source: SemiAnalysis AI Networking Model
 
@@ -621,7 +621,7 @@ The HGX Rubin NVL8 server consists of eight 800G CX-9 NIC packages – one NIC p
 
 Each compute tray on the VR NVL72 has eight 800G CX-9 NICs, but there are two possibilities for the number of OSFP cages - either one 1.6T OSFP cage per GPU for a total of 4 per compute tray, or two 800G OSFP cages per GPU for a total of 8 cages per compute tray. We think that the latter would be the more popular deployment assumption, and will be the base case for our discussion of scale-out networking architectures in later sections of the article.
 
-![](https://substackcdn.com/image/fetch/$s_!ELO8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb518988-d9be-433e-a5cd-f8d834c7daa3_2631x826.png)
+![](z-images/08cf0c0015f9d3707acf96e4945e1a25.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -633,13 +633,13 @@ While there are both InfiniBand and Spectrum-X based clusters, the InfiniBand-ba
 
 The Quantum X800-Q3400 is logically a multi-plane switch combining 4 Quantum-3 ASICs into a single switch box, though we will dive into this equivalence later in the article. This multi-plane “topology” is abstracted away and as far as network engineers are concerned, the Q3400 is a single switch with 144 ports – or a “little boy” switch.
 
-![](https://substackcdn.com/image/fetch/$s_!iXPd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3908b30-94ca-4a19-a964-75806231894a_2695x1059.png)
+![](z-images/795cfc6489b23c6bba5d362ac1db0b2a.webp)
 
 Source: SemiAnalysis AI Networking Model
 
 The InfiniBand architecture for the HGX Rubin NVL8 server is therefore effectively a single-plane, 8-rail network consisting of one 800G uplink from each HGX Rubin NVL8 GPU to a leaf switch.
 
-![](https://substackcdn.com/image/fetch/$s_!xxpO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feacb373c-b4b3-4125-b335-d90e8d4caf2e_2538x1267.png)
+![](z-images/05b3fa0e2e8f0287f5403098c705b5cf.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -653,7 +653,7 @@ Illustratively, consider two hypothetical VR NVL deployments with 1.6T and 800G 
 
 By one 1.6T logical port, we mean that the two 800G OSFP cages connected to each GPU are connected to a single, dual-port 1.6T transceiver at the leaf layer because the two 800G ports are effectively performing the function of one 1.6T port – and hence the term “logical”.
 
-![](https://substackcdn.com/image/fetch/$s_!9P5d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec57efde-b531-4f61-9d11-8703e99c5e20_3145x1357.png)
+![](z-images/c1b6c3a8195d6e389edc7699d76bc63e.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -661,7 +661,7 @@ To scale beyond the maximum cluster size of 93,312 GPUs, a 2-plane network can b
 
 \\( 2\\left(\\frac{\\frac{115{,}200}{800}}{2}\\right)^3 = 2\\left(\\frac{144}{2}\\right)^3 = 746,496\\)
 
-![](https://substackcdn.com/image/fetch/$s_!-SrC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F513cc763-5600-427d-a834-c1649efcc764_2626x1711.png)
+![](z-images/d4f6cf8fe1a2676d8d6e97436b9eea95.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -669,7 +669,7 @@ We think the second cluster with two switch planes will likely be the more preva
 
 Aside from the X800-Q3400 air-cooled switch, NVIDIA will also offer a CPO version, which is the X800-Q3450 containing the same 144 ports of 800G. As pointed out earlier, what is unique about both switches is that each switch box consists of four 28.8T Quantum-3 Switch ASICs for a total of 115.2T per box switching capacity. When used in conjunction with the VR NVL72 servers, the signal from the NIC at the leaf layer is split four ways – 200G each way – to each switch ASIC within the box. Such a configuration bears logical equivalence to a 4-plane network architecture.
 
-![](https://substackcdn.com/image/fetch/$s_!4bBE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fab4648e8-1c21-41ba-92dc-457ddb09e3dc_2133x1368.png)
+![](z-images/a3513d758a7da8971fcbe2928e067df8.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -683,7 +683,7 @@ Although InfiniBand has been the more popular network architecture for previous 
 
 For the SN6600 switch, the scale-out reference architecture is an 8-plane network where each GPU fans out eight ways to eight different planes. This is similar to the reference architecture for the 8-plane scale-out network using SN6810 switches.
 
-![](https://substackcdn.com/image/fetch/$s_!Ooam!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc31a2ad9-ef3a-4da2-83be-b8b39200d7e0_2605x1330.png)
+![](z-images/8cf120b0a21297a0aca41a2fb9129bf1.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -691,7 +691,7 @@ We think that the SN6800 switch with 512 ports of 800G will be quite attractive 
 
 The diagram below shows what such a network could look like – though it only shows one of two planes as readers can deduce by the fact that we are only depicting 1x800G from each GPU. Note also that each SN6800 switch box consists of four ASICs, each with its own switch plane, which we will elaborate on later in the article.
 
-![](https://substackcdn.com/image/fetch/$s_!TYad!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e626b67-f940-4e47-a5d8-d3790f86d155_2611x1315.png)
+![](z-images/46e594b94a937990a47ef96d9ef2784a.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -705,13 +705,13 @@ What advantages do CPO switches such as the SN6800 deliver for Neoclouds like Co
 
 As discussed in our recent [deep dive article on co-packaged optics,](https://newsletter.semianalysis.com/p/co-packaged-optics-cpo-book-scaling) the first reason is that a significant amount of power can be saved by eliminating most of the transceiver content. If we compare the power consumption of one 800G DR4 optical transceiver (16-17W) to the power required by optical engines (OEs) and external light source (ELS) modules to delivery an equivalent 800G of bandwidth in the scale-out network, we see an average ~70% reduction in power used for optical transceivers. Taking a step back, this would translate to 10% in savings for the total networking equipment power consumption in a 3-Layer HGX Rubin NVL8 cluster. This reduction in networking equipment power consumption is however relatively insignificant and amounts to only ~1% of total cluster power consumption because the server’s power budget dominates the equation.
 
-![](https://substackcdn.com/image/fetch/$s_!eRja!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb19c505-aef9-494d-ab39-8e3caa913cf7_2902x936.png)
+![](z-images/5708aad1c1282565dcd9105684b39205.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 The second benefit is a reduction in cost stemming from eliminating almost all transceivers. There is even more room for price reduction if we are looking at NVIDIA LinkX transceivers, which tend to be priced at significant premium to their generic equivalent. If we compare total networking costs for a 3-Layer network with and without CPO-based switches in the scale-out domain, we see an average of ~75% reduction in transceiver costs. However, as with the power savings above, such costs savings tend not to move the needle dramatically considering the full cluster costs.
 
-![](https://substackcdn.com/image/fetch/$s_!RL4i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23326c48-f03b-409d-ad25-a64c79a62581_2902x953.png)
+![](z-images/22650730e561f40961be115c04166250.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -733,13 +733,13 @@ In multi-plane network architectures using the SN6600 switch instead of the CPO 
 
 Some of Nvidia’s CPO SKUs – such as the SN6800 and Q3450 –contain such a fiber shuffle within the switch box, with each optical engine fanning out to different logical ports. They therefore deliver higher aggregate bandwidth – 409.6T and 115.2T respectively than is possible with a switch box based on a single Switch ASIC.
 
-![](https://substackcdn.com/image/fetch/$s_!8mCA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41bf7a29-4917-41d8-957a-86cc9773b39c_2897x3821.png)
+![](z-images/3df1ba814f1d52a35ea2b3591aa67ff0.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
 For the SN6800 CPO switch, even though the bandwidth engine responsible for converting electrical to optical signals scales from 1.6T to 3.2T or 2x compared to the SN6600 switch, each 3.2T OE within the SN6800 switch box is split into four 800G logical ports that fan out within the box itself and exit the front panel through fiber connectors. This allows a single 1.6T GPU to fan out to two independent switch planes. In fact, the SN6800 switch box consists of four ASICs, which is similar to the X800-Q3400 switch box.
 
-![](https://substackcdn.com/image/fetch/$s_!foD7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F21284057-cc2b-423a-836f-cce6283ef615_2916x1102.png)
+![](z-images/904b2f731d4d74e0e6ffbfb1fd1798f1.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -751,17 +751,17 @@ Outside of the NVIDIA ecosystem, the main switch ASIC players are Broadcom, whic
 
 - 8-plane “flat” network utilizing the full 512 switch radix;
 
-![](https://substackcdn.com/image/fetch/$s_!deTC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2249c887-6af9-4933-9297-6b698aca46e3_2622x1323.png)
+![](z-images/526d21dbfde6c0287e402c3e330701b6.webp)
 
 Source: SemiAnalysis AI Networking Model
 
 - Single plane network with 1.6T OSFP cages at the NIC.
-	![](https://substackcdn.com/image/fetch/$s_!Z-9f!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9cc07e85-ea9f-4089-a0a2-4d15b7c5ac8d_2782x1258.png)
+	![](z-images/6c96a1a589c6ae6cbe769f3a8105e606.webp)
 	Source: SemiAnalysis AI Networking Model
 
 For Meta, we think the VR NVL72 deployments will comprise only of non-scheduled fabric (NSF) clusters built using Tomahawk 6-based Minipack-4 OCP Rack 102.4T switches in each datacenter. While Meta will be using optics to connect all the switches within its cluster, it will use 1.6T AECs for NIC-to-TOR connections once 1.6T AECs become broadly available in the market. We expect the 1.6T AEC ramp to happen in the second half of calendar year 2026.
 
-![](https://substackcdn.com/image/fetch/$s_!dp6K!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2c75af2-9d1e-41c6-86de-aede72445f14_1981x1623.png)
+![](z-images/3e4920a8e166b0ea0ce19ccc647d1176.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -777,7 +777,7 @@ For GB300, although the reference design has four ConnectX-8 NICs for the backen
 
 For example, for some racks, even Amazon is deploying ConnectX-8 in GB300s in many cases. Also, most hyperscalers are deploying their in-house DPU instead of Bluefield-3 for frontend networking. The power delivery module and management modules in GB300 are also highly customized as every customer has differing preferences for these modules. As such, the front half of GB300 is highly customizable with each hyperscalers’ design differing from each other significantly.
 
-![](https://substackcdn.com/image/fetch/$s_!RjLj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe84cedc7-fe5c-4781-99f8-1bf9cd135df9_2806x2341.png)
+![](z-images/9c94e10a015803c46a7449a23acebfdc.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -787,7 +787,7 @@ For VR NVL72, although some level of customization is still available, there are
 
 At CES 2026, Jensen mentioned that with the streamlined cableless design and automation assembly process, compute tray assembly time has significantly reduced from 2 hours to 5 minutes from Blackwell to Rubin. There are only three L10 level compute tray assembly partners with automation capability for the Rubin platform – Foxconn, Quanta, and Wistron.
 
-![](https://substackcdn.com/image/fetch/$s_!0MXd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac6c92de-ef84-4ae2-917b-355a6c1a7930_5189x3373.png)
+![](z-images/7d6f441444d76a97355499678a5439a6.webp)
 
 Source: Nvidia VR NVL72 Component BoM and Power Budget Model
 
@@ -797,7 +797,7 @@ At L6, board level PCBA, Wistron and Foxconn are the main supplier of Blackwell 
 
 The [VR NVL72 Component BoM and Power Budget Model](https://semianalysis.com/vr-nvl72-model/) provides a detailed analysis on the BoM and the Power Budget of the rack system.
 
-![](https://substackcdn.com/image/fetch/$s_!79G7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a435ee7-a40f-4df2-a84a-9d37041115d5_3379x755.png)
+![](z-images/12df48567c2fb44d9df8b02623ed3c63.webp)
 
 Source: VR NVL72 Component BoM and Power Budget Model
 

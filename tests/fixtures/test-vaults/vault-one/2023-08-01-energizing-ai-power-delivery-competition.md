@@ -22,7 +22,7 @@ Today we will go through a primer of power delivery, Vicor’s technology lead, 
 
 Electricity is generated and transferred in the grid at voltages as high as hundreds of thousands at Alternating Current (AC). What compute and memory chips need is stable and clean power that is a much lower voltage and in the form of Direct Current (DC). Too much voltage will overload and damage the delicate circuitry of the chip. Too little voltage, and the chip’s circuits won’t be able to switch properly. It is the job of transformers, power supply units (PSUs), and finally, voltage regulator modules (VRMs) to deliver the right type of power to a chip. With increasing power demands, efficient power delivery is also becoming more challenging.
 
-![](https://substackcdn.com/image/fetch/$s_!Ojvx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F34bda3cd-c0b0-4e1e-9777-fe1e98c0df15_3082x892.png)
+![](z-images/e8fdf4b719b29dbc4b5940dd94fe053e.webp)
 
 In electric circuits like a GPU or a CPU, there are 4 main values: Power, Current, Voltage, and Resistance. Power (P) is simply a measurement of energy used per unit of time which is commonly denoted in units of Watts (W). Current is a measurement of the amount of electrons being moved or, to put it another way, the flow rate of the electrons. Current (I or A) is often denoted in increments of amps (A). Voltage (V) is the difference in electric potential between 2 points. You can think of voltage as the pressure that pushes the electrons through a loop.
 
@@ -36,7 +36,7 @@ However, transporting power at low voltages and high currents creates large powe
 
 The VRM is an important set of parts that takes the input voltage from a system’s PSU then converts that into the correct voltage to power the SoC. Usually, we would see the VRM on the PCB housing the chip although in some rare cases, these components may be on the package itself or even integrated on the silicon. A modern VRM has 3 main parts: capacitors, inductors, and power stages. Capacitors store electrical energy and then release that energy at a constant rate, smoothing out the power being delivered to the processor. An inductor is used to resist changes in current and prevent massive spikes of current from killing the processor.
 
-![](https://substackcdn.com/image/fetch/$s_!Zq2Y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F33694782-198d-46c6-8e45-22c05aa31978_2928x1431.png)
+![](z-images/2aabdddd8477ce9d62282c89a65398f1.webp)
 
 Simplified VRM
 
@@ -58,7 +58,7 @@ To address this, higher input voltages are being used. For a long time, 12V dire
 
 You can step down the 48V voltage to SoC voltage much closer to the SoC, **so the trace length is smaller. Longer trace length leads to greater resistance loss.** Therefore, by only stepping down the 48V input as close to the point of load as possible, the result is lower overall resistance losses.
 
-![](https://substackcdn.com/image/fetch/$s_!2Na3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb291ece1-d130-48b0-bc5a-6f9143f7cd2b_3427x1905.png)
+![](z-images/dd52ce424278251207dc50d5e1a79d82.webp)
 
 Google was the first hyperscaler to adopt 48V power in their datacenters around 2016 and pushed for the 48V to be standardized in the OpenCompute consortium.
 
@@ -68,7 +68,7 @@ In response, chip companies and OEMs placed 48V input VRMs on their boards. The 
 
 To facilitate this change, power supply units would convert the 380V AC power the rack receives to 48V DC. With datacenters delivering 48V power at the rack, this created a reason for server boards also to start adopting 48V input to be able to take this 48V input voltage and step it down. Or, to make legacy 12V boards work, there would need to be an intermediate component to step down 48V to 12V. Basically, there either needs to be a 48V output voltage or 48V input voltage, and that is where Vicor was first to market.
 
-![](https://substackcdn.com/image/fetch/$s_!JSc4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8f07ef00-694b-482d-8e44-a8126234a2f5_2677x1434.png)
+![](z-images/4f87536325833fd20e6418b4bbd03485.webp)
 
 Vicor’s 48V ecosystem
 

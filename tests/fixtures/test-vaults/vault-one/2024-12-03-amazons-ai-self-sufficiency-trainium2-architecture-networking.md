@@ -16,7 +16,7 @@ To be clear, Amazon is still in crisis mode due to their internal models such as
 
 In 2022, AWS released its Trainium1 and Inferentia2 chips. The Trainium1 chip and Inferentia2 chips are nearly the same, except that the Inferentia2 chip only has two Neuronlink-v2 interconnect ports vs the Trainium1’s four ports.
 
-![](https://substackcdn.com/image/fetch/$s_!jued!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48bd5ace-2700-4917-a40b-4e7a4c84ce79_1200x533.png)
+![](z-images/61c70e877aa079c2e554d9b6eab64ad9.webp)
 
 Source: AWS
 
@@ -30,7 +30,7 @@ This all stands to change with Trainium2, as AWS is now firmly targeting complex
 
 Trn2 will use both HBM3 & HBM3e but all current SKUs have been set with to HBM3 speeds of 2.9TByte/s through firmware. In the future, AWS may make a custom SKU where chips with HBM3e will be 3.2TByte/s.
 
-![](https://substackcdn.com/image/fetch/$s_!C_XQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F82b0978a-65eb-48f6-b6d9-9e5eeb6e8a35_1494x1210.png)
+![](z-images/c690e12c1199fcb8e2e92fb3e98c616b.webp)
 
 Source: SemiAnalysis
 
@@ -46,19 +46,19 @@ Trainium2’s scale-up topology is a 2D/3D torus for the 16-chip SKU/64-chip SKU
 
 The main difference between the Trainium2 and the other accelerators is in its much lower Arithmetic Intensity at 225.9 BF16 FLOP per byte compared to TPUv6e/GB200/H100 which is targeting 300 to 560 BF16 FLOP per byte. Arithmetic Intensity is calculated by dividing the FLOP/s by the HBM Bandwidth in Byte/s and it indicates the ratio of compute throughput vs memory bandwidth. It is important to analyze as many applications such as inference are often bottlenecked by memory bandwidth, leaving compute FLOPS under utilized, so a different Arithmetic Intensity can indicate an accelerator is better suited to a particular task or technique – more on this later.
 
-![](https://substackcdn.com/image/fetch/$s_!nRyE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F099005a0-c5f9-438b-b8f8-e75fb6a865bd_2256x1218.png)
+![](z-images/a7f385d6bbf110021cd22306509ea5d1.webp)
 
 Source: SemiAnalysis
 
 Designing the Trainium2 with a lower Arithmetic Intensity may be the right choice because models have had a slower growth of arithmetic intensity due to advances in ML research. Prominent examples include the quite popular Mixture of Experts (MoE), which uses Grouped GEMMs. In Grouped GEMMs, each token only gets routed to at most a couple of experts, thus the amount of memory needed to load the weights is much greater compared to dense feedforward networks (FFN) where each token “seen” does computation with each of the weights.
 
-![](https://substackcdn.com/image/fetch/$s_!1e3w!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fce9a3c48-901c-4588-99dd-44bc027696db_858x635.png)
+![](z-images/a006c702b5be22199787893ffffec5f5.webp)
 
 Source: SemiAnalysis
 
 After normalizing by the number of chips in the scale-up domain, we can see that Trainium2 still has lower arithmetic intensity, but each scale-up world size (of 64 chips in the case of Trainium2-Ultra) has much lower aggregate peak FLOP/s due Trainium2’s smaller world size compared to the TPUv6e at a world size of 256 chips.
 
-![](https://substackcdn.com/image/fetch/$s_!oAsv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F02f1ef2d-254a-4d11-be4e-3246d8d20e14_1015x713.png)
+![](z-images/3758c713ca2ee5a2b5f8532f417f3ce2.webp)
 
 Source: SemiAnalysis
 
@@ -66,9 +66,9 @@ Source: SemiAnalysis
 
 Each Trainium2 chip consists of two compute chiplets and four stacks of HBM3e memory. Each compute chiplet talks to its two immediate HBM3e stacks over CoWoS-S / R packaging, and the two halves of the chip connect to each other over an ABF substrate. There is a slight performance penalty when a compute chiplet tries to access the memory of non-immediately adjacent HBM stacks and that NUMA aware programming may be needed to achieve peak performance similar to that of MI300X chiplets. There are also two passive structural silicon dies.
 
-![](https://substackcdn.com/image/fetch/$s_!P3Fh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdc24a6eb-7135-4b33-8b99-bb49badc5e9c_2178x1272.png)
+![](z-images/ee334cfcaf633a0b0d059f14c24f6455.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!V13A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2e7a1fc8-2f84-412f-9707-78bcdfaf0f37_824x667.png)
+![](z-images/05f61adefbd1fafa9fc0972dac8c12b3.webp)
 
 Source: SemiAnalysis, AWS
 
@@ -83,9 +83,9 @@ Just like on Trainium1 and Google TPUs, Trainium2 consists of a small number of 
 - Scalar Engine
 - GPSIMD
 
-![](https://substackcdn.com/image/fetch/$s_!ckfv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F32b5fca8-eae8-4da6-b4bb-e337c3273987_1000x826.png)
+![](z-images/d5030770322b347233dfdc324b97bcb3.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!jIaz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2eb4e4d9-5bf5-4150-ada3-160222e54664_673x407.png)
+![](z-images/916c945c3124705cfd0213710f1d1fe0.webp)
 
 Source: AWS
 
@@ -93,7 +93,7 @@ First is the **Tensor Engine**, which is a 128x128 Systolic Array that gathers i
 
 Next is the **Vector Engine,** which is designed to accelerate vector operations – operations where each output element depends on multiple input elements, for example when calculating softmax in the attention layer or calculating moving averages and variance in layer/batch normalization layers. The NeuronCore Scheduler can parallelize such that all the engines are all working at the same time. For example in attention, the vector engine can be calculating the softmax for the current tile at the same time while the systolic array can be calculating the QxK^T matmul or the AxV matmul.
 
-![](https://substackcdn.com/image/fetch/$s_!P1S9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c032928-c68a-4309-ae16-087ba87e2d37_867x317.png)
+![](z-images/9d67c03a89f2ba8c5ffd917812b20a38.webp)
 
 Source: AWS
 
@@ -109,7 +109,7 @@ Due to this complexity, only the most advanced users will be doing comms/compute
 
 Overall, we believe that having dedicated collective-communication cores is a much cleaner design for optimizing communication-compute overlapping.
 
-![](https://substackcdn.com/image/fetch/$s_!HdiV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10b484c6-6565-44a3-b3ed-f3c625799ed6_450x449.png)
+![](z-images/044ffbfb1466a247b3dcb746373666bf.webp)
 
 Source: AWS
 
@@ -119,7 +119,7 @@ While having all these specialized engines may seem like a great idea due to spe
 
 The building block of the Trainium2 and Trainium2-Ultra servers is what we refer to as a Trainium2 “Physical Server”. Each Trainium2 physical server has a unique architecture taking up 18 Rack Units (RUs) and consists of one 2 Rack Unit (2U) CPU head tray that is connected to eight 2U compute trays. On the rear side of the server, all of the compute trays connect together into a 4x4 2D torus using a passive copper backplane similar to GB200 NVL36, except while for the GB200 NVL36, the backplane connects each GPU to a number of NVSwitches, on Trainium2, there are no switches used and all connections are only point to point connections between two accelerators.
 
-![](https://substackcdn.com/image/fetch/$s_!bxxN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F377b7613-f4e4-4cc6-8f53-3f60cef0e395_693x565.png)
+![](z-images/916549bfd99756602fc2909abd71f924.webp)
 
 Source: SemiAnalysis
 
@@ -127,13 +127,13 @@ Each 2U compute tray has two Trainium chips and no CPUs. This differs from the G
 
 Each Trainium2 server thus holds 16 Trainium2 chips. Two 16-Chip Trainium2 servers fit into one rack. For the Trainium2-Ultra SKU, each server is made up of four Physical Servers of 16 Chips each, and thus will hold 64 chips in total and will take up two whole racks. We will describe the rack layouts in more detail and provide elevation diagrams below.
 
-![](https://substackcdn.com/image/fetch/$s_!-_ea!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe37d2ebf-5bbc-4976-acee-e47070406a77_1387x770.png)
+![](z-images/ed1e99ec4770fe8919611a7642661192.webp)
 
 Source: SemiAnalysis
 
 Each compute tray connects to the CPU tray via an external PCIe 5.0 x16 DAC passive copper cable on the front of the server.
 
-![](https://substackcdn.com/image/fetch/$s_!SoCh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffa14c96d-8453-4768-b1d1-c8f2dafa2045_612x753.png)
+![](z-images/c3edffc68c00a2dcd4be6e085e6fe57e.webp)
 
 Source: SemiAnalysis
 
@@ -141,19 +141,19 @@ Source: SemiAnalysis
 
 Inside the CPU tray, there are PCIe switches that connect the compute trays with local NVMe disks such that the Trainium2 can access storage using GPUDirect-Storage without needing to go through the CPU.
 
-![](https://substackcdn.com/image/fetch/$s_!TFyn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F71fc7e1b-f969-4d0e-9ac9-178332749dbe_1556x678.png)
+![](z-images/62a4e11e25cd80573a839cd8d9290295.webp)
 
 Source: SemiAnalysis
 
 There are a total of 16 local NVMe per server and they are all directly accessible by the Trainium2 chips. Furthermore, there is the standard 80Gbit/s Elastic Block Storage link that is attached to the Primary CPU0 and a Primary 100Gbit/s Nitro card for the AWS frontend network called Elastic Network Adapter (ENA).
 
-![](https://substackcdn.com/image/fetch/$s_!S6at!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F05c2d8ec-52c7-4e4a-9ab5-a8a926ca1719_1524x677.png)
+![](z-images/a707546294170a74fd71e64105d18e27.webp)
 
 Source: SemiAnalysis
 
 Each CPU tray consists of two Intel Xeon Sapphire Rapids CPUs and 32 DIMM slots for DDR5 RAM allowing for up to 2 TBs of CPU memory and uses a similar rack level 48V DC bus bar power distribution system.
 
-![](https://substackcdn.com/image/fetch/$s_!oS0u!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd4096453-722e-4337-934d-c4920540dda5_1114x822.png)
+![](z-images/b904b2af1ae837bdc28917f915c04e97.webp)
 
 Source: SemiAnalysis
 
@@ -166,23 +166,23 @@ As mentioned in the beginning of the article, there is are two SKUs
 
 We will first talk about the compute tray for the normal Trn2 Trainium2 instance. Each Trn2 compute tray has two Trainium2 chips on a PCB and has 6 intra-server scale-up copper backplane connectors to connect to other compute trays in the same server.
 
-![](https://substackcdn.com/image/fetch/$s_!Pq4d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc8ada0e6-0b6a-4985-af08-06eecd5f703a_871x829.png)
+![](z-images/10246cbbeb9dbca2a151d4d5eacc5ec1.webp)
 
 Source: SemiAnalysis
 
 In addition, for the Trn2, each compute tray has up to eight 200G EFAv3 NICs which provide up to 800Gbit/s per chip of scale-out ethernet networking. The cage that connects from the compute tray to the CPU tray will also require a retimer. The Trainium2 chip on the left side of the compute tray will use the first 8 lanes of the connection to the CPU tray while the Trainium2 chip on the right side will use the last 8 lanes of the connection to the CPU tray.
 
-![](https://substackcdn.com/image/fetch/$s_!cEqp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F97189e05-e528-4395-8d66-51e78dff33ad_1180x642.png)
+![](z-images/7eafee06826897f21aac8e69f46e95bd.webp)
 
 Source: SemiAnalysis
 
 The Trn2-Ultra SKU is very similar to the normal Trn2 SKU, but instead fewer PCIe SerDes lanes on the Trainium2 chip are used for the scale-out network, with only 200Gbit/s scale-out bandwidth for the Trn2-Ultra chips vs the 800Gbit/s for the Trn2. These lanes are instead used to inter-connect 4 physical servers (of 16 chips each) together into a scale-up world size of 64. The scale-up network will be implemented with each chip having two 16-lane OSFP-XD cages into which active electrical copper cables will plug to connect four physical servers of 16 chips each together to make the Trn2-Ultra server with world size of 64 chips.
 
-![](https://substackcdn.com/image/fetch/$s_!OJi3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff16fa914-07ed-46ce-b82b-c64bd92b271e_933x826.png)
+![](z-images/d10505ab05df25e371a04bd879caaed1.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!a-bl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2693ee7d-bd39-46f2-ae9d-8479bde1bfd9_1340x632.png)
+![](z-images/096ac7e1cf11058ca0937034a8fa46ac.webp)
 
 Source: SemiAnalysis
 
@@ -190,13 +190,13 @@ Source: SemiAnalysis
 
 Moving on to the system/rack architecture, we will first discuss the normal Trn2 SKU. Each rack will consider of two Trn2 servers and four 12.8T ToR EFAv3 ethernet switches to provide up to 800Gbit/s of scale-out bandwidth per chip. This rack uses a similar 48V DC busbar architecture with AC to DC conversion happening at the rack level instead of each chassis performing the conversion individually.
 
-![](https://substackcdn.com/image/fetch/$s_!uLqT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd03c5dc3-da8d-4be9-97de-2b978b10ec70_652x1177.png)
+![](z-images/5fb8d40df88979d8abcad785819a0453.webp)
 
 Source: SemiAnalysis
 
 The Trn2-Ultra SKU, which consists of four 16-Chip Physical Servers per scale up domain and thus 64 chips per scale up domain, is made up of two racks in a configuration similar to that of the GB200 NVL36x2. To form a torus along the z-axis, each Physical Server connects to two other Physical Servers using a set of active electrical copper cables.
 
-![](https://substackcdn.com/image/fetch/$s_!E9mg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F793df66c-3ee4-4264-a0ca-e87cbbe66e5a_1758x1132.png)
+![](z-images/87d7b7bd2a0787ac88e54e04e2888ad1.webp)
 
 Source: SemiAnalysis
 
@@ -204,13 +204,13 @@ Source: SemiAnalysis
 
 We estimate the rack power of each SKU, with each of the two racks within a Trn2-Ultra 64-Chip server requiring 24kW of power (48kW per Trn2-Ultra 64-Chip server).
 
-![](https://substackcdn.com/image/fetch/$s_!uK8T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2fb4a101-ac79-4e6c-85b9-08e434e48518_1103x1140.png)
+![](z-images/b660b71a7078235bc3c9726f47cc0c6a.webp)
 
 Source: SemiAnalysis
 
 Racks used to house the normal Trn2 server will have a rack density of 27kW, but recall that there will be two 16-Chip Trn2 servers housed in one rack. The higher power density of racks housing the Trn2 server is due to the additional NICs and the use of more and higher radix ToR switches needed to support up to 800Gbit/s per Trainium2 chip of scale-out networking, which takes up more power when compared to the additional inter-server AEC NeuronLinkv3 cables of the Trn2-Ultra Server.
 
-![](https://substackcdn.com/image/fetch/$s_!7HAK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F095cc0ef-6f5d-46c9-8531-a1034d26f70f_1062x1138.png)
+![](z-images/1364deb6724384ee1690dcec4af363ff.webp)
 
 Source: SemiAnalysis
 
@@ -220,13 +220,13 @@ We believe that one of the largest Trainium2 cluster deployments will be in Indi
 
 This campus [has completed construction of its first phase and there are currently seven buildings, each with 65MW of IT power, totaling 455MWs](https://semianalysis.com/datacenter-industry-model/). Phase 2 of this Indiana AWS campus will add nine more 65MW buildings for a total of 1,040MW of power. We believe that the PUE for this campus is around 1.10-1.15 as the campus is located in northern Indiana. In addition to Trainium2 deployments, this datacenter campus will be shared with AWS’s traditional CPU oriented servers but as well AWS’s Blackwell cluster deployments.
 
-![](https://substackcdn.com/image/fetch/$s_!WLgM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94ed0075-6b19-4bd2-bff5-911b087e87a4_1359x847.png)
+![](z-images/98cdd7da3d7b5c3dd7432afa280c12fc.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 We believe that AWS will deploy Trainium2 racks in containment pods of 16 racks with 4 additional racks at the end for networking switches, management switches and other servers co-located within the containment pod. Cool air will move through the front of the server while the rear of the server will blast the hot air out into a chimney.
 
-![](https://substackcdn.com/image/fetch/$s_!i1kv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F223f5283-1d20-4085-a0d1-aa8d373f2bce_1280x506.png)
+![](z-images/5b57e227e421756f6e44a8fa2c236e0b.webp)
 
 Source: SemiAnalysis
 
@@ -259,13 +259,13 @@ In the following sections we will dive deeper into and explain in detail a few o
 
 Each Trainium2 Physical Server has a copper backplane where each chip connects to one other chip using a PCB trace on the JBOG PCB board (i.e. left Trainium2 chip connects to right Trainium2 chip on the same JBOG) and each chip also connects to three other intra-server chips using the copper backplane. NeuronLinkv3 is based on PCIe Gen 5.0 which means 32Gbit/s per lane (unidirectional).
 
-![](https://substackcdn.com/image/fetch/$s_!3LNR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F69928680-eb55-4392-b07c-cf63c568861b_1173x938.png)
+![](z-images/8f5a237a5ca1d96458ac3197f3c27882.webp)
 
 Source: SemiAnalysis
 
 Each chip connects to other intra-server chips using 32 PCIe lanes meaning that each chip talks to each of its intra-server neighbors at 128GByte/s (unidirectional). The Intra-server NeuronLinkv3 is a 2x2x2x2 hypercube mesh.
 
-![](https://substackcdn.com/image/fetch/$s_!euPU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5bd4ef15-6144-4fa7-a522-5bc5b8ea06d1_925x1024.png)
+![](z-images/59f1c114b9c77571fcd62ffbc3491ceb.webp)
 
 Source: SemiAnalysis
 
@@ -275,7 +275,7 @@ Interestingly, a 2x2x2x2 4D hypercube is isomorphic to a 4x4 2D torus, meaning t
 
 The mathematical proof for isomorphism is quite simple. We just need to check that the total number of vertices and edges is the same, and that each of the vertices has the same number of orange, blue, and green neighbors in each graph. We can clearly see in the visualization below that both graphs have 16 vertices, 32 edges and each vertex in both graphs have one orange edge, one green edge and 2 blue edges. Since they meet all these conditions, it is indeed isomorphic.
 
-![](https://substackcdn.com/image/fetch/$s_!Fwpl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F428b253d-649d-466b-b302-b1074d9d04e4_1920x624.png)
+![](z-images/25049c2214344c2a5d71f43dc19300b6.webp)
 
 Source: SemiAnalysis
 
@@ -283,19 +283,19 @@ Source: SemiAnalysis
 
 In the Trainium2 Trn2-Ultra SKU, four Physical Servers are connected together to form an “Ultra Server” with 64 chips within a scale up domain. These 64 chips are connected together in a 4x4x4 3D torus where the Z-axis has only 64GByte/s of point-to-point bandwidth compared to 128GByte/s on the x and y axes which have twice as much point-to-point bandwidth. Each chip connects to two other chips in other Physical Servers using an OSFP-XD active electrical cable per connection. This way, the chips are able to form a chain with wrap-around connections in the Z-Axis (Physical Server A -> Physical Server B -> Physical Server C -> Physical Server D -> Physical Server A).
 
-![](https://substackcdn.com/image/fetch/$s_!NlaC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2b87fa0-d225-4560-b415-24920bc375b9_2074x916.png)
+![](z-images/f33c841f5fd9c55695fd40d6ecf6677e.webp)
 
 Source: SemiAnalysis
 
 This 4x4x4 3D torus is very similar to a TPU cube rack design which is also a 4x4x4 3D torus and features symmetric point to point bandwidth on all 3 of the axes. Another difference between the Trainium2 topology and the TPU topology is that TPU cubes can connect on all six faces to other TPU cubes over optics with OCS whereas Trainium2 does not allow for this.
 
-![](https://substackcdn.com/image/fetch/$s_!WK8v!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fef4d812c-1693-4576-a123-a22127170a65_397x403.png)
+![](z-images/c4aed4174f969f878aa3625cadde4143.webp)
 
 Source: Google
 
 Amazon and Anthropic likely came to a compromise regarding scale up versus scale out bandwidth as they are transferable due to the PCIe physical layer allowing reallocation between NIC’s and NeuronLinkv3. Trainium2 only has enough NeuronLinkv3 lanes to create a 4x4x2 3D torus with a world size of 32 with symmetric point-to-point bandwidth on all 3 axes, but having a world size of 64 with asymmetric BW is likely much better than a smaller world size of 32 for frontier LLM training and inference.
 
-![](https://substackcdn.com/image/fetch/$s_!ZhHc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb5b3624-1afd-4318-861b-2418b6205e8c_636x1101.png)
+![](z-images/61ed18186397a067a60e7cd2b15e56b8.webp)
 
 Source: SemiAnalysis
 
@@ -303,13 +303,13 @@ Source: SemiAnalysis
 
 Since there are two Physical Servers per rack, the Physical Servers are able to form a ring within less than a 2-meter distance and as such can stay within the range of a PCIe AEC.
 
-![](https://substackcdn.com/image/fetch/$s_!SoB1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F129f67a1-a09d-4bd4-9724-51fc4a6c519d_1288x838.png)
+![](z-images/fd5633b31e585bf6c56d2cc3a6acfc87.webp)
 
 Source: SemiAnalysis
 
 If AWS had designed the Trainium2 architecture with a lower rack power density and therefore would be able to only fit one server per rack, they would have had to create a four Physical Server Ring to form a 64-Chip Ultra Server, then AWS would need to use PCIe optics since the longest connection would span four racks now, beyond the range of a PCIe AEC.
 
-![](https://substackcdn.com/image/fetch/$s_!MtOB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf9be3b4-d315-4ff9-b03d-76bc5064bca4_2098x1063.png)
+![](z-images/60a90c46f9cb549bfbec61ae86694704.webp)
 
 Source: SemiAnalysis
 
@@ -325,7 +325,7 @@ We believe that 256 chips would be the maximum range that AECs and passive coppe
 
 This larger scale up world size would allow for more efficient training of relatively large models that can’t fit within a single Trn2-Ultra 64 chip server. One downside of this concept is that it means many chips will be permanently attached to each other in a point-to-point topology like a torus.
 
-![](https://substackcdn.com/image/fetch/$s_!yPvU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7519fe44-683b-4605-9fd2-510f272474c2_2362x853.png)
+![](z-images/15bc9d36b6082b1e9864ff659c1c72e9.webp)
 
 Source: SemiAnalysis
 
@@ -335,13 +335,13 @@ When there are many chips attached together in a point-to-point torus topology, 
 
 For TPUv4, Google introduced a solution for this giant job blast radius problem. The solution is to use reconfigurable optical switches between cubes of 4x4x4 tori to limit the blast radius of each chip failure to just 64 chips despite a scale up pod size of 4k.
 
-![](https://substackcdn.com/image/fetch/$s_!7Rcy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00e80351-fb1c-4699-b305-e74ff0f8722f_1024x759.png)
+![](z-images/5601fb150fb8d60bb5d004be2031db8a.webp)
 
 Source: Google
 
 As you can see below in the TPU pod cube map, different users can form a 3D torus that routes around the failed cube (the red cube). Although this is a clever solution, we believe that AWS did not pursue this path of having a giant world size with OCS between each 4x4x4 cube because OCS is very complicated to deploy from a software and hardware perspective and involves the use of expensive optics. Optical links require transceivers, which remain in shortage due to high demand and are [often 10x more expensive per bandwidth than passive DAC copper cables](https://arxiv.org/pdf/2304.01433). It is because of this very high cost of optics that you see mostly DAC copper cables used within a TPU cube and is a key reason why Nvidia GB200 NVL72 used copper for their scale up networking as well.
 
-![](https://substackcdn.com/image/fetch/$s_!-ZKl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd073084a-0b8a-4119-bab7-6b331201e4b4_1024x568.png)
+![](z-images/a0f713abaec235bae02b7616e0dd1bbe.webp)
 
 Source: Google
 
@@ -351,7 +351,7 @@ There is a dramatic difference in mean time to failure (MTTF) comparing networki
 
 Potentially even more important than a much longer MTBF is the fact that passive/active electrical copper cables have orders of magnitudes lower likelihood of flapping compared to optics. Flapping is a common issue in optical systems where the links will break for a period that could range from a couple of microseconds to seconds due to issues with the lasers and/or module overheating. Flapping causes massive issues for training jobs that rely on a stable network to communicate between chips.
 
-![](https://substackcdn.com/image/fetch/$s_!yfgb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9079684a-0643-4a2a-9cd3-292efd16d275_1979x958.png)
+![](z-images/8bea86b827e01f608efecc3125c28fed.webp)
 
 Source: OCP 2024
 
@@ -367,7 +367,7 @@ For Trainium2, in order to scale out to tens of thousands of chips within a sing
 
 Unlike the Nvidia reference network design, Amazon will not be currently using a rail optimized network. That means that all chips with a server will connect to the same immediate switch in the same rack called a “Top of Rack” (ToR) network design.
 
-![](https://substackcdn.com/image/fetch/$s_!PE_D!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F276454c7-4409-40c1-92a7-061bc1556b22_1024x947.png)
+![](z-images/531f606044502af2d26d6942069d7682.webp)
 
 Source: NVIDIA
 
@@ -375,7 +375,7 @@ This means that on average, each flow will require more hops throughout the netw
 
 The diagram below shows our simulated heatmap of this non-blocking top of rack fabric where the lighter blue color indicates less bandwidth due to congestion and dark blue means near full line rate. As you can see, using a ToR topology, it is possible to reach line rate but there is still considerable congestion due to all 8 flows going into one switch, with throughput becoming far more jittery and high congestion resulting in less bandwidth for these flows.
 
-![](https://substackcdn.com/image/fetch/$s_!IkJw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb79373fd-061a-483f-89a0-287a4a64405c_908x917.png)
+![](z-images/3552eb03bf953c0189d8ff6928bba962.webp)
 
 Source: SemiAnalysis Neocloud Article
 
@@ -383,13 +383,13 @@ Although ToR networks have worse performance, we believe that reason AWS chose t
 
 Yet another benefit of ToR is that usually in AI clusters, the scale-out NIC to its first immediate switch has one single point of failure. In a ToR architecture, the passive DAC copper cables that connect the scale-out NIC to the ToR switch have 100x better MTTF and 100x less flapping. AWS will be using a 400G QSFP-DD to two 200G QSFP56 passive copper cable between the NIC and the ToR switch.
 
-![](https://substackcdn.com/image/fetch/$s_!BaL9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5104524d-04b1-475a-9a06-b30b1896e493_1993x1290.png)
+![](z-images/13737fbff3b38a3589f7c27db4086269.webp)
 
 Source: Molex
 
 For the in-rack ToR switch, we believe that most of the switches will be white box switches based on the Marvell Teralynx 6.4T and 12.8T switch chips. AWS does multi-vendor sourcing between Broadcom and Marvell merchant switch ASICs, for the ToR switch.
 
-![](https://substackcdn.com/image/fetch/$s_!uJbD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb784f048-05b4-4526-a7f7-76260356278e_2560x1440.jpeg)
+![](z-images/1c5639a83c99826fde11d84c31346de0.webp)
 
 Source: Marvell
 
@@ -397,7 +397,7 @@ For the Leaf and Spine switches, AWS will use 1U 25.6T white box switches based 
 
 AWS does not use multiple switches to form a chassis based modular switch due the large blast radius of such a setup. If the chassis fails, then all the line cards and links that the chassis is connected to fail. That could be in the order of hundreds of Trainium2 chips. Most hyperscalers are generally allergic to these physical chassis modular switches due to the large potential blast radius.
 
-![](https://substackcdn.com/image/fetch/$s_!iU_T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2fd0b4b5-0d04-4856-a803-fa41a4fc65dc_590x1024.png)
+![](z-images/ca64a8b9eef3226330230124b2e3275d.webp)
 
 Source: Arista
 
@@ -411,13 +411,13 @@ Each Trainium2 Physical Server will have a dedicated 80Gbit/s link to AWS manage
 
 For both SKUs of Trainium2, TE will be the sole supplier of the backplane and each server will include 48 connectors and 1,536 copper cables. Unlike the GB200 NVL72 where the NVLink cables go from the GPU to an NVLink Switch, for the Trainium2, the cables are point to point between each chip. The Trn2-Ultra SKU will also have AEC cables which Astera Labs will be supplying. We believe that the total networking connector and cabling cost will come up to nearly $1,000 per chip.
 
-![](https://substackcdn.com/image/fetch/$s_!HLHc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60ce96ab-8d8e-4dd2-8912-d0fff90ba24c_723x1031.png)
+![](z-images/e7f5d1d7294e67dc346e95396b91ac4b.webp)
 
 Source: SemiAnalysis
 
 For the Trn2 SKU, although there is no inter-server NeuronLinkv3 AEC cables, the increase of EFAv3 bandwidth to up to 800Gbit/s per chip will more than offset that savings, increasing the total cost for networking connector and cables costs to ~$1.2k per chip.
 
-![](https://substackcdn.com/image/fetch/$s_!1vaj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F144cbd0d-4e05-41ae-aba5-34e0ca7442d3_723x852.png)
+![](z-images/bd5d2b0693109b6a52f551d56aae673f.webp)
 
 Source: SemiAnalysis
 
@@ -433,13 +433,13 @@ Generally, since the complete ISA assembly is exposed to the end user in Trainiu
 
 The dream of Pytorch XLA is to use lazy tensors to trace the compile computation graph and all the Pytorch operations, only running the graph on the Trainium device when it hits a part of the graph that requires materialization. This works well for simple models but the problem with lazy tensors is that there are lots of bugs that arise as soon as you add any sort of complexity to your ML model architecture. Using lots of control flow statements will break lazy tensors, especially if data dependent control flow statements are used a lot. Furthermore, for giant computation graphs (such as in large LLM models) with hundreds of thousands of computation operations, lazily tracing the graph will result in high overhead as well due to the generally slow speed of Python.
 
-![](https://substackcdn.com/image/fetch/$s_!QXS1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa9904b2-8f73-404c-a3f8-6e1f2b6f4cbb_865x436.png)
+![](z-images/8bf9fbc3bbdeea19527ea68c3fe9dc54.webp)
 
 Source: SemiAnalysis
 
 The target goal for Pytorch XLA is once Pytorch<>XLA traces the computation graph into StableHLO, XLA is then able to do perform graph optimizations such as deleting subgraphs that form an identify and doing vertical + horizon fusion. Then XLA will lower it to a hardware dependent graph for vectorization and pipelining optimizations into kernels that are high performing.
 
-![](https://substackcdn.com/image/fetch/$s_!K6Pc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f3e3903-6090-4fae-a7a2-0b746593c177_1271x712.png)
+![](z-images/892316bd38a36dab8d242b67217ed0e8.webp)
 
 Source: AWS
 
@@ -461,7 +461,7 @@ The Neuron Kernel Language (NKI) - pronounced “Nicky” – is Trainium domain
 
 In addition to AWS’s own public documentation and kernel examples, in order to spread the knowledge and education of the NKI kernel language, Amazon has collaborated with [Stanford to give students assignments](https://github.com/stanford-cs149/asst4-trainium) that focus on writing real world kernels such as fused convolution + max\_pool. We like the direction they are heading in as in order to be competitive with the CUDA ecosystem, AWS must take an ecosystem and open-source approach towards educating around the NKI kernel language.
 
-![](https://substackcdn.com/image/fetch/$s_!yW-M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F861cd465-267d-4a6a-8152-43582905c0e8_1270x703.png)
+![](z-images/79673a743eb514f2769a0f10bb80fbb9.webp)
 
 Source: AWS
 
@@ -471,13 +471,13 @@ Amazon also provides extremely fine-grained kernel level and distributed system 
 
 Similar to Nvidia Nsight Compute, you can view the kernel level profiling and see the activity of the Tensor Engine, as well as SRAM register pressure, among other items.
 
-![](https://substackcdn.com/image/fetch/$s_!jLge!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec77510d-0cad-461e-a420-de8440fbf996_1531x1086.png)
+![](z-images/c402bd58f4e45c271cabb90bb9334de5.webp)
 
 Source: AWS
 
 Where the Nvidia ecosystem has the Nvidia Nsight Systems and Pytorch Perfetto profiler equivalent tool, the Trainium2 ecosystem has Neuron Distributed Event Tracing. This will allow ML Engineers to debug distributed performance issues and see how well communication is overlapping with compute. In some ways, this is better than the out of the box Pytorch profiler since it will automatically merge all traces from all ranks instead having the [end user manually write scripts for merging together ranks which themselves may contain bugs](https://github.com/mosaicml/composer/blob/main/composer/profiler/json_trace_merger.py).
 
-![](https://substackcdn.com/image/fetch/$s_!0cJU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf5a95ae-ad01-4af4-8fa9-31844a1fc8b5_3678x2212.png)
+![](z-images/463e454ba524aef0cec8a9f693b8c360.webp)
 
 Source: AWS
 
@@ -491,7 +491,7 @@ The Trainium NeuronX Collective Communication library [does not currently suppor
 
 Since the posting of this article, the AWS team has since closed the issue citing that all to all has been supported a year ago, but the issue did not reflect the ground truth
 
-![](https://substackcdn.com/image/fetch/$s_!ODr-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4de76ebb-cd5a-437d-98d8-1d78302d9feb_948x382.png)
+![](z-images/66bcca361f4156062515298c1de1c3b3.webp)
 
 Source: AWS
 
@@ -501,13 +501,13 @@ In order to speed up checkpointing, the Trainium NeuronX package provides suppor
 
 The problem with this approach is that if a server hard crashes, there will be no redundancy or other backup of the checkpoints, leading to many Trainium-hours of lost compute time.
 
-![](https://substackcdn.com/image/fetch/$s_!shi8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4f06a2dd-d0ac-483d-bdef-3c252a6df724_1024x563.png)
+![](z-images/31556833798d142835ec3bd5eba8c84e.webp)
 
 Source: AWS
 
 In order to deal with that issue, Trainium2 servers will be able to slowly replicate the checkpoint to other servers in a pair wise fashion. In addition, so as to not cause training slowdowns when Trainium2 servers copy their checkpoint to a neighboring server, AWS claims to be able to schedule the checkpoint copying traffic during times when there is no communication from the training workload.
 
-![](https://substackcdn.com/image/fetch/$s_!QNw_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93344c9f-7cab-49d6-978e-4db2ef5aabdc_1024x569.png)
+![](z-images/e28a9d9003f8b8541460a5267e6ad4a8.webp)
 
 Source: AWS
 
@@ -529,13 +529,13 @@ Lastly, Kubernetes is generally better for agent training/inferencing and spinni
 
 When scaling to tens of thousands of AI chips within a single workload, reliability is an important aspect to ensure training workloads complete successfully. That is why Nvidia released a tool called DCGM. With DCGM diagnostics, end users can detect 80% of silent data corruptions (SDCs) that occur in a cluster through numeric and full chip self-tests. Another interesting and related feature we have seen is at Nebius, a [Neocloud Giant](https://www.semianalysis.com/p/ai-neocloud-playbook-and-anatomy), which has implemented a feature in their operator workload scheduler where they are able to schedule active health checks through CRON jobs.
 
-![](https://substackcdn.com/image/fetch/$s_!9D-U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf9330e3-1ba5-428c-92ea-99fc44af1530_1232x986.jpeg)
+![](z-images/9b55d5edcfcadb4df1393310c4070638.webp)
 
 Source: Nebius
 
 These active health checks can check Nvidia GPU’s NVLink networking and run a host of other checks. Furthermore, they are able self test their InfiniBand fabric with just a single node by disabling NVLink instead of what other users are doing when testing IB, which is using multiple nodes.
 
-![](https://substackcdn.com/image/fetch/$s_!WFta!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2bbd5df-6e11-4511-bf47-8001c61c7129_865x462.png)
+![](z-images/26b65d3de28dea97dac334830a2004cf.webp)
 
 Source: SemiAnalysis
 

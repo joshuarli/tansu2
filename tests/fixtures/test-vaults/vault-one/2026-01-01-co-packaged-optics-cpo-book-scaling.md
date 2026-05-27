@@ -16,7 +16,7 @@ Today’s copper-based scale-up solutions, such as NVLink, provide tremendous ba
 
 A starting point for understanding the impetus for CPO is to consider the many inefficiencies and trade-offs when using a transceiver for optical communication. Transceivers can be used to achieve greater link range, but the cage on the front panel of a networking switch or compute tray that transceivers plug into is typically situated 15-30cm from an XPU or switch ASIC. This means that signals must first be transmitted electrically using an LR SerDes over that 15-30cm distance, with the electrical signal recovered and conditioned by a Digital Signal Processor (DSP) within the transceiver before being converted into an optical signal. With CPO, optical engines are instead placed next to XPUs or Switch ASICs, meaning that the DSP can be eliminated and that lower power SerDes can be used to move data from the XPU to the Optical Engine. This can reduce energy required to transmit data by more than 50% when compared to DSP Transceivers - with many aspiring to reduce energy requirements per bit by as much as 80%.
 
-![](https://substackcdn.com/image/fetch/$s_!r5c5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23886490-5277-4d66-ba9a-86a9f43fe36b_1024x333.png)
+![](z-images/0b69f28b66afa54ce29ce06812145774.webp)
 
 Source: SemiAnalysis
 
@@ -48,7 +48,7 @@ Let’s begin our discussion regarding these new CPO-enabled switches by examini
 
 Nvidia’s GTC 2025 keynote announced three different CPO scale-out switches that utilize two different CPO-enabled switch ASICs. While there are TCO, power, and deployment speed benefits – they are not compelling enough for customers to jump headfirst into an entirely different deployment regime, and we expect to see limited adoption for the first wave of CPO scale-out switches. Let’s go through why.
 
-![](https://substackcdn.com/image/fetch/$s_!HESo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa562b30c-79ed-4b9d-8670-748449a77c45_1020x727.png)
+![](z-images/1b7888f42d360b3d847108d30ea333dc.webp)
 
 Source: SemiAnalysis
 
@@ -60,7 +60,7 @@ Because of its demanding nature, the back-end network accounts for a dominant sh
 
 Zooming out – networking cost is the second largest component of total AI cluster cost behind the AI server itself. In a GB300 NVL72 Cluster with a 3-Layer InfiniBand network, this stands at 15% of total cluster cost, reaching 18% of total cluster cost for a 4-Layer network. Optical transceivers are a significant portion of this cost, accounting for 60% of networking cost for a 3-Layer network when using the relatively more expensive Nvidia LinkX Transceivers. They also consume 45% of total networking power for a 3-Layer network.
 
-![](https://substackcdn.com/image/fetch/$s_!-_3B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a51f75a-7d4e-4d00-b119-b8392792d1e5_1289x372.png)
+![](z-images/905b17aefc114482e33110e1f67578aa.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -74,13 +74,13 @@ This can be easily seen by comparing the power used in just one 800G DSP transce
 
 These figures are very close to those presented by Meta in its paper published and presented at ECOC 2025. In this report – Meta showed how an 800G 2xFR4 pluggable transceiver consumes about 15W while the optical engine and laser source within the Broadcom Bailly 51.2T CPO switch consumes about 5.4W per 800G of bandwidth delivered, a 65% power savings.
 
-![](https://substackcdn.com/image/fetch/$s_!jUZj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F02d05df8-27c2-4d88-a85a-354c6d4675cf_2019x2364.png)
+![](z-images/da4a2741c6e76fc353965c6b93401a59.webp)
 
 Source: Meta
 
 Let’s expand this analysis to the cluster level. Turning to a GB300 NVL72 cluster built on a three-Layer network, we see that moving from DSP transceivers to using LPO transceivers in the back-end network can reduce total transceiver power by 36% and total network power by 16%. A full transition to CPO yields even greater savings vs DSP optics – cutting transceiver power by 84% – though part of this power saving is offset by adding optical engines (OEs) and external light sources (ELSs) to the switches, which now consume 23% more power in aggregate. In the below example, optical transceiver power in the CPO scenario remains floored at 1,000W per sever because we assume that front-end networking will still use DSP transceivers.
 
-![](https://substackcdn.com/image/fetch/$s_!Fur4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a73e386-08b3-458c-8c86-46a52fc6efff_1607x374.png)
+![](z-images/044ab04ab7921ebe36fcedfa5d13ba4f.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -96,11 +96,11 @@ The magic comes from the fact that the number of ports k is exponentiated by the
 
 The power savings discussed in this section so far, 23% for a three-layer CPO network and 48% going down to a two-layer CPO network sounds fantastic, but the wrinkle is that networking is just 9% of total cluster power to begin with for a three-layer network. So, at the end of the day the impact of switching to CPO is diluted considerably at least for scale-out networks. Switching to use CPO for a three-layer network lowers networking power by 23% but only delivers 2% total cluster power savings. Moving to a two-layer network delivers 48% lower networking cost, but only 4% total cluster power savings.
 
-![](https://substackcdn.com/image/fetch/$s_!TuT0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b9c76b1-6d92-4dec-bfb3-3034bb77dc4a_1294x371.png)
+![](z-images/2bc7d8bab57f05bb009b40f128e46e65.webp)
 
 Source: SemiAnalysis AI Networking Model
 
-![](https://substackcdn.com/image/fetch/$s_!9ts6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7964218b-b421-468a-b780-91facbc05292_1607x374.png)
+![](z-images/044ab04ab7921ebe36fcedfa5d13ba4f.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -116,7 +116,7 @@ We can see in the table below, when switching from transceivers to CPO on a thre
 
 Flattening the network down to two-layers instead of three-layers can deliver more cost savings though – up to an 7% total cluster cost reduction, with transceiver cost down 86%, and total networking cost decreased by 46%.
 
-![](https://substackcdn.com/image/fetch/$s_!JHQV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F76e3c2a1-8aeb-4787-aca5-c61f160379da_1700x441.png)
+![](z-images/a12c79faf9d17c425f49abc011fa9330.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -138,7 +138,7 @@ To illustrate, 5 <sup>th</sup> generation NVLink on Nvidia Blackwell offers 900G
 
 It is also important to realize that as the size of scale-up domains increases and as the speed of scale-up interconnect grows as well, the TAM of scale-up interconnect (and eventually, scale-up CPO) has already considerably dwarfed that of scale-out networking. CPO TAM is likely to be dominated by scale-up rather than scale-out networking applications.
 
-![](https://substackcdn.com/image/fetch/$s_!qJqd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc3bd0c3-4dd9-491e-a093-5f518d75ad09_1024x732.png)
+![](z-images/1b771305f9bb6948f5d31adeb8682a7b.webp)
 
 Source: SemiAnalysis
 
@@ -156,7 +156,7 @@ Nvidia will continue to persist with copper. They also need to push their scale 
 
 Optics enables the opposite approach, scaling across multiple racks to increase world size, rather than packing more accelerators in a dense footprint which is challenging for power delivery and thermal density. This is possible with pluggable transceivers today, but again the costs of optical transceivers along with their high power consumption makes this impractical.
 
-![](https://substackcdn.com/image/fetch/$s_!APv2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F64966758-e7f6-4399-8659-1a841ddee5c2_1024x358.png)
+![](z-images/9729e7235628726b2dee2347c655a548.webp)
 
 Source: SemiAnalysis
 
@@ -170,7 +170,7 @@ So, if CPO is the solution, why is Nvidia not pursuing it for Rubin Ultra and on
 
 **In the interim, Meta’s CPO reliability data published around ECOC provides some helpful information.** Meta collaborated with Broadcom for this study, with Broadcom [publishing some useful slides](https://www.ecocexhibition.com/wp-content/uploads/Tues-1300-R.Pancholy-R1.1.pdf) as well. In this study, Meta carried out a reasonably sized test run spanning up to 1,049k 400G port device hours across 15 Bailly 51.2T CPO Switches and published the maximum non-zero KP4 forward error correction (FEC) bin:
 
-![](https://substackcdn.com/image/fetch/$s_!tOFA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85f964f6-9158-4dd0-86cd-ffce9668a28b_2975x2067.png)
+![](z-images/e6bf7b42770833982414327b3a7fef3b.webp)
 
 Source: Meta
 
@@ -178,7 +178,7 @@ The paper also explained how during the test period, there were no failures or u
 
 Meta did not stop there, however. In the talk at ECOC presenting the same paper, they presented expanded results for up to 15M 400G port-device hours. These results showed that there were no UCWs for the first 4M 400G port device hours, and they also showed a 0.5-1M device hour mean time before failure (MTBF) for 400G 2xFR4 transceivers (550k for 2xFR4 globally) vs 2.6M device hour MTBF for CPO.
 
-![](https://substackcdn.com/image/fetch/$s_!yJAa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F200a6678-6062-4b81-a7f2-0c7246a4f8c2_2746x2067.jpeg)
+![](z-images/c5ca2ac7e3b22189260c17aa108e9afd.webp)
 
 Source: Meta
 
@@ -186,7 +186,7 @@ While 15M port device hours might sound like a large number, this is in units of
 
 Operating thousands of scale-out switches in a dynamic field environment is entirely different challenge and it remains to be seen how these switches will perform in a production environment. Temperature variation could be higher in a production environment vs a lab, leading to unanticipated variation in component performance or endurance. [Meta’s own Llama 3 paper cited 1-2% temperature variations in the datacenter](https://arxiv.org/pdf/2407.21783) adversely affecting power consumption fluctuations – could such fluctuations affect an entire network fabric in ways that are hard to anticipate?
 
-![](https://substackcdn.com/image/fetch/$s_!JoXi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F71c23008-9f18-42cf-b6f3-8d7c47818718_3866x918.png)
+![](z-images/2fead937b1a03fc4aad9e7576fc752ae.webp)
 
 Source: Meta
 
@@ -212,17 +212,17 @@ In this process, the electrical signal traverses over a relatively long distance
 
 The schematic below illustrates a CPO implementation, where there is an optical engine that resides on the same package as the compute or switch chip. Optical engines will initially be on the substrate, with OEs placed on the interposer in the future.
 
-![](https://substackcdn.com/image/fetch/$s_!dEFF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fde4a101e-47e9-4c4e-a773-58bd9011b84a_1362x443.png)
+![](z-images/7253b722b1743e489558386428659252.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!y7vd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F685d1ff0-0003-4a85-a518-b386d4011a3b_1349x442.png)
+![](z-images/4cf8314976ffcb63ac8bfd0d31e3e5f2.webp)
 
 Source: SemiAnalysis
 
 Today, the front pluggable optics solution, as illustrated in the diagram below, is ubiquitous. The main takeaway from this diagram is to illustrate that the electrical signal needs to traverse a long distance (15-30cm) across a copper trace or flyover cable before it gets to the optical engine in the transceiver. As discussed above, this also necessitates the need for long-reach (LR) SerDes to drive to the pluggable module.
 
-![](https://substackcdn.com/image/fetch/$s_!3jwl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa77dcc21-f043-4a19-8177-7100ba4a98b3_1024x370.png)
+![](z-images/f3503c5e498574b2970ea4bad618b9de.webp)
 
 Source: SemiAnalysis
 
@@ -230,13 +230,13 @@ Additionally, there are intermediate implementations that fall between CPO and t
 
 In recent years, NPO has emerged as an intermediate step toward CPO. NPO has multiple definitions. NPO is where the OE doesn’t sit directly on the ASIC’s substrate, but is co-packaged onto another substrate. The optical engine remains socketable and it can be detached from the substrate. An electrical signal will still travel from a SerDes on the XPU package through some copper channel to the Optical Engine.
 
-![](https://substackcdn.com/image/fetch/$s_!pgmj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00107d33-9adb-475d-bc88-354f7192b2e9_1024x296.png)
+![](z-images/8d8a9c686ea665b66b5e694dc5904b80.webp)
 
 Source: SemiAnalysis
 
 There is also On-Board Optics (OBO), which integrates the optical engine onto the system PCB inside the chassis, positioning it closer to the host ASIC. However, OBO inherits many of the challenges of CPO, while delivering fewer benefits in terms of bandwidth density and power savings. We view OBO as the “worst of both worlds” because it combines the complexity of CPO while inheriting some of the limitations of front-pluggable optics.
 
-![](https://substackcdn.com/image/fetch/$s_!BFhs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffaa2a72c-e270-4e1f-a13f-a0fe827c9b66_1024x276.png)
+![](z-images/89be4fbb657bba5db64482eaa60458c0.webp)
 
 Source: SemiAnalysis
 
@@ -244,11 +244,11 @@ Source: SemiAnalysis
 
 Another alternative to CPO is “Co-packaged Copper” (CPC). CPC uses copper cabling emerging directly from a connector on substrate. Cables use for CPC are the same cables as flyovers and have the same purpose: to bypass the PCB traces. CPC takes flyover cables further with the socket starting on the package substrate itself. The cables used are twin-axial cables (Twinax cables) that are well insulated to reduce cross-talk, resulting in significantly lower insertion loss compared to conventional electrical traces. Though this solution still uses copper, it offers a key advantage in signal integrity. CPC could provide a practical path to deploying 448G SerDes so as to allow another scaling of off-package interconnect.
 
-![](https://substackcdn.com/image/fetch/$s_!PS4r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc1921fab-3219-4a40-991a-fba7bdab0126_2533x1272.png)
+![](z-images/5cebfdc1b7f24c79c5937de131a10d4b.webp)
 
 Source: LuxShare
 
-![](https://substackcdn.com/image/fetch/$s_!40hw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F250f37ae-3fdf-4d94-9d40-1c1261dbf011_750x458.png)
+![](z-images/232a722da1e3bdc50b6a47ecf9f65cb3.webp)
 
 Source: Luxshare
 
@@ -270,19 +270,19 @@ DSP Transceivers handle both the transmission and reception of optical signals a
 
 Another important component is the optical DSP chip, which sometimes integrates the Driver and/or TIA into one package. The high frequency electrical signal that is transmitted from the host switching or processing chip needs to travel a relatively long distance over lossy copper traces to reach the transceiver at the front of the server chassis. The DSP is responsible for retiming and reconditioning this signal. It carries out error correction and clock/data recovery to compensate for electrical signal degradation and attenuation as the signal passes from the switch or ASIC silicon through the substrate or other transmission medium. For modulation, in the case of PAM4 Modulation (Pulse Amplitude Modulation with 4 Levels), the DSP maps a binary signal into four distinct amplitude levels in order to increase the number of bits per signal, allowing higher bitrates and more bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!PAvG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F350cad4c-11a7-4da3-ba99-5566eac861fc_1353x408.png)
+![](z-images/181f6c357e3216ba6bd47522eb36de48.webp)
 
 Source: SemiAnalysis
 
 The DSP chip is one of if not the most power-hungry and expensive components within the transceiver. For an 800G SR8 Transceiver – the DSP accounts for nearly ~50% of the module’s total power consumption, which is why there has been so much focus on getting rid of the DSP.
 
-![](https://substackcdn.com/image/fetch/$s_!25xx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F49a322c1-c7b4-4e7e-b880-d6a20f501fcc_1024x650.png)
+![](z-images/a9256512a27b7324de47b0dab3296467.webp)
 
 Source: Dr. Radha Nagarajan et al.: Recent Advances in Low-Power Digital Signal Processing Technologies for Data Center Applications
 
 An 18k GB300 Cluster build with a two-layer InfiniBand network will require 18,432 800G DR4 transceivers and 27,648 1.6T DR8 transceivers. The extra cost and power requirements stemming from the use of DSPs can add considerably to the total cost of ownership. Budgeting 6-7W for the 800G DSP and 12-14W for the 1.6T DSP, this would add up to 480kW of DSP power for just the back-end network alone for this entire cluster, or about 1.8kW per server rack. When sourced from premium brand-name suppliers, transceivers can account for nearly 10% of the cluster’s total cost of ownership. So – accounting for 50% of the power draw and 20-30% of the BoM of a typical transceiver – some regard DSPs as public enemy number one of cost and power efficiency.
 
-![](https://substackcdn.com/image/fetch/$s_!7T1r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0b4adda8-3877-4a99-a96a-90088595122a_1289x372.png)
+![](z-images/905b17aefc114482e33110e1f67578aa.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -308,7 +308,7 @@ Thus, interconnect bandwidth density relative to energy consumption is a very im
 
 When examining the chart below, a clear trend emerges: this figure of merit degrades exponentially for electrical links as distance increases. Also, moving from purely electrical interfaces to those requiring optical–electrical conversion introduces a substantial drop in efficiency—potentially by an order of magnitude. This drop is caused because it requires energy to drive signals some distance from the chip to the front-panel where the transceiver is. It requires even more energy to power optical DSPs. The figure of merit curve for CPO-based communication lies squarely above pluggables. As indicated in the chart below, CPO offers more bandwidth density per area per energy consumed over the same ranges of distance making it an objectively better interconnect.
 
-![](https://substackcdn.com/image/fetch/$s_!PlwX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F957df714-e3aa-4233-baa6-d5672492cb98_936x558.png)
+![](z-images/b7d114250050fc09aa13ede5fed03dd0.webp)
 
 Source: G Keeler, DARPA 2019, SemiAnalysis
 
@@ -320,13 +320,13 @@ While transistor densities and compute (as represented by FLOPs) have scaled wel
 
 Additionally, increasing the signaling speed of each individual I/O is becoming increasingly challenging and power-intensive, further constraining data movement. This is a key reason why interconnect bandwidth has scaled so poorly over the past many decades relative to other computing trends.
 
-![](https://substackcdn.com/image/fetch/$s_!QTlu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbe0c6e57-2f6c-477f-9188-9b1fcd08d5c0_1024x523.png)
+![](z-images/90a8a67ec11e97fa512aeb80adca9cfa.webp)
 
 Source: Amir Gholami
 
 Off-package I/O density for HPC applications has plateaued due to limitations on the number of bumps in a single flip-chip BGA package. This is a constraint on scaling escape bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!ArW1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5c865684-e533-400c-8fe8-ce3f6d551da3_865x473.png)
+![](z-images/472185d42504b810773c3e7d8596db69.webp)
 
 Source: TSMC
 
@@ -336,7 +336,7 @@ With limited number of I/Os, the way to realize more escape bandwidth is to push
 
 However, it is becoming increasingly challenging to provide higher line speeds at a desirable reach. As frequencies increase, insertion losses rise, as shown in the chart below. We see that losses increase at higher SerDes signaling speeds especially as the signal path lengthens.
 
-![](https://substackcdn.com/image/fetch/$s_!Oi0H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F04d682ff-06fb-4322-bf83-1a496893c91c_1024x564.png)
+![](z-images/f060ebaaf4a1d419dfff97594626299b.webp)
 
 Source: Broadcom
 
@@ -350,11 +350,11 @@ In the NVLink protocol, bandwidth in NVLink 5.0 has increased more than 11x comp
 
 Scaling escape bandwidth is critical for companies at the leading edge where throughput is a differentiator. For Nvidia, whose NVLink scale up fabric is an important moat, this roadblock could make it easier for competitors such as AMD, and the hyperscalers to catch up.
 
-![](https://substackcdn.com/image/fetch/$s_!OeQK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fea946590-1ac8-4010-937b-43583e6eedfe_2413x486.png)
+![](z-images/b8571fa8881317557b870bb2b3f85107.webp)
 
 Source: Nvidia, SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!VVbL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbd2a2f28-f353-47de-903f-f469f78c1316_1184x556.png)
+![](z-images/290a351e405e3d29d8cf1138b7bf60d8.webp)
 
 Source: Nvidia, SemiAnalysis
 
@@ -370,11 +370,11 @@ Once there is no longer a requirement to drive electrical signals to relatively 
 
 One such example is with UCIe interface. UCIe-A can offer up to ~10 Tbit/s/mm of shoreline density, which is designed for advanced packages (ie. chiplets interfacing via an interposer with sub-2mm reach). On a long edge of a reticle sized chip this is up to 330 Tbit/s (41TByte/s) of off-package bandwidth. This is 660 Tbit/s of bi-directional bandwidth off of both edges. This compares to Blackwell which only has 23.6 Tbit/s of off-package BW, equivalent to around 0.4 Tbit/s/mm of shoreline density, which is a big difference.
 
-![](https://substackcdn.com/image/fetch/$s_!ouU0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85cd24a9-c3cf-4239-a2f6-41ef22eff8d0_1254x946.png)
+![](z-images/0c240e57bacab25d33bbb9a46e7bb001.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!3W-U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d2ac70e-d96d-42c9-b8be-3c186d60597e_2392x570.png)
+![](z-images/b2872c6959375ac65eb10bfede03087d.webp)
 
 Source: SemiAnalysis
 
@@ -417,7 +417,7 @@ As the name suggests, “Co- **packaged** optics”, is fundamentally a packagin
 
 An optical engine has both optical and electrical components. The photodetector and modulators are optical components contained in the contained in the “PIC” (photonic integrated circuit). The Driver and Transimpedance Amplifier are electrical circuitry contained in the “EIC” (electric integrated circuit). The PIC and EIC need to be integrated for the OE to function. Multiple packaging methods exist to accomplish this PIC–EIC integration.
 
-![](https://substackcdn.com/image/fetch/$s_!h45E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6500f472-56b6-4b66-826a-64bb60e09f94_1024x465.png)
+![](z-images/1734636574ec12a653744ff147fb6229.webp)
 
 Source: ID TechEx
 
@@ -433,7 +433,7 @@ Unlike its dominance in traditional CMOS logic, TSMC previously had a limited pr
 
 Overall, TSMC has now become a very key player in CPO despite its previously weaker standalone SiPho capabilities. Like other major players, TSMC aims to capture as much of the value chain as possible. By adopting TSMC’s COUPE solution, customers effectively commit to using TSMC-manufactured PICs, as TSMC does not package SiPho wafers from other foundries. Many CPO focused companies have indeed pivoted decisively towards making TSMC’s COUPE as part of their go to market solution for the next few years.
 
-![](https://substackcdn.com/image/fetch/$s_!zXQ-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F86edb5e2-23f9-426c-acde-0a965fe506ae_1024x576.png)
+![](z-images/fe275dd5c3d90341a4ef80140100380e.webp)
 
 Source: TSMC
 
@@ -441,7 +441,7 @@ Source: TSMC
 
 EICs and PICs are bonded using the TSMC-SoIC-bond process. As we mentioned previously, longer trace lengths mean more parasitics, which degrades performance. TSMC’s SoIC is a bumpless interface offering the shortest trace length possible without being monolithic and is therefore the most performant possible way to heterogeneously integrate the EIC and PIC. As shown below, at iso-power, SoIC based OEs offer more than 23x the bandwidth density of an OE integrated with bumps.
 
-![](https://substackcdn.com/image/fetch/$s_!mNL0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F34ef9a17-7602-4097-8a5c-bc53cc8515f8_1024x471.png)
+![](z-images/ea73904565efafbfae594c3ff6c45947.webp)
 
 Source: TSMC
 
@@ -449,17 +449,17 @@ COUPE supports the whole optical engine design and integration process. For opti
 
 **Coupling**: As we will detail more later, there are two main coupling methods – grating coupling (GC) and edge coupling (EC). COUPE uses one common EIC on PIC bumpless stacking structure for both GC and EC. However, the COUPE-GC structure will distinctively use Silicon lens (Si lens) and MR (metal reflector), while COUPE-EC will uniquely have EC facet (for terminating EC to fiber). In the case of GC, the Si lens is designed on a 770µm silicon carrier (Si-carrier) and the MR is positioned directly underneath the GC, along with the optimization dielectric layers required for optical performance. The Si-carrier is then WoW (wafer-on-wafer) bonded to a CoW (chip-on-wafer) wafer.
 
-![](https://substackcdn.com/image/fetch/$s_!Wwaf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee18cf78-ed61-4ca1-baad-f672bcae88b9_4089x1425.png)
+![](z-images/7bf91e868de07eb597f634fb69cbbae6.webp)
 
 Source: TSMC
 
-![](https://substackcdn.com/image/fetch/$s_!TgeK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73634536-0ac6-485b-9323-0de1bdbb8ce2_2992x1231.png)
+![](z-images/3ff7d1baf89091e0ac5cea9ce634eee3.webp)
 
 Source: TSMC
 
 **Fiber Attach Unit (FAU)**: The FAU needs to be co-designed according to the optical path of COUPE. The purpose of the FAU is to couple the light from Si lens into the optical fiber at low insertion loss. The manufacturing difficulty increases as number of I/O increases, but development time and costs are reduced if industry can adhere to specific standards. Overall, each component requires an optimized design to achieve the best optical performance.
 
-![](https://substackcdn.com/image/fetch/$s_!rnze!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F43a2a500-e7f0-4846-8cd1-62e86e91a3e0_3843x1248.png)
+![](z-images/24ba31fa4cd15264866d01665aa16641.webp)
 
 Source: TSMC
 
@@ -467,11 +467,11 @@ Source: TSMC
 
 This is why Broadcom is transitioning to TSMC COUPE for its CPO solutions, despite having iterated multiple generations of CPO using a Fan-Out Wafer-Level Packaging (FOWLP) approach developed by SPIL. Notably, Broadcom has committed to COUPE for its future switch and customer accelerator roadmaps. We understand that the FOWLP approach doesn’t allow scaling beyond 100G per lane due to excessive parasitic capacitance, as electrical signals must pass through the Through-Mold Vias (TMV) to get to the EIC. To maintain a competitive roadmap, Broadcom must transition to COUPE, which offers superior performance and scalability. This highlights TSMC’s technological edge, enabling them to secure wins even in optics, a domain where they have historically been considered weaker.
 
-![](https://substackcdn.com/image/fetch/$s_!0Sb2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F52efaf06-fa1a-4c3d-95b3-c4510f59128c_1312x738.png)
+![](z-images/1d28e7487d92c3f616b1df2bb695b270.webp)
 
 Source: Broadcom
 
-![](https://substackcdn.com/image/fetch/$s_!zE-w!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd77912f3-8fea-4219-9960-ac4ff1ae63b0_1302x738.png)
+![](z-images/c3ce581f5e9bcdfd8139af778d5f9501.webp)
 
 Source: Broadcom
 
@@ -491,7 +491,7 @@ Fibers come out of the OE for the data to transmit. One optical lane is comprise
 
 Edge coupling aligns the fiber along the chip’s edge. From the image below, we can see that the fiber end must be precisely aligned with the polished edge of the chip to ensure that the light beam enters the edge coupler accurately. A microlens at the fiber tip focuses and directs the light toward the chip, leading its entry into the waveguide. The waveguide taper gradually widens, allowing for a smooth mode transition that reduces reflections and scattering to ensure coupling efficiency. Without such a lens and taper, there will be significant optical loss at the interface between fiber facet and waveguide facet.
 
-![](https://substackcdn.com/image/fetch/$s_!ipiy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F758e5ed1-01f8-4b79-8d31-3b58a64bfe28_1024x761.png)
+![](z-images/8fe50c636ed0505844ce734a0af9b4bc.webp)
 
 Source: Ansys
 
@@ -516,7 +516,7 @@ Nvidia had a preference for GC due to its several advantages – it enables 2D d
 
 TSMC also clearly has a higher preference for GC, which is supported in their COUPE platform.
 
-![](https://substackcdn.com/image/fetch/$s_!G11C!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2285602-3ce2-4370-9e31-85fea4e808c4_1024x583.png)
+![](z-images/39e9ee96985e3f70ab7cdad8c8cd8e94.webp)
 
 Source: Journal of Semiconductors
 
@@ -538,7 +538,7 @@ At this year’s VLSI conference, Nvidia highlighted several laser partners with
 
 Nvidia has also discussed exploring VCSEL arrays as a potential alternative laser solution. While the per-fiber data rate would be lower and there may be some thermal issues, VCSELs may offer power and cost efficiency and can be suitable for “wide-and-slow” applications. That said, we don’t see this as an immediate priority for Nvidia.
 
-![](https://substackcdn.com/image/fetch/$s_!LjSW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F355713bf-ab91-4b4a-99e7-68c4a57b9313_1024x647.png)
+![](z-images/dea162d4345f149fc0019cb00ce54b7f.webp)
 
 Source: CPO status, challenges, and solutions
 
@@ -552,7 +552,7 @@ When the lasers enter the PIC, they undergo a modulation phase (driven by driver
 
 MZM encodes data by splitting a continuous-wave optical signal into two waveguide arms whose refractive indices are varied by an applied voltage. When the arms recombine, their interference pattern modulates the signal’s intensity or phase.
 
-![](https://substackcdn.com/image/fetch/$s_!bEuT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2df0e438-b3fb-47d4-ac77-2121524f303f_1024x469.png)
+![](z-images/35ca632f17875fb2d72909380d8a62b2.webp)
 
 Source: Luceda Academy
 
@@ -571,7 +571,7 @@ MRM uses a compact ring waveguide coupled to one or more straight waveguides. An
 
 A light source is passed into the ring from the input port – for most wavelengths of light, there will be no resonance in the ring such that the light will pass through the device, from the input port to the through port. If the wavelength satisfies the resonance condition, then light will constructively interfere in the ring, and will be instead pulled into the drop port. As illustrated in the normalized power graph below, light of a specific wavelength will cause a sharp peak in transmission power at the drop port and a corresponding drop in transmission at the through port. This effect can be used for modulation.
 
-![](https://substackcdn.com/image/fetch/$s_!7tRX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F11337158-6ce6-4419-8ba3-9ce78cc1a939_1291x990.png)
+![](z-images/df53aa88cc3fe8e1c4bf965a23f217a8.webp)
 
 Source: Sam Palermo, Texas A&M University
 
@@ -600,7 +600,7 @@ MRMs are challenging to implement but is certainly feasible. They can potentiall
 
 [EAMs modulate signals](https://people.engr.tamu.edu/spalermo/ecen689_oi/lecture10_ee689_eam_tx.pdf) by altering their ability to absorb light based on the voltage applied. More specifically, when low or no voltage is applied to an EAM, the device allows most of the incoming laser light to pass through, making it appear transparent or “open.” When a higher voltage is applied, the band gap of a GeSi modulator shifts to cover the high C-band range (above 1500nm), increasing the absorption coefficient for those wavelengths and attenuating “closing” the optical signal that is passing through the nearby waveguide. This is known as the Franz-Keldysh effect. This switching between “open” and “close” states modulates the intensity of the light, effectively encoding data onto the optical signal.
 
-![](https://substackcdn.com/image/fetch/$s_!KcG9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1406b09a-faa5-44a7-8387-4d7f6463a600_900x318.png)
+![](z-images/4a7f6acf55af982ac59dee5f1d4dfc79.webp)
 
 Source: Texas A&M University, Liu 2008, Helman 2005
 
@@ -652,7 +652,7 @@ Lately the industry has divided concepts into two main approaches: **Fast and Na
 
 The table below outlines several approaches to scale optical engines to 12.8T and beyond.
 
-![](https://substackcdn.com/image/fetch/$s_!LsUk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff8406576-5382-4acf-a463-2809401af721_2406x992.png)
+![](z-images/1b628fb8cd29437c16b7195ce790be29.webp)
 
 Source: SemiAnalysis
 
@@ -698,7 +698,7 @@ These environmental and operational challenges extend directly to the physical f
 
 We can see in the close-up image of the Quantum-X CPO switch below that the fiber ribbons coming out of the OEs need to be routed through the fiber cassettes to manage the fiber properly. FAUs are detachable to provision for breakages that need replacing. But the more complicated routing of fiber within the switch means that fiber/FAU replacement is far more onerous than replacing a broken pluggable transceiver which is simply a hot swap at the front of the face plate. In the case of the CPO switch, the engineer will need to go inside the box/chassis, remove the broken FAU, and then properly re-attach the new FAU through the cassette. This needs to be done without disturbing the other fibers. While Nvidia has been emphasizing the reliability benefits of CPO, serviceability is another element that is worth discussing at more length.
 
-![](https://substackcdn.com/image/fetch/$s_!GMhE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c4bc227-338d-431e-8342-6ca63e6cf631_1024x516.png)
+![](z-images/e38290e3a689e25546b7944569db0af4.webp)
 
 Source: Nvidia
 
@@ -710,7 +710,7 @@ In this part, we will start by introducing CPO products that are on the market t
 
 At GTC 2025, Nvidia debuted their first CPO-based switches for scale-out networks. Three different CPO-based switches were announced. We will walk through each of them in turn, but we first present a neat table aggregating all the important specifications:
 
-![](https://substackcdn.com/image/fetch/$s_!DDSM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d2d3acc-88bc-43ac-a366-43ccb9e17757_1028x730.png)
+![](z-images/f3177f0df765b72b18297ac7e6fe38e3.webp)
 
 Source: SemiAnalysis
 
@@ -718,7 +718,7 @@ Source: SemiAnalysis
 
 The first CPO switch to come to market by 2H 2025 will be the Quantum X800-Q3450. It features 144 Physical MPO ports which enables 144 logical ports of 800G or 72 logical ports of 1.6T, for aggregate bandwidth of 115.2T. Its resemblance to a spaghetti monster has the authors’ stomachs rumbling.
 
-![](https://substackcdn.com/image/fetch/$s_!CEqH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8bf88c10-2a58-426b-8cf6-0efd4fbac46a_1024x518.png)
+![](z-images/68ae7d5fb0f066cb4bb15e17f7c844e2.webp)
 
 Source: Nvidia
 
@@ -726,31 +726,31 @@ The Quantum X800-Q3450 achieves this high radix and high aggregate bandwidth by 
 
 When it comes to the maximum cluster size for a three-layer network, this delivers the same end result as theoretically using four times as many 28.8T switch boxes but with 200G logical port sizes – both allow a maximum cluster size of 746,496 GPUs. This difference is that when using the X800-Q3400 switch, the shuffle happens neatly inside the switch box, while setting up the same network with discrete 28.8T switch boxes will require far more individual fiber cables going to a greater number of destinations.
 
-![](https://substackcdn.com/image/fetch/$s_!2mSj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0d78b0cb-7092-4124-acfe-6003ce26aa6a_1014x386.png)
+![](z-images/feef545dcf439850ece55a81315189f9.webp)
 
 Source: SemiAnalysis
 
 Each ASIC in the Quantum-X800-Q3450 is surrounded by six detachable optical sub-assemblies, with each sub-assembly housing three optical engines. Each optical engine delivers 1.6 Tbit/s of bandwidth, resulting in a total of 18 optical engines per ASIC and an aggregate optical bandwidth of 28.8 Tbit/s per ASIC. Note that these sub-assemblies are detachable, so purists may consider this to be technically “NPO” not strictly “CPO.” While there is a bit of extra signal loss associated with the detachable OE, in effect we believe this will not considerably impact performance.
 
-![](https://substackcdn.com/image/fetch/$s_!qzZv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2654220-e852-4fb3-b247-d5615bba8a11_1024x516.png)
+![](z-images/40c37b242723cf9683a35e6e94c42140.webp)
 
 Source: Nvidia
 
 Each engine operates with 8 electrical and optical channels, driven by 200G PAM4 SerDes on the electrical side and on the optical side, 8 Micro-Ring Modulators (MRMs) use PAM4 modulation to achieve 200G per modulator. This design choice was one of the big takeaways of the announcement: that Nvidia and TSMC can ship 200G MRMs in production. This matches the fastest MZMs today and disproves the industry notion that MRMs are limited to NRZ modulation. It’s quite an impressive engineering achievement by Nvidia to reach this milestone.
 
-![](https://substackcdn.com/image/fetch/$s_!fpYx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa9ca5427-41f9-470b-a6b7-9741318da128_1024x507.png)
+![](z-images/228dee5fff8c5b156e1542d5057de27c.webp)
 
 Source: Nvidia
 
 Each optical engine integrates a Photonic Integrated Circuit (PIC) built on a mature N65 process node, and an Electronic Integrated Circuit (EIC) fabricated on an advanced N6 node. The PIC leverages the older node because it contains optical components such as modulators, waveguides, and detectors—devices that do not benefit from scaling, and often perform better at larger geometries. In contrast, the EIC includes drivers, TIAs, and control logic, which benefit significantly from higher transistor density and improved power efficiency enabled by advanced nodes. These two dies are then hybrid bonded using TSMC’s COUPE platform, enabling ultra-short, high-bandwidth interconnects between the photonic and electronic domains.
 
-![](https://substackcdn.com/image/fetch/$s_!8h3-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5757b5de-38e7-4890-a72d-68e5842e9b6b_1024x519.png)
+![](z-images/ab47508bf33ca98feb7989bbb831a313.webp)
 
 Source: Nvidia
 
 Two copper cold plates sit atop the ASICs in the Quantum-X800-Q3450 as part of a closed-loop liquid cooling system that efficiently dissipates heat from each of the switch ASICs. The black tubing connected to the cold plates circulates coolant fluid, helping to maintain thermal stability. This cooling system is essential in maintaining thermal stability not only for the ASICs but also for the adjacent, temperature-sensitive co-packaged optics.
 
-![](https://substackcdn.com/image/fetch/$s_!e18r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F551ef71b-ffdc-4595-a845-0998b288987b_1024x517.png)
+![](z-images/e805538659f6ca6b747175eb9db97e73.webp)
 
 Source: Nvidia
 
@@ -760,7 +760,7 @@ Spectrum-X Photonics is set for release in the 2 <sup>nd</sup> half of 2026, wit
 
 The Quantum X800-Q3450 CPO switch utilizes four discrete switch packages connected to the physical in a multi-plane configuration, and each switch package is a monolithic die containing the 28.8T switch ASIC together with required SerDes and other electrical components. In contrast, Spectrum-X Photonics switch silicon is a multi-chip module (MCM) with a much larger reticle size 102.4T switch ASICs at the center, surrounded by eight 224G SerDes I/O chiplets – two on each side.
 
-![](https://substackcdn.com/image/fetch/$s_!K_H2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3a9875aa-e356-4cd2-b3c0-48bf42a37882_1024x566.png)
+![](z-images/b9840938fde2d5493a0c716830909c69.webp)
 
 Source: Nvidia
 
@@ -768,65 +768,65 @@ Each Spectrum-X photonics multi-chip module switch package will have 36 optical 
 
 Each I/O chiplet delivers 12.8T of total unidirectional bandwidth, comprising of 64 SerDes lanes, and interfaces with 4 OEs each. This is what allows the Spectrum-X to deliver far more aggregate bandwidth than Quantum-X Photonics, with much more shoreline and area for the SerDes.
 
-![](https://substackcdn.com/image/fetch/$s_!QbnB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee32beb9-466d-4d09-a93b-9f794a92d111_1024x899.png)
+![](z-images/15fdd499cea5083751593d2b31ce04a3.webp)
 
 Source: SemiAnalysis
 
 The Spectrum-X 6810 Switch Box uses one unit of the above switch package to deliver 102.4T of aggregate bandwidth. The larger Spectrum-X 6800 Switch Box SKU is a high-density chassis with an aggregate bandwidth of 409.6T achieved by utilizing four of the above Spectrum-X switch packages which are also connected to the external physical ports in a multi-plane configuration.
 
-![](https://substackcdn.com/image/fetch/$s_!MQFw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9451cff-2100-4514-962c-67794025c755_1346x760.png)
+![](z-images/97769ec3a486dccc2109ccc1f352d9a8.webp)
 
 Source: Nvidia
 
 Much like the four ASIC 115.2T Quantum X800-Q3450, the Spectrum-X 6800 uses an internal breakout to physically connect each port to all four ASICs.
 
-![](https://substackcdn.com/image/fetch/$s_!U1Ol!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8608ea19-5780-407b-aa8f-bc6ac1575ff6_1003x386.png)
+![](z-images/c60b14d3a0657973bcf8f51f65723b4c.webp)
 
 Source: SemiAnalysis
 
 ## The Broadcom CPO Switch Portfolio
 
-![](https://substackcdn.com/image/fetch/$s_!Fo4V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc83d20f5-3927-46a0-9797-c3d8a6e15eb4_1960x1270.png)
+![](z-images/a8067786b4195e3ad5b990ff17a96eff.webp)
 
 Source: SemiAnalysis
 
 Broadcom was among the first companies to offer real CPO-enabled systems and as such is considered a leader in CPO. Broadcom’s first‐generation CPO device, known as Humboldt, served largely as proof of concept. Dubbed “TH4‐Humboldt”, it is a 25.6Tbit/s Ethernet switch that equally divides its total capacity between traditional electrical connections and CPO. Of that, 12.8Tbit/s is handled by four 3.2 Tbit/s optical engines, each delivering 32 lanes of 100 Gbit/s. This hybrid design of copper and optics has some prominent uses cases. In one scenario, top‐of‐rack (ToR) switches rely on electrical interfaces for short‐distance copper connections to nearby servers, while their optical ports uplink to the next tier of switching. In another scenario, at the aggregation layer, electrical ports interconnect the various switches within a rack, and optical links extend to switching tiers above or below that layer.
 
-![](https://substackcdn.com/image/fetch/$s_!qqcX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcfbbea34-30f8-4ba8-a8a0-d1765d3b54c7_1024x571.png)
+![](z-images/feb8362f35317ad36fd925c29411c311.webp)
 
 Source: Broadcom
 
 In this design, Broadcom employed a silicon germanium (SiGe) EIC but switched to CMOS in the next generation (i.e. Bailly).
 
-![](https://substackcdn.com/image/fetch/$s_!aA32!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ac5c9f5-2304-4cb0-b871-43f438424dcb_1024x573.png)
+![](z-images/e1481d4e16477ec972aae9958d780f50.webp)
 
 Source: Broadcom
 
 Broadcom’s second‐generation CPO device, Bailly, is a 51.2 Tbit/s Ethernet switch that—unlike its half‐optical predecessor—relies entirely on optical I/O. It consists of eight 6.4Tbit/s optical engines, each delivering 64 lanes of 100 Gbit/s. Another notable change is that instead of using a SiGe EIC, it now uses a 7nm CMOS EIC. Moving to a CMOS EIC allowed for a more complex, integrated design with additional control logic, which in turn enabled higher lane counts—scaling from the previous 32 lanes up to 64 lanes in the new optical engine.
 
-![](https://substackcdn.com/image/fetch/$s_!Ieq0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Febce9581-dcb9-4654-899b-81bcdcb5f0a3_1024x578.png)
+![](z-images/41ab9366591b11c81d0732ab0d902d07.webp)
 
 Source: Broadcom
 
 Another notable shift from the first to the second generation is the transition from a TSV process to fan‐out wafer‐level packaging (FOWLP). In this design, the EIC leverages through‐mold vias (TMVs) to route signals up to the PIC while copper pillar bumps connect it to the substrate. A major reason for adopting FOWLP is that it’s already proven in the mobile handset market and widely supported by OSATs, giving the technology greater scalability. ASE/SPIL was the OSAT partner for this FOWLP process.
 
-![](https://substackcdn.com/image/fetch/$s_!6Pcn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd6854e20-b645-410a-bba0-a6c3edd00026_1024x572.png)
+![](z-images/8eca0d0926f9403c57d1dbbea6990a05.webp)
 
 Source: Broadcom
 
 Broadcom revealed at Hot Chips 2024 an experimental design that integrates a 6.4 Tbit/s optical engine onto a package with one logic die, two HBM stacks, and a SerDes tile. They proposed using a fan‐out approach that places HBM on the east and west edges of the substrate, allowing room for two optical engines on the same package. By moving from CoWoS‐S to CoWoS‐L, you move to substrates that exceed 100 mm on an edge. As such, they will be able to accommodate up to four optical engines and achieve 51.2 Tbit/s of bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!_eQ3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd9d20033-2dfd-4e49-944a-7ba61d60042b_1382x762.png)
+![](z-images/da1721153e22017a5e851ae670c1f621.webp)
 
 Source: Broadcom
 
-![](https://substackcdn.com/image/fetch/$s_!wE8a!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4f98a480-c54d-4603-8563-f9e0fd8a7fa9_1404x784.png)
+![](z-images/5806244d3008b24cdcce4036f83baff5.webp)
 
 Source: Broadcom
 
 This year, Broadcom is launching its Tomahawk 6-based Davisson CPO switches, which incorporates sixteen 6.4T OEs. The switch ASIC is fabricated using TSMC’s N3 process node and delivers 102.4 Tbit/s of bandwidth per package. Broadcom uses contract manufacturers (CMs) such as Micas and Celestica for box assembly. Additionally, NTT Corp (Japan) is reportedly purchasing Broadcom’s TH6 bare dies and building its own CPO systems using proprietary OEs and optical solutions not sourced from Broadcom. This approach expands the potential business opportunities for TH6-based CPO systems and encourages a more open vendor ecosystem.
 
-![](https://substackcdn.com/image/fetch/$s_!wo5O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73c18781-37ad-4019-ae51-37dbd121e778_3982x2067.png)
+![](z-images/2f89bfc8042c85dc921e46d4d7284e94.webp)
 
 Source: SemiAnalysis
 
@@ -836,7 +836,7 @@ Future generations of Broadcom CPO endpoints are also moving to the TSMC’s COU
 
 ## Intel’s CPO Roadmap
 
-![](https://substackcdn.com/image/fetch/$s_!ZMzy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc8c4cc24-f4d2-4b56-9a78-1d05e8df788c_1817x1383.png)
+![](z-images/7a1d8057fb08ce8ac5eade495706fdaf.webp)
 
 Source: Intel
 
@@ -866,13 +866,13 @@ Let’s start our tour through each of these companies’ architecture and go to
 
 Ayar Labs’ product is their TeraPHY optical engine chiplet, which can be packaged into XPU, switch ASIC, or memory. The first generation of TeraPHY can deliver 2Tbit/s of uni-directional bandwidth while using just 10W of power. The second gen TeraPHY provides 4 Tbit/s of unidirectional bandwidth. It is the world’s first UCIe optical retimer chiplet, performing E/O conversion within the chiplet for transmitting the host signal optically onward. The choice of UCIe should make it attractive for customers as it has a standardized interface that can be easily implemented into their host chips.
 
-![](https://substackcdn.com/image/fetch/$s_!YisH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fab58856e-1c1b-43e6-9f32-825b26e3a02e_1024x563.png)
+![](z-images/e27f1b0306cf65e76445a526aec8c640.webp)
 
 Source: Ayar Labs
 
 Ayar Labs manufactured the first two generations of TeraPHY on GlobalFoundries’ 45 nm process as a monolithic solution that integrates both electronics and silicon photonics, while the third generation of TeraPHY instead adopts TSMC COUPE. This close integration of ring modulators, waveguides, and control circuitry helps reduce electrical losses. However, the mature monolithic nodes used in the first two generations constrain the performance of the EIC and is why the first few generations of TeraPHY used a low modulation rate.
 
-![](https://substackcdn.com/image/fetch/$s_!UHN3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36973977-f4e4-4d06-a2a4-4a6b44bec6b1_1024x525.png)
+![](z-images/50e604707537acf6d4d1b191add074e8.webp)
 
 Source: Ayar Labs
 
@@ -882,7 +882,7 @@ For scaling bandwidth per chiplet, the company noted that fiber density (current
 
 The SuperNova laser is MSA (Multi-Source Agreement) compliant, allowing it to interoperate with other CW-WDM standard optical components.
 
-![](https://substackcdn.com/image/fetch/$s_!NUEN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8cf45cbd-6901-4ccc-9965-70363c7efb03_844x588.png)
+![](z-images/3816c0027ca9a1a6d90ecf3ee0b68a67.webp)
 
 Souce: Ayar Labs
 
@@ -890,7 +890,7 @@ Ayar’s third generation of TeraPHY pivots to using TSMC COUPE and can deliver 
 
 Though Ayar Labs has not disclosed the exact port architecture (i.e. the number of DWDM wavelengths, fibers per FAU, etc), its use of bi-directional optical links means that it will need at most ~64 fiber strands for Tx and Rx, and at most dozens more to connect to the external laser source. However – Ayar’s strategy has always been focused on WDM, meaning that that total fiber count per FAU could be as low as 32 in total. Like the first two generations, the third generation of TeraPHY continues to use Microring Modulators to enable optical chiplets to remain small while enabling CWDM or DWDM as a vector for future bandwidth scaling.
 
-![](https://substackcdn.com/image/fetch/$s_!OMiY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ea656d5-1940-4070-ae86-2e9ad796c63d_3624x2067.png)
+![](z-images/c204a119d9c00772cbb0d3051b3f2b4f.webp)
 
 Source: Ayar Labs, Alchip
 
@@ -898,13 +898,13 @@ Ayar Labs has also partnered with Alchip and GUC to enable integration of their 
 
 At Hot Chips 2025, [Ayar Labs shared results](https://www.youtube.com/watch?v=mZXsIfLKXrM) a slow thermal cycling link test – showing over four hours of thermal cycling at a rate of about 5C/min, demonstrating strong link BER throughout.
 
-![](https://substackcdn.com/image/fetch/$s_!iYIo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F362d0b77-974d-435d-acca-af5d8464b34c_3030x1684.png)
+![](z-images/fdff5dc4613c3de4e8e01cee081e833b.webp)
 
 Source: Ayar Labs
 
 However, studying the MRM’s resilience against rapid changes in temperature is just as important as demonstrating the stability of the link over a wide temperature range over a long period of time. In the same Hot Chips talk, Ayar explained how they opted to emulate a fast temperature ramp by sweeping laser wavelength in lieu of having an on-package ASIC that can actually perform the 0 to 500W step. Control circuits detect whether the ring resonance drifts – this can be caused by either the incoming laser changing wavelength or by a change in ring temperature, so they sweep the laser wavelength at rate that corresponds to an equivalent change in temperature. For example a 20nm/s sweep would simulate a 64C change over 0.2 seconds, amounting to 320 C/s. This study showed no bit errors for up to 800C/s of temperature change.
 
-![](https://substackcdn.com/image/fetch/$s_!WurP!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8b6eb82b-e964-4837-9694-27230f0ace2c_3030x1684.png)
+![](z-images/92d38656ca333dc1fe95bc4fd8ab934b.webp)
 
 Source: Ayar Labs
 
@@ -920,7 +920,7 @@ A key point of differentiation for Nubis is how they couple fiber. Nubis couples
 
 Looking at the diagram below: the PIC (green at bottom) contains modulators, photo detectors and waveguides with EICs mounted on top. The red poles are optical fibers, while the block that contains the optical fibers is a glass block (FAU) which is used as a fiber holder. The FAU has laser-drilled holes at the top of the block to ensure exact fiber positioning. By employing a 2D fiber array, they are able to connect 36 optical fibers (16 for transmit, 16 for receive, 4 for lasers) to the PIC and avoid the need for WDM to get more lambdas over fewer fibers. This makes the Nubis FAU one of the densest currently shipping.
 
-![](https://substackcdn.com/image/fetch/$s_!IPYW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c707240-0f0c-44f7-b7d9-e3c4257d9b4d_2559x2067.png)
+![](z-images/45752ea6c030368d1a181dea20b44ef2.webp)
 
 Source: Nubis
 
@@ -930,7 +930,7 @@ The optical fibers go up and they bend sideways by employing special optical fib
 
 Another benefit of using a 2D array rather than edge coupling is that you are less physically limited by the number of fibers that can be connected. As seen in the diagram below, using Nubis’s 2D Fiber array structure, multiple rows of optical engines can be placed around the ASIC, increasing bandwidth density provided the package permits that.
 
-![](https://substackcdn.com/image/fetch/$s_!u0eN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb3f5c8ef-15d8-45cf-886e-25aef3d4d648_1024x521.png)
+![](z-images/8715602411541ac079722a918c6d30ef.webp)
 
 Source: Nubis
 
@@ -942,11 +942,11 @@ Lastly, in copper, Nubis has also announced and demonstrated at OFC their linear
 
 Celestial AI is an IP, products, and systems company specializing in optical interconnect solutions for AI scale-up networks. The main goal of the company’s technology is to build photonic devices (modulators, PDs, waveguides, etc.) into interposers coupled with an interface with the outside world (GC with an FAU). The diagram below is a good representation of Celestial AI’s suite of photonics-based interconnect solutions which Celestial AI calls their “Photonic Fabric <sup>TM</sup> ” (PF).
 
-![](https://substackcdn.com/image/fetch/$s_!f1lt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc70caf3d-f7a6-4e7d-82a0-40501a95e55e_4380x2541.png)
+![](z-images/06433da45db5e57475ff74a53d2e05c9.webp)
 
 Source: Celestial AI
 
-![](https://substackcdn.com/image/fetch/$s_!D1vJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d2d54f5-9d19-4c0c-b260-2a422a372467_4380x2508.png)
+![](z-images/112363f7a5a2e799942a3de4c7b865bd.webp)
 
 Source: Celestial AI
 
@@ -962,17 +962,17 @@ Optical interposers allow I/O to be placed anywhere on the chip, as **optical** 
 
 ![A screen shot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!RwUk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd96ba1c1-81fc-42a2-8628-a2f8010117f6_1622x876.png)
+AI-generated content may be incorrect.](z-images/1f99ea596bbfbe4a39720ef4fa4d44ed.webp)
 
 Source: Celestial AI
 
-![](https://substackcdn.com/image/fetch/$s_!ZL4b!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d4a954c-8753-42ad-86f2-a1248eabdbd4_4380x2499.png)
+![](z-images/4e0b119b02170403a3e70e794dbef7d3.webp)
 
 Source: Celestial AI, Marvell
 
 The idea of an optical interposer or channeling optical signals through an advanced package has a few similarities to Lightmatter’s solution in that they both route optical signals below the logic chips thereby avoiding shoreline constraints, but there are a few key differences. Celestial AI adopts a photonic bridge that is akin to a silicon bridge (think like the CoWoS-L silicon bridge) whereas Lightmatter uses a large multi-reticle photonic interposer that sits below a number of individual chips. Lightmatter’s concept is more ambitious in scope – aiming for 4,000 mm <sup>2</sup> interposer sizes in its M1000 3D Photonic Superchip while also aiming to support optical circuit switching within the interposer and a very high 114 Tbit/s of total aggregate bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!sS3f!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57501d2f-ac77-461c-90ad-dcb0336bc51e_4380x2484.png)
+![](z-images/70a4675fe4cccdde9db49fbe80f5a322.webp)
 
 Source: Celestial AI, Marvell
 
@@ -994,7 +994,7 @@ On the other hand, there are a few drawbacks in using GeSi EAMs for CPO:
 
 Overall, Celestial AI has been working to innovate its custom links – they don’t rely on any gearbox components, offering better latency and power efficiency, and are adaptive to different types of protocols. As mentioned earlier, Celestial AI is the only major player that is mainly using EAMs for modulation. One key implication is that they will also have some work ahead of them integrating their EAM design into a foundry whereas other CPO companies can lean on TSMC COUPE where MRMs and related heaters are already part of the PDK.
 
-![](https://substackcdn.com/image/fetch/$s_!4cZt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fecb3b556-cc14-4576-b521-a5e4d6a9f122_1999x1114.png)
+![](z-images/4a6a1bd3d6b5d8110e870c0e4aae2ad8.webp)
 
 Source: Celestial AI
 
@@ -1002,13 +1002,13 @@ In the immediate term, Celestial AI is committing to an ambitious timeline for t
 
 As part of the deal terms, an additional $2.25B of payout to Celestial AI’s equity holders is contingent upon the company achieving a cumulative revenue of at least $2.0 billion by January 2029 (the end of Marvell’s Fiscal Year 2029 – i.e. F1/29). This first milestone towards that full payout is achieving $500M of cumulative revenue by January 2029 for one third of the payout. The $1B revenue run rate expected exiting F1/29 is half of the earn-out amount – implying that Celestial will need to add additional customers to the order book to achieve the $2B earn-out target.
 
-![](https://substackcdn.com/image/fetch/$s_!Exra!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4989be41-b872-4506-bd5a-37142db93c95_1454x810.png)
+![](z-images/834ba81abedc89467629eba3b1a1d1c3.webp)
 
 Source: Celestial AI, Marvell
 
 In connection with the Celestial AI acquisition, Marvell filed an [8-K report](https://www.sec.gov/Archives/edgar/data/1835632/000119312525305271/d81371d8k.htm) on December 2, 2025 issuing Amazon warrants with an exercise price of $87.0029 through December 31, 2030. These warrants vest “based on Amazon’s purchases of Photonic Fabric products, indirectly or directly, through December 31, 2030”, strongly suggesting that AWS’s Trainium will be the target product as this starts to ramp in late 2027. At Marvell’s Industry Analyst Day, Celestial AI discussed how a major hyperscaler selected them for optical interconnectivity for advanced AI systems that will move into volume production in that hyperscaler’s next generation processor. This, together with the earn-out timing and product revenue guidance in the transaction summary suggests that Celestial AI is targeting to deploy its solution within Trainium 4.
 
-![](https://substackcdn.com/image/fetch/$s_!fK1h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6b68504-b727-4c88-af5b-34e6916d5eb1_840x277.png)
+![](z-images/0f5fc41266fec76d772b66567adc18a5.webp)
 
 Source: Marvell SEC Filings
 
@@ -1022,25 +1022,25 @@ To achieve this, the HBM stack attached to the XPU is replaced with a chiplet th
 
 Each ASIC is a 2.5 layer package integrated with two 36GB HBM3E memory and eight external DDR5.
 
-![](https://substackcdn.com/image/fetch/$s_!Hsv0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa83bfcd7-a955-49fc-ba8f-8d0dc8e6467a_3216x2409.png)
+![](z-images/9dbfbbd16ef7699f7e249869275fca9c.webp)
 
 Source: Celestial AI
 
 The optical I/O (Photonic Fabric IP) is mounted in the middle of the ASIC, rather than at the beachfront, which frees up the shoreline for other use cases.
 
-![](https://substackcdn.com/image/fetch/$s_!IX5B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F546e9803-b9c8-4f31-82ef-9764fdb49f88_3869x1430.png)
+![](z-images/085bc03b58926c5d4ea5a11bf8dd2e7d.webp)
 
 Source: Celestial AI
 
 Zooming out, each PFA module is a 16-radix switch that can support up to 16 XPUs. Rather than have each XPU fan-out to all 16 ports, all-to-all connectivity occurs inside the switch box, where the Fiber Attach Unit (FAU) connected to each Switch ASIC fans out to each of the 16 switch I/Os. As such, every XPU only has one Fiber link to one switch port outside of the box.
 
-![](https://substackcdn.com/image/fetch/$s_!hUZo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcf9f8ffa-be8d-4d86-a7de-8fa4f72c45d6_4380x1830.png)
+![](z-images/c1b06109002b972133c25d80a90abbe8.webp)
 
 Source: Celestial AI
 
 By placing memory external to the XPU and within a shared switching interface, data is aggregated and subsequently accessed from the shared memory pool by every XPU in an all-reduce communication collective.
 
-![](https://substackcdn.com/image/fetch/$s_!-KWP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdcb8fdb0-34ec-4988-80d6-957f9d87a433_3081x3335.png)
+![](z-images/472feea23d6858cb2fce24c2c0cf76ea.webp)
 
 Source: Celestial AI
 
@@ -1058,7 +1058,7 @@ Lightmatter aims to align with the COUPE roadmap offering CPO solutions in earne
 
 Lightmatter’s M1000 3D Photonic Superchip, is a 4,000 mm² optical interposer that is placed below the host compute engine and takes care of signal conversion from electrical to optical. The M1000 was [demonstrated in a live rack-scale demonstration at SC25](https://youtu.be/Gjee92kYmwg?si=bP09-v5rALXtwOkY), and Lightmatter has made it available as a reference design. Passage uses TSVs to deliver electrical signals and power between the XPU and the optical engine, and uses SerDes to connect the two. By placing the ASIC directly on the optical interposer, Passage eliminates the need for large, power-hungry SerDes. Instead, it utilizes 1,024 compact, lower-power SerDes (~8x smaller than conventional SerDes) to enable a total I/O bandwidth of 114Tbit/s (each SerDes operating at 112Gbit/s). By placing the ASIC directly on top of the optical interposer, the chip shoreline constraint is also relieved.
 
-![](https://substackcdn.com/image/fetch/$s_!EQ73!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d1b3254-db98-4d3e-8f11-cc9dde2da82e_1024x583.png)
+![](z-images/36fcc10087099a61d54d64979ac9d255.webp)
 
 Source: Lightmatter
 
@@ -1068,7 +1068,7 @@ Passage uses MRMs with diameters of ~15 µm, each integrated with a resistive he
 
 Passage utilizes 256 optical fibers, each carrying 16 wavelengths unidirectionally (or 8 wavelengths bi-directionally) via DWDM, delivering between 1 Tbit/s and 1.6 Tbit/s of bandwidth per fiber. To improve yield, they have minimized the number of fibers attached to the chip, reducing complexity and manufacturing challenges. Additionally, they have implemented a fiber attach system that allows faulty fibers to be easily disconnected from the panel and replaced, enhancing reliability and serviceability. The table below reflects the different modes that Passage supports currently.
 
-![](https://substackcdn.com/image/fetch/$s_!Oxnr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36b44226-8a2b-48e0-8ae3-333416d66818_5464x2026.png)
+![](z-images/677de1384bbf1494d20d35e2c04d3839.webp)
 
 Source: Lightmatter
 
@@ -1076,7 +1076,7 @@ One of the key debates regarding PASSAGE is the thermal stability of the MRMs us
 
 The [SC25 demonstration](https://www.youtube.com/watch?v=Gjee92kYmwg) video depicted an illustration of temperature variation of between 25C to 105C showing a wide range of operating temperatures, though this particular but with the 80C transition taking around one minute – for a fairly low 1.33C per second excursion, but a separate demonstration also at SC25 using an on-chip thermal aggressor reached the 2,000C/s rate, with the MRM stabilizer heater allowing a far lower range of -2 to +2 C/s at the MRM itself.
 
-![](https://substackcdn.com/image/fetch/$s_!Af6s!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3902b92c-c1fd-4386-bf13-686adaf0b21d_2019x1959.png)
+![](z-images/ec0a826d2387bfa365c5c8465e53c1ee.webp)
 
 Source: Lightmatter
 
@@ -1084,7 +1084,7 @@ Source: Lightmatter
 
 Xscape Photonics is an innovative company that is working on ChromX, a programmable laser that offers 4 to 16 wavelengths, with plans to provide up to 128 wavelengths in the future. By offering up to 128 different colors, ChromX will be able achieve significantly higher bandwidth as compared to existing lasers that only offer 4 to 8 wavelengths. ChromX relies on an external III-V laser alongside an on-chip multicolor generator that helps to generate multiple wavelengths for WDM.
 
-![](https://substackcdn.com/image/fetch/$s_!vvE0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3f319f25-7c39-4fa9-990d-e20d450d2919_1024x491.jpeg)
+![](z-images/f7dfbfc3a4db4f0091f550504b7ef1b5.webp)
 
 Source: Xscape Photonics
 
@@ -1092,7 +1092,7 @@ The fact that the laser is programmable offers flexibility to provide wavelength
 
 Xscape recently announced the availability of its EagleX, which is a plug and play technology evaluation kit targeting Scale Up CPO applications and is positioning itself for product announcements in 2026.
 
-![](https://substackcdn.com/image/fetch/$s_!EDgd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6f15dfb6-f058-42a7-9ddf-bcef356d7a71_1388x788.png)
+![](z-images/a2a74b70e79d6330e819455242e82268.webp)
 
 Source: Xscape Photonics
 
@@ -1104,7 +1104,7 @@ Unlike other CPO vendors that focus on bookended solutions, Ranovus focuses on d
 
 Ranovus’s Odin Optical Engine uses Microring Resonator modulators and can deliver up to 64 lanes of 100Gbit/s using PAM4 modulation.
 
-![](https://substackcdn.com/image/fetch/$s_!60PL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6fba521-f2cf-41ad-9a12-0655c5902c5e_4042x2067.png)
+![](z-images/2c948fb47b0af37611f889a76d011371.webp)
 
 Source: Ranovus
 
@@ -1116,13 +1116,13 @@ Ranovus has demonstrated interoperability with AMD on its 800G chiplet and has p
 
 Scintil’s main product is LEAF Light, a Photonic System-on-Chip (PSoC) that can be delivered in die format (KGD) or assembled in modules, integrating 8 or 16 lasers of different colors spaced at 200 GHz or 100 GHz intervals, enabling multiple wavelengths to be carried on a single fiber through DWDM. They have developed electronic controls that would allow them to accurately maintain 100 GHz or 200 GHz spacing between wavelengths, even under temperature variation. There is a package reference design for an ELSFP module – similar to an OSFP – defined by the OIF, making it easier for customers to integrate this external laser source. Scintil’s solution works well with co-packaged optics based on ring modulators.
 
-![](https://substackcdn.com/image/fetch/$s_!SGy5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee39d31b-102a-4bc1-ae5a-d5af30c05f00_3410x1823.png)
+![](z-images/9cd932ceaddf1663051f08c3588f2423.webp)
 
 Source: Scintil
 
 Scintil’s process is called SHIP (Scintil Heterogeneous Integrated Photonics). The essence of the technology is to integrate III-V lasers onto standard silicon photonics in a wafer-level process. The process begins with a standard silicon photonics wafer – complete with waveguides, detectors, and mux/demux – fabricated using a conventional foundry flow. The wafer is then flipped and bonded to a new handle, allowing the original substrate to be removed and revealing the buried oxide layer. Unpatterned III–V material is subsequently bonded onto this newly exposed surface. The III-V is then patterned with lithography and etched to fabricate lasers, resulting in a monolithically integrated silicon photonics chip with on-board lasers. This contrasts with traditional InP-based lasers patterned using E-beam writers, where achieving precise wavelength control for DWDM can be more challenging, making it difficult to support tightly spaced channels.
 
-![](https://substackcdn.com/image/fetch/$s_!ayv2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3305eaf5-610e-4faa-b7b6-579fbd35faab_1024x415.png)
+![](z-images/94a517bf8bf985284971404afa05041c.webp)
 
 Source: Scintil
 

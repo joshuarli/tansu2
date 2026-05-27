@@ -46,7 +46,7 @@ Quantifying the impact to Apple is quite easy. They gained between ~35 to ~45 mi
 
 The impact for MediaTek and Qualcomm is even worse. Qualcomm and MediaTek were the main beneficiaries of the 190 million annual Huawei SoC units that evaporated from the market following their ban. From 2020 to now, this share shifted to other Chinese vendors such as Xiaomi, Oppo, and Vivo. If Huawei regains its form, we calculate as much as $7.6B of revenue impact to MediaTek and Qualcomm.
 
-![](https://substackcdn.com/image/fetch/$s_!k9gP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F81134e50-75fc-4d17-88d5-9b90f8e08437_1376x366.png)
+![](z-images/33e49375b7491b3e7d26c43f2a80a25c.webp)
 
 This of course was in a 1.4 billion unit smartphone market, the current run rate is under 1.2 billion units. A much more nuanced analysis of the above as well as the RFFE impact to Skyworks, Qorvo, Murata, Qualcomm, and others is available for our clients.
 
@@ -62,7 +62,7 @@ Why? We’ve heard a few soft remarks from our sources in China that yield is go
 
 For more tangible evidence, the channels, gates, and drains on the FinFETs as well as the contacts and lower metal layers look fairly clean. A process with low yield probably won't look as uniform. See these images from the [TechInsights](https://techinsights.com/) public brief. We recommend looking at their full teardown for more images and the exact pitches.
 
-![](https://substackcdn.com/image/fetch/$s_!AdDA!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee42b56d-919b-4a3c-abf1-ba1718f91002_881x659.png)
+![](z-images/0741947ecc13aa73afa820fd51b16265.webp)
 
 The last reason is related to the apparent binning of the chip. "Binning" in semiconductor manufacturing refers to the process of sorting and categorizing integrated circuits (like CPUs or GPUs) based on their performance and quality after they have been manufactured and tested. While chips can have defective transistors, called catastrophic yield, in many cases, working transistors still fail various performance and power tests. This is known as parametric yield. If a process technology has low parametric yield, the firm managing yield for the chip can make the binning process less stringent to improve the parametric yield. More chips can pass various tests, but it also leads to higher variability.
 
@@ -104,7 +104,7 @@ We hear SMIC has well over 30 advanced ArFi tools from ASML. They have many more
 
 While we can’t validate these claims from China, it does appear to be very easy for SMIC to get ramp to 30k WPM of actual production in their 7nm fab, without taking tools from other trailing edge fabs.
 
-![](https://substackcdn.com/image/fetch/$s_!mjH1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F552c0ab9-4423-4787-b87c-911450ab6134_2528x394.png)
+![](z-images/57961f9d13edbfc73f40054925ba32b5.webp)
 
 This tacks with the optimistic 50k WPM claims, if they can bring the number of layers requiring 1980i down to 50 and they use doses closer to ASML claimed doses.
 

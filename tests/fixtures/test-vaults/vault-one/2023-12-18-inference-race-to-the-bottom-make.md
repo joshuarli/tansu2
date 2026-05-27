@@ -26,7 +26,7 @@ With the release of Mistral’s Mixtral, there has been a complete race to the b
 
 OpenAI charges $1.00 per million input tokens and $2.00 per million output tokens. Mistral, despite having a more expensive to run, but higher quality model, must price lower than OpenAI to drive customer adoption. As such, Mistral charges $0.65 per million input tokens and $1.96 per million output tokens. They are effectively a price-taker, as this pricing is largely driven by market forces as opposed to Mistral’s cost of running inference and targeted return on invested capital. Note the performance figures below are based on what custom inference stacks get to on existing models, not TensorRT-LLM or vLLM which are still unoptimized as per our discussions with high volume deployers. Mistral has not yet developed a custom highly optimized inference stack, so their performance is even worse than the below.
 
-![](https://substackcdn.com/image/fetch/$s_!wyK5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F65d6d6c3-3a5b-4c45-8346-50167a216b01_2135x551.png)
+![](z-images/53c1380cfd2c2e30da0ba07876ff7f2f.webp)
 
 We will get into more detail later with these numbers below, but the high level point is that even in an extremely optimistic scenario, with 2x H100 at BF16 assumed to be always loaded 24/7, at $1.95 an hour per GPU, Mistral barely squeaks by using quite a high batch size. Of course, you can just test the API and see that the reasonably high token throughput implies they are not using such high batch sizes, so it appears to be highly likely that their API is a loss leader, as it would logically have to be to acquire customers against a formidable incumbent. Mistral’s mid-term goal is likely to hopefully drive volume and eventually become profitable on it with cost reductions from hardware/software.
 
@@ -36,13 +36,13 @@ All of these inference offerings are losing money today.
 
 We should note the 2x H100 is actually not the best system for inference of the Mixtral model. In fact 2x A100 80GB is more cost effective due to its ~32% greater bandwidth per dollar, assuming a similar memory bandwidth utilization rate. The significantly lower FLOPS of the A100 don’t affect inference performance that much either. Note that there is effectively no scenario in which even 2xA100s can make money at the collapsed pricing levels. Later in this report, we will also show the huge benefits H200 and MI300X bring for inference.
 
-![](https://substackcdn.com/image/fetch/$s_!0IeV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F54f1971b-d666-4358-b1a0-da895a304eb9_1607x970.png)
+![](z-images/8136ab016638a9448adc94ba06bed30d.webp)
 
 Because Mixtral is a mixture of experts model, it operates very differently as you increase the batch size. At batch size 1 only a small portion of the parameters activate per forward pass, giving the model much stronger capabilities at much lower bandwidth and FLOPS per token. This best-case scenario only rings true if you run a batch of size 1 and have enough memory capacity to fit the model.
 
 As you increase batch size though, more of the model experts will be activated, forcing the entire model’s parameters across all experts to be read in for every forward pass. Meanwhile, every decode token still only passes through two experts. As such, MoE models such as Mixtral and GPT-4 are even more bandwidth intensive than dense models.
 
-![](https://substackcdn.com/image/fetch/$s_!Bm2L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F671c460f-c32e-4f76-aa41-61b3b28ca321_2065x452.png)
+![](z-images/a6afba308366082e27700d6681f6dc90.webp)
 
 This has huge implications for LLM inference because costs scaling differs significantly as compared to dense models. In short, for MoE models, higher batch sizes, while still reducing costs, don’t reduce costs as much as they do with dense models, due to the increase in memory bandwidth required. This is one of the primary reasons why the foundation models can’t just keep stacking on more and more experts forever. At scale inference costs should always be at high batch sizes, but that doesn’t get you as much benefit with MoEs as for dense models.
 
@@ -64,7 +64,7 @@ Back to the temperature point mentioned above. Temperature for LLMs is effective
 
 While quantization is going to massively improve speed and cost for running these models, huge quality losses will result from quantization if there isn’t a great deal of care applied. Generally, you must fine tune after quantizing a model like this, and indeed at present, some of the low cost race to the bottom type suppliers are not doing such fine tuning. They are instead half-heartedly quantizing with no care for accuracy. If you try out some of these race to the bottom type providers, their model does not generate good outputs like the 16 bit Mixtral model does.
 
-![](https://substackcdn.com/image/fetch/$s_!cdGP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e27f719-08f2-4e42-9f05-637a2882a184_1622x972.png)
+![](z-images/370fca0b312c5112f31fc4f3b6594a21.webp)
 
 We generally believe researchers will be able get FP8 for inference to work without killing quality, but we don’t think they will be able to get inference to work on INT4 on these very large models. Furthermore, FP8 would still require 2 GPUs using the H100 and/or A100 due to the total tokens per second throughput being well below the ~40-50+ users require for most chat style applications and given KVCache size limitations.
 

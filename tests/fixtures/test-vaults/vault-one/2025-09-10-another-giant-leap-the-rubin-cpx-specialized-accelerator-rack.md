@@ -18,13 +18,13 @@ AMD and ASIC providers have already been investing heavily to catch up in terms 
 
 Because the prefill stage during inference tends to heavily utilize compute (FLOPS) and only lightly use memory bandwidth, running prefill on a chip with lots of expensive HBM featuring very high memory bandwidth is a waste. The answer is a chip that is skinny on memory bandwidth and relatively fat on compute. Enter the Rubin CPX GPU.
 
-![](https://substackcdn.com/image/fetch/$s_!DSKC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcf35ef32-a85b-448d-97ff-673a3c719b1e_600x338.jpeg)
+![](z-images/04798acdb907de62980e9dd0932e89fd.webp)
 
 Source: Nvidia
 
 The Rubin CPX features 20 PFLOPS of FP4 dense compute but only 2TB/s of memory bandwidth. It also features 128GB of GDDR7 memory, a lower quantity of less expensive memory when compared to the VR200. By comparison, the dual-die R200 chip offers 33.3 PFLOPS of FP4 dense and 288GB of HBM offering 20.5 TB/s of memory bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!O05Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a405e7b-c078-4ad5-9969-49ebdc0c5eaa_2560x1138.png)
+![](z-images/8e3257e1c9efb4e20db84373b263a1cc.webp)
 
 Source: SemiAnalysis, Nvidia
 
@@ -34,7 +34,7 @@ The introduction of the Rubin CPX expands the VR200 family of rack scale servers
 2. VR200 NVL144 CPX: 72 Logical GPUs packages in addition to 144 Rubin CPX GPU packages across 18 compute trays, with 4 R200 GPU packages and 8 Rubin CPX GPU packages in each compute tray.
 3. Vera Rubin CPX Dual Rack: Two discrete racks – one VR200 NVL144 rack plus one VR CPX rack with 144 Rubin CPX GPUs across 18 compute trays, with 8 Rubin CPX GPUs in each compute tray.
 
-![](https://substackcdn.com/image/fetch/$s_!eaMK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F66962758-4765-4f78-89fc-0bf2ebd90229_1489x1091.png)
+![](z-images/5afff5b96c9b6ec64a9b7ebd1cc4f980.webp)
 
 Source: SemiAnalysis, Nvidia
 
@@ -48,7 +48,7 @@ Consequently, HBM has consistently increased as a % of accelerator BOM from Hopp
 
 HBM carries such an expensive premium relative to other forms of DRAM because of its additional bandwidth, and when this B/W is underutilized, this HBM is “wasted”. The escalating proportion of BOM taken up by HBM presents yet another “wall” and is the impetus behind the development of the Rubin CPX GPU.
 
-![](https://substackcdn.com/image/fetch/$s_!9Kex!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36207d0b-cff5-49f9-9c82-dff9bf0c06d1_2121x921.png)
+![](z-images/af7a2a2026d7fdc6751c398bfa9d63be.webp)
 
 Source: SemiAnalysis
 
@@ -66,7 +66,7 @@ However, as always, peak theoretical FLOPs are extremely hard to attain in pract
 
 What is also different is the network. There is no NVLink SerDes for scale-up, instead Rubin CPX relies on PCIe Gen 6 to talk to other GPUs through the CX-9 NICs on the scale-out network. This reduced network capability is more than feasible through implementing pipeline parallelism which we discuss below.
 
-![](https://substackcdn.com/image/fetch/$s_!h0bj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F973a9e92-1304-4818-8390-1abcf7da7866_1984x1149.png)
+![](z-images/a404c127d71f7992e50dd67eedbd66e2.webp)
 
 Source: SemiAnalysis Accelerator & HBM Model, AI TCO Model, Above Figures are Demonstrative
 
@@ -94,7 +94,7 @@ These three compute tray flavors are the building blocks for the three rack solu
 - VR NVL144 CPX
 - VR NVL144 + VR CPX (Dual Rack)
 
-![](https://substackcdn.com/image/fetch/$s_!WBKC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6bcb4d23-fcb2-4487-a220-a328bbbdb351_1489x1091.png)
+![](z-images/5afff5b96c9b6ec64a9b7ebd1cc4f980.webp)
 
 Source: SemiAnalysis
 
@@ -106,13 +106,13 @@ The other deployment option is the Vera Rubin CPX Dual Rack. As the name suggest
 
 The dual rack solution offers a lot more flexibility compared to VR NVL144 CPX as the customers can design the prefill to decode ratio to their likings. Also, not everyone’s datacenter infra will be ready for the ~370kW VR NVL144 CPX. In addition there is a smaller blast radius of failures compared to the single rack variant.
 
-![](https://substackcdn.com/image/fetch/$s_!7Bmi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45ee596a-facd-437e-8a50-27f44e99ee7d_1526x1377.png)
+![](z-images/78d5c1e868516839a052dbf6bf6c65b9.webp)
 
 Source: SemiAnalysis, Nvidia
 
 In the table below, we can see how much compute and networking content is crammed into one compute tray – a total of 22 Nvidia chips (14 of them being XPUs) in each compute tray, or 396 chips per VR NVL144 CPX rack. To cram all this content above into a single compute tray, Nvidia has moved to a cableless and modular design and is also redesigning the cooling loops within the compute tray.
 
-![](https://substackcdn.com/image/fetch/$s_!vmBY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd4fb83ad-a41c-4974-b57f-5ed62e313dfd_1068x636.png)
+![](z-images/23a1472639ac4dafb7bd8066abd9a9cc.webp)
 
 Source: Nvidia, SemiAnalysis Estimates
 
@@ -124,7 +124,7 @@ At the front, the VR NVL144 CPX design is modular made up of 7 daughter card mod
 - One daughter card in the middle of the chassis (lower center of the diagram below) houses the Bluefield-4 Module, which contains one grace CPU and one CX-9 NIC.
 - One daughter card stacked on top of this Bluefield-4 module houses the power delivery board (PDB). The PDB is responsible for stepping down power from 48-54V to 12-13.5V as it enters the chassis from the busbar connector at the back.
 - The last daughter card is much smaller and is placed just to the right of the Bluefield-4 module. It is much slimmer and houses the utility management module containing items such as the BMC, HMC, DC-SCM, and management I/O.
-![](https://substackcdn.com/image/fetch/$s_!mNOd!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fadc0704d-cfc2-4292-822c-ff0a3a964e6e_581x1024.webp)
+![](z-images/3f09edff91a12ba9ac50a8ef60a88cc3.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
@@ -132,13 +132,13 @@ We estimate the TDP of the Rubin CPX chip to be around 800W, though that rises t
 
 To accomplish this, NVIDIA has brought back a design from its 2009 GTX 295. The Rubin CPX and CX9 daughter cards are arranged in a sandwiched design with a shared liquid-cooled cold plate in between.
 
-![](https://substackcdn.com/image/fetch/$s_!DOE7!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc7dd014-e1a1-40db-be06-2df95169d067_1024x332.webp)
+![](z-images/6bee3a7466d5e0bc2a8215c5feddbae8.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
 On the outer sides of the PCBs, heat pipes and heat spreaders transfer heat from the back of each clamshell GDDR7 memory modules to the main cold plate. Halving the compute tray area needed to house these GPUs by making full use of the 1U tray height and using both sides of the cold plate allows for maximum density.
 
-![](https://substackcdn.com/image/fetch/$s_!JjIn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F58c43f61-e8e3-4003-a229-514015ed8787_675x396.png)
+![](z-images/2f0cf4a267f088b9e076bc5dc45e5c4c.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
@@ -146,7 +146,7 @@ Another key design change of VR NVL144 CPX is the adoption of cableless design. 
 
 So how are the signals routed without cables? The answer is simple: signals from the HPM (Bianca) board travel off the board via the Paladin board to board connector from Amphenol. This is discussed in more detail in our [recent article on Amphenol’s AI Content](https://semianalysis.com/core-research/amphenol-content-growth-vr-nvl144-backplane-board-to-board-connectors-dac-acc-aec-tam-kyber-midplane-backplane/). The signal is then routed through a PCB midplane sitting in the middle of the chassis. On the other side of the PCB midplane, the daughter cards connect to the PCB midplane via another set of Paladin B2B connectors.
 
-![](https://substackcdn.com/image/fetch/$s_!UOWN!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8f70ebe4-a8ac-446f-9727-8b279ced8416_1024x560.webp)
+![](z-images/ec430fac963fa9eca7ab09be80c259c1.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
@@ -156,7 +156,7 @@ Previously – having to transmit a 200G Ethernet/InfiniBand signal from the NIC
 
 But now that the NIC is closer to the OSFP cage, the lower speed per lane PCIe Gen6 signals (64Gbit/s per lane uni-directional) travel the longer distance, and this connectivity can now be routed over PCB. Although it is still challenging to drive PCIe Gen6 signals over PCB, proper signal integrity can still be achieved by upgrading PCB materials.
 
-![](https://substackcdn.com/image/fetch/$s_!HGxP!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9be2c60-bbb4-444a-b605-1fecb978da1e_587x1024.webp)
+![](z-images/33d83e800a8f25f6de6a46d2deb80166.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
@@ -164,7 +164,7 @@ For better serviceability, the daughter cards are also designed as a module. Eac
 
 Below we show how the signals are routed within different Vera Rubin compute tray SKUs as well as the compute tray topology of the VR Rubin SKUs. One highlight from these diagrams is that CX-9 plays a critical role in enabling Rubin CPX and scale out connections, as it is an integrated PCIe switch too.
 
-![](https://substackcdn.com/image/fetch/$s_!5WNU!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa32baf28-fe3a-4947-a64c-ac50905d2ceb_587x1024.webp)
+![](z-images/f203d9226001d2d8abc0b03be8070f73.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
@@ -178,11 +178,11 @@ As we mentioned earlier in the article, the release of the Rubin CPX will send N
 
 Serving an LLM request involves two phases: the prefill phase and decode phase. In the prefill phase, the LLM generates the first token from the user prompt. This phase affects the time-to-first token (TTFT), and it is usually compute-bounded, under-utilizing the memory bandwidth. On the other hand, the decode phase generates a new token while loading the previous tokens from the KV cache. This phase affects time-per-output-token (TPOT), and it is always memory-bounded, under-utilizing the compute.
 
-![](https://substackcdn.com/image/fetch/$s_!BfHc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8222e4fe-0aba-4372-a31e-ae98ee65100d_1430x688.png)
+![](z-images/ef48cd75aefd6ffa267e7a328ebf4ff7.webp)
 
 Source: NVIDIA
 
-![](https://substackcdn.com/image/fetch/$s_!IcKn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94f8c60b-9302-487a-9ca5-8b6a57a96b50_2170x399.png)
+![](z-images/d13566d7a903ef42c9e8299cb3589f5f.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -190,7 +190,7 @@ In the chart below, we see an illustrative example highlighting the tradeoff bet
 
 A short input sequence length may not fully saturate the FLOPS available on an inference system, in which case the system’s output will be limited by the speed at which parameters can be loaded into chip memory – which is a function of memory bandwidth. As input sequence length increases, however, eventually the workload will grow to use all available FLOPS on the inference system, and the workload will be constrained by the total system FLOPS. In the right half of the chart below, we illustrate that when sequence length exceeds 32k, the FLOPS utilization reaches 100% while the memory bandwidth utilization drops.
 
-![](https://substackcdn.com/image/fetch/$s_!VmaL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbb6c7373-051d-4dc0-993e-b10d032eccdd_2462x1504.png)
+![](z-images/ade4656e8cbecb00d459f2e1d0874d8c.webp)
 
 Source: SemiAnalysis
 
@@ -204,7 +204,7 @@ The first order solution is to implement disaggregated serving to first tackle t
 
 In the illustrative example below, we show how an R200 would hardly use much of its memory bandwidth when being used solely for prefill. As we increase sequence length and more efficiently use FLOPS available, the memory bandwidth utilization becomes increasingly minimal – effectively wasting very expensive HBM memory.
 
-![](https://substackcdn.com/image/fetch/$s_!O2bi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fef4cd052-987d-4c3e-9c19-9cdeb76bde0f_1024x621.png)
+![](z-images/23f76abccff6caa080943113c20e3ecc.webp)
 
 Source: SemiAnalysis
 
@@ -214,13 +214,13 @@ Since prefill is inherently going to underutilize memory bandwidth resources one
 
 In the illustrative example below, we show how an R200 hardly use much of its memory bandwidth when being used solely for prefill. In contrast, the Rubin CPX actually utilizes a higher percent of its memory bandwidth at fairly short input lengths before dropping even further for input lengths that we would consider typical.
 
-![](https://substackcdn.com/image/fetch/$s_!FBVD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a53c441-5721-4e00-95af-6e0ff7f34107_2482x1526.png)
+![](z-images/5cdf7c383cabb03ae429b722a88a71ca.webp)
 
 Source: SemiAnalysis
 
 Indeed, we stress this is not about efficiency for efficiency’s sake –and there is a huge impact to the bottom line! In the table below, we use provide an example to compare the memory bandwidth utilization for the R200 GPU and the Rubin CPX GPU. In this scenario, both suffer from very low memory bandwidth utilization, but the difference is that the Rubin CPX GPU is at least leaving lower quantities of far less expensive memory on the table. For the R200 – we see that the exact same prefill workload as is run on the CPX results in a $0.90/hr total cost of ownership wastage!
 
-![](https://substackcdn.com/image/fetch/$s_!7rOm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fefe2cede-c842-4260-a1c3-17cbdb3bf93c_2560x897.png)
+![](z-images/2125a8c4691f372e3a7d901cb2204b30.webp)
 
 Source: SemiAnalysis
 
@@ -232,7 +232,7 @@ What this means is that the use of CPX systems lowers HBM’s share of total sys
 
 Many readers are doubtless salivating at the idea of spending less on HBM and are thinking: Why not curtail the amount of memory in a system even further? If a typical prefill sequence length means a memory utilization of low double digits or even single digits - why not reduce memory capacity to 1/10 <sup>th</sup> the size? Does this mean doom for HBM demand and memory demand in general?
 
-![](https://substackcdn.com/image/fetch/$s_!NHEk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F76ba89fb-500a-4ff3-96a4-8a7f4d8ad528_468x263.jpeg)
+![](z-images/bb79d349d0618f4a38f652aca6ec25bb.webp)
 
 Source: SoftRAM
 
@@ -258,7 +258,7 @@ This is far below the communications bound and vastly under saturates even a fai
 
 We estimate that the total NVLink Scale-up cost to the end system owner (inclusive of NVSwitches and Backplane) stands at around ~$8k per GPU – which is just over 10% of the all-in cluster cost per GPU. This is the other dimension along which Rubin CPX delivers considerable savings to the end user.
 
-![](https://substackcdn.com/image/fetch/$s_!n0MK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F43b4f403-8fc3-446f-b4a6-c3b37a186c83_1786x1458.png)
+![](z-images/49722e64688a063dc066fe079ee0d1aa.webp)
 
 Source: SemiAnalysis
 
@@ -314,7 +314,7 @@ AMD had made waves earlier this year with its Advancing AI Event where it debute
 
 Nvidia’s VR200 NVL144 is now advertising a memory bandwidth of ~20.5TB/s per logical GPU by requesting much faster speed bins from their suppliers. VR200 memory bandwidth now matches that of the AMD MI400 with fewer HBM sites.
 
-![](https://substackcdn.com/image/fetch/$s_!R82P!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc123aa60-8277-467e-b1f0-52b869b2cd18_2442x1460.png)
+![](z-images/ea256c2d181b19e0d1b37a3c7fc41574.webp)
 
 Source: SemiAnalysis AI TCO Model
 

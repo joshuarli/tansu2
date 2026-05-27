@@ -12,7 +12,7 @@ The market has been focusing on "2GW of lease cancellations" which only **covers
 
 The chart below provides a perfect illustration. Microsoft singlehandedly drove the leasing market in 2023 and the first half of 2024. Not only was it aggressively signing deals, but it was also effectively “freezing” the market by locking up non-binding LOIs across the board. **Our estimates suggest Microsoft accounted for more than 60% of all new leased turnkey capacity from Q1 2023 through Q2 2024**. In June 2024, Microsoft's preleased capacity was larger than that of the four other major hyperscalers **combined**.
 
-![A bar chart illustrating the estimated datacenter pre-leased balance in megawatts for various companies, including Microsoft, Meta, Google, Amazon, and Oracle, over several quarters.](https://substackcdn.com/image/fetch/$s_!GCs6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ad3cca8-cf4b-456f-a4e5-81138a814bf5_1024x630.png)
+![A bar chart illustrating the estimated datacenter pre-leased balance in megawatts for various companies, including Microsoft, Meta, Google, Amazon, and Oracle, over several quarters.](z-images/adc903bd9ff5ef653314620376bf4293.webp)
 
 Source: SemiAnalysis Datacenter Model
 

@@ -32,11 +32,11 @@ ASML shared that they believe the semiconductor end market will grow at a rate o
 
 This implies a continuous increase in wafer price increases throughout the decade, which is expected as leading edge and memory wafer prices continue to increase, and density increases peter out relatively. ASML wants to ramp capacity up to 600 DUV tools and 90 EUV tools by 2025. ASML also plans for 20 High-NA EUV tools by 2027/2028. To be clear, this is the capacity target; it is doubtful that ASML will be able to ship this many tools or that the demand is even there.
 
-![](https://substackcdn.com/image/fetch/$s_!KD4P!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F72c608e4-40d5-4de0-917d-552f2e5813c4_2667x1500.png)
+![](z-images/a6d89f7f905af7b1b2695bcbca0dd25e.webp)
 
 ASML also shared this slide with CAGR data by subsegment by year. We transposed that data into the table below. We calculated the CAGR from 2022 to 2030 and compared that to the CAGR from 2026 to 2030. The interesting detail that can be parsed is that ASML sees most of these segments accelerating in the latter half of the decade except for personal computing and automotive, which they see as having decelerating growth.
 
-![](https://substackcdn.com/image/fetch/$s_!X91e!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fce00cf07-24b6-4983-8bba-1bc9545ccfc9_1632x617.png)
+![](z-images/c9856a9cce77f0a1ff6370867c66e240.webp)
 
 ASML went on to fluff on about all the megatrends, cloud, artificial intelligence, green energy, and the transformation to renewable, but there wasn't too much new or interesting content in that section, but there are a few anecdotes.
 
@@ -76,13 +76,13 @@ It’s interesting to hear that the baby boomer generation invented boats, airpl
 
 Next up was wafer starts per month by process technology group. We directly transposed ASML’s data, and added the actual CAGR’s given.
 
-![](https://substackcdn.com/image/fetch/$s_!izXM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F82b93732-7e81-4e6f-8b8f-1e875b16e7fc_1646x637.png)
+![](z-images/d7931153b383f3f586ff1a7811f58b4e.webp)
 
 Using ASML’s data, we get this curve for wafer starts per month by year. The wafer starts in this table are incorrect, given that we just applied ASML’s CAGR in a straight line. The actual numbers will be much lumpier.
 
-![](https://substackcdn.com/image/fetch/$s_!FYgY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F26ed60df-b021-4a26-8637-d43227dfa7bb_1641x738.png)
+![](z-images/f7c2d0683f27b441663bc36e357caaa5.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!g3kn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F15c200a0-9907-4242-8f54-63b2a014cb7a_1645x692.png)
+![](z-images/2d9722f02da5276623f271e40be2f9e9.webp)
 
 For more clarity on our estimated wafer starts per month, see this piece from a couple of months ago, where we called out Capex cuts and utilization rate issues, including 7nm utilization issues at TSMC and the complete reconfiguring of the Kaohsiung Taiwan fab before others.[SemiAnalysis](https://www.semianalysis.com/p/semiconductor-fab-buildout-delays?utm_source=substack&utm_campaign=post_embed&utm_medium=web)
 
@@ -108,7 +108,7 @@ It shouldn’t be news to anyone that Russia invading Ukraine is a massive hit t
 
 The increasing global tensions mean countries will subsidize and build out significant capacity. They have to; there is no choice.
 
-![](https://substackcdn.com/image/fetch/$s_!pcBM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F69db6c35-eb21-4bbb-90f3-e58c8d3abe99_2667x1500.png)
+![](z-images/f1640c67d1cb16f19a54e79d00dbd3f8.webp)
 
 Note that ASML’s chart is very misleading. China’s national government tax subsidies total over $150B for the semiconductor industry. The local subsidies are larger than China’s big fund as well. Furthermore, the big fund has a 5 to 1 investment ratio mandate for private market contributions versus the national government contributions mandate. The big fund’s dollars often exceed that mark. In contrast, we believe the CHIPS Act is likely only to reach a 4.2 to 1.[SemiAnalysis](https://www.semianalysis.com/p/why-america-will-lose-semiconductors?utm_source=substack&utm_campaign=post_embed&utm_medium=web)
 
@@ -122,7 +122,7 @@ Our analysis indicates that the CHIPS Act will only boost the US from the curren
 
 The technological sovereignty argument is a big part of ASML’s capacity aspirations. ASML believes that an additional 10% capacity will be added each year for technological sovereignty and geographic competition.
 
-![](https://substackcdn.com/image/fetch/$s_!12Fz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6aae4b82-c999-41f9-a1bf-a093a62e7e82_2667x1500.png)
+![](z-images/ca9344dbe7310abd22ef17226557b87c.webp)
 
 This 10% capacity is due to the inherent inefficiencies of a regionalized versus centralized semiconductor fabrication market. This 10% inefficient capacity represents 150 thousand wafers per month added annually.
 
@@ -142,15 +142,15 @@ And if there were any questions about where ASML stands on the current geopoliti
 
 ASML’s answer is that they will teach China everything they can. This will destroy the profitability of the power semiconductor market for Infineon, ST Micro, and other European companies. 90nm is where the 200mm to 300mm fab transition started. This would lead to the new 90nm 300mm fab having better unit economics than the 90nm 200mm fab despite massive depreciation differences.
 
-![](https://substackcdn.com/image/fetch/$s_!4vHr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc03b708d-2079-4b98-ac31-8b391acda5ee_2667x1500.png)
+![](z-images/bc25e622f06b3d9d56575d1fd31cbfe4.webp)
 
 One of the most exciting pieces of data that ASML shared was that the number of mask sets on >28nm increased by 40%. This number is less than the [eBeam Initiative’s](https://www.ebeam.org/home) survey, which indicates 48%, which was presented at the SPIE Advanced Lithography + Patterning conference. Regardless, you can think of that as 40%+ more designs on each trailing edge node. It’s not just more old chips. It’s new designs on mature process technologies.
 
-![](https://substackcdn.com/image/fetch/$s_!2APc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F25f4dda0-3532-4b72-adbf-385d18737a50_2667x1500.png)
+![](z-images/5a102362fbf860ecfcfac5bf357ce8cd.webp)
 
 As Moore’s Law slows, die sizes are ballooning. In most cases, ignoring idle power and leakage concerns, a larger, more costly design at lower clocks will produce significantly higher performance per watt. Most architects will tell you that more areas are the simplest solution to achieving power and performance targets. This means that micro-architecture matters more and more for the industry’s economics. We can see this area tradeoff everywhere, from smartphone chips like Qualcomm with their Adreno GPUs in S8G1+ vs. S8G2 to [datacenter server CPUs like AMD Genoa and Intel Sapphire Rapids](https://www.semianalysis.com/p/2023-datacenter-outlook-amd-and-intel) to networking chips from Nvidia, Intel, Marvell, Cisco, and Broadcom.
 
-![](https://substackcdn.com/image/fetch/$s_!WPm4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa89976c7-c672-4635-bf95-728761b557e4_2667x1500.png)
+![](z-images/9a64f6c5146247ec7f4c491bb657e6ab.webp)
 
 One interesting note is that ASML still has server units up in 2022 and 2023. They should read our 2023 datacenter outlook, where we discuss revenue, ASP, unit volume, and market share by architecture and company because unit volumes are not looking pretty in H2 2022 and 2023.[SemiAnalysis](https://www.semianalysis.com/p/2023-datacenter-outlook-amd-and-intel?utm_source=substack&utm_campaign=post_embed&utm_medium=web)
 
@@ -164,11 +164,11 @@ The other noteworthy thing is that they have increased their estimate for VR/AR 
 
 AR will be as big as the smartphone industry one day, and we can’t wait to have the world’s information projected directly into our eyeballs, but that world isn’t coming any time soon.
 
-![](https://substackcdn.com/image/fetch/$s_!9DhM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2dcc808-c0b4-4380-bb2d-ee5a44db9257_2667x1500.png)
+![](z-images/6b17105238381cde97a2d932eaf042f3.webp)
 
 This chart from ASML needs to be clarified because they are counting fabs willy-nilly. SemiAnalysis tracks every project and [has over 130 semiconductor manufacturing sites currently being tracked](https://www.semianalysis.com/p/can-you-trust-semiconductor-capital). The $100B of TSMC in Taiwan is a multi-site Capex for multiple years. This should be broken out. The Samsung numbers make no sense. In Korea, P3 is complete and P4 is about to start, but no S7 or V2. So where is the 2nd fab coming from? The Samsung fab in China is also confusing, given that Xi’an is complete and in maintenance/steady upgrade mode. With Intel, Ireland is €13B, which is not $20B; Oregon D1X Mod 3 is larger than what they have listed there. Overall, we give it a 4 out of 10. They should have just listed the total investment sizes at each site to get investors even more excited. In that case, there would be multiple $100B sites, which is more eye-popping for investors.
 
-![](https://substackcdn.com/image/fetch/$s_!XnpH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa30b7190-693a-445c-b4e4-848022a79675_2667x1500.png)
+![](z-images/ce714bec3a28df6c15ff811e9cba61c9.webp)
 
 Lastly, we want to discuss how ASML is rolling this up to their capacity figures. They are accounting for the number of units \* productivity improvements to reach a total litho capacity increase of 3x for DUV and 5x for EUV compared to 2020. The productivity increases on the EUV side are pretty significant. The source power increases, and [improvements in photoresists such as MOR and dry resist](https://semianalysis.substack.com/p/lam-research-tokyo-electron-jsr-battle) are powering this increase in productivity.
 
@@ -182,7 +182,7 @@ ASML published some very interesting data regarding wafer supply across various 
 
 ](https://www.semianalysis.com/p/lithography-intensity-and-long-term?utm_source=substack&utm_campaign=post_embed&utm_medium=web)
 
-![User's avatar](https://substackcdn.com/image/fetch/$s_!HwSb!,w_40,h_40,c_fill,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0150776c-9bf2-4bea-a9c2-41b24b7a0f15_1280x1280.png)
+![User's avatar](z-images/84ba932f7803a9cbf0d9061ac463b2a6.webp)
 
 #### Book a meeting with SemiAnalysis
 

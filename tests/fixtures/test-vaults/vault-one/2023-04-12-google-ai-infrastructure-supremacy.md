@@ -16,7 +16,7 @@ Google has a near-unmatched ability to deploy AI at scale reliably with low cost
 
 The realm of technology is a perpetual arms race, with AI being the swiftest-moving battlefield. The model architectures that were trained and deployed have shifted significantly over time. The case and point is with Google’s internal data. There was a swift rise in CNN models from 2016 to 2019, but then they fell again. CNNs have a very different profile of computation, memory accesses, networking, etc vs DLRMs vs Transformers vs RNNs. The same happened with RNNs which were completely displaced by transformers.
 
-![](https://substackcdn.com/image/fetch/$s_!qVXf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36218128-bae1-4b25-a731-26d94053f912_2218x806.png)
+![](z-images/2d4209c1986a0933e607799a0a3d4019.webp)
 
 As such, hardware must be flexible to the developments of the industry and support them. The underlying hardware cannot over-specialize on any specific model architecture, or it will risk becoming obsolete as model architectures change. Chip development to large-scale volume deployment generally takes 4 years, and as such, the hardware can be left behind by what software wants to do on it. This can already be seen with certain AI accelerator architectures from startups that used a specific model type as their optimization point. This is one of the many reasons why most AI hardware startups have/will fail.
 
@@ -44,11 +44,11 @@ While [Nvidia also thinks from a systems perspective](https://www.semianalysis.c
 
 Google’s TPUv2 could scale to 256 TPU chips, the same number as Nvidia’s current generation H100 GPU. They increased this number to 1024 with TPUv3 and to 4096 with TPUv4. We would assume that the current generation TPUv5 can scale up to 16,384 chips without going through inefficient ethernet based on the trendline. While this is important from the perspective of performance for large-scale model training, more important is their ability to divide this up for real use.
 
-![](https://substackcdn.com/image/fetch/$s_!-kL8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb6b25dd-ed90-428c-a6a3-2d4a40997217_1088x828.png)
+![](z-images/2965f855c45b66d8b184c385fbdca0f8.webp)
 
 Google’s TPUv4 systems have 8 TPUv4 chips and 2 CPUs per server. This configuration is identical to Nvidia’s GPUs which come in servers of 8 A100 or H100 with 2 CPUs per server. A single server is generally the unit of compute for GPU deployments, but for the TPU, the unit of deployment is a larger “slice” of 64 TPU chips and 16 CPUs. These 64 chips connect internally with the ICI network in a 4^3 cube, over direct attached copper cabling.
 
-![](https://substackcdn.com/image/fetch/$s_!sHIU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9058da21-69e9-4528-8401-2077abc5d73c_2084x560.png)
+![](z-images/6c2bb7c5fff95d5a487b4ff950860a78.webp)
 
 Beyond this unit of 64 chips, communications transfer over to the optical realm instead. [These optical transceivers cost more than 10x that of passive copper cables](https://www.semianalysis.com/p/marvells-dsp-dilemma-networkings), so Google optimized their slice size for this 64 number to minimize system-level cost from a networking standpoint.
 
@@ -82,15 +82,15 @@ Google claims all these power and cost savings are so large that their networkin
 
 While Google pushes this viewpoint heavily, it is important to recognize that the topology of the Nvidia and Nvidia networks is entirely different. Nvidia systems deploy “Clos networks” which are “non-blocking”. This means they can establish full bandwidth connections between all input and output pairs simultaneously without any conflicts or blocking. This design provides a scalable approach for connecting many devices in a data center, minimizing latency, and increasing redundancy.
 
-![](https://substackcdn.com/image/fetch/$s_!kOqu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F13eaaaff-5df8-4903-b0cf-eca48325cd22_1435x457.png)
+![](z-images/ebe4a70e81d11bbb7d594349cc1e87dc.webp)
 
 Google’s TPU networking forgoes this. They use a 3D torus topology to connect nodes in a three-dimensional grid-like structure. Each node is connected to its six neighboring nodes in a grid (up, down, left, right, front, and back), forming a closed loop in each of the three dimensions (X, Y, and Z). This creates a highly interconnected structure, where the nodes form a continuous loop in all three dimensions.
 
-![](https://substackcdn.com/image/fetch/$s_!_dJw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F54b9e0f0-5a70-448e-b27f-3ac3c54f3b4b_1388x1400.png)
+![](z-images/a25fade5eb46b2cdd0941777dcd906e6.webp)
 
 The first image is more logical, but if you think about it for a while and are a bit hungry, this network topology is literally a doughnut!
 
-![](https://substackcdn.com/image/fetch/$s_!NtDu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8255e86c-932b-465e-bc9a-ee4ee5d95b13_2306x1516.png)
+![](z-images/e03f76cac5fd2e248d65062c8b381dce.webp)
 
 The torus topology has several advantages versus the Clos topology that Nvidia utilizes:
 
@@ -106,13 +106,13 @@ On the flip side of the coin, there are many disadvantages to the 3D torus netwo
 
 Overall, while Clos has advantages, Google’s OCS mitigates many of these. OCS enables simple scaling between multiple slices and multiple pods.
 
-![](https://substackcdn.com/image/fetch/$s_!DNIK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9a77ae9a-0234-43b7-91f0-bb7e8f5aae26_842x628.png)
+![](z-images/7e5745555c6339944b347ff3cb0f55e5.webp)
 
 The biggest issue facing 3D torus topologies is that errors can be a bigger issue. Errors can crop up and do. Even with 99% host availability, a slide of 2,048 TPUs would have near 0 ability to work properly. Even at 99.9%, a training run with 2,000 TPUs has 50% goodput without Google’s OCS.
 
 The beauty of OCS is that it enables routing to be reconfigured on the fly.
 
-![](https://substackcdn.com/image/fetch/$s_!1jtw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F30447f25-b18c-4a39-9251-26e61d2216ba_1408x860.png)
+![](z-images/5168e137c01d3597190fde6ceed6ee08.webp)
 
 Spares are needed to allow scheduling jobs despite some failed nodes. An operator cannot realistically schedule two 2k node slices from 4k node pod without risking failures. Nvidia-based training runs often require excessive overhead dedicated to checkpointing, pulling failed nodes, and restarting them. Google simplifies this to some extent by just routing around failed nodes rather.
 
@@ -130,11 +130,11 @@ As such, Google has a tough problem feeding their researchers the exact products
 
 Google’s OCS also enables the creation of custom network topologies such as twisted torus networks. These are 3d torus networks where some dimensions are twisted, meaning that nodes at the edges of the network are connected in a non-trivial, non-linear manner, creating additional shortcuts between nodes. This further improves network diameter, load balancing, and performance.
 
-![](https://substackcdn.com/image/fetch/$s_!zbzE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d377fcd-3a0e-4724-9c13-bbab3aee4b82_1064x570.png)
+![](z-images/480526d12bccc56077255db652f92318.webp)
 
 Google’s teams take advantage of this heavily to assist with certain model architectures. Below is a snapshot of the popularity of various TPU configurations by the number of chips and network topology for just 1 day in November 2022. There are more than 30 different configurations, despite many having the same number of chips in the system, to suit a variety of model architectures that are being developed. This is tremendous powerful insight from Google on their use of TPUs and flexibility. Furthermore, they also have many less-used topologies that are not even pictured.
 
-![](https://substackcdn.com/image/fetch/$s_!8plF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3fc750a2-bad8-4b64-aaeb-32800d035d7a_2552x1282.png)
+![](z-images/378738c6c2c760d2ddf799521fbb543d.webp)
 
 To take full advantage of the bandwidth available, users map data parallelism along one dimension of the 3D torus and the two model parallel parameters on the other dimensions. Google claims optimal topology selection enables 1.2x to 2.3x higher performance.
 
@@ -148,7 +148,7 @@ The common thread between all of the firms mentioned above is that they rely on 
 
 DLRM aims to learn meaningful representations of user-item interactions by modeling both categorical and numerical features. The architecture is comprised of two main components: the Embedding Component (dealing with categorical features) and the Multilayer Perceptron (MLP) Component (handling numerical features).
 
-![](https://substackcdn.com/image/fetch/$s_!pC_5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7711875e-af0d-4d0b-a16e-c73522aae8f7_1074x945.png)
+![](z-images/3b724348a79fd980dc67cdfd79558a46.webp)
 
 In the most simplified terms, the [multilayer perceptron component is dense](https://www.semianalysis.com/p/the-ai-brick-wall-a-practical-limit). The features are fed into a series of fully connected layers. This is similar [to older pre-GPT 4 transformer architectures, which were also dense](https://www.semianalysis.com/p/the-ai-brick-wall-a-practical-limit). The [dense layers map very well to massive matrix multiple units on hardware](https://www.semianalysis.com/p/nvidiaopenaitritonpytorch).
 
@@ -181,11 +181,11 @@ These larger units allow more efficient data reuse to break through the memory w
 
 Google was one of the first to start using DLRMs at scale with their search product. This unique need led to a very unique solution. The above architecture described has a major deficiency in that it cannot effectively handle the embeddings of a DLRM. Google’s main TensorCore is very large and does not match the computational profile of these embeddings. Google had to develop an entirely new type of ”SparseCore” in their TPU which is different than the “TensorCore” for dense layers, which was described above.
 
-![](https://substackcdn.com/image/fetch/$s_!JnC7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F87af5db8-25e0-4e27-b358-795b69d02a88_1168x614.png)
+![](z-images/cef870540f2038753fd32c2a23c14371.webp)
 
 The SparseCore (SC) provides the hardware support for embeddings in Google’s TPU. From as early as TPU v2, these domain-specific processors have tiles directly tied to each HBM channel/sub-channel. They accelerate the most memory bandwidth-intensive part of training Deep Learning Recommendation Models (DLRM) while only taking up about 5% of die area and power. By using the fast, HBM2 on each TPU v4 chip for embeddings, rather than CPUs, Google showed a 7x speedup of their internal production DLRM compared to leaving embeddings on the host CPU’s main memory (TPU v4 SparseCore vs TPU v4 Embeddings on Skylake-SP).
 
-![](https://substackcdn.com/image/fetch/$s_!PeAd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F87d8a645-9916-4f6b-8cdf-76de4f05fbcc_1558x512.png)
+![](z-images/e5b401864d278a5dbce60e2d9d67912d.webp)
 
 SparseCore enables fast memory access from HBM, with dedicated fetch, processing, and flush units to move data to banks of Sparse Vector Memory (Spmem) and updated by a programmable 8-wide SIMD Vector Processing Unit (scVPU). 16 compute tiles of these units go into a SparseCore.
 
@@ -193,7 +193,7 @@ Additional cross-channel units perform specific embedding operations (DMA, Sort,
 
 While the performance gain from moving to HBM is massive, performance scaling is still affected by interconnect bisection bandwidth. The new 3D torus of the ICI in TPU v4 helps scale embedding lookup performance further. However, the improvement drops off when scaling up to 1024 chips as SparseCore overheads become the bottleneck.
 
-![](https://substackcdn.com/image/fetch/$s_!aLUf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4dfb4fca-dcb4-490e-85e2-792413d67da6_1250x782.png)
+![](z-images/97ab88f721ed751ef032f291ca859425.webp)
 
 This bottleneck likely results in Spmem per tile also increasing with TPUv5 if Google feels their DLRMs need to increase in size and capacity beyond that of ~512 chips.
 

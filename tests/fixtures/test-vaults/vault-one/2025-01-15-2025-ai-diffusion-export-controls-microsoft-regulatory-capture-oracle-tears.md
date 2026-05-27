@@ -16,7 +16,7 @@ While the [semiconductor controls still have some loopholes](https://semianalysi
 
 Chinese firms such as ByteDance have had unfettered access to GPUs outside their borders through various cloud companies. Furthermore, in just Malaysia alone, based on our individual datacenter by datacenter tracking, there is ~3 Gigawatts of Critical IT capacity of datacenters being built in just a few years. This represents as much capacity as Meta had globally for serving all their traffic in the beginning of 2024. The only use case for such an enormous amount of concentrated datacenter capacity is AI.
 
-![](https://substackcdn.com/image/fetch/$s_!xQuV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F27fbd785-e444-48df-bab4-0d69853dafd3_1242x714.jpeg)
+![](z-images/7bc1f4abecc950c26ffcf0f8b3ba3cea.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -34,7 +34,7 @@ To accomplish this, the AI Diffusion Framework divides the world into three tier
 - Tier 3 for 23 Arms Embargoed Nations plus Macau,
 - Tier 2 for all other countries – with varying degrees of relations with the US: ranging from Singapore who gets to buy F35s to Yemen who bombs US tankers!
 
-![](https://substackcdn.com/image/fetch/$s_!YJ8l!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F18d031aa-58a9-47b2-97dd-5da285eac9ec_1503x1141.png)
+![](z-images/d583e50c9ce49616716bba10a48d0c13.webp)
 
 Source: SemiAnalysis, BIS
 
@@ -50,7 +50,7 @@ As shown in the chart below, the majority of existing and future AI datacenter c
 
 Ultimately it may not meaningfully constrain shipments of AI Chips in aggregate due to increased building in tier 1 and reconfiguring AI Chip deployment plans, shifting them into the hands of major US Hyperscalers operating overseas, or reshoring demand back to the US. Most the largest Neoclouds such as Coreweave, G42, Nebius, etc will be unaffected as they will continue to expand in Tier 1 and get licenses for Tier 2.
 
-![](https://substackcdn.com/image/fetch/$s_!9bWT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93afa577-8927-48f8-ab51-83ad637d9781_1732x952.png)
+![](z-images/d9ebd40010e1db5f21d9158abc0a2d25.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -72,13 +72,13 @@ ECCN 3A090.b covers less powerful chips than 3A090.a and exports under the forme
 
 In reality, official GPU shipments to China are dominated by the PRC SKUs such as the Nvidia H20 and AMD MI308X that fall below both performance thresholds for both 3A090.a and 3A090.b, and are in the “White Zone” below.
 
-![](https://substackcdn.com/image/fetch/$s_!CMx0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F25716717-af7d-4677-b1bb-5f7f084b6052_2560x1521.jpeg)
+![](z-images/40a63531e248977bb04ec9608173fee0.webp)
 
 Source: Center for Strategic and International Studies
 
 The table below features most current and upcoming leading edge AI Chips, illustrating how TPP is calculated, and specifying whether the chips are in scope for ECCN 3A090.a, and how shipments of each SKU count toward the various exemptions made available which will be discussed in greater detail below.
 
-![](https://substackcdn.com/image/fetch/$s_!e1NZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb560a189-2631-4d09-935f-2a8779b9a6e2_1482x544.png)
+![](z-images/0cad0923164713636cf5a7ac8665884b.webp)
 
 Source: SemiAnalysis, US Bureau of Industry and Security, Nvidia, AMD, Intel, Google, Amazon.
 
@@ -98,7 +98,7 @@ Tier 2: These countries are all the other countries all other countries that are
 
 The table below sets forth a complete list of Tier 1 and Tier 3 countries, as well as a non-exhaustive list of notable Tier 2 countries. Particularly noteworthy markets and countries are highlighted in light red.
 
-![](https://substackcdn.com/image/fetch/$s_!DewW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F344e20f7-6d3e-4044-9acb-ce2ce3602dad_724x717.png)
+![](z-images/f460047e301e4428a5ce100bbb47dcee.webp)
 
 Source: SemiAnalysis, Bureau of Industry and Security
 
@@ -115,7 +115,7 @@ There are three broad categories in which AI Chips are permitted to be exported 
 	- An NVEU authorization gives the NVEU an export license to have an installed base of up to ~320,000 H100 equivalents for use in the destination country they have received the NVEU for, though the installed base allowance is phased in gradually as per the table below. It is likely that to be granted an NVEU authorization, the specified destination country will need to have a government-to-government agreement with the US in advance.
 		- NVEUs must follow the same stringent security requirements as UVEUs, but with added requirements in specific circumstances. For example, UVEUs must submit semi-annual reports to the BIS including a record of current inventory, but NVEUs have to disclose a list of current customers.
 
-![](https://substackcdn.com/image/fetch/$s_!PQ6u!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F22a357dd-da4d-4da5-8858-72f6728c439a_1202x540.png)
+![](z-images/d76a377c5fbf2d1f62b21d6565f961d8.webp)
 
 Source: SemiAnalysis, Bureau of Industry and Security
 
@@ -135,7 +135,7 @@ Those that argue that the Framework on AI Diffusion is not overly onerous, point
 
 Huawei has done this through an extremely complicated web of shell companies for many ICs and [semiconductor wafer fabrication tools](https://semianalysis.com/2024/10/28/fab-whack-a-mole-chinese-companies/), we believe the US Government will be caught flat footed and not be able to prevent this too.
 
-![](https://substackcdn.com/image/fetch/$s_!q3bm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3750c54-5008-4d96-97db-5b9ab1421c35_1773x1198.png)
+![](z-images/e2225d004053b521959424146a99dc0d.webp)
 
 Source: SemiAnalysis, Bureau of Industry and Security
 
@@ -196,7 +196,7 @@ For UVEUs must provide BIS 60 days’ notice before transferring controlled chip
 
 There are rules imposed on the specific workloads US or allied cloud service providers can provide to a Chinese (or other Tier 3 country-associated) player. The main goal is to prevent the **training** of a new frontier AI model which is defined as a model trained on 1e26 FLOPs or more. This is consistent with the definition provided in the October 2023 [AI Executive Order](https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/).
 
-![](https://substackcdn.com/image/fetch/$s_!MuIc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6fe10206-be17-4e8a-932a-9b870029fe8a_1705x973.png)
+![](z-images/a5719ccd80f3d6261c0444f343b5b043.webp)
 
 Source: SemiAnalysis
 
@@ -222,7 +222,7 @@ This alone is difficult to narrow down. However, counting the “operations” r
 
 Note that for the table below, all parties have to comply with the newly outlined Security Requirements.
 
-![](https://substackcdn.com/image/fetch/$s_!Z_Wz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F460433dc-b624-46d3-9796-88ec75583c64_2302x885.png)
+![](z-images/77583d085bbc14ac19c63f49c6d40eb1.webp)
 
 Source: SemiAnalysis, Bureau of Industry and Security
 
@@ -260,7 +260,7 @@ In summary, this new set of rules is set to significantly impact the global AI a
 
 The rules have reshuffled the deck for many countries with respect to availability of AI chips. Under the new rules, entities based in some countries in the Middle East and Central Asia like the UAE or Saudi Arabia will now face a far more permissive regime. Previously, they were required to have an export license to purchase any quantity of controlled chips but now they have avenues to access these chips without any export licenses within the bounds of the LPP and Individual Country Allocations. Conversely, countries like Malaysia, Singapore and Thailand and many others that previously enjoyed unfettered access to chips will now be relegated to Tier 2 countries with non-VEU providers limited in their AI chip purchases.
 
-![](https://substackcdn.com/image/fetch/$s_!wfV0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e5a5207-14d3-4803-af70-869307df0b51_438x716.png)
+![](z-images/0f73e664eaba9fc147627fe74db1bec2.webp)
 
 Source: SemiAnalysis, US Bureau of Industry and Security
 
@@ -279,25 +279,25 @@ Let’s start with Sovereign AI. The field is very heterogeneous but generally i
 
 The GPU-as-a-service business has significantly lower technical barriers to entry compared to traditional CPU Cloud Computing. This incentivizes local firms to emerge as national AI Cloud champions, instead of global US hyperscalers. However, despite all the headlines and press releases, this market is not significant on a global scale. The new round of export rules will slightly limit growth but doesn’t change meaningfully the market trajectory.
 
-![](https://substackcdn.com/image/fetch/$s_!IdGW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3224a512-8672-44da-806a-daa411aedd50_2318x1286.png)
+![](z-images/d6b1b56d6066e6e9d75aefc808d3a3b3.webp)
 
 Source: Nvidia
 
 Next, let’s evaluate US hyperscaler overseas deployments. While individual Tier 2 countries can’t weigh more than 7% of a given UVEU's controlled computing power, and 25% in aggregate for all Tier 2 countries, we show below that the risk is highly unlikely to materialize. The United States is extremely dominant in the global datacenter market even without export restrictions, with >10 different GW-scale campuses ramping up over the next two years, as well as multiple 100MW+ clusters. From foundation model builders, to Clouds, to datacenters, to chip designers, US-based firms dominate the AI ecosystem and want to stay within borders.
 
-![](https://substackcdn.com/image/fetch/$s_!xERE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d7d9beb-f141-4f98-8135-ae426999314f_1732x952.png)
+![](z-images/d9ebd40010e1db5f21d9158abc0a2d25.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 Overseas, GenAI deployments are driven by inference and small to mid-scale training workloads. Countries like India, and Brazil to a lesser extent, with their significant population, are experiencing rapid growth in their digital infrastructure, largely driven by US hyperscalers and overall economic growth.
 
-![](https://substackcdn.com/image/fetch/$s_!NcZd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F494742c5-4acb-4129-a7ca-9d045c10a0b5_1593x906.png)
+![](z-images/da1e62d1a62ee03be55bf7d37d3c76ef.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 More recently, a new type of overseas deployment is emerging. With frantic demand for AI compute pushing the limits of supply chains like [electrical equipment](https://semianalysis.com/2024/10/14/datacenter-anatomy-part-1-electrical/) and power transmission and generation, growth in the United States is increasingly constrained. Various datacenter developers overseas have identified the issue and proposed massive campuses as a solution. The flashiest example so far is the “AI City” in Brazil – a 4.75GW campus planned by Brazilian developer Scala Data Centers!
 
-![](https://substackcdn.com/image/fetch/$s_!Z7eq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F342def51-9eb3-4934-8f59-3cb3670b7bf0_1024x680.png)
+![](z-images/45d7a2d32a306fd24c051c6e83801649.webp)
 
 Source: Scala Data Centers
 
@@ -305,7 +305,7 @@ And while such announcements are often met with skepticism, especially when said
 
 It remains unclear how the new rules will impact such developments. In our view, US hyperscale appetite to deploy large-scale infrastructure overseas is likely to be somewhat reduced. However, governments are likely to engage with the White House to reduce the regulatory uncertainty facing their potential US hyperscale customers. We expect the Middle East in particular to be a strong force, aided by a lowered political overhead compared to areas like Brazil, where governmental stability remains a hurdle.
 
-![](https://substackcdn.com/image/fetch/$s_!--i3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe721e3e3-b5df-4dc3-8da4-4339d6f6fe7b_1774x1402.png)
+![](z-images/79ba74583e268dcf4ccc838c2376e04c.webp)
 
 Source: SemiAnalysis Datacenter Model
 

@@ -8,19 +8,19 @@ description: "Power Integrations is major supplier for power related semiconduct
 
 Power Integrations is major supplier for power related semiconductors. Their products are a big driver of Silicon Carbide (SiC) and Gallium Nitride (GaN) megatrends. Power Integrations front runs many developments in industrial, analog, electric vehicles, green energy, and consumer devices due to their roles as a key supplier to major household brands. They are one of the premiere semiconductor investments for environmental, social, and corporate governance (ESG) due to their role in increasing efficiency, renewable energy generation, and the electrification of transportation. The article below is about the fantastic story and setup for the firm, but [we offer financial models, projections, and further technological competitive information for those who would like to engage further.](https://semianalysis.com/contact/)
 
-![](https://substackcdn.com/image/fetch/$s_!KW0-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5187442-8880-421c-9a84-1dbc443c52ed_892x468.png)
+![](z-images/e230002b8e8fdcda8ffc1d05acdcf6b9.webp)
 
 Power Integrations is located in a very diverse set of geographies, but the vast majority of their production happens in Japan and Texas. The design and assembly is very broad based compared to most semiconductor firms which are heavily reliant on a small geographic footprint. Power Integrations can more easily deal with and bottlenecks, disruptions, and regulatory issues due to their expansive footprint.
 
-![](https://substackcdn.com/image/fetch/$s_!tThB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9556e169-bb3e-4338-84bf-d49a374e2617_907x465.png)
+![](z-images/0e8a88a504ac3bd253491add07f64289.webp)
 
 Power Integrations has a big advantage versus their competitors in time to market and complexity. This is done by pre-designing solutions and offering capability to customize from that base. Much of their competition would have you buying individual resistors, capacitors, transformers, connectors, and other ICs/MOSFETs. This means involving far more suppliers and components. Engineering resources required here would also be much higher due to a custom designed PCB. Power Integrations vertical solution allows their customers to save on BOM. From $POWI perspective it also allows much higher margins than their device side competition.
 
-![](https://substackcdn.com/image/fetch/$s_!fiqk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F55e7a756-8e32-4242-9273-f160d6b9c29c_933x433.png)
+![](z-images/18a9956aa930bb3d18a98c44bb08f162.webp)
 
 This level of integration is something you see in everyday devices with the advent of GaN. Power supplies have gotten more efficient and smaller over time. In the consumer market, we are getting smaller and smaller power supplies. The size is important, but the most important piece for the environment is that efficiency is way up. A few or Power Integrations recent design wins highlight this advantage.
 
-![](https://substackcdn.com/image/fetch/$s_!RUNk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2050cc0-ff99-45e5-85b5-5c8cefe11fd2_928x458.png)
+![](z-images/7b8b726975058e693970f2b0ba841b05.webp)
 
 > We won a wide assortment of advanced charger designs in Q2, including a 33-watt in box charger that will significantly increase our penetration at a top-tier handset OEM.
 
@@ -36,43 +36,43 @@ Even generation to generation, Anker's former GaN charger has more than doubled 
 
 This area is ripe for growth with certain jurisdictions instituting higher power efficiency regulations. One such example of this flowing through already is in the recent controversial rules in California, Colorado, Hawaii, Oregon, Vermont and Washington which limited consumer PC, workstation, and laptops. Upping power supply efficiency with Power Integrations products is one such way to solve these regulatory issues. China is also instituting many such regulations for consumer devices as well as power grids. This will drive huge demand over the next decade.
 
-![](https://substackcdn.com/image/fetch/$s_!PGNd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ffcc9632c-26e2-4833-ac4f-98ba811bc1d7_1023x489.png)
+![](z-images/4e6d3a399cb3afef57bded54b804a383.webp)
 
 Another markets where they have the highest share and have the best technology is in gate driver solutions. They are capable of as high as 6500V in plug and play modules. This positions them well for applications such as power grids, railways, the fastest electric vehicle charging infrastructure green energy such as solar and wind. The capabilities of the off the shelf products with the ability to customize for the application while maintaining reliability, longevity, and efficiency has allowed them to secure major wins in demanding areas such as offshore wind farms.
 
-![](https://substackcdn.com/image/fetch/$s_!05Ws!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fad4de890-6d1d-46c6-8c5f-5227eae79496_1024x443.png)
+![](z-images/bf33918bad163747165849f3e7f0b23e.webp)
 
 These drivers work for both insulated-gate bipolar transistor (IGBT) and Silicon Cabide (SiC) modules. With the SiC revolution ongoing, Power Integrations will be a benefiter despite not directly manufacturing and designing SiC ICs. The majority of SiC ICs will require a driver and Power Integrators is the leading supplier.
 
-![](https://substackcdn.com/image/fetch/$s_!3GMX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc08497cd-bfd3-4013-9d4a-0d0d4ad20001_1023x518.png)
+![](z-images/0bc3962d67d011ee7d2a74e7dd5401e3.webp)
 
 The iDriver family is product line is not limited to ultra high voltage use cases. It has higher volume use cases range from motors, UPS, medical, heavy electric vehicles, welding/plasma cutting, solar, and DC fast charging infrastructure. Many of these are incredibly high growth areas. They are also critical to our goals of reducing and limiting carbon emissions.
 
-![](https://substackcdn.com/image/fetch/$s_!Ipk8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc685f31-e914-4476-a259-90114ac91043_1024x495.png)
+![](z-images/0aa80978d559ba471ef4e0674cd28c41.webp)
 
 Electric vehicles alone are such a large market and if penetration keeps up, they could make the current valuation of the firm look paltry. While many firms in the EV space have been bid up to the moon, Power Integrations represents one at a decent valuation.
 
-![](https://substackcdn.com/image/fetch/$s_!Vebq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0d6266d9-a4be-45ac-95d1-44359c87c462_940x462.png)
+![](z-images/b8a070a84c3aa46d0858a095099b108d.webp)
 
 Their product line isn’t limited to the ultra-high power iDriver line. Their products span a hug range of AC to DC conversion as well as LED, Gate, and Motor drivers. These products almost always have fewer components than their competitors because they are more integrated and advanced in terms of manufacturing.
 
-![](https://substackcdn.com/image/fetch/$s_!k5C7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6be81df5-0538-48d7-aa0a-09c3be48603a_895x461.png)
+![](z-images/8175442a8f581c8f931608051f59ae0a.webp)
 
 The growth potential is massive with a vast array of addressable markets. Every one of these use cases needs high quality and high efficiency power delivery. Most of these markets are projected to grow at a rapid pace as well. The use cases in red especially are the fastest growers and where Power Integrations has the biggest technology advantage.
 
-![](https://substackcdn.com/image/fetch/$s_!AbWa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F25e9c82b-4189-45f8-a292-1b3ac7316922_868x467.png)
+![](z-images/ff59f6ccf906d8bc1f007914e0ac4e5a.webp)
 
 With this massive market opportunity, Power Integrations has capitalized very effectively. They have consistently outgrown the market. They lead by providing solutions rather than individual discrete devices. This allows them to win big in emerging markets such as GaN. Offering a solution with new semiconductors is much more viable and long term sustainable business model than offering a chip without direct engineering for the end user product market.
 
-![](https://substackcdn.com/image/fetch/$s_!uJLW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F93c086c3-221b-428d-b8a7-d51db0faa8b0_782x448.png)
+![](z-images/be108a475ebc4d5f5346264f8315fdd7.webp)
 
 Most other power semiconductor firms are lower margin and have had to undercut for growth. Power Integrations stands out by having higher gross and operating margins than their peers. They win with technological prowess, not price cutting. This keeps them resilient to the onslaught that is coming from Chinese companies popping up in this area.
 
-![](https://substackcdn.com/image/fetch/$s_!kWmC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fce4d962c-4ff6-4cbe-af9d-b1b9a1642aa0_1009x495.png)
+![](z-images/8f1243226c7955a189f96ca59acdccce.webp)
 
 They have actually beat their long-term financial model in terms of operating margins. While the management has been conservative on where they stand currently and the short run, SemiAnalysis is fairly confident $POWI will run at 25%+ operating margins even once the current super cycle slows down.
 
-![](https://substackcdn.com/image/fetch/$s_!wVN4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Feab0ed37-0b05-470e-a7a3-b99b684f36dd_895x462.png)
+![](z-images/fd17b1a51c2ff875eb5c98d8c46bc641.webp)
 
 This excellent management, growth, leading technology, and focus on areas of efficiency and green energy revolution make Power Integrations a fantastic focus for investment. Those firms with ESG principals especially should consider Power Integrations as the number of semiconductor firms viable for ESG is quite low. They have won numerous awards for their work on energy efficiency from a variety of organizations including Energy Star and SEAD. [We offer financial models, projections, and further technological competitive information for those who would like to investigate further.](https://semianalysis.com/contact/)
 

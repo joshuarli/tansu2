@@ -10,7 +10,7 @@ At Nvidia’s GTC 2024, Jensen went to Dell’s booth and chanted Dell over and 
 
 Dell was extremely late to AI servers. In the previous generation A100, they only offered the low volume low end 4xA100 servers (Redstone) geared towards the significantly smaller HPC market. Furthermore, in HPC, Dell only has 7% market share of [publicly disclosed systems](https://www.top500.org/statistics/list/) whereas their chief competitors Lenovo and HPE have 32.6% and 22.4% respectively. Dell didn’t even offer an 8xA100 HGX server (Delta) which is what everyone working on AI used. This includes firms like OpenAI, who used [8xA100 Delta to train and inference GPT-3.5 and GPT-4.](https://www.semianalysis.com/p/gpt-4-architecture-infrastructure)
 
-![](https://substackcdn.com/image/fetch/$s_!xdwr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7e8ccaf-d891-4b77-b044-3ed0ff28b187_1775x881.png)
+![](z-images/4c7e33c72c0722150e422e27cadbcba6.webp)
 
 Source: Nvidia, SemiAnalysis
 

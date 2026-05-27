@@ -32,7 +32,7 @@ Bringing generative AI to process and device modeling is an obvious first step b
 
 While still early in development, Intel presented promising results from implementing GenAI models for this. Initial testing was performed with 2 different model types: generative adversarial networks (GAN) and diffusion model.
 
-![](https://substackcdn.com/image/fetch/$s_!MZ1A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc33395b8-2216-46dc-99b4-cf6db106437f_1151x386.png)
+![](z-images/1c01785d1897f3aca14ae12714fc2e02.webp)
 
 GAN model architecture: a generator neural network learns to synthesize data by fooling a discriminator network
 
@@ -42,13 +42,13 @@ Through training, the quality of generator output samples will approach or even 
 
 The critical difference is that, in this model setup, process yield is defined by the long tails of the distribution – so failing to replicate those means the model is not correctly predicting yield.
 
-![](https://substackcdn.com/image/fetch/$s_!YS5I!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9e7d5f3-bf08-4aa9-8a3b-f8925bf9a22a_561x572.png)
+![](z-images/fc4a38d688375abaf3991482c4c70c7c.webp)
 
 GAN cannot replicate distribution of real data, it is not useful for predicting process yield
 
 Diffusion networks are much better suited to the task. Real samples with added noise are used to train the model, which learns to denoise them. Crucially, diffusion networks in this application were able to replicate the long tails of the sample data distribution, thus providing accurate predictions of process yield.
 
-![](https://substackcdn.com/image/fetch/$s_!s51f!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d468f47-616f-4573-9a3b-9bd8704a4a97_1568x584.png)
+![](z-images/f4c3b6f3af5e971f0711df4959d50955.webp)
 
 Diffusion model for neural network training
 
@@ -56,7 +56,7 @@ In Intel’s research, SPICE parameters, used in the design phase as part of dev
 
 The potential here is clear: better optimization of chip yields at the design stage means lower costs. Fewer mask respins, shorter development times, and ultimately higher yield would all be strong differentiators for foundries and design teams that can implement models into their PDK/design flows.
 
-![](https://substackcdn.com/image/fetch/$s_!F4xJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F72283712-ecd8-462f-9719-d338afcb5560_919x433.png)
+![](z-images/feb132f08f01d99f1c91cc9dae22ccac.webp)
 
 Diffusion model closely replicates real data & allows extrapolation
 
@@ -68,7 +68,7 @@ Logic scaling has been the beating heart of the industry for many years. While t
 
 Current development work is focused in 2 areas: traditional horizontal scaling in the x and y direction, and 3D stacking (z direction).
 
-![](https://substackcdn.com/image/fetch/$s_!-UAY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d115c09-bf55-47d8-8df1-4f3bd486178c_1200x678.jpeg)
+![](z-images/0f5104d86b9710adcaaa9f6e6366c9c8.webp)
 
 Horizontal & vertical scaling schemes for the next decade
 
@@ -88,7 +88,7 @@ TSMC demonstrated working nanosheet FETs (NSFETs) fabricated with a single nanos
 
 Growth is *the* fundamental problem for 2D materials. No solution exists today that can reliably grow 2D materials over a non-negligible surface area.
 
-![](https://substackcdn.com/image/fetch/$s_!xsrd!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff0eeeb5f-fc8a-45af-bd67-157fdae1e0b4_1060x552.png)
+![](z-images/ed1819bdf69b3b7c46d4162f8b9ff0eb.webp)
 
 Stacked 2D materials from TSMC. Concept (left) and as fabricated (right). The “2D” channels, highlighted green, are just a few atoms thick.
 
@@ -100,7 +100,7 @@ Samsung, surprisingly, made very little noise about 2D materials. Dr. Choi, pres
 
 Oddly based on the presentations at IEDM, it seemed Samsung still hasn’t figured out which of the 3 different types of back side power delivery schemes they want to do while Intel and TSMC clearly have decided their roadmap.
 
-![](https://substackcdn.com/image/fetch/$s_!lilO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff8d29125-ed0e-4ed3-8387-c345a7115337_767x296.png)
+![](z-images/840abc9b41c121da0dbe4052e02eadcc.webp)
 
 Samsung foundry process roadmap
 
@@ -112,7 +112,7 @@ Traditionally, chips comprise 1 layer of both NMOS and PMOS with the necessary c
 
 The first natural step will be stacking 1 NMOS + 1 PMOS transistor, the reason being that together they can be connected to form an inverter, or NOT gate, a fundamental building block of digital circuits. More complex standard cells will be very difficult to produce as well. TSMC published a nice illustration of the concept, along with a composite of transmission electron microscopy (TEM) images showing the real thing.
 
-![](https://substackcdn.com/image/fetch/$s_!6ti1!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7edd6d2f-16fa-43f3-84e5-8658defa68ba_448x446.png)
+![](z-images/ea5d60adfa25947f3d63fbd71d0aefb7.webp)
 
 Concept (left) and real device at nanometer scale (right)
 
@@ -120,11 +120,11 @@ Last year, most of the work in this area was shown by university labs. This year
 
 In general, the 4 approaches seem to be converging in terms of architectural decisions and fabrication schemes.
 
-![](https://substackcdn.com/image/fetch/$s_!lvec!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff0e0a6d8-b8d4-4634-a620-b5d9e0e13ca1_1267x634.png)
+![](z-images/f41b552e17479f79d285521bf2684c49.webp)
 
 \*One caveat in this comparison is that Intel’s paper is focused on the integration of CFET + backside power delivery and contacts rather than just scaling. In 2021, Intel demonstrated a CFET with gate pitch 55nm & gate length 19nm
 
-![](https://substackcdn.com/image/fetch/$s_!0WtC!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd7ea258e-e742-46b6-ae22-85b40bfebf3f_170x227.png)
+![](z-images/71ab347f7fd38663b6fa8e241594f716.webp)
 
 GAN model architecture: a generator neural network learns to synthesize data by fooling a discriminator network
 
@@ -134,13 +134,13 @@ Intel’s integration scheme was particularly interesting and worth highlighting
 
 One key area to watch in the future will be thermal performance. We saw more than one chipmaker paper on scaling enablers (3D transistor stacking, backside power delivery, advanced packaging, etc.) that claimed no regression in thermal performance. AMD presented a paper that made it very clear from a customer perspective that thermal issues need extra attention.
 
-![](https://substackcdn.com/image/fetch/$s_!mOAs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb47c70fa-2e63-41fc-a15e-7250511bb8eb_1789x792.png)
+![](z-images/4f7c1e5eae74804c7badfdb5b48b75c0.webp)
 
 AMD’s simulations suggest up to a 5% performance decrease when using backside power delivery because the chip must be throttled to avoid overheating. The main culprit was the wafer thinning and bonding process. While required to fabricate backside devices, it has the unfortunate side effect of strongly reducing the thermal conductivity of the silicon near the devices, meaning the device cannot dissipate heat as effectively.
 
 3D packaging encountered the same issues in cases where bulk wafer thinning was required: a performance loss of up to 5% due to throttling at hot spots.
 
-![](https://substackcdn.com/image/fetch/$s_!TpuI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F121aed7d-5b5f-40ce-b4ed-78ee26b7a5af_1810x490.png)
+![](z-images/8f2aa7f6a149972c6debea054bec389f.webp)
 
 Simulated thermal performance of traditional 2D vs. 3D advanced packaging schemes
 
@@ -156,19 +156,19 @@ First, was placing dummy copper thermal vias - essentially small “heat pipes�
 
 Second and more promising was using thermally conductive layers between bonded wafers. Currently when wafers are bonded with a SiO2 bond between them. Replacing this with a high thermal conductivity material was shown to improve thermals without the adverse electrical effects.
 
-![](https://substackcdn.com/image/fetch/$s_!wHNi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F174db233-3b1e-4d61-b6a4-14064cacbdf7_585x232.png)
+![](z-images/c029724f98a31f774e8256a3fda25c1a.webp)
 
 Simulation proves wafer to wafer bonding layers with high thermal conductivity can mitigate hotspots
 
 The benefits are clear, but these thermally conductive materials not easy to produce. Two candidate materials were shown: AlN and diamond. TSMC demonstrated both in a lab setting, produced to a sub-micron thickness with high enough thermal conductivity to be viable.
 
-![](https://substackcdn.com/image/fetch/$s_!FkyF!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe85f26ed-1fb4-40fe-aea3-1d30dcd24fcd_382x325.png)
+![](z-images/b40bedcfe8f21d4df339c6c8a9d9a267.webp)
 
 TEM image of AlN grown at low temperatures, and the corresponding thermal properties – moving closer to a viable manufacturing solution
 
 While this process does not appear to be industrialized, it is worth watching given the problems detailed above. We thought it was very notable that there was not more attention given to it at the conference, perhaps more attention will be given to this at ISSCC or VLSI.
 
-![](https://substackcdn.com/image/fetch/$s_!hZ1F!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F34ade217-9b0f-4b97-aa51-85051ae38691_281x324.png)
+![](z-images/dfc677f4aab74536dd5e614de1cd00fe.webp)
 
 Lab grown diamond on a Si wafer. Thermal conductivity was high enough to mitigate hotspots
 
@@ -186,7 +186,7 @@ Applied Materials and IMEC both showed their solutions for scaling interconnects
 
 The presentation was clearly technical marketing, but the TSMC and Intel folks in the room were paying extremely close attention and asked very good questions.
 
-![](https://substackcdn.com/image/fetch/$s_!ni9p!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a4fb626-e0de-43d8-b280-6f0e3bc9b41a_1021x313.png)
+![](z-images/8d1414095125aa575871bb0fc9f72fdb.webp)
 
 All tungsten interconnect process, in theory (left) and as fabricated (right)
 
@@ -198,15 +198,15 @@ Applied Materials can bundle many tools of a single process module in a way othe
 
 Memory needs for both compute and storage in the AI era are exploding. There is a [tremendous memory wall which is limiting advancements](https://www.semianalysis.com/i/97006309/the-memory-wall). Micron noted in a plenary session that data growth is accelerating on a similar trajectory to compute needs, with both slopes getting steeper.
 
-![](https://substackcdn.com/image/fetch/$s_!Zh2J!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F42c62375-8d8b-4f15-8e39-5b5c1f52fea9_1243x736.png)
+![](z-images/6dbb61c29096c8a08bd474936c81669d.webp)
 
 And just as in logic, memory scaling will need to continue in order to meet growing data needs in an economic fashion. Doing so requires advances in many areas. The logic used to control memory arrays will need to scale accordingly, and FinFETs are on the roadmap near the end of the decade.
 
-![](https://substackcdn.com/image/fetch/$s_!WiuK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F15d6818e-de11-4323-b534-dd1a9e4d6266_1294x730.png)
+![](z-images/54e4c60fbd4f7a303d4524ed198a5806.webp)
 
 Packaging technology will also play a part, as denser integration of memory and compute enables better system-level performance (we won’t dive too deeply into packaging here; see our [advanced packaging deep dive](https://www.semianalysis.com/p/advanced-packaging-part-1-pad-limited) and look for more from us on this topic soon).
 
-![](https://substackcdn.com/image/fetch/$s_!KKFd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcfdd44fd-aad4-40ba-a198-6abbfb522804_1303x727.png)
+![](z-images/c1d1fd366c0c7fd6e80f3a0dc47918e8.webp)
 
 Finally, there is the memory array itself, where the key inflection point is 3D DRAM insertion. Some background is necessary here: traditionally, DRAM memory arrays consist of vertical capacitors. As with transistors and logic, memory scaling has largely been accomplished by simply making the devices ever smaller. DRAM capacitors are generally tall, narrow cylinders. Reducing their diameter allows them to be packed together in higher density but means they must be taller to maintain enough capacitance – in other words their aspect ratio must increase.
 
@@ -214,19 +214,19 @@ Today’s DRAM arrays have extremely high aspect ratios and are very challenging
 
 At some point in the future, scaling will require 3D DRAM. The concept is simple: if the capacitors cannot be made any smaller/taller, make them horizontal instead and stack large numbers atop each other.
 
-![](https://substackcdn.com/image/fetch/$s_!na09!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96caf28c-5971-45ef-ae60-6d1b123aac2d_408x559.png)
+![](z-images/4ef587e5bb03fc07fe8fbb991f14c71a.webp)
 
 2D DRAM (left) with vertical capacitors, shown as blue cylinders. 3D DRAM (right) capacitors, also shown as blue cylinders, are stacked horizontally instead.
 
 The importance of this shift is the difference in fabrication methods. Relative to existing planar DRAM, 3D may require 50% less lithography use and a large increase in etch and deposition tools. A similar rebalancing occurred in the transition from 2D to 3D NAND memory and will have strong effects on the DRAM equipment supply chain – a ~$30B market when the memory cycle peaks again in 2025.
 
-![](https://substackcdn.com/image/fetch/$s_!7bcE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F816396b3-02e4-42b6-969c-eadd1114f48a_1270x729.png)
+![](z-images/21d92ab5387332cdfe8368fcccbdaebe.webp)
 
 Technology enablers for 3D DRAM: growing a Si/SiGe lattice, forming horizontal arrays, stacking memory array over CMOS
 
 The key, then, is when the transition will occur. Micron’s plenary presenter called it “the quintessential question,” and the answer given was a heavily caveated version of “within 10 years.” It’s very telling that none of the major memory manufacturers will be presenting serious 3D DRAM papers at IEDM because this is a race that will shift market share. This year there were a few on the topic from Macronix, but none from Samsung, SK Hynix, or Micron. An example roadmap from IMEC shared by Micron shows a vague timeline between 2030-2035. In other words, not expected in the short term.
 
-![](https://substackcdn.com/image/fetch/$s_!vu31!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a337326-3e6e-403a-afbb-3ba5913d63d6_1234x748.png)
+![](z-images/d2ff2e4b6f0c13f5540fe2c71924735f.webp)
 
 3D DRAM insertion tentatively shown 2030-2035
 
@@ -236,7 +236,7 @@ Memory is one the most important scaling vectors for achieving civilization rede
 
 Much like with how [Huawei openly released their 7nm mobile chip, the Kirin 9000S,](https://www.semianalysis.com/p/china-ai-and-semiconductors-rise) as Gina Raimondo, was in China, CXMT also [surprised us](https://twitter.com/dylan522p/status/1734340095753453960) by candidly announcing their violation U.S. export controls at IEDM in San Francisco. CXMT presented their Gate-All-Around Vertical Transistors manufactured at the 18nm half pitch.
 
-![](https://substackcdn.com/image/fetch/$s_!ghn1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1aa9f8f5-9345-4197-820e-e6dd4fdc7fad_1063x810.png)
+![](z-images/1d7910dce8119cd093773a1cbe0ac0d3.webp)
 
 CXMT vertical channel transistors at 18nm pitch, below export control limits
 
@@ -254,27 +254,27 @@ SK Hynix gave multiple presentations on HBM packaging. This included the most co
 
 As the name implies MR-MUF uses a traditional flip-chip mass-reflow process to stack the die and form the joints. This is much higher throughput as it is a batch process (solder reflow is performed once for the entire stack) compared to [TCB which requires an individual bond process for each layer on the stack](https://www.semianalysis.com/p/advanced-packaging-part-3-intels).
 
-![](https://substackcdn.com/image/fetch/$s_!iMgg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0a79fc5-a00d-4a1b-b87c-bc94372d9312_1371x750.png)
+![](z-images/e2186aee0b183f959ccdbdca30a2c66c.webp)
 
 It is not just productivity, but MR-MUF results in more performant HBM. In between the die an epoxy molding compound is used as the gapfill material which has much higher thermal conductivity than the non-conductive film in TC-NCF. This results in lower junction temperatures and is a significant benefit to customers given the importance of managing thermals for high power chips like GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!B_zs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0f479e94-00c5-4e48-8562-b24d82a6b56c_1391x764.png)
+![](z-images/068cb0e8e65828e333da5eda9a79ef94.webp)
 
 Hynix went deeper into some of the challenges with MR-MUF and, so far Hynix is the only supplier to have overcome these. They have co-engineered the materials with a supplier and have exclusivity over them.
 
-![](https://substackcdn.com/image/fetch/$s_!xcVj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0d645055-7e14-4d9e-a7e4-9a475c013651_1358x746.png)
+![](z-images/356a857e684402f7fc03eca460f72d61.webp)
 
 First is the challenge of controlling die warpage: especially with a high free-standing stack of very thin die. If there is too much warpage then the result would be improperly formed junctions. The benefit of [TCB is it is much better at addressing warpage](https://www.semianalysis.com/p/advanced-packaging-part-3-intels), and the reason why TCB was the first technology used for HBM packaging.
 
 It’s also [why Intel is unique in using TCB far more commonly in packaging](https://www.semianalysis.com/p/advanced-packaging-part-3-intels) versus the rest of the OSAT and foundry packaging ecosystem. Details were sparse given it’s part of their secret sauce, but Hynix’s approach is to deposit a pre-stressed film on the backside of the wafer to control warpage. Intel does similar but different, and has [patents on their process flow as well](https://patents.google.com/patent/US20150318258A1/en).
 
-![](https://substackcdn.com/image/fetch/$s_!f7vi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3451d823-f20b-484b-91cd-0ce28b4a54aa_1380x763.png)
+![](z-images/25099ccd9ebb1f71904366465d666a96.webp)
 
 The other challenge is dispensing the EMC to fill the gaps between the die and ensuring there are no voids. The role of the underfill is to provide structural support for the bumps but voids in the underfill reduce this support. The denser bumps and narrow gaps make the underfill dispense more challenging for HBM.
 
 To address this, Hynix has optimized the mold tool and found that the pattern of the EMC dispense is also critical. It was found that using a chip face up mold tool resulted in unavoidable voids so a custom face down mold tool must be used. Also certain dispense patterns result in lower voids like the Serpentine Imp.2 pattern on the far right in the exhibit. Another thing is to ensure the EMC is not placed between the stacks, which reduces airflow, resulting in trapped air in the structure that results in voids.
 
-![](https://substackcdn.com/image/fetch/$s_!qTSz!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a682bfa-21fb-4029-b82d-e7e7af31329b_1632x890.png)
+![](z-images/60e70f500ed76fc4304a4ad273b9e3a0.webp)
 
 GAN model architecture: a generator neural network learns to synthesize data by fooling a discriminator network
 

@@ -14,7 +14,7 @@ The Open AI [Stargate Joint Venture](https://openai.com/index/announcing-the-sta
 
 It’s fun to see the elite are going through their measuring contests with clusters but also they are both right to some extent. Softbank doesn't have anywhere close to the money required for the cluster. At the same time, the cluster is already under construction in Texas, see the low res GIF for free subscribers.
 
-![](https://substackcdn.com/image/fetch/$s_!EF6u!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F33d52335-2e0f-4e1f-a7a4-43304c1ccf77_900x730.gif)
+![](z-images/d316fa727717cc7239dd1abaa18db754.gif)
 
 SemiAnalysis Datacenter Model
 

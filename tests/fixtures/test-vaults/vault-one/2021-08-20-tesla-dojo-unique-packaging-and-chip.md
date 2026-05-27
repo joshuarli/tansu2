@@ -8,29 +8,29 @@ description: "Tesla hosted their AI Day and revealed the innerworkings of their 
 
 Tesla hosted their AI Day and revealed the innerworkings of their software and hardware infrastructure. Part of this reveal was the previously teased Dojo AI training chip. Tesla claims their D1 Dojo chip has a GPU level compute, CPU level flexibility, with networking switch IO. [A few weeks ago, we speculated on the packaging of this system being a TSMC Integrated Fan Out System on Wafer (InFO\_SoW).](https://www.semianalysis.com/p/tesla-ai-day-supercomputer-chip-teaser) We explained the benefits of this type of packaging alongside the cooling and power consumption involved with this huge scale up training chip. Additionally, we estimated that this package would outperform Nvidia systems in performance. All of this seemed to be valid speculation based on the reveal. Today we will dive more into the semiconductor specifics of the reveal.
 
-![](https://substackcdn.com/image/fetch/$s_!Thc9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6b403d90-bfb7-4cc9-8e4c-f1479d0f54fc_1023x469.png)
+![](z-images/6e5b036235dbc4cbf4e6aaa1bbdcb78a.webp)
 
 Before we get ahead of ourselves on the meaty hardware, let’s talk about the evaluation infrastructure. Tesla constantly retrains and improves their neural networks. They evaluate any code change to see if there is an improvement. There are thousands of the same chip that is deployed in cars, in servers. They run millions of evaluations a week.
 
-![](https://substackcdn.com/image/fetch/$s_!wxRa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F027b249a-c1e0-453e-b0e3-315b9f112959_1024x543.png)
+![](z-images/40c56438f45e2185677adc856d4c93ed.webp)
 
 Tesla has been expanding the size of their GPU clusters for years. Their current training cluster would be the 5th largest supercomputer if Tesla stopped all real workloads, ran Linpack, and submitted it to the Top500 list. This scaling of performance is not enough for Tesla and their ambitions, so they set out on developing their own chip a few years ago, project Dojo. Tesla needed more performance to enable even larger and more complex neural networks in a power efficient and cost-effective manner.
 
-![](https://substackcdn.com/image/fetch/$s_!ZuFP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8dd67a30-f697-419d-a6da-7ca887f28fe5_1024x450.png)
+![](z-images/2c044c39f1d96ebd4297e92bdc2af4e5.webp)
 
 Tesla’s architectural solution was a distributed compute architecture. As we listened to their details, this architecture seems very similar to Cerberus. [We analyzed the Cerebras Wafer Scale Engine and its architecture here.](https://semianalysis.substack.com/p/cerebras-wafer-scale-hardware-crushes) Every AI training architecture is a laid out in this manner, but the details of the compute elements, the network, and fabric vary widely. The biggest problem with these types of networks is scaling up bandwidth and retaining low latencies. In order to scale to larger networks, Tesla focused on these latter two especially. This influenced every part of their design from the chip fabrics to packaging.
 
-![](https://substackcdn.com/image/fetch/$s_!RhEX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1aa63a93-22f1-418c-ae45-575b2f98e454_1024x545.png)
+![](z-images/503a7c0c8e6218331dbaeb6f5274a497.webp)
 
 The functional unit was designed to be traversable with 1 clock cycle, but large enough that synchronization overhead and software do not dominate the problem. As such they arrive at a design almost exactly like Cerebras. A mesh of individual units connected by a high-speed fabric which is routes communications between functional units in 1 clock. Each individual unit has a large 1.25MB SRAM scratchpad and multiple superscalar CPU cores with SIMD capabilities and matrix multiply units supporting all common data types. Additionally, they introduce a new data type called CFP8, configurable floating point 8. Each unit is capable of 1TFlop of BF16 or CFP8, 64GFlops FP32, and 512GB/s of bandwidth in each direction.
 
-![](https://substackcdn.com/image/fetch/$s_!szXr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbaac7ac5-3e45-41ce-afc9-2ad41895f1e8_1024x530.png)
+![](z-images/c7f9d27810211b1fe5a1ee93729a045e.webp)
 
 The CPU is no slouch, it is 4 wide with 2 wide on vector pipelines. Each core can host 4 threads to maximize utilization. Unfortunately Tesla went with a custom ISA rather than building on top open source ISA’s like RISC V. This custom ISA introduces instructions for transposes, gathers, broadcasts, and link traversals.
 
 A full chip of these 354 functional units reaches 362 TFlops of BF16 or CFP8 and 22.6 TFlops of FP32. It is a total of 645mm^2 and 50 billion transistors. Each chip has a breathtaking 400W TDP. This means power density is higher than most configurations of the Nvidia A100 GPU. Interestingly, Tesla achieves an effective transistor density of 77.5 million transistors per mm^2. This is higher than every other high-performance chip, and only beaten by mobile chips and the Apple M1.
 
-![](https://substackcdn.com/image/fetch/$s_!M5Wl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F00dd6cc5-e0b5-4a87-bec8-b3680dfd344c_1024x509.png)
+![](z-images/deebda8cfc6df35979c63f76ff5e57b3.webp)
 
 Another interesting aspect of the base functional unit is the NOC router. It scales intra and inter chip in a very similar manner to Tenstorrent. [Linked is our analysis of that architecture](https://semianalysis.substack.com/p/tenstorrent-wormhole-analysis-a-scale). It’s no surprise that Tesla is arriving at a similar architecture as other well regarded AI startups. Tenstorrent is very geared to scale out training, and Tesla was focusing on this aspect heavily.
 
@@ -38,37 +38,37 @@ On chip, Tesla has a breathtaking 10TBps of directional bandwidth, but this numb
 
 We are not sure where Tesla is getting their claim of 4TB/s off each edge, it is more likely that number off the X and that number off the Y axis. Never mind the confusing slide, the bandwidth this chip has is insane. The highest known external bandwidth chips currently are state of the are 32Tb/s networking switch chips. Tesla was able to double this with huge amounts of SerDes and advanced packaging.
 
-![](https://substackcdn.com/image/fetch/$s_!A7s_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa1a6a1bb-069b-4577-bafe-fe10309cad1f_1024x458.png)
+![](z-images/6d9e1aad1062682071e88b9435fcc3bf.webp)
 
 Tesla connects the compute plane of Dojo chips to interface processors which connect to host systems with PCIe 4.0. These interface processors also enable higher radix network connections that supplement the existing compute plane mesh.
 
-![](https://substackcdn.com/image/fetch/$s_!MwuQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F601ef750-e700-44f9-b23c-5533b135f2b9_1024x545.png)
+![](z-images/46405d7fdf1c9067df7ca07855fc5835.webp)
 
 25 D1 chips are packaged as a “fan out wafer process” called a training tile. Tesla didn’t confirm that this packaging is TSMC’s integrated fan out system on wafer (InFO\_SoW) like we speculated a few weeks ago, but it seems highly likely given the insane interchip bandwidth and the fact they specifically said fan out wafer.
 
 Tesla developed a proprietary high bandwidth connector that preserves the off chip bandwidth between these tiles. Each tile has an impressive 9 PFlops of BF16/CFP8 and 36 TB/s of off-tile bandwidth. This far surpasses the off-wafer bandwidth of Cerebras, and enables the Tesla system to scale out better than even scale out designs such as the Tenstorrent architecture.
 
-![](https://substackcdn.com/image/fetch/$s_!p5u3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fba113e8e-ed3d-4887-ab7a-337a61039820_1024x752.png)
+![](z-images/e98833d96dea419878dba798cc780943.webp)
 
 The power delivery is unique, custom, and extremely impressive as well. With so much bandwidth and over 10KW of power consumption on the package, Tesla innovated on power delivery and feeds it vertically. The custom voltage regulator modulator is reflowed directly onto the fan out wafer. Power, thermal, and mechanical are all interfacing directly with the tile.
 
-![](https://substackcdn.com/image/fetch/$s_!ZWQc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9dd235b1-94ae-47e8-bc9b-78ea71ffd208_1024x550.png)
+![](z-images/0006df8a712a140a55d6993c9c8ae5ca.webp)
 
 It appears the total tile is 15KW of power even if the chips themselves are only 10KW total. Power delivery, IO, and wafer wires are drawing a ton of power as well. Power comes in from the bottom while the heat comes out the top. Chips are not the unit of scale for Tesla, the 25 chip tiles are. This tile far surpasses anything from Nvidia, Graphcore, Cerebras, Groq, Tenstorrent, SambaNova, or any other AI training geared start up in per unit performance and scale up capabilities.
 
 All of this seems like far out technology, but Tesla claims they already have tiles running at 2 GHz on real AI networks in their labs.
 
-![](https://substackcdn.com/image/fetch/$s_!LIPc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0f0a0d1c-e75b-43ed-93f1-2feaf6e57b4e_1024x689.png)
+![](z-images/3fb62b7369f651d1a9fa22aac08d1691.webp)
 
 The next step up to scaling to thousands of chips is the server level. Dojo is scaled up to 2 by 3 tile configs and there are two of these configurations in a server cabinet. For those counting at home, there are 12 total tiles per cabinet for a total of 108 PFlops per cabinet. Over 100,000 functional units, 400,000 custom cores, and 132GB of SRAM per server cabinet is mind blowing numbers.
 
-![](https://substackcdn.com/image/fetch/$s_!W83d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F03bde3cd-6613-4420-8885-c7abeed46a35_1023x439.png)
+![](z-images/d3ca890345c0c237cd060fff3dd54ce1.webp)
 
 Tesla keeps scaling up further beyond the cabinet level in their mesh. There is no breakdown of bandwidth between chips. It is one homogenous mesh of chips with insane amounts of bandwidth. They plan to scale to 10 cabinets and 1.1 Exaflops. 1,062,000 functional units, 4,248,000 cores, and 1.33TB of SRAM.
 
 My mouth is salivating.
 
-![](https://substackcdn.com/image/fetch/$s_!jnb7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4a731a4-88d2-475e-993c-15cfcec01da9_1024x806.png)
+![](z-images/0326a85e71517165c424c6823005dd37.webp)
 
 The software aspects are interesting, but we won’t dive too deep into them today. They claim they can subdivide it virtually. They say software can seamlessly scale across the Dojo Processing Units (DPU) no matter the cluster size. The Dojo Compiler can take care of fine-grained parallelism and map networks across the hardware compute planes. It can achieve this with data model graph parallelism, but also do optimizations to reduce memory footprint.
 

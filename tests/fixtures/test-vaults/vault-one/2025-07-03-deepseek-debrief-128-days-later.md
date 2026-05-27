@@ -10,7 +10,7 @@ SemiAnalysis is hiring an analyst in New York City for Core Research, our world 
 
 It’s been a bit over 150 days since the launch of the Chinese LLM DeepSeek R1 shook stock markets and the Western AI world. R1 was the first model to be publicly released that matched OpenAI’s reasoning behavior. However, much of this was overshadowed by the fear that DeepSeek (and China) would commoditize AI models given the [extremely low price](https://api-docs.deepseek.com/quick_start/pricing) of $0.55 input/$2.19 output, undercutting the then SOTA model o1 by 90%+ on output token pricing. Reasoning model prices have dropped significantly since, with OpenAI recently dropping their flagship model price by 80%.
 
-![](https://substackcdn.com/image/fetch/$s_!cSOq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9908f718-4a2e-4bcf-bf37-d3a068f0ccbc_1157x623.png)
+![](z-images/067ea0d2c4ddd7adc4a189b77aa209bb.webp)
 
 Source: SemiAnalysis, Company prices
 
@@ -22,25 +22,25 @@ Today we look at DeepSeek’s impact on the AI model race and the state of AI ma
 
 Consumer app traffic to DeepSeek spiked following release, resulting in a sharp increase in market share. Because Chinese usage is poorly tracked and Western labs are blocked in China, the numbers below understate DeepSeek’s total reach. However the explosive growth has not kept pace with other AI apps and DeepSeek market share has since declined.
 
-![](https://substackcdn.com/image/fetch/$s_!PrfU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F347d92fd-80bf-460c-9e72-698e245a1606_1230x736.png)
+![](z-images/65ddebb60e3ed69d6feed98af7b9c224.webp)
 
 Source: SemiAnalysis, SensorTower
 
 For web browser traffic, the data is even more grim with DeepSeek traffic down in absolute terms since release. The other leading AI model providers have all seen impressive growth in users over the same time frame.
 
-![](https://substackcdn.com/image/fetch/$s_!RXOr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9946944b-b37c-4bc7-b255-afe3822a29f0_1656x798.png)
+![](z-images/973346e1b546f9fcbf9df7e0a572b149.webp)
 
 Source: SemiAnalysis, SimilarWeb
 
 The poor user momentum for DeepSeek-hosted models stands in sharp contrast to third party hosted instances of DeepSeek. Aggregate usage of R1 and V3 on third party hosts continues to grow rapidly, up nearly 20x since R1 first released.
 
-![](https://substackcdn.com/image/fetch/$s_!Nvz5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fef102cb8-67dc-4bb1-8ca3-ce6cc59620c1_1099x598.png)
+![](z-images/f09421d59b298df6e8efa36519df1867.webp)
 
 Source: SemiAnalysis, OpenRouter
 
 Digging deeper into the data, by splitting out the DeepSeek tokens into just those hosted by the company itself, we can see that DeepSeek’s share of total tokens continues to fall every month.
 
-![](https://substackcdn.com/image/fetch/$s_!A_fI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78132000-3afb-4a11-800e-3337f4a82c09_1044x589.png)
+![](z-images/6dc4f70f7bf3075fff005784792b3dcf.webp)
 
 Source: SemiAnalysis, OpenRouter
 
@@ -66,19 +66,19 @@ For any given model, you can manipulate these 3 KPIs to produce effectively any 
 
 Now let’s look at the tokenomics of how DeepSeek serves its R1 model to understand why they have been losing market share on their own model.
 
-![](https://substackcdn.com/image/fetch/$s_!o2ZX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbb15c40e-0472-44f1-8759-371f04698860_1385x809.png)
+![](z-images/63230011aa692a58e6235c34c7cb314a.webp)
 
 Source: https://openrouter.ai/ accessed in May 2025. Blended $/Mtok calcuated with 3:1 input:output ratio
 
 Plotting Latency against Price, we can see that DeepSeek’s own service is no longer the cheapest for its latency. In fact, a big reason why DeepSeek is able to price their product so cheaply is because they force users to wait many seconds before the model responds with the first token. This compares to some other providers offering it for the same price but delaying responses by much less time. Token consumers can pay $2-4 for nearly no latency with providers like Parasail or Friendli. Microsoft Azure offers the service for 2.5x more than DeepSeek but with 25s less latency. Since we pulled this data, the situation has become even more grim for DeepSeek as almost all R1 0528 instances are now hosted with [sub-5 second latencies](https://openrouter.ai/deepseek/deepseek-r1-0528).
 
-![](https://substackcdn.com/image/fetch/$s_!0kgm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff34f16fa-64b4-4d59-9274-1a7930329bfc_1385x810.png)
+![](z-images/178fd96a8f735714c8f70923f4184676.webp)
 
 Source: https://openrouter.ai/ accessed in May 2025. Blended $/Mtok calcuated with 3:1 input:output ratio, bubble size represents context window size
 
 Using the same plot but adding bubble size for the context window, we can see another tradeoff that DeepSeek runs to deliver a very cheap model with limited inference compute resources. They run a 64K context window which is one of the smallest of the major model providers. Smaller context windows limit use cases like coding which require a model to coherently remember a large amount of tokens across a code base to reason across. At the same price you can get >2.5x the context size with providers like Lambda and Nebius in the above chart.
 
-![](https://substackcdn.com/image/fetch/$s_!4jSc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fede5f394-a33a-4129-8b82-643800be96b1_907x614.png)
+![](z-images/5325f2a2a8ce5504142204409c8e27b7.webp)
 
 Source: SemiAnalysis benchmarks
 
@@ -96,7 +96,7 @@ Having noticed the success of token consumers like Cursor, the company launched 
 
 Google, in response, also released their own tool: Gemini CLI. While it is a similar coding tool to Claude Code, Google uses their compute advantage with TPUs to offer unbelievably large request limits at no cost to users.
 
-![](https://substackcdn.com/image/fetch/$s_!yC95!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc41d41f8-18c0-4abd-ab31-894c98a5a0ef_1403x737.png)
+![](z-images/b3a72f4845445983dd19dc7c05679417.webp)
 
 Source: Google
 
@@ -104,7 +104,7 @@ Claude Code, for all of its wonderful performance and design, is **expensive.** 
 
 This is most evident in Claude 4 Sonnet’s output speed on the API. Since the launch of Claude 4 Sonnet, the speed has decreased by 40% to just above 45 tokens per second. The reason for this is not unlike DeepSeek’s – to manage all the incoming requests with the available compute, they have to batch at higher rates. Coding usage also tends to skew towards larger token count conversations which worsens the crunch on compute resources compared to lower token count casual chat applications. Regardless, comparable models like o3 and Gemini 2.5 Pro run at significantly faster speeds, reflecting the much larger compute resources at OpenAI and Google.
 
-![](https://substackcdn.com/image/fetch/$s_!J0oC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb89ab9f0-6877-4763-b4ec-2992efcb6d94_1718x1005.png)
+![](z-images/a86fcaba1774b6d15bae0ad48da33ad2.webp)
 
 Source: SemiAnalysis, Artificial Analysis
 
@@ -122,7 +122,7 @@ While this can depend on workload, Gemini 2.5 Pro and DeepSeek R1-0528 are more 
 
 This aspect of tokenomics shows that there are many dimensions on which providers are working to improve models. It is not just more intelligence, but more intelligence **per token produced.**
 
-![](https://substackcdn.com/image/fetch/$s_!HeB2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fffa08b1a-03d2-4148-9f7e-c3304a806fec_2560x1245.png)
+![](z-images/8677efd3c991120870746cdb2a1d6a76.webp)
 
 Source: Artificial Analysis Intelligence Index, SemiAnalysis
 

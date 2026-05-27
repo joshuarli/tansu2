@@ -10,7 +10,7 @@ China has consistently pushed large amounts of money into semiconductors via tax
 
 One area China wants to leapfrog the competition is compound semiconductors. Specifically, silicon carbide and gallium nitride based for power and rf applications. As such, huge amounts of money are being poured into this sector. HDSC, GZSC and Tankeblue are each investing more than $100m to build SiC wafer facilities.
 
-![](https://substackcdn.com/image/fetch/$s_!aNuL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F73d2e229-c7bd-4258-8377-de8add5052cd_1024x555.png)
+![](z-images/dd9892a271329ab083b7c771d910961e.webp)
 
 The largest such project is Hunan Sanan Semiconductor fab. It aims to be a fully integrated SiC wafer fab from boule growth and slicing all the way to power devices, packaging, and testing. This facility has an eye popping $2.5B price tag for phase 1 and 2 with a total output of 30,000 6” wafers per month. Sanan Optoelectronics, the parent company, has stated the phase 1 was built in less than a year and can already produce 6” SiC wafers.
 
@@ -24,7 +24,7 @@ Even if we believe Sanan has figured out the incredibly difficult process of bou
 
 SemiAnalysis wants to put a disclaimer on that Applied Material number. It is inflated because the new fab will be the first producing 200mm wafers rather than 150mm wafers like Sanan. 8” and 6” are used interchangeably with 200mm and 150mm respectively. The conversion from 6” to 8” increases area by ~70%. This is an adjustment Applied Materials did in their calculation. Additionally, the Mohawk Valley fab is not only producing devices. Cree Wolfspeed will have more than $600M+ materials business where Cree sells raw unprocessed polished and epitaxial wafers to firms such as Infineon, STMicroelectronics, On Semiconductor, and many others. Cree Wolfspeed will also have a $1B+ device business in the same time frame. Given yield costs for final devices are over 30%, we can adjust the size of the materials/device business to be equivalent.
 
-![](https://substackcdn.com/image/fetch/$s_!3bU0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F49beb12d-edf1-4b21-9868-755f5088cd1c_1024x573.png)
+![](z-images/eb8ca96918c14a934acb440e4dc505ba.webp)
 
 Regardless of the napkin math and estimates, one thing is clear. The $2.5B Sanan project is more than 2x what Cree Wolfspeed is spending on Mohawk Valley but has well under half the total wafer output. The Sanan fab has many serious technical challenges related to ramping, and they are hand waving them away. The tool chain and process is very custom in silicon carbide and western companies have issues even perfecting one let alone all of them at once. Furthermore, their production numbers are nonsensical given the $2.5B cost of the project. Is this another case where government initiatives, subsidies, and unrealistic targets end up in lighting money on fire?
 

@@ -34,7 +34,7 @@ Let us demonstrate by comparing cost to manufacture. There are a lot of assumpti
 
 Edit: The actual die size was revealed for Ampere Altra. We incorrectly estimated die size initially and have updated the table below with the correct figures.
 
-![](https://substackcdn.com/image/fetch/$s_!a3I1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Feec820b5-a18e-4fe3-a008-5cf96a074d8f_1445x610.png)
+![](z-images/87def6430937b8a9dbc62a0d5a381f40.webp)
 
 The cost per core is lower for Ampere. It is nearly half the cost per core versus AMD and the discrepancy is even larger with Intel. This is an inherent advantage of the core architecture Ampere have chosen. Ampere does this through the combination of smaller cores, smaller L3 caches, and reducing fabric area by putting 2 DSUs per mesh stop, and 2 cores per DSU. The current generation uses the N1 core from Arm. Performance cannot be ignored, and the Ampere chip does not perform nearly as well in many benchmarks. With that said, when the workload represents many individual tasks that are not inter-related, Ampere often have much higher performance, even beating out AMD’s Milan CPUs. We recommend checking out [this review from our friends over at ServeTheHome.](https://www.servethehome.com/ampere-altra-wiwynn-mt-jade-server-review-the-most-significant-arm-server/)
 
@@ -74,11 +74,11 @@ For those of you who like architecture, this section is for you. If not, skip do
 
 Note: L2 cache is dynamic for the stock arm cores, but only 1 number is shown in the diagrams below for simplicities sake.
 
-![](https://substackcdn.com/image/fetch/$s_!x-Nd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F17e10128-bd0d-41ca-bba4-7d8c7c0ca170_657x1024.jpeg)
+![](z-images/fb9f67d27edf58af7441ce85bbe96f28.webp)
 
 This is a very small core relative to what the x86 competitors use. Amazon Graviton 2, Ampere Altra, Ampere Altra Max, and Intel Mount Evans use this core. It is derived from Cortex A76 and implements the Armv8.2-A instruction set. Arm’s roadmap had a bit of a divergence for their next generation cores. The N line is continued, but they also offered the V1 core, which is much larger but has significantly higher performance per core. The peak floating-point performance is doubled and SVE is implemented. These changes bring single threaded performance in line with Intel and AMD’s current generation, but it also brings core size in line with them.
 
-![](https://substackcdn.com/image/fetch/$s_!5cg9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb3fe230b-eb83-427f-9add-ad403be28330_1023x841.jpeg)
+![](z-images/d3b277bf65868edcbf491de55bfd96ab.webp)
 
 This V1 architecture is currently used in Amazon’s Graviton 3 chip. It will also be used by the European, South Korean, and Indian domestic HPC efforts. This core is most similar to the Cortex-X1 core, but it implements the Armv8.4-A instruction set.
 
@@ -86,17 +86,17 @@ Compared to the Cortex-X1, it features a deeper Reorder buffer to extract more i
 
 Arm’s other next generation core is coming to the market soon is N2. This core is only 10% less performance than V1, but at significantly less area and fewer transistors. The peak floating-point performance is halved versus V1, but SVE2 is brought to market, which will help significantly in floating point workloads.
 
-![](https://substackcdn.com/image/fetch/$s_!SuoW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F83347cce-db86-42f2-bfff-e4817eabd064_1024x966.jpeg)
+![](z-images/60be359d73f5748c5e2f9ffae7fa5438.webp)
 
 The N2 architecture is going to be much more common. Marvell has already announced multiple chips with this architecture. In addition, multiple hyperscalers are likely to implement this architecture. We know of at least 2 US based hyperscalers who have chips with this architecture in design. Lastly, there are 3 Chinese companies which claim to be bringing N2 based server chips to market as well. Two are Chinese hyperscalers, and one is an independent merchant silicon firm.
 
 This core is most similar to the Cortex-A710 core. This core implements the Armv9.0-A instruction set, which brings a [whole host of well publicized improvements](https://fuse.wikichip.org/news/4646/arm-launches-armv9/). It offers a massive 40% more IPC versus N1. This required roughly 40% more transistors though. The core is about the same size on 5nm as it predecessor, N1, was on 7nm. The branch predictor can predict 2 taken branches per cycle, double that of N1 which can only predict 1 per cycle. N2 has a 1.5K Entry Micro-op cache which should reduce power consumption and increases IPC due to faster mis-predict recovery (at the expense of area). Rename width has increased from 4 to 5, and the backend now has 4 ALU's instead of 3 in the N1.
 
-![](https://substackcdn.com/image/fetch/$s_!rWxs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa0dd2c1e-123c-4e6f-b13c-a2e05060610c_657x1024.jpeg)
+![](z-images/ec86cf7d3e16214fd4b004936f5315dd.webp)
 
 While many of the architecture related to Ampere One are missing, many are known. Ampere One implements Armv8.6, but it does have some features from Armv9.1. The width of the core appears to be very similar to N1. The core is definitely larger and higher performance though. Ampere doubled the L2 cache. They also appear to have 2 branch units as opposed to the 1 of ARM Neoverse N1. This core does not implement SVE in any form.
 
-![](https://substackcdn.com/image/fetch/$s_!fqNC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0c36ae6f-f630-43df-8f6c-0abb5f366e16_1023x444.png)
+![](z-images/27a56be97729a977ae0996c1b7635ba1.webp)
 
 The most important detail about Ampere One is that it continues along the lines of their current “Cloud Native” strategy. It should be much smaller than what Arm partners will do with Neoverse V1 and Neoverse N2. The difference in core size between Ampere One and next generation platforms such as AMD Genoa and Intel Sapphire Rapids will grow substantially. We will discuss the comparison to these platforms with an ad-hoc cost comparison and discuss our thoughts on the IPO and future of merchant silicon in the subscriber only section.
 

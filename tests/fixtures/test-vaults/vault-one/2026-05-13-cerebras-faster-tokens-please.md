@@ -37,7 +37,7 @@ Opus 4.6 fast mode famously charges 6x the price for 2.5x the interactivity (tho
 
 As an aside, Opus 4.6 fast has become an increasingly worse deal as of late. Standard Opus 4.6 interactivity in Claude Code is consistently around 40 tps (tokens per second). Opus 4.6 fast used to deliver > 100 tps, fulfilling the 2.5 faster guarantee. But it recently degraded to ~70 tps (only 1.75x faster). We recently worked with our friends at OpenRouter to gather this data on the two operating modes of Claude Opus.
 
-![](https://substackcdn.com/image/fetch/$s_!2gAY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F159ba52d-f46d-402a-9e50-35434689b48f_5525x1790.jpeg)
+![](z-images/7f0dc408126ef7e2d3a1bf152306fff9.webp)
 
 Source: OpenRouter
 
@@ -49,19 +49,19 @@ To fully explain the architectural decisions Cerebras has made with their wafer 
 
 As Jensen repeatedly emphasized during this year’s [GTC](https://www.youtube.com/watch?v=jw_o0xr8MWU&t=3684s), throughput (tokens/sec/gpu) vs interactivity (tokens/sec/user) is the fundamental trade-off for inference. In our original [InferenceX writeup](https://newsletter.semianalysis.com/p/inferencemax-open-source-inference), we described it as a bus vs a Ferrari: you can choose to serve lots of users slowly, a single user quickly, or anything in between.
 
-![](https://substackcdn.com/image/fetch/$s_!g_Vg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F76b1bbd0-2e49-4be6-989d-4e9008bea906_2328x1712.png)
+![](z-images/853a7332cb65a9d98f8be8e36d296cf8.webp)
 
 Source: SemiAnalysis InferenceX
 
 Of course, users are also willing to pay more money for higher interactivity, so it’s currently unclear exactly which spot along the pareto frontier maximizes overall revenue and profitability of inference for a given model provider. In reality, providers are currently deploying multiple options in an attempt to capture the entire market. Fast mode, priority mode, batch pricing, and specific model architectures are all experiments from OpenAI and Anthropic to find the optimal combination for their user base.
 
-![](https://substackcdn.com/image/fetch/$s_!Agoo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7dc6ebf5-3fdd-4192-b28b-a0350da6149a_2242x962.png)
+![](z-images/c51532e35e8aebba2b058456fbe45196.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
 Manipulating batch size (or “concurrency”, the number of users you serve simultaneously) is the primary way to move along the curve given the same hardware. This is the beauty of [InferenceX](https://inferencex.semianalysis.com/). Whereas most other public inference benchmark only considers a single workload at a single interactivity level, InferenceX builds the entire pareto frontier across 3 different input/output sequence length combos for all the top open-source models. This allows you to make charts like the following, which shows that GB300 NVL72 achieves 20x more throughput than H100s at low interactivity (40 tps) and 100x more throughput at high interactivity (120 tps).
 
-![](https://substackcdn.com/image/fetch/$s_!vhv3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa299e7d6-d298-4e7b-9727-28ee6afd82dc_2850x1710.png)
+![](z-images/ec1ec978eb3fb895ac17cf6b682fc698.webp)
 
 Source: SemiAnalysis InferenceX Dashboard
 
@@ -73,21 +73,21 @@ In a world where people are willing to pay more for faster tokens, SRAM machines
 
 Cerebras’s fundamental bet has been to go beyond the reticle limit for a single piece of silicon. Instead of splitting a wafer into multiple chips, the goal is to make the entire wafer a chip. This clever scaling was to address a whole host of problems incurred by the slowdown of Moore’s law and the hard constraint of silicon being no larger than 858mm <sup>2</sup>; the size of a single reticle pattern in mask-based lithography. This single wafer-sized chip is called their Wafer Scale Engine (WSE).
 
-![](https://substackcdn.com/image/fetch/$s_!BK9h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb7fdea3-ee52-4f19-9942-9a7a55ad7334_1078x1101.jpeg)
+![](z-images/92a377ff2459d5a756cfed4a11263181.webp)
 
 Source: Cerebras
 
 The WSE is a 12 x 7 grid of 84 identical steppings/die on a whole wafer that forms one piece of silicon. Each wafer or chip has a large pool of very fast SRAM. 50% of silicon area is dedicated to SRAM cells with the remaining 50% consisting of compute cores. The key innovation is having both the silicon and memory on one piece of silicon instead of interconnecting multiple different chips together. This saves power, latency, and cost of moving data off-silicon or off-package.
 
-![](https://substackcdn.com/image/fetch/$s_!is1a!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c457cb1-4cd5-4c85-ba8d-7ad67ae58ad2_2194x1243.jpeg)
+![](z-images/2bbc706b7cfb93ebf6a944303c99487e.webp)
 
 Source: Cerebras
 
 “Traditional” GPUs and XPUs need advanced packaging and networking to achieve greater levels of aggregate compute and memory, which incurs costs in terms of power, speed and more networking equipment. While not a like-for-like comparison, Cerebras compares its on-wafer dataflow speeds to Nvidia’s off-package scale-up bandwidth based on the assumption that data can stay on the WSE whereas GPU data needs to move off-package.
 
-![](https://substackcdn.com/image/fetch/$s_!axzq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57968e3f-9e92-4e21-880a-57ab4c34db8e_2238x452.png)
+![](z-images/86f230424f176946febd617736eb65fb.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!nuLG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcbaae31f-63b2-4217-b2d7-6c4135005a22_2230x370.png)
+![](z-images/c7c3f88ad06fa3b46f9d22161e4e0fd4.webp)
 
 Source: Nvidia, Groq, Amazon, Google, Cerebras, SemiAnalysis
 
@@ -95,7 +95,7 @@ Cerebras is on its third-generation product, WSE-3, which is fabricated on TSMC�
 
 While Cerebras markets a lot of FLOPs for the WSE-3: 125 PFLOPs of FP16 compute, this is a sparse number, not a dense number. This is taking a page out of the [Jensen Math](https://newsletter.semianalysis.com/i/174558496/jensen-math-changes-every-year) playbook but taking it further. Unlike Nvidia, Cerebras doesn’t actually state dense FLOPs in public WSE marketing materials. However, Cerebras assumes 8:1 unstructured sparsity in its sparse number, so dense FLOPS is actually 1/8 <sup>th</sup> or 15.6 PFLOPS of FP16 compute throughput. We call this “Feldman’s Formula.” For the CS-2/WSE-2 a 10:1 ratio was assumed – as we see below, the sparse and dense spec is an order of magnitude different. While WSE-3 still wins on absolute compute throughput relative to other chips, compute per silicon area is not that impressive, especially today. This is likely down to each core being much smaller than a GPU’s functional array size, which is necessary for the purposes of yield harvesting, which we describe below.
 
-![](https://substackcdn.com/image/fetch/$s_!u7sF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a58af6b-07ad-4897-82aa-8d5067a45a16_3160x1758.jpeg)
+![](z-images/e9a8b53f1d5705773cd3bf01ae1cf134.webp)
 
 Source: Cerebras at HotChips 2023
 
@@ -107,7 +107,7 @@ In summary, the WSE is a very big chip with a lot of SRAM, a decent amount of co
 
 Where the WSE is clearly very strong is SRAM capacity. Like Groq’s LPU, the WSE is in the class of accelerator we call “SRAM machines,” where more silicon area is dedicated to super-fast SRAM, which is used as the primary memory where model weights and KV Cache are stored. In contrast, mainstream GPUs and ASICs such as TPU and Trainium use HBM to store model weights and KV Cache. They still have SRAM, just less of it. In general, trading HBM for SRAM means much higher bandwidth, lower latency and faster token output, but at the cost of capacity and therefore total throughput per {chip, watt, $}. SRAM is also just a lot more expensive per bit. Here is a chart from our [recent article](https://newsletter.semianalysis.com/p/nvidia-the-inference-kingdom-expands) on NVIDIA + Groq’s use of SRAM comparing the technologies:
 
-![](https://substackcdn.com/image/fetch/$s_!hbCg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe005710a-ca1e-407b-8b3b-fee7875d04f3_2188x350.png)
+![](z-images/02c62ee8dd5a26e5c777ad4998ffc334.webp)
 
 Source: SemiAnalysis
 
@@ -125,11 +125,11 @@ Inference providers make a business out of using all the above, which is why mem
 
 With that said, Cerebras is now on the path to being a healthy and rapidly growing business, with its OAI deal being a game-changer: until 2028 Cerebras will need to ship an order of magnitude more servers than they have since inception. The demand surge is already visible in TSMC’s wafer loadings, which step up materially each quarter through the year to meet OpenAI’s deployment requirements. We expect Cerebras revenue to inflect sharply in the coming years, with OpenAI as the primary growth driver.
 
-![](https://substackcdn.com/image/fetch/$s_!tpT6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7471a61d-a155-4295-8839-a13ec0a3b390_1908x1062.png)
+![](z-images/6d18f03df81ff007785762d2d6e05150.webp)
 
 Source: SemiAnalysis Accelerator Model
 
-![](https://substackcdn.com/image/fetch/$s_!Xo0h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ca14604-880f-4b74-94be-cb53709e80a8_1898x1112.png)
+![](z-images/b144dc0102d8343c7323ec0752544b44.webp)
 
 Source: SemiAnalysis Accelerator Model
 
@@ -153,7 +153,7 @@ Cooling 25 kW in a single 46,225 mm² wafer is the central thermal problem in CS
 
 The thermal solution is 100% custom and co-designed with the wafer. The silicon and the PCB underneath it expands at different rates as they heat up, and across a 21.5x21.5cm wafer that mismatch is large enough to crack a conventional package. The cold plate, the connector that bridges wafer to PCB, and the assembly tooling all had to be built from scratch. Cerebras calls its system the “engine block”, a four-layer sandwich including the cold plate, wafer, compliant connector, PCB, with the cooling manifold mated to the back of the cold plate. We will go over the system architecture in more detail in the next section.
 
-![](https://substackcdn.com/image/fetch/$s_!IAG5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F22f7c8c2-fd70-47d6-be88-4c99229baa81_1847x1321.jpeg)
+![](z-images/eaba0d6c1c0196a4fcd9795fbc280e8f.webp)
 
 Source: Cerebras
 
@@ -165,7 +165,7 @@ One of Cerebras’s main cooling partners is LiquidStack, which Trane Technologi
 
 Inlet temperature is a final axis where Cerebras diverges from other chips. Cerebras’s Oklahoma facility runs a 6,000-ton chiller plant producing 5°C (42°F) chilled water, which is then warmed across a heat exchanger to ~21°C (~70°F) before reaching the engine block. NVL72, by contrast, is specified up to 45°C (113°F) inlet temperature, which lets operators run free cooling for larger portions of the year. The CS-3’s wafer-level heat flux requires the colder envelope, and the cost is a chiller-heavy facility.
 
-![](https://substackcdn.com/image/fetch/$s_!qivn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbadcce69-3e79-4c94-b7f7-2a8a3f5ef07a_1736x1336.jpeg)
+![](z-images/4925d742783a7fe9c99719bd12dccd3a.webp)
 
 Chiller Plant at Oklahoma City Datacenter. Source: Matthew Berman
 
@@ -175,21 +175,21 @@ Let’s take a step back from liquid cooling and zoom out to the Cerebras CS-3 s
 
 Each CS-3 includes the following: **one WSE-3 engine block**, peripheral compute and I/O modules, two mechanical pumps, 12 3.3kW power supply units, and a liquid-to-air or liquid-to-liquid cooling system.
 
-![](https://substackcdn.com/image/fetch/$s_!Z4BM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb4e18efa-908e-4600-90f4-e294c6e082be_1642x888.png)
+![](z-images/084498d181527ba6fb354be888001a2b.webp)
 
 Source: Cerebras
 
-![](https://substackcdn.com/image/fetch/$s_!BY0-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f854ba6-ee22-4e53-b399-ef5fc0ab0793_1260x766.png)
+![](z-images/c4e377eae2d4c9031d9a233f7eb1bb96.webp)
 
 Source: Cerebras
 
 Zooming into the WSE-3 engine block, the WSE-3 engine takes in 25kW of power alone. Power delivery and cooling of the WSE-3 wafer is extremely customized and innovated. The power is fed into the WSE-3 engine block via the blind mated power connectors from the 12 3.3kW power supply units. The PSU delivers power at 50V to 12 PDB boards that stack on top of each other horizontally. Each PDB board matches to a row of 7 Vicor power bricks, which matches to a row of 7 blocks on the WSE-3 wafer. With 12 PDB boards, that is 84 power bricks and 84 blocks on the WSE-3 wafer. Then, 12V power will be delivered to Vicor’s power delivery module which is on the PCB with the WSE-3 wafer on the other side, and the Vicor brick will convert the power to 1V before sending it to the wafer. The WSE-3 is socketed onto the customized PCB via an elastomer socket.
 
-![](https://substackcdn.com/image/fetch/$s_!ouNM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f92e984-eb98-4b15-80d2-1fb159adf31e_1847x1321.jpeg)
+![](z-images/eaba0d6c1c0196a4fcd9795fbc280e8f.webp)
 
 Source: Cerebras
 
-![](https://substackcdn.com/image/fetch/$s_!LlA1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffa57a709-356d-450a-8370-495e93d6fe53_1363x801.png)
+![](z-images/374fc34d14a1a4e92cb52dbfd6f24a28.webp)
 
 Source: Cerebras
 
@@ -199,11 +199,11 @@ In addition, each CS server has a separate ‘KVSS’ node. This is a dual socke
 
 This is very high especially relative to silicon content. While nominally the accelerator silicon, usually the most expensive part of the server, is one TSMC N5 wafer that costs around $20k, there are a lot of additional costs. The requirement for masking for each wafer substantially adds to the costs. The other major BOM item is the power delivery modules from Vicor. This is a custom VRM that needs to deliver 25kW to a wafer and uses VPD. The bespoke nature of this also means a high cost, and we believe VICR’s content in each WSE is not too far from TSMC’s content. The same goes for the customized cooling solution. Assembly and packaging are also performed in-house by Cerebras rather than at a contract manufacturer. There are also some peripheral components like 12x 100GbE Xilinx FPGAs that effectively act as NICs converting the Cerebras’s own I/O into Ethernet for external comms.
 
-![](https://substackcdn.com/image/fetch/$s_!jOFn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F65156c7d-3462-4e72-bb26-98a3a60d5639_3143x1161.png)
+![](z-images/e2d124d49c28f95611397986b6beda03.webp)
 
 Source: SemiAnalysis Estimates
 
-![](https://substackcdn.com/image/fetch/$s_!G3ns!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F207e9fe1-6168-404e-bfea-71cf338e9a59_3142x1160.png)
+![](z-images/7bc275929c91f093abe62371ad07c244.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -211,7 +211,7 @@ Source: SemiAnalysis Estimates
 
 To understand the extremely high memory bandwidth of Cerebras in context, one must put on the hat of a performance engineer working on LLM inference. To performance engineers, a chip is a tool. Whether you are using 10,000 LPUs, 72 GPUs, or 1 wafer to get the job done, what matters is the “arithmetic intensity” of the chip – how many FLOPs the chip can perform for every byte it transfers to/from memory (FLOPs/byte). Below is a table of chip specs to put the WSE-3 in context. Note that these are theoretical maximum numbers.
 
-![](https://substackcdn.com/image/fetch/$s_!Qkhh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0d76ea42-52e2-410d-9675-ec93373e8bfb_2250x354.png)
+![](z-images/7f97cbca881296c70a4cba34cedfb851.webp)
 
 Source: public datasheets from NVIDIA, Groq, and Cerebras
 
@@ -221,35 +221,35 @@ It is striking to see the FLOPs of a WSE-3 compared like-for-like with NVIDIA GP
 
 To compare Cerebras to alternatives, it is not useful to compare directly, chip-to-chip (or wafer-to-chip). We illustrate a more useful comparison below, with round numbers, to demonstrate where the wafer fits in.
 
-![](https://substackcdn.com/image/fetch/$s_!f8Gl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5532809-a0ab-4d74-9769-3a0b54b04dbe_3104x572.png)
+![](z-images/f218bddbfc623e19076efca26c4e5782.webp)
 
 Source: public datasheets from NVIDIA, Groq, and Cerebras
 
 It is most instructive to compare a single wafer’s worth of cost and performance to around $1M worth of hardware on both HBM and SRAM. Namely: 2x NVIDIA HGX systems (16 GPUs), 4x NVL72 sleds (16 GPUs), or around 50x Groq LP30s. So, we will progressively add more rooflines to the plot in the following charts.
 
-![](https://substackcdn.com/image/fetch/$s_!u2Uj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c68e884-db3b-4979-beb9-5a2d0e1cf6d6_2800x1560.png)
+![](z-images/3cf4e346f62a47210316b49f086132c9.webp)
 
 Source: public datasheets from NVIDIA, Groq and Cerebras
 
-![](https://substackcdn.com/image/fetch/$s_!Gj90!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10fcf32c-73d1-4e62-86b2-e05829fb8aa1_2800x1560.png)
+![](z-images/648b0fef2e2da14e9fc0f577d423cdb4.webp)
 
 Source: public datasheets from NVIDIA, Groq and Cerebras
 
 Here we see a single Nvidia Rubin GPU FLOP mogging an entire WSE-3:
 
-![](https://substackcdn.com/image/fetch/$s_!4DCs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb70c652-71c2-4979-979e-19d6e24863a8_2800x1560.png)
+![](z-images/4513997780d101a65acde5c958aed453.webp)
 
 Source: public datasheets from NVIDIA, Groq and Cerebras
 
 Finally, this chart demonstrates how this analysis can be extended to the system level (albeit in a naive way), comparing the roofline of a single Wafer’s SRAM to DGX systems and a GB300 NVL72 rack. One has to assume zero network overhead and add many racks of GB300 NVL72 just to be able to realize the same FLOPs as Cerebras on kernels with equivalent arithmetic intensity.
 
-![](https://substackcdn.com/image/fetch/$s_!QzLi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc34918df-d59c-4a49-81d0-5afe0e82609b_2800x1560.png)
+![](z-images/1d0dbf9e96180134c7212dc4a625fc43.webp)
 
 Source: public datasheets from NVIDIA, Groq and Cerebras
 
 To finish with a complete understanding of which AI workloads are a good fit for Cerebras, we can just look at common GEMM shapes. GEMMs generally use “mnk” notation, meaning that the input matrices have size “m” and “n” respectively, with a contracting dimension of “k”.
 
-![](https://substackcdn.com/image/fetch/$s_!tlCk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4b833324-3a86-441c-ae1b-16bb37a24b41_1178x484.jpeg)
+![](z-images/a79e177d9058dd345a387e0a22d8005b.webp)
 
 Source: Pete Warden
 
@@ -259,13 +259,13 @@ We can calculate the Arithmetic Intensity of a given GEMM using the following fo
 
 For reference, here are some example GEMM shapes used in LLM inference:
 
-![](https://substackcdn.com/image/fetch/$s_!dR_E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcaaa03ef-5196-4b05-a592-b367c63af339_2680x630.jpeg)
+![](z-images/e0c4db31b59e1c411e77917ef4b02532.webp)
 
 Source: public datasheets from NVIDIA, Groq and Cerebras
 
 And finally, here is how those kernels would theoretically perform on different chips. Just trace from bottom to top on one of the vertical lines that represent the arithmetic intensity of a given kernel to see the (theoretical) performance that a given chip will be able to realize on that GEMM shape (measured in TFLOPs).
 
-![](https://substackcdn.com/image/fetch/$s_!LB_A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2155958a-7f7e-44a6-9173-364c6cc76e78_2800x1560.png)
+![](z-images/d11f6e7a3a5ceb2121b0aade12705dda.webp)
 
 Source: public datasheets from NVIDIA, Groq and Cerebras
 
@@ -283,7 +283,7 @@ The WSE has several clear weaknesses that we have mentioned. It has a lot of SRA
 
 To illustrate this point, we have made an interactive calculator available at [tokenomics.info/cerebras](https://tokenomics.info/cerebras). This is a taste of the kind of research that our Tokenomics subscribers get.
 
-![](https://substackcdn.com/image/fetch/$s_!MHth!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc46b9c1e-cedf-4ddb-9333-407198586aa6_1110x775.jpeg)
+![](z-images/a5b10fccd99adaa340eb589014aa470a.webp)
 
 Source: Cerebras IPO | Tokenomics.info
 
@@ -291,7 +291,7 @@ As shown above, when adjusting the average request size, number of concurrent re
 
 A notable assumption in this calculator is our 96.3k average request size. While Cerebras chooses to build their inference product for their customers around an assumption of 64k avg request size, we believe this is an artifact of running models with limited context windows of 128k. In other words, confirmation bias in action.
 
-![](https://substackcdn.com/image/fetch/$s_!Q-VL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd88eabe9-a77a-4276-b321-25acf081c32a_818x170.png)
+![](z-images/fc4bc0471771507dbb32800dbaf663f3.webp)
 
 Source: OpenAI’s GPT 5.3 Codex Spark announcement
 
@@ -299,7 +299,7 @@ To get an understanding of exactly what real-world traffic patterns are, we buil
 
 A relatively large sample size of ~432k requests (about 80B tokens) leads us to believe that a typical P50 ISL is ~96.3k tokens, not 64k or fewer. We also deduce that the P90 or P95 requests can be exponentially more valuable than the initial requests and still critical to support. In total, almost 50% of our requests are over 128k, which is the maximum context window that Cerebras currently supports on public endpoints. Many sessions we see have an initial context length of over 100k tokens due to tool use context, system prompts, and things like skills and various other forms of primer context.
 
-![](https://substackcdn.com/image/fetch/$s_!CO25!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F882523d5-64de-4ee7-897a-bdf05f3675ed_1201x766.jpeg)
+![](z-images/62d7ff7fa92a625cfd105ed6e8aa2790.webp)
 
 Source: SemiAnalysis InferenceX AgentX dashboard (public launch soon!)
 
@@ -311,7 +311,7 @@ Just for the DeepSeek v4 example above, with 24 CS-3 a CS-3 customer could get 5
 
 Arguably, Cerebras is the company most exposed to the [death of SRAM scaling](https://newsletter.semianalysis.com/p/tsmcs-3nm-conundrum-does-it-even?utm_source=publication-search), with Cerebras’s key draw being SRAM and 50% of wafer area dedicated to SRAM. It’s already showing up on their roadmap. WSE-1 on TSMC 16nm shipped with 18 GB of SRAM; WSE-2 on 7nm jumped to 40 GB, a decent 2.2x gen-on-gen. WSE-3 on 5nm advanced to just 44 GB. That’s a 10% increase across a full node transition, while logic transistor count grew ~50%.
 
-![](https://substackcdn.com/image/fetch/$s_!FoGL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9205200d-032e-4542-bbbd-543f893a4d19_1215x420.png)
+![](z-images/79d5889aaad14818d6a7cabbcd500794.webp)
 
 Source: SemiAnalysis, TSMC
 
@@ -327,13 +327,13 @@ Despite the SRAM scaling issue, WSE still delivers an overwhelming amount of mor
 
 By comparison, each Groq LP30 that NVIDIA will produce includes 96 lanes of 112G SerDes. That’s a 9.6 Tb/s pipe in and out of a much smaller chip. It is clearly well prepared for the PDD + AFD inference setup that [Jensen debuted at GTC this year](https://newsletter.semianalysis.com/p/nvidia-the-inference-kingdom-expands).
 
-![](https://substackcdn.com/image/fetch/$s_!o69n!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F02ec97bf-9d54-4d27-aea2-f77535bcc42e_2452x338.png)
+![](z-images/61525454ee562351504593103869345b.webp)
 
 Source: SemiAnalysis Estimates
 
 So why the bandwidth tradeoff? At the current 150 GB/s (1.2 Tb/s) of off-wafer bandwidth, that’s just 0.17 GB/s per mm of edge, so Nvidia’s off-chip I/O is 130x denser!
 
-![](https://substackcdn.com/image/fetch/$s_!nhIh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdcbbc4ef-7b2c-432c-9334-a9407a926a65_1880x436.png)
+![](z-images/9cd4f2806d8238c77de58fa98f323273.webp)
 
 Source: SemiAnalysis, Cerebras, Nvidia
 
@@ -351,7 +351,7 @@ A lot of the issues we just described come from the realities of moving data in 
 
 Cerebras claims that for LLM inference they don’t need any more bandwidth and is only aggressively pursuing hybrid bonding wafer scale photonic I/O to help their HPC boomers. The HPC customers whom NVIDIA has effectively abandoned after reducing FP64 native hardware on their GPUs to basically nothing. This is great that Cerebras is aggressively reinvesting completely back into moonshot R&D instead of doing buybacks. Buybacks are not a good idea for companies that have lots of R&D things to reinvest into, for example, AMD did ~$221 million of buybacks last quarter yet internally multiple AMD internal teams continue to lack development interconnected GPU clusters.
 
-![](https://substackcdn.com/image/fetch/$s_!yKn3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe4b58b10-9df0-4411-8773-dbf9d03feb9d_2350x1371.png)
+![](z-images/6b621869697b2915dfc2522f011c049a.webp)
 
 Cerebras’s photonic wafer concept. Source: SemiAnalysis, Cerebras
 
@@ -379,13 +379,13 @@ In summary, the way the wafer is being used in production today basically goes a
 
 Let’s take a look at some napkin math with a few open-source model architectures to better understand how different models map to Cerebras’s SRAM footprint. Below are some rough ballpark numbers showing the footprint of several models.
 
-![](https://substackcdn.com/image/fetch/$s_!YmT4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5eb9fe21-ec10-401e-b0d1-05655eb60961_1710x360.jpeg)
+![](z-images/728a52cd192a8c1e5d4da1f8876aae01.webp)
 
 Source: Llama, DeepSeek, OpenAI, SemiAnalysis
 
 And now some rough numbers considering the WSE-3 specs. We make some assumptions here, including that the transfers will use the full 12x100Gbps.
 
-![](https://substackcdn.com/image/fetch/$s_!VqhG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffadd60f2-e620-4a7b-98f6-91d456a5f1f9_1210x357.jpeg)
+![](z-images/2d27fa9d3664865c853be54c2c7fff63.webp)
 
 Source: Llama, DeepSeek, OpenAI, SemiAnalysis
 
@@ -395,7 +395,7 @@ It is clear from the table that recent KV cache compression techniques such as t
 
 The key takeaway is that Cerebras, while fast, pays a large latency cost to move data on and off the wafer, and therefore their cost-to-performance ratio (or perf per Joule) will depend on how much of that latency they can hide or minimize. A clue about the difficulty of this in practice may be reflected in Model offerings on Cerebras Inference Cloud. The largest production model is GPT-OSS, which is only 120B total parameters. There are larger preview models, but even those top out at 355B (GLM 4.7). For reference, Sonnet and Opus are 1T and 5T parameters respectively, per Elon. Notably, the formerly popular Llama 70B and 405B models were also deprecated, potentially due to the economics of serving them.
 
-![](https://substackcdn.com/image/fetch/$s_!uQ4V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f03f0ff-eee5-49bc-bc10-7534fc566704_2432x872.png)
+![](z-images/944e3c0783a24654336bf6f3866bb369.webp)
 
 Source: Cerebras, Llama, OpenAI, DeepSeek, Llama, Qwen, SemiAnalysis
 
@@ -419,7 +419,7 @@ Here are the details:
 
 While Cerebras had been largely left out of the neocloud boom, OpenAI’s February release of GPT-5.3-Codex-Spark (a model using the gpt-oss-120B architecture that was distilled from the real 5.3 Codex) is turning things around. Spark runs on Cerebras at up to 2,000 tok/sec/user and led to the announcement of a long-term deal between the two companies, driving their IPO prospects (and the value of sama’s stake) ever higher.
 
-![](https://substackcdn.com/image/fetch/$s_!NCel!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec386635-41c7-4cf8-8055-c1ac405f4f9f_1233x521.png)
+![](z-images/f64b86603bce8039e60d8be85676769a.webp)
 
 Source: SemiAnalysis Tokenomics Dashboard
 

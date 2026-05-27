@@ -24,7 +24,7 @@ Without rehashing the details of EUV lithography (see our previous notes on [EUV
 
 To continue logic and memory node shrink, lithography tools (scanners) must be able to print ever smaller features. At the start of high-NA development, chipmakers and ASML were faced with a difficult architectural decision on how to enable this. Fundamentally there are 2 main knobs in scanner design to image smaller features: 1) decrease the wavelength of the light source 2) increase the size of the lens (or more precisely, the numerical aperture or NA of the lens). This choice expressed as the 1 <sup>st</sup> Rayleigh criterion, so ubiquitous that ASML even had t-shirts printed with it.
 
-![](https://substackcdn.com/image/fetch/$s_!p1rU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F978fa77e-a172-44df-a8fc-685ede7596f8_563x539.webp)
+![](z-images/275193a0e3d982101a2f15d2fe92b9e4.webp)
 
 For numerous valid technical reasons, the industry chose to pursue larger projection lenses. Unfortunately, the lens size cannot be made larger without causing other issues, mainly due to limitations in EUV photomask technology as it relates to the chief-ray-angle. This forced further compromises in the high-NA architecture.
 
@@ -37,7 +37,7 @@ The first option would not only be a massive technical challenge but also incur 
 
 Option 2 seemed to be the lesser of 2 evils. While it also introduced serious technical challenges, it did not require significant changes to the lithography ecosystem outside the scanner. Chipmakers threw their weight behind this second option and ASML embarked on development work that will culminate shortly in the shipment of the first high-NA machine, the EXE:5000.
 
-![](https://substackcdn.com/image/fetch/$s_!LASq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F02fd61ec-b157-4c9e-9fcb-1c464c921ea7_1444x766.png)
+![](z-images/e163b7e0d6babf230641bb796251b9d6.webp)
 
 These architectural decisions have a few key implications: technical challenges with half-field stitching, depth of focus, and photoresist, and cost challenges when compared to the existing low-NA tools. We’ll explore each of these in turn.
 
@@ -47,11 +47,11 @@ Lithography scanners expose wafers through an exposure slit. The wafer is moved,
 
 You can see this step-and-scan motion in the gif from ASML below. Remember that the movement is fast enough to cover hundreds of wafers per hour and with pattern placement accuracy down to the nanometer level, near atomic level – it’s incredible that it works.
 
-![](https://substackcdn.com/image/fetch/$s_!72UM!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6a2bf9f2-5c3e-4f08-bb8e-175482dc4aab_800x447.gif)
+![](z-images/1405a68974ce3accc91a0f6381fe67af.gif)
 
 The exposure field size for high-NA scanners is only half that of low-NA EUV and traditional DUV tools. This was the “lesser of 2 evils” tradeoff that allowed for the lens size to increase while maintaining the industry standard photomask dimensions.
 
-![](https://substackcdn.com/image/fetch/$s_!QKBM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F223ff4e6-132f-446a-9eb2-8bbf80deaff3_313x139.png)
+![](z-images/3a707bd6f424e98318795cb8ca74d361.webp)
 
 One of the “evils” in this tradeoff was the necessity of mixing half- and full-field exposures on the same wafer. High-NA will only be used on a few of the most critical layers, i.e. those with the smallest features to be printed. Cheaper tools with relaxed imaging capabilities will be used for the others. This means that mask layouts and chip dimensions must be planned with both half-field and full-field imaging in mind. Given that even without the added complication of half-field, poorly optimized mask layouts can lead to [high costs despite small die sizes](https://www.semianalysis.com/p/die-size-and-reticle-conundrum-cost?utm_source=%2Fsearch%2Fchiplet&utm_medium=reader2), this will certainly be an issue for future chip designs.
 
@@ -63,7 +63,7 @@ To understand the cost implications of the high-NA architecture, we need to base
 
 Dose is a measure of energy reaching the wafer. This energy generates a chemical reaction in the photoresist that changes it from insoluble to soluble, or vice versa. Patterning smaller features generally requires a higher dose to [avoid a variety of errors](https://www.semianalysis.com/p/embracing-chaos-the-imperfect-art). Crucially, the dose requirements increase exponentially for decreasing CD.
 
-![](https://substackcdn.com/image/fetch/$s_!-0Kl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2731068e-09ce-44e1-b66b-7eb68756cf6d_1009x460.png)
+![](z-images/045ab09d5f5c7c1341169dd1affc3c2f.webp)
 
 IRDS Lithography Update 2021
 
@@ -76,7 +76,7 @@ ASML has been reliably increasing source power with each new EUV model, but not 
 
 Put simply: because of the steep rise in dose requirement, lithography costs increase sharply as critical dimension decreases. Higher dose means you need to buy more tools for the same number of wafers produced, IE $
 
-![Throughput depends on scanner source power and exposure dose. Higher source power and/or lower required dose enable higher throughput and therefore lower lithography costs.](https://substackcdn.com/image/fetch/$s_!YR6b!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f069c11-d188-40c1-bd74-fbc6c376fad8_886x522.png)
+![Throughput depends on scanner source power and exposure dose. Higher source power and/or lower required dose enable higher throughput and therefore lower lithography costs.](z-images/286909ece2db27c4b611144ec83c20f7.webp)
 
 Levinson in Jpn. J. Applied Physics High-NA Lithography: Current Status & Outlook for Future
 
@@ -84,7 +84,7 @@ Levinson in Jpn. J. Applied Physics High-NA Lithography: Current Status & Outloo
 
 It turns out that there is a readily available alternative to high-NA: low-NA double patterning. Already in use by some chipmakers at leading nodes, it entails performing 2 exposures with a low-NA EUV tool to print a single layer. Each exposure has a CD requirement roughly twice the size of the final features. This has the extremely desirable effect of requiring a much lower dose because you are operating further down the exponential dose vs. CD curve.
 
-![](https://substackcdn.com/image/fetch/$s_!KqDA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc07bdf0-b0f2-40fa-a7b8-39c1da67502d_480x264.png)
+![](z-images/e7e74e0c92673c402cfb5741953ff37c.webp)
 
 At these lower doses the scanner can be utilized to its full potential; throughput will be limited by the speed of the wafer and mask stages, not by dose.
 
@@ -92,7 +92,7 @@ At these lower doses the scanner can be utilized to its full potential; throughp
 
 The throughput advantage of low-NA double patterning is so strong that despite requiring twice as many wafer passes through the scanner, the lithography costs are lower than a high-NA single exposure. Our model shows this to be true from the current leading edge 3nm process node out to the 1nm equivalent, likely to be introduced in the 2030 timeframe.
 
-![](https://substackcdn.com/image/fetch/$s_!sh-7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F99420447-33e5-4a42-8eb1-9bcc54026fa3_1488x925.png)
+![](z-images/71fcdc8eeb3a169b545ce4f0fba7ea3c.webp)
 
 Costs normalized to low-NA 3nm, utilizes best available low-NA and high-NA lithography tool from ASML in year with roadmap of source, stage, and overlay improvements
 
@@ -106,7 +106,7 @@ It's also worth considering the effects if source power cannot be increased up t
 
 If we assume that source power cannot be increased in the future, it does not change the inflection point where high-NA becomes more cost effective, but it does mean that lithography costs overall will significantly increase, up to 20% at future nodes versus the current 3nm baseline.
 
-![](https://substackcdn.com/image/fetch/$s_!orko!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03878c0c-159d-4a42-b175-a1f586bda81c_1484x923.png)
+![](z-images/49a685f35c62fa71872b66f51e2398e9.webp)
 
 Costs normalized to low-NA 3nm, utilizes best available low-NA and high-NA lithography tool from ASML in year with roadmap of stage and overlay improvements
 
@@ -116,19 +116,19 @@ It turns out that public materials from ASML support our cost conclusion. Tradit
 
 As recently as 2020 this was the assumption for high-NA; it was said to have a cost advantage versus low-NA double patterning.
 
-![](https://substackcdn.com/image/fetch/$s_!OpBl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F200dd4b3-2436-4841-9bb0-1403fb5f2e72_1438x810.png)
+![](z-images/7582a48af6e607e01bbc3f8e15a1598b.webp)
 
 2020: ASML says High-NA is lower cost
 
 But from 2021 on the metric of choice changes from cost per wafer to process complexity. While reducing complexity is nice, it is not the main driver in fab equipment decisions. Chipmakers running 1000+ step wafer fabrication processes are used to complexity. They plan fabs and purchase equipment based on cost and projected yield, of which low-NA seems to perform better on.
 
-![](https://substackcdn.com/image/fetch/$s_!rAa6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4b2f7f57-f12a-4316-9e35-89bae333ff80_1435x811.png)
+![](z-images/c08cba9a933b9135fcb6ecf6365c1aa9.webp)
 
 2021: ASML only says High-NA is less complex
 
 At the 1nm and 7A nodes, now in the 2030+ timeframe, the cost gap finally closes. Driving this is the paradigm change from geometry scaling to stacking – rather than shrinking features horizontally, chip performance power and area improvements are achieved by stacking features vertically. This means CD requirements remain the same, so continued advances in photoresist and source power move high-NA closer to parity.
 
-![](https://substackcdn.com/image/fetch/$s_!gppq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe584d522-d113-485f-876d-a08d2d733021_1437x810.png)
+![](z-images/08a8f73e4440fbea06226f7894e5346c.webp)
 
 We see the change from 2d scaling to 3d and the resulting slow down in CD shrink as the natural place for high-NA insertion. This changes the [litho-intensity of advanced logic manufacturing heavily](https://www.semianalysis.com/p/lithography-intensity-and-long-term).
 

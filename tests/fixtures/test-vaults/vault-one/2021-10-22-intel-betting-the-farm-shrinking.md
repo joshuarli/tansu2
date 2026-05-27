@@ -32,7 +32,7 @@ Foundry is a core tenet of this strategy. They have already started making reven
 
 Intel says that after some short-term pain, they will go back to growing 10%-12% annually. Their CFO will be retiring, and the check book is firmly in the hands of an innovator and a risk taker. Intel’s current stockholders are mostly those looking at it as a value play. A company with a nice dividend. This is a rude awakening for sure. It’s going to be rough, and you can see that in the recent movement in Intel’s stock. Intel was a safe investment a decade ago, but in 2021 it's transformed into a very risky one from a short and long perspective.
 
-![](https://substackcdn.com/image/fetch/$s_!YCQ0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa8838460-a3d3-419d-94b5-6fae2828a813_1024x573.png)
+![](z-images/3831580ebd76ca8091c7d02fef9818bd.webp)
 
 We are very skeptical this can be executed on. There’s no way to emphasize how difficult this will be, but it’s also the only path forward. Intel could follow the path of many other American goliaths such as IBM and General Electric. A slow slide to irrelevancy, spinning off business, and bringing shame to what was once pride for American ingenuity. In short, failure. Pat Gelsinger and Intel are saying no to this path.
 

@@ -10,7 +10,7 @@ TSMC held its Q4 2022 earnings call and shared its outlook for 2023. The report 
 
 It’s not all sunshine and rainbows, of course. The 4th quarter was generally great on the leading edge of 5nm, but there was a major sore spot. [As we first reported months ago](https://www.semianalysis.com/p/semiconductor-fab-buildout-delays), TSMC is experiencing a tremendous slowdown on 7nm orders due to weakness in PC and smartphones. Those two segments are more than half of TSMC’s business, so it’s no surprise that the weakness in the consumer economy showed up.
 
-![](https://substackcdn.com/image/fetch/$s_!qxXI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda1ab355-e7e3-4234-bb87-1a93987c7945_4096x1904.png)
+![](z-images/ed38d0db40366188c6b03dbbbd202156.webp)
 
 [https://twitter.com/aschilling](https://twitter.com/aschilling)
 
@@ -20,7 +20,7 @@ Despite troubles with 7nm, TSMC’s gross margins soared to 62.2%. Most of the i
 
 TSMC essentially guided for three straight quarters of revenue declines through Q2 2023 due to high inventories at their customers.
 
-![](https://substackcdn.com/image/fetch/$s_!HG12!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4121a2d9-9c89-41a4-a22a-15ab22749640_1572x842.png)
+![](z-images/d42f70eadc87a4ecd6742d800d20a02b.webp)
 
 Wafer shipments fell significantly due to weakness at 7nm and trailing edge nodes. The revenue per wafer continued to climb due to 5nm strength and lower trailing edge node shipments. Despite the drop in Q4, TSMC still shipped 7.4% more wafers year on year vs. 2021, achieving a total of 15.23M wafer shipments for the entirety of 2022. Furthermore, TSMC’s full-year average sales price was $4,408 per wafer, up 24% year on year.
 
@@ -38,7 +38,7 @@ The impressive bit is that TSMC expects to grow, but they expect the rest of the
 
 Based on TSMC’s guidance for growth and weakness expectations in Q2, it certainly seems like TSMC will have a U-shaped recovery. Q2 may have sequential growth over Q1, but given the weakness in end markets, we expect Q2 to be just as poor.
 
-![](https://substackcdn.com/image/fetch/$s_!0hqz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e5cb6ef-b351-4c91-9d78-aaede9f8cced_1433x847.png)
+![](z-images/0b086fc1e4d2c88e06c6d331c1a17272.webp)
 
 > N3, N3E, the number of tape-outs more than double that N5 in the first and the second year. So, as a result, we expect the strong demand will continue in 2023, '24, '25, and beyond for our N3 technologies driven by both the HPC and smartphone applications.
 

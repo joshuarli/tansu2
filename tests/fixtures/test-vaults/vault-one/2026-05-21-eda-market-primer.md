@@ -80,7 +80,7 @@ The divergence started in 2018. Before that, EDA revenue tracked fab R&D spend 1
 
 ![A graph with blue and orange lines
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!ba5U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb957535a-34b7-417b-a2a2-74ad5ccaba2f_1600x835.png)
+Description automatically generated](z-images/a17f3697dc1ab3461fff6a5430b44992.webp)
 
 A graph with blue and orange lines Description automatically generated
 
@@ -96,7 +96,7 @@ Signoff analysis (Synopsys PrimeTime 90%+ share, StarRC, Redhawk) validates timi
 
 ![A screenshot of a computer
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!Q3Yn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd61bd5de-efb4-4a65-a29c-22e1adc63c62_1600x972.png)
+Description automatically generated](z-images/9816e4b910a42a3084697bd1d74eebbe.webp)
 
 A screenshot of a computer Description automatically generated
 
@@ -108,7 +108,7 @@ Source: SemiAnalysis, Company Reports
 
 ![A screenshot of a graph
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!0g9j!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0b3895a-770b-45b1-987b-92fd6274d34c_1600x1117.png)
+Description automatically generated](z-images/de473af925975667afb1185080fa41ed.webp)
 
 A screenshot of a graph Description automatically generated
 
@@ -120,9 +120,9 @@ Source: SemiAnalysis, Company Reports
 
 Total Market: $18B (2025), growing to $28-30B by 2030
 
-![](https://substackcdn.com/image/fetch/$s_!ylos!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7da7971f-63fb-47a5-8c6b-66f0b9a0805b_1390x412.png)
+![](z-images/e8dbd9df46081703bee9451dd9a1b942.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!rTLT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fea5ecb4d-750a-4d7a-bcb6-f68f4840e2a8_1403x480.png)
+![](z-images/c59a3228d6f064f0c8f376286d358a41.webp)
 
 The remaining 10-15% is fragmented across dozens of vendors, with Ansys pre-Synopsys), Keysight ($1.5B, partially overlapping), and Zuken ($500M, PCB/IC packaging) as the largest independents. No vendor outside the Big-3 holds more than 5% in any core EDA category.
 
@@ -130,13 +130,13 @@ Renesas acquired Altium ($5.9B, 2024) to use Altium’s PCB design software for 
 
 Tool-Level Market Share (Advanced Nodes, 7nm and Below)
 
-![](https://substackcdn.com/image/fetch/$s_!rYaJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37bca036-9dcd-4560-8034-0949436d42cf_1475x482.png)
+![](z-images/dcce97a3cceecca6f31290be8a49b57f.webp)
 
 These shares have been roughly stable for a decade. The only category with meaningful movement is Place & Route, where Cadence Innovus gained 10-15pp against Synopsys ICC2 (IC Compiler II, Synopsys’s flagship place-and-route tool) between 2015-2020, then stabilized as Synopsys launched Fusion Compiler. Everything else is locked.
 
 ![A graph of a stock market
 
-Description automatically generated with medium confidence](https://substackcdn.com/image/fetch/$s_!F2cN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7b7a8cee-bb4c-4b89-8c1c-13ed46fa0460_1600x831.png)
+Description automatically generated with medium confidence](z-images/e0e2b1ce0dccaba76f40f3eac55b440d.webp)
 
 A graph of a stock market Description automatically generated with medium confidence
 
@@ -152,7 +152,7 @@ EDA pricing is opaque by design. Vendors don’t publish price lists, and every 
 
 One license equals one engineer running one tool at a time, and seat-based pricing is still used for small customers and specific tools.
 
-![](https://substackcdn.com/image/fetch/$s_!4Z52!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcf295c08-92cf-4d3d-b151-680ccc4ec355_902x355.png)
+![](z-images/e50a13fd69151c2312e443b29687edde.webp)
 
 Seat-based pricing scales linearly with headcount, which is simple but limits vendor upside to headcount growth alone.
 
@@ -160,7 +160,7 @@ Seat-based pricing scales linearly with headcount, which is simple but limits ve
 
 Tokens decouple licensing from individual seats. A customer buys a pool of compute capacity, any engineer can use any tool drawing from the shared pool, and peak usage gets throttled or billed at overage rates.
 
-![](https://substackcdn.com/image/fetch/$s_!gnw5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6a583865-f1cd-4e66-ac0a-69f5d32043ff_1113x331.png)
+![](z-images/b681082dc1b96bb4ff00123d3000fde0.webp)
 
 Token licensing is the growth model for EDA vendors, and four dynamics explain why.
 
@@ -175,7 +175,7 @@ The shift from seats to tokens is the most important pricing dynamic in EDA. Syn
 
 For the top 50-100 customers, the actual unit of sale is the ELA, a multi-year contract bundling broad portfolio access.
 
-![](https://substackcdn.com/image/fetch/$s_!fi26!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe4030a44-250d-45a5-8c8f-40496e71e02a_1182x441.png)
+![](z-images/7c120fa59d1f373d155a2e108c74db9b.webp)
 
 These licensing structures are reconstructed from vendor disclosures, customer interviews, and quarterly earnings call commentary, as neither Synopsys nor Cadence publishes pricing details.
 
@@ -192,13 +192,13 @@ ARM uses a similar model with its Flexible Access program, offering customers al
 
 Emulation hardware (Cadence Palladium, Synopsys ZeBu) follows capital equipment economics, with physical systems that have depreciation schedules, installation teams, and cooling requirements.
 
-![](https://substackcdn.com/image/fetch/$s_!OBfM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F47100909-ce26-41ae-855b-d78e96cbc21e_1443x451.png)
+![](z-images/3ad013987af51fa82211be2d4d485296.webp)
 
 Once a customer installs $50M of Palladium systems, four forces lock them in for the life of the hardware. Testbenches written to Palladium APIs run millions of lines. Engineers specialize in Palladium-specific debug workflows. The 5-7 year depreciation schedule creates a financial commitment. And $3-5M annual software/maintenance fees per system reinforce the vendor relationship. Every Palladium system pulls $2-3M in annual software licensing on top of the hardware investment.
 
 ### Geographic Pricing Differences
 
-![](https://substackcdn.com/image/fetch/$s_!MxGs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F635bdcc6-620f-476c-9721-9d3797d8de60_1342x388.png)
+![](z-images/f19f1ef618fafcfe21af81a838919719.webp)
 
 ### What Happens When Customers Merge: The EDA Licensing Windfall (and Risk)
 
@@ -216,7 +216,7 @@ When AMD acquired Xilinx ($49B, 2022), the combined entity had overlapping EDA a
 
 #### Recent examples:
 
-![](https://substackcdn.com/image/fetch/$s_!0yXv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39bd9732-e251-4f3d-8af0-95f201b91dd8_1306x397.png)
+![](z-images/906bf901e08a480726378417871c8599.webp)
 
 The net effect of semiconductor consolidation on EDA revenue is slightly negative, since fewer independent customers means fewer separate ELAs. But the surviving entities are larger, design more complex chips, and spend more per engineer. Historically, the complexity growth has more than offset the consolidation discount.
 
@@ -224,7 +224,7 @@ The net effect of semiconductor consolidation on EDA revenue is slightly negativ
 
 EDA revenue grows at 12-15% CAGR while global semiconductor design headcount grows at 3-5%. The delta comes from six sources.
 
-![](https://substackcdn.com/image/fetch/$s_!MOuD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc33a9d25-ba59-439a-af8f-b808e1c28bfe_1260x433.png)
+![](z-images/3b9be9384254519dbffb637c87556a06.webp)
 
 This breakdown explains a critical point. **EDA vendors are selling genuinely new capabilities at each node transition** - multi-patterning aware routing at 7nm, backside power delivery at 2nm, 3D-IC integration at advanced packaging nodes. Customers get new functionality and also pay more for it. The pricing is justified at the tool level, but the monopoly dynamics determine how much of the value the vendor captures versus the customer.
 
@@ -234,7 +234,7 @@ Under the old perpetual model, customers paid 15-20% annual maintenance for upda
 
 Both Synopsys and Cadence now generate **70-83% of revenue from time-based/subscription arrangements, with the remainder from upfront hardware deliveries, IP milestones, and perpetual licenses. The upfront share has actually grown in recent years as emulation hardware sales expanded.** The transition from perpetual to time-based took a decade (roughly 2005-2015) and permanently improved business quality.
 
-![](https://substackcdn.com/image/fetch/$s_!EKA1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcd9c1916-0e29-4cca-a85d-21fa996b40a6_1137x338.png)
+![](z-images/bb0328a626dc0b29b84f311470bdde95.webp)
 
 #### The Renewal Machine
 
@@ -250,7 +250,7 @@ A customer who signed a $10M/year ELA (Enterprise License Agreement) in 2020 ren
 
 ![A screenshot of a graph
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!V-h5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faf73600f-2185-4968-81a9-10748aee707c_1600x917.png)
+Description automatically generated](z-images/69d551b5e45a287fe744b07eef6ac739.webp)
 
 A screenshot of a graph Description automatically generated
 
@@ -260,19 +260,19 @@ Source: SemiAnalysis, Company Reports
 
 #### Competitive Pricing Dynamics
 
-![](https://substackcdn.com/image/fetch/$s_!X-Mh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e65f091-f7a3-49a0-a477-c9c47a99955f_783x265.png)
+![](z-images/7816f9eff81a049e9661430f66d576b8.webp)
 
 Most EDA competitive evaluations serve as negotiating leverage rather than genuine switching attempts. The typical pattern is that a customer announces an evaluation, the incumbent responds with a 15-25% discount offer, and the customer accepts without completing the evaluation. Sales teams at both Synopsys and Cadence have learned to distinguish real evaluations, where the customer allocates a dedicated engineering team and provides actual design data, from pricing negotiations disguised as technical assessments.
 
 #### Retention Rates by Tool Category
 
-![](https://substackcdn.com/image/fetch/$s_!C0Mh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc4f321d-cbcd-4669-b314-0a9a27d295f1_881x331.png)
+![](z-images/7d8354ce4ef1c3712749c6eb354d1125.webp)
 
 ## Synopsys: The $35B Platform Bet
 
 *“Fusion Compiler is the embodiment of what happens when you break down the walls between synthesis, place and route, and signoff. That unified data model is what gives us structural advantage. Competitors can bolt tools together, but they can’t replicate a unified architecture.” - Sassine Ghazi, President & CEO, Synopsys Investor Day 2024*
 
-![](https://substackcdn.com/image/fetch/$s_!U1_5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ef7bbd2-8690-4d7b-8467-3e987cca8662_1352x372.png)
+![](z-images/7c13709afdc38422cdf932279bd83d1f.webp)
 
 Synopsys’s strategy is platform maximalism, owning every tool in the design flow, cross-selling IP, and expanding into adjacent simulation domains. The $35B Ansys acquisition (completed July 2025) extends this logic from chip design into system-level simulation covering thermal, structural, electromagnetic, and CFD (computational fluid dynamics, for cooling analysis) analysis.
 
@@ -286,7 +286,7 @@ Modern chips don’t exist in isolation. A 700W datacenter GPU must dissipate he
 
 This is the financial proof of deepening lock-in.
 
-![](https://substackcdn.com/image/fetch/$s_!s2YN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28f93ea0-d78c-4ae3-91cd-38997948fdf7_802x353.png)
+![](z-images/72ef5d809bedc1ae28d36e3ffc7c919c.webp)
 
 The pattern is consistent across two decades. Major acquisitions (Magma, Coverity, Black Duck) temporarily compress margins by 100-200bp, followed by systematic recovery. Management told analysts in 2011 that *“If we see the opportunity to grow the top line a little bit more, we want to do that. If we see that, for whatever reason, the top-line growth is more difficult, we will immediately revert to a higher pressure on the operating margin.”*
 
@@ -303,7 +303,7 @@ Two major moves in Ghazi’s first year demonstrate the pivot. The Software Inte
 
 ![A screenshot of a computer screen
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!puW2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1960b207-9cfa-482d-ab40-92280efac033_1600x840.png)
+Description automatically generated](z-images/b01f2ac280fac49c9177c465920f5f6a.webp)
 
 A screenshot of a computer screen Description automatically generated
 
@@ -313,13 +313,13 @@ Source: SemiAnalysis, Company Reports
 
 ### The Backlog Fortress
 
-![](https://substackcdn.com/image/fetch/$s_!k1l_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44402bb9-eb6a-478b-a2fc-1551e094c808_1291x391.png)
+![](z-images/840d33ea106456896b9382b0aa4c6862.webp)
 
 $11.3B in backlog provides extraordinary forward revenue visibility for a software company.
 
 ![A graph on a screen
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!bJmc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe69dff93-8394-46d9-beec-9fc00761593b_1600x839.png)
+Description automatically generated](z-images/b2dd03f8d284bc9f96b44b08f3287da4.webp)
 
 A graph on a screen Description automatically generated
 
@@ -342,7 +342,7 @@ The full design start data supporting these claims is presented in the competiti
 
 ![A screenshot of a graph
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!F_ch!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6a83117d-2c82-4760-9391-f89266178361_1600x899.png)
+Description automatically generated](z-images/ac129765a257ae8097c048c1c9550618.webp)
 
 A screenshot of a graph Description automatically generated
 
@@ -352,7 +352,7 @@ Source: SemiAnalysis, Company Reports
 
 ![A graph of blue and orange bars
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!RSjp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F25bcdf07-0aa3-4ce1-8d56-d2ce8a587b56_1600x824.png)
+Description automatically generated](z-images/573723b3ada65585ad5e0474d054330b.webp)
 
 A graph of blue and orange bars Description automatically generated
 
@@ -382,7 +382,7 @@ Intel remains the single largest account. Cadence is now aiming to gain traction
 
 ![A graph with red and yellow bars
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!K66f!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4f2682ac-22ce-4d7b-9445-8c25741dc4fd_1600x839.png)
+Description automatically generated](z-images/6d37e19b420ec705682957c8a562a8d4.webp)
 
 A graph with red and yellow bars Description automatically generated
 
@@ -392,11 +392,11 @@ Source: SemiAnalysis, Company Reports
 
 ## Cadence: From Near-Death to the Highest Margins
 
-![](https://substackcdn.com/image/fetch/$s_!827o!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0fc0ac9-a4a7-40a6-ad69-49b75c755d9a_1640x395.png)
+![](z-images/6d12f0754014a1ba6cc1f041f7fe760b.webp)
 
 The IP segment is the growth engine. SDA growth includes the BETA CAE acquisition ($1.24B, Q2 2024), which brought structural analysis to top 10 global automakers and F1 teams. Hardware backlog entering 2026 is at record levels.
 
-![](https://substackcdn.com/image/fetch/$s_!h8Bh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cd5e175-2bf4-4266-9ea2-d632daf583db_1015x227.png)
+![](z-images/b57eac2f90f746e14b3f41a9cf410f86.webp)
 
 ### 2026 Outlook: Implied Upside Across the Board
 
@@ -410,7 +410,7 @@ The Hexagon Design & Engineering acquisition (~$200M annualized revenue) closed 
 
 ![A graph on a screen
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!5oAb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe602e427-d9f9-443c-a122-beafcc3d95d2_1600x831.png)
+Description automatically generated](z-images/409b3096c040d91d481328e87e451112.webp)
 
 A graph on a screen Description automatically generated
 
@@ -422,7 +422,7 @@ Source: SemiAnalysis, Company Reports
 
 Under CEO Mike Fister (2004-2008), Cadence pursued aggressive adjacencies and attempted a hostile bid for Mentor Graphics, and the result was catastrophic.
 
-![](https://substackcdn.com/image/fetch/$s_!ukOw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc355908-606b-4c19-bdd5-798cf042860f_777x301.png)
+![](z-images/edfb68c72adfb1a191099aac2130167e.webp)
 
 Revenue fell 36% in a single year, producing a GAAP loss of $6.57 per share and a $200M goodwill writedown. Earnings transcripts from 2008Q3 through 2011Q1 are **missing** from public records, a gap that speaks volumes about the severity of the crisis.
 
@@ -432,7 +432,7 @@ Lip-Bu Tan became CEO in January 2009 at the absolute trough. In 2014 he summed 
 
 The margin staircase from -11% to 42.5% took 15 years.
 
-![](https://substackcdn.com/image/fetch/$s_!kDTE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0d1f6a28-a5d4-47d5-9bf5-f47a195be0a7_1067x358.png)
+![](z-images/8740d64142d49ac87ca83383c273d55e.webp)
 
 53pp of margin expansion in 15 years, powered by Tan’s operating rule that *“50% of incremental revenue drops through to operating income.”* Cadence achieved that target for 7+ consecutive years.
 
@@ -482,7 +482,7 @@ Named customer results tell the technical story. MediaTek achieved 5% die area r
 
 ![A graph with a line and a graph
 
-Description automatically generated with medium confidence](https://substackcdn.com/image/fetch/$s_!RFFe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5547f724-f5bf-494c-a644-09e8bdd5db42_1600x899.png)
+Description automatically generated with medium confidence](z-images/85f867b679ea1f357c36b091103bd3df.webp)
 
 A graph with a line and a graph Description automatically generated with medium confidence
 
@@ -504,7 +504,7 @@ When Lip-Bu Tan explored returning to the company in 2024, the board confirmed D
 
 ![A screenshot of a graph
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!JVKm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e16adf1-eefb-498e-ae60-368cab160415_1600x836.png)
+Description automatically generated](z-images/ca988bd54cc0759357864d6019fc7496.webp)
 
 A screenshot of a graph Description automatically generated
 
@@ -514,7 +514,7 @@ Source: SemiAnalysis, Company Reports
 
 ![A graph of a graph with numbers and lines
 
-Description automatically generated with medium confidence](https://substackcdn.com/image/fetch/$s_!zqYC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F11a60a0c-370a-4b6c-a047-a0b230f25cc6_1600x1229.png)
+Description automatically generated with medium confidence](z-images/76fe0e6dc9f4bea6d062d923b7770f38.webp)
 
 A graph of a graph with numbers and lines Description automatically generated with medium confidence
 
@@ -524,7 +524,7 @@ Source: SemiAnalysis, Company Reports
 
 ## The Blocking Position: Siemens EDA
 
-![](https://substackcdn.com/image/fetch/$s_!RxBz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fae59347b-ce09-449a-b633-c4fc863e70f9_1140x322.png)
+![](z-images/163308f79e6e168beb6cb3ee7b2d6f34.webp)
 
 Calibre physical verification is the industry standard. TSMC specifies “Calibre-clean” DRC/LVS for tape-out, Samsung and Intel do the same, and this single tool ensures Siemens EDA’s permanent relevance in the market regardless of what happens in other tool categories.
 
@@ -546,7 +546,7 @@ CEO Wally Rhines (1993-2017) rebuilt Mentor through M&A instead, assembling Cali
 
 All three Big-3 vendors simultaneously acquired simulation/CAE companies in 2024-2025 in a move-for-move escalation.
 
-![](https://substackcdn.com/image/fetch/$s_!IqOi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd29ea7e3-39c7-4a3a-bb30-45d9b66264a1_1207x297.png)
+![](z-images/f6f66b4aa22575f9c18bf5d497346941.webp)
 
 The EDA-CAE boundary is permanently dissolving, and Siemens’ Altair deal is the third leg of a three-way race to own the “silicon to systems” simulation stack.
 
@@ -566,7 +566,7 @@ Siemens’s Digital Industries software business grew 11% in Q1 FY2026, with EDA
 
 ![A graph with lines and numbers
 
-Description automatically generated with medium confidence](https://substackcdn.com/image/fetch/$s_!99lX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6e022ad7-eb89-4e3d-90b0-0262ec270ba6_1600x1002.png)
+Description automatically generated with medium confidence](z-images/8b62efd026b38cda7fca70e31fd0aff1.webp)
 
 A graph with lines and numbers Description automatically generated with medium confidence
 

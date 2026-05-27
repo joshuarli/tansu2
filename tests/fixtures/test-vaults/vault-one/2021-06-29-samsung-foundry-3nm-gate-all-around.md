@@ -8,27 +8,27 @@ description: "Samsung has long hyped their 3nm process node."
 
 Samsung has long hyped their 3nm process node. They hail it as the first usage of Gate All Around FET in the industry for a commercial process technology. Being first to change transistor architecture is a very coveted prize in the semiconductor world. Intel was the first with their 22nm Tri-Gate technology which made the move from planar FET transistors to FinFET. Samsung wants to take this crown for GAAFET. Despite a lot of marketing and hype building around this node, it looks more and more grim, as the 3nm node is now looking like it is delayed to 2024 for commercial foundry partners.
 
-![](https://substackcdn.com/image/fetch/$s_!zdef!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7e59a11d-490a-408b-87a2-9d9ca59fde2a_890x273.png)
+![](z-images/5fa6d0b7f37b80031917d9907e2a9a5b.webp)
 
 In the last few generations of FinFET, the power scaling has been accomplished by what is known as fin reduction. We have gone from four fin devices to three fin devices to two fins per transistor. In addition, these fins have gotten taller to increase contact area between the channel and gate. These methods of scaling are running out of steam, and without the usage of exotic materials such as Co contacts and SiGe for the channel, it would already be close to over. Taller and fewer fins also come with other issues, which necessitates the next step forward in transistor architecture.
 
-![](https://substackcdn.com/image/fetch/$s_!plNS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F003758bb-f32a-4093-bf73-8b89635d9c4c_1024x582.png)
+![](z-images/6c3edef1d8466be57fc9b91c0c76ef6f.webp)
 
 TSMC’s lead in process technology has been growing rapidly. Without a moonshot project, Samsung stand no chance versus the relentless execution from TSMC. In early 2019, they announced the 3GAE process node alongside an early product design kit (PDK) for this technology. Their 3GAE process technology would utilize a MBCFET architecture. Essentially a MBCFET is like turning the fin from FinFET on its side and then stacking the horizontal fins on top of each other. The contact area between the channel and the gate increases dramatically which allows huge gains to power and performance.
 
-![](https://substackcdn.com/image/fetch/$s_!33Hq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F2df147ef-1ec9-4086-8aee-28bc6a94e244_1024x576.jpeg)
+![](z-images/a3cb82cd3fcab9720136e246df399e6c.webp)
 
 Samsung claimed impressive gains with a 35% increase to performance, 50% the power, and 45% the area compared to their 7nm technology. At this event in early 2019, Samsung also claimed their 3GAE process would offer first customer tape outs in 2020, with risk production in late 2020 and volume manufacturing in late 2021.
 
-![](https://substackcdn.com/image/fetch/$s_!OXWb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7d9aa53a-518a-41ba-b410-dd4c3fb817a9_1024x576.jpeg)
+![](z-images/0402318a31110551c0cdbd04560bc37a.webp)
 
 Fast-forward to 2021 and there are no foundry tape outs and volume production is not anywhere close to delivery. Goals for the process may also seem to have been revised heavily with the comparison to 7nm FinFET going from a 35% performance to 10%. The logic area reduction has gone from 45% to 25%, and power has gone from 50% to 20%.
 
-![](https://substackcdn.com/image/fetch/$s_!ayIo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1590f7f9-4579-48dc-8555-fce3fb5a948b_1023x732.png)
+![](z-images/df4a82e746ca7f02faaabdcbcc44e634.webp)
 
 We will give Samsung the benefit of the doubt and assume this comparison is with their most advanced version of the 7nm class of nodes (5nm LPP). If so, then this is not as much as a stealth nerf as it is a new comparison to the latest and most advanced Samsung process technologies. Regardless, these gains may not even bring Samsung to power and performance parity with TSMC’s 6nm node, let alone the 5nm node being used in current iPhones, iPads, and Macs.
 
-![](https://substackcdn.com/image/fetch/$s_!JAD1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F041b7356-378e-4174-a409-12f90b28530a_1024x283.png)
+![](z-images/31ca7c9d8866d6f47b5b0de76ec1dbd8.webp)
 
 Source: https://www.youtube.com/c/GoldenReviewer/
 
@@ -54,7 +54,7 @@ Samsung and Intel continue to slip further behind TSMC in leading edge technolog
 
 *The following edit is an after the original publishing, but we felt it was important to update that Samsung has officially delayed to 2023.*
 
-![](https://substackcdn.com/image/fetch/$s_!bUWB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F754b8b54-32b3-47aa-8ff1-e90f2dc8f589_1080x691.png)
+![](z-images/4c8d6e33e371f0d6fc4ce7c66c47bf79.webp)
 
 *This article was originally published on [SemiAnalysis](https://semianalysis.com/samsung-foundry-3nm-gate-all-around-process-node-3gae-delayed-to-2024/) on June 29th 2021.*
 

@@ -55,7 +55,7 @@ Readers probably will find it confusing untangling the various generation and ra
 
 In the table below we aim to unconfuse our readers with a Rosetta stone for the various naming conventions different groups have been using:
 
-![](https://substackcdn.com/image/fetch/$s_!Vsir!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f8ed36b-3e66-49f8-92ca-cbc3ffb2a5b3_1265x303.png)
+![](z-images/bdff3e0b44b25d22235f0b03a1fc056b.webp)
 
 Source: SemiAnalysis, AWS
 
@@ -63,7 +63,7 @@ Trainium3 delivers several notable generation on generation upgrades when it com
 
 OCP MXFP8 FLOPs throughput is doubled, and OCP MXFP4 support is added but at the same performance as OCP MXFP8. Performance for higher precision number formats like FP16 and FP32 interestingly remain the same as for Trn2. In the microarchitecture section, we will describe the implications of these tradeoffs.
 
-![](https://substackcdn.com/image/fetch/$s_!grs6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F25d4e590-9255-4431-a235-7ffa428fe65f_1848x1230.png)
+![](z-images/35a40fdda5bef9435931f4e184312f57.webp)
 
 Source: SemiAnalysis, AWS
 
@@ -81,7 +81,7 @@ Zooming out to the rack solution level, AWS announced at re:Invent the Trainium3
 
 Let’s start by going through the physical layout of each server type. The table below displays key specifications for each rack-scale SKU:
 
-![](https://substackcdn.com/image/fetch/$s_!J7tu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1de9ca66-4cc6-4b4d-be44-4d1a5de1cf48_1867x1403.png)
+![](z-images/c498c0b2dc277a6e55c593aeb9d5285c.webp)
 
 Source: SemiAnalysis, AWS
 
@@ -91,7 +91,7 @@ While Trainium2 will only be available in the first two rack SKU types – namel
 
 Trainium3’s compute moves to the N3P node from the N5 node that is used for Trn2. Trainium3 will be one of the first adopters of N3P along with Vera Rubin and the MI450X’s Active Interposer Die (AID). There have been some issues associated with N3P leakage that need to be fixed, which can push timelines out. We have [detailed this and its impact in the accelerator model.](https://semianalysis.com/institutional/amazon-tranium3-delayed-1-quarter-vera-rubin-changes-post-earnings-nvidia/)
 
-![](https://substackcdn.com/image/fetch/$s_!XuQP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8fd89b2-217a-46fe-ab66-4a099ba3a808_1942x1137.png)
+![](z-images/85a19b232362a63cb7c5f09e8b207f00.webp)
 
 Source: AWS, SemiAnalysis
 
@@ -117,7 +117,7 @@ Marvell ends up being the big loser from this. While they designed Trainium2, th
 
 Marvell lost this socket due to poor execution for Trainium2. The development timeline took far too long. Marvell had problems designing the RDL interposer for the package as well, and Alchip had to step in to help deliver something workable.
 
-![](https://substackcdn.com/image/fetch/$s_!ErA0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F957e9ff1-7521-47ee-ac0e-9e4bae0d7bbe_931x1009.png)
+![](z-images/bc88dda7b80638a9ab7cd4b9d3b9976b.webp)
 
 Source: SemiAnalysis Accelerator Model
 
@@ -134,7 +134,7 @@ While Trainium4 with NVLink fusion may not arrive soon, we believe AWS secured f
 
 Unlike VR NVL144, which is limited to a fixed 72-package NVLink domain, Trainium4 can extend NVLink scale-up via cross rack AECs, enabling much larger 144+ coherent domains. NVLink 6 uses 400G bidirectional SerDes, allowing 200G RX and 200G TX simultaneously on the same wire at the same time. This 400G BiDi signaling already pushes copper to its practical limits, and although some vendors may attempt a half-generation step to 600G BiDi.
 
-![](https://substackcdn.com/image/fetch/$s_!B2xm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb7e869e2-ba64-4c0c-b458-308d358c6daa_1164x934.png)
+![](z-images/52251816a37dcea2b3389737380b4b0f.webp)
 
 Source: Nvidia
 
@@ -144,7 +144,7 @@ Trainium2 NL16 2D Torus and Trainium2 NL64 3D Torus SKUs are branded as the Trai
 
 To briefly revisit the Trainium2 SKUs - the key difference between the Trainium2 NL16 2D Torus and Trainium2 NL64 3D Torus SKUs is the scale-up world size. While Trainium2 NL16 2D Torus occupies half a server rack for the entire scale-up world size, with that world size containing 16 Trainium2s in a 4x4 mesh 2D torus, Trainium2 NL32x2 3D Torus connects four Trainium2 NL16 2D Torus half racks together – taking up two racks in total. The four Trainium2 NL16 2D Torus half rack servers are connected using AECs to create a scale up world size of 64 Trainium2s in an 4x4x4 3D Torus.
 
-![](https://substackcdn.com/image/fetch/$s_!331O!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb69760f0-b15e-4ae9-9a87-5ff0ba92192b_422x1317.png)
+![](z-images/cf0fceb5b9eb5376b322c80298150b34.webp)
 
 Source: SemiAnalysis
 
@@ -152,7 +152,7 @@ Do note that in the above diagram, that the Trainium2 NL16 2D Torus diagram repr
 
 As mentioned, Trainium2 is only offered in the NL16 2D Torus and NL32x2 3D Torus rack SKUs, which feature the 2D and 3D Torus topology respectively, and there is no switched topology offering. Most of the Trainium2 deployment will be of the Trainium2 NL64 3D Torus form factor as Anthropic’s Project Rainier is driving most of the demand, hence production will follow their preference for the NL64 3D Torus. This is due to Anthropic’s inferencing models requiring a larger scale up topology.
 
-![](https://substackcdn.com/image/fetch/$s_!qwWt!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4e406a1-20d9-4547-bb1c-65ff20b06558_825x1307.png)
+![](z-images/114d03c723b2a39cb22f06233179b0cf.webp)
 
 Source: SemiAnalysis
 
@@ -168,7 +168,7 @@ The Trainium3 UltraServer showed at re:Invent maps to the Trainium3 NL72x2 Switc
 
 The Trainium3 NL32x2 Switched has a very similar rack layout to the Trainium NL32x2 3D Torus. Both have 16 JBOG (Just a Bunch of GPUs) Trays and two host CPU trays per rack. There are two Trainium3 accelerators per JBOG Tray, so there is a total of 32 Trainium3 chips per rack. A full Trainium3 NL32x2 Switched scale-up world is made up of two racks of 32 Trainium3 chips each to build up a total world size of 64 Trainium3s.
 
-![](https://substackcdn.com/image/fetch/$s_!fKpF!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3df06516-1cfd-43ab-818a-2ab98e41ae95_1067x1252.png)
+![](z-images/6d8af22a066f3fa2b2f44bf8c8f22f4c.webp)
 
 Source: SemiAnalysis
 
@@ -189,7 +189,7 @@ NICs for the Trainium3s are also found within the JBOG tray. For EFAv4, AWS’s 
 
 The vast majority of Trainium3 based servers will use Option 1 – One Nitro-v6 400G NIC per two Trainium3 chips which equals to 200Gbps of scale-out bandwidth per Trainium3 chip. AWS believes that even for the largest production inferencing models today, 200Gbps per GPU is enough to overlap the KV cache transfer between prefill instances and decode instances. For training, the AWS philosophy is that small companies with elite programmers like those from Anthropic will use Pipeline Parallelism (PP) to reduce network volume and not just rely on FSDP/TP/Ctx Parallel/DP. It is important to remember, however, that Pipeline Parallelism is absolutely necessary for large scale training but a pain in the ass to maintain and debug codebases with PP.
 
-![](https://substackcdn.com/image/fetch/$s_!2M9c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb6b778f-929d-4af7-b166-450f2baf3851_1998x635.png)
+![](z-images/a4e086e7a4aa9904d60dedd7c4dc136f.webp)
 
 Source: Twitter
 
@@ -197,7 +197,7 @@ For ENA, AWS’s frontend network, there is a dedicated Nitro-v6 (2\*200) 400Gbp
 
 The CPU tray layout of Trainium3 NL32x2 Switched will be very similar to that of Trainium2 NL16 2D Torus, and is explained in the [Trainium2 article](https://newsletter.semianalysis.com/p/amazons-ai-self-sufficiency-trainium2-architecture-networking).
 
-![](https://substackcdn.com/image/fetch/$s_!2S_b!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F216cbbf6-9d78-4ee4-9ef7-286764843767_822x1321.png)
+![](z-images/1f966e923b6017572e08846978e1530e.webp)
 
 Source: SemiAnalysis
 
@@ -213,7 +213,7 @@ Both the Trainium3 NL32x2 Switched and Trainium3 NL72x2 Switched use an all-to-a
 
 The Trainium3 NL72x2 Switched uses two racks to achieve a world size of 144 XPUs, and each rack houses 18 compute trays and 10 NeuronLink switch trays in the middle. With each compute tray housing four Trainium3 and one Graviton4 CPU, there are a total of 144 Trainium3s and 36 Graviton 4s across two racks making up the Trainium3 NL72x2 Switched world size. Just like Trainium3 NL32x2 Switched, Trainium3 NL72x2 Switched uses busbar to deliver power. The backplane utilizes a hybrid of connectors from both TE and Amphenol, for which we have the split in the [networking model.](https://semianalysis.com/ai-networking-model/)
 
-![](https://substackcdn.com/image/fetch/$s_!xPOA!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60201b41-f945-4245-adae-a0468b2cbc99_1027x1296.png)
+![](z-images/7268fbe01369319aac1f2dcffe8ae7b0.webp)
 
 Source: SemiAnalysis
 
@@ -221,7 +221,7 @@ Source: SemiAnalysis
 
 The higher compute and power density of the Trainium3 NL72x2 Switched starts from the compute tray, with each compute tray containing four Trainium3 chips. Trainium3 NL72x2 Switched connectivity is also mostly based on PCIe 6.0, therefore the PCB materials are the same as used for the Trainium3 NL32x2 Switched mentioned above. There are six PCIe 6.0 x16 retimers used to increase signal reach connecting between individual Trainium3 chips and the front I/O ports. Note that due to their cableless design to increase manufacturing speed, their time to market design includes a few inexpensive retimers that are designed in to de-risk the design. After a successful initial production deployment, AWS can look into optimizing the design and can potentially remove some of the retimers.
 
-![](https://substackcdn.com/image/fetch/$s_!gPDb!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0aabb3c1-2945-4e6e-a5dc-f746411a96ce_947x1322.png)
+![](z-images/b721ad8768858f9a0764c699de480e6a.webp)
 
 Source: SemiAnalysis
 
@@ -269,7 +269,7 @@ PCB: 64 lanes to the neighboring Trainium3 chip(s) via the NeuronLinkv4 PCB trac
 
 Cross-Rack: 16 lanes go from each Trainium3 via PCB to the OSFP-XD cages go to the adjacent rack via PCIe Active Electrical Cables (AECs).
 
-![](https://substackcdn.com/image/fetch/$s_!3NNi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe83297a0-fc31-4943-81b9-cb41ce1c1a20_2143x934.png)
+![](z-images/8392fa1b43ee9dd65acdaead87d4df7f.webp)
 
 Source: SemiAnalysis
 
@@ -279,7 +279,7 @@ AWS’s North Star is to deliver the fastest time to market and at the lowest to
 
 The first two switch tray generations adopt a multi-plane scale up switch architecture that does not technically allow full all-to-all communication within the rack without multiple hops. The Gen1 switches will be rather quickly replaced higher bandwidth and higher radix switches. The table below illustrates the scale-up characteristics of the six different combinations across the two rack SKUs and three different switch tray generations.
 
-![](https://substackcdn.com/image/fetch/$s_!lbVs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5eaebaa-a560-4532-b85e-b9e1e678f3fa_1730x911.png)
+![](z-images/30129a5cc84b3af043ff3be41dcf4406.webp)
 
 Source: SemiAnalysis
 
@@ -289,7 +289,7 @@ Source: SemiAnalysis
 
 The Trainium3 NL32x2 Switched will start by using a 160-lane PCIe switches for the scale up topology in the Gen 1 switch tray. For each rack, there are two switch planes consisting of 8 switches each. Because of the limited port count on each PCIe switch, each Trainium3 is only able to connect to the 8 PCIe switches on the same plane rather than to every single PCIe switch. The upshot is that not every Trainium3 can directly communicate with every other Trainium3 without having to pass through more than one hop.
 
-![](https://substackcdn.com/image/fetch/$s_!pQ6s!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5c2ae656-cf3b-4e92-a2ce-19bb1958e0fe_1852x1198.png)
+![](z-images/a964d8e8e1ad1a9d2f5daa24bfc10ed4.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -300,7 +300,7 @@ However, consider three cases where Trainiums on different switch planes or rack
 - Path A: A total of 1 hop from Trainium3 A in Rack A’s Node 1 to Trainium3 A in Rack A’s Node 16
 - Path B: A total of 2 hops from Trainium3 A in Rack A’s Node 1 to Trainium3 B in Rack A’s Node 2
 - Path C: A total of 3 hops from Trainium3 A in Rack A’s Node 1 to Trainium3 B in Rack B’s Node 2
-![](https://substackcdn.com/image/fetch/$s_!v07e!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faf0d2d4d-674f-462f-a5ae-f9917a36dca1_1827x1187.png)
+![](z-images/24887ac5b754796c0c18450a1c499da5.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -314,13 +314,13 @@ Yet another potential parallelism strategy is to use full EP across both racks b
 
 Moving on to the Trainium3 NL72x2 Switched SKU, the scale-up topology is somewhat more complicated. There are four planes of 10 160-lane PCIe switches each, 40 total switches on switch trays per rack, and 8 32 Lane PCIe switches on each of the 18 Compute Trays, which amounts to a total of 144 of the smaller PCIe switches on the Compute Trays per rack. This is a grand total of 184 scale-up switches per rack or 368 scale-up switches across the entire scale-up world of 144 Trainium3s. We reproduce the earlier summary table here to aid with tracking the switch content:
 
-![trn3 scale up switch roadmap](https://substackcdn.com/image/fetch/$s_!wFKF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d62d5fc-67c5-4a73-8a0b-7068b96f8f0a_2044x1084.png)
+![trn3 scale up switch roadmap](z-images/275b078881451d38af3f8c6ab6b7ca1f.webp)
 
 Source: SemiAnalysis
 
 Like the Trainium3 NL32x2 Switched design which also has 160-lane PCIe switches in the switch trays, this scale-up design is constrained by having only 20 ports for each PCIe switch on the switch tray, which means that each switch is only able to connect to one out of four Trainium3 chips per node (2 of these 20 ports are left unused or for management). Within the same switch plane, each Trainium3 is one switch hop away from the other.
 
-![](https://substackcdn.com/image/fetch/$s_!Qqvb!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbce995ef-5939-4092-842a-8c9b2347efdd_1937x1245.png)
+![](z-images/ebe14ac9220759101c34e153f61c2733.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -331,7 +331,7 @@ Where Trainium3s are not on the same switch plane, the number of switch hops is 
 - Path A: A total of 1 hop from Trainium3 A in Rack A’s Node 1 to Trainium3 A in Rack A’s Node 2
 - Path B: A total of 3 hops from Trainium3 A in Rack A’s Node 1 to Trainium3 C in Rack A’s Node 2
 - Path C: A total of 4 hops from Trainium3 A in Rack A’s Node 1 to Trainium3 C in Rack B’s Node 2
-![](https://substackcdn.com/image/fetch/$s_!i9Ja!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48b5559b-381f-4b54-a701-d2e5774eedbc_1977x1247.png)
+![](z-images/288c676eb78c1527b0f3d681de9a03bc.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -339,7 +339,7 @@ Source: SemiAnalysis AI Networking Model
 
 AWS has also provisioned for various scenarios. If the Scorpio X 160 lane PCIe switch is unavailable, the Broadcom PEX90144 switch with 144 Lanes and 72 maximum available ports can be used as a back-up option. The higher radix alternative with max radix of 72 ports with two lanes per port does not imply a decrease in the number of scale-up switch planes, however.
 
-![](https://substackcdn.com/image/fetch/$s_!i1ee!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F600329ee-025f-4804-a0d7-8f2d8f650d7b_2058x1316.png)
+![](z-images/20179ba58bd2a8efcd19001059d62df4.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -351,7 +351,7 @@ The ICI lanes extending from Trainium3 may not want to be sub-divided into two l
 
 The Trainium3 NL32x2 Switched SKU is also compatible with 320 lane PCIe scale up switches which can be swapped in for the 160 lane PCIe switches once the former becomes available. With double the port count for the 320 Lane PCIe switch, only 8 switches are required per rack for the scale-up network, and so every Trainium chip within the rack is now only one switch hop away from the other. Since the scale-up topology is now already all-to-all, the direct connection between on neighboring Trainium3 chips on the PCB becomes an added advantage.
 
-![](https://substackcdn.com/image/fetch/$s_!EjkX!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80fc952e-ca7c-4671-b8fc-61278c8d525e_1701x1096.png)
+![](z-images/05109903c4dc6350db98fd9b83f825fd.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -361,7 +361,7 @@ In this design, the maximum hop distance is just one hop between any Trainium3 c
 
 For the Trainium3 NL72x2 Switched, the upgrade from a 160-lane Scorpio X PCIe switch to a 320-lane Scorpio X PCIe switch means that the number of switch planes is decreased from four to two. Adjacent Trainium3 chips on the JBOG tray will still have to communicate via the Scorpio P switches.
 
-![](https://substackcdn.com/image/fetch/$s_!wNp-!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3fc392a7-d7af-43b5-923a-385b04a1f962_1635x1107.png)
+![](z-images/e1da25e6e0c44fa16021f43b1c420120.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -373,7 +373,7 @@ When UALink comes online, the 72+ port Scorpio X UALink switch can be installed 
 
 The below diagram shows the topology for the Trainium3 NL32x2 Switched SKU with the Gen3 UALink based switch tray installed. With the UALink switch, the Trainium3 NL32x2 Switched will continue to support all-to-all connectivity as with the 320 Lane Scorpio X PCIe switch. The exact port count and lanes per logical port is yet to be determined, but the overall scale-up bandwidth per rack will remain the same.
 
-![](https://substackcdn.com/image/fetch/$s_!srAc!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80a172fd-45e7-494b-973a-27d03def69eb_1927x1256.png)
+![](z-images/15317dbb20169d3a6bc10cd9dc1be993.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -381,7 +381,7 @@ Source: SemiAnalysis AI Networking Model
 
 For the Trainium3 NL72x2 Switched, the scale up topology for each rack will now become all-to-all, as each UALink switch will be able to connect to every single Trainium3 chip within the rack. The local compute tray connectivity via 8 32-lane Scorpio P switches now reflect surplus bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!0IeF!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff030e4d4-3134-4fdb-a61c-b097f2f24be0_1762x1225.png)
+![](z-images/43f6c82bcebe202845a2e40bb22e6dd8.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -391,7 +391,7 @@ Fortunately, Amazon has a strategic partnership with Astera Labs. Readers will d
 
 If AWS meets its purchase-volume commitments for ALAB’s PCIe switches and retimers, it receives stock warrants in ALAB stock tied to those product purchases. The stock warrants vest as AWS hits the purchasing milestones, and because the strike price is only $20.34, any market price above that level creates immediate value for AWS. This structure effectively gives AWS an equity-based “rebate” on its component purchases. In the scenario below, the stock warrants vested as of Sep 25 translate into an effective discount of roughly 23 percent.
 
-![](https://substackcdn.com/image/fetch/$s_!t1ZQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe654daae-5e29-40a2-bc44-ec57444913d7_1768x516.png)
+![](z-images/99b797e7db6f5fc78df18bc615e0f3fb.webp)
 
 Source: SemiAnalysis
 
@@ -399,7 +399,7 @@ Source: SemiAnalysis
 
 The copper cable content varies across the Trainium generations because the scale-up topology (Switch vs Mesh) and the number of NeuronLink lanes differ by SKU. Trainium2 NL16 2D Torus relies on a single backplane and a relatively small number of AEC links, but the Trainium NL32x2 3D Torus increases the lane count and requires four NeuronLink backplanes along with ~6,100 copper cables to support the denser 3D Torus topology. Trainium3 NL32x2 Switched maintains a similar backplane count with ~5,100 copper cables, while Trainium3 NL72x2 switched expands the scale-up domain further to 144 chips per server group from 64 in the Trainium3 NL32x2, driving the copper count to 11,520 units.
 
-![](https://substackcdn.com/image/fetch/$s_!h1OQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff0528af6-e632-46bf-8ca8-0b9c6c38cc91_2797x1140.png)
+![](z-images/ff5e339d0e7a63e6669fb1b0ca006f44.webp)
 
 Source: SemiAnalysis AI Networking Model, SemiAnalysis BoM Model
 
@@ -409,7 +409,7 @@ We have built out a detailed list of parts and headline power budgets for the ma
   
 The Trainium3 NL72x2 Switched system naturally has a higher total system power because it features 144 chips across the two rack system vs the 64 chips across two racks that the Trainium3 NL32x2 Switched system features. However, once one normalizes to power per chip, the 64 chip Trainium3 NL32x2 Switched SKU and the 144 chip Trainium3 NL72x2 Switched SKU are actually very similar in power per chip as the Trainium3 chip TDP is the largest driver of the overall power budget. Per rack power density is naturally higher for the Trainium3 NL72x2 Switched as it fits 64 chips into a rack vs the 32 of the Trainium3 NL32x2 Switched.
 
-![](https://substackcdn.com/image/fetch/$s_!7qnq!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa6c8954a-b08a-4884-8a5c-fb03161174c7_1836x1172.png)
+![](z-images/db31487fd6ad9986376e9c7df537c5cd.webp)
 
 Source: SemiAnalysis AI TCO Model, SemiAnalysis BoM Model
 
@@ -449,7 +449,7 @@ On AWS Nvidia GPUs, we continue to not be convinced that EFA offers any performa
 
 To support EFA, AWS builds custom Network Interface Cards (NICs). The table below shows each EFA Generation mapped onto specific EC2 Servers:
 
-![](https://substackcdn.com/image/fetch/$s_!UTAu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F40c76720-c96e-4d1c-b792-fbaf574e5084_1876x394.png)
+![](z-images/abeea1d067bdc87447d8381a57677360.webp)
 
 Source: AWS
 
@@ -461,13 +461,13 @@ In the 200G per Trainium3 version, each 400G Nitro-v6 NIC will support two Train
 
 Luckily for Amazon, they have an even better deal on AECs than they do on PCIe switches and retimers due to the Credo stock rebate they received. The stock rebate for Credo follows the same structure as AWS’s deal with ALAB, but the effective rebate is much larger due to the significantly higher number of warrants AWS received in this agreement and since then the huge run in the Credo share price. This means that that the value of the Credo warrants that Amazon received was more than the spend needed to vest those warrants. Credo effectively paid Amazon to take AECs!
 
-![](https://substackcdn.com/image/fetch/$s_!lsI0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc5e5cb05-e5f7-409e-8bdb-699abb684211_2017x712.png)
+![](z-images/8d297d7b4f6313682f74c6f9f2172a90.webp)
 
 Source: SemiAnalysis
 
 Even though the Nvidia InfiniBand or Spectrum Ethernet reference network architectures adopt a rail-optimized clos topology to reduce the number of switch hops between GPUs, AWS prefers ToR switches for the first switch layer where possible. This reduces overall networking costs by substituting optical links with copper cables between the chip and the first switch layer. It also enables optionality should the extra uplink ports from the ToR be used for undersubscribing to the upper layers to allow for fault tolerance, virtual rails, or connections to other services. AWS claims that this tradeoff is worth it.
 
-![](https://substackcdn.com/image/fetch/$s_!tTgi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2e62304b-df25-4740-bf10-956437403efe_2158x1381.png)
+![](z-images/fe7d886674db32c2c86aa714cb626e11.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -479,7 +479,7 @@ The increasing adoption of higher radix networks - that is splitting links into 
 
 In the Microsoft article, we also discuss how Hyperscalers are, at the behest of the largest AI Labs, now starting to deploy high radix networks. The diagram below shows one such example – OpenAI’s network at Oracle which can connect 131,072 GPUs across two layers using 100G logical ports.
 
-![](https://substackcdn.com/image/fetch/$s_!_b4k!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faaa68cc4-ecf2-4b89-b266-b29b7bf22384_2358x1257.png)
+![](z-images/0cdc5a0ec4720d7aba6d1b9f49d37f53.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -489,7 +489,7 @@ AWS’s approach for AI networking has already cut to the chase and uses 100G lo
 
 If we stick with the traditional approach and use logical port sizes that match GPU NICs, 400G in many cases, we find that only using 12.8T switches would result in a network that is prohibitively small. For a two-layer network built up entirely of 12.8T switches, we can only connect 512 GPUs at most. However, if we instead use 100G logical ports, a two-layer network can reach 8,192 GPUs and a three-layer network can reach 524,288 GPUs – matching the size of today’s largest multi-building clusters.
 
-![](https://substackcdn.com/image/fetch/$s_!K8HD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac2f86d4-0ac7-43dd-9584-9a653e870b2a_2581x588.png)
+![](z-images/e47317a36dd09523a8704c52a3627b46.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -499,7 +499,7 @@ But why build a network out of 12.8T switches? In fact, there is no such focus. 
 
 By the same math, AWS can achieve massive scale if they bring in 25.6T and 51.2T switches – again scale that is underestimated if we simply assume default 400G or 800G logical port sizes. In the table below, we can see how for a two-layer network, one can connect 16 times the number of GPUs when using 100G port sizes vs 400G port sizes on a 51.2T switch. For a three-layer network, this ratio expands to 64 times the number of GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!M_ZC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F970735d5-1c73-48a7-8c6d-84efe2872638_2440x1020.png)
+![](z-images/97cbf295ce9d45e4d8c262f0215b767a.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -509,13 +509,13 @@ The disadvantage of using 100G port sizes is that it is incredibly complex to co
 
 ToR switches within each Trainium pod are split into many planes at the leaf and spine layers and are rail-optimized. All Trainium pods – which are discrete scalable units – are connected via the spine layer. In the diagram below, we hypothesize a maximum cluster size given a 3-layer network and 12.8T bandwidth switches on each plane.
 
-![](https://substackcdn.com/image/fetch/$s_!cdfn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F55ad95e4-4a6c-424d-a36d-d8c9a5c3eecc_2373x1299.png)
+![](z-images/df269150afb3e8616724e7d8aea79acc.webp)
 
 Source: SemiAnalysis AI Networking Model
 
 Swapping in 25.6T switches instead of 12.8T switches for the leaf and spine layers means 4x more Trainium3 chips supported on the same three-layer network, with double the number of pods, and double the number of racks per pod. Moving to 51.2T switches on the leaf and spine would quadruple the number of chips on this network again.
 
-![](https://substackcdn.com/image/fetch/$s_!DzFN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa6ff8009-6728-4da8-8060-f310ced7c5a1_2386x1330.png)
+![](z-images/288fdd09ea5f8588b58d6f8bd628c93f.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -523,7 +523,7 @@ The scale-out network can be extended to cross multiple buildings. FR optics cou
 
 The exact scale-across topology is not known – but the below diagram represents one topology that has been used for scale-across among various hyperscalers.
 
-![](https://substackcdn.com/image/fetch/$s_!Uk69!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F894ef529-c3a9-46bc-94e7-d0fa427bdd17_1675x1348.png)
+![](z-images/7a305d79166e12c5d9aa86090aa565a8.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -538,7 +538,7 @@ Trainium3 takes a similar approach to Trainium2 and Google’s TPU and builds th
 > - Scalar Engine
 > - GPSIMD
 
-![](https://substackcdn.com/image/fetch/$s_!dgae!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fce74fad9-01a5-40a9-bd6e-35ac3b07e7c3_1000x826.jpeg)
+![](z-images/59972f8118b680e5f5ec887ab0411cd8.webp)
 
 Source: AWS
 
@@ -564,7 +564,7 @@ However, this won’t matter as much for memory bound workloads like inference d
 
 Moreover, Trainium3 does not have support NVFP4 (block size 16, block scale format E4M3) and only has hardware support for OCP MXFP4 (block size 32, block scale format E8M0). This means that Trainium3 [will require more advanced QAT/PTQ techniques](https://dropbox.github.io/fp4_blogpost/) compared to what is needed on Nvidia’s GPUs. The reason why E8M0 block scale is worse than E4M3 block scale is because E8M0 snaps the scale factor to the nearest 2^n. This results in more severe quantization errors. Although Trainium3 technically does support NVFP4 as storage format (or any 4 bit arbitrary storage format) and can also support online dequant to OCP MXFP8, but it does not have native hardware accelerated NVFP4 to OCP MXFP8 dequant support and must due it through an software driven approach.
 
-![](https://substackcdn.com/image/fetch/$s_!XZ5N!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F29447ee0-8203-4972-b67a-13dbb550844b_9364x4073.png)
+![](z-images/8eadfa149848702bf855c923edea1e63.webp)
 
 Source: Nvidia
 
@@ -574,7 +574,7 @@ Despite this, some western frontier labs have already adopted NVFP4 for the forw
 
 The downside for AWS Trainium3 is that if 4-bit forward pass training continues to gain adoption among the most advanced users, Trainium3 may not fare well by not supporting NVFP4 (block size 16, block scale format E8M0) and by only enabling the same OCP MXFP4 (block size 32, block scale format E4M3) computation power as they do for OCP MXFP8.
 
-![](https://substackcdn.com/image/fetch/$s_!XlxU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28e3897e-1965-4ca7-9336-8e225af74e39_11723x3534.png)
+![](z-images/588899d586bfc5e9079b715b8e2a06eb.webp)
 
 Source: Nvidia Research
 
@@ -582,7 +582,7 @@ Source: Nvidia Research
 
 The Vector Engine is designed to accelerate vector operations, which are operations where each output element depends on multiple input elements. One example of such an operation is calculating softmax in the attention layer or calculating moving averages and variance in layer/batch normalization layers.
 
-![](https://substackcdn.com/image/fetch/$s_!dPWL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6adbdda8-0e57-4544-a9f3-7c3bad2b0f1a_867x317.webp)
+![](z-images/7e1948c185e51ec3bf9c7c449bbc9d15.webp)
 
 Source: AWS
 
@@ -598,7 +598,7 @@ Lastly, inside the NeuronCore, there are multiple Turing-complete GpSimd Engines
 
 The NeuronCore Scheduler can parallelize operations such that all the engines are all working at the same time. For example, in attention, the vector/scalar engine can be calculating the softmax for the current tile at the same time that the systolic array is being used to calculate the QxK^T matmul or the AxV matmul. In addition to the 1.25x faster clock speed on the Vector engine in each NeuronCore, the exponential function also runs at 4x the throughput per cycle for the Trainium3 compared to the Trn2. This is extremely important because if the exponential function (which is used in softmax) isn’t fast enough, then it will bottleneck the matmul unit operation during the overall attention operation. Blackwell also encountered this issue where the exponential unit operation wasn’t fast enough, prompting Nvidia to increase the exponential unit performance by 2x in Blackwell Ultra.
 
-![](https://substackcdn.com/image/fetch/$s_!OCH5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6c72c17b-558a-4874-88b9-39f75aed9558_937x481.png)
+![](z-images/f1f7bfd4b040322967666783a9c018b4.webp)
 
 Source: Tri Dao
 
@@ -638,7 +638,7 @@ AWS adding this new hardware tensor dereferencing dynamism feature in Trainium3 
 
 AWS is carrying out a massive course correction to their software strategy, and we believe it will be incredibly positive towards increasing the wider adoption of Trainium3. The first phase of this strategy starts with focusing on supporting PyTorch natively instead of duct-taping Trainium to PyTorch with the PyTorch/XLA project. This new PyTorch backend is meant for the non-advanced Anthropic kernel engineers of the world. In the past, users would have to rely on a lazy tensor graph capture using PyTorch/XLA instead of having a first-class eager execution mode available. Furthermore, PyTorch/XLA did not support PyTorch native distributed APIs (torch.distributed.\*), nor did it support PyTorch native parallelism APIs (DTensor, FSDP2, DDP, etc). It instead relied on strange out of tree XLA SPMD APIs (torch\_xla.experimental.spmd\_fsdp, torch\_xla.distributed.spmd, etc.). For users trying to switch to Trainium, this has led to a subpar non-native experience given that these users are accustomed to the native PyTorch CUDA.
 
-![](https://substackcdn.com/image/fetch/$s_!P_sJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F14f1ba63-93bb-43fe-a39b-b84106093f93_1446x1012.png)
+![](z-images/6cbe68a497b56b10484f31a2ecd7c58e.webp)
 
 Source: Github
 
@@ -646,7 +646,7 @@ This week, AWS announced that it will be releasing and open sourcing their nativ
 
 AWS also claims that it will support torch native aten groupgemm MoE ops and MoE Dispatch native ops (torch.all\_to\_all\_vdev\_2d), and MoE Combine native ops (torch.all\_to\_all\_vdev\_2d\_offset) on Day 0. Even AMD does not have these MoE communication ops supported yet! AWS will also offer Flex Attention support from Day 0 - this feature is needed for any ML Scientists that don’t want to just train models with vanilla causal attention.
 
-![](https://substackcdn.com/image/fetch/$s_!nnLo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60dfe2f7-7d4e-49bd-826b-f4e531e585e3_1472x847.png)
+![](z-images/938136a8691b8d5240f4a9f7646d6787.webp)
 
 Source: AWS
 
@@ -662,11 +662,11 @@ End users that want to write custom kernels with NKI can do so through the use o
 
 In addition to the core in tree PyTorch native APIs, there is also work behind the scenes on integrating NKI kernel language as a codegen target for Helion. You can think of Helion as a higher-level language that can be used for writing decently performing kernels in a high level language. Users can think about Helion as a low-level Aten operator rather than as a high level Triton/NKI operator due to its similarity in that it matches much closer to the Native PyTorch Aten ops. This will allow end users that aren’t hardcode 1337 performance engineers to be able to write custom kernels too.
 
-![](https://substackcdn.com/image/fetch/$s_!l71r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F073dd0c5-ea8a-4b31-870c-a3b98ce92c47_2546x1238.png)
+![](z-images/43c464b74f978fa5d50569fecf8ca6f7.webp)
 
 Source: PyTorch
 
-![](https://substackcdn.com/image/fetch/$s_!k1A2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F08c56eea-d1cd-467d-83f7-9e696953609c_1551x867.jpeg)
+![](z-images/f5e66b79ed0cb2c337b205f12bab88a7.webp)
 
 Source: PyTorch
 
@@ -690,13 +690,13 @@ To get upstreamed into PyTorch in-tree and get added to pytorch.org documentatio
 
 Trainium’s native PyTorch will eventually have open-source CI to support an open-source GitHub-first approach. SemiAnalysis has been the PyTorch CI Karen when it comes to ensuring that [all the current 600+ unit tests/integration tests/model accuracy tests](https://github.com/orgs/pytorch/projects/146/views/1?filterQuery=) that are missing from AMD’s ROCm will get addressed.
 
-![](https://substackcdn.com/image/fetch/$s_!bdXr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7794bff5-9130-4500-84e6-97365d916319_1825x1098.png)
+![](z-images/4d47886304362d1f6f09521123e13a23.webp)
 
 Source: SemiAnalysis, PyTorch
 
 SemiAnalysis has also been the PyTorch CI Karen for Nvidia to ensure that they contribute their fair share of CI machines to the PyTorch Foundation and do not just have AWS/Meta foot the bill for Nvidia GPU CI. [We convinced Nvidia to directly contribute 48 B200s to PyTorch Foundation back in June 2025](https://newsletter.semianalysis.com/i/174558644/mix-pytorch-continuous-integration-ci-and-testing) and also convinced Nvidia to start financially contributing to PyTorch Foundation CI. SemiAnalysis will soon be the PyTorch CI Karen for Intel GPGPU as well, but will not be taking this role for the Intel Gaudi software stack as it is at Gaudi is end of life. Once Trainium PyTorch Native gets open sourced, we will 110% be the PyTorch CI Karen for Trainium as well.
 
-![](https://substackcdn.com/image/fetch/$s_!i1Lp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff8efb3c6-1a7d-41b1-8bde-58de6e7207e5_1864x1098.png)
+![](z-images/4709d057ef44d6103786d4294d3e5c70.webp)
 
 Source: SemiAnalysis
 
@@ -714,7 +714,7 @@ This will allow users to mix and match across different inference systems for pr
 
 For example, one can use a B200 for prefill and transfer KV cache over using NIXL (over EFA) to the Trainium3 NL72x2 Switched for decoding. Interestingly, Nvidia has [accepted AWS PR’s for Nvidia GPUs EFA into the upstream NIXL](https://github.com/ai-dynamo/nixl/pull/784). Merging [Trainium code into Nvidia upstream NIXL, however, is still a work in progress as it is still pending for Nvidia to be convinced to accept it and so it currently sits in an AWS engineer’s fork.](https://github.com/mcuiaws/nixl/commit/26f1ab1e381936091dcb419824890cdeeb3f73bc)
 
-![](https://substackcdn.com/image/fetch/$s_!lDHL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c61af8a-adf7-432d-9118-e1dc3faab5d3_2246x931.png)
+![](z-images/a4503cf8b9a9fe3063cef7281535b4c4.webp)
 
 Source: GitHub
 
@@ -724,13 +724,13 @@ Rounding out and summarizing Amazon’s open sourcing roadmap, AWS will open sou
 
 On Day 0, Trn2/3 software will only support each logical device mapping onto either 1 or 2 physical neuron cores, meaning that there will be 4 logical devices per Trainium package. What this means is that each logical device exposed to the user & ML application only gets 36GB of HBM instead of the full 144GB. There are nuances and important pros and cons with this to unpack and it’s unfortunate that there is no Day 0 option for each logical device to map onto the entire package (8 NeuronCores), with users instead having to wait until mid-2026. We strongly believe that mapping the entire package (8 NeuronCores) onto 1 logical device is needed for wider ML research adoption of the Trainium stack.
 
-![](https://substackcdn.com/image/fetch/$s_!wpes!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F580b3aea-6d6e-4fcc-9f14-14e9bd913e6d_959x931.png)
+![](z-images/e6c85e4b813098de6b5a85322df0017e.webp)
 
 Source: AWS
 
 With LNC=1 or LNC=2, because each NeuronCore is fully exposed to the end user programmer, advanced L337 users like Anthropic’s elite performance engineers can fully control reading from HBM and can directly manage data movements between the 8 Neuron cores on the chip thus reducing unnecessary data movement. elite kernel programmers love this feature and will continue to use it. LNC=1 or LNC=2 will always have better performance than LNC=8.
 
-![](https://substackcdn.com/image/fetch/$s_!ow-N!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe59c4d66-8239-460d-8630-668abb1ed4c8_1075x931.png)
+![](z-images/565e831bf63b1d18754132e283e3fb79.webp)
 
 Source: AWS
 
@@ -744,7 +744,7 @@ In a perfect world, the PyTorch FSDP API would be flawless and bug-free but as e
 
 For what is it worth, SimpleFSDP/DTensor is heading in the correct direction to offer a clean FSDP API.
 
-![](https://substackcdn.com/image/fetch/$s_!S4wR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Febe6f0db-01b9-472d-a749-8eda9db46245_2067x970.png)
+![](z-images/3721d9bdc4eb523ae7c24a105d2891be.webp)
 
 Source: SemiAnalysis
 
@@ -760,7 +760,7 @@ Trainium3 will hardly be an outlier in this regard. In fact, Google’s TPU only
 
 Google now supports MegaCore for the TPUv4/v5p/v6e, and it has led to a better user experience. On the TPUv7e, Google has gone back to only offering “LNC=1” i.e. although each package has 2 physical cores, each logical device will only map to 1 of these physical cores. While this will be great for performance, we still recommend that Google support the use of “MegaCore” for TPUv7 as well.
 
-![](https://substackcdn.com/image/fetch/$s_!hXbk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe77cb922-f4be-4f82-b7cf-e52b71e80850_1184x931.png)
+![](z-images/fe33e6e37e62070d4776f5cbbff5a8d4.webp)
 
 Source: First Principles Book
 
@@ -768,37 +768,37 @@ Source: First Principles Book
 
 One of the areas that Trainium’s software is already better than that of Nvidia is the Neuron Explorer performance analysis suite. This suite has been available as a web application (similar to Chrome Trace/Perfetto/Tensorboard), but now it is also available through a VSCode integration.
 
-![](https://substackcdn.com/image/fetch/$s_!SvVv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0000ba8a-5d8c-4dfb-a27f-8aefef32e9ee_1615x931.png)
+![](z-images/c6fa1a75783fc17c5a4c85fb3b8dd8a5.webp)
 
 Source: AWS
 
 Trainium’s low level profiler is loved by all the 1337 performance engineers at Anthropic with Anthropic’s head of performance publicly saying that performance analysis on Trainium is way better than performance analysis on Nvidia GPUs (and obviously better than on AMD GPUs too).
 
-![](https://substackcdn.com/image/fetch/$s_!ET1H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fde27206a-04ec-411a-9156-cecce845090a_2384x957.png)
+![](z-images/57d02106ab0c568fdc22600fc088f764.webp)
 
 Source: X Tristan Hume
 
 Neuron Explorer shows the metrics that performance engineers care about. It has a quick high level summary page for reporting the average athematic intensity and MFU/HFU in addition to displaying DMA/HBM metrics. It also shows the activity percentage of all 4 engines per NeuronCore.
 
-![](https://substackcdn.com/image/fetch/$s_!DK9q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45508dc9-ad67-43e6-a42b-6b74e6e288a0_1436x2098.png)
+![](z-images/9509bbd760b3807e38de8e93797711e2.webp)
 
 Source: AWS
 
 Like Nsight Compute, Neuron Explorer can give users automated recommendations which Anthropic/AWS engineers claim are even better than those provided by Nvidia’s performance analysis tools.
 
-![](https://substackcdn.com/image/fetch/$s_!Kl7J!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc83786cd-40a1-41a5-b9f4-72bb35d4fd7e_1388x1825.png)
+![](z-images/575696d16257406c7838cdf96c66e9a0.webp)
 
 Source: AWS
 
 When it comes to collectives, Neuron Explorer features an overview showing collective operation duration distributions grouped by the collective operation (i.e. allreduce, allgather, etc) and grouped by message sizes. Performance engineers can analyze this distribution chart and aim to minimize the duration distribution spread by optimizing traffic patterns so as to reduce contention.
 
-![](https://substackcdn.com/image/fetch/$s_!tCOf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffbafeba5-a26d-49f5-ac45-ad2e6415b97b_2177x1720.png)
+![](z-images/818af9e1e8288899491d2ff844dbb3ed.webp)
 
 Source: AWS
 
 The Neuron Explorer also includes a timeline of the utilization of all major units over time such that engineers can turn performance optimization into a [game of Factorio](https://en.wikipedia.org/wiki/Factorio). Users can investigate where the bottleneck is by simply clicking into the NKI kernel source code and looking at how to remove that bottleneck.
 
-![](https://substackcdn.com/image/fetch/$s_!FocJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F914f0015-580d-4da0-8431-62bb773b7c4b_3206x1720.png)
+![](z-images/5bbe4055bf20b952e657dc08d3d7cd33.webp)
 
 Source: AWS
 
@@ -806,13 +806,13 @@ Source: AWS
 
 A few months ago, we laid out our [Amazon’s AI Resurgence](https://newsletter.semianalysis.com/p/amazons-ai-resurgence-aws-anthropics-multi-gigawatt-trainium-expansion) thesis – which has already proven accurate after Q3’25 earnings. By estimating a precise start of construction and ultimate full capacity for every single Project Rainier building, we were able to predict a growth acceleration at AWS. While many others are struggling with delays, AWS’ execution has been impressive. We expect continued growth acceleration driven by this buildout.
 
-![](https://substackcdn.com/image/fetch/$s_!8D9S!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d9dde71-5446-4610-b960-9c7609763b4d_2534x1416.png)
+![](z-images/5eafac9002f28fa8ea8b93ce9286f174.webp)
 
 Source: SemiAnalysis AI Datacenter Industry Model
 
 However, these datacenters barely represent even the first phases of the multi-gigawatt Project Rainier buildout. For Trainium3, AWS has various campuses well under construction that are equally as impressive. Below, we show an example of a new major AWS campus dedicated to Project Rainier which will eventually scale up to 1GW. This new campus is located near a metro area and will be connected to an adjacent 1GW site which has also broken ground. This capacity is incremental to the expansion of existing sites like Indiana. Our Datacenter Industry Model forecasts precise quarterly MWs and start of datacenter operations for each building.
 
-![](https://substackcdn.com/image/fetch/$s_!gfLd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb6aa17a6-335c-43fc-906b-b9794f7e0e4d_1372x1302.png)
+![](z-images/9d026fb0027b82bb67a706a599602e33.webp)
 
 Source: SemiAnalysis AI Datacenter Industry Model
 
@@ -822,19 +822,19 @@ Another remarkable aspect of Amazon’s AI ASIC roadmap is the relative absence 
 
 Amazon’s datacenter design has barely changed over the years. We show below the design of a 2021 campus in Virginia, comparing this campus to the flagship Project Rainier AI cluster in Indiana, we see that the building designs are nearly identical!
 
-![](https://substackcdn.com/image/fetch/$s_!mM0d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F94ca572b-c32f-406b-8bf9-5c9ed469b909_2092x884.png)
+![](z-images/3ee3c2ec2d877ff9e39cfb5bd946a949.webp)
 
 Source: SemiAnalysis AI Datacenter Industry Model
 
 While there are some minor changes, the cooling system remains largely the same. A year ago, our deep dive on [Datacenter Cooling Systems](https://newsletter.semianalysis.com/p/datacenter-anatomy-part-2-cooling-systems) explained how AWS largely relies on external air as a means to cool their datacenters.
 
-![](https://substackcdn.com/image/fetch/$s_!_2GB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2ce68c9e-8aa2-44bf-8526-b453ed86ae2d_2577x1326.png)
+![](z-images/616f887ebc68418499641debef6a10d7.webp)
 
 Source: SemiAnalysis AI Datacenter Industry Model
 
 A simple look at satellite imagery of an AWS facility will reveal the absence of any fluid cooling loop or piping system. Said differently – AWS datacenters have been hyper-optimized for air cooling for many years, and the Cloud giant isn’t changing course in the GenAI era or deviating from its mantra of delivering lowest total cost of ownership and fastest time to market.
 
-![](https://substackcdn.com/image/fetch/$s_!Na7x!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c9d7b7b-2fc1-45bf-b8f0-f1d842fb030b_1386x779.jpeg)
+![](z-images/31bb455981f566776c1434554f12ca9d.webp)
 
 Source: SemiAnalysis AI Datacenter Industry Model
 

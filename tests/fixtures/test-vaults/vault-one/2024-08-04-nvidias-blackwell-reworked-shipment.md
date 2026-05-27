@@ -12,7 +12,7 @@ Nvidia’s Blackwell family is encountering major issues in reaching high volume
 
 The technical challenges have also sent Nvidia scrambling to create completely new systems that was not previously planned which has huge ramifications on dozens of downstream and upstream suppliers. Today we will go through the technical challenges Nvidia is facing, Nvidia’s revised timelines, and detail the system and component architecture of Nvidia’s new systems including the new MGX GB200A Ultra NVL36. We will also dig into the effects this will have for the entire supply chain from customers to OEMs/ODMs to Nvidia’s component suppliers.
 
-![](https://substackcdn.com/image/fetch/$s_!yrww!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6be5954-7924-4000-984a-bc1cca1e203c_2584x808.png)
+![](z-images/4b93d61ed2c44b670f2cab34b30a65d1.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
@@ -22,13 +22,13 @@ This is a compute and power density that has never been achieved before, and giv
 
 The core issue impacting shipments is directly related to Nvidia’s design of the Blackwell architecture. The supply of the original Blackwell package is limited due to packaging issues at TSMC and with Nvidia’s design. The Blackwell package is the first high volume design to be packaged with TSMC’s CoWoS-L technology.
 
-![](https://substackcdn.com/image/fetch/$s_!zi3g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe92064aa-964b-4f15-852a-cc75a550abc6_1600x466.png)
+![](z-images/5286ef984128be60e2b53616e6612b5d.webp)
 
 Source: TSMC
 
 To recap, CoWoS-L uses an RDL interposer with local silicon interconnects (LSIs) and bridge dies embedded in the interposer to bridge communication between the various compute and memory on the package. Compare this to CoWoS-S which is on the surface, much more simple, a massive slab of silicon.
 
-![](https://substackcdn.com/image/fetch/$s_!f8Kq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F704928a8-97a2-4f1b-bcfd-ba03150875bc_1293x488.png)
+![](z-images/d5d157335631f06045f1d59fa2aba94c.webp)
 
 Source: TSMC
 
@@ -40,7 +40,7 @@ CoWoS-L is a much more complex technology, but it is the future. Nvidia and TSMC
 
 One is related to embedding multiple fine bump pitch bridges in the interposer and within an organic interposer can cause a coefficient of thermal expansion (CTE) mismatch between the silicon dies, bridges, organic interposer, and substrate, causing warpage.
 
-![](https://substackcdn.com/image/fetch/$s_!BVgv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb5f7ce7a-f2d7-4d9d-bfff-17dfeb2a935a_1100x500.png)
+![](z-images/51429f0ea698712e2347fad0316f2082.webp)
 
 Source: Resonac
 
@@ -50,7 +50,7 @@ There has also been the issue of TSMC not having enough CoWoS-L capacity in aggr
 
 Combine these two issues and it’s clear that TSMC will not be able to supply enough Blackwell chips as Nvidia would like. Consequently, Nvidia is focusing what capacity they have almost entirely on GB200 NVL 36x2 and NVL72 rack scale systems. HGX form-factors with the B100 and B200 are effectively now being cancelled outside of some initial lower volumes.
 
-![](https://substackcdn.com/image/fetch/$s_!EhVX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cbd2167-547c-47bd-bd11-7d1bafc1f88f_2584x808.png)
+![](z-images/4b93d61ed2c44b670f2cab34b30a65d1.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
@@ -62,7 +62,7 @@ Turning to Blackwell Ultra, the mid-generation enhancement of Blackwell, the sta
 
 The B200A will also have an Ultra version. Notably there will be no memory upgrade for it, though the die may be redesigned to lift FLOPS. The B200A Ultra also introduces a brand new MGX NVL 36 form factor. The B200A Ultra will also come in the HGX configuration just like the original B200A.
 
-![](https://substackcdn.com/image/fetch/$s_!AvfO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F823d51fe-36b6-4612-ba8e-4688f0660652_2524x913.png)
+![](z-images/6caee7e5a5f0c53903badef8c1d98318.webp)
 
 Source: SemiAnalysis Estimates, Nvidia
 
@@ -88,7 +88,7 @@ The MGX GB200A NVL36 SKU is a fully air cooled 40kW/rack server that would have 
 
 The MGX NVL36 design only has a 1:4 ratio of CPU to GPUs compared to 2:4 ratio in GB200 NVL72 / 36x2. Furthermore, each 1U NVSwitch Tray will just have one switch ASIC, with each switch ASIC having a bandwidth of 28.8Tbit/s.
 
-![](https://substackcdn.com/image/fetch/$s_!DNNa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcba4fb41-f847-4258-ae55-e87d383faaf8_639x1433.png)
+![](z-images/406e8d3b182141fe2ff074fa1366b484.webp)
 
 Source: SemiAnalysis GB200 and GB200A Component and Supply Chain Model
 
@@ -96,7 +96,7 @@ Since it is only 40kW per rack, the MGX NVL36 can be air cooled. Although most d
 
 Unlike on GB200 NVL72 / 36x2, the higher ratio of four GPUs to one CPU means that it won’t be able to use the C2C interconnects as each GPU would get half as much C2C bandwidth as GB200 NVl72/36x2. Instead, the integrated ConnectX-8 PCIe switch will be leveraged to allow the GPUs to talk to the CPU. Moreover, unlike on all other existing AI servers (HGX H100/B100/B200, GB200 NVL72 / 36x2, MI300), each backend NIC will now be responsible for two GPUs. That means even though the ConnectX-8 NIC design can provide 800G of backend network, each GPU will only have access to 400G of backend InfiniBand/RoCE bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!tWiV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10810f6f-b1c5-4adc-9cb0-8ec0b1251289_1862x1404.png)
+![](z-images/f80d622ca4af339350ccf3e30dcbf118.webp)
 
 Source: SemiAnalysis GB200 and GB200A Component and Supply Chain Model
 
@@ -106,7 +106,7 @@ For the reference design, the GB200A NVL36 will use one Bluefield-3 frontend NIC
 
 The heart of the GB200 NVL72/NVL36x2 compute tray is the Bianca board. The Bianca board contains two Blackwell B200 GPUs and a single Grace CPU. Each Compute tray has two Bianca board which means there are two Grace CPU and four 1200W Blackwell GPUs in total per compute tray.
 
-![](https://substackcdn.com/image/fetch/$s_!TJq4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe107c474-00de-4ca6-a987-ae95b579fd95_839x944.png)
+![](z-images/069715495de7c313d74f8b6e3069fc5a.webp)
 
 Source: SemiAnalysis GB200 and GB200A Component and Supply Chain Model
 
@@ -116,7 +116,7 @@ By having the ConnectX-8 ASICs extremely close to the GPUs, that would mean ther
 
 Since there is no C2C interconnect between the Grace CPU and the Blackwell GPUs, the Grace CPU is also on a completely separate PCB called a CPU motherboard. This motherboard will contain the BMC connectors, the CMOS battery, the MCIO connectors, etc.
 
-![](https://substackcdn.com/image/fetch/$s_!Hmoq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9440584a-3168-44eb-bb3b-49a27bacead9_1590x1466.png)
+![](z-images/a971811058beeb9c47291b7a1cd14d2a.webp)
 
 Source: SemiAnalysis GB200 and GB200A Component and Supply Chain Model
 
@@ -124,19 +124,19 @@ The NVLink bandwidth per GPU will be 900Gbyte/s per direction which is the same 
 
 Since there is only 1 tier of switches to connect 36 GPUs, only 9 NVSwitch ASICs are required to provide the non-blocking networking. Furthermore, since there is only one 28.8Tbit/s ASIC per 1U switch tray, it is quite easy to air cool. 25.6Tbit/s 1U switch like the Quantum-2 QM9700 already are easily cooled with air. While Nvidia could have enabled a NVL36x2 design by keeping the switch trays with 2 NVSwitch ASICs, that would increase costs, and would make it potentially impossible to air cool due to the front OSFP NVLink cages blocking airflow.
 
-![](https://substackcdn.com/image/fetch/$s_!U6_p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa1bc598c-3574-468d-a289-760a84b09d7a_1946x1308.png)
+![](z-images/a857cdf8b535682b6e64ba3e607f5faa.webp)
 
 Source: SemiAnalysis GB200 & GB200A Component & Supply Chain Model
 
 On the backend network, since there are only two 800G ports per compute tray, we believe that it will be using 2-rail optimized end of row networking. For every eight racks of GB200A NVl36, there will be two Quantum-X800 QM3400 switches.
 
-![](https://substackcdn.com/image/fetch/$s_!H1RY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F49dcafda-9e4b-4aa9-8de5-351c8c291209_2356x1425.png)
+![](z-images/d9ec8b21c3b43d8d7adda5b6dc0de9cb.webp)
 
 Source: SemiAnalysis GB200 & GB200A Component & Supply Chain Model
 
 We estimate that at 700W per GPU, the GB200A NVL36 will most likely be around 40kW per rack. The 2U compute trays will require about 4kW of power, but air cooling 4kW of heat dissipation per 2U space will require specially designed heatsinks and high-speed fans.
 
-![](https://substackcdn.com/image/fetch/$s_!msHv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2421710f-f8cf-47c8-967d-87ff41fbd205_1518x1106.png)
+![](z-images/e794ae37e17e45a29c0a82eb21b8e7a0.webp)
 
 Source: SemiAnalysis GB200 & GB200A Component & Supply Chain Model
 
@@ -148,7 +148,7 @@ For GB200 NVL72 / NVL36x2, the only customer not using the Connect-X 7/8 backend
 
 [In the SemiAnalysis GB200 Component & Supply Chain Model, we break down all components supplier’s share, volume, and ASP including the PCIe Switch.](https://www.semianalysis.com/p/semianalysis-gb200-component-and) Since the GB200A NVL36 is completely air cooled, having a dedicated PCIe switch in addition to PCIe form factor NICs at the front of the 2U chassis would add significantly to the thermal engineering challenges.
 
-![](https://substackcdn.com/image/fetch/$s_!DHTp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67d4a46b-a294-4025-af94-fa95034202a0_1862x1404.png)
+![](z-images/f80d622ca4af339350ccf3e30dcbf118.webp)
 
 Source: SemiAnalysis GB200 & GB200A Component & Supply Chain Model
 
@@ -162,7 +162,7 @@ The absence of any liquid cooling means that compared to the GB200 NVL72 / 36x2,
 
 The H100, with a TDP of 700W, currently uses a 4U tall 3DVC, and the 1000W H200 uses a 6U tall 3DVC. In contrast, the MGX B200A NVL36 at 700W of TDP in a 2U chassis is quite constrained. We think a heatsink that expands horizontally in a balcony-like shape so as to increase the surface area of the heatsink will be required.
 
-![](https://substackcdn.com/image/fetch/$s_!G9Ir!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36cf68e1-1b08-4c75-920f-e42298e3f3af_1199x800.jpeg)
+![](z-images/527cdb9f407e48d4a51b3bf8e75e477f.webp)
 
 Source: ServeTheHome
 
@@ -178,13 +178,13 @@ Before Nvidia landed on the MGX GB200A NVL36, they were also experimenting with 
 
 In the proposed NVL64 SKU, there are 16 compute trays and 4 NVSwitch trays. Each compute tray is 2U and contains one Grace CPU and four 700W Blackwell GPUs, just like the MGX GB200A NVL36. The switch NVSwitch Tray is where major modifications are made. Instead of reducing GB200’s two NVSwitch per tray to one NVSwitch per tray, Nvidia experimented with increasing it to four switch ASICs.
 
-![](https://substackcdn.com/image/fetch/$s_!Dn2E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9db8cfdb-a819-4ae5-a783-cb1b762884f9_808x1522.png)
+![](z-images/64511ba40d8524f812555ec286060326.webp)
 
 Source: SemiAnalysis GB200 & GB200A Component & Supply Chain Model
 
 Although the proposed design from Nvidia said that the NVL64 would be a 60kW rack, we have estimated the power budget and think the lower bound is closer to 70kW per rack. Either way, cooling 60kW or 70kW per rack with just air is insane, often requiring rear door heat exchangers, but that destroys the point of an air cooled rack architecture because there are still dependencies on the liquid cooling supply chain and this solution still requires facility level modifications for most datacenters in order to deliver facility water to the rear door heat exchangers.
 
-![](https://substackcdn.com/image/fetch/$s_!dczG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9d26bbb1-65f6-4347-bf49-ecf36066aa8b_1354x1053.png)
+![](z-images/7f65ca558d35ffbbfb690ec59494d60f.webp)
 
 Source: SemiAnalysis GB200 & GB200A Component & Supply Chain Model
 
@@ -194,7 +194,7 @@ Given the air cooled MGX NVL rack is coming to market at breakneck speed, with N
 
 Another major concern for the proposed GB200A NVL64 is there would be a mismatch of ports between each rack having 64 800G backend ports but with each XDR Quantum-X800 Q3400 switch having 72 800G downstream ports. This would mean that having a rail optimized backend topology would waste ports, with each switch having an extra 16 800G ports sitting empty. Having empty ports on an expensive backend switch hurts the network perf/TCO considerably because switches are expensive, particularly high-radix modular switches such as the Quantum-X800.
 
-![](https://substackcdn.com/image/fetch/$s_!-wQ2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3c5f1438-a675-4ba6-ab08-4315e9447b45_1592x847.png)
+![](z-images/5eba5a1b47ff7881d9ed9dc06a552481.webp)
 
 Source: Nvidia
 
@@ -202,7 +202,7 @@ Furthermore, 64 GPUs within the same NVLink domain is not ideal. On the surface,
 
 If you don’t have at least one compute tray per rack on hot standby, the blast radius of even a single GPU failure on the rack would result in the whole rack being forced to be taken out of service for considerable time. This is similar to how on an 8-GPU HGX H100s servers, a failure of just one GPU on the server will force all 8 H100s to be taken out of service and unable to continue contributing towards the workload.
 
-![](https://substackcdn.com/image/fetch/$s_!3THi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F95fcc21e-27ff-424d-aebd-fe3d9e1e0eb8_1871x827.png)
+![](z-images/c8e108636b3de8eb66cd61cc8686accf.webp)
 
 Source: SemiAnalysis GB200 & GB200A Component & Supply Chain Model
 

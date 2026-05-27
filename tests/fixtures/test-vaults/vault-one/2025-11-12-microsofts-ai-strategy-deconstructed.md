@@ -16,19 +16,19 @@ This seems like a dire situation. Today we have a post dissecting Microsoft’s 
 
 Now Microsoft’s investments in AI are back, and the AI giant has never had such high demand for Accelerated Computing. The Redmond titan has woken up to it going down the wrong path and has dramatically shifted course. With the [newly announced OpenAI deal,](https://blogs.microsoft.com/blog/2025/10/28/the-next-chapter-of-the-microsoft-openai-partnership/) Azure growth is set to ***Accelerate*** in the upcoming quarters as forecasted by our [Tokenomics model](https://semianalysis.com/tokenomics-model/).
 
-![](https://substackcdn.com/image/fetch/$s_!q32u!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4464a250-8f21-4301-8e53-6c513ca11832_3303x1653.png)
+![](z-images/931f8cb4b3facf7bfd6bbcea7438e7dd.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
 Microsoft plays in every single part of the [AI Token Economic Stack](https://semianalysis.com/tokenomics-model/), is witnessing accelerated growth, and we expect the trend to continue in coming quarters and years.
 
-![](https://substackcdn.com/image/fetch/$s_!WS7L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a042c69-b68a-4a53-84ad-3288494b8e97_3303x1653.png)
+![](z-images/50e4cd759c0965558c8118b59a92072a.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
 The firm is actively looking for near-term capacity and pulling the trigger on everything it can get its hands on. Self-build, leasing, Neocloud, middle-of-nowhere locations – everything is on the table to accelerate near-term capacity growth (exact numbers available to our [Datacenter Model subscribers](https://semianalysis.com/datacenter-industry-model/)).
 
-![](https://substackcdn.com/image/fetch/$s_!dNvS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37552a43-3de2-4366-a858-f6295e47ce8b_2861x1523.png)
+![](z-images/c5477b3164597068b5eda987667804dd.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -36,11 +36,11 @@ On the hardware side, Microsoft even has access to **OpenAI’s Custom Chip IP,*
 
 In this report, we will dive into all aspects of Microsoft’s AI business. We begin by reviewing the history of the OpenAI relationship, covering the historic surge in Microsoft’s datacenter investments in 2023-24, as well as the mooning scale of their OpenAI training clusters – from tens of MWs to Gigawatts. We then analyze the" “Big Pause” and spectacular return to the datacenter market. Much of this is motivated by a drastic simplification of the OpenAI ownership structure as well as Microsoft’s laser focus on serving the infrastructure needed for converting model capabilities into product use cases (and revenue) via stateless APIs.
 
-![](https://substackcdn.com/image/fetch/$s_!1pkM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7ca381d-c56a-4e65-86d6-7633a9d264fa_1103x690.png)
+![](z-images/bac3bbb14cf8f8d4931a8c7e2b9cb525.webp)
 
 Source: SemiAnalysis Tokenomics Model, Company Disclosures
 
-![](https://substackcdn.com/image/fetch/$s_!MEwU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F169f1412-d509-4016-bf33-162854ea6c9c_916x608.png)
+![](z-images/0666042fc0f1b47dd79e098b0c10a86e.webp)
 
 Source: SemiAnalysis Tokeomics Model, Company Disclosures
 
@@ -53,7 +53,7 @@ We then analyze every part of Microsoft’s positioning in the AI Tokens Economi
 - Chips
 - System architecture
 
-![](https://substackcdn.com/image/fetch/$s_!bLyC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb5e04730-6db0-4ac5-b1c1-88fe9fe2a9a2_1587x1145.png)
+![](z-images/9e6a88a385b4b1194d4f9c1389e0f354.webp)
 
 Source: SemiAnalysis
 
@@ -67,7 +67,7 @@ ChatGPT’s release in November 2022 changed the world. Microsoft was the first 
 
 The chart below depicts datacenter pre-leasing activity, one of the best leading indicators on capacity growth and CapEx. Microsoft’s pre-leasing activity from Q1’23 to Q2’24 dwarfed that of the other hyperscalers *combined*. In Q3’23, Microsoft alone leased nearly as much as t *he whole North American market leasing in full year 2022*.
 
-![](https://substackcdn.com/image/fetch/$s_!ZwDg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0ec63c0-7eca-4789-b2d4-66c763b9d1ce_3318x1773.png)
+![](z-images/717ec568996902d9082fa1c141f4ca2d.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -77,43 +77,43 @@ And datacenter leasing is only a portion of the picture. Our [building-by-buildi
 
 Perhaps the most iconic symbol of this buildout is the “Fairwater” program. In 2023-24, Microsoft planned and simultaneously constructed the **two largest datacenters on Earth**. Let’s briefly go back in time to get a sense of the scale of Microsoft’s 2023-24 buildouts. We show below their first major training cluster, in Iowa, where GPT 3.5 was trained. We believe it hosts ~25k A100 chips. While the campus shown below is fairly large, we believe OpenAI only uses two data halls of one Ballard building, i.e ~19MW.
 
-![](https://substackcdn.com/image/fetch/$s_!c-7w!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67a81e93-c25b-4be9-a3ef-9ef06dd54d64_1632x946.png)
+![](z-images/c6b6aa0624b5283642ca56b4d397d90d.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 The second major cluster was built in Arizona. It scaled up over time, building by building, with the first H100 building completed in 2023, followed by H200s in 2024 in a separate facility, and two more datacenters hosting GB200 in 2025. In Total, we estimate ~130k GPUs across four buildings.
 
-![](https://substackcdn.com/image/fetch/$s_!MN9_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f261c59-cf3c-4cf5-87fa-0d5f07244cba_1118x1040.png)
+![](z-images/76967157484bfcf8a3972a94b3a66626.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 Microsoft’s next-generation clusters for OpenAI are called Fairwater and are significantly larger. Each “Fairwater” is comprised of two buildings – a standard CPU & storage facility of 48MW, and an ultra-dense GPU building. The latter, with two stories and a total ~800k sqft area, boasts ~300MW, i.e. the equivalent power consumption of >200k American households. That represents over 150k GB200 GPUs per building. We show below the Wisconsin facility – fully dedicated to OpenAI.
 
-![](https://substackcdn.com/image/fetch/$s_!cJQM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8adae9d5-740e-4c32-beb8-8c57d7d06054_1525x1009.png)
+![](z-images/91743ed54cb34323c74afbd8c0257a76.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 In Georgia, QTS built for Microsoft a “sister” facility, again for OpenAI. While the cooling system is different, the GPU building is also ~300MW. The picture below shows the scale of the facility – no other building in the world has as many air-cooled chillers for cooling purposes! The size of the onsite substation is also impressive.
 
-![](https://substackcdn.com/image/fetch/$s_!zbdw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F30e49ed4-79f5-4240-abfa-c95a03e23858_1221x982.png)
+![](z-images/09ff8f7c10a8738f766a1bc39c6e5a80.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 Not only are individual buildings the largest on Earth, they sit in even bigger campuses. In Atlanta, a second Fairwater is already well under construction.
 
-![](https://substackcdn.com/image/fetch/$s_!SJth!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F451c01ca-805f-47b2-9cc1-5e7a95573d9f_915x970.png)
+![](z-images/68b70330ec0ee2caf0367b7fef25d5a7.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 In Wisconsin, while a second Fairwater will imminently start construction, there’s more to the story as Microsoft is preparing for an even larger 3 <sup>rd</sup> phase. We believe Microsoft designed two **\>600MW individual buildings**, with each facility having 2x the amount of CPU/storage and diesel generators, relative to a standard ~300MW Fairwater. We show below the site plan associated with these 600MW buildings. These would be the largest individual datacenters in the world if they are built on time.
 
-![](https://substackcdn.com/image/fetch/$s_!0yX4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F46dea919-6d1c-4dcb-8ae1-4441ba81670b_3274x2436.png)
+![](z-images/7c2a504d844b17017ba4ef0548f10baa.webp)
 
 Source: SemiAnalysis Datacenter Model, Local Disclosures
 
 At full buildout, this will be one of the world’s largest campuses, with over 2GW of IT capacity.
 
-![](https://substackcdn.com/image/fetch/$s_!bWUs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7eb9a716-f995-48e9-b9a6-3e523793d53c_1524x916.png)
+![](z-images/4067ed6f3b1a66a302a4c78b19851551.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -121,7 +121,7 @@ Cherry on top of the cake, Microsoft planned all these major AI regions to be co
 
 We show below a representation of the network design for a hypothetical 5GW distributed cluster. We will discuss all aspects of the Fairwater networking architecture later in the report, building on our [AI Networking Model](https://semianalysis.com/ai-networking-model/).
 
-![](https://substackcdn.com/image/fetch/$s_!t1aA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7977f4c-6b41-4573-bb9b-601b0912d8a4_964x927.png)
+![](z-images/47aac2543296b2a53a44f4bd56ae99f4.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -129,7 +129,7 @@ Source: SemiAnalysis AI Networking Model
 
 After firing on all cylinders, Microsoft suddenly decided to hit the brakes– in a spectacular fashion. Looking at total datacenter pre-leased balance, Microsoft alone was over 60% of leasing contracts at peak! But new leasing activity froze after Q2’24 (calendar) while other hyperscalers materially picked up. Microsoft is now below 25% of the total hyperscaler pre-leased capacity.
 
-![](https://substackcdn.com/image/fetch/$s_!UtBG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F538e35f6-5fbd-4883-8ece-cd0f3cb237de_3142x1770.png)
+![](z-images/87a2d44eef3e0325ecc94e52d5034695.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -143,13 +143,13 @@ These sites went to other major competitors such as Oracle, Meta, CoreWeave, Goo
 
 In addition, Microsoft also materially slowed down its selfbuild program. We show some pictures below, listing ~950MW of “frozen” IT capacity. This doesn’t include multiple other datacenters in Virginia, Georgia, Arizona, as well as internationally.
 
-![](https://substackcdn.com/image/fetch/$s_!ShbW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0c2b9d55-17df-4a7a-b661-4df7f3eb3ad8_2668x1308.png)
+![](z-images/76b377a657b3e96ed8bf21257ea9f587.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!xmUp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc18c8d1f-5ae1-4c0b-97a5-4ae5e4eeae6c_2700x1360.png)
+![](z-images/50ab25814838eb9490fe118062da2fa0.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!JodH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4184049a-c133-41e5-962f-f7cd621b6c83_2422x1516.png)
+![](z-images/900284bf9615df83c92e017670c84944.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!VQKp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01663975-e798-477c-b3c4-583c7476dcb2_2618x1510.png)
+![](z-images/45013afd66e63c95bbbc42f6e4314ee3.webp)
 
 In the same time frame, major datacenters from other players went from ground broken to running workloads. In total Microsoft paused over 3.5GW of capacity that would have been built by 2028. [The details are in the datacenter model.](https://semianalysis.com/datacenter-industry-model/)
 
@@ -167,7 +167,7 @@ To understand the causes and consequences of the Big Pause, let’s dig into all
 
 At the current pricing today, we see leading model makers making 60%+ margins on their direct API business
 
-![](https://substackcdn.com/image/fetch/$s_!eULS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F66dd92da-11f9-44f5-b860-3bc4ee49dea7_1587x1145.png)
+![](z-images/49cf53ea6c8e28c1a0a8a94150b6ec04.webp)
 
 Source: SemiAnalysis
 
@@ -183,11 +183,11 @@ To gauge Microsoft’s bare metal efforts, it is useful to dig into the Fairwate
 
 Of course, the first Stargate $100B contract ended up going to Oracle and Abilene, TX. **Microsoft’s slow execution** played a key role, in our view. Over two years after breaking ground, Phase 1 is still not operational. By contrast, Oracle broke ground on its Abilene, Texas datacenter in May 2024 and begun operations in September.
 
-![](https://substackcdn.com/image/fetch/$s_!y_D0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F02a70d27-882d-48f1-b1cb-d510135d17ee_2668x1308.png)
+![](z-images/76b377a657b3e96ed8bf21257ea9f587.webp)
 
 We also believe Microsoft poorly planned the 1.5GW expansion. Full capacity is slated for at least mid-2027 delivery from a power transmission standpoint, **one year after Oracle’s Abilene cluster breaks the 1GW mark**. Microsoft couldn’t keep up with OpenAI’s request to scale as fast as possible – demonstrating a misunderstanding of the market. The AI lab had no option but to look for other partners to serve its insatiable need for near-term compute.
 
-![](https://substackcdn.com/image/fetch/$s_!KBOp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe0da1bdb-22ed-4380-ac8b-ca3aa651b060_2256x714.png)
+![](z-images/500e224e641026ae2c81186513299c85.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -202,7 +202,7 @@ Given typical 5-year duration, the $30B of annual gross profits would’ve incre
 
 Compared to Microsoft’s overall business, Oracle AI ROIC is indeed lower coming in at 20% vs overall 35-40% today for total MSFT. However, we see that Microsoft’s own AI ROIC is not much higher than ORCL’s once you strip out the revenue share from OpenAI which is set to end between 2030-2032.
 
-![](https://substackcdn.com/image/fetch/$s_!Unk_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24c116bb-9c1e-4e8f-b351-41d075aa60a2_3303x1653.png)
+![](z-images/8f0e103a26d2da9e81be18637c8dde98.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -214,13 +214,13 @@ For a comprehensive model of the economics of OpenAI, Oracle and Microsoft, refe
 
 A key lesson from Microsoft’s Pause is how much they underestimated the scale of XPU Cloud demand coming from other players, such as Meta. We are currently witnessing the impact of their miscalculation. Other players have been booking materially more RPO than Microsoft.
 
-![](https://substackcdn.com/image/fetch/$s_!mbw3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac16e0c8-3841-4efe-89f5-7a1c899fa813_1231x559.png)
+![](z-images/bc686725bb0406bf2045ef1cd10e5769.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
 Microsoft is now firmly back to the market, but they’re running out of options to expand near-term capacity. They’re force to go with the worst option: renting GPUs from Neoclouds and reselling that to 3 <sup>rd</sup> parties, either as bare metal or tokens through Foundry. We’ll discuss Foundry below. Of course, the business of renting bare metal to resell bare metal will yield a [materially lower-than-usual](https://semianalysis.com/tokenomics-model/) margins for Azure.
 
-![](https://substackcdn.com/image/fetch/$s_!9dbQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdfa4edcc-15ab-45e5-9db6-02c1e13ef0ec_2861x1523.png)
+![](z-images/c5477b3164597068b5eda987667804dd.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -246,7 +246,7 @@ The result of all of this is clear: AI companies who are actively looking for ca
 
 To address this customer base, we believe that Azure must re-vamp its CycleCloud and AKS offering for AI, simplifying the current cluster deployment and monitoring experience. They need to build health checks, deploy them to clusters by default, and proactively recover from hardware failures. And they need to build the GTM and support organizations full of people to deliver these clusters to end users. We mentioned in ClusterMAX 2.0 that Azure is at risk of being demoted to Silver due to its poor user experience for startups from Series A to AI unicorns.
 
-![ClusterMAX 2.0 Rankings](https://substackcdn.com/image/fetch/$s_!88Yf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37dc82bd-d773-44b6-bc4a-d1f3ccf6d399_1738x873.jpeg)
+![ClusterMAX 2.0 Rankings](z-images/197cd26f3e54ee8c51641ee350cfc619.webp)
 
 Source: SemiAnalysis ClusterMAX 2.0 Ratings, November 2025 http://clustermax.ai/
 
@@ -273,7 +273,7 @@ If you are to crack open this fungible fleet, an important consideration is foun
 
 The infamous Michael Burry recently claimed that all hyperscalers (Meta, Google, Oracle, Microsoft, Amazon) are artificially boosting earnings by extending the useful life of their IT assets. This boost has moved the “useful life” from 3-5 years back in 2020, to 5-6 years in the present day.
 
-![](https://substackcdn.com/image/fetch/$s_!zqsg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd7a299bc-dfad-41df-973c-f5cc27b3ace5_1476x700.png)
+![](z-images/470c2441a7a74f7930b014b0860623bf.webp)
 
 Source: Michael J Burry on X, the everything app
 
@@ -295,7 +295,7 @@ Turning to current cloud providers, we can find p3.16xlarge for sale in AWS with
 
 V100 was announced in May 2017, with volume shipments happening in the fall of 2017, and final product shipments from NVIDIA occurring in January 2022. In other words, NVIDIA shipped spare parts for over 5 years from the time they launched the new GPU. Hyperscalers and OEMs had plenty of time to stock their spares, and keep instances running through to the present day - a full 8 years after those V100 GPUs started shipping.
 
-![](https://substackcdn.com/image/fetch/$s_!0oR1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F608fbb5d-0424-4d11-b26c-4e380bff0cfb_1894x986.png)
+![](z-images/17e4362d65120583a7e87c514b97984f.webp)
 
 Finding some V100’s for sale on our AWS console
 
@@ -303,13 +303,13 @@ Of course, V100s today aren’t a great business on a pure revenue-per-MW basis.
 
 Key to optmizing GPU Cloud economics is to ***maximize their economic life***. Our AI Cloud TCO Model provides a useful framework. Analyzing the TCO of a H100 cluster, we see that after stripping capital costs, there remains operating costs of $0.30-0.40/GPU/hour. The question is whether, after 5 years, a GPU can still monetize above that rate.
 
-![](https://substackcdn.com/image/fetch/$s_!YM0F!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffa5397ff-25a2-4c35-a0a2-83fa8568eeda_1125x776.png)
+![](z-images/044314e75fc0c5105e9b0590511db88a.webp)
 
 Source: SemiAnalysis AI Cloud TCO Model
 
 That operating cost has to be matched against the revenue extracted per GPU. Naturally, GPU pricing power fades rapidely, as Nvidia releases new chips that materially increase throughput per dollar and throughput per watt. Our [AI Cloud TCO Mode](https://semianalysis.com/ai-cloud-tco-model/) l, trusted by most of the world’s largest buyers of GPUs as well as their financial sponsors, provides long-term rental pricing forecast for all Nvidia, AMD, TPUv7 & v8 and Trainium2 & 3 SKUs - in addition to detailed cluster bill-of-materials analysis.
 
-![](https://substackcdn.com/image/fetch/$s_!R2dY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd57826ad-1a7d-4bae-bcbd-752b536b4b85_1775x1194.png)
+![](z-images/e7ec5bb76685d7752e844b5b6f4a8ceb.webp)
 
 Source: SemiAnalysis AI Cloud TCO Model
 
@@ -320,13 +320,13 @@ Our historical hit rate has proven remarkably accurate! But from the perspective
 
 In our view, this is why Azure’s “fungible fleet” strategy could make sense and enable a structurally higher ROIC than other players. The main uncertainty remains the scale of enterprise adoption, and whether Azure will be able to upsell higher value services.
 
-![](https://substackcdn.com/image/fetch/$s_!dxj7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd57f668f-d504-4b6d-a513-9145e2746ba1_1024x670.png)
+![](z-images/4f44f93e57749751038d212b87915608.webp)
 
 Source: SemiAnalysis AI Cloud TCO Model
 
 What will the future hold? Will Vera Rubin deliver on performance claims and motivate hyperscalers to rip out perfectly good, revenue generating GPUs after just 2-3 years in service as Dr. Burry claims? Or will we see the bottom of our H100 pricing data hold strong into the future? These questions remain to be answered, but our TCO Model provides our best estimate. Supported by our proprietary testing of GPU Clouds (ClusterMAX) and daily benchmarks via [InferenceMAX](https://inferencemax.semianalysis.com/), we aim to provide the best insights in the market. Our free & open-source InferenceMAX platform shows how system-level innovation, like Nvidia’s GB200 BVL72, can provide orders of magnitude of improvements versus more traditional HGX-based GPUs, for certain use-cases and configurations.
 
-![](https://substackcdn.com/image/fetch/$s_!_6FR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6bd7ae27-aa0f-4435-b79b-109a5f40c1d1_2160x1088.png)
+![](z-images/87f05a16cb49489844c1ad7af1ddb949.webp)
 
 Source: SemiAnalysis InferenceMAX - inferencemax.ai
 
@@ -336,7 +336,7 @@ Azure Foundry is Microsoft’s “Token-as-a-Service” business offering a vari
 
 Currently, the majority of GPT API tokens are processed directly via OpenAI, but we expect Foundry to be a major growth driver for Microsoft going forward and grabbing back some share. Importantly for Microsoft, Azure has **100% share** **of all API inference compute**, regardless of it being served via OpenAI API or Azure Foundry, through 2032.
 
-![](https://substackcdn.com/image/fetch/$s_!Uj8L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b4ae112-15c1-4bfa-bdfe-0e899cbbd7a0_1918x1030.png)
+![](z-images/861a6dacfa4ef1cbb1bc62430b963eda.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -356,7 +356,7 @@ From afar, Microsoft’s fort seemed impenetrable. They owned VS Code and GitHub
 
 However, they underestimated the rise of a series of startups forking VS Code to build tighter and improved integrations between models and the codebase which allowed these challengers to collectively scale beyond Copilot. A key enabling factor was the startups’ use Anthropic’s models.
 
-![](https://substackcdn.com/image/fetch/$s_!BGEe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F118c4f46-97ed-4343-9e24-f90eae892038_1638x849.png)
+![](z-images/379e77d3fe28dfb0a7a00dfdc1427ee9.webp)
 
 Source: SemiAnalysis Tokenomics Model, Company Disclosures/Announcements
 
@@ -366,7 +366,7 @@ The labs also developed products themselves. Users are bound to one set of model
 
 Microsoft has since doubled down on their model supermarket ecosystem bet, recently launching Agent HQ which plugs into agents from a variety of labs including Google and xAI.
 
-![](https://substackcdn.com/image/fetch/$s_!MH3A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F304dbcb6-301c-44d2-acd0-98144bbc460d_1792x945.png)
+![](z-images/5f8b516e16e291c1681e5ce03c3214c4.webp)
 
 Source: GitHub
 
@@ -380,7 +380,7 @@ The other two are image and voice models respectively. The image model is still 
 
 To Microsoft, the latter two models represent a use case where models can be served cheaply and with decent quality. They are far from challenging the state-of-the-art models but we believe the company is quietly gearing up to invest in much larger internal training efforts, scaling to nearly **$16Bn of annualized compute** spend in the next few years.
 
-![](https://substackcdn.com/image/fetch/$s_!pWEu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0fecefcb-28de-49e8-846c-e38e86853baf_3312x1629.png)
+![](z-images/d4ff059b07049323c5f8ffe1c2882652.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -400,7 +400,7 @@ Access to the OpenAI IP also enables Microsoft to finetune the OpenAI models wit
 
 The Excel Agent is a post-trained version of one of **OpenAI’s reasoning models**. This led to results that Microsoft claims to be better than the frontier labs.
 
-![](https://substackcdn.com/image/fetch/$s_!XNH1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fab337e9d-9e44-4114-b633-95b2f5dd2eb6_1588x916.png)
+![](z-images/2d22432269c9374224d2720645e23707.webp)
 
 Source: Microsoft
 

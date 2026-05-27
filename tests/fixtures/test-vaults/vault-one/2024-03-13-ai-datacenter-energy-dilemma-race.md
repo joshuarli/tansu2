@@ -20,7 +20,7 @@ Many are opining with ridiculous assumptions about datacenter buildout pace. Eve
 
 To be clear he is mostly right on these limitations of physical infrastructure, but compute is not up 10x every six months – we track the [CoWoS, HBM, and server supply chains of all major hyperscale and merchant silicon firms](https://www.semianalysis.com/p/accelerator-model) and see total AI compute capacity measured in peak theoretical FP8 FLOPS has been growing at a still rapid 50-60% quarter on quarter pace since 1Q23. I.E. nowhere close to 10x in six months. CoWoS and HBM is simply not growing fast enough.
 
-![](https://substackcdn.com/image/fetch/$s_!vmMd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F361a28af-afe2-4df8-b47a-7eed2f07a7d4_1591x1030.png)
+![](z-images/d8ad7486faeec3afa0fa80319598d856.webp)
 
 SemiAnalysis Estimates
 
@@ -28,7 +28,7 @@ The boom in generative AI, powered by transformers, will indeed need a lot of tr
 
 A lot of back of the envelope guesstimates or straight up alarmist narratives are based on outdated research. The IEA’s recent [Electricity 2024 report](https://www.iea.org/reports/electricity-2024) suggests 90 terawatt-hours (TWh) of power demand from AI Datacenters by 2026, which is equivalent to about 10 Gigawatts (GW) of Datacenter Critical IT Power Capacity, or the equivalent of 7.3M H100s. We estimate that Nvidia alone will have shipped accelerators with the power needs of 5M+ H100s (mostly shipments of H100s, in fact) from 2021 through the end of 2024, and we see AI Datacenter capacity demand crossing above 10 GW by early 2025.
 
-![](https://substackcdn.com/image/fetch/$s_!bVYT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F88b7b56f-ae27-41cd-a9bd-3ff2ce18b727_1162x837.png)
+![](z-images/1440564eca6dd2ccab230e90aef61c82.webp)
 
 IEA Electricity 2024
 
@@ -36,7 +36,7 @@ The above report is an underestimation of datacenter power demand, but there are
 
 Here come the datacenter locusts, Dyson spheres, Matrioshka brains!
 
-![](https://substackcdn.com/image/fetch/$s_!eUbk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80bb03fa-0fe7-4d92-8b6b-02d5f8d4abef_1355x912.png)
+![](z-images/8d9eb8ce60d0b93feadab496cf61afbe.webp)
 
 On Global Electricity Usage of Communications Technology: Trends to 2030
 
@@ -50,7 +50,7 @@ This tracking is done by hyperscaler, and it’s clear some of the largest playe
 
 The AI boom will indeed rapidly accelerate datacenter power consumption growth, but global datacenter power usage will remain well below the doomsday scenario of 24% of total energy generation in the near term. We believe AI will propel datacenters to use 4.5% of global energy generation by 2030.
 
-![](https://substackcdn.com/image/fetch/$s_!EyOP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6463db46-a5e5-497a-8b7f-0b468fbe911d_1411x911.png)
+![](z-images/9cf26360cb3f97c1933d4410188a3b07.webp)
 
 SemiAnalysis Estimates
 
@@ -58,7 +58,7 @@ SemiAnalysis Estimates
 
 Datacenter power capacity growth will accelerate from a 12-15% CAGR to a 25% CAGR over the next few years. Global Datacenter Critical IT power demand will surge from 49 Gigawatts (GW) in 2023 to 96 GW by 2026, of which AI will consume ~40 GW. In reality the buildout is not this smooth and there is a real power crunch coming soon.
 
-![](https://substackcdn.com/image/fetch/$s_!AovR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1bad42d2-36a2-4c27-b85e-ab8aa4e5d92b_1553x987.png)
+![](z-images/f3b3189d8ddfbcde5a49b6c4014ca051.webp)
 
 SemiAnalysis Estimates
 
@@ -80,7 +80,7 @@ Inference on the other hand is eventually a larger workload than training, but i
 
 AI Accelerators achieve relatively high utilization rates (in terms of power usage, not MFU). The expected average power (EAP) from normal operation per DGX H100 server is ~10,200 W, which works out to be 1,275W for each of the 8 GPUs per server. This incorporates the 700W Thermal Design Power (TDP) of the H100 itself, along with about 575W (allocated per GPU) for the Dual Intel Xeon Platinum 8480C processors and 2TB of DDR5 memory, NVSwitches, NVLink, NICs, retimers, network transceivers, etc. Adding the power needs for storage and management servers as well as various networking switches for an entire SuperPOD gets us to an effective power requirement of 11,112W per DGX server or 1,389W per H100 GPU. The DGX H100 configuration is somewhat overprovisioned with respect to storage and other items when compared to the HGX H100, which we account for. Companies like Meta have released enough information about their full configuration to estimate system level power consumption.
 
-![](https://substackcdn.com/image/fetch/$s_!F2jt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d35bdb0-8f62-42a2-a936-182d3f23a9d8_1506x1216.png)
+![](z-images/fe3a9d565c94fb09a4d6cc384a6a6a68.webp)
 
 NVIDIA DGX SuperPOD Datacenter Design
 
@@ -92,31 +92,31 @@ On top of the Critical IT Power Consumed, operators must also supply power for c
 
 For example at 80% utilization rate and a PUE of 1.25, the theoretical datacenter with a cluster of 20,480 GPUs would on average draw 28-29MW of power from the grid, adding up to 249,185 Megawatt-hours per year, which would cost $20.7M USD per year in electricity based on average US power tariffs of $0.083 per kilowatt-hour.
 
-![](https://substackcdn.com/image/fetch/$s_!O7Uf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F92ae3573-7fc5-4ed1-a1f4-359e0f41187b_1126x943.png)
+![](z-images/5001930e59eccc661a99eb5071e4703f.webp)
 
 ## Datacenter Layouts and Constraints
 
 While the DGX H100 server requires 10.2 kilowatts (kW) of IT Power, most colocation datacenters can still only support a power capacity of ~12 kW per rack, though a typical Hyperscale datacenter can deliver higher power capacity.
 
-![](https://substackcdn.com/image/fetch/$s_!Sd_O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d2a0109-8514-45f5-addf-6fc5b8c68f7a_1806x1006.png)
+![](z-images/866ab43c443e650618d07116e056a38d.webp)
 
 NVIDIA DGX SuperPOD Datacenter Design
 
 Server deployments will therefore vary depending on the power supply and cooling capacity available, with only 2-3 DGX H100 servers deployed where power/cooling constrained, and entire rows rack space sitting empty to double the power delivery density from 12 kW to 24 kW in colocation datacenters. This spacing is implemented to resolve cooling oversubscription aswell.
 
-![](https://substackcdn.com/image/fetch/$s_!Rhn6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F538d01af-834d-483b-9b4b-5fb494a95add_2410x840.png)
+![](z-images/eb98638dbacd84ff31104c9059c37c02.webp)
 
 NVIDIA DGX SuperPOD Datacenter Design
 
 As datacenters are increasingly designed with AI workloads in mind, racks will be able to achieve power densities of 30-40kW+ using air cooling by using specialized equipment to increase airflow. The future use of direct to chip liquid cooling opens the door to even higher power density by [potentially reducing per rack power usage](https://www.supermicro.com/white_paper/white_paper_Liquid-Cooling-Solutions.pdf) by 10% by eliminating the use of fan power, and lowering PUE by 0.2-0.3 by reducing or eliminating the need for ambient air cooling, though with PUEs already at 1.25 or so, this will be the last wave of meaningful PUE gains to be had.
 
-![](https://substackcdn.com/image/fetch/$s_!f8Ov!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1a7a62e-6e67-461d-8c69-e122921f02df_1357x954.png)
+![](z-images/ee26d05eca0bd9ab279ad44791dcc1aa.webp)
 
 Supermicro Liquid Cooling Whitepaper
 
 Another important consideration that many operators raise is that individual GPU server nodes are best positioned near each other to achieve acceptable cost and latency. A rule of thumb used is that racks from the same cluster should be at most 30 meters from the network core. The short reach enables lower cost multimode optical transceivers as opposed to expensive single mode, which can often reach multiple km of reach. The specific multimode optical transceiver typically used by Nvidia to connect GPUs to leaf switches has a short range of up to 50m. Using longer optical cables and longer reach transceivers to accommodate more distant GPU racks will add costs with much more expensive transceivers needed. Future GPU clusters utilizing other scale-up network technology will also require very short cable runs to work properly. For instance, in [Nvidia’s yet to be deployed NVLink scale-up network for H100 clusters](https://www.semianalysis.com/p/nvidias-optical-ascent-1b-revenue), which supports clusters of up to 256 GPUs across 32 nodes and can deliver 57.6 TB/s of all-to-all bandwidth, the maximum switch-to-switch cable length will be 20 meters.
 
-![](https://substackcdn.com/image/fetch/$s_!qzRI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7238a422-8aa2-47cd-946a-7e3093af69e3_2535x1390.png)
+![](z-images/d7a37f49392b57a5d590cf92c7693233.webp)
 
 NVIDIA H100 Architectural White Paper
 
@@ -130,7 +130,7 @@ Rear door heat exchangers and direct to chip liquid cooling solutions can be dep
 
 Meta had the worst datacenter design in terms of power density of all the hyperscalers, but they woke up and shifted very quickly. Retrofitting an existing datacenter is costly, time consuming, and in some cases may not even be possible – there may not be the physical space to install additional units of 2-3 MW generators, Uninterruptable Power Supplies (UPSs), switching gear or additional transformers, and redoing plumbing to accommodate the Cooling Distribution Units (CDUs) needed for direct to chip liquid cooling is hardly ideal.
 
-![](https://substackcdn.com/image/fetch/$s_!t5kU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff988c129-702b-4f1b-bea9-02d7fc302fd4_2472x1306.png)
+![](z-images/4b2bdc4ab564cacac528bc76e4af8238.webp)
 
 NVIDIA DGX SuperPOD Datacenter Design
 
@@ -138,7 +138,7 @@ NVIDIA DGX SuperPOD Datacenter Design
 
 Using a line-by-line unit shipment forecasts by accelerator chip based on our [AI Accelerator Model](https://www.semianalysis.com/p/ai-capacity-constraints-cowos-and) together with our estimated chip specifications and modeled ancillary equipment power requirements, we calculate total AI Datacenter Critical IT Power needs for the next few years.
 
-![](https://substackcdn.com/image/fetch/$s_!tiRe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdd411a4d-2b02-4f43-a20b-888a04a64de2_1553x987.png)
+![](z-images/df856ea5864d88b59b0cd75eaee12f87.webp)
 
 SemiAnalysis Estimates
 
@@ -146,7 +146,7 @@ As mentioned above, total Datacenter Critical IT Power demand will double from a
 
 Nowhere will the impact be felt more than in the United States, where our satellite data shows the majority of AI Clusters are being deployed and planned, meaning Datacenter Critical IT Capacity in the US will need to triple from 2023 to 2027.
 
-![](https://substackcdn.com/image/fetch/$s_!iq-y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f8168e8-e7ca-4006-bab6-e93b55151e83_1698x514.png)
+![](z-images/607bb1e96015e61e9691eea049072c7a.webp)
 
 SemiAnalysis Estimates
 
@@ -154,7 +154,7 @@ Aggressive plans by major AI Clouds to roll out accelerator chips highlight this
 
 Microsoft has the largest pipeline of datacenter buildouts pre-AI era (see January 2023 data below), and [our data shows its skyrocketed since](https://www.semianalysis.com/p/datacenter-model). They have been gobbling any and all colocation space they can as well aggressively increasing their datacenter buildouts[. AI laggers like Amazon](https://www.semianalysis.com/p/amazons-cloud-crisis-how-aws-will) have made press releases about nuclear powered datacenters totaling 1,000MW, but to be clear they are lagging materially on real near term buildouts as they were [the last of the hyperscalers to wake up to AI](https://www.semianalysis.com/p/amazons-cloud-crisis-how-aws-will). Google, and Microsoft/OpenAI both have plans for larger than Gigawatt class training clusters in the works.
 
-![](https://substackcdn.com/image/fetch/$s_!EI4c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F280f1cf9-216f-472b-86d6-0b817c5255b5_2953x1654.png)
+![](z-images/6175ff7838918553f06090f91f32892a.webp)
 
 Structure Research
 
@@ -162,7 +162,7 @@ From a supply perspective, sell side consensus estimates of 3M+ GPUs shipped by 
 
 This reality is not lost on the top global hyperscalers – who are rapidly ramping up datacenter construction and colocation leasing. AWS literally bought a 1000MW [nuclear-powered datacenter campus](https://www.datacenterdynamics.com/en/news/aws-acquires-talens-nuclear-data-center-campus-in-pennsylvania/) for $650M USD. Though only the very first building with 48MW of capacity is likely to be online in the near term, this provides a valuable pipeline of datacenter capacity for AWS without being held up waiting for power generation or grid transmission capacity. We think a campus of such mammoth proportions will take many years to fully ramp to the promised 1,000 MW of Critical IT Power.
 
-![](https://substackcdn.com/image/fetch/$s_!ShSY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe94eed35-8a5b-44c1-a02e-6aeae001a145_1886x1078.png)
+![](z-images/cd1894f89646c67a3d782284cf2d6c2d.webp)
 
 Datacenter Dynamics
 
@@ -172,7 +172,7 @@ Understanding power requirements for training popular models can help gauge powe
 
 Another paper, [Carbon Emissions and Large Neural Network Training](https://arxiv.org/abs/2104.10350), reports on the training time, configuration and power consumption of training for a few other models. Power needs for training can vary depending on the efficiency of models and training algorithms (optimizing for Model FLOPs Utilization – MFU) as well as overall networking and server power efficiency and usage, but the results as reproduced below are a helpful yardstick
 
-![](https://substackcdn.com/image/fetch/$s_!hgMq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37d56f20-7ac9-419c-b1cf-a1ada44c0838_1518x632.png)
+![](z-images/0232959ecc2e1bc083272b67f33b93f2.webp)
 
 Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model, Carbon Emissions and Large Neural Network Training
 
@@ -180,7 +180,7 @@ The papers estimate the carbon emissions from training these models by multiplyi
 
 The last piece of the emissions puzzle to consider is embodied emissions, defined as the total carbon emissions involved in manufacturing and transporting a given device, in this case the accelerator chip and related IT equipment. Solid data on embodied emissions for AI Accelerator Chips is scarce, but some have roughly estimated the figure at 150kg of CO2e per A100 GPU and 2,500kg of CO2e for a server hosting 8 GPUs. Embodied emissions work out to be about 8-10% of total emissions for a training run.
 
-![](https://substackcdn.com/image/fetch/$s_!kN19!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5dbf1092-7f5c-4a15-8b4c-ce80d891c6ef_1458x991.png)
+![](z-images/e8a2a7c83fa6e40108d7ad79a5dd3f4f.webp)
 
 Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model, Carbon Emissions and Large Neural Network Training EPA eGrid, SemiAnalysis Estimates
 
@@ -190,7 +190,7 @@ On the flip side, it is a safe bet that there were many iterations of training r
 
 For inference, we have detailed the economics of AI Cloud hosting in our posts on [GPU Cloud Economics](https://www.semianalysis.com/p/gpu-cloud-economics-explained-the) and on [Groq Inference Tokenomics](https://www.semianalysis.com/p/groq-inference-tokenomics-speed-but). A typical H100 server with 8 GPUs will emit about 2,450 kg of CO2e per month and require 10,200 W of IT Power – a cost of $648 per month assuming $0.087 per kilowatt-hour (KWh).
 
-![](https://substackcdn.com/image/fetch/$s_!lwRO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb6ee4a0-5d69-466b-965f-fc42ebd93924_1912x1365.png)
+![](z-images/3c9a053876a3c9e7aa7dd34afa7865c6.webp)
 
 SemiAnalysis Estimates
 
@@ -206,7 +206,7 @@ Countries that can step up to the plate and tick off those boxes are contenders 
 
 ## Electricity Tariffs, Power Mix, and Carbon Intensity
 
-![](https://substackcdn.com/image/fetch/$s_!94vd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6fec2a9c-7a44-4eaa-83c3-55049d3174c6_2446x1464.png)
+![](z-images/9ea58488ff6328185bbb59165d8a7ca5.webp)
 
 US EIA, Various National and Regional Electrical Distribution Organizations
 
@@ -214,13 +214,13 @@ Comparing global electricity tariffs, the US has among the lowest power prices i
 
 The fact that the US is energy independent in natural gas adds geopolitical stability to prices, and the widespread distribution of gas fields across the US adds supply chain robustness, while a [proven reserve of 20 years of consumption](https://www.eia.gov/energyexplained/natural-gas/how-much-gas-is-left.php) adds longevity to energy supply, though these reserve estimates have increased over the years, doubling since 2015 and up 32% in 2021 alone.
 
-![](https://substackcdn.com/image/fetch/$s_!ww-Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf313653-f6bd-4ea6-894c-e5ebd258ff9a_1891x1273.png)
+![](z-images/66c0212731c95a1e44d350f8ae82677d.webp)
 
 US Energy Information Administration
 
 In addition, the US has a far greener energy mix than most of the other contenders, having reduced its coal mix of power generation from 37% in 2012 to 20% by 2022 with the coal mix forecast to reach 8% by 2030 as natural gas and renewables step in to fill the gap. This compares to India at a 75% coal mix, China at a 61% coal mix, and even Japan still at a 34% coal mix in 2022. This difference is very impactful as coal power plants have a [carbon intensity of 1.025 kg/kWh CO2e, over double that of natural gas plants at 0.443 kg/kWh CO2e](https://www.eia.gov/todayinenergy/detail.php?id=48296). Datacenters built in the US will therefore rely on a far cleaner fuel mix for necessary baseload and overnight power generation than in many other countries.
 
-![](https://substackcdn.com/image/fetch/$s_!0Yjo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6e1d9b5b-6ebd-47d6-9643-d5355df394b8_2055x1377.png)
+![](z-images/51f9ebd5c137c161a147d6b8dbfaa33b.webp)
 
 US Energy Information Administration
 
@@ -232,7 +232,7 @@ In ASEAN, Singapore is another datacenter hub that has a heavy reliance on impor
 
 China’s industrial electricity tariff of $0.092 USD/kWh is on the low end of the range for electricity tariffs, but like many other emerging markets, China has a very dirty power generation mix, with 61% of generation from coal. This is a significant disadvantage from an emissions perspective, and new coal power plants are still being approved despite China significantly leading the world in renewable power installation. Any hyperscale or AI company that has a net-zero emissions commitment will be fighting an uphill battle with respect to that goal given coal’s [carbon intensity of 1.025 kg/kWh CO2e vs natural gas at 0.443 kg/kWh CO2e](https://www.eia.gov/todayinenergy/detail.php?id=48296).
 
-![](https://substackcdn.com/image/fetch/$s_!sjpR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6e8efac-1e93-41c4-8364-7db3182dafad_2275x1521.png)
+![](z-images/c1a6e469c06c68ac83be42b7fdafb4de.webp)
 
 Ember Electricity
 
@@ -240,7 +240,7 @@ China is largely self-reliant on coal used for power generation, but it imports 
 
 To be clear, China is the best country at building new power generation, and they would likely lead in the construction of gigawatt scale datacenters if they were enabled to, but they cannot, so the US is dominating here.
 
-![](https://substackcdn.com/image/fetch/$s_!cxXD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc1b41678-81d7-4f60-8245-7d25d97b0346_787x602.png)
+![](z-images/b9b9411829da9e8ec26357acb4052e3b.webp)
 
 US Energy Information Administration
 
@@ -248,7 +248,7 @@ And this is all before looking the elephant in the room squarely in the eyes, sp
 
 In Western Europe, electricity generation has been slowly declining, with a 5% drop cumulatively over the past five years. One reason for the drop is that nuclear power has become a political non-starter, causing nuclear power generation to decline massively, for example declining 75% in Germany from 2007 to 2021. A strong focus on the “environment” has led to dirty fuel sources such as coal also declining dramatically over the same time, although the cleanest power in the world nuclear has been replaced with coal and natural gas in some instances. Renewable energy is increasing within Europe’s power mix, but not fast enough, leaving many Europeans countries to scramble to pivot more towards natural gas, which now stands at 35-45% of the power generation mix for major Western European countries.
 
-![](https://substackcdn.com/image/fetch/$s_!TsAk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa619727c-e1d8-4d83-acb1-f67ad8d6a4c2_2059x1378.png)
+![](z-images/125b9f5ef780e70cc406d5c1725811cc.webp)
 
 Ember Electricity
 
@@ -268,6 +268,6 @@ Meanwhile, AI startup Omniva, which has just barely exited from stealth mode, pu
 
 **We will also dive deeper into Meta’s buildouts specifically. We will also discuss the merits of solar versus wind on the renewable side and regional differences for deploying this type of power. Power storage capabilities, and carbon emissions are also touched on.**
 
-![](https://substackcdn.com/image/fetch/$s_!FK6G!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9d2bade3-4a05-402f-9ee6-c45e4a3403cb_970x1060.png)
+![](z-images/9fe24accd7643c904aaf1c603269cc6b.webp)
 
 US EIA, Various National and Regional Electrical Distribution Organizations

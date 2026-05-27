@@ -26,7 +26,7 @@ Lam Research had an incredibly bad quarter, and they missed earnings by quite a 
 
 Lam is a bit odd in how they count wafer fab equipment spend as they count mid-$80 billion for 2021 when the actual industry spend seems to be more like $94 billion. With that in mind, they believe 2022 will be $100 billion for 2022. If we apply the 18% higher delta of real WFE to Lam's definition than the real 2022 number would be $110 billion of wafer fab equipment! Kind of a backwards way of arriving at this number, but I have $113 billion given no more major supply disruptions in 2022 using a different methodology.
 
-![](https://substackcdn.com/image/fetch/$s_!iSH8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1d096b48-9517-4c1f-8562-f99d2faf0bba_1023x566.png)
+![](z-images/01da80f3de9789e703305ff510809fd7.webp)
 
 A big part of the miss from Lam was lockdowns in China. With Yangtze Memory Technology Corporation in Wuhan, Micron and Samsung in Xian, Intel’s old NAND fab that is now owned by SKHynix in Dalian, and SMIC all over China, there were a lot of opportunities for disruption. These disruptions partially caused NAND to fall from 45% of Lam's revenue to 35%. China's contribution to revenue fell from 37% of revenue to 26%.
 
@@ -36,7 +36,7 @@ A big part of the miss from Lam was lockdowns in China. With Yangtze Memory Tech
 
 Lam Research also blamed a supplier for more than $200 million of missed shipments. We named supplier behind the subscriber only wall. In addition, behind the wall is a semiconductor capital equipment firm that is exposed to this exact same issue. These disruptions seem to be constant, but slow alleviation of supply chain issues will mean the back half of the year will be especially high for wafer fab equipment shipments.
 
-![](https://substackcdn.com/image/fetch/$s_!iWjc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa454f456-efc3-43a4-946f-ff236c72212b_1024x571.png)
+![](z-images/8591db0b14df563f3087bb44532a3e0b.webp)
 
 Lam Research has an expansion in Ohio for a parts facility, which I found especially interesting given the fact that Intel has just announced a mega-fab in the state. The “silicon heartland” as Pat Gelsinger coined it, is already coming to fruition.
 
@@ -48,7 +48,7 @@ In the future, I will be detailing these share gains on a market-by-market basis
 
 And because we here at SemiAnalysis love to smack down Morgan Stanley, here is my favorite excerpt from the call transcript where a Morgan Stanley analyst asks a dumb question after not having paid attention during the first half of the call.
 
-![](https://substackcdn.com/image/fetch/$s_!3vX8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb24965d4-f809-46bc-b8cb-310bc91032c6_967x425.png)
+![](z-images/5d600488db0fb2435579fba67269d54f.webp)
 
 **Wolfspeed**
 
@@ -78,13 +78,13 @@ UMC continues to run at 100% utilization, sign longer term agreements, slowly ex
 
 Intel is playing out how most people expect it, but there are some interesting details in the earnings. Intel continues to beat their guidance and make buckets of cash, but Intel’s stock went down. The Q1 2022 guidance has a 49% gross margin guidance which is the lowest Intel has seen since at least the global financial crisis.
 
-![](https://substackcdn.com/image/fetch/$s_!7WhP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1820a892-9972-4b39-8cdd-2b45ec264494_1024x572.png)
+![](z-images/5301fb04e85f4c8242fc190b7f4e1d06.webp)
 
 These horrible, 49% margins are despite Intel’s average selling prices in server, laptops, and desktops are increasing. The 10nm ramp of Alder Lake desktop, mobile, and Ice Lake server are the culprits. Intel has products that can sell at somewhat higher prices due to the current semiconductor market environment, but their manufacturing costs on 10nm are still very high. Intel claimed their 10nm manufacturing costs were down 30% year over year, but all that tells us is that the starting point was horrible. Intel is also blaming the low margins on expenses related to the start up of their Intel 4 node.
 
 Lastly on margins, Intel is ratcheting up stock-based compensation to match the rest of the semiconductor industry. Intel salaries are generally competitive, but they pay very poorly in restricted stock units (RSUs). Intel isn’t increasing RSUs across the board. 2 major groups are receiving outsized increases, Long Term Development (LTD) and the design organizations. LTD is the process group that takes technologies from the research group (components) and develops them all the way to ramp, and design organizations are the designers and architects of the chips. Pay increases are being put where they are needed the most, process and chip design. Groups such as marketing, non-development product teams, components research, HVM manufacturing, and administration are receiving smaller increases.
 
-![](https://substackcdn.com/image/fetch/$s_!O6OM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcef3e964-3817-466a-a058-1485e3927f88_1023x564.png)
+![](z-images/a30b163ba65a420ab9112ad6b365a1c7.webp)
 
 Client computing group had a spectacular quarter with all things held equal, but there is quite the dark spot in notebooks. Revenue is down quite a bit despite ASPs soaring. This implies really poor volumes. Desktop had strong growth due to the new Alder Lake desktop ramp. Adjacencies are down quite a bit due to the sale of the home gateway group to MaxLinear (which MaxLinear got for a steal of a price) and the ramp down of the 4G LTE modem business.
 
@@ -100,7 +100,7 @@ Tiger Lake laptop chips are now at more than 100 million shipments, and so we wa
 
 1/26/22 – Q4 2021 – Tiger Lake, which has now shipped over 100 million units
 
-![](https://substackcdn.com/image/fetch/$s_!uEQc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa133e881-b708-40f9-b576-26746fc8e1c6_1024x574.png)
+![](z-images/05f1cd201bac7f50844f5ef275f1070e.webp)
 
 The datacenter unit had solid revenue growth, but lower income due to poor margins and a one time charge for missing the Aurora supercomputer delivery date. The real kicker is that cloud revenue has shrank year over year for 5 quarters in a row. Enterprise and communications really bailed out Intel. Intel claims they shipped more than 1 million Ice Lake server chips which is more than they shipped in the last 3 quarters combined. Despite Ice Lake server launching in the first half of the year, the actual ramp was only Q4. Intel tried to brag with the following comment, but it really sounded pathetic because they couldn’t really say anything about preventing future share losses.
 
@@ -112,7 +112,7 @@ One very odd comment Pat Gelsinger made on the call was that Sapphire Rapids is 
 
 Also, something is up with Intel's ethernet, photonics, and base station business. Where is the growth they promised? These markets should be growing a lot faster than the paltry numbers put up by the adjacencies section. I don’t want to sound the alarm bells, but why is it significantly undergrowing the end markets…
 
-![](https://substackcdn.com/image/fetch/$s_!o4KC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9ceaaab4-eea1-452c-9726-a103439655c3_1023x577.png)
+![](z-images/da688985ea4789fc53c75466c62d8b29.webp)
 
 Intel’s golden child of Mobileye was quite sluggish aswell. It recorded only 7% higher revenue and lower operating income. Due to this sector doing a partial IPO soon, the poor numbers here hurt a lot. If this slowdown is sustained, then there is no way it gets anywhere close to a $50 billion valuation like Intel is hoping for. Intel drummed their chests about 100M Mobileye EyeQ SOCs being shipped over its lifetime. More importantly they announced they are now piloting autonomous vehicle test fleets in New York, Munich, Detroit, Tokyo, Israel, China, and Paris. Commercial robotaxi services launching in Munich and Tel Aviv in 2022. This seems to be ahead of even Waymo as far as geographic diversity of testing and deployment.
 

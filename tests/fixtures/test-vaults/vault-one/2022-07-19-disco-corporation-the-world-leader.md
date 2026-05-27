@@ -40,39 +40,39 @@ There’s a [penalty system for inefficient behavior](https://www.bloomberg.com/
 
 The success of this program can’t be understated. DISCO went from a 16% operating margin before it was implemented to a 36% operating margin in the most recent year. Furthermore, they have gained some share as well.
 
-![](https://substackcdn.com/image/fetch/$s_!68by!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8c0d9445-5117-460c-8b2f-81d316808feb_2580x1188.png)
+![](z-images/86a79144b95a9e6c0448be5e78f61046.webp)
 
 DISCO products are used through the entire process of manufacturing chips. Ingots are grown and cut then grinded down. The backside of a wafer is grinded down before the wafer is diced. The wafer is diced, and chips are packaged on large format packages which cut to produce individual units. There is a lot more complexity at each of these steps.
 
 Also apologies in advanced for some of the next pictures, we took them with our cellphone at SemiCon. With that said, the fine text is still legible, so we know some of our readers will appreciate that.
 
-![](https://substackcdn.com/image/fetch/$s_!1LOb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fba7d062d-5821-41ec-94ea-8a166c90e40c_6211x2707.jpeg)
+![](z-images/88e5b7418cf4e23f688d3d4596430c11.webp)
 
 The grinder lineup varies quite a bit based on throughput on silicon wafers. There are also different tools for exotic materials such as silicon carbide which are harder than diamonds. The material handling is incredibly important depending on the thickness of each. Unfortunately, DISCO doesn’t have many videos of their products, but here is a video of one of [their mid-range grinders](https://youtu.be/Ap6fDuFbMl4?t=134) in action from FabSurplus, a used equipment refurbisher and reseller. After the main grind, some use cases demand the use of a grinder/polisher to make the surface more uniform. Additionally, there are surface planerers. They use commonly use a diamond bit to partially remove a portion of the wafer. DISCO also sells CMP tools, but they have very low share compared to Applied Materials with majority share and EBARA with most the remaining market.
 
 The market for thinning applications is soaring as advanced packaging takes off, especially hybrid bonding.
 
-![](https://substackcdn.com/image/fetch/$s_!ckx-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0ee7e063-c099-4f68-a931-407d170f79d3_6079x2675.jpeg)
+![](z-images/3c9d00dc52ad98ceb957267159f3eeb7.webp)
 
 The dicing saws and blades are the other bread and butter business for DISCO. There are again a variety of tools based on the level of automation and throughput required. There’s also a huge variety of blade types. We won’t dive into it, but we did love the opportunity to speak with DISCO about all the types and their various use cases. In general, there are 4 main types of blades that sit along various points in the curve for rigidity vs blade lifetime vs cutting ability. Saws, just like grinding wheels, wear out and must be replaced at a semi-regular interval. It’s a good consumables business for DISCO.
 
-![](https://substackcdn.com/image/fetch/$s_!wd1r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Faeecc475-17c5-4434-9ba2-62594cde9fed_3178x2775.jpeg)
+![](z-images/176f7d026d2f711a394b27f97224baaf.webp)
 
 In many cases you don’t just grind then saw with a physical blade. Here is a slide that showcases some advanced thinning techniques. Dicing before grinding is quite common. [This video showcases it visually](https://www.youtube.com/watch?v=uOYtjOfBLso), but the wafer is cut through partially before it is flipped and grinded through. As the grind through occurs, it meets the partial cut and the wafer breaks apart into dies. This process encompasses a lifecycle of 5 DISCO tools + multiple consumables such as the saws, grinding wheels, and tape laminates.
 
 Dicing isn’t only done with saws. It can also be done with lasers. This is called stealth dicing. Here is where we will introduce the concept of a “street.” The street is the area between dies. As the die sizes get smaller, the street takes a disproportionately larger area of the processed silicon wafer. Ultra-small die sizes have to contend with the street eating into the cost budget. As such, saws become very inefficient. This is where stealth dicing comes in. The laser can deal with streets that are almost 0 in size. There will be some wastage, but the width is greatly reduced and so the number of dies per wafer can be increased.
 
-![](https://substackcdn.com/image/fetch/$s_!eczY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4a728fa7-b0e5-411b-a3ee-858f50bac9b4_6150x2635.jpeg)
+![](z-images/656077f271b87aae4f24eaee16268480.webp)
 
 Stealth and plasma dicing is currently mostly used on specialty processes, especially MEMS, or with extremely small die sizes. As wafer costs soar with upcoming 3nm nodes and advanced packaging takes hold, we could see stealth dicing make its way into leading edge logic chips. The laser generally focuses on a portion of the wafer underneath the top layer. [Here is a video of the multi-step process.](https://www.youtube.com/watch?v=VibqN_2pNKU) It can also be used to groove the wafer then cut through with a plasma. There are some concerns about bringing laser dicing to other processes because lasers can cause delamination and issues related to streets with metals in them. Saws have other issues where cutting the chip could result in damage as metal is dragged into the street.
 
-![](https://substackcdn.com/image/fetch/$s_!1yW_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff37c4c3a-1251-4324-bba1-3398797b788b_2670x2657.jpeg)
+![](z-images/39742c58250c035dab250346898ce7c1.webp)
 
 The Taiko process is a very interesting innovation. Rather than grinding the entire wafer then having to use a temporary carrier for structural support, the grinding wheel only grinds the inner part, leaving an outer ring at full thickness. There are some etch processes for stress relief. Afterwards there is advanced integration of vias, bumps, discrete devices, backside metallization, and wafer level probe card testing. The full thickness ring is cut off with a laser and the final assembly is cut into dies meant for packaging.
 
 The laser lift-off tool looks incredibly similar what SOITEC is doing with their [Smart Cut SiC](https://www.soitec.com/media/files/Compound-Semiconductor-Issue.pdf) technology in principle. The laser lift-off is shown on a sapphire substrate, but the transfer of a separate epi layer is similar. It could be that SOITEC is using the tools from DISCO, but they make no mention of lasers for lift-off in their PR.
 
-![](https://substackcdn.com/image/fetch/$s_!C10H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F622d60b9-d487-4f04-aaa8-c8bb2ae339b0_3612x2609.jpeg)
+![](z-images/b6d7377ffe434cb5d8a7d6de9f17b956.webp)
 
 DISCO has a near lockdown on the power semi market in general due to the grinding and cutting being more complicated here vs silicon.
 

@@ -64,7 +64,7 @@ How to pull these threads together…noting as we did above that one industry ex
 
 To start, let’s look at the history and timeline of Moore’s Law.
 
-![](https://substackcdn.com/image/fetch/$s_!hF2H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2059e188-16be-46b6-9f8c-0d571540b29f_789x498.png)
+![](z-images/ca0cacdb6f7bf7f8aa75b47caa854a50.webp)
 
 Figure 1: Moore’s Law Timeline, including Moore's Bend with Transistors/CPU Inflected with Multi-Core CPUs beginning in 2005 ( 18 )
 
@@ -78,7 +78,7 @@ From this history and timeline of Moore’s Law three separate stages are eviden
 
 • Stage III begins when semiconductor dies are first scaled vertically, and then extends later with new steps to keep Moore’s Law alive: complex 3D structures, and more materials, architectures, connectivity options, and packaging advances (chiplets, etc.). The impact will be astonishing: all industry will have to change from design through manufacturing to process control and testing to realize the changes in Stage III.
 
-![](https://substackcdn.com/image/fetch/$s_!ozG8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3d62072-b347-4c48-9637-fab28b4e16c7_1518x492.png)
+![](z-images/2c407d750dea70b1512d061e54bcbcc9.webp)
 
 Table 1: The number of transistors per unit area doubles every two years, leaving Moore’s Law unchanged over time. Only the reasons for the doublings change, thus leading to different Stages in Moore’s Law.
 
@@ -86,7 +86,7 @@ Table 1: The number of transistors per unit area doubles every two years, leavin
 
 To explain the different viewpoints on Moore’s Law, we must first realize that it can be viewed from conservative, moderate, or optimistic perspectives. For a conservative purist, for example, “traditional” Moore’s Law may have ended after Stage I concluded around 2005, when Dennard scaling slowed. After that time the economics of continued device scaling and integration became unattractive (Figure 2).
 
-![](https://substackcdn.com/image/fetch/$s_!yT0A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb7481222-ce8f-4fc6-acbf-4b2105834e50_1573x952.png)
+![](z-images/f42f9e829c7b4f679dd194e7d70ea2f5.webp)
 
 Figure 2: A narrow conservative might view “traditional” Moore’s Law as having ended when device scaling and integration stopped providing cost benefits. An expansive optimist might conclude the opposite.
 
@@ -108,7 +108,7 @@ Sidebar 1: Moore’s Law
 
 Moore’s Law is not a law but rather a projection of a historical trend. Moore’s Law forecasts that the number of transistors in a computer chip will double about every two years due to advances in semiconductor technology. Gordon Moore’s original data for the determination of Moore’s Law is shown below.
 
-![](https://substackcdn.com/image/fetch/$s_!GV-y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78400dc3-1f33-4979-9c12-2a163e6f31e5)
+![](z-images/26e7d7c4f85b992e7145a83fccc4f24c.webp)
 
 https://sketchplanations.com/moores-law
 
@@ -116,7 +116,7 @@ Sidebar 2: Comparing a 1980s Supercomputer to a Modern Smartphone ([23](https://
 
 The 1980s supercomputers were light-years ahead of the one that helped put Neil Armstrong on the moon more than half a century ago. By 1985, the supercomputer CRAY-2 had become the fastest and most powerful machine ever built. It set the world record with a peak performance of 1.9 gigaflops, or 1.9 billion floating point operations per second (FLOPS), vastly exceeding the 12,250 FLOPS peak performance of the Apollo 11 Guidance Computer just 16 years earlier. But…compare that to today’s smartphones, which are about 5,000 times faster than the CRAY-2 and have democratized technology for everyone.
 
-![](https://substackcdn.com/image/fetch/$s_!bMZL!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f658928-aba3-448b-b634-9a0e09785d3d_1000x990.jpeg)
+![](z-images/f85ebe846c0aeb4030ec02fb7044acc8.webp)
 
 https://blog.adobe.com/en/publish/2022/11/08/fast-forward-comparing-1980s-supercomputer-to-modern-smartphone
 

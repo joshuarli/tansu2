@@ -16,13 +16,13 @@ This pace of software advancement creates a challenge: benchmarks conducted at a
 
 InferenceMAX™, [an open-source automated benchmark](https://github.com/InferenceMAX/InferenceMAX) designed to move at the same rapid speed as the software ecosystem itself, is built to address this challenge.
 
-![](https://substackcdn.com/image/fetch/$s_!Vg7o!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4be54ad9-692e-4500-948c-38beb5018814_1734x922.png)
+![](z-images/ac3b314e769a466655c69824a7c3eaba.webp)
 
 Source: SemiAnalysis InferenceMAX™ GitHub Repo
 
 InferenceMAX™ runs our suite of benchmarks every night on hundreds of chips, continually re-benchmarking the world’s most popular open-source inference frameworks and models to track real performance in real-time. As these software stacks improve, InferenceMAX™ captures that progress in near real-time, providing a live indicator of inference performance progress. A live dashboard is available for free publicly at [https://inferencemax.ai/](https://inferencemax.ai/).
 
-![](https://substackcdn.com/image/fetch/$s_!pnux!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffbf9bb59-ada3-44b0-8cba-c6ee11097b3f_1839x1344.png)
+![](z-images/eb097ae6c855423f24890844cfb4f008.webp)
 
 Source: SemiAnalysis
 
@@ -157,7 +157,7 @@ Owning or renting a GPU system for inference typically comes with a fixed $/hour
 
 A simple analogy illustrates the entire trade-off. A metro bus and a Ferrari may have a very similar absolute dollar cost of ownership, but the bus amortizes that cost across dozens of passengers while the Ferrari serves only one or two. The Ferrari delivers superior responsiveness with immediate departure, direct routes, and a premium experience, but at a fundamentally higher cost per passenger. LLM serving operates under a similar constraint.
 
-![](https://substackcdn.com/image/fetch/$s_!q1Yg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F539b0f8f-9421-41b4-9e89-a53f2697b0c8_1976x1454.png)
+![](z-images/761f027e00d77f7f2ea95cb00d47e1a2.webp)
 
 Source: SemiAnalysis
 
@@ -165,7 +165,7 @@ Source: SemiAnalysis
 
 There is always a trade-off between throughput and latency. To identify the Pareto Frontier Curve, we try to find every data point P such that there is no point that is better than point P in both throughput and latency. This means data point P is **Pareto optimal**, i.e. no other point improves one axis without sacrificing the other. When we connect the pareto optimal dots, we get the Pareto Frontier Curve.
 
-![](https://substackcdn.com/image/fetch/$s_!rPda!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4686438a-1880-4162-92c9-e64d2ab7718b_2852x993.png)
+![](z-images/f97cc55c4c8aba9e3d11582c5c3794ef.webp)
 
 Source: SemiAnalysis
 
@@ -219,25 +219,25 @@ We additionally combined disaggregated serving with large scale expert paralleli
 
 For disaggregated serving DeepSeek R1, we also received submissions with multi-token prediction (MTP) enabled. DeepSeek R1 implements MTP, where the model is trained to predict multiple tokens every forward pass with the help of additional MTP modules. According to DeepSeek, training with MTP improves the model’s planning abilities. In addition, using MTP modules during inference boosts token throughput with minimal model quality loss.
 
-![](https://substackcdn.com/image/fetch/$s_!oplH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F18326fc6-9e43-4998-838b-b2b7087de7f1_2853x1341.png)
+![](z-images/06e9a8736606af79aa9afb5c80599e75.webp)
 
 Source: DeepSeek-V3 Technical Report, Figure 3
 
 Nvidia has submitted runs for DeepSeek R1 on GB200 NVL72 with disaggregated serving, wide EP, and MTP. Nvidia has also submitted specific configs to plot out the Pareto frontier, and we plan to expand to sweep a larger config space in the future.
 
-![](https://substackcdn.com/image/fetch/$s_!VVYx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c25289d-8cf8-4d1a-9be6-69a4e12f9886_2353x1271.png)
+![](z-images/c7951dd8f70b8915505f3f00ed9ad51e.webp)
 
 Source: DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving
 
 When serving DeepSeek R1, SGLang offers multiple parallelism strategies, including **tensor parallel (TP)**, **data parallel (DP)**, and **expert parallel (EP)**. Parallelism strategies split up work between GPUs to lower the memory usage per GPU and improve hardware utilization.
 
-![](https://substackcdn.com/image/fetch/$s_!qYgn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F076f3327-558d-481f-91be-87edecf55135_2153x1624.png)
+![](z-images/49834104fbc477955f9e5a387ba8c974.webp)
 
 Typically, we use tensor parallel to split up work in the attention layer along the number of heads dimension, which is typically 128. However, this doesn’t fit well with DeepSeek R1 because it uses Multi-Latent Attention (MLA), a special type of attention where there is only one KV head, leading to KV cache duplication. To tackle this issue, SGLang uses data parallel attention for lower interactivity and splits work along the batch dimension, removing the need to duplicate KV cache and reducing communication load.
 
 DeepSeek R1 also has a lot of expert layers, so we apply expert parallel and assign each GPU a set of expert layers. This lowers the memory usage at the cost of higher communication load.
 
-![](https://substackcdn.com/image/fetch/$s_!br4T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb668c1ec-765e-4bfd-9e17-66c2bfb91c76_1590x1582.png)
+![](z-images/268d9e4691684fba15d6876ee5f885af.webp)
 
 Source: SGLang v0.4: Zero-Overhead Batch Scheduler, Cache-Aware Load Balancer, Faster Structured Outputs
 
@@ -247,7 +247,7 @@ InferenceMAX™ uses GitHub Actions to orchestrate benchmark runs. A GitHub Acti
 
 We define the logic of parallelism strategies + max concurrency benchmark sweep as a parameterized [workflow](https://docs.github.com/en/actions/get-started/understand-github-actions#workflows), and we incrementally compose the workflow to execute all GPU types for all models and GPUs, as well as different input / output sequence lengths.
 
-![](https://substackcdn.com/image/fetch/$s_!tceV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F290f8a5a-3e55-45c6-a0e4-7c1dc6065175_2293x1701.png)
+![](z-images/297692370389aad94399f9a685581a30.webp)
 
 Source: SemiAnalysis
 
@@ -267,25 +267,25 @@ Let’s step through a few benchmark examples to explain how to analyze the resu
 
 In our first result, the H100 vLLM vs MI300X ROCm 7.0 vLLM comparison for Llama 3.3 70B FP8 in our reasoning scenario (1k in/ 8k out) shows a strong MI300X performance especially at low interactivity levels (20 to 30 tok/s/user) due to the MI300X’s better memory bandwidth and memory capacity advantages when running at TP1.
 
-![](https://substackcdn.com/image/fetch/$s_!qBCu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F471369b0-e290-4560-a348-b3079c8b6e88_2329x1393.png)
+![](z-images/c0e83c8638e41262ea39580b4513d3d9.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!d5GT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa46e880d-4076-46ff-84d1-5be99ba50a8a_2634x1582.png)
+![](z-images/11276c90be77c6f41e9e2eaba9da2fe7.webp)
 
 Source: SemiAnalysis
 
 We are seeing competitive results comparing the H200 and the MI325X on vLLM GPT-OSS 120B with MX4 weights for a summarizing workload. The MI325X has an advantage over H200 for interactivity below 110 tok/s/user and still is somewhat competitive with Nvidia for levels above 110 tok/s/user.
 
-![](https://substackcdn.com/image/fetch/$s_!1oo2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbec7ee8f-a2bc-4458-be18-76fa434ff7f1_2477x1470.png)
+![](z-images/7818b51e40bde7ef79dbeeb22b8f467f.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!5q5U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb664d13-b2f7-42e5-824d-fbf6319c0f7f_2406x1432.png)
+![](z-images/22b68f27ef35e807ca026fdf427b728a.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!_y-X!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3350a97b-7c28-4e46-9c80-519555da1eb6_2342x1124.jpeg)
+![](z-images/11662778f53d45e060b2a6626a9840c9.webp)
 
 Source: SemiAnalysis
 
@@ -293,11 +293,11 @@ When it comes to LLaMA 70B FP4, B200 significantly outperforms MI355X across all
 
 Moving on to the B200 (vLLM and TRT-LLM) vs. MI355X vLLM for GPT-OSS 120B, we can see that MI355X is competitive with B200 vLLM after normalizing by TCO. In the next section, we will see that MI355X across some interactivity ranges is better perf per TCO than Nvidia. The throughput-latency graph appears to show a tighter race, with the MI355x never more than ~15 seconds slower than the B200 for a given tok/s/gpu throughput. The most practical range of interactivity we see in the real world is approximately 150-200 tok/s/user for GPT-OSS 120B.
 
-![](https://substackcdn.com/image/fetch/$s_!RzZM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd40e2253-8285-466f-8f16-6459c1051fb4_2373x1419.png)
+![](z-images/7d15e793279ffca26a79dcb3889a2371.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!DwIU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F918c3a71-6c31-400a-a5c9-fb0930f8a2f7_1879x1121.png)
+![](z-images/56390e78db32ce686817b7392ed62799.webp)
 
 Source: SemiAnalysis
 
@@ -305,31 +305,31 @@ Moving to DeepSeek 670B MoE FP8, when comparing the MI325X on SGLang vs. the H20
 
 We can also see that for GB200 NVL72 SGLang Dynamo FP8 rack scale inferencing, it is not yet optimized and there is still room for improvement.
 
-![](https://substackcdn.com/image/fetch/$s_!ZjAi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2755907c-48bb-47aa-99be-6058c695ac85_1857x1121.png)
+![](z-images/7c3c25b02b419abc0bb80f4c3fb148f6.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!8rDL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd68490f3-adfd-4ab7-b6d1-80bae3921ef9_1868x1121.png)
+![](z-images/8967c28930beb5dd38caad52538cd749.webp)
 
 Source: SemiAnalysis
 
 Moving on FP4 DeepSeek 670B MoE, we see that GB200 NVL72 rack scale TRT-LLM inference beats single node SGLang inference by a wide margin. We look forward to benchmarking wideEP + disagg prefill on multi-node 8-way machines over the next couple of months.
 
-![](https://substackcdn.com/image/fetch/$s_!qu8P!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9534de11-42bd-44c9-9398-16bb9deedcfd_1864x1121.png)
+![](z-images/23363e676732637df4c81b5265ad1a39.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!jKGA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc98fcaff-2665-406e-8ce0-c63c456532e4_1374x839.png)
+![](z-images/e9266aa901eb87a89a5896d9b3772e83.webp)
 
 Source: SemiAnalysis
 
 Next, we compare GB200 with Multi-Token Prediction (MTP) On and Off for DeepSeek R1 in an 8K input / 1K output scenario – an input/output ratio that is meant to reflect summarization use case. The MTP On benefit is particularly noticeable comparing throughput vs. interactivity. Between the range of 70-140 tok/s/user, we see significantly higher throughput/GPU for the MTP On scenario when compared to the MTP Off – up to 2-3x the throughput for some iso-interactivity (tok/s/user).
 
-![](https://substackcdn.com/image/fetch/$s_!wFuR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb76eccd-5bb3-480e-98b0-e821f11b8d88_1849x1121.png)
+![](z-images/29778d7d35c77b1f5a1088721b4f697a.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!_sXX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F717be24a-af21-4e21-a829-c907bf3aaa88_1883x1121.png)
+![](z-images/9b3ceefd4b0ade984463f2422280bb80.webp)
 
 Source: SemiAnalysis
 
@@ -347,7 +347,7 @@ At our InferenceMAX™ portal, located at [http://inferencemax.ai/](http://infer
 
 Modeling Total Cost of Ownership per Token is no mean feat and it involves multiple SemiAnalysis teams and practice areas. In the AI Token Factory Economics stack, we show all the assumptions that are used to derive this north star metric, as well as the SemiAnalysis Models used to determine these quantities.
 
-![](https://substackcdn.com/image/fetch/$s_!o0EO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd913a30b-22dc-42bd-93bc-f81500ac9d18_1415x864.png)
+![](z-images/f750a25f38949dce471fb97cf706a694.webp)
 
 Source: SemiAnalysis AI Accelerator Model, SemiAnalysis BoM and ODM Model, SemiAnalysis AI Networking Model, SemiAnalysis AI TCO Model SemiAnalysis Datacenter Model.
 
@@ -359,25 +359,25 @@ In our analysis below, we focus on cost per million tokens for Hyperscaler tier 
 
 We see that across all interactivity levels, the cost per million tokens on MI325X on vLLM beats the cost per million tokens on the H200 using vLLM. When we bring in Nvidia’s (mostly) open source TRT-LLM, we see that the H200 current software stack wins against the MI325X using today’s vLLM stack.
 
-![](https://substackcdn.com/image/fetch/$s_!jnsf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1217e5ad-909c-419e-b4a5-304a7145275e_1736x1165.png)
+![](z-images/63ba9558a465774adee9a4e4e2a591da.webp)
 
 Source: SemiAnalysis
 
 When we compare the B200 on vLLM vs the MI355 on ROCm 7.0 vLLM when running Llama3 70B FP4 on reasoning input/output length scenarios, the B200 currently outperforms the MI355. This also illustrates our suggestion that AMD focuses more on optimizing FP4 for Llama3.
 
-![](https://substackcdn.com/image/fetch/$s_!3MG5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5dde0cca-4570-4e17-a685-f8aa0fc9685c_1774x1178.png)
+![](z-images/35c442fb061df00d587ee6a0426b89e9.webp)
 
 Source: SemiAnalysis
 
 For GPT-OSS 120B FP4 summarization tasks, we see that the MI355X on vLLM has a lower TCO per million tokens than the B200 on vLLM and can even beat B200 on TRT-LLM when interactivity is below 225 tok/s/user. For interactivity levels greater than 225 tok/s/user, we see that the B200 on TRT-LLM as well as other inference engines are more optimized and deliver lower TCO per performance than the MI355X on vLLM.
 
-![](https://substackcdn.com/image/fetch/$s_!7mJ2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1629db8a-7dbb-4d06-b58c-60c58b66a248_1826x1237.png)
+![](z-images/99201654999e03870c1371343cb19579.webp)
 
 Source: SemiAnalysis
 
 On GPT-OSS 120B with MX4 weights, we see very strong performance per TCO from the MI300X compared to the H100 across the entirely interactivity range.
 
-![](https://substackcdn.com/image/fetch/$s_!ZnYm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f3e8a00-c9fe-4a81-be97-6a3681eb15ee_1668x1121.png)
+![](z-images/65c16f8bb9c6ca9089f2ad131b032300.webp)
 
 Source: SemiAnalysis
 
@@ -385,7 +385,7 @@ For gpt-oss 120B using MX4 weights, the H200 on TRT-LLM is neck and neck with th
 
 What is surprising about this result is that true open source vLLM for Hopper is faster than “mostly” open source TRT-LLM hopper. Even the MI325X on vLLM beats the H200 on TRT-LLM for interactivity levels greater than 135 tok/s/user.
 
-![](https://substackcdn.com/image/fetch/$s_!Fz6M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdd8c102c-4041-4e37-be5f-5b308b06adfc_1672x1121.png)
+![](z-images/e6267c0f43ad5ba20f7900d4464ed0b0.webp)
 
 Source: SemiAnalysis
 
@@ -393,31 +393,31 @@ Moving on to DeepSeek 670B MoE using FP8, we see that when we hold TCO per milli
 
 When holding interactivity constant at ~35 tok/s/user, the GB200 NVL72 beats everything else, delivering 4x better TCO per million tokens. We note that the Dynamo team has so far only had time to implement optimizations sufficient to lower the parallelism cost pareto frontier at the 30 tok/s/user region. There is still room for them to further optimize to push down the cost pareto frontier for interactivity levels of around 40 and above for the GB200 NVL72 using FP8.
 
-![](https://substackcdn.com/image/fetch/$s_!-RkC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa169f01-a0c1-493e-9fcf-15e0c3e9e2dd_1646x1121.png)
+![](z-images/5a787eccefefc00247c5de9277ec7e0b.webp)
 
 Source: SemiAnalysis
 
 Moving on to DeepSeek R1 using FP4 for a summarization use case, we see that below 90 tok/s/user interactivity, the GB200 NVL72 on the TRT-LLM engine using Dynamo disagg prefill decisively outperforms all single node 8-GPU severs on TCO per million tokens. Interestingly, for interactivity levels above 90 tok/s/user, the B200 on TRT-LLM beats the GB200 NVL72. However, as it stands now, a single node B200 server can drive better TCO per performance than the GB200 NVL72 for high interactivity use cases.
 
-![](https://substackcdn.com/image/fetch/$s_!cS7E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa154ae09-41cd-487b-a99c-30f89c793381_1946x1302.png)
+![](z-images/198d754df9eeb6f517a35b8c5b5f3fc8.webp)
 
 Source: SemiAnalysis
 
 In the benchmark below focused on a reasoning use case, we see that the B200 on SGLang currently outperforms the MI355X on SGlang.
 
-![](https://substackcdn.com/image/fetch/$s_!huek!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd8274bbd-4310-44b0-9545-809260cfca44_1669x1121.png)
+![](z-images/661c1168936112b9e4078852221db4a7.webp)
 
 Source: SemiAnalysis
 
 For the summarization scenario, the GB200 using today’s TRT-LLM Dynamo software outperforms a B200 single node for interactivity levels under 80 tok/s/user. Comparing the MI355X on SGLang to the B200 on SGLang, we see that the B200 delivers better TCO per million tokens.
 
-![](https://substackcdn.com/image/fetch/$s_!0Nkk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5dcfed6-70d1-460f-8963-14784577ca44_1695x1121.png)
+![](z-images/cfa2dba46cd6ff947fc5cd3e76252b14.webp)
 
 Source: SemiAnalysis
 
 We also benchmarked workloads running on FP4 using Multi-Token Prediction (MTP), which is a feature implemented by the DeepSeek team during training. We see that when holding TCO per million tokens constant, MTP can deliver 2-3x greater interactivity (tok/s/user) than without MTP for that given cost level. Indeed, most frontier labs and tier 1 managed DeepSeek REST API endpoint providers have already enabled MTP for production workloads.
 
-![](https://substackcdn.com/image/fetch/$s_!0EuT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F90eb3363-3d59-4c46-aff7-521af7ecc45b_1679x1121.png)
+![](z-images/0dab6e17809b067ccc0aeba3cc862b2a.webp)
 
 Source: SemiAnalysis
 
@@ -439,31 +439,31 @@ We estimate throughput per provisioned power based on the raw InferenceMAX™ re
 
 We see that for gpt-oss 120B, using MX4 weights for reasoning scenarios (1K input tokens / 8K output tokens) at the 90 tok/s/user interactivity level, the MI300X is able to process 750,000 token/s per all in provisioned MW (again this is measured per utility MW, and not per MW of Critical IT Power) while the MI355X is able to process 2,550,000 token/s per all in provisioned MW. This represents a ~3x improvement in power efficiency from the CDNA3 generation to the CDNA4 generation.
 
-![](https://substackcdn.com/image/fetch/$s_!2UOR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0aa98f63-d0f8-4666-85fd-47a1bbf78c7a_1645x1121.png)
+![](z-images/82060f2bf8989649ecd5277d20cd7fb1.webp)
 
 Source: SemiAnalysis
 
 We see a similar trend when comparing across generations for the Nvidia camp. Looking at the HGX H100 vs the HGX B200 for gpt-oss 120B using FP4 weights, an H100 can process 900,000 token/s per MW while a B200 can process 2.8M token/s per MW ~3x better power efficiency on a B200 vs an H100. When we look at even higher interactivity levels of around 180 tok/s/user, the B200 delivers an eye-popping 7x power efficiency gain.
 
-![](https://substackcdn.com/image/fetch/$s_!iUAH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3b5b1ecd-8df1-48c8-8e21-5bfa9f21352b_1654x1121.png)
+![](z-images/e63c4baf44a8e5063f3631da2365c05e.webp)
 
 Source: SemiAnalysis
 
 Let’s compare power efficiency for GPUs of the same generation across AMD and Nvidia. We will first look at tokens/s per provisioned all in utility MW for GPTOSS 120B. Based on our initial InferenceMAX™ result snapshot below, we see that Blackwell is 20% more energy efficient compared to the CDNA4 architecture when measured by this throughput per power metric. A large factor in this divergence is the fact that the MI355X has a much higher TDP for the GPU alone at 1.4kW/GPU vs 1kW/GPU for the B200.
 
-![](https://substackcdn.com/image/fetch/$s_!4BEC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F594bc030-2862-4521-acf4-d06304a30dce_1687x1121.png)
+![](z-images/913c5af12ac5d6704e0e1757ccb99267.webp)
 
 Source: SemiAnalysis
 
 In our next benchmark, we look at tokens per power at an interactivity level of 30 tok/s/user for DeepSeek R1. When comparing a single node H200 FP8 vs a GB200 NVL72 FP4 (without Multi Token Prediction), the GB200 NVL72 delivers an ~8x improvement in token/s processed per all-in provisioned MW. Note that both the H200 and B200 results are for single nodes. We will explore the potential for greater token throughput per MW for the B200 and H200 that can be unlocked by implementing disaggregated prefill and wide expert parallelism over SpectrumX as well as InfiniBand. SGLang’s [GB200 NVL72 analysis](https://lmsys.org/blog/2025-09-25-gb200-part-2/) shows that 8-GPU systems can indeed achieve strong performance gains through implementing wide expert parallelism. However, the SGLang blog also shows that GB200 NVL72 still beats Hopper even when both implement disaggregated prefill and wide EP.
 
-![](https://substackcdn.com/image/fetch/$s_!s6ea!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe17e8c63-bc2a-4ce2-a9c9-0d00a586de3a_1566x1121.png)
+![](z-images/5f545390a172a1c84c753747c437556c.webp)
 
 Source: SemiAnalysis
 
 Staying on DeepSeek, but turning to FP8, we see that the GB200 also dominates all the single-node systems on tok/s/gpu vs tok/s/user. We note that there are some nuances here – the B200 and the MI355X are both running single node SGLang even though for DeepSeek, vLLM could deliver better results than SGLang on MI355X. We will explore adding DeepSeek on vLLM for the MI355X and/or adding SGLang multi-node wideEP to all of the 8-GPU servers as well. Furthermore, as we called out earlier, note that the Dynamo team has only had time to implement optimizations sufficient to achieve a shift lower in the parallelism pareto frontier up to around 30 tok/s/user. Further optimization can be done to push the pareto frontier lower, and thus lift the throughput per power up on GB200 NVL72 FP8 for higher interactivity levels.
 
-![](https://substackcdn.com/image/fetch/$s_!zK_B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F129e616b-82d6-413b-ae0c-e28f07b27d84_1661x1121.png)
+![](z-images/d80a2873376cbc1cd290cc8e19993b75.webp)
 
 Source: SemiAnalysis
 
@@ -473,7 +473,7 @@ There were a few Blackwell bugs that were quite interesting to troubleshoot. The
 
 The first tool we turned to in order to debug this hanging issue was [py-spy](https://github.com/benfred/py-spy), a python profiler, to collect a trace. We noticed is that it was stuck on [ncclCommInitRank](https://github.com/NVIDIA/nccl/blob/8d26308e6aba7f1667b24a861b5dc73f0f2e1f40/src/init.cc#L1974) which is strange - as many ML performance engineers know, this function should be run very quickly on a single node. Another to note was that vLLM was using their [own custom FFI bindings](https://github.com/vllm-project/vllm/blob/3d1f67616da88cbf0033bf5027cc0c6e5e9cacf6/vllm/distributed/device_communicators/pynccl_wrapper.py#L144) to NCCL due to [various technical reasons](https://github.com/vllm-project/vllm/blob/3d1f67616da88cbf0033bf5027cc0c6e5e9cacf6/vllm/distributed/device_communicators/pynccl_wrapper.py#L4-L23).
 
-![](https://substackcdn.com/image/fetch/$s_!UrkZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F465df901-046f-4109-84b4-7ccaf092f79e_2810x867.png)
+![](z-images/03bf7f79429381d63f389361bdba80dc.webp)
 
 Source: SemiAnalysis
 
@@ -481,13 +481,13 @@ Reading through vLLM’s NCCL bindings, we weren’t convinced that the FFI bind
 
 Next, we used linux [perf](https://perfwiki.github.io/main/) top profiler to look beneath the python layer and try to gain more insight into what specific shared library could be triggering this issue. We noted that most of the CPU cycles for this process (and sub processes) were running on “libnvidia-ptxjitcompiler.so”. Reading the docs on “libnvidia-ptxjitcompiler”, we came across a description that reads: *“The PTX JIT Compiler library (/usr/lib/libnvidia-ptxjitcompiler.so.575.57.08) is a JIT compiler which compiles PTX into GPU machine code and is used by the CUDA driver”.* This is extremely strange as we are not sure why this is calling the PTX compiler on init given that there are no just in time kernels to compile because typically all the NCCL kernels are prebuilt at build time.
 
-![](https://substackcdn.com/image/fetch/$s_!NkiX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa8a1c7d6-51e3-4b5f-85ea-41568792ac21_1937x1121.png)
+![](z-images/2e91700cc7b3b7561fc953fe71b9e35d.webp)
 
 Source: SemiAnalysis
 
 We were too ~~lazy~~ busy to rebuild the whole container image to compile NCCL from scratch with debug symbols enabled. Thus, we next used [strace](https://man7.org/linux/man-pages/man1/strace.1.html) to figure out what syscall calls ptxjitcompiler was making in order to dive one layer deeper into which functions are being called. We see that ptxjitcompiler was creating and adding files to ~/.nv/ComputeCache/ inside the container.
 
-![](https://substackcdn.com/image/fetch/$s_!2JFf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9556f28-f5c9-4ffb-935a-d85b790bbe44_2125x1121.png)
+![](z-images/d8360af49be96ebdaa55c9d9ab2f75da.webp)
 
 Source: SemiAnalysis
 
@@ -495,7 +495,7 @@ Peeling back yet another layer of the onion, we read up on what ~/.nv/ComputeCac
 
 It turns out that the vLLM July container image was based on the pytorch container image which used a version of NCCL that didn’t have Blackwell SM100 prebuilt. The fix is to use a [post fix version of 2.26.2](https://pypi.org/project/nvidia-nccl-cu12/2.26.2.post1/) that has Blackwell bundled such that we don’t waste 30 minutes compiling virtual ISA to machine code. This bug has since been fixed in the latest vLLM container images. Thank you to simon-mo, youkaichao, mgoin, Robert-shaw, ptrblck, and Kedar Potdar for helping implement the permanent fix and immediate action on the quick resolution.
 
-![](https://substackcdn.com/image/fetch/$s_!w1ml!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe242f6a3-f0a2-4a95-9301-c4bdc6695544_1839x1121.png)
+![](z-images/0e42edd322dae52c884e5209f6882373.webp)
 
 Source: SemiAnalysis
 
@@ -533,7 +533,7 @@ To illustrate: InferenceMAX™ currently benchmarks 3 models across up to 7 GPU 
 
 Another bug involved a hard limit when using the [download-artifacts@v5](https://github.com/actions/download-artifact) action. At the end of each full sweep workflow, a job runs that collects and aggregates the performance results from all jobs, which are stored as artifacts of the workflow. As part of the collection process, the download-artifacts@v5 action is called. This initializes an [artifact client](https://github.com/actions/toolkit/blob/main/packages/artifact/src/internal/client.ts), which in turn invokes a [list artifacts function](https://github.com/actions/toolkit/blob/main/packages/artifact/src/internal/find/list-artifacts.ts) (needed to list all artifacts and then pattern match to find the requested one) that enforces a hard limit of 1000 for “performance reasons.” There allegedly should have been a warning printed when the client tries to list more than 1000 artifacts, but we never observed this behavior.
 
-![](https://substackcdn.com/image/fetch/$s_!T5a-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44f22920-4b5c-4e9c-9606-bd0199e77bd0_2351x1121.png)
+![](z-images/c5432f84e441cd35c2f1deec544f1b65.webp)
 
 Source: GitHub
 

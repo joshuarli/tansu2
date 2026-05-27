@@ -12,19 +12,19 @@ Google, OpenAI, and Anthropic are already executing plans to expand their large 
 
 Gemini 1 Ultra was trained across multiple datacenters. Despite having more FLOPS available to them, their existing models lag behind OpenAI and Anthropic because they are still catching up in terms of synthetic data, RL, and model architecture, but the impending release of Gemini 2 will change this. Furthermore, in 2025, Google will have the ability to conduct Gigawatt-scale training runs across multiple campuses, but surprisingly Google’s long-term plans aren’t nearly as aggressive as OpenAI and Microsoft.
 
-![](https://substackcdn.com/image/fetch/$s_!7NUS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0dbb178d-6bbd-4b40-843d-eea46d1c2491_1390x788.png)
+![](z-images/4722574340684d85b77385258d640ed7.webp)
 
 Source: Google
 
 Most firms are only just being introduced to high density liquid cooled AI chips [with Nvidia’s GB200 architecture](https://www.semianalysis.com/p/gb200-hardware-architecture-and-component), set to ramp to millions of units next year. Google on the other hand has already deployed millions of liquid cooled TPUs accounting for more than one Gigawatt (GW) of liquid cooled AI chip capacity. The stark difference between Google’s infrastructure and their competitors is clear to the naked eye.
 
-![](https://substackcdn.com/image/fetch/$s_!8GWt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44d62018-5fba-4ed2-9bda-e78aaacdb1cd_2042x1528.png)
+![](z-images/faeca08d497ab09f00a7c2a24d937b75.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 The AI Training campus shown above already has a power capacity close to 300MW and will ramp up to 500MW next year. In addition to their sheer size, these facilities are also very energy efficient. We can see below the large cooling towers and centralized facility water system with water pipes connecting three buildings and able to reject close to 200MW of heat. This system allows Google to run most of the year without using chillers, enabling a 1.1 PUE (Power Usage Effectiveness) in 2023, as per the latest environmental report.
 
-![](https://substackcdn.com/image/fetch/$s_!Lq6K!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3d0e1e0-4cdf-4877-b9c9-b48913d5844c_2136x1442.png)
+![](z-images/700440771b68b225de04352791516d1d.webp)
 
 Source: Google
 
@@ -32,7 +32,7 @@ While the picture above only shows the facility water system, water is also deli
 
 On the other hand, Microsoft’s largest training cluster today, shown below, does not support liquid cooling and has about 35% lower IT capacity per building, despite a roughly similar building GFA (Gross Floor Area). Published data reveals a PUE of 1.223, but PUE calculation is advantageous to air-cooled systems as Fan Power inside the servers are not properly accounted for – that’s 15%+ of server power for an air-cooled H100 server, vs <5% for a liquid DLC-cooled server. Therefore, for each watt delivered to the chips, Microsoft requires an extra ~45%+ power for server fan power, facility cooling and other non-IT load, while Google is closer to ~15% extra load per watt of IT power. Stack on the TPU’s higher efficiency, and the picture is murky.
 
-![](https://substackcdn.com/image/fetch/$s_!n9lK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6126c5fb-b453-4f12-b87f-869eb0b35953_1570x1406.png)
+![](z-images/2010601417a9a3d18050be7ce4cdb101.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -44,19 +44,19 @@ Therefore, based on existing Datacenter reference designs, Google has a much mor
 
 Google always had a unique way of building infrastructure. While their individual datacenter design is more advanced than Microsoft, Amazon, and Meta’s today, that doesn’t capture the full picture of their infrastructure advantage. Google has also been building large-scale campuses for more than a decade. Google’s Council Bluffs Iowa site, shown below is a great illustration, [with close to 300MW of IT capacity on the western portion despite being numerous years old](https://www.semianalysis.com/p/datacenter-model). While significant capacity is allocated to traditional workloads, we believe that the building at the [bottom hosts a vast number of TPU](https://www.semianalysis.com/p/accelerator-model). The eastern expansion with their newest datacenter design will further increase the AI training capacity.
 
-![](https://substackcdn.com/image/fetch/$s_!cH2L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F176e42e8-ba17-4faa-9097-5be88dc4fb69_2764x1276.png)
+![](z-images/33b49ffc37c71d84b78d197cea406e09.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 Google’s largest AI datacenters are also in close proximity to each other. Google has 2 primary multi-datacenter regions, in Ohio and in Iowa/Nebraska. Today, the area around Council Bluffs is actively being expanded to more than twice the existing capacity. In addition to the campus above, Google also owns three other sites in the region which are all under construction and are all being upgraded with high bandwidth fiber networks.
 
-![](https://substackcdn.com/image/fetch/$s_!m33s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa135b0e2-6fcc-43d8-bbe3-5a68f4bf509b_2009x1503.png)
+![](z-images/2d3e01cd63783268951aea1b4913d747.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 There are three sites ~15 miles from each other, (Council Bluffs, Omaha, and Papillon Iowa), and another site ~50 miles away in Lincoln Nebraska. The Papillion campus shown below adds >250MW of capacity to Google’s operations around Omaha and Council Bluffs, which combined with the above totals north of 500MW of capacity in 2023, of which a large portion is allocated to TPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!-Jkz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a49570b-55a5-4a28-91e8-0594b828e3c3_2800x1186.png)
+![](z-images/175b0bca459f00375b3c398b6982845a.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -64,13 +64,13 @@ The other two sites are not as large yet but are ramping up fast: combining all 
 
 And Google’s massive TPU footprint does not stop here. Another upcoming GW-scale cluster is located around Columbus, Ohio - the region is following a similar leitmotif, with three campuses being developed and summing up to 1 Gigawatt by the end of 2025!
 
-![](https://substackcdn.com/image/fetch/$s_!9aql!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8be09263-1051-4aa5-b6ee-79a6cc96b8f1_1888x1446.png)
+![](z-images/0a0ee77f6d18b761ad37c1dee504363c.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 The New Albany cluster, shown below, is set to become one of Google’s largest and is already hosting TPU v4, v5, v6.
 
-![](https://substackcdn.com/image/fetch/$s_!M7jp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45b08c99-ac21-409e-ab5e-f3f7662a5439_2042x1528.png)
+![](z-images/faeca08d497ab09f00a7c2a24d937b75.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -98,7 +98,7 @@ Before jumping into the Microsoft OpenAI infrastructure buildouts, first a prime
 
 This synchronization involves aggregating the gradients from all replicas, typically through a collective communication operation like an all-reduce. Once the gradients are aggregated, they are averaged and used to update the model's parameters in unison. This ensures that all data replicas maintain an identical set of parameters, allowing the model to converge in a stable manner. The lock-step nature of this process, where all devices wait for each other to complete before moving to the next step, ensures that no device gets too far ahead or behind in terms of the model’s state.
 
-![](https://substackcdn.com/image/fetch/$s_!PMjz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac0f23d2-9fac-4951-81ee-b47816639562_1709x835.png)
+![](z-images/73cf01fed19f02f9750d84904f72b726.webp)
 
 Source: Preferred Networks
 
@@ -108,13 +108,13 @@ As you try to use GPUs from multiple regions towards the same training workload,
 
 According to Amdahl’s Law, the speedup from adding more chips to a workload has diminishing returns when there is a lot of synchronous activity. As you add more chips, and the portion of the program’s runtime that needs synchronization (i.e. corresponding to the proportion of the calculation that remains serial and cannot be parallelized) remains the same, you will reach a theoretical limit where even doubling the number of GPUs will not get you more than a 1% increase in overall throughput.
 
-![](https://substackcdn.com/image/fetch/$s_!TGZl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b25028f-8072-4190-aac9-012cb2edb1b6_823x620.png)
+![](z-images/cfc2b12c56c2aabcf9b9df9f4e35be6b.webp)
 
 Source: Wikipedia
 
 In addition to the theoretical limits of scaling more GPUs towards a single workload described by Amdahl’s Law, there are also the practical challenges of Synchronous Gradient Descent such as stragglers. When just one chip is slower by 10%, it causes the entire training run to be slower by 10%. For example, in the diagram below, from step 7,500 to step 19,000, ByteDance saw their MFU slowly decrease as, one by one, more chips within the workload became slightly slower and the entire workload became straggler-bound.
 
-![](https://substackcdn.com/image/fetch/$s_!NK8L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F899e7918-9dcc-48af-a775-74cc1eef58d4_1291x584.png)
+![](z-images/df6af0bfa2768f0e51fe2108e22dff4e.webp)
 
 Source: ByteDance
 
@@ -134,7 +134,7 @@ As expected, Google, the leader in fault tolerance infrastructure, has the best 
 
 In general, fault tolerance is one of the most important aspects to address in scaling clusters of 100k+ GPUs towards a single workload. Nvidia is way behind Google on reliability of their AI systems, which is why fault tolerance is repeatedly mentioned in NVIDIA’s job descriptions…
 
-![](https://substackcdn.com/image/fetch/$s_!It6y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3076ef35-e7ac-4bb6-9b93-7252fc8b5d0a_634x158.png)
+![](z-images/f851d3426b2d6c9a367a224321842d70.webp)
 
 Source: Nvidia Workday
 
@@ -142,7 +142,7 @@ Tolerance infrastructure in CPU-land is generally a solved problem. For example,
 
 Another example of fault tolerance in traditional CPU workloads on Large Cluster is [MapReduce](https://storage.googleapis.com/gweb-research2023-media/pubtools/4449.pdf). MapReduce is a style of modelling where users can “map” a data sample by processing it and “reduce” multiple data samples into an aggregated value. For example, counting how many letter “W’s” are in an essay is a great theoretical workload for map-reduce: map each word, the map will output how many letter “W”s are in each data sample, and “reduce” will aggregate the number of “W”s from all the samples. MapReduce can implement Fault Tolerance by detecting which CPUs workers are broken and re-execute failed map and reduce tasks on another CPU worker node.
 
-![](https://substackcdn.com/image/fetch/$s_!oGQi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d1607ed-d123-4dd3-9dc0-a15083e9479e_1062x793.png)
+![](z-images/2377a5a5c832637f6e4954dc782f10e7.webp)
 
 Source: Google
 
@@ -154,13 +154,13 @@ In contrast, at hyperscalers and big AI labs, most clusters will be burnt in at 
 
 The wear out failures phase is when components fail at end of life due to fatigue. Often from rapid fluctuation between medium and high temperatures over a 24/7 usage period. Transceivers in particular suffer from high wear and tear due to severe thermal cycling.
 
-![](https://substackcdn.com/image/fetch/$s_!QtTl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9d10f901-4a37-470f-8a22-dc21250aaaf7_1193x805.png)
+![](z-images/74ba84383b6137b146faf3858878f97e.webp)
 
 Source: SemiAnalysis
 
 In CPU land, it is common to migrate Virtual Machines (VMs) between physical hosts when the physical host hosting the VM is showing signs of an increased error rate. Hyperscalers have even figured out how to live migration VMs between physical hosts without the user end even noticing that it has been migrated. This is generally done by copying pages of memory in the background and then, when the user’s application slows down for a split second, the VM will be switched rapidly onto the second, normally functioning physical host.
 
-![](https://substackcdn.com/image/fetch/$s_!87z9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd6ce8a24-0589-4130-9b20-e55b971df60b_1456x738.png)
+![](z-images/a025e8bfccb21d3c36f2b3afb5f4c85d.webp)
 
 Source: SemiAnalysis
 
@@ -168,19 +168,19 @@ There is a mainstream Linux software package called CRIU (Checkpoint/Restore In 
 
 With GPU CRIU checkpointing now available on Nvidia GPUs from the beginning of 2024, one can now migrate the CPU process state, memory content and GPU processes from one physical host to another in a far more streamlined manner.
 
-![](https://substackcdn.com/image/fetch/$s_!GKDE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8e4adb25-6051-4dc0-9623-652bc7024f34_1421x714.png)
+![](z-images/aabd6712a5ecbf066faa66dc49734e12.webp)
 
 Source: SemiAnalysis
 
 In [Microsoft’s Singularity Cluster Manager paper](https://arxiv.org/pdf/2202.07848) the authors described their method of using CRIU for transparent migration of GPU VMs. Singularity is also designed from the ground up to allow for global style scheduling and management of GPU workloads. This system has been used for Phi-3 training (1024 H100s) and many other models. This was Microsoft playing catchup with Google’s vertically integrated Borg cluster manager.
 
-![](https://substackcdn.com/image/fetch/$s_!lvIb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3b3f5f6-f8eb-4e7f-80da-aec36eacfc0d_859x874.png)
+![](z-images/93ed3788260ff3b15ce78f85a5dad5c8.webp)
 
 Source: Microsoft
 
 Unfortunately, due to the importance of fault tolerant training, publishing of methods has effectively stopped. When OpenAI and others tell the hardware industry about these issues, they are very vague and high level so as to not reveal any of their distributed systems tricks. To be clear, these techniques are more important than model architecture as both can be thought of as compute efficiency.
 
-![](https://substackcdn.com/image/fetch/$s_!H4_O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F43fc2632-ba22-43e4-8043-65281f93ee3c_957x506.png)
+![](z-images/3d5ce5ead9bcb0481a69e07ea423f2e0.webp)
 
 Source: OpenAI
 
@@ -188,7 +188,7 @@ Another common issue is Silent Data Corruption (SDC), which leads computers to i
 
 There are also gradient norm spikes that are not caused by hardware SDCs and are in fact caused by a big batch of data or hyperparameters like learning rate and initialization schemes not being properly tuned. All companies running GPU clusters regularly experience SDCs, but it is the generally small and medium Neoclouds that are unable to quickly identify and fix them due to limited resources.
 
-![](https://substackcdn.com/image/fetch/$s_!Mfui!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0690809a-7eba-443d-ad72-5e2eb237a4c3_1239x697.png)
+![](z-images/c292884ebc588927b246d63f276881b3.webp)
 
 Source: Google
 
@@ -198,13 +198,13 @@ Something we experienced in our own testing of H100s from various Neoclouds was 
 
 Google’s Pathways, in contrast, excels at identifying and resolving SDCs. Due to the vertical integration of Google’s infrastructure and training stack, they are able to easily identify SDC checks as epilogue and prologue before starting their massive training workloads.
 
-![](https://substackcdn.com/image/fetch/$s_!2xSt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a5ac612-e358-44da-88c0-0b8c2dd817ab_1243x695.png)
+![](z-images/5c39831dcaf9203d02429ba63d59dfa4.webp)
 
 Source: Google
 
 Asynchronous training used to be a widespread training technique. In 2012, Jeff Dean, the famous 100x engineer from Google Brain, published a paper called [Distbelief](https://research.google/pubs/large-scale-distributed-deep-networks/) where he describes both asynchronous (“Async”) and synchronous (“Sync”) gradient descent techniques for training deep learning models on a cluster of thousands of CPU cores. The system introduced a global “parameters server” and was widely used in production to train Google’s autocompletion, search and ad models.
 
-![](https://substackcdn.com/image/fetch/$s_!o2su!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ff776a0-30f1-494d-baff-c2c27aad6449_850x321.png)
+![](z-images/d28d3ad7f306e01181594a098a79625f.webp)
 
 Source: ResearchGate
 
@@ -216,7 +216,7 @@ In Amdahl’s Law, one way of getting around the diminishing returns when adding
 
 Between buildings within a campus, which are very close together (less than 1km), you have very low latency and very high bandwidth and thus are able to synchronize more often. In contrast, when you are within a region (less than 100km), you may have a lot of bandwidth, but the latency is higher, and you would want to synchronize less often. Furthermore, it is acceptable to have different numbers of GPUs between each campus as it is quite easy to load balance between them. For instance, if Campus A has 100k GPUs and Campus B has only 75k GPUs, then Campus B’s batch size would probably be about 75% of Campus A's batch size, then when doing the syncs, you would take a weighted average across the different campuses.
 
-![](https://substackcdn.com/image/fetch/$s_!qVmq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F16c78adf-aafe-40a7-82c4-e1ca45d6c9ad_990x660.png)
+![](z-images/65e668a5608c05a19ca0230e31ce3bd3.webp)
 
 Source: SemiAnalysis
 
@@ -224,25 +224,25 @@ This principle can be applied between multiple regions and cross-continents wher
 
 To use an analogy this is akin to how you tend to see friends that are closer to you in terms of distance more often than your friends in other cities on the same coast, and you tend to see your friends on the same coast more often than your friends in cities on other continents.
 
-![](https://substackcdn.com/image/fetch/$s_!JmnM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0cc0e8ac-0a4f-464c-ab0b-520c832f81b3_1800x620.png)
+![](z-images/e43a941e385c3166f2272d72bbb77732.webp)
 
 Source: PyTorch
 
 Moreover, another benefit of hierarchy synchronous gradient descent (SGD) is that it helps mitigate stragglers as most stragglers usually appear during a couple of steps but then return to their normal performance, so the fewer syncs there are, the fewer opportunities there are for stragglers to disrupt the sync process during their episodes of abnormal performance. Since there is no global sync at every iteration, the effects of stragglers are less prominent. Hierarchal SGD is a very common innovation for multi-datacenter training in the near term.
 
-![](https://substackcdn.com/image/fetch/$s_!w-wn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda26e025-38ae-45d7-a82c-d8743171be56_1600x1204.png)
+![](z-images/7eb6abd20be587504e217c9cf10ae17c.webp)
 
 Source: PyTorch
 
 Another promising method is to revisit the use of asynchronous parameter servers as discussed in Jeff Dean’s 2012 [DistBelief](https://research.google/pubs/large-scale-distributed-deep-networks/) paper. Each replica of the model processes its own batch of the tokens and every couple of steps, each replica will exchange data with the parameter servers and update the global weights. This is like git version control where every programmer works on their own task for a couple of days before merging it into the master (now called main) branch. A naïve implementation of this approach would likely create convergence issues, but OpenAI will be able to solve update issues in exchanging data from the local model replica into the parameter using various optimizer innovations.
 
-![](https://substackcdn.com/image/fetch/$s_!tFGN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff2f22bdf-0d4a-4a93-8ba4-c7972d7a4078_437x307.png)
+![](z-images/96f60a045ef24b03627ccf938ab25190.webp)
 
 Source: Research Gate
 
 MetaAI’s Branch-Train-Merge paper describes a similar idea where you branch from an existing LLM (master branch) then train on the subset of the dataset before merging it back into the master branch. We believe that learnings from this approach will be incorporated into multi-campus training techniques that companies such as OpenAI will end up using. The main challenge with Branch-Train-Merge and other similar approaches is that merging is not a solved problem for modern LLMs when it comes to classes of models such as GPT3 175B or GPT4 1.8T. More engineering resources will need to be poured into managing merges and updating the master branch in order to maintain convergence.
 
-![](https://substackcdn.com/image/fetch/$s_!Yfh-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F76a7711c-4fd9-434f-a737-9ddad90ed18c_1276x615.png)
+![](z-images/6a307dec545fcc74a1ca9f96c319fa83.webp)
 
 Source: Meta
 
@@ -250,7 +250,7 @@ To extend this into a hierarchy approach, we need to also have tiers of paramete
 
 These local parameter servers will be grouped into higher tiers where each tier aggregates and refines the updates from the lower levels before propagating them upwards. Due to the immense number of GPUs involved, parameter servers will probably need to hold the master weights in FP32. This is similar to how Nvidia’s recommended FP8 training server holds the master weights in FP32 so that it doesn’t overflow from many GPUs accumulating. However, before doing the matrix multiply the training servers will downcast to FP8 for efficiency. We believe that this recipe will still hold true where the master weights in the parameter server will be FP32 but [the actual calculations will be performed in FP8 or even lower such as MX6](https://www.semianalysis.com/p/neural-network-quantization-and-number).
 
-![](https://substackcdn.com/image/fetch/$s_!ObW5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcc151aa7-6468-4df9-808d-2bcec7812427_1218x789.png)
+![](z-images/70c4e1f246bc3a3d00f16f1fab4b8647.webp)
 
 Source: SemiAnalysis
 
@@ -258,19 +258,19 @@ To achieve multi-campus training, Google currently uses a powerful sharder calle
 
 This could be a crutch for them as the industry moves back towards asynchronous training. MegaScaler is built atop the principle of synchronous-style training where each data replica communicates with all other data replicas to exchange data. It may be difficult for them to add asynchronous training to MegaScaler and may require a massive refactor or even starting a new greenfield project. Although Pathways is built with asynchronous dataflow in mind, in practice, all current production use cases of Pathways are fully synchronous SGD style training. With that said, Google obviously has the capabilities to redo this software stack.
 
-![](https://substackcdn.com/image/fetch/$s_!1DU7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F69fa7969-529b-4c5a-b7d9-d45281986830_1977x668.png)
+![](z-images/1781346d5342f8a97617177d5fece536.webp)
 
 Source: Google, Jeff Dean
 
 There are two main limitations when networking datacenters across regions: bandwidth and latency. We generally believe that longer term the limiting factor will be the latency due to speed of light in glass, not bandwidth. This is due to the cost of laying down fiber cables between campus and between regions is mostly the cost of permitting and trenching and not the fiber cable itself. Thus laying 1000 fiber pairs between say Phoenix and Dallas will only be slightly higher cost than laying down 200 fiber pairs. With that said, the industry operates in a regulatory framework and timescales in which fiber pairs cannot be laid in an instant, therefore strategies for reducing bandwidth are still very critical.
 
-![](https://substackcdn.com/image/fetch/$s_!xAU6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a7d28d0-4912-48e8-b282-302a521062d5_908x600.png)
+![](z-images/602fed285fed84203e8bdcaa63fe2a78.webp)
 
 Source: SemiAnalysis
 
 We believe the models that will be trained on this multi-campus, multi-region training cluster will be on the order of magnitude of 100T+. Between AZs within a region, we believe that growing to around 5Pbit/s between campus sites within a region is a reasonable assumption of what they can scale to within the near future, while 1Pbit/s is a reasonable amount of bandwidth between regions. If the cross-datacenter bandwidth is that truly that high, exchanging weights between campus sites is not a major bottleneck for training as it only takes 0.64 seconds at line rate. When exchanging 400TeraBytes (4Bytes = param) of weights, only taking 0.64 seconds is very good considering how much time it will take for every couple of compute steps.
 
-![](https://substackcdn.com/image/fetch/$s_!pIXK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F169a7cab-72e3-4b0c-ac3a-7a0a3df0821b_1738x315.png)
+![](z-images/d146de3d9619e0f88afc3948d557ced7.webp)
 
 Source: SemiAnalysis
 
@@ -289,7 +289,7 @@ Greater bandwidth is achieved by a combination of
 
 On the modulation front, Datacom typically uses VCSEL and EML based transceivers that are capable of PAM4 modulation, an intensity modulation scheme (i.e. Intensity Modulated Direct Detection – IMDD optics) which is achieved by using four different levels to signal, encoding two bits of data per symbol.
 
-![](https://substackcdn.com/image/fetch/$s_!QilB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50721bf9-b069-4527-9a0a-5134ee41da97_755x343.png)
+![](z-images/be3e9ef2642d1335a5664e25b13abb1d.webp)
 
 Source: ResearchGate
 
@@ -297,7 +297,7 @@ Higher speeds are achieved by either increasing the rate at which symbols are se
 
 16-Quadrature Amplitude Modulation (or 16-QAM) is one such scheme that is widely used in ZR/ZR+ optics and telecom applications. It works by not only encoding four different amplitudes of signal waves, but also using two separate carrier waves that can each have four different amplitudes and are out of phase with each other by 90 degrees, for a total of 16 different possible symbols, delivering 4 bits per symbol. This is further extended by implementing dual polarization, which utilizes another set of carrier waves, with one set of carrier waves on a horizontal polarization state and the other on a vertical polarization state, for 256 possible symbols, achieving 8 bits. Most 400ZR/ZR+ and 800ZR/ZR+ transceivers only support up to DP-16QAM, but dedicated telecom systems (with a larger form factor) running on good quality fiber can support up to DP-64QAM for 12 bits per symbol.
 
-![](https://substackcdn.com/image/fetch/$s_!GBow!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4fdda494-c976-4401-b1a0-dfabede8a649_565x420.png)
+![](z-images/8da54bf0dab04115a17979d384cb52f8.webp)
 
 16 different possible waveforms in 16-QAM. Source: EverythingRF
 
@@ -307,19 +307,19 @@ Coherent optics require the use of a coherent Digital Signal Processor (DSP) cap
 
 ZR/ZR+ optics are an increasingly popular transceiver type that use coherent optics and are designed specifically for datacenter interconnect, delivering much greater bandwidth per fiber pair and achieving a far greater reach of 120km to 500km. They also typically come in an OSFP or QSFP=DD form factor - the same as is commonly used for datacom applications - meaning they can plug directly into the same networking switches used in datacom.
 
-![](https://substackcdn.com/image/fetch/$s_!naLF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F753be8e4-f2c6-417d-bd9f-3764bffe058d_1873x613.png)
+![](z-images/75cd4d313f792a36c4150608338a3615.webp)
 
 Source: SemiAnalysis
 
 Traditional telecom systems can be used for datacenter interconnect, but this requires a much more complicated chain of telecom equipment occupying more physical space in the datacenter compared to ZR/ZR+ pluggables, which can plug directly into a networking port on either end, sidestepping several telecom devices.
 
-![](https://substackcdn.com/image/fetch/$s_!nqqG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c0f4945-907e-43f1-9712-e365960daedc_975x552.png)
+![](z-images/2e00b47fbcc14f98f69e70237899c846.webp)
 
 Source: Cisco
 
 Higher order modulation schemes enable more bandwidth per fiber pair, 8x more in the case of DP-16QAM, as compared to Intensity Modulated Direct Detection (IMDD) transceivers using PAM4. Long reach still has fiber limitations though, so Dense Wave Division Multiplexing (DWDM) can also be used to enable even more bandwidth per fiber pair. DWDM works by combining multiple wavelengths of light into one fiber pair. In the below example, 76 wavelengths on the C band (1530nm to 1565nm) and 76 wavelengths on the L band (1565nm to 1625nm) are multiplexed together onto the same fiber.
 
-![](https://substackcdn.com/image/fetch/$s_!ZBSM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb272f427-18db-42fc-b5b7-5c45491c407a_1284x602.png)
+![](z-images/43a4a595e01c701f61ce99a8ce64f22d.webp)
 
 Source: Ciena
 
@@ -337,13 +337,13 @@ A typical fiber optics business case might assume a considerable number of fiber
 
 When it comes to hyperscaler telecom networks, the preference is to build their own networks as opposed to working with telecom providers, working directly with equipment vendors and construction companies for long haul, metro, and datacenter interconnect needs.
 
-![](https://substackcdn.com/image/fetch/$s_!eiUk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb41ed52-4033-4f7e-8da8-0b704fabc539_2662x1488.png)
+![](z-images/7d26d5599bd663c2c2c5181d65b7167f.webp)
 
 Source: Microsoft
 
 Datacenter interconnect, connecting two datacenters less than about 50km apart in a point-to-point network, is typically built by laying down thousands of fiber optic pairs. The hyperscaler can plug ZR transceivers into network switches inside each of the two distant datacenters, and either tune the transceivers to different wavelengths of light then combine up to 64 transceivers onto a single fiber pair using a passive multiplexer (i.e. a DWDM link), reaching up to 25.5 Tbps per fiber pair if using 400ZR, or simply plug each ZR transceiver into its own fiber pair.
 
-![](https://substackcdn.com/image/fetch/$s_!8_de!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffccf502f-d4c1-4d0a-bad5-2322c0cea783_2862x772.png)
+![](z-images/60bbe69e68762a845b4ebad510799a61.webp)
 
 Source: Arista
 
@@ -351,19 +351,19 @@ More elaborate telecom systems also implementing DWDM can be used to multiplex m
 
 Since most of the cost is in digging up the trench for the optics, most hyperscalers find it easier to deploy a lot more fiber pairs than needed, saving space within the data hall and avoiding a more complicated telecom deployment. They would typically only resort to deploying extensive telecom systems for short distances if they are deploying fiber in locations that have constraints in obtaining physical fiber capacity, which can be the case outside the United States, when hyperscalers might be forced onto as little as 2-4 fiber pairs in metros with scarce fiber availability.
 
-![](https://substackcdn.com/image/fetch/$s_!99KC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff81d8853-1c3b-4d4d-8938-d00b275d7bf5_2246x1422.png)
+![](z-images/4117b2bac57767f3f9f3d84ec9095b9d.webp)
 
 Source: Anritsu
 
 For long-haul networks however, hyperscalers will need to employ a full suite of telecom products that are very distinct from products used in datacom. A typical long-haul network will at least require a few basic systems: Transponders, DWDM Multiplexers/Demultiplexers, Routers, Amplifiers, Gain Equalizers, and Regenerator Sites, and in most but not all cases, ROADMs (Reconfigurable Optical Add/Drop Multiplexers) and WSSs (Wavelength Selective Switches).
 
-![](https://substackcdn.com/image/fetch/$s_!bMKD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3843d27b-ad3f-4552-bd1c-c0bce3b8b2b6_2444x1390.png)
+![](z-images/0d4f5c2a6b7155dd3b8a51783bf09d32.webp)
 
 Source: TelecomHall
 
 A transponder provides a similar function to a transceiver in the telecom space but is much more expensive and operates at higher power levels. One side transmits/receives into the actual telecom network (line side), with the other offering many possible combinations of ports to connect to client devices (client side) within that location. For example, a transponder might offer 800Gbps on the line side, and 4 ports of 200Gbps optical or electric on the client side, but there are innumerable combinations of port capacities and electrical/optical that customers can choose from. The client side could connect to routers or switches within a datacenter, while the line side will connect to Multiplexers to combine many transponders’ signals using DWDM and potentially ROADMs to allow optical switching for network topologies more complicated than simple point-to-point connectivity.
 
-![](https://substackcdn.com/image/fetch/$s_!Ihus!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F250327c0-0f20-474c-97a2-4c9ea008b247_1258x1070.png)
+![](z-images/0d6e0d1942a9e0c4c65873c06b61ef54.webp)
 
 A typical transponder. Source: Ciena
 
@@ -373,13 +373,13 @@ Optical amplifiers are needed to combat the attenuation of light signals over lo
 
 If the network connects more than two points together and has multiple stops where traffic is added or received at, then a ROADM (Reconfigurable Optical Add/Drop Multiplexer) is needed. This device can optically add or drop specific wavelengths of light at a given part of the network without having to offload any of the signals to an electrical form for any processing or routing. Wavelengths that are to be transmitted or received by a given location can be added or dropped from the main fiber network, while others that do not carry traffic to that location can travel through the ROADM unimpeded. ROADMs also have a control plane and it can actively discover and monitor the network state, understanding which channels on the fiber network are free, channel signal to noise ratio, reserved wavelengths, and as discussed above, can control transponders, tuning the line side to the appropriate wavelength.
 
-![](https://substackcdn.com/image/fetch/$s_!tNw6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0ba5d73f-1325-4830-9ca1-107025dfbbdf_1562x820.png)
+![](z-images/ccb8ad9d4ba23c0dcf4ee53bad1f609c.webp)
 
 Source: Ciena
 
 These various components are typically combined together in a modular chassis that could look something like this:
 
-![](https://substackcdn.com/image/fetch/$s_!oDtC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e27f1c8-18d6-499d-8777-b1a7bb56b992_1281x800.jpeg)
+![](z-images/7c4e62d07490753a5131cbd705c37409.webp)
 
 Source: Optical Connection News
 

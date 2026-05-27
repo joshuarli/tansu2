@@ -34,7 +34,7 @@ YouTube summary video available [here](https://www.youtube.com/watch?v=cZp9eJCWX
 
 Before we even get to the results, we’d like to point that since releasing v1.0 in late March, our highest rated Neoclouds have collectively booked nearly $400Bn in Remaining Performance Obligations (RPOs). This further reinforces the idea that our rating system translates well across the ecosystem from technical users to key decision makers looking to contract compute.
 
-![](https://substackcdn.com/image/fetch/$s_!OiQ6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe19b49d3-ef75-4137-b024-caddfdcb412d_720x264.png)
+![](z-images/97ca3c65db353c5b61d23e6e454e93f1.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -42,13 +42,13 @@ Source: SemiAnalysis Tokenomics Model
 
 ClusterMAX 2.0 debuts with an updated ranking list:
 
-![](https://substackcdn.com/image/fetch/$s_!OXF3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3e88b22-b4dd-46bf-b1d3-96e354e47e28_1738x873.png)
+![](z-images/960f3ee740959dbb8f3fa06a91654da1.webp)
 
 ClusterMAX 2.0 Rankings, November 2025
 
 We also release an updated market tracker by type:
 
-![](https://substackcdn.com/image/fetch/$s_!6ano!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a4defe4-d5db-4916-869d-cf635d58c218_2044x1390.png)
+![](z-images/f30b08e66b94c213b0007a8f1fdb309e.webp)
 
 ClusterMAX 2.0 Market View, November 2025
 
@@ -234,15 +234,15 @@ These simple tests generally complete in under one minute. We treat them as a pr
 
 Some of the results are interesting to view when comparing providers directly:
 
-![](https://substackcdn.com/image/fetch/$s_!fQEI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3bb72a24-f855-4287-91b2-521293452af4_4953x2313.png)
+![](z-images/a04a7a2dc88cd2c152a8391978bc30df.webp)
 
 Source: ClusterMAX testing for standalone VMs
 
-![](https://substackcdn.com/image/fetch/$s_!gWVp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac891514-403e-473e-91d6-b3f81d9b9aa5_4953x2313.png)
+![](z-images/6e5ae612463a9d1bcefebc9048f695ed.webp)
 
 Source: ClusterMAX testing for standalone VMs
 
-![](https://substackcdn.com/image/fetch/$s_!6xXR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F478e9e22-7b9d-4259-bc7c-0e50cb208fce_2678x1212.png)
+![](z-images/bd6dbfd94ebb879ecefcb60f4f4ba09f.webp)
 
 Source: ClusterMAX testing for standalone VMs and slurm clusters
 
@@ -285,13 +285,13 @@ At this time, Slinky is broken into separate projects, most importantly [slurm-o
 - slurmrestd – provides an API endpoint for slurmctld
 - slurmdbd – a database to store job stats, i.e. who ran what
 
-![](https://substackcdn.com/image/fetch/$s_!RpDQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fca3efb4c-f405-475a-b0df-315e4e7b2e62_600x600.png)
+![](z-images/a6f516f0b96e83b34dcdfd40c2b39873.webp)
 
 Source: Futurama
 
 To do this, slinky introduces a new process, slurm-operator, for managing the slurm resources on the cluster. Slinky also introduces a separate login pod, managed as a CRD “LoginSet” that runs the sshd, sackd, and sssd processes needed for users to run commands against the slurm cluster such as srun, sbatch, salloc, scontrol, squeue, sinfo, sacct, and sacctmgr.
 
-![](https://substackcdn.com/image/fetch/$s_!qFoK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F69c852fc-10cf-4b46-a5ae-bff7ccf8ecb8_791x631.png)
+![](z-images/0a5a2895a992b86b408eeda0313b0ba4.webp)
 
 Source: https://github.com/SlinkyProject/slurm-operator
 
@@ -313,7 +313,7 @@ Technically, Soperator is a Kubernetes Operator that automates the deployment an
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!VjCr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1d95061-ebe5-4c69-8a90-6e265e2242db_936x736.png)
+AI-generated content may be incorrect.](z-images/46a8894e4daa69fcb0bf6306541ea184.webp)
 
 Source: Soperator Architecture diagram from the project repo: https://github.com/nebius/soperator
 
@@ -323,7 +323,7 @@ Finally, to describe SUNK in detail, it is important to focus on the difference 
 
 ![A screenshot of a video call
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!XmlC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F14c6b951-6c41-4b46-be45-7cb7f028dcd3_418x287.png)
+AI-generated content may be incorrect.](z-images/5830b25dac0991793dc282b6e9497b25.webp)
 
 Source: CoreWeave. Reference docs here
 
@@ -377,11 +377,11 @@ This was particularly potent at GCP and AWS, who went for NVL36x2 instead of a f
 
 As shown below, NVL36x2 racks experience these intermittent NVLink reliability issues between the cross-rack ACC cables that take two NVL36 racks and connect them together to make a logical NVL72. These ACC cables and the flyover cables have troublesome signal integrity issues due to their additional length.
 
-![](https://substackcdn.com/image/fetch/$s_!gpA1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ddfa740-1a05-45c5-a222-2cf1e2901c67_2336x1480.png)
+![](z-images/f54bbe9100f1ee41864d919c26c8ca20.webp)
 
 168 thicc ACC cables linking two NVL36 racks together to form an NVL72 at Meta (via Meta’s Catalina presentation at HotChips 2025)
 
-![](https://substackcdn.com/image/fetch/$s_!av2h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb96672f5-dcf5-43c5-b647-e279c9c842d5_3386x1814.png)
+![](z-images/d56756165d3ed3408446c21caf7f920f.webp)
 
 AWS advertising their P6e-GB200 = NVL36\*2 = NVL72 servers (via AWS on YouTube)
 
@@ -438,7 +438,7 @@ On the surface, crypto miners are not yet competing at the Platinum or Gold tier
 
 No firm better exemplifies the Bitcoin-to-AI pivot than IREN. It operates one of the world’s largest mines in Childress, TX, shown below.
 
-![](https://substackcdn.com/image/fetch/$s_!9zEM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45ab672e-37bc-4063-b0ab-761257b4240a_1428x953.png)
+![](z-images/a0a87379fa79ca704b879b60b6d11a5e.webp)
 
 Source: SemiAnalysis AI Datacenter Model
 
@@ -446,7 +446,7 @@ IREN has successfully pivoted to Bare Metal Wholesale Cloud, scoring a 200MW dea
 
 While they’ve been very successful at selling GPU Cloud capacity, their economic returns aren’t what has commonly been depicted by market participants. [Our AI Cloud TCO Model](https://semianalysis.com/ai-cloud-tco-model/) (trusted by the world’s largest GPU buyers and financial leaders) estimates the precise economics of the IREN/Microsoft deal, allowing users to compare it with other large deals like Nscale, CoreWeave, Nebius, Oracle, and more. Our [AI Tokenomics Model](https://semianalysis.com/tokenomics-model/) further expands on this work by tracking the flow of compute supply and the different sources of demand to the various token factories that ultimately make use off this compute. AI labs like OpenAI and Anthropic feature prominently as the ultimate users of much of this compute capacity!
 
-![](https://substackcdn.com/image/fetch/$s_!n3i3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F438e3499-d154-485e-acf5-4baa9e5ec765_936x494.png)
+![](z-images/0fcd6683c253aa5cca394500767bdeae.webp)
 
 Source: IREN Press Release
 
@@ -534,7 +534,7 @@ When we tried to get access to DGX Cloud for testing, we needed to have an intro
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!B8wZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9311c62a-6a50-4a1d-8afb-91bf3210f7f9_935x732.png)
+AI-generated content may be incorrect.](z-images/b0574d6ede81ebad7b5547bba63b2f94.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -555,13 +555,13 @@ Note that this works out to $4.05 per A100-hr, the worst price we have seen anyw
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!lUdA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F432ed07a-f1ae-474f-a5bc-9a331af3fee9_936x692.png)
+AI-generated content may be incorrect.](z-images/5ebdf866089d7173c5706d375c5f7f43.webp)
 
 Source: Azure, Nvidia
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!ig36!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F62fba08b-44f7-4d76-92ec-f7d9e8e2a2b7_936x692.png)
+AI-generated content may be incorrect.](z-images/3aa8fdc1d7fb5347f8a0619022c32044.webp)
 
 Source: Azure, Nvidia
 
@@ -569,7 +569,7 @@ With that said, Nvidia has also acquired Brev, a useful frontend for Neoclouds s
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!LELf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffe01e294-1006-4cb9-9b23-000b6c4878f5_936x471.png)
+AI-generated content may be incorrect.](z-images/c23e8de92606e73574aa0811c07b1715.webp)
 
 Source: Nvidia
 
@@ -577,7 +577,7 @@ We very much look forward to testing out Lepton, DGX Cloud, and Brev in the futu
 
 Eventually, we were also provided the opportunity to test Lepton.
 
-![](https://substackcdn.com/image/fetch/$s_!QvIH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff8827598-08e7-4629-96cb-c7b56f04f5a7_3184x1714.png)
+![](z-images/a6aecd0365b6ee8308af39c4dcc98baf.webp)
 
 Source: Nvidia, DGX Cloud Lepton
 
@@ -717,7 +717,7 @@ Note that these pages will be updated over time.
 
 Thank you for taking the time to review ClusterMAX 2.0! Going forward, you can see up-to-date rankings and interim news at [http://clustermax.ai/](http://clustermax.ai/), or by reaching out to us at [clustermax@semianalysis.com](mailto:clustermax@semianalysis.com)
 
-![](https://substackcdn.com/image/fetch/$s_!wP-d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa561ef5-7fa1-4a79-b70e-d93951471e95_2760x1810.png)
+![](z-images/2af7c8f2b1e9df98fb476e110f405c97.webp)
 
 The homepage of the clustermax.ai website. Source: SemiAnalysis
 
@@ -796,7 +796,7 @@ On the backend network, InfiniBand network isolation is implemented by changing 
 
 ![A collage of different cables
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Qhje!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F64268219-bec7-4ebe-91be-5e7fbc0a293c_935x534.png)
+AI-generated content may be incorrect.](z-images/3ddf8d013be8582fcc2887a230d83081.webp)
 
 Source: CoreWeave
 
@@ -836,7 +836,7 @@ By tracking events like simultaneous XID or SXID errors across the fabric, CoreW
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Ok0z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5ddb3f17-6379-4995-8c9e-d3bea778e4f9_936x636.png)
+AI-generated content may be incorrect.](z-images/be5cf5f4baac01367f1094e2af25dc89.webp)
 
 Source: CoreWeave simulating some errors on our cluster
 
@@ -848,7 +848,7 @@ This example highlights that even small improvements in hardware stability and i
 
 ![A table with text on it
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!WKIC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0d9eb732-36a5-4a60-8cbe-9b929f2a182b_936x549.png)
+AI-generated content may be incorrect.](z-images/604f1a9df6dbf7b056c133d1523d2ddf.webp)
 
 Source: The Llama 3 Herd of Models https://arxiv.org/abs/2407.21783
 
@@ -856,7 +856,7 @@ This section of this paper has also become infamous for two other reasons: a men
 
 ![A close-up of a text
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!ETih!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03b0c4ca-8a5f-41c4-9d6d-76dab48edf85_930x308.png)
+AI-generated content may be incorrect.](z-images/ef5f9aa10965e7fde4e7ea7bdcbbf0c9.webp)
 
 Source: The Llama 3 Herd of Models https://arxiv.org/abs/2407.21783
 
@@ -892,7 +892,7 @@ In addition, CoreWeave’s “direct to expert” support model means that all c
 
 ![A screenshot of a message
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!xqlJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd98fcd18-383d-40fe-b664-de6d617bab40_578x280.png)
+AI-generated content may be incorrect.](z-images/985b7a6c72a5ad89e0141095bab753f3.webp)
 
 Source: CoreWeave
 
@@ -900,7 +900,7 @@ Last time, we recommended that CoreWeave work on a UI console flow for deploying
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Kh7_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F84800a5c-6b9a-4832-865f-9bcfb71e8f05_936x508.png)
+AI-generated content may be incorrect.](z-images/dcd36655cc3bb7b6a0b45a3a667b1355.webp)
 
 Source: CoreWeave
 
@@ -922,7 +922,7 @@ While we are aware of their struggles in securing colocation deals and establish
 
 ![A screenshot of a website
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!7803!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2786b950-f482-424a-85f6-0a53e8b6166c_935x516.png)
+AI-generated content may be incorrect.](z-images/523f700dae02a58be2dfcf06203a09c1.webp)
 
 Source: Nebius
 
@@ -947,7 +947,7 @@ The control plane also looks nice:
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!WuiY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4cd7168-85d2-428f-bf86-1fb76e9503f0_937x660.png)
+AI-generated content may be incorrect.](z-images/847d9c734f989baedab1b65f6e896377.webp)
 
 Source: SemiAnalysis Nebius cluster
 
@@ -957,7 +957,7 @@ Unlike CoreWeave’s bare-metal-first strategy, Nebius has built its platform on
 
 ![A screen shot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!HNOA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F11d49df2-690f-4d8a-b9e4-de7ed73d1cbc_518x148.png)
+AI-generated content may be incorrect.](z-images/9992a6cb5c08f7aaf344acc0258f21d4.webp)
 
 Source: SemiAnalysis Nebius cluster
 
@@ -983,7 +983,7 @@ Interestingly, since all of this is being integrated into SOperator, and Soperat
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!VtJL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F82ef1e50-f573-4155-a180-32b5871ddb9b_935x494.png)
+AI-generated content may be incorrect.](z-images/cf4006cb26be86e35da0d352b6119009.webp)
 
 Source: Nebius Soperator on GitHub
 
@@ -993,13 +993,13 @@ Around the same time we got notified about the improvements to the dashboard and
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!MAvP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6108afa3-2d8a-4fb8-9c11-1de2059a312a_936x309.png)
+AI-generated content may be incorrect.](z-images/e39025c4688e4bc66e0c5024423f9523.webp)
 
 Source: Nebius
 
 ![A diagram of a computer program
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!oqr3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2e1c842-6ae7-4974-9958-4da08be8d043_936x226.png)
+AI-generated content may be incorrect.](z-images/69e9986ce1d8b140d7e47ed65adc337e.webp)
 
 Source: Nebius https://nebius.com/blog/posts/how-we-build-reliable-clusters
 
@@ -1017,7 +1017,7 @@ We encourage customers to track this reliability data for themselves, especially
 
 ![A screenshot of a computer error message
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!9dMR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F14f8d842-3d8f-423a-b777-552113266e08_854x468.png)
+AI-generated content may be incorrect.](z-images/5750ca364402484307db77b51217801a.webp)
 
 Source: Nebius https://nebius.com/blog/posts/how-we-build-reliable-clusters
 
@@ -1043,7 +1043,7 @@ Oracle just posted the most incredible quarterly earnings the market has ever se
 
 ![A screenshot of a computer screen
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!ZcrH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44192941-3be5-40f8-b4ba-348096089482_936x671.png)
+AI-generated content may be incorrect.](z-images/273cae8f83afef38814a82239399b628.webp)
 
 Source: Oracle
 
@@ -1055,7 +1055,7 @@ Oracle’s default setup is typically provisioned through the console, using Ter
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!jhz4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c28227d-728e-413f-bf31-a4b5ec9e5736_935x336.png)
+AI-generated content may be incorrect.](z-images/d5d3eb456f03e3d822c96e61f5f7506e.webp)
 
 Source: SemiAnalysis Oracle Linux headache
 
@@ -1065,7 +1065,7 @@ In order to deploy a slurm or kubernetes cluster through the OCI console, users 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!EOKU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ee8adbd-3c4e-4dee-a980-dad1e7f8f67f_935x502.png)
+AI-generated content may be incorrect.](z-images/25b25591333fcb6c01918f54c64a0645.webp)
 
 Source: SemiAnalysis OCI console
 
@@ -1081,7 +1081,7 @@ In terms of networking, the default for OKE to use an RDMA network in Kubernetes
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!UM-s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F885c73c5-d50d-4a69-9e9b-e1909928916a_936x690.png)
+AI-generated content may be incorrect.](z-images/90e74bf62a381f4c4215e0f13d10b5b0.webp)
 
 Source: Oracle HPC on OKE repo https://github.com/oracle-quickstart/oci-hpc-oke/blob/main/docs/running-pytorch-jobs-on-oke-using-hostnetwork-with-rdma.md
 
@@ -1089,7 +1089,7 @@ The initial testing phase suffered from a lack of integrated health checks. Whil
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!YcGx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8c94afe-05bc-48a1-a06f-130e5147e0de_936x306.png)
+AI-generated content may be incorrect.](z-images/367c5a61d5c76eb05e80dc38a5d159a3.webp)
 
 Source: Oracle
 
@@ -1115,7 +1115,7 @@ As an example, when deploying a CycleCloud cluster, the current documentation fo
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!-gJX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F38e571f6-0d68-463a-a971-5649830a1019_937x467.png)
+AI-generated content may be incorrect.](z-images/50d2d183512975d53902342d8294f06f.webp)
 
 Source: Azure
 
@@ -1123,7 +1123,7 @@ However, the comprehensive nature of a hyperscaler cloud platforms also has some
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!k5IT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdd8528d9-f71b-4de4-babd-ad473510f54e_937x467.png)
+AI-generated content may be incorrect.](z-images/abf52c83d375142dd168707e37cd04db.webp)
 
 Source: Azure
 
@@ -1141,7 +1141,7 @@ Fluidstack is the only cloud to debut in our Gold tier this round, and certainly
 
 This is clear when it comes to customers such as Meta, Poolside, Blackforest Labs, and an unnamed customer running in a TeraWulf datacenter in Buffalo that got a massive financial backstop from Google.
 
-![](https://substackcdn.com/image/fetch/$s_!rVG8!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa04517a4-c162-4caf-a74e-7ff7ec044783_937x500.png)
+![](z-images/663c5a9e03a95b5c2babdbfb52388c3d.webp)
 
 Source: Fluidstack
 
@@ -1185,7 +1185,7 @@ Crusoe has announced:
 
 Interestingly, Prometheus has debuted Crusoe’s Digital Flare Mitigation technology publicly for the first time. During oil extraction, at sites like the Permian Basin, natural gas flaring is a waste product. However with DFM, Crusoe is able to install onsite mobile datacenter units that divert the waste product to generators for the datacenter onsite. These DFM’s have been announced as “Crusoe Spark”, and now include all the requisite infrastructure required to host B200s.
 
-![Crusoe introduces Crusoe Spark: Modular AI data centers for scalable edge  computing](https://substackcdn.com/image/fetch/$s_!PGll!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac83abd3-c9ec-43a5-85de-186d8fabb3ae_936x526.jpeg)
+![Crusoe introduces Crusoe Spark: Modular AI data centers for scalable edge  computing](z-images/05bfbabe5f0f88fe6779b195534a5151.webp)
 
 Source: Crusoe Spark launches (via Crusoe on YouTube)
 
@@ -1193,7 +1193,7 @@ After all these announcements, Crusoe is left with a claimed 3.4GW of datacenter
 
 ![A screenshot of a website
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!mCt9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F214c7c4a-8cc4-4368-a9d3-6c464fa3174a_937x397.png)
+AI-generated content may be incorrect.](z-images/a0b8d78112013f50a2886296497e9e6e.webp)
 
 Source: Crusoe.ai
 
@@ -1205,7 +1205,7 @@ Starting up a cluster is simple, via the Crusoe CLI, avoiding complicated terraf
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!FP6i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6a435e9-0276-472d-b8d4-90d95a97ba9b_641x639.png)
+AI-generated content may be incorrect.](z-images/56b00bf241d2b3eafbc2c29acdd8c172.webp)
 
 Source: Crusoe
 
@@ -1223,19 +1223,19 @@ We found that in November 2023 the Icelandic Data Center ICE02 from atNorth star
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!2sao!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a52486d-933a-4cfc-9dde-54adfdb05413_937x694.png)
+AI-generated content may be incorrect.](z-images/44a753da76ab5cb6243bc17556821693.webp)
 
 Source: EDIS Global
 
 ![A screenshot of a computer screen
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!vy7B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37303b2d-250d-418d-b83a-d73f4edecf14_937x719.png)
+AI-generated content may be incorrect.](z-images/7e24533af4d25cf8c0505393bdbceb91.webp)
 
 Source: https://status.edis.global/notices/y2d8vjath5kvmq8t-iceland-potential-volcanic-eruption
 
 ![A map of a city
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!R9Vb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0808ec5-423a-4805-a804-cfced30fe539_936x829.png)
+AI-generated content may be incorrect.](z-images/ec8a675414a2d9140978352402e942d8.webp)
 
 Source: Google Maps. Checking in to see how long it would take an atNorth datacenter technician to visit an active volcano on their lunch break
 
@@ -1243,7 +1243,7 @@ It is our understanding that this datacenter Crusoe now calls home has continued
 
 ![A person holding a blue and green electrical wire
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!9YC8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb520d037-0aae-485d-960d-50bcf89ac500_937x652.png)
+AI-generated content may be incorrect.](z-images/e54244706bf9c2a2beaebfac5809b1d0.webp)
 
 Source: trueCable on YouTube
 
@@ -1267,7 +1267,7 @@ The Kubernetes onboarding experience was less polished. Instead of providing a k
 
 ![A screenshot of a computer program
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Csqy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d4c4089-b55b-43bc-a687-9619706269bb_936x819.png)
+AI-generated content may be incorrect.](z-images/dfc79f9da5fd8d6991b90969f993bb54.webp)
 
 Source: Together. Trying to use our TKS cluster L
 
@@ -1295,7 +1295,7 @@ Notably, 1-Click Clusters aren’t really one click, as you need to wait for app
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!DOw0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff30c7652-e758-40dd-b0a1-c15ef0d3e2fa_936x242.png)
+AI-generated content may be incorrect.](z-images/e31235f68f7e6dc62ef82793b88b3418.webp)
 
 Source: Lambda Labs
 
@@ -1303,7 +1303,7 @@ For users that want an on-demand machines instantly, Lambda is generally conside
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!MPHl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb2e1e4cd-aa7d-4ed1-b78b-f12886012569_935x486.png)
+AI-generated content may be incorrect.](z-images/6c683db7c334e2e5eb0c9d700ff79a75.webp)
 
 Source: Lambda Labs: trying to get an on-demand GPU instance from Lambda
 
@@ -1311,7 +1311,7 @@ Also, for a hot minute, Lambda appeared to be getting into the serverless infere
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!G540!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9c6481a-22dc-4998-9964-47344c99dc46_936x598.png)
+AI-generated content may be incorrect.](z-images/6a7431924eda1aa3d98b14ac1b0c2f9d.webp)
 
 Source: Lambda Labs
 
@@ -1333,13 +1333,13 @@ The script is also scheduled to run on a regular cadence in a low-priority, “p
 
 ![A computer screen shot of a program
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!7Eom!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F886e4633-5588-4da7-aed5-ed1427531a17_935x725.png)
+AI-generated content may be incorrect.](z-images/aa2bad0b899d0027d8826f80788a016f.webp)
 
 Source: our Lambda test cluster
 
 ![A computer screen shot of a black screen
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!eIrW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa61413b0-5ee2-456e-b2a2-b13e50e1d551_935x224.png)
+AI-generated content may be incorrect.](z-images/7f8a8649fc2b7906f87f85e32316acd1.webp)
 
 Source: our Lambda test cluster
 
@@ -1349,13 +1349,13 @@ With that said, some of the access issues we encountered point to broader operat
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!6UO2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7df56f4d-e298-4e9d-a53d-cba66c254179_937x557.png)
+AI-generated content may be incorrect.](z-images/1adfeaac822a3e81b753bd3127cd1e95.webp)
 
 Source: Lambda Labs
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!ZdHp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F74617ea2-6c23-4630-bf0f-e7a9b810ae31_937x496.png)
+AI-generated content may be incorrect.](z-images/d2d5910f076bf39746c0fade3972246d.webp)
 
 Source: Lambda Labs
 
@@ -1377,7 +1377,7 @@ Interestingly, the cluster also demonstrated self-healing capabilities; when we 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!2zoS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0ab2ffbc-3459-42f7-bbec-94bd13b1b201_935x524.png)
+AI-generated content may be incorrect.](z-images/1a5e6070ee032fffe123ec8e0f49e061.webp)
 
 Source: Google Cloud. Deleting a SLURM Cluster on GKE. This UI sparks joy
 
@@ -1403,7 +1403,7 @@ For monitoring, google integrates DCGM metrics right into the main cluster dashb
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!ZPjc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1c1f0c4-32da-479b-8692-765a865157b9_935x479.png)
+AI-generated content may be incorrect.](z-images/00443c2d34ea918784045de206ed2a9b.webp)
 
 Source: Google Cloud
 
@@ -1415,19 +1415,19 @@ Going forward, we have concerns about NVL72 rack-scale architectures in Google d
 
 ![A diagram of a network
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!DF5M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3eccc5d0-4ca5-458e-85f9-42dcef9b2797_936x1187.png)
+Description automatically generated](z-images/c9beae9b30d6337508b6b32cb7bdd1d8.webp)
 
 Source: SemiAnalysis GB200 hardware arch
 
 ![A screenshot of a computer
 
-Description automatically generated](https://substackcdn.com/image/fetch/$s_!CFNe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73f31e58-83f7-4bae-aa39-7ee1bd8cbccb_936x572.png)
+Description automatically generated](z-images/a674f98ab27cb4ab2ca9d6fb7fac8bdd.webp)
 
 Source: SemiAnalysis GB200 hardware arch
 
 but in practice users of GCP or AWS NVL36x2 have been waiting weeks or months longer to get stable firmware, and get the rack to a point of stability where they can run basic collectives.
 
-![Google shares photos of liquid-cooled NVIDIA Blackwell GB200 NVL racks for AI cloud platform 603](https://substackcdn.com/image/fetch/$s_!Yp1z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb25cb704-5eb8-4a14-9a71-6ff33e17426b_668x1001.jpeg)
+![Google shares photos of liquid-cooled NVIDIA Blackwell GB200 NVL racks for AI cloud platform 603](z-images/ff6700c694a1439f360cd8f01ecf40d1.webp)
 
 Source: An NVL36x2 engineering build, via Google on Twitter
 
@@ -1443,13 +1443,13 @@ With that said, the process to get the CloudFormation scripts to work correctly 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!lmyP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9cc47afa-5361-46ec-9d5b-3b30bd0aa740_937x421.png)
+AI-generated content may be incorrect.](z-images/97e405c535327c300ba419fa621bcfd6.webp)
 
 Source: AWS
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!gl8j!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F63f48c6d-8d31-4976-8fd1-698756843dc8_937x362.png)
+AI-generated content may be incorrect.](z-images/d8941bda2b263200054d6b86172492a0.webp)
 
 Source: Requesting and approving quota for ourselves on the AWS console
 
@@ -1471,7 +1471,7 @@ On health checks, AWS does have a relatively comprehensive approach to health ch
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!DPK_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F441d976b-d94a-4dc9-9a26-b22bb93ebf2d_936x645.png)
+AI-generated content may be incorrect.](z-images/cc4e67d6237e4de35847840601eb210e.webp)
 
 Source: Deep Health Checks on AWS https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-eks-resiliency-deep-health-checks.html
 
@@ -1479,7 +1479,7 @@ Finally, on networking, not much has changed since our previous article. AWS rem
 
 On GB200, their p6e platform uses NVL36x2 and runs into the same NVLink unreliability troubles as GCP where the cross rack NVLink ACC cable causing major issues.
 
-![Amazon Web Services develops cooling technology for next generation Nvidia  GPUs - DCD](https://substackcdn.com/image/fetch/$s_!VtHS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcd6e31a4-8405-45e5-8dd5-1688fcb33c7b_936x491.jpeg)
+![Amazon Web Services develops cooling technology for next generation Nvidia  GPUs - DCD](z-images/87d53c09520bcbe40ab47191c9aed2b8.webp)
 
 Source: AWS
 
@@ -1509,7 +1509,7 @@ The company’s primary offering for high-end AI is centered entirely on slurm f
 
 ![A screenshot of a computer program
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!r7fD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff8b85c85-be81-4b4f-b116-deca7acebb4d_935x598.png)
+AI-generated content may be incorrect.](z-images/1bd42ae9d002825d199c3dc8b55256ff.webp)
 
 Source: Scaleway
 
@@ -1539,7 +1539,7 @@ The GCORE platform is feature rich, with a nice balance of usability and strong 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!HQ3I!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb200cc78-4890-4c38-90ad-cb7e86ac6a8d_937x510.png)
+AI-generated content may be incorrect.](z-images/89b5f816008729887c1f6c9215b0c53c.webp)
 
 Source: The GCORE console (alt: what we wish our AWS console looked like)
 
@@ -1547,7 +1547,7 @@ The onboarding process began with a series of manual hurdles where we quickly re
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!ZEE8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6c9e9284-6f8d-4ddd-b2fa-9f67e6a4e21d_937x495.png)
+AI-generated content may be incorrect.](z-images/50cc53f080145223d1de0dd46728fec8.webp)
 
 Source: GCORE
 
@@ -1555,7 +1555,7 @@ Forging ahead, we followed the required steps: creating a three virtual networks
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!NQE1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feae21b51-4c1b-4fe1-a0ea-7aae893b1734_937x505.png)
+AI-generated content may be incorrect.](z-images/481d09b5326fd6d25571561fdd7fc469.webp)
 
 Source: Setting up a router for our Kubernetes cluster on GCORE
 
@@ -1577,13 +1577,13 @@ As mentioned previously, the Firmus monitoring stack is unique, going beyond sta
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!ECPy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F11a1344a-e46a-49c1-aeca-da6c023cb9f7_894x392.png)
+AI-generated content may be incorrect.](z-images/241a41b6cd035e7eca23523e17cd4928.webp)
 
 Source: Firmus Custom Monitoring Dashboard for Immersion Tanks
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Hz_s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff610ff4e-5907-4f66-aaa4-104c67fe15a0_937x454.png)
+AI-generated content may be incorrect.](z-images/21614a0b6b42801ac83e2ad7409ed3c5.webp)
 
 Source: Firmus Customized Grafana Dashboard, showing relevant GPU Utilization Metrics during a training run
 
@@ -1597,7 +1597,7 @@ We focused on slurm as kubernetes is not available, and quickly found that sinfo
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!1YkV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F47e14b4a-62b3-45c7-aee1-abea36895992_790x481.png)
+AI-generated content may be incorrect.](z-images/bb46333f1aeced7f96e474cffd3f2b7b.webp)
 
 Source: SemiAnalysis using GMO convenience scripts
 
@@ -1619,7 +1619,7 @@ To kick things off, Vultr set the record for this round of ClusterMAX by bringin
 
 ![A screenshot of a website
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!aQk6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F134631bf-ecf8-4abf-9216-b4445ce7626e_936x598.png)
+AI-generated content may be incorrect.](z-images/adc31cb1c3316781d3c4d993b736b4a8.webp)
 
 A screenshot of a website AI-generated content may be incorrect.
 
@@ -1627,13 +1627,13 @@ When we started our testing, the Vultr SLURM service seemed brand new, like a se
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!-YDx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb36e8c64-9698-483e-9d32-c10253107baf_477x244.png)
+AI-generated content may be incorrect.](z-images/56907e940043c0956008ffdacf91ba9b.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
 ![A screen shot of a computer program
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!0hbp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5661a17e-509b-4500-bc40-1a8c7ea32f01_694x314.png)
+AI-generated content may be incorrect.](z-images/21674704a65eca30dbe55ee3d9d76a73.webp)
 
 A screen shot of a computer program AI-generated content may be incorrect.
 
@@ -1645,7 +1645,7 @@ During testing, we had some intermittent link flaps that eventually went away on
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!A7zn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5750b6c8-290f-4cfe-98de-4292ed80da61_935x800.png)
+AI-generated content may be incorrect.](z-images/f303e5cae8e9d1d5db72feac53e9553a.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -1653,7 +1653,7 @@ After eventually getting nccl-tests to run at full bandwidth on the kubernetes c
 
 ![A screen shot of a computer screen
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!4SbE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcbd41255-92a5-4296-b599-aac95d1f3c9d_937x272.png)
+AI-generated content may be incorrect.](z-images/b1d51fabfb75b2d37c71e4ec538c1898.webp)
 
 Source: a beautiful sight
 
@@ -1671,7 +1671,7 @@ Our initial experience with slurm included a lot of provisioning challenges, wit
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!nh9-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2fc1fb9-c6d2-42d6-8bb7-f0de9e07b378_937x442.png)
+AI-generated content may be incorrect.](z-images/51fbb6235e4da97cbb18cd595789a5f7.webp)
 
 Source: Spinning up a SonK cluster in Voltage Park, right from the console
 
@@ -1691,7 +1691,7 @@ Our testing on Tensorwave’s SonK platform has shown it to be largely unstable.
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!bUi8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8feae912-04d3-41c6-bae6-0f0236850397_936x561.png)
+AI-generated content may be incorrect.](z-images/76c9f6dfeb1c95dbef35171594028a62.webp)
 
 Source: our Tensorwave Console
 
@@ -1711,7 +1711,7 @@ On the cluster, slurmctld was running directly on a compute node, and the enviro
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!vQpv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F42dd5b79-c08f-4724-b66a-96d52b6935bd_726x545.png)
+AI-generated content may be incorrect.](z-images/be85282731f0d44bbb44c38dee3660cf.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -1733,13 +1733,13 @@ Unfortunately, STN’s biggest weakness was reliability. During testing, we saw 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!1LeD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb05aabfe-462f-4d90-a316-c7fb3a17450d_936x230.png)
+AI-generated content may be incorrect.](z-images/55ea2f6df4737be66597f9def7a74c7e.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!1sdk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d4badd1-4890-4f36-885c-ba0fd43a9958_936x191.png)
+AI-generated content may be incorrect.](z-images/93d60a51fe94f7ca036ab4dd10ec96d9.webp)
 
 Checking in on our nodes in “down” state on different occasions
 
@@ -1747,7 +1747,7 @@ We suggest that in the future, STN focus on actual cluster reliability instead o
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!UvoQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60568609-cfe9-4750-81cc-fc0647b7fd5d_937x457.png)
+AI-generated content may be incorrect.](z-images/3931f47be1ee12c75b6d5ada6363fac7.webp)
 
 Source: says that we have evaluated our own SLA and are approaching 100%
 
@@ -1763,7 +1763,7 @@ For our testing, we were provided with a 4-node SLURM cluster, a feature that wa
 
 ![Screens screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!TcPW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7540cdec-e850-4878-8291-af81ab0fd471_937x490.png)
+AI-generated content may be incorrect.](z-images/f2d7fbf1453812836d93ee156d85dfe4.webp)
 
 Spinning up a slurm cluster on prime
 
@@ -1783,7 +1783,7 @@ At the time of testing, Neysa did not have a Kubernetes offering available for u
 
 ![A screenshot of a phone
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!5Z1W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F304d92fb-1a08-449f-9af4-1fcf61e70ce6_937x442.png)
+AI-generated content may be incorrect.](z-images/9e0efc306bdfff7cbce964345a79e5c7.webp)
 
 A screenshot of a phone AI-generated content may be incorrect.
 
@@ -1793,7 +1793,7 @@ Hyperstack has a snappy, easy-to-use web portal, where we can quickly and easily
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!YCOW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb116b492-30b7-47e1-b2f3-4a11e289ca61_937x500.png)
+AI-generated content may be incorrect.](z-images/e9f760cb5101e8aa1c8fe577c09fe08b.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -1801,17 +1801,17 @@ However, in our direct testing we also found that either their flagship Kubernet
 
 ![A screenshot of a web page
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!M5yv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c9eb707-93bd-4748-8e36-05ea73a8308c_937x498.png)
+AI-generated content may be incorrect.](z-images/caff0ab71ca78ab0c0a7303b26ccd9a2.webp)
 
 A screenshot of a web page AI-generated content may be incorrect.
 
 On our second attempt, with different GPUs, more progress was made. After 4 hours stuck in the “Creating” stage, it did look like some machines were created and public IPs were allocated to the cluster.
 
-![](https://substackcdn.com/image/fetch/$s_!afJ1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F444f9277-628c-48c2-a56d-c4d24e83f31a_937x497.png)
+![](z-images/62ead005664c50b07e1b4489a924b602.webp)
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!U2L_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F19b91477-1c1a-4bd6-9284-4c34decac75a_937x486.png)
+AI-generated content may be incorrect.](z-images/627219735fb127c76215dc511c8b0dc2.webp)
 
 Our kubernetes cluster, waiting for something to happen
 
@@ -1825,7 +1825,7 @@ The company acknowledges that the focus of Atlas is in transition, having shifte
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!MviJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa8960789-7b48-4ce8-af9d-29dbb4da61f2_936x494.png)
+AI-generated content may be incorrect.](z-images/f7dcb3d8693898b166c7ba9a3cd5a521.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -1837,7 +1837,7 @@ BuzzHPC is the AI division of HIVE Digital Technologies (fka HIVE Blockchain), a
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!jTgs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faebb0014-9b67-4425-a79e-4b4f91668cd3_936x511.png)
+AI-generated content may be incorrect.](z-images/b76e32a7bc0d57d8a94591ce29f3e710.webp)
 
 Source: our sources
 
@@ -1859,7 +1859,7 @@ So, we quickly confirmed that both GPUDirect RDMA was not installed, and ACS was
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!b_t_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F855a2823-51fe-492e-aad4-1d47a4f19b6f_936x478.png)
+AI-generated content may be incorrect.](z-images/80afc195a3d52c63643bb2e2f6ce0ca3.webp)
 
 The BuzzHPC Console
 
@@ -1873,7 +1873,7 @@ Shadeform operates as a marketplace for GPU compute rather than a direct provide
 
 ![A screenshot of a computer program
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!8VZx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F865d2258-5385-470a-a5a4-632ee5bde9b9_936x501.png)
+AI-generated content may be incorrect.](z-images/943e486b8c88c603ca04c57674e0e4e2.webp)
 
 Source: Hovering over the Nebius icon to check it’s stack of compliance certifications on the Shadeform console
 
@@ -1897,7 +1897,7 @@ On monitoring and health checks, we expect it will continue to be difficult for 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!IPz7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e4b9378-bfa4-4d7f-9b7f-75536fd451c9_935x594.png)
+AI-generated content may be incorrect.](z-images/55d384f9b99ba3bfb3e3606e67db97f4.webp)
 
 Source: looking at some European regions on the runpod console
 
@@ -1909,7 +1909,7 @@ Verda (formerly DataCrunch) is based in Finland, with datacenters in both Finlan
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Otg1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd3bd5227-745d-4b79-a84e-9a4f1629b40d_936x514.png)
+AI-generated content may be incorrect.](z-images/b3c9d5b6f675925d172b3f7cde8b72ca.webp)
 
 Source: nice, intuitive setup for spinning up a cluster.
 
@@ -1933,7 +1933,7 @@ Overall we recommend that Verda shore up their reliability challenges, finalize 
 
 Digital Ocean is another case of a traditional cloud provider attempting to get into the GPU game. However, with standard pricing of $3.44 per H200-hr, no slurm and no kubernetes, we expect it will be difficult for them to compete for business where the customers is not already locked into their ecosystem.
 
-![](https://substackcdn.com/image/fetch/$s_!-See!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F87f4c53a-e6c3-4a3f-a990-607ebc7d5338_937x652.png)
+![](z-images/3a2d323b49a0a3e309b4226349aa1cd0.webp)
 
 Trying to create a “GPU Droplet”
 
@@ -1949,13 +1949,13 @@ Unfortunately, when we tried to line up testing with IBM, they went so far as to
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!5PiB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6fa58846-1f43-4d61-8698-dfefd7c5f257_937x528.png)
+AI-generated content may be incorrect.](z-images/2e7c775770552ab4cd7d790e4380b764.webp)
 
 IBM blocking us from testing their services L
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!n2RA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2919c64-8af9-4c2f-bce6-2bd5f893e130_893x282.png)
+AI-generated content may be incorrect.](z-images/7f1dd5eef00544d189e858b488cdfcb2.webp)
 
 More obscure errors
 
@@ -1963,13 +1963,13 @@ Even when trying to circumvent this verification process, IBM’s Account Verifi
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Ujkf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F19449cdd-1fbe-4fc1-b650-d0b5d7e63147_936x495.png)
+AI-generated content may be incorrect.](z-images/d1a3f7360e1cbe61663a91b81707f1a5.webp)
 
 Learning that a GPU is “extra brain power” the CPU lacks
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!D2Gg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feb48203b-36be-4c02-81ab-ca910353a052_936x495.png)
+AI-generated content may be incorrect.](z-images/89da0151da17cc9a69bcfd765b592a55.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -1977,7 +1977,7 @@ Though there are lots of promotions available via coupon code, in the default re
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!eiym!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c004f5f-29f3-4be3-ad88-a0a631ce92d4_936x495.png)
+AI-generated content may be incorrect.](z-images/898d218f107d4573a21ed6a27bc44b43.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -1991,7 +1991,7 @@ Hot Aisle is an AMD-exclusive neo cloud offering MI300X GPUs in 1-way VMs or 8-w
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!vF5O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39aaf715-ee9d-4fbc-a80b-048d800abeca_936x866.png)
+AI-generated content may be incorrect.](z-images/3467ea47f7d86fc76c22c52616231cda.webp)
 
 AMD’s xGMI interconnect available between 4x GPUs
 
@@ -1999,13 +1999,13 @@ At this time, Hot Aisle does not have shared storage, monitoring dashboards, hea
 
 ![A computer screen shot of a computer program
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!EW8Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e32b293-7f4c-4e30-9ee1-26040902054b_935x318.png)
+AI-generated content may be incorrect.](z-images/92c53cfa42dd700969d516e1d751febb.webp)
 
 Business is booming – only 3 GPUs available!
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!B26d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2ab1165-f4a9-4bb7-b16d-12bad12369b7_936x459.png)
+AI-generated content may be incorrect.](z-images/e77327d9d74fd1df57e0eaf5fc61865f.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2019,7 +2019,7 @@ Our testing experience confirms the platform’s architectural focus: it is almo
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!rvPX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79f87294-7c31-4830-b15f-0d81d3f85441_936x585.png)
+AI-generated content may be incorrect.](z-images/0a990455cfda094b0c3324828c7c1ce6.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2033,7 +2033,7 @@ Our hands-on experience started with their web console, which offers a highly co
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!kMyB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9e504a74-35b5-4bc5-a6a9-bc0b30051572_936x510.png)
+AI-generated content may be incorrect.](z-images/ea2a5f18940637a6042fd59da4655d62.webp)
 
 Spinning up a VM on CUDO Compute
 
@@ -2049,7 +2049,7 @@ Lightning.ai (aka Lightning Cloud) is a broker for GPU machines in neoclouds and
 
 Fast forward to today, with LLMs on the rise, there is a split in the market. Older frameworks like NVIDIA NeMo use Lightning under the hood, while new frameworks that we use in our testing such as torchtitan, verifiers and Megatron-LM do not. The open source `pytorch-lightning` and `lightning` packages are still growing rapidly:
 
-![](https://substackcdn.com/image/fetch/$s_!Lt7_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6c9e41f3-542b-4c43-9248-19ccd74462dd_1101x633.png)
+![](z-images/bb880e6d579921969577662c27151fcf.webp)
 
 Source: Lightning.ai, data from pypi
 
@@ -2057,13 +2057,13 @@ Functionally, the Lightning Cloud product offers a simple way to track who’s u
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!C0kk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8800c025-6159-4a42-a150-476d1fcf6641_937x494.png)
+AI-generated content may be incorrect.](z-images/297697587d723731b8be0f9d552dac30.webp)
 
 Source: our lightning.ai homepage
 
 Notably, these multi-GPU studios, batch jobs, and mmt training jobs are restricted to users on a Pro, Teams or Enterprise Custom payment tier. Lightning is the only neocloud we have seen charging a per-seat price, and translating that into GPU-hrs behind the scenes on clusters that they manage for the customer.
 
-![](https://substackcdn.com/image/fetch/$s_!uxyB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fecaa1389-1d7e-4182-8bcc-0736c661011b_1224x694.png)
+![](z-images/b9248c02c3839fffeee0b9e7e373faac.webp)
 
 Source: lightning.ai/pricing
 
@@ -2071,7 +2071,7 @@ Interestingly, there is an easy way to attach/detach GPUs to existing “studios
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!sPmD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d6ff237-f89c-463e-9deb-8eba5bad656a_937x494.png)
+AI-generated content may be incorrect.](z-images/9a6aad04a5dd34e2619c02258858c1f3.webp)
 
 Using a VSCode notebook in Lightning.ai
 
@@ -2089,7 +2089,7 @@ Our hands-on testing of their individual VM offering was a mixed bag. On the pos
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!WNak!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F43dcf57e-250a-4d1d-b9b5-bcfb77fc714b_936x499.png)
+AI-generated content may be incorrect.](z-images/c31904b77c269bc30fcaecd95ebdfe26.webp)
 
 Source: the Qubrid console
 
@@ -2107,7 +2107,7 @@ Unfortunately, we had a couple issues during testing, where an L40S VM reported 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!0cGs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcc9497ec-7fe4-417e-9380-92957a039809_935x205.png)
+AI-generated content may be incorrect.](z-images/9b8bc8e9703fb1056c5a724fdbc38f19.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2133,13 +2133,13 @@ Unfortunately, it seems that much of the original Denvr team has now left the co
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!6rqe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67f8f0d9-1ee2-4927-930b-eaa7ae6dbfe3_937x496.png)
+AI-generated content may be incorrect.](z-images/3633983caea7ee64bc3eb358b711fb9c.webp)
 
 Can’t spin up a VM without a VPC
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!cRIh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa1866d60-824a-494d-96e0-16a973b5210b_937x496.png)
+AI-generated content may be incorrect.](z-images/8a924b907de187a019f8b3d0b36f9217.webp)
 
 Can’t make a VPC without talking to a sysadmin
 
@@ -2164,7 +2164,7 @@ However, upon signing up for an account and logging in to their “Client Area�
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!RQYT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc1cda8ef-20f4-40e9-8557-0bda7926e278_935x649.png)
+AI-generated content may be incorrect.](z-images/9153a28ab39bf775286ef3aefe2b9184.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2172,7 +2172,7 @@ Despite the console showing “ready” for this VM for quite a while, it took 6
 
 ![A screenshot of a computer program
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!MY0k!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F51ed670b-1e98-469e-8c97-f7092db7822e_630x234.png)
+AI-generated content may be incorrect.](z-images/96a724d3d0df86f46d73d18512095874.webp)
 
 A screenshot of a computer program AI-generated content may be incorrect.
 
@@ -2180,13 +2180,13 @@ And then a minute later… it just went away
 
 ![A screenshot of a computer program
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!kWSb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a49619b-88e2-42bf-bea3-c2209a0de78d_772x589.png)
+AI-generated content may be incorrect.](z-images/f5d9ab252557c33f5438e6ac328aaaed.webp)
 
 A screenshot of a computer program AI-generated content may be incorrect.
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Vsg-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F740e5192-17cf-47f6-ae65-65d042b03f9f_481x367.png)
+AI-generated content may be incorrect.](z-images/0732f9b020afd4983ae4298c579b763e.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2196,7 +2196,7 @@ But, then it came back. And this time it didn’t go away.
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!5quC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4cba2ef5-fb64-4bde-a376-f117f310917e_935x354.png)
+AI-generated content may be incorrect.](z-images/041ce229407cdbeb6ba6e3d3865d5afb.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2204,7 +2204,7 @@ After waiting for 22 minutes more, we cut our losses and shut down the instance.
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!FK-R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0cbdb807-bd18-4428-85db-8ac542b0a5c7_936x646.png)
+AI-generated content may be incorrect.](z-images/1b8a645597a1f98ac11c9f6a7c5f53cc.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2229,7 +2229,7 @@ Hydra Host is another marketplace/broker that operates without any security comp
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Rzez!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F64637967-950e-410a-9333-d7481a20bd73_937x496.png)
+AI-generated content may be incorrect.](z-images/434faa43c2d67d6268f37d09451f1cd9.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2237,7 +2237,7 @@ In total, when we tested, Hydra was “at capacity” for the A4000, 3090, 5090,
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!I42k!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ec1a57b-e3bb-4291-a8d9-a98d1164799c_937x490.png)
+AI-generated content may be incorrect.](z-images/1cf3e4c87d9f6a302a1bcc397414096e.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2273,7 +2273,7 @@ Unfortunately, DeepInfra’s only current offering in the neocloud market, an 8x
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!wPUP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fde6ea251-b133-43de-8321-5da1e4a34773_936x495.png)
+AI-generated content may be incorrect.](z-images/ba29ca94a53babb37fa9d85cd5d907f4.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2289,7 +2289,7 @@ However, the abstraction comes with a significant lack of transparency. It’s u
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!WB6_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50859f48-9e02-459e-9496-8f13c395ff70_936x422.png)
+AI-generated content may be incorrect.](z-images/ae537363bcc3af4318590ae9fdc36a2b.webp)
 
 Getting offers for 2x H100 from providers via dstack
 
@@ -2299,7 +2299,7 @@ This experience highlights the multiple layers of indirection in the Dstack mode
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!aS3F!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ea80b64-1339-4fcb-b58a-419ac9a8b8f8_937x293.png)
+AI-generated content may be incorrect.](z-images/f42f42285e4dd4a3f8cf6d97be707834.webp)
 
 An RL eval job on 1x H100, using the \`verifiers\` repo
 
@@ -2319,7 +2319,7 @@ Our hands-on testing began with exceptionally fast provisioning time, with a new
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!cOeF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F310f7227-f93e-46e8-92bf-01b423cab3cc_935x536.png)
+AI-generated content may be incorrect.](z-images/16eaef494b1981aefb52d3891e50042e.webp)
 
 Source: a brand new H100 node on Hyperbolic
 
@@ -2327,13 +2327,13 @@ Platform reliability emerged as the most critical failure. Our testing was plagu
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!gEww!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d43c154-df2f-4982-a966-87971c0ef20d_937x503.png)
+AI-generated content may be incorrect.](z-images/088b6bb8bc77af167268559e04ae6525.webp)
 
 Source: unknown status…
 
 ![A screenshot of a computer screen
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!2XaJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3f881b9-e577-4392-b50d-8a042303b87b_937x503.png)
+AI-generated content may be incorrect.](z-images/e30cfa94c81b2176bfcf2888d656d826.webp)
 
 Source: error in the hyperbolic UI
 
@@ -2347,7 +2347,7 @@ Unfortunately, Aethir is not truly a self service experience, requiring prospect
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!-Nmh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4014c43e-7359-40bd-b8f4-4ae83ef6841b_937x897.png)
+AI-generated content may be incorrect.](z-images/f630868e0508998d0537b951d92c247d.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2359,7 +2359,7 @@ Akash is a decentralized marketplace with a supposed 64 active providers on “M
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!6yGR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ff3a7ae-f4f5-472e-a6ea-f3030109a225_937x497.png)
+AI-generated content may be incorrect.](z-images/d23431780215b57a327d55b862fbe1d5.webp)
 
 Requesting a 1x H200 deployment
 
@@ -2367,7 +2367,7 @@ Unfortunately, we weren’t able to access any H100 or H200 on the platform. Int
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!XHEv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a504cd5-04d6-4f51-b58f-3dfc27eb350a_937x497.png)
+AI-generated content may be incorrect.](z-images/6639ec9251e54a333862f58e495591cb.webp)
 
 Waiting for bids… L
 
@@ -2379,7 +2379,7 @@ Salad Cloud is another decentralized marketplace that focuses primarily on consu
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Cz-N!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F733157c5-77e5-456f-aa9d-de55b0d04bc6_937x554.png)
+AI-generated content may be incorrect.](z-images/4bed68a87ca16475fa598ad4f03e40b8.webp)
 
 Source: security disclaimers on the Salad Cloud website
 
@@ -2403,7 +2403,7 @@ With that said, even if GPU compute was a liquid, commoditized market, we would 
 
 ![A screenshot of a black and white screen
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!y6Pc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c4b349d-c2a9-4275-b356-5d8946095494_937x554.png)
+AI-generated content may be incorrect.](z-images/27270f6b9500613c63890c73de944552.webp)
 
 Source: a 3-month wait, and counting.
 
@@ -2413,7 +2413,7 @@ GPU.net is yet another marketplace, and one of the biggest by the numbers. The h
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!rPP2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80cc70a2-0d6f-45e7-9ff9-5596ea565901_936x490.png)
+AI-generated content may be incorrect.](z-images/1c7a5f0cc67935b1655c494c65c405f1.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2421,7 +2421,7 @@ Pricing is reasonable for on-demand, at $2.15/hr per H100. Unfortunately, all H1
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!lUag!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc64c3f51-785d-44d6-8edd-e8a31c02cef0_936x509.png)
+AI-generated content may be incorrect.](z-images/f3d608004e8d2a95b36cb7696006df37.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2437,7 +2437,7 @@ In the previous version of ClusterMAX, we commented on how Massed Compute, a rea
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!auJk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F280aedc2-eb37-45aa-9dd2-a310d2aa0e83_935x520.png)
+AI-generated content may be incorrect.](z-images/3e4b394d82f873f3fbff1fc686894077.webp)
 
 Source: Massed Compute’s chatbot hallucinating a new H100, the “dual GPU”
 
@@ -2457,7 +2457,7 @@ Back to the present day, Sesterce seems to have reasonable availability of NVIDI
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!btir!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F603065b6-44e6-4116-98f2-9ebb5ad04a27_936x493.png)
+AI-generated content may be incorrect.](z-images/b2d83cd128d1addbbb2b6fa799293bff.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2465,7 +2465,7 @@ Users can easily create volumes in the Region where they are planning to launch 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!z3WE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0347acb-bac2-4785-a262-1a813cff2a27_936x493.png)
+AI-generated content may be incorrect.](z-images/36ec806f02b808513723b865c294d53d.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2473,7 +2473,7 @@ Users can also configure a specific docker image to pre-load in the machines cac
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!brEa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f27eba5-e5c4-4b92-abcb-176f3d89804a_936x493.png)
+AI-generated content may be incorrect.](z-images/7eea7fcc1af5efcce0e11ec384ba3614.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2485,7 +2485,7 @@ Unfortunately, these clusters are just bare metal machines with a shared storage
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!IsLO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8955655e-f408-40fd-839f-e9f0d5759772_755x532.png)
+AI-generated content may be incorrect.](z-images/67c1db1aca70e96bec6724b841f47dfb.webp)
 
 Logging into a Sesterce machine, with a docker image already loaded in cache
 
@@ -2503,13 +2503,13 @@ The testing process began with an aggressive KYC (Know Your Customer) procedure 
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!3Avy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F415627f0-54bd-4749-8860-1c6130e88e0a_935x496.png)
+AI-generated content may be incorrect.](z-images/9505d4f8a44fff7d6168914f3a42f98d.webp)
 
 Creating a SLURM cluster
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!imcj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb316922d-1332-4665-a379-996ba5e49532_619x233.png)
+AI-generated content may be incorrect.](z-images/bb52ceed1b7dcef7ab3fe30e5964cdd5.webp)
 
 Unable to create a shared fs
 
@@ -2517,7 +2517,7 @@ The most serious issue occurred while we were stuck in this queue, waiting for o
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!6Q2W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9d778784-6cb0-429d-8c0f-3b5412b7252b_936x496.png)
+AI-generated content may be incorrect.](z-images/d032d0aaa09dcc428ad88182684ddc5e.webp)
 
 Owing $7,061.05 for a cluster stuck in “creating” stage
 
@@ -2529,7 +2529,7 @@ As one of Europe’s largest cloud providers, OVHcloud has a massive footprint a
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!LcyS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a33147d-1e8c-48a4-974f-2c618f740271_937x709.png)
+AI-generated content may be incorrect.](z-images/a7a338aaa617a5c81193b916a6101f5c.webp)
 
 Source: the most modern GPU available at OVH is an H100 PCIe (for £2.41 at that)
 
@@ -2617,7 +2617,7 @@ Alibaba Cloud also provides a managed Slurm solution as part of its Elastic High
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!Fm86!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F99935c55-61fa-4d7b-8554-4134875c70c4_937x500.png)
+AI-generated content may be incorrect.](z-images/d73ccbe9f46098eab4b02b74a77dc154.webp)
 
 Source: not much GPU selection in the Chinese availability zones
 
@@ -2641,7 +2641,7 @@ Bitdeer is Singaporean-based company that spun out of Bitmain, the largest Chine
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!SyDh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96bde92c-288b-48aa-af4e-fecc450e4184_936x485.png)
+AI-generated content may be incorrect.](z-images/20dfb3e5ea9442b06be4329b3b1ad451.webp)
 
 A screenshot of a computer AI-generated content may be incorrect.
 
@@ -2653,7 +2653,7 @@ Beyond hands on testing, Bitdeer has some big plans. Their site in Massillon, Oh
 
 ![Aerial view of a warehouse
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!tCM8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ca6c597-11b7-46f8-a52e-2454732b20ac_936x706.png)
+AI-generated content may be incorrect.](z-images/0f1ca8dc0d327edf592cba2c99ecbdf7.webp)
 
 Source: SemiAnalysis Datacenter Model
 

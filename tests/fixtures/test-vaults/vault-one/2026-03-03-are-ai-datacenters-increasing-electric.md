@@ -14,13 +14,13 @@ The topic of datacenter load growth and impact on power prices remains broadly m
 
 This report explores the question by analyzing the two biggest energy markets in the US, which are also the largest AI Datacenter hubs: the PJM interconnection area – the grid operating covering 13 eastern US states (including New Jersey) - and ERCOT, who oversees the electric grid in Texas. In the Lone Star State, prices have been roughly stable for the last three years. On the other hand, the 67 million residents of the PJM area are set to see their bill increase by an average of ~15% in 2026 relative to the “pre-AI-Datacenter” era? Why such a divergence? In short, empirically the fault is government policy, not AI.
 
-![](https://substackcdn.com/image/fetch/$s_!YaBK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4cbff97-5557-4b44-aaa1-539add752ebc_2400x1125.png)
+![](z-images/48fae2b885901ad31bf25fba2d542f3b.webp)
 
 Source: SemiAnalysis Energy Model, PJM, Monitoring Analytics
 
 In PJM, we think poor market design is the main culprit. Most of the 15% increase in household electricity bills in PJM is driven by a widely misunderstood and somewhat obscure mechanism: the BRA capacity auction. The 2025/26 auction increased 9.3x over the prior year, as shown below. Worse: this increase is driven by a “simulation” and doesn’t reflect actual conditions. Is is largely a function of the demand and supply forecast made by a central planner (PJM), which as we’ll explain, has a history of huge miscalculations.
 
-![](https://substackcdn.com/image/fetch/$s_!4uxO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9e61dd7a-0a0b-4903-9694-84e6529ae506_3179x1543.png)
+![](z-images/bf713d40d7e514eda57331e3245fb9a3.webp)
 
 Source: PJM BRA Report
 
@@ -28,7 +28,7 @@ Many are finger-pointing at the surge in AI datacenters, and it is understandabl
 
 Now look at Texas. The state is witnessing an equivalent AI buildout, with OpenAI, Google DeepMind, Anthropic all building massive facilities. Yet power futures in Texas have moved only a few percent in the past year. No 9x spike, no crisis, very different market design.
 
-![](https://substackcdn.com/image/fetch/$s_!bTKf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F30a916ae-8f6f-462a-a184-7622bd295775_1808x1110.png)
+![](z-images/2787b0625c9dca89d2858d6007692820.webp)
 
 Source: Bloomberg
 
@@ -54,7 +54,7 @@ At a high level, a monthly household electric bill is driven by the following ch
 
 - **Others**: taxes, retail adders, ancillary services, etc. We will not dive into this, as it varies based on location.
 
-![](https://substackcdn.com/image/fetch/$s_!Y-ZQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6a888155-3f13-42d0-b47c-2633abbebb27_2848x1504.jpeg)
+![](z-images/0f73ab7469b52dc78dca278d60427194.webp)
 
 Source: SemiAnalysis estimates, EIA
 
@@ -78,7 +78,7 @@ Until recently, the BRA delivered on its promise. Summer 2025 was brutally hot i
 
 But that reliability now comes at an extraordinary price. Between June 2024 and May 2025 (the 2024/25 service period), capacity cost $29/MW-day. For the current 2025/26 service period, capacity jumped 9.3x to $270/MW-day, with select locations seeing prices closer to $450/MW-day. The subsequent 2026/27 and 2027/28 auctions continued clearing at record prices. It was widely believed that the price would be even higher, but the federal regulator imposed a price cap of $329/MW-day. The most recent auction, December 17 <sup>th</sup>, 2025, hit the price cap for the second straight year.
 
-![](https://substackcdn.com/image/fetch/$s_!48ZG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf36a940-6317-428c-9e9e-f171b1d7c3f2_3179x1543.png)
+![](z-images/bf713d40d7e514eda57331e3245fb9a3.webp)
 
 Source: PJM BRA Report
 
@@ -88,7 +88,7 @@ Source: PJM BRA Report
 
 Capacity prices are based on an artificial supply-demand curve known internally as the [Variable Resource Requirement (VRR) curve.](https://www.pjm.com/-/media/DotCom/markets-ops/rpm/rpm-auction-info/2026-2027/2026-2027-bra-report.pdf) The VRR curve is built on PJM’s internal forecast model, not on what the market thinks will happen. The projected increase in datacenter load shifted the clearing price on this curve, driving up prices independent of any public bid process.
 
-![](https://substackcdn.com/image/fetch/$s_!H6mE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7cfa0ed-0954-4a3a-9ebf-dd7c2609aaa2_1814x1230.png)
+![](z-images/d46b0840d0cf06d3c81a14fa17e3a679.webp)
 
 However, the VRR curve is constructed from a web of assumptions, many of which depend on non-public models and proprietary data. Even modest changes in forecasted load can trigger large swings in clearing prices. The capacity market’s extreme sensitivity to forecast inputs means that getting the datacenter load number wrong by even a few gigawatts produces a catastrophic result: changing the curve’s shape near the clearing point, and ramping prices.
 
@@ -105,13 +105,13 @@ But all of these simulations obscure a deeper issue: the main auction that drive
 
 And we believe the forecast **is** inaccurate. Our methodology [tracks precise construction timelines of every single datacenter](https://semianalysis.com/datacenter-industry-model/) in the PJM area and shows PJM’s forecast is likely too optimistic. This is not due to a lack of demand, rather it’s due to datacenter construction delays (as highlighted in our [Industrials Model](https://semianalysis.com/industrials-model/)), to GPU production and assembly delays (as explained in our [Accelerator Model](https://semianalysis.com/accelerator-hbm-model/)), and other supply chain issues. New hardware platforms are often buggy at first and longer-than-usual to turn on at full capacity.
 
-![](https://substackcdn.com/image/fetch/$s_!prZB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff6daac55-f442-4fb9-a3bc-5ecc70c7a318_3180x1716.png)
+![](z-images/d02820fdfb322c69e62c8677fef7d259.webp)
 
 Source: SemiAnalysis Datacenter Model, PJM
 
 We show below a great example of this. PJM’s own data shows an inability to forecast even one year out. In 2024, the datacenter load forecast was cut by 800MW versus the 2023 load forecast. In 2025, it happened again: the datacenter load forecast was cut by 1.1GW versus what had been forecasted just a year ago, in 2024!
 
-![](https://substackcdn.com/image/fetch/$s_!U3MK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F482f7f80-0d44-44d8-877b-c9e4be675c83_2222x708.png)
+![](z-images/aa4531c98ef56139bcd5c615337e2975.webp)
 
 Source: PJM, Monitoring Analytics
 
@@ -121,7 +121,7 @@ The energy market in PJM remains closer to a real market, with supply and demand
 
 PJM Western Hub forward prices -- the most liquid benchmark for energy traders’ view of the future -- have increased 12-20% in the 2028 and 2030 windows, with the 2026 window jumping somewhat higher. These are meaningful increases, but nothing resembling the 9.3x explosion in the capacity market. PJM’s simulation-heavy capacity construct is producing a price shock that the forward energy market does not validate. Traders, using real money and real risk, are not pricing in the same panic that PJM’s simulated VRR curve produced.
 
-![](https://substackcdn.com/image/fetch/$s_!aZkY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F72c39ddb-b566-436e-8655-7e8517b918ed_1808x1110.png)
+![](z-images/08e8f6a1fb0d94312efd2223e2750fd7.webp)
 
 Source: Bloomberg
 
@@ -129,13 +129,13 @@ Source: Bloomberg
 
 PJM’s forecast and methodology are also impacting the supply side of the forecast. A year before the AI Datacenter boom, issues had already begun to rise. As shown below, total offered capacity has been reduced by ~35GW in just four years. Where did that supply go?
 
-![](https://substackcdn.com/image/fetch/$s_!0RvI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ea967ff-1bf5-4d18-8612-fc7098521e9d_3179x1742.png)
+![](z-images/62f027738bc0ee64060faff993e68937.webp)
 
 Source: PJM
 
 As shown below, while coal retirements were the biggest drivers, PJM also introduced major methodology changes that caused close to 20GW of supply to disappear. A methodology change on how PJM accounts for natural gas power plants made 14GW disappear overnight.
 
-![](https://substackcdn.com/image/fetch/$s_!lio-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6f936070-e91d-4ce3-9b91-f9f59e93c834_3979x1919.png)
+![](z-images/9704f3c6af03c39a1b7e32dc4fbb4169.webp)
 
 Source: PJM
 
@@ -153,7 +153,7 @@ To estimate the impact on retail bills, we need the following datapoints:
 
 Multiplying 3.4 by the monthly consumption (880 kWh) gets us a $29.9 monthly payment. Given the auction has already been cleared, we have near-certainty that households will pay $25-30 more per month than two years ago!
 
-![](https://substackcdn.com/image/fetch/$s_!YaBK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4cbff97-5557-4b44-aaa1-539add752ebc_2400x1125.png)
+![](z-images/48fae2b885901ad31bf25fba2d542f3b.webp)
 
 Source: SemiAnalysis Energy Model, PJM, Monitoring Analytics
 
@@ -167,7 +167,7 @@ The Electric Reliability Council of Texas (ERCOT) is a much simpler market to un
 
 Instead of a capacity market driven by a once-a-year auction, ERCOT uses a real-time scarcity price adder based on an Operating Reserve Demand Curve (ORDC). When the balance between electric supply and demand gets too tight -- when everyone’s air conditioner runs at the same time -- the real-time energy price spikes, from normal prices of $10-50/MWh to a cap of $5,000/MWh, with additional adders in transmission-constrained areas.
 
-![](https://substackcdn.com/image/fetch/$s_!pKKs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c2ea8ff-d1ba-4c7b-b934-26a53ba74b88_1799x1114.png)
+![](z-images/72b9506716c8597faff2ffd77a63726c.webp)
 
 This scarcity-price structure allows capacity resources that run fewer than 100 hours per year (gas peaker plants, batteries, etc) to pay for themselves, because that handful of run-hours can still be worth millions of dollars in annual revenue to a 50 MW power plant or battery system.
 
@@ -177,7 +177,7 @@ Said differently: in PJM, the central operator has the responsibility to analyze
 
 This difference is particularly interesting as ERCOT also provides demand forecasts. And the outlook is staggering. The [2025 Long-Term Load Forecast](https://www.ercot.com/files/docs/2025/04/29/Long-term-Load-Forecast-RPG.pdf), released April 2025, identified datacenters as the single largest driver of incremental peak growth. Based partly on attestation from Texas transmission service providers, ERCOT projected 77.9 GW of potential datacenter load by 2030 -- more than double the 29.6 GW in the prior year’s outlook, an unprecedented one-year revision.
 
-![](https://substackcdn.com/image/fetch/$s_!Dqhd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F11a823b3-3e3f-4f95-9b4c-6a9ce585f4a9_1800x961.png)
+![](z-images/f8c629fb7f74cef44e7830dbb6b3f0b9.webp)
 
 Source: ERCOT
 
@@ -185,7 +185,7 @@ Taken at face value, that forecast implies a structural demand shock on the orde
 
 Even ERCOT recognized that their forecast was not realized and changed course. In the May 2025 Capacity, Demand and Reserves report, they applied a deliberate haircut: generic requests were discounted to 49.8%, officer-attested requests to 55.4%, and all in-service dates pushed back by 180 days. ERCOT’s internal grid analysts effectively said they would not plan for 100% of what developers claim until shovels actually move.
 
-![](https://substackcdn.com/image/fetch/$s_!sY9J!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e31a199-bfe3-45c6-9d33-2a6a48cc4fcb_1800x961.png)
+![](z-images/6c37a45e9576cbe6abb99cf971a1ab68.webp)
 
 Source: ERCOT
 
@@ -197,13 +197,13 @@ The physical system confirms ERCOT’s approach is working. The grid has already
 
 The prices that energy traders see have not gone to the moon either. Forward prices -- particularly 2026, 2028, and 2030 contracts -- have increased 11-17% in the past year, a notable increase and roughly similar to that of PJM, but no 9x surge in capacity prices.
 
-![](https://substackcdn.com/image/fetch/$s_!bTKf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F30a916ae-8f6f-462a-a184-7622bd295775_1808x1110.png)
+![](z-images/2787b0625c9dca89d2858d6007692820.webp)
 
 Source: Bloomberg
 
 The [2024 Biennial ORDC Report](https://www.ercot.com/files/docs/2024/10/31/2024-biennial-ercot-report-on-the-ordc-20241031.pdf) explains that more online reserves were available than in prior cycles, allowing for steady, calm growth. Solar, wind, batteries, and fossil fuel peakers all came online in sufficient volume to cushion the system. The measurable effect was that the number of hours with scarcity pricing and the total spend on scarcity pricing fell relative to previous years. Energy is now less scarce in ERCOT territory despite the increase in electric demand. It takes more incremental gigawatts of demand to push the system into true scarcity conditions than it did even two years ago. In their public messaging, ERCOT’s concerns about datacenter growth leave out resource scarcity worries.
 
-![](https://substackcdn.com/image/fetch/$s_!bbjn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faeb83ece-fc7c-4534-b358-0b494e4cacef_1740x1100.png)
+![](z-images/95628c9a2623c1fe2a6ad48690dafb60.webp)
 
 Source: ERCOT, SemiAnalysis annotation
 

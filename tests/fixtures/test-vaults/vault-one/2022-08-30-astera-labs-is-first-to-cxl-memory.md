@@ -14,7 +14,7 @@ CXL will revolutionize the datacenter by bringing [composable server architectur
 
 The primary provider of memory disaggregation hardware will benefit hugely as the large cloud providers rush to implement memory pooling within their datacenters to increase memory utilization and reduce costs. SemiAnalysis believes the CXL-based memory expansion and memory pooling hardware market will exceed 1 billion dollars in 2025. The industry recognizes this, so it is an incredibly crowded field. Samsung, Micron, and SK Hynix are all developing memory expansion hardware. Furthermore, Rambus, Microchip, Montage Technologies, Marvell, and Astera Labs are all developing memory expansion and pooling ASICs.
 
-![](https://substackcdn.com/image/fetch/$s_!H7v-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8ffdd69e-7873-410c-9775-fc1c0eb65ae0_1501x852.png)
+![](z-images/dfc18800c27a3988f2bd492f4039af57.webp)
 
 With all these players, there will be a couple of winners and many losers. [In our prior report explaining why Marvell purchased Tanzanite Silicon](https://semianalysis.substack.com/p/marvell-acquires-tanzanite-silicon?s=w), we also reviewed the hardware status from Astera Labs.
 
@@ -24,13 +24,13 @@ With all these players, there will be a couple of winners and many losers. [In o
 
 We stand by what we wrote in our prior report and want to expand further with today’s official announcement about the Leo memory connectivity platform.
 
-![](https://substackcdn.com/image/fetch/$s_!u1Nf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F832a922f-782f-4817-a39e-e69b8efa39b3_1521x852.png)
+![](z-images/faad14b7199a6eca4894702a752be5a5.webp)
 
 Astera Labs is announcing they have sampled their Leo expansion and pooling chips to various customers. Compare this to other firms that are just beginning to bring up their memory pooling devices or are still working on FPGA-based implementations. Astera Labs says they are on their 3rd generation of their CXL controller while others are still working on the 1st.
 
 Astera Labs had a test CXL chip in 2019. They shipped smart retimers in volume last year. The memory expander and pooling device, Leo, is the 3rd generation. Astera Labs generated ~$35M in revenue in 2021 and is expected to have over $100M in 2022. Astera Labs will likely rack up multiple design wins with Leo, which should keep them growing at this fantastic pace.
 
-![](https://substackcdn.com/image/fetch/$s_!MLHE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F58cea2b4-193f-4f04-b4a5-c12203548c7c_1518x847.png)
+![](z-images/4a8bb23aa77161c9febc82d0bf446b75.webp)
 
 Astera Labs says they have conducted end-to-end interoperability testing with industry-leading CPU/GPU platforms and DRAM memory modules over various real-world workloads with Leo. We believe these platforms are AMD’s Genoa/Bergamo and Intel’s Sapphire Rapids. Leo chips support ECC and server-grade customizable reliability, availability, and serviceability (RAS) capabilities. Astera Labs is rightfully focused on latency for their Leo smart memory controllers as the [performance impact from additional latency can be very high](https://semianalysis.substack.com/p/cxl-enables-microsoft-azure-to-cut).
 
@@ -46,7 +46,7 @@ Software is also important, and Astera Labs is focusing heavily on this. They ha
 
 Leo supports 2TB of memory. It can utilize DDR4 or up to DDR5 5600MT/s per memory channel, which is required to max out the bandwidth of CXL 1.1 and CXL 2.0. In addition to supporting the JEDEC standard DDR interface, Leo also supports “other memory vendor-specific interfaces.” We are unsure what the memory vendor-specific interfaces would be, but [there likely is a new form factor for DRAM packages being developed.](https://www.businesswire.com/news/home/20220824005210/en/CXL%E2%84%A2-Consortium-and-JEDEC%C2%AE-Sign-MOU-Agreement-to-Advance-DRAM-and-Persistent-Memory-Technology)
 
-![](https://substackcdn.com/image/fetch/$s_!EqGb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F97a28e1a-1bf7-406b-a57b-722bc63e67f6_1512x848.png)
+![](z-images/d8f12ebc55870d9c27ab8d41213e04b9.webp)
 
 Astera Leo comes in two product lines, E and P series. E is only for expansion, while P is for pooling and sharing. Looking at the SKUs, E-Series CM5082E comes with x8 PCIe lanes, while CM5162P and CM5162E come with x16 PCIe lanes. We believe there are two different chips: an 8-lane memory expander and a 16-lane memory expander/pooler.
 

@@ -30,7 +30,7 @@ AMD had interesting earnings. The quarter was as expected, given that they pre-a
 
 The table below shows 2022 revenue across segments. AMD is under shipping end demand. Based on Intel’s guidance and AMD’s guidance. H2 2022 total client x86 PC share is 84/16. That’s a marked decrease in share.
 
-![](https://substackcdn.com/image/fetch/$s_!3kJN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F2287a747-af30-4bb1-aa09-341ca4f286a4_1080x537.png)
+![](z-images/0f69e84e6f9a247ab0ff7d007e849f7c.webp)
 
 The arguments can stretch both ways. One is that AMD is depleting inventory faster at OEMs than Intel. We agree with this to a certain extent, but that’s not the whole story.
 

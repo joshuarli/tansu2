@@ -46,7 +46,7 @@ Hours after we dropped the AMD article, Lisa Su reached out to us to arrange a c
 
 We showed her dozens of bug reports our team submitted to our AMD engineering contacts. She was sympathetic to end users facing an unpleasant experience on ROCm and acknowledged the many gaps in the ROCm software stack. Furthermore, Lisa Su and her team expressed a strong desire for AMD to do better. To this end, for the next hour and a half, Lisa asked her engineering team and our engineers numerous detailed questions regarding our experience and our key recommendations.
 
-![](https://substackcdn.com/image/fetch/$s_!J7vr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcea36a0e-95e6-4689-add4-a09080b760ac_952x1024.png)
+![](z-images/c8eb95b2a6129330199b2c12b0666191.webp)
 
 Source: X
 
@@ -54,7 +54,7 @@ This tone shift from the top has resonated across the organization. **AMD is now
 
 In 2025 thus far, AMD has acknowledged that their software has way more bugs are than Nvidia currently but are rapidly improving and are engaging the community to bring ROCm to parity. In particular, Anush Elangovan, the AMD AI Software Tzar, has been active in tackling the issues at AMD.
 
-![](https://substackcdn.com/image/fetch/$s_!Ovsn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80d0fd27-c2ac-4831-89ad-f63cbce159ad_1024x632.png)
+![](z-images/bc7747723d5c1bc0b82ac1447c544981.webp)
 
 Source: X
 
@@ -62,13 +62,13 @@ Source: X
 
 Acceptance is the final stage of grief. AMD has finally accepted its massive software gap and can now address its issues for its chance to beat NVIDIA in the software and hardware game. AMD has caught a second wind, [but Nvidia is still at an all-out sprint](https://nypost.com/2024/08/26/business/nvidia-employees-can-work-7-days-a-week-until-2-a-m-but-few-leave-because-of-ai-chip-giants-lavish-pay-report/), and AMD must match them and even outpace them to catch up. Nvidia’s staff clearly recognize that sometimes [extra hours are needed for Nvidia](https://nypost.com/2024/08/26/business/nvidia-employees-can-work-7-days-a-week-until-2-a-m-but-few-leave-because-of-ai-chip-giants-lavish-pay-report/) to continue to be a leader in a competitive market. For AMD to win, it needs to work at least as hard and smart as Nvidia if not harder and smarter. We see clear signs of this starting to happen.
 
-![](https://substackcdn.com/image/fetch/$s_!hkel!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F55518b58-c994-4df1-a886-b1a9d1dced75_1024x929.png)
+![](z-images/0cf3acaf9afb0e4da161e4c246f2ae07.webp)
 
 Source: X
 
 There plenty of examples of the focused and hungry teams catching up. xAI vs OpenAI is an example of how a shift in culture to adopt a sense of urgency and take a wartime stance can lead to a company catching up with the competition at a ludicrous speed.
 
-![](https://substackcdn.com/image/fetch/$s_!laUI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c90564f-6e0e-43ee-b752-5e554d659e3a_1024x530.png)
+![](z-images/92b0c629649305d6cb85edb5306af118.webp)
 
 Source: xAI
 
@@ -80,7 +80,7 @@ In January 2025, AMD launched its developer relations (devrel) function as it ha
 
 AMD is going even further on the developer front. In June, AMD will launch a developer cloud focused on engaging with the overarching community. This is a direct result of SemiAnalysis’s suggestion for AMD to close the gap.
 
-![](https://substackcdn.com/image/fetch/$s_!enEr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe11cfc7e-8974-4304-ac05-e0f9300e7f09_1024x396.png)
+![](z-images/c93d844f5e012c3ae3f52ea4118d8920.webp)
 
 Source: SemiAnalysis, AMD
 
@@ -100,7 +100,7 @@ Another example is how bugs are discovered and patched faster thanks to the mill
 
 Since January 2025 AMD has been vocal about a developers first approach, echoing Steve Ballmer’s famous mantra and mirroring Jensen’s approach too. At [TensorWave’s “Beyond CUDA 2025” summit](https://www.youtube.com/watch?v=RAK3Ce0RXgM&ab_channel=TensorWave), Anush, AMD’s AI Software Tzar, framed ROCm’s future with three words—“ **[developers, developers, developers”](https://www.youtube.com/watch?v=Vhh_GeBPOhs&ab_channel=MrWueb007)** We believe this developers-first approach and messaging will be amplified on a broader stage at AMD’s June keynote event. AMD has finally understood that what made CUDA unbeatable was not just great silicon but a swarm of external developers. We feel extremely positive about AMD’s new developers-first approach.
 
-![](https://substackcdn.com/image/fetch/$s_!4tT8!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3db26059-86f9-4fb7-87a6-d0139522cd42_240x180.gif)
+![](z-images/65ae395a6b5ee00876fc56fb089e52b5.gif)
 
 Source: Microsoft
 
@@ -110,13 +110,13 @@ NVIDIA’s annual GTC developer conference, *“Super Bowl of AI”* packs more 
 
 AMD, by contrast, still lacks a GTC style developer conference that has many developer focused sessions. The company’s June “Advancing AI” event will be great for roadmap reveals, but the event is essentially a few product keynotes plus a handful of prerecorded talks—nowhere near the multi‑track developer sessions, code‑lab depth developers get at GTC. If AMD is serious about its new developer‑first stance, it should launch an annual, in‑person ROCm Developer Conference: three to four days of parallel tracks that cover kernel authoring, graph compilers, HIP/Triton migration, MI300 cluster tuning, and real‑time debugging with the ROCm toolchain. Pair those talks with on‑site hackathons run by a beefed‑up (20‑plus‑strong) devrel team and follow‑up regional roadshows, and ROCm users would finally have a venue to share war stories, surface blocking bugs, and build the social fabric that made GTC indispensable to the CUDA community.
 
-![](https://substackcdn.com/image/fetch/$s_!WOCH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F72b092ea-fde3-4ba6-b237-1e7a7ae556b8_1024x562.png)
+![](z-images/01509b685e94902552e60fba729b9a00.webp)
 
 Source: NVIDIA
 
 Although George Hotz could have settled for AMD’s earlier offer of cloud‑hosted MI300X systems with full BMC access, he insisted on physical hardware so he could *“hack the metal”* directly. AMD initially balked—even though Hotz’s goal was to help open‑source tooling on their GPUs. The stalemate turned into a public spectacle when the widely respected PyTorch co‑creator, Soumith Chintala, tweeted in support of Geohotz receiving the physical boxes.
 
-![](https://substackcdn.com/image/fetch/$s_!VGzI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F049c7cb0-0422-45a0-beb7-a508493ebad5_1024x519.png)
+![](z-images/c910aa30e3446b43514f33b2fdee0d5b.webp)
 
 Source: X
 
@@ -124,7 +124,7 @@ We believe that this nudge worked, and a [Geohotz March 8 blog](https://geohot.g
 
 In addition to sending Geohotz boxes, we believe that AMD can also score another easy reputation and marketing win by donating physical AMD GPU boxes to academic labs. [Jensen & Ian Buck has had a long history of donating GPUs to academics labs even going back as far as 2014](https://x.com/haozhangml/status/1914439713332863348?s=46). This year, Jensen continues to supporting academics labs such as [CMU’s Catalyst Labs](https://x.com/scsatcmu/status/1912910889566490821?s=46), [Berekely’s Sky labs](https://x.com/vllm_project/status/1893001644037566610), [UCSD’s HaoAI Lab](https://x.com/haoailab) and others for some time by donating physical gold plated B200 boxes to them in addition to providing free cloud access to NVIDIA GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!jQ85!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e60ef98-391a-4d5a-a079-0fd11d14c4cc_1020x932.webp)
+![](z-images/2dcf52bcb326f649b0792383fe6e1562.webp)
 
 Source: X
 
@@ -136,7 +136,7 @@ Previously, AMD’s did not want to spend money on investing in CI/CD resources,
 
 In addition to unit test CI, AMD has also enabled MI300X on TorchInductor Performance CI such that [performance is tracked in inductor /torch.compile commit](https://x.com/AnushElangovan/status/1884727132477382915). [According to a Meta CI engineer](https://x.com/_seemethere/status/1924526179463397425), AMD provided the MI300X nodes, while NVIDIA hasn't provided any resources, so Meta pays for all of the A100 and H100 capacity. For this specific compile CI, AMD is ahead of NVIDIA. However – there is still much progress to be had as AMD’s dynamic shapes torch.compile is only at a 77% pass rate compared to Nvidia’s 90%+.
 
-![](https://substackcdn.com/image/fetch/$s_!n9Zz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5c173e03-c664-47d1-a6ea-48bdc3c64918_1024x559.png)
+![](z-images/ad18712a1ecd04c198a0bbdcd973d8a5.webp)
 
 Source: PyTorch
 
@@ -152,7 +152,7 @@ AMD’s developer cloud plans essentially take a page out of Google’s book. We
 
 **The metric for success is if an GPT-J moment happens on their AMD’s community developer cloud.**
 
-![](https://substackcdn.com/image/fetch/$s_!zzze!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3f186274-2562-43aa-b31e-5bb1f03e0fcf_1024x396.png)
+![](z-images/c93d844f5e012c3ae3f52ea4118d8920.webp)
 
 Source: SemiAnalysis, AMD
 
@@ -198,31 +198,31 @@ With over $5 billion in available cash reserves, AMD clearly has the financial f
 
 Making the entire CUDA ecosystem a first-class experience on Python has been a top priority for NVIDIA for the past 12 months. None other than Jensen himself is personally looped in and managing this effort. In the 2010s, Jensen was the first to understand that investing into making CUDA software great for AI would pay dividends. In 2025, Jensen’s key insight is to now understand that the de facto language of AI is Python, and that supporting every layer of NVIDIA’s current C++ CUDA stack into the Python world will yield a high return on investment. AT GTC this year, NVIDIA released dozens of Python libraries from GEMM libraries like nvmath-python libraries to cuda.binding cuBLASLt bindings to kernel DSLs like cuTile, Warp, Triton, CuTe Python. Unfortunately, ROCm libraries support in Python is nowhere near what NVIDIA has. **NVIDIA has a python interface at every layer of the stack. AMD does not offer this.**
 
-![](https://substackcdn.com/image/fetch/$s_!EF_p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feddb5bf0-2350-4224-9805-270fd7257b65_1024x557.png)
+![](z-images/133d97074201dad752a5c6cb9ca3ca0e.webp)
 
 Source: NVIDIA
 
 By supporting Python first class in CUDA, end users can spend less time to get the same performance or spend the same amount of time to get even better performance. CUDA Python effectively shifts the pareto frontier curve on “Performance of Application versus Time Spent Optimizing”
 
-![](https://substackcdn.com/image/fetch/$s_!PyIa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F632dac3f-4f52-4e0f-8ef6-86146a0046f5_1024x596.png)
+![](z-images/4f9435fa6fa7355e9e741c68187b57c3.webp)
 
 Source: NVIDIA
 
 To use a simple example, previously if a developer wanted to call cuBLASLt with a custom epilogue, they would need to write a C++ extension and then Pybind it to Python which is a bit convolved and adds another layer of indirection that an ML engineer needs to worry about. Now with nvmath-python, the same task can now be carried out and automatically tuned with just 3 python lines**. The task is now turned from a 30-minute task to a 2-minute one.** These NVIDIA Python libraries aren’t just half-baked bindings, they are first-class implementations with performance top of mind.
 
-![](https://substackcdn.com/image/fetch/$s_!josI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbcb30bba-d5bd-4708-b3f3-c7afaecec424_1024x547.png)
+![](z-images/26ffb8eebb92cfa46521b27a3cebc5f9.webp)
 
 Source: NVIDIA
 
 In another example, with the cuda.cooperative device side library, one can now access speed of light CUDA prebuilt algorithms such as block reduce through a python interface. This level of performance was previously only available in C++ CUDA through [CUB](https://docs.nvidia.com/cuda/cub/index.html).
 
-![](https://substackcdn.com/image/fetch/$s_!voSq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F52432d38-3103-4617-ab33-b1f06c0c23c6_1024x559.png)
+![](z-images/25a6adbb3466a1e2e00cdbb57c824543.webp)
 
 Source: NVIDIA
 
 For end users that want 1:1 Python bindings instead of higher order Pythonic libraries, NVIDIA also offers this through cuda.binding and cuda.core. **NVIDIA has a python interface at every layer of the stack. AMD does not offer this.**
 
-![](https://substackcdn.com/image/fetch/$s_!va6V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F92ec8da0-6bde-48e4-9f8a-f3e04cc848b9_1024x614.png)
+![](z-images/b87c2284be02a9abc4309bacddea59a8.webp)
 
 Source: NVIDIA
 
@@ -238,19 +238,19 @@ CuTe Python is NVIDIA’s recommended path for writing speed-of-light kernels in
 
 **More importantly, AMD in general currently has no Python DSLs for thread-based kernel programming which is needed for speed of light.**
 
-![](https://substackcdn.com/image/fetch/$s_!kIU8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f42354a-d080-4dc1-8112-433fd04cfdbc_1024x400.png)
+![](z-images/6b5c756551d1638794b58870bb1e6cb4.webp)
 
 Source: NVIDIA
 
 For Tile Based and SIMT based as well as hybrid Tile/SIMT mixed based kernel authoring Python DSLs, NVIDIA announced cuTile at GTC 2025. cuTile is not meant for 100% speed of light performance but is meant for 98% speed of light performance at 10% the time to write the kernel. It is relatively easy to write kernels in cuTile**. Unfortunately, AMD has no offering for hybrid SIMT/Tile based python kernels DSLs.**
 
-![](https://substackcdn.com/image/fetch/$s_!_duY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6f6b19e6-4f67-43a6-a1fa-d8c5dacb3927_1024x542.png)
+![](z-images/e2d8e683509da3565408be93cc54d39d.webp)
 
 Source: NVIDIA
 
 Triton popularized tile-based programming models in the age of tensor cores where the effective abstraction is at the layer of a Tile instead of on a per thread basis. Nvidia will continue to fully support Triton’s Tile based DSLs in addition to cuTile Tile based DSLs.
 
-![](https://substackcdn.com/image/fetch/$s_!3VZH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3fc3d1cd-10f9-462e-9f5b-1651f860952b_1024x637.png)
+![](z-images/460dabf872aa9bd58291211eef72d9dd.webp)
 
 Source: Nvidia
 
@@ -258,7 +258,7 @@ For differential simulation AI, NVIDIA announced Warp Python DSLs. Warp is a hyb
 
 Nvidia continues to fully support OpenAI Triton Python DSL in addition to all their newly announced Python DSLs. The primarily maintainer of Triton is OpenAI whose mission is to build safe AGI. Indeed, at [the SemiAnalysis Blackwell PTX Hackathon 2025](https://semianalysis.com/2025-hackathon-eol/), **Phil Tilet, lead OpenAI maintainer of Triton, has even said that “AGI won’t come from 10% faster matrix multiplications”,** & this is the ethos surrounding what features Triton will prioritize. Thus Triton isn’t the platform AI chip vendors should solely support if they want to have the fastest AI chip. We believe that AI chip vendors should still fully support Triton in addition to other Python DSLs.
 
-![](https://substackcdn.com/image/fetch/$s_!MnHX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5ef71117-a094-4525-94b4-047e37aa43a1_1024x196.png)
+![](z-images/074a3c44e78b87572fd966d16f3317ba.webp)
 
 Source: OpenAI, SemiAnalysis Blackwell PTX Hackathon
 
@@ -274,7 +274,7 @@ Collective communication libraries are extremely important for AI training and i
 
 Furthermore, RCCL finally supports rail optimized trees which improves networking performance by reducing traffic away from spine switches, leading to fewer path collisions. This feature has been supported by NCCL by countless years already.
 
-![](https://substackcdn.com/image/fetch/$s_!Iwpm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac743225-694a-4afe-b80b-51d61dc9f491_861x1024.png)
+![](z-images/dfadcfebc0f7433a35b1af2871b1e3df.webp)
 
 Source: Github
 
@@ -294,31 +294,31 @@ Source: [Nvidia](https://www.nvidia.com/en-us/on-demand/session/gtc25-s72583/?st
 
 During this talk, Sylvain also announced many new NCCL features in the upcoming massive refactor. These new features include supporting symmetric memory natively in NCCL as well as new algorithms that run much faster and use fewer SMs thus allowing more SMs for compute.
 
-![](https://substackcdn.com/image/fetch/$s_!TvBY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F54bd2315-6097-424a-b08f-ae4242ef30a0_1024x609.png)
+![](z-images/d2ae7016cb68b421fe8b1f057a9e6604.webp)
 
 Source: NVIDIA
 
 [PyTorch introduced SymmetricMemory API](https://dev-discuss.pytorch.org/t/pytorch-symmetricmemory-harnessing-nvlink-programmability-with-ease/2798) that enable users to harness multi-GPU scale up programmability with ease and [write collectives or fused compute/communication kernels in CUDA or Triton](https://github.com/yifuwang/symm-mem-recipes). Previously, writing multi-GPU fused compute/communication kernels required a ton of work, but the work needed has been reduced considerably with the use of PyTorch SymMem. Performant inference kernels like one-shot and two-shot collectives as well as all gather fused matmul kernels can be written in SymmetricMemory easily.
 
-![](https://substackcdn.com/image/fetch/$s_!tRJY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e1f7b17-388f-49bc-8739-54be3d68c5ed_1024x567.jpeg)
+![](z-images/ed84b998808d42e65dcbc9d2e07f4181.webp)
 
 Source: PyTorch
 
 This feature has been available on NVIDIA GPUs for the past 8 months while AMD GPUs still don’t support it. AMD has indicated that they will land initial support for PyTorch SymmetricMemory API in Q2 2025.
 
-![](https://substackcdn.com/image/fetch/$s_!x4as!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc5748b2c-13ab-4f69-83b1-fc230f3f14b0_831x1024.png)
+![](z-images/81aecbe0d3c73f77b14d7ed59ce94ac7.webp)
 
 Source: PyTorch, YiFu
 
 In the upcoming 2.27 release, allreduce achieves a 4x lower reduction at the same message size and attains the same algorithm bandwidth at 4x smaller message sizes.
 
-![](https://substackcdn.com/image/fetch/$s_!sgsA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd54dcf51-7427-410a-8708-9f57626d7447_1024x620.png)
+![](z-images/004a5fb480ef9e85076454be471a5137.webp)
 
 Source: NVIDIA
 
 In the upcoming 2.28 release, NCCL offers device-side APIs allowing end users to easily write custom communication/compute fusion kernels.
 
-![](https://substackcdn.com/image/fetch/$s_!CVOk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc51b21f2-0ab0-461c-8dee-0b91070ab7f8_1024x619.png)
+![](z-images/794f96100e82a01fd0cf61f6c9f5570b.webp)
 
 Source: NVIDIA
 
@@ -326,13 +326,13 @@ The upcoming NCCL 2.28 release will also support [GPUDirect Async](https://devel
 
 Another feature that is currently only available on Nvidia is user buffer registration. This feature avoids creating extra copies between the user’s tensor and NCCL’s internal buffers. This helps with reducing the number of collective SMs needed and with alleviating memory pressure, leading a 5-20% end to end training improvement.
 
-![](https://substackcdn.com/image/fetch/$s_!sLMH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5329093c-48c5-485e-8f1e-1370e09cfb23_1024x576.png)
+![](z-images/dcef41259e9c85d6ba05576b263e3d55.webp)
 
 Source: NVIDIA
 
 Most experienced ML engineers have seen the dreaded NCCL\_TIMEOUT/RCCL\_TIMEOUT or NCCL/RCCL stalling. NVIDIA NCCL supports [ncclras](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/ras.html), which simplifies debugging these issues. Unfortunately, RCCL does not currently include any features to help with debugging.
 
-![](https://substackcdn.com/image/fetch/$s_!ahBk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fa2ea5c-a6ee-4a40-93b2-fc5089973420_1024x571.png)
+![](z-images/f866ba82164365d910593ae605b94b74.webp)
 
 Source: NVIDIA
 
@@ -346,7 +346,7 @@ Fortunately, after many follow-ups, AMD has finally open sourced their GPU expor
 
 [As mentioned in our December AMD article](https://semianalysis.com/2024/12/22/mi300x-vs-h100-vs-h200-benchmark-part-1-training/#amd%e2%80%99s-forked-libraries), the AMD Docker UX is extremely poor compared to Nvidia’s UX. AMD has acknowledged this shortcoming and has mentioned to us that they are working on this. They have indicated that they will announce a roadmap for this later this quarter.
 
-![](https://substackcdn.com/image/fetch/$s_!KKN_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F936ac9c8-0ea8-4b8a-a7bf-a6197eaafdbd_1024x377.png)
+![](z-images/a00cb12c7ea6df2ae337321e2b073b70.webp)
 
 Source: SemiAnalysis
 
@@ -354,7 +354,7 @@ Unlike on Nvidia’s stack, the current state of Slurm+Container on AMD’s stac
 
 When considering how all AMD’s internal AI engineers use SLURM with containers, it is distressing to see the amount of indirection that are needed and how poor the current AMD Slurm+Container UX is.
 
-![](https://substackcdn.com/image/fetch/$s_!gpNJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F61e5a9a2-e3e6-4c85-8417-44ecb1f7d863_1024x575.png)
+![](z-images/1e7b6d7323eb10f0e8c4f9c69c3c4f83.webp)
 
 Source: GitHub, AMD
 
@@ -364,7 +364,7 @@ Moreover, Nvidia’s datacenter-manager tool (DCGM) has directly integrated NVVS
 
 Also, AMD’s UX and validation coverage is not as good as DCGM’s. [Nvidia’s DCGM utilizes notation denoting different levels (r1,r2,r3,r4)](https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/dcgm-diagnostics.html#run-levels-and-tests) while AMD’s NVVS does not use any such notation.
 
-![](https://substackcdn.com/image/fetch/$s_!4w3i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa8ee03d-de4a-4608-a916-8aec310a78fb_1024x504.png)
+![](z-images/039384bb9f7e90db3172fd3c877f7932.webp)
 
 Source: NVIDIA
 
@@ -372,7 +372,7 @@ Source: NVIDIA
 
 AMD is currently lacking support for many inference features such as disaggregated prefill, Smart Routing, and NVMe KV Cache Tiering. Disaggregated serving has been an industry standard for year, and last month NVIDIA [open-sourced Dynamo](https://github.com/ai-dynamo/dynamo), a distributed inference framework, further democratizing disaggregated serving. Disaggregated prefill splits the prefill stage and decode stage into different GPUs. Even Google has launched their own [disaggregated inferencing framework](https://cloud.google.com/ai-hypercomputer/docs/workloads/pathways-on-cloud/multihost-inference#disaggregated_inference).
 
-![](https://substackcdn.com/image/fetch/$s_!_fVY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4244b1a-2acc-4edb-9ee8-c041950ae28a_1024x649.png)
+![](z-images/e6920c713684ebe25806fd0c62634210.webp)
 
 Source: Peking University
 
@@ -382,7 +382,7 @@ Similarly – in the decode phase – it is important to ensure sequence lengths
 
 The router also load balances across each replica serving the model which is something AMD’s vLLM and many other inference engines do not support.
 
-![](https://substackcdn.com/image/fetch/$s_!oslW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F77ae5735-0828-4180-93c9-312b9d8c3b22_1024x611.png)
+![](z-images/a139de6942d1d210c7ed37dd9fc85601.webp)
 
 Source: NVIDIA
 
@@ -390,7 +390,7 @@ Dynamo’s GPU Planner is an autoscaler of both prefill and decode nodes, spinni
 
 This additionally supports changing the ratio of GPUs used for decoding and for prefill – this is especially useful for cases like Deep Research, where more prefill is required as opposed to decoding, as these applications need to review a huge amount of context but only generate a comparatively small amount.
 
-![](https://substackcdn.com/image/fetch/$s_!51t_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0cf5891f-e6cd-4808-a98d-69d46d8ae7f9_1024x554.png)
+![](z-images/3a6cadba14a5c3234f0e2ec1c5af5dad.webp)
 
 Source: NVIDIA
 
@@ -402,7 +402,7 @@ Instead, with Dynamo’s NVMe KVCache offload feature, when a user steps away, t
 
 This frees up capacity on the prefill nodes to handle more incoming volume, or alternative could reduce the size of the prefill deployment needed. The user will also have a much better experience with faster time to first token as there is now much less time needed to retrieve the KV Cache vs computing it.
 
-![](https://substackcdn.com/image/fetch/$s_!KFxZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb44fab1-aabf-4e48-b3fd-8be71401570d_1014x683.png)
+![](z-images/a8d6ef796b7d305a217a964b33faa108.webp)
 
 Source: NVIDIA
 

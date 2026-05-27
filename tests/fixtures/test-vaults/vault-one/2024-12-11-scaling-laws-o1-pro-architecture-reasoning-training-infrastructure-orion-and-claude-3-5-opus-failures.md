@@ -12,7 +12,7 @@ description: "AI Lab Synthetic Data Infrastructure, Inference Tokenomics of Test
 
 There has been an increasing amount of fear, uncertainty and doubt (FUD) regarding AI Scaling laws. A cavalcade of [part-time AI industry prognosticators](https://www.youtube.com/watch?v=AqwSZEQkknU) have latched on to any bearish narrative they can find, declaring the end of scaling laws that have driven the rapid improvement in Large Language Model (LLM) capabilities in the last few years. Journalists have joined the dogpile and have supported these narratives, armed with [noisy leaks filled with vague information](https://www.bloomberg.com/news/articles/2024-11-13/openai-google-and-anthropic-are-struggling-to-build-more-advanced-ai) around the [failure of models to scale successfully](https://www.ft.com/content/f24ba8d5-4c33-47ef-a91e-8f76340b08c4) due to alleged underperformance. Other skeptics point to saturated benchmarks, with newer models showing little sign of improvement said benchmarks. Critics also point to the exhaustion of available training data and slowing hardware scaling for training.
 
-![](https://substackcdn.com/image/fetch/$s_!aAUF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F32529542-0b4e-479f-a612-0dbd1a156634_704x450.png)
+![](z-images/a7cee04c11aa94b1660e2555ca5a7bf0.webp)
 
 Despite this angst, large AI Labs and hyperscalers’ accelerating datacenter buildouts and capital expenditure speaks for itself. From Amazon investing considerable sums to accelerate its [Trainium2 custom silicon](https://semianalysis.com/2024/12/03/amazons-ai-self-sufficiency-trainium2-architecture-networking/) and preparing [400k chips for Anthropic](https://semianalysis.com/2024/12/03/amazons-ai-self-sufficiency-trainium2-architecture-networking/) at an estimated cost of $6.5B in total IT and datacenter investment, to [Meta’s 2GW datacenter plans for 2026 in Louisiana](https://semianalysis.com/datacenter-industry-model/), [to OpenAI and Google’s aggressive multi-datacenter training plans to overcome single-site power limitations](https://semianalysis.com/2024/09/04/multi-datacenter-training-openais/) – key decision makers appear to be unwavering in their conviction that scaling laws are alive and well. Why?
 
@@ -28,13 +28,13 @@ We will cover OpenAI o1 and o1 Pro’s architecture from both a training infrast
 
 Today’s debate on AI scaling laws is not dissimilar to the decades-long debate around compute scaling and Moore’s law. Anyone who tries to measure CPU compute primarily by clock speed – a common metric used before the late 2000s around the time of the [end of Dennard Scaling](https://www.youtube.com/watch?v=7p8ZeSbblec) – would argue that we have not made any progress at all since then. In reality, compute has been advancing all along – when we hit a wall on processor clock speed, the focus shifted to multi-core architectures and other methods to drive performance, despite power density and cooling constraints.
 
-![](https://substackcdn.com/image/fetch/$s_!vNwf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e3b54ad-117e-46d9-a3a0-0ad74d247d8a_850x518.png)
+![](z-images/547452e78ac38539a9a902a67e03cce3.webp)
 
 Source: CPU transistor densities, clock speeds, power and performance from 1970-2015 – Charles Leggett
 
 The end of Moore’s Law is another wall that with which the semiconductor industry has contended, but this debate has been quieter lately as AI pioneers like Nvidia have provided massive compute gains by scaling along a few entirely new dimensions. Advanced packaging has enabling continued advances in compute by scaling input/output (I/Os) and enabling chips to harness a total silicon area beyond the reticle size limit. Parallel computing within and across chips and [building larger high-bandwidth networking domains](https://semianalysis.com/2024/04/10/nvidia-blackwell-perf-tco-analysis/) has enabled chips to work better together at scale, [especially for inference](https://semianalysis.com/2024/04/10/nvidia-blackwell-perf-tco-analysis/).
 
-![](https://substackcdn.com/image/fetch/$s_!Hl5u!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff02ebca2-b7bc-4d90-a294-22d87186968d_1600x1000.png)
+![](z-images/1dcee5ce51bd6b78d40ceb891592fd67.webp)
 
 Source: Nvidia
 
@@ -70,7 +70,7 @@ Newer evaluations have sprung up that aim to better differentiate models and foc
 
 Another example is a benchmark investigating AI R&D capabilities, which some [describe](https://x.com/_sholtodouglas/status/1860228530338152587) as “the most important capability to track.” Research Engineering Benchmark (RE) consists of seven challenging and open-ended ML research environments. Humans generally perform better on evals over longer time horizons, but, on a 2-hour time horizon, the best AI agents achieved a score 4x higher than humans. Important tasks such as the above, in which humans currently dominate, are the perfect ground for scaling inference time compute. We expect that models that better leverage this form of scaling will outperform humans in the future.
 
-![](https://substackcdn.com/image/fetch/$s_!tA0R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8dd84ad2-d35a-4dba-9167-575ef4734d56_1738x949.png)
+![](z-images/4786f917f162a344450a8bb6258b916c.webp)
 
 Source: RE-Bench: Evaluating frontier AI R&D capabilities of language model agents against human experts
 
@@ -78,7 +78,7 @@ Yet another trend is for evaluations to include extremely difficult expert-level
 
 Another example of the trend towards using extremely tough questions is FrontierMath (FM). FM is a benchmark of hundreds of original math questions that can take humans hours and even up to days to solve. It covers a broad range of mathematical topics, including number theory, real analysis, etc. The special sauce with this eval is that it is not published, minimizing the risk of data contamination, and can be graded via an automated verifier – simplifying the evaluation process.
 
-![](https://substackcdn.com/image/fetch/$s_!KPY0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F983a320a-bee5-4bd4-a70f-f64c84066edc_1654x1002.png)
+![](z-images/004b38984e5e3920aa5e420c5183695d.webp)
 
 Source: FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI
 
@@ -120,7 +120,7 @@ This methodology for building a synthetic dataset for use in fine-tuning has bee
 
 But Rejection Sampling can be more complicated than it appears. In Llama’s case, the model was prompted to revise its answer if the initial response was incorrect, and the model got the answer right on its second try 20% of the time. In another illustration of the usefulness of synthetic data, the Meta team translated Python code into PHP, ensuring quality via syntax parsing and execution, and fed this additional data into the SFT data set to account for the lack of public PHP code. This effectively demonstrates synthetic data being used to generate useful data reliably and predictably for underrepresented areas.
 
-![](https://substackcdn.com/image/fetch/$s_!-5-j!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1eaffb94-c2e1-47bc-b82c-d3f1f0ce1c03_1717x784.png)
+![](z-images/c6789084488ee16c1978752b9b639f95.webp)
 
 Source: Meta
 
@@ -152,13 +152,13 @@ There are a few main approaches to incorporate feedback and determine the action
 
 Value-based methods instead determine the value of getting to a given state and define values for each possible state. Each state is assigned a value based on the expected discounted return the agent can get if it starts in that state and then determines its action at each step based on the value of each action available to it. Historically, value-based methods were more commonly used in RL, but modern applications are much better served with Policy-based methods.
 
-![](https://substackcdn.com/image/fetch/$s_!mdVJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a3cc529-8efa-44a9-811f-87a3d7fde6e4_856x606.png)
+![](z-images/352f871fa7c8064a0568f61d49824b7d.webp)
 
 Source: Huggingface
 
 In Policy-based methods, the Agent is driven by a policy function that identifies a set of actions that can be taken for a given state and assigns a probability distribution over those set of actions. Actions to be performed at a given state can be deterministic, meaning that being in each state will always lead to the same action, or stochastic, where a probability distribution instead describes potential actions at that given state. The policy function is then trained to direct the Agent towards actions that maximize expected reward.
 
-![](https://substackcdn.com/image/fetch/$s_!VRD4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2eed3b09-e412-4f58-9409-ccbebf4de43a_879x597.png)
+![](z-images/3dd9628e31ca6c2d5c52c10998193b34.webp)
 
 Source: Huggingface
 
@@ -190,7 +190,7 @@ As discussed above, PPO is used to iteratively update the policy function of the
 
 Broadly speaking, RLHF allows models to perform better on tasks that real end users care about and have provided preference data on. Meta’s Llama 2-Chat achieved much better performance on factors such as helpfulness and harmlessness after rounds of RLHF. The paper demonstrates that the additional compute used to scale models during RL delivers clear results. The potential benefits from using synthetic data as opposed to human-generated feedback and relying more heaving on AI for feedback can also justify the use of even more compute.
 
-![](https://substackcdn.com/image/fetch/$s_!Ok_3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc61e691-e257-42ae-9684-ab23bb246f16_1815x945.png)
+![](z-images/e9a393f46c3f242c127eac1b1a1397d5.webp)
 
 Source: Meta
 
@@ -208,7 +208,7 @@ DPO entirely forgoes training a reward model and instead uses optimization to di
 
 The simpler approach used in DPO can achieve comparable or better results than RLHF using a full reward model, while being less prone to crashes and easier to implement. A prominent example of this approach's merits is that Llama 3 did not undergo RLHF and went through DPO. Meta found that in the case of Llama 3, DPO was more effective and stable than PPO and used less compute. However – using DPO means that the quality of the preference data set is paramount, meriting extra care and attention on how this data is gathered and processed.
 
-![](https://substackcdn.com/image/fetch/$s_!3SZD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8e7e575b-63d2-430b-9e15-099a5ee9db27_2127x958.png)
+![](z-images/683886006f44d9bed1d200527824ce0b.webp)
 
 Source: Meta
 
@@ -218,7 +218,7 @@ Meta eventually discovered the lesson the other labs already knew: DPO does not 
 
 Instead of relying on human feedback to train a reward model, Reinforcement Learning with AI Feedback (RLAIF) replaces human feedback with another model. The reward model is trained based on AI-generated feedback – usually some form of scoring model or algorithm that will evaluate given completions and determine the reward accordingly.
 
-![](https://substackcdn.com/image/fetch/$s_!6nrU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdeb3ed89-5480-4cff-80ec-7f302a79612b_1696x745.png)
+![](z-images/2ad727ef103488a0967a00ebb3d332ae.webp)
 
 Source: RLAIF vs RLHF: Scaling Reinforcement Learning from Human Feedback with AI Feedback
 
@@ -232,7 +232,7 @@ The second stage of the process for Constitutional AI is similar to RLHF, but wi
 
 The most notable observation of this approach is that it’s scalable across many different domains – if there is a model that is good at ranking responses based on which one is more scientifically accurate in addition to being able to identify harmlessness, the model can be used to optimize for scientifically accurate responses as well.
 
-![](https://substackcdn.com/image/fetch/$s_!3KN1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa63d0e60-cc14-4380-8be7-e4597eaf2c8c_1255x711.png)
+![](z-images/7df52e3e573e4260a7264a3c44afe94f.webp)
 
 Source: Anthropic Constitutional AI: Harmlessness from AI Feedback
 
@@ -256,7 +256,7 @@ Secondly is the **Verifier Model**, which is responsible for evaluating whether 
 
 **Verifier Models** can be trained using either human annotation, through automatic process annotation or using automatic verifiers. Alternatively – verification In OpenAI’s paper, [Let’s Verify Step by Step](https://arxiv.org/pdf/2305.20050), researchers introduced the [PRM800K process supervision dataset](https://github.com/openai/prm800k), in which human data-labelers annotate 800,000 process steps that form part of 75,000 solutions to 12,000 questions from the [MATH Dataset](https://arxiv.org/pdf/2103.03874) that are output from a Generator as discussed in the paper.
 
-![](https://substackcdn.com/image/fetch/$s_!7XBw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F306aad7a-aeb9-4635-8903-236dbb190db2_1045x536.png)
+![](z-images/88ee2bc68579bab4eb0e6e13d4b0da20.webp)
 
 Source: Let’s Verify Step by Step
 
@@ -268,7 +268,7 @@ Automatic verifiers are a system or model that can ideally quickly and easily ve
 
 Automatic process annotation can generate this step-by-step process annotation. Instead of having a human evaluate an intermediate step, the **Completer** is used to create multiple different paths of reasoning steps. The [Math-Shepherd paper](https://arxiv.org/pdf/2312.08935) uses automatic process annotation – generating a number of paths, then evaluating these paths by either marking it as a good reasoning step if it leads to a correct final answer (i.e. Hard Estimation) or by assigning a score based on the frequency with which the step leads to the correct solution (i.e. Soft Estimation).
 
-![](https://substackcdn.com/image/fetch/$s_!praz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb2db709-810d-49e4-a2ba-1421ff8cef11_1040x477.png)
+![](z-images/436985c7c83764ccb82fb349ccf79825.webp)
 
 Source: Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations
 
@@ -276,7 +276,7 @@ The fourth model is the **Reward Model**, which is trained from the process anno
 
 To recap our earlier explanation, there are two types of reward models: ones which provide a reward based on the outcome, an Outcome Reward Model (ORM), and ones which provide a reward based on the process, Process Reward Models (PRM). ORMs typically work by ranking a variety of different answers that a model provides and then selecting the highest ranked one. In contrast, PRMs evaluate and assign a score to each step of the reasoning chain of thought and provide a reward based on this score and for this reason are generally preferred when training Chain of Thought models. The [Let’s Verify Step by Step paper](https://arxiv.org/pdf/2305.20050) showcased stronger results for PRMs over ORMs. With that said, OpenAI relies more heavily on ORMs still.
 
-![](https://substackcdn.com/image/fetch/$s_!Y0v3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa762ed7d-fcb4-4993-98c5-1575fd03ba02_1258x908.png)
+![](z-images/9524814e06231e3fd52f1c4fc1986c6c.webp)
 
 Source: Let’s Verify Step by Step
 
@@ -292,7 +292,7 @@ In contrast, as explained above, Reasoning Models break the response into a disc
 
 There are two profound implications from the release of reasoning models - first, a meaningful improvement in model performance for challenging evaluations such as those oriented around coding, math, and science, and second, the realization that this improvement in model performance scales with test-time compute extends robustly to LLMs.
 
-![](https://substackcdn.com/image/fetch/$s_!qLE8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff28b607e-5397-4fed-a64f-130428ea19fb_833x432.png)
+![](z-images/fcf6f89762cf7976a27e2a4b727619cf.webp)
 
 Source: OpenAI
 
@@ -302,19 +302,19 @@ With greater compute, reasoning models can think through more steps and increase
 
 This means operators of inference systems for reasoning models are limiting the length of reasoning chains of thought to keep context lengths reasonable and prices down so as to serve an economical number of users at a reasonable token to token latency. It follows that today’s reasoning models are performing with one arm tied behind their back and could scale very significantly in performance as more capable inference systems such as the GB200 NVL72 come to market. Once economical, allowing o1 to adjust the length of its reasoning chain and compute employed will be a technique to harness test-time compute scaling.
 
-![](https://substackcdn.com/image/fetch/$s_!Ctxa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4029db1-ce2a-4afe-b896-3a4be298945e_1162x737.png)
+![](z-images/9bf224e4b34df4c2f29cc84b53d423ee.webp)
 
 Source: OpenAI
 
 As we see from evals and from the graph further down below, with one attempt, GPT-4o beats other models. The most naïve way to scale test-time compute is to simply increase the number of samples concurrently being run, effectively channeling the infinite monkey theorem. The paper [Large Language Monkeys](https://arxiv.org/pdf/2407.21787) demonstrates that simply repeated sampling can scale inference time compute and can yield much better results.
 
-![](https://substackcdn.com/image/fetch/$s_!LOsb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd781a180-01f8-4a16-8b86-c154c41405b1_826x678.png)
+![](z-images/8fd8572ea8b38e8232586aba1daa987e.webp)
 
 Source: Large Language Monkeys: Scaling Inference Compute with Repeated Sampling
 
 This is arguably one of the most basic ways of doing search. Generating more samples allows for greater coverage, which is defined as any of the samples getting the correct answer (i.e. pass@k). One could argue that simply enabling these smaller models to think over a problem many times may be more accurate and cheaper, though we will need to have an effective verifier to identify when we have successfully generated the metaphorical complete works of Shakespeare.
 
-![](https://substackcdn.com/image/fetch/$s_!AXwr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec9e508e-9eff-4a28-a83f-02ac332a5084_672x401.jpeg)
+![](z-images/a3a2fe9244151c6b7ff5393bd427f510.webp)
 
 “It was the best of times, it was the blurst of times” Source: The Simpsons
 
@@ -324,13 +324,13 @@ Search is another dimension of scaling that goes unharnessed with OpenAI o1 but 
 
 Self-Consistency / Majority Vote is one such search methodology in which we simply run the prompt through the model multiple times, thereby generating multiple responses, and then we pick the correct answer by choosing the response that appears most often among a given number of samples.
 
-![](https://substackcdn.com/image/fetch/$s_!uYQI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c18c74e-8dc6-42fb-8c6d-bb55def34b77_975x491.png)
+![](z-images/ff01398c09461e5e28fc3ee112848900.webp)
 
 Source: Sasha Rush
 
 Best-of-N Sampling is another idea in which we generate N solutions for a specific prompt and then use a verifier model to identify chains-of-thoughts that led to the correct answer. This method is generally restricted to areas that are amenable to verification (e.g., sudoku and not essays) and is limited by the effectiveness of the verifier model.
 
-![](https://substackcdn.com/image/fetch/$s_!L8Fo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1e5abc5-5ae1-4b43-9d62-4948739409df_975x505.png)
+![](z-images/5835f1d84b57f0179269fbaf5bde9195.webp)
 
 Source: Sasha Rush
 

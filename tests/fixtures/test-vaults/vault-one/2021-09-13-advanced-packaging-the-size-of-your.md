@@ -8,15 +8,15 @@ description: "Applied Materials has been working hard on modifying a physical va
 
 Applied Materials has been working hard on modifying a physical vapor deposition tool in order to enable panel level packaging. This tool originates from their acquisition of Tango Systems. It is the convergence of techniques used for LCD panel, Printed Circuit Board technologies, and [Fan Out Wafer Level packaging such as that used on the Dojo chip](https://semianalysis.com/tesla-dojo-ai-super-computer-unique-packaging-and-chip-design-allow-an-order-magnitude-advantage-over-competing-ai-hardware/). Applied Materials claims it can do this with less than half the normalized capital costs compared to wafer level packaging.
 
-![](https://substackcdn.com/image/fetch/$s_!1c1U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2091014-8983-4d02-8883-168218057c74_1024x681.png)
+![](z-images/3e5ff7bfa127dd73d81d2822f0dc86b9.webp)
 
 As you can see these packages are massive and dwarf anything we see in chips today. It would allow the packaging of dozens, if not over a hundred different chips. The Applied Materials promo states 600mm by 600mm packages, but older details of this tool mention 670mm by 580mm. Regardless, a package around 34 inches in diagonal is mindboggling.
 
-![](https://substackcdn.com/image/fetch/$s_!2msp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Faac44c1b-b7ed-493d-8db3-e59365fa22a6_1024x542.png)
+![](z-images/0369f149afa38fc6fc1ab91d36385c05.webp)
 
 It can deposit layers as thin as 10um and do interconnect layers, low resistance contacts, or conformal seed layers for etched or laser drilled vias. This technology supports embedded die in substrate technologies such as Intel’s EMIB (embedded multi-die interconnect bridge) or TSMC’s LSI (local silicon interconnect). In addition, it can be used on organic and glass interposers.
 
-![](https://substackcdn.com/image/fetch/$s_!xlYh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F18ff0991-3bc4-4ab9-aed3-e88eab78c532_1024x576.jpeg)
+![](z-images/4cc8d34bab808d91e7a0b762a0d76b85.webp)
 
 The new PVD tool doesn’t come alone and comes with a combination of Applied Materials capabilities from its Display Group, including deposition, eBeam testing, SEM review and metrology, and focused ion beam for defect analysis. We are excited to see if this will be used in mega packages. Initial use cases will be as a cost optimization point for running many packages and individual products at once, but it was made clear that this is just the start.
 

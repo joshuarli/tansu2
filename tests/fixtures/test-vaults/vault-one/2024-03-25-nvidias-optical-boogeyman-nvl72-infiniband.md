@@ -10,7 +10,7 @@ At GTC, Nvidia announced 8+ different SKUs and configurations of the Blackwell a
 
 Rather than the typical 8 GPU server we are accustomed to, it is a single integrated rack with 72 GPUs, 36 CPUs, 18 NVSwitches, 72 InfiniBand NICs for the back end network, and 36 Bluefield 3 Ethernet NICs for front end network.
 
-![](https://substackcdn.com/image/fetch/$s_!slCM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9dc1f225-78eb-4313-bddf-6e3e05f78127_2396x1248.png)
+![](z-images/c811eaf834b0ddf2b2c41cbe35eec9b6.webp)
 
 Nvidia
 
@@ -22,7 +22,7 @@ When Nvidia’s DGX GB200 NVL72 was announced in the keynote speech last week �
 > 
 > Jensen Huang
 
-![](https://substackcdn.com/image/fetch/$s_!KdlG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc40e4946-a6b2-4053-bfa0-09b3a8f252de_4032x3024.jpeg)
+![](z-images/5fcae8c3e17e07d887fce4369bb548f6.webp)
 
 NVSwitch With 288 Copper Cables Per Switch
 
@@ -30,19 +30,19 @@ These skittish observers saw the NVLink scale up to 72 GPUs over 5,184 direct dr
 
 This is false, and they misunderstood Jensen’s words. The number of optics does not go down.
 
-![](https://substackcdn.com/image/fetch/$s_!mCb9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff0e64656-fc49-409b-a401-c3979812fd8b_2480x1456.png)
+![](z-images/6c78a5fd294ed322e4c3dbb544cc86c9.webp)
 
 Nvidia
 
 The DGX H100 and DGX GB200 NVL utilize three distinct networks. A front end network running Ethernet with a ratio of 2 or 4 GPUs per NIC, a back end scale out InfiniBand or Ethernet network running at 400G or 800G, depending on the configuration, but always with a ratio of 1 NIC per GPU, with another back end scale up NVLink network linking all 8 or 72 GPUs together.
 
-![](https://substackcdn.com/image/fetch/$s_!n4Rv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41f6bfad-c9b3-40d2-90ea-06418048f45f_1225x990.png)
+![](z-images/7d40b8ba02562cd5592957b60d90393d.webp)
 
 Nvidia
 
 For the back end scale out network – the NVL72 rack showcased at GTC still has 72 OSFP ports at 400G / 800G – one for each GPU – which is exactly the same connectivity implemented in the H100 – i.e. the same ratio of optical transceivers to GPUs. As GPU network sizes scale, the number of optical transceivers required also scales.
 
-![](https://substackcdn.com/image/fetch/$s_!ZXqE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2deb5e62-4783-4975-a6ff-9f0b694c38f9_1495x895.png)
+![](z-images/9145d62677dda6929fc5644c28557672.webp)
 
 Top layer is assumed fully populated for simplicity, the full optics model goes out to 100k GPU
 

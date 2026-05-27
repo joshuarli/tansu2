@@ -8,13 +8,13 @@ description: "Amazon’s Bedrock Mix and Anthropic Deal Terms Combine to Show Gr
 
 While other CSPs have seen declining-to-flat operating margins over the last several quarters, Amazon’s AWS margins inflected this past quarter driven primarily by customer spending growth on Claude through Bedrock. AWS’ higher share of 3P model API spend, Anthropic/Bedrock deal structure, and Anthropic’s ARR outperformance in 1Q26 all contributed to EBIT margins increasing 213bp Q/Q while other CSPs lagged. SemiAnalysis’ work in the new [Tokenomics 2.0 model](https://semianalysis.com/tokenomics-model/) shows how AWS has pulled ahead of the pack and found a strong avenue to grow margins. Our model estimates quarterly revenue, profits, ROIC and compute requirements of every single business vertical of hyperscalers and AI Labs, e.g. Gemini API revenue & margins, Microsoft Copilot ARR, OpenAI ChatGPT subscriptions across plans, etc.
 
-![](https://substackcdn.com/image/fetch/$s_!G9ME!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75b1ab04-af86-43e6-887a-58807b6790f7_936x501.png)
+![](z-images/c26415643ecb170831b4dd93bda6d8fc.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
 Although all CSPs are benefiting from increased AI and non-AI revenue, margins are a whole different story. Oracle and Coreweave both disappointed the market with lower-than-expected profits from their cloud arms. Azure is also seeing a downward trend in margins. Google Cloud has had a great upwards climb recently, but margins are inflated since they do not include training costs from DeepMind in the GCP segment. The only CSP with a true rising trend is AWS – a remarkable achievement considering their server depreciation (5yrs) is the lowest of all CSPs.
 
-![](https://substackcdn.com/image/fetch/$s_!nUPm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F08852472-083b-4d23-8dfa-1828e96af7ef_2367x1269.png)
+![](z-images/dedfbfd92cdafd489cd14feec6f17899.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -27,7 +27,7 @@ Now, we see a new era for AWS where the firm combines accelerating revenue growt
 - Risk appetite: winners in the AI infrastructure landscape are not afraid of putting their balance sheet at work. As our [Datacenter Industry Model](https://semianalysis.com/datacenter-industry-model/) demonstrates, Amazon has secured more power than any other cloud provider besides Google, understanding before others that energy drives market share in this constrained environment, and that requires capital and multibillion dollar PPAs.
 - Business Model: Amazon is the only CSP with token-as-a-service being the dominant share of its AI business, while all others are focused on multi-year IaaS deals. That demonstrates a higher risk appetite but also a better understanding of the unique opportunity provided by Bedrock, as we’ll detail below.
 
-![](https://substackcdn.com/image/fetch/$s_!rory!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F665334ea-ba75-48a0-8525-c8c3fd78243a_936x519.png)
+![](z-images/b9b0e0fe51ff1df3d8089f43ff41b7c4.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -61,7 +61,7 @@ The economics of TaaS platforms are very different if they own the IP (or can fr
 - As Seller, Anthropic books full revenue of the sold tokens.
 - As computer and marketplace provider, AWS gets both an infrastructure fee (akin to an EC2 IaaS fee) and a distribution or revenue share fee. The latter is what boosts margins and makes selling Claude on Bedrock a highly attractive business to AWS.
 
-![](https://substackcdn.com/image/fetch/$s_!xTDJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc920fde-1020-4d15-8b58-64e3599f9819_936x507.png)
+![](z-images/b83d74ca48412d4713de4a1a0c23c4b7.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -74,13 +74,13 @@ For the AI Lab, there are two main benefits:
 
 For the CSP, this means more risk relative to a standard GPU IaaS deal, since revenue is not guaranteed via a 5yr IaaS take-or-pay deal. However, the margins are significantly more attractive. And Amazon with its deal structuring and execution has been the main beneficiary of its bet on Bedrock, dwarfing the size of their rival platforms.
 
-![](https://substackcdn.com/image/fetch/$s_!fGPO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5b2803b1-498e-40f6-aa27-cbd4abd030f0_936x481.png)
+![](z-images/f8bb115ac781d219b9eb2ae4625f96ec.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
 And this is the main difference for the AMZN, MSFT, and GOOGL against ORCL and neoclouds. Their Token as a Service (TaaS) businesses are $10B+ in ARR today. Contrast this with neoclouds and Oracle at practically nothing. As we show in the Bedrock/Anthropic deal section, margins on these TaaS deals are significantly higher than being a wholesale seller of AI IaaS rental compute. The margin mix and distribution advantage these hyperscalers now possess is significantly widening the gap amongst the top hyperscalers and the rest of the field.
 
-![](https://substackcdn.com/image/fetch/$s_!_PqD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91b527ed-4b63-4288-bbd4-e62a69d76242_936x480.png)
+![](z-images/bda49b8c9fbdee8be6e15d8fe9fe7989.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -100,13 +100,13 @@ In addition to AI Accelerators, CPUs are also increasingly relevant to training 
 
 Our [Tokenomics Model](https://semianalysis.com/tokenomics-model/) goes into detail within each hyperscaler AI business to show the breakout of segments such as Bedrock at AWS, GitHub CoPilot within Azure, and Gemini API vs AI IaaS at Google Cloud. We have triangulated AWS’ AI Business and the mix of Bedrock to better assist investors and enterprises in understanding these trends. For AWS, the mix of AI as a % of total revenue has increased from 2% in 1Q24 to 10% today in 1Q26. Our estimates going forward, available to Tokenomics subscribers, show this continuing to increase. In 1Q26, the mix of AI as a % of total GCP and Azure revenue was 36% and 27%, respectively. However, we believe the mix difference between IaaS andTaaS is a major contributor to margin differences despite AWS’ lower total AI mix.
 
-![](https://substackcdn.com/image/fetch/$s_!AD-Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdc2f263f-5ed0-4083-8afe-17c4f674ffd9_936x544.png)
+![](z-images/1d4c44f413da353f4bfc27cb4e87c474.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
 As discussed above and as we dive deeper into the deal economics below, AWS’ Bedrock mix vs Azure Foundry and GCP Gemini API is important. Bedrock has steadily grown as a % of total AWS AI revenue to 37% today, up from 9% in 1Q25 when IaaS dominated the AI business. In comparison, AI IaaS is still 80%+ of the AI business mix at Azure and GCP. Per Amazon’s 1Q26 and 4Q25 earnings call, Bedrock revenue grew 170% and 60% Q/Q, respectively. SemiAnalysis believes Bedrock is a $5.5B run rate business today with the vast majority of customers (80-90%+) using Anthropic models.
 
-![](https://substackcdn.com/image/fetch/$s_!5fVf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F691c6923-84e5-4997-9c99-23c5dc3af0a2_936x493.png)
+![](z-images/a14fce477e529dd53ebaad8fe3a81162.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -118,7 +118,7 @@ Our understanding of Anthropic’s Bedrock deal includes a flat IaaS fee, revenu
 
 The [Tokenomics](https://semianalysis.com/tokenomics-model/) team models Anthropic’s and OpenAI’s businesses extensively by segment (Consumer, Business/Team, Enterprise) and plan (Free, Pro, Max20, API, etc) at an ARR, revenue, margin, token volume, and token pricing level to help investors and corporate strategy departments understand this flow of dollars and tokens between customers, labs, and CSPs. This work includes modeling the Anthropic and Bedrock deal, which we have previewed below to illustrate the Gross Margins of Anthropic and EBIT Margins of Bedrock at differing levels of Anthropic ARR per MW on Bedrock Compute. We illustrate that margins for Bedrock, or any Token as a Service product, have superior margins than the typical IaaS fee business. The takeaway for hyperscalers is that these TaaS arrangements are excellent margin accretive additions when structured beneficially for both the hyperscaler and lab to drive revenue higher.
 
-![](https://substackcdn.com/image/fetch/$s_!Dg1W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc87f4e2-a40b-43b8-afcf-a94bce1d65e1_1006x180.png)
+![](z-images/bcac95a5174595fe1ee8980ba115b8c0.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
@@ -128,7 +128,7 @@ We believe that Anthropic’s recent revenue outperformance (discussed below) pu
 
 Anthropic’s 1Q26 was characterized by rapid growth which helped propel Bedrock revenue and margins higher. The company added $21B in net new ARR in the quarter to reach $30B of ARR. Most of Anthropic’s revenue is API and Enterprise based whereas OpenAI skews consumer and has a relatively heavy inference cost load from free users. This revenue explosion is driven by Claude Code, which has taken enterprises by storm. Consumers, too, have begun to flock to Claude. In a recent note to subscribers, we noted Anthropic’s increasing (and now majority) market share of net new customers vs OpenAI within card panels as well as higher average transaction values. We continue to see strong demand for Anthropic - primarily driven by enterprise API spending - through the end of the year. Our latest Tokenomics model estimates see potential for well over $100B in ARR by year.
 
-![](https://substackcdn.com/image/fetch/$s_!gMTW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff6a73862-a5f6-401d-a907-4de5ab786211_936x679.png)
+![](z-images/63992e87bdbff6468070f0ebc343d1fe.webp)
 
 Source: SemiAnalyis Tokenomics Model
 
@@ -140,7 +140,7 @@ Key to deploying a token-as-a-service platform at much larger scale than rivals 
 
 ![The image is a line graph showing the growth of Net Add (MW) from 2023 to 2027 for different tech companies like AWS, Google, and Microsoft.
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!pQ_M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6c24303-82a7-44c5-8627-e69a8e6c966a_780x699.png)
+AI-generated content may be incorrect.](z-images/fb2fa6d449cb2c43528299a2468c9f8c.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -152,7 +152,7 @@ On the other hand, Microsoft had a year-long datacenter pause (see our [Datacent
 
 ![The image illustrates a comparison of AWS/Anthropic Al Training Datacenters, showing two maps with annotations from SemiAnalysis for Q3 2024 and Q3 2025.
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!443I!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec4490a5-5b51-4812-8bca-e09f617f0fd4_934x558.png)
+AI-generated content may be incorrect.](z-images/73a2a7029d69103891db1366062f877c.webp)
 
 The image illustrates a comparison of AWS/Anthropic Al Training Datacenters, showing two maps with annotations from SemiAnalysis for Q3 2024 and Q3 2025. AI-generated content may be incorrect.
 

@@ -22,7 +22,7 @@ The highest-end Nvidia GPU, H100, will remain sold out until Q1 of next year, de
 
 Today we will detail the bottlenecks to production and how much downstream capacity is expanding for Nvidia and their competitors. We will also share our estimates for the the supply increases by quarter for Nvidia, Broadcom, Google, AMD, AMD Embedded (Xilinx), Amazon, Marvell, Microsoft, Alchip, Alibaba T-Head, ZTE Sanechips, Samsung, Micron, and SK Hynix**.**
 
-![](https://substackcdn.com/image/fetch/$s_!mcPz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7200eed5-4750-42ef-9709-755af8ec5f0e_2387x2025.png)
+![](z-images/218ecb8fabfad87c3fbefcf8e6fe04d4.webp)
 
 Nvidia’s H100 is 7-die packaged on CoWoS-S. In the center is the H100 GPU ASIC which has a die size of 814mm <sup>2</sup>. Surrounding it are 6 stacks of memory, HBM. The HBM configuration changes between various SKUs but the H100 SXM version uses HBM3, with each stack being 16GB for 80GB total memory, only 5 HBM are used and a dummy die. The H100 NVL will have two packages with 6 active stacks of HBM on each package.
 
@@ -46,11 +46,11 @@ This helps customers dress up their balance sheet so it appears that inventory l
 
 The High Bandwidth Memory around the GPU is the next major component. HBM supply is also limited, but ramping. HBM is vertically stacked DRAM dies connected via Through Silicon Vias (TSVs) and bonded [using TCB](https://www.semianalysis.com/p/advanced-packaging-part-3-intels) (hybrid bonding will be required for higher stack counts in the future). Beneath the DRAM dies sits on a base logic die that acts as a controller. Typically, modern HBM has 8 layers of memory and 1 base logic die but we will see products with 12+1 layer HBM soon, for example AMD’s MI300X and Nvidia’s upcoming H100 refresh.
 
-![](https://substackcdn.com/image/fetch/$s_!DXZN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffbe12301-f937-4b2f-95f0-a9c7f8c2e1d9_3999x2250.png)
+![](z-images/51f434a61a17194a06046238aa469647.webp)
 
 Interestingly, it was AMD that pioneered HBM, despite Nvidia and Google being the highest volume user today. In 2008, AMD predicted that the continual scaling of memory bandwidth to match gaming GPU performance would need more and more power that would need to be diverted away from the GPU logic and therefore detract from GPU performance. AMD partnered with SK Hynix and other companies in the supply chain (such as Amkor) to find a memory solution that would deliver high bandwidth with lower power. This resulted in the development of HBM in 2013 by SK Hynix.
 
-![](https://substackcdn.com/image/fetch/$s_!7Z6g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8e06f96d-a715-4d5b-a6d9-017eecdf00fe_500x387.jpeg)
+![](z-images/f86fc474038d24464a1dd5f9cd136bd4.webp)
 
 SK Hynix first shipped HBM in 2015 for AMD’s Fiji series of gaming GPUs which was 2.5D packaged by Amkor. This was followed up with the Vega series in 2017, which used HBM2. However, HBM wasn’t much of a game-changer for gaming GPU performance. With no clear performance benefits coupled with higher cost, AMD returned to using GDDR for its gaming cards after Vega. Today, top of the line gaming GPUs from Nvidia and AMD are still using cheaper GDDR6.
 
@@ -62,23 +62,23 @@ To address this, leading-edge datacenter GPUs are co-packaged with High Bandwidt
 
 Today, many HPC-facing chip companies are enjoying the fruit of AMD’s efforts. Ironically, AMD’s rival Nvidia has perhaps stood to benefit the most as the highest volume user of HBM.
 
-![](https://substackcdn.com/image/fetch/$s_!FUvk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4feecb9f-7add-4af9-b4ce-650e13473c98_602x268.png)
+![](z-images/3c85ca6f6c73f65bc9ac79018f9a064e.webp)
 
 ## The HBM Market: SK Hynix Dominance | Samsung And Micron Investing To Catch Up
 
 As the pioneer of HBM, SK Hynix is the leader with the most advanced technology roadmap. SK Hynix started production of HBM3 in June 2022 and is currently the only supplier shipping HBM3 in volume, with over 95% market share, which is what most H100 SKUs are using. The max configuration of HBM now 8-layer 16GB HBM3 modules. SK Hynix is producing 12-layer 24GB HBM3 with a datarate of 5.6 GT/s for the AMD MI300X and Nvidia H100 refresh.
 
-![](https://substackcdn.com/image/fetch/$s_!3ePB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb555e9d1-0d98-43a0-bc74-3e41edd02343_895x427.jpeg)
+![](z-images/81acc679c0d775b36386ab46eb90101a.webp)
 
 The main challenge with HBM is packaging and stacking the memory, which is what SK Hynix has excelled at, having accumulated the strongest process flow knowledge. [In another post, we also detailed how SK Hynix’s 2 key packaging innovations are beginning to ramp up and will displace one key equipment vendor in the current HBM process.](https://www.semianalysis.com/p/ai-expansion-supply-chain-analysis)
 
-![](https://substackcdn.com/image/fetch/$s_!_vbO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda9acc5f-2a97-40eb-88fc-7984c342831d_2170x1134.png)
+![](z-images/53c4e61c5480354f7f58bcc2f9b2d8d0.webp)
 
 Samsung is next behind Hynix and expects to ship HBM3 in the second half of 2023. We believe they are designed for both Nvidia and AMD GPUs. They currently have a big deficit in volume to SK Hynix, but they are hot on the trails and are investing hugely to catch up on market share. Samsung is investing to catch up and become number 1 in HBM market share just like they are with standard memory. We hear they are cutting favorable deals with some of the accelerator firms to try to capture more share.
 
 They have shown off their 12-layer HBM as well as future Hybrid Bonded HBM. One interesting aspect of Samsung’s HBM-4 roadmap is that they want to make the logic/periphery on an in-house FinFET node. This shows the potential advantage they have of having logic and DRAM foundry in house.
 
-![](https://substackcdn.com/image/fetch/$s_!0LBY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c1dc967-eb69-49be-b10a-364d22febebe_1742x3086.jpeg)
+![](z-images/73586a166d70a6c1f06b335eb9ccfa47.webp)
 
 Micron is the furthest behind. Micron was more heavily invested in Hybrid Memory Cube (HMC) technology. This was a competing technology to HBM with a very similar concept that developed around the same time. However, the ecosystem around HMC was closed, making it difficult for IP to be developed around HMC. Furthermore, there were some technical deficiencies. Adoption for HBM was much higher so HBM won out to become the industry standard for 3D stacked DRAM.
 
@@ -92,7 +92,7 @@ In their most recent earnings call Micron made some bold statements about their 
 
 The statement that they will have higher market share in HBM versus their general DRMA marketshare is very bold. Given they still struggle to manufacture top bin HBM2E at high volume, we find it hard to believe Micron’s claim that they will ship leading edge HBM3 in early 2024 and even be the first to HBM3E. It feels to us as though Micron is trying to change the narrative away from being an [AI loser](https://www.semianalysis.com/p/ai-server-cost-analysis-memory-is) despite dramatically lower memory content per Nvidia GPU server versus Intel/AMD CPU server.
 
-![](https://substackcdn.com/image/fetch/$s_!nkVo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9bd20377-fd7e-4d13-b531-4634da7465ce_2196x912.png)
+![](z-images/fc2c3df1f11cf21b73565d3b634e91b4.webp)
 
 All our channel checks see SK Hynix remaining strongest at new-generation technologies and Samsung trying very hard to catch back up with huge supply increases, a bold roadmap, and cutting deals.
 
@@ -100,13 +100,13 @@ All our channel checks see SK Hynix remaining strongest at new-generation techno
 
 The next bottleneck is CoWoS capacity. CoWoS (Chip on Wafer on Substrate) is a “2.5D” packaging technology from TSMC where multiple active silicon dies (the usual configuration is logic and HBM stacks) are integrated on a passive silicon interposer. The interposer acts as a communication layer for the active die on top. The interposer and active silicon are then attached to a packaging substrate which contains the I/O to place on the system PCB.
 
-![](https://substackcdn.com/image/fetch/$s_!u7Fn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7f86cdd6-ed3b-4d1e-ac0b-368164184537_1293x488.png)
+![](z-images/f2ccdc3b38509d6a9256a0867388da3c.webp)
 
 HBM and CoWoS are complementary. The high pad count and short trace length requirements of HBM necessitate 2.5D advanced packaging technologies like CoWoS to enable such dense, short connections that can't be done on a PCB or even a package substrate. CoWoS is the mainstream packaging technology that offers the highest interconnection density and largest package size with reasonable costs. As almost all HBM systems are currently packaged on CoWoS, and all advanced AI accelerators use HBM, the corollary is that virtually all leading-edge data center GPUs are packaged on CoWoS by TSMC. Baidu does have some advanced accelerators with Samsung on their version.
 
 While 3D packaging technologies such as TSMC's SoIC enable stacking dies directly on top of logic, it does not make sense for HBM due to thermals and cost. SoIC sits on a different order of magnitude regarding interconnect density and is better suited to expanding on-chip cache with die stacking, as seen with AMD's 3D V-Cache solution. AMD’s Xilinx was also the first users of CoWoS many years ago for combining multiple FPGA chiplets together.
 
-![](https://substackcdn.com/image/fetch/$s_!p4QK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa0865601-28b7-4204-897c-513a955460fd_2048x1159.jpeg)
+![](z-images/46f8cc21edb42506b40dd5b66b1addb9.webp)
 
 While there are some other applications that use CoWoS like networking (and some of these are [adopted for networking GPU clusters like Broadcom’s Jericho3-AI](https://www.semianalysis.com/p/nvidias-infiniband-problem-qmx-ai)), supercomputing, and FPGAs, the vast majority of CoWoS demand comes from AI. Unlike other parts of the semiconductor supply chain, where weakness in other major end markets means there is plenty of slack to absorb the enormous pickup in GPU demand, CoWoS and HBM are already majority AI-facing technologies, so all slack was already absorbed in Q1. With GPU demand exploding, these are the parts of the supply chain that just cannot keep up and are bottlenecking GPU supply.
 
@@ -116,7 +116,7 @@ While there are some other applications that use CoWoS like networking (and some
 
 TSMC has been getting ready for more packaging demand but probably did not expect this wave of generative AI demand to come so quickly. [In June, TSMC announced they have opened their Advanced Backend Fab 6 in Zhunan.](https://pr.tsmc.com/english/news/3033) This fab has an area of 14.3 hectares which would be enough cleanroom space for potentially 1 million wafers per year of 3D Fabric capacity. This includes not only CoWoS but also SoIC and InFO technologies. Interestingly this fab is larger than the rest of TSMC’s other packaging fabs combined. While this is just cleanroom space and far from fully tooled to actually provide that much capacity, it’s clear that TSMC is getting ready in anticipation of more demand for its advanced packaging solutions.
 
-![](https://substackcdn.com/image/fetch/$s_!q-uS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2ec5b650-d503-451b-b038-db2bf0fd3c82_752x431.png)
+![](z-images/50676e202e4a3e7f5d26ed0e14c18365.webp)
 
 What does help a little is there is slack in Wafer Level Fan-Out packaging capacity (primarily used for smartphone SoCs), and some of this can be repurposed in some CoWoS process steps. In particular, there are some overlapping processes such as deposition, plating, back grinding, molding, placement, and RDL formation. We will go through the CoWoS process flow and all the firms who see positive demand due to it in a follow-up piece. There are meaningful shifts in the equipment supply chain. Edit: Here is the follow up piece.
 
@@ -126,25 +126,25 @@ There are other 2.5D packaging technologies from Intel, Samsung and OSATs (like 
 
 There are a few variants of CoWoS but the original CoWoS-S remains the only configuration in high volume production. This is the classic configuration as described above: logic die + HBM die are connected via a silicon-based interposer with TSVs. The interposer then sits on an organic package substrate.
 
-![](https://substackcdn.com/image/fetch/$s_!czZz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a814f2d-41f1-49a8-9e62-feba55acd065_720x540.jpeg)
+![](z-images/90f8db7c599e462bb968ba96ab4aaf16.webp)
 
 An enabling technology for silicon interposers is a technology called “reticle stitching”. Chips generally have a [maximum size of 26mm x 33mm due to lithography tools slit/scan maxing out that size](https://www.semianalysis.com/p/die-size-and-reticle-conundrum-cost). With GPU die alone approaching this limit and the need to fit HBM around it too, interposers need to be large and will go well beyond this reticle limit. TSMC addresses this with reticle stitching which allows them to pattern interposers multiple times the reticle limit (as of now up to 3.5x with AMD MI300).
 
-![](https://substackcdn.com/image/fetch/$s_!327y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3c535cc0-8513-4937-9c1a-2e4ae285b47f_2880x3016.png)
+![](z-images/35f71282e6b23a7f55a395d3941d5512.webp)
 
 CoWoS-R uses on organic substrate with redistribution layers (RDLs) instead of a silicon interposer. This is a lower cost variant that sacrifices I/O density due to using an organic RDL instead of a silicon-based interposer. As we have detailed, [AMD’s MI300 was originally designed on CoWoS-R but we believe due to warpage and thermal stability concerns AMD has to instead use CoWoS-S.](https://www.semianalysis.com/p/amd-mi300-taming-the-hype-ai-performance)
 
-![](https://substackcdn.com/image/fetch/$s_!WLow!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f4314f4-d94a-434e-9cb8-3ee42320b9a0_712x334.png)
+![](z-images/47a12396ab2a2eab60c3c969191c9417.webp)
 
 CoWoS-L is expected to ramp later this year and utilises an RDL interposer but contains an active and/or passive silicon bridge used for die-to-die interconnect that is embedded inside the interposer. This is TSMC’s equivalent to Intel’s EMIB packaging technology. This will allow for larger package sizes as silicon interposers are getting harder to scale. The MI300 CoWoS-S may be near the limit for a single silicon interposer.
 
-![](https://substackcdn.com/image/fetch/$s_!9LDu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb028f9fd-94b3-4765-b5a3-96b0dec4e7a3_453x286.png)
+![](z-images/ba3c80a4fe8fd75b1978faa235c8a6ce.webp)
 
 It will be far more economical for even larger designs to go with CoWoS-L. TSMC is working on a CoWoS-L super carrier interposer at 6x reticle size. For CoWoS-S, they have not mentioned anything beyond a 4x reticle. This is because of fragility of the silicon interposer. This silicon interposer is only 100 microns thick and is at risk of delaminating or cracking as interposers scale to larger sizes during the process flow.
 
 ## CoWoS Customers
 
-![](https://substackcdn.com/image/fetch/$s_!Kpl8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4aba0593-eec3-4e48-85a4-7a22f4049b08_905x656.png)
+![](z-images/57c626c23635895bb512d5353f91f888.webp)
 
 Note the chart is not to scale or percentage, we offer our model with actual units.
 

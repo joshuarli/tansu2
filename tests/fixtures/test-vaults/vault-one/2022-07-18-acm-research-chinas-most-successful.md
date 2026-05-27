@@ -12,7 +12,7 @@ At first glance, the wafer cleaning market sounds relatively simple, but that is
 
 Despite this, ACM Research has been able to carve a niche in the wafer cleaning business competing with multi-billion-dollar revenue companies such as Japan’s Screen and Tokyo Electron as well as the US based Lam Research. Furthermore, they have begun to expand upstream to electro-chemical plating and etch products as well. ACM Research achieved over $250M revenue in 2021 and has guided to hit as high as $405M this year. While most these sales are in China, ACM Research also has significant sales to Korea’s SK Hynix and is even qualifying at Intel as we speak!
 
-![](https://substackcdn.com/image/fetch/$s_!Pzeh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc33e754c-cbb2-4e4b-a31b-4ce9e81c0220_1402x679.png)
+![](z-images/84f27e55245fd11c712ac06289c236ab.webp)
 
 Back to the history of ACM Research, after continuing to be funded by their backers despite their initial misstep with copper polishing tools, they opened a research facility in Shanghai. This was the start of their overt operation in China. If we fast forward to the present day, ACM Research’s research and development as well as production are all in China. There is a tiny amount of R&D in South Korea as well and a corporate “HQ” in California. All meaningful operations related to technology development and manufacturing are in China.
 
@@ -22,30 +22,30 @@ The wafer fabrication industry was transitioning from batch wafer cleaning tools
 
 The ACM Research SAPS wafer cleaning tool is a single wafer cleaning tool, but with a key innovation. It utilized megasonic acoustic vibrations through the fluid bath to produce bubble oscillations which assisted with cleaning defects. Other manufacturers had introduced megasonics in the past, but a key issue was that as bubbles collapse, the resulting energy would often damage features on the chip. ACM Research also introduced space alternate phase shift (SAPS) which alternated the phases of the megasonic waves so that the energy delivered to the wafer was uniform and caused less pattern damage. Even with these innovations, SAPS is not currently used in any leading edge FinFET process by Samsung, Intel, or TSMC due to pattern collapse. ACM Research also has a similar technology known as TEBO (Timely Energized Bubble Oscillation) which has seen success in SK Hynix and YMTC NAND processes.
 
-![](https://substackcdn.com/image/fetch/$s_!gaZs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F72f04b94-9c6c-46d8-bea8-21a3a744f1f0_1381x739.png)
+![](z-images/afad9509c534899ddabfa7aa3c453234.webp)
 
 The state funded and subsidized [Yangtze Memory Technology Corporation](https://semianalysis.substack.com/p/the-impending-chinese-nand-apocalypse-e01) is the largest customer for ACM Research, but other Chinese state enterprises such as SMIC, HLMC, and CXMT are large customers as well. All of these firms have been proven to be directly working with the CCP for funding, research, and use of their chips in military applications. Much of these firms technology comes from American based companies too. For example, [YMTC](https://semianalysis.substack.com/p/the-impending-chinese-nand-apocalypse-e01) relies primarily of Lam Research tools for the fabrication of 3D NAND and San Jose based Xperi Corporation for Hybrid Bonding technology which YMTC has dubbed as “ [Xtacking](https://semianalysis.substack.com/p/the-impending-chinese-nand-apocalypse-e01).” ACM Research has published papers with YMTC regarding wafer cleaning for hybrid bonding as well. This could be an area where ACM Research and YMTC leapfrog Korean, Japanese, and American companies.
 
-![](https://substackcdn.com/image/fetch/$s_!cwFd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbd1efac7-7d9c-438c-be2a-f8a999be9531_748x757.png)
+![](z-images/afaed4e12b9f249f92ce8c5fed419059.webp)
 
 ACM Research is not only seeing success in wafer cleaning. They also have wins at packaging firms. The most notable win is with Tongfu Microelectronics who has been purchasing electro-chemical plating tools from ACM Research. As a reminder, Tongfu has a joint venture with AMD where AMD’s Epyc datacenter CPUs as well as client CPUs are packaged by Tongfu. Chips from the AMD Tongfu joint venture have even been shipped into the [world’s fastest supercomputer, Frontier, which was built by the US Department of Energy.](https://www.energy.gov/science/articles/frontier-doe-supercomputing-launches-exascale-era)
 
-![](https://substackcdn.com/image/fetch/$s_!KJhx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8a313b33-2724-4030-9825-520c63b2026c_1384x724.png)
+![](z-images/1dd6d184a38c69bc3961e8eac86b30f2.webp)
 
 The ACM Research electro chemical plating tool primarily competes with [Lam Research’s Sabre 3D tools.](https://www.lamresearch.com/product/sabre-3d/) This tool could potentially cause Lam Research to lose a large amount share as a large portion of electroplating for packaging applications is done in China.
 
-![](https://substackcdn.com/image/fetch/$s_!aUZN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F73ee5766-4c3e-4830-9599-2e96fca98004_1356x741.png)
+![](z-images/9fc01c663f205b9f40076899cb6857f2.webp)
 
 While ACM Research argues they have unique differentiated tech, the vast majority of their sales come from the Chinese domestic market. They are subsidized, preferred as a domestic supplier, and undercut the competing products of Screen, Tokyo Electron, and Lam Research on price. The assumptions of market share in China is very high as a result. As long as ACM Research’s product is even somewhat close to foreign competitors, the domestic supplier status means they will win out in share. This is further emphasized by ACM Research’s own long-term estimates forecasting little to no sales for the rest of the world outside of mainland China.
 
-![](https://substackcdn.com/image/fetch/$s_!ikRQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9421a4b6-efff-42d8-8066-f6ed01e532df_1393x742.png)
+![](z-images/114ff33a062a2f884b29ba80d32d77e8.webp)
 
 ACM Research’s own presentations showcase they believe 42% of new semiconductor production facilities are in China. This lines up with SEMI World Fab Report and [our own data](https://semianalysis.substack.com/p/can-you-trust-semiconductor-capital). The top country in semiconductors has shifted every few decades, and ACM Research, much like the CCP, believes that the next decade will be China’s turn despite renewed initiative looking to level the playing field on subsidies from Taiwan, South Korea, Japan, Europe, and the US.
 
-![](https://substackcdn.com/image/fetch/$s_!Ok8e!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4cbf1612-e556-42bf-a97c-4e7948c72492_1399x660.png)
+![](z-images/a9413b1320d3d56a33261759acf6e574.webp)
 
 We were shocked when we learned that when ACM Research says “evaluations in process with major U.S. manufacturer,” they mean Intel. The same Intel that is currently begging the United States and European governments for subsidies due to East Asian dominance in the semiconductor industry. We confirmed with multiple sources including directly with ACM Research that Intel is in the process of qualifying an ACMR tool which was made in China for the Intel Oregon campus. The Oregon campus is subsidized by Oregon tax payers, so we wonder how these tax payers would feel if they knew they were helping pay for wafer fabrication equipment from China. Once qualified, it is very possible that Intel could utilize Chips Act government subsidies to import more tools into Oregon, Arizona, and Ohio for volume production despite the existence of Japanese and American alternatives.
 
-![](https://substackcdn.com/image/fetch/$s_!2QN8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F10af895a-ed7a-4313-8b4e-bdb7b3cdd94f_1378x721.png)
+![](z-images/fd6df9d717273aee1a7776ba3d902a63.webp)
 
 ACM Research is projecting as much as $405M in revenue this year and they aren’t slowing down. They have begun to introduce photoresist stripping, CVD, and ALD products to compete more with Lam Research, Tokyo Electron, and Applied Materials. If successful, this would bust open a $30B sector of the wafer fabrication equipment market.

@@ -24,11 +24,11 @@ In total, TSMC has collected $6.7B of prepayments over the last 6 months and the
 
 With this huge capacity expansion also comes some margin expansion. TSMC projects over 53% long term gross margins. This is material increase over the prior guidance which were over 50%. [Morgan Stanley continues to look idiotic](https://semianalysis.substack.com/p/morgan-stanley-just-reduced-tsmcs) given they claimed TSMC would fall under 50% margins in late 2021 / early 2022 and that TSMC had no price pressure. In regards to margin, TSMC also stated N5 continues to be below the current corporate average, but as the technology matures it will reach the higher margins of their older technologies.
 
-![](https://substackcdn.com/image/fetch/$s_!XpYL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F399d5c40-4340-49f8-ada0-0b4a0ff90a54_1024x554.jpeg)
+![](z-images/5a0d96387419fcd51f047e8b52ebce1c.webp)
 
 TSMC derives more than half their revenue from 7nm and 5nm technologies, areas that only 2 other players can even dream of ever competing in. In addition, both Intel and Samsung have had major stumbling blocks and worse node performance, power, and density in comparison. Of the gargantuan $40B to $44B capital expenditures being planned for 2022, 70% to 80% will be allocated for 7nm, 5nm, 3nm, or 2nm. 10% will be spent for masks and [advanced packaging such as CoWoS, SoIC, and InFO.](https://semianalysis.substack.com/p/advanced-packaging-part-2-review) The last 10% to 20% will be spent for specialty and legacy technologies, with CMOS image sensors and RF being two standouts.
 
-![](https://substackcdn.com/image/fetch/$s_!1YMi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F468ee690-c65a-4d5d-bba5-639603fc43cb_1024x611.jpeg)
+![](z-images/fa910363761c69abcd9bc75e940a3628.webp)
 
 All this growth has caused TSMC’s total wafer shipments to skyrocket form less than 10.5 million 12” equivalent wafers shipped in 2016 to more than 14.1 million 12” equivalent wafers shipped in 2021. The more impressive trend is the pricing power of these wafers that TSMC is adding. The average selling price has skyrocketed due to the increase in mix on the leading edge and with specialty technologies. The chart above is raw revenue/wafers and doesn't account for packaging and mask making revenues. More recently, trailing edge wafers have also received price increases. This trend looks to hold steady and not be transitory for the medium term despite TSMC trying to talk down their price increases on the legacy nodes.
 
@@ -36,7 +36,7 @@ All this growth has caused TSMC’s total wafer shipments to skyrocket form less
 > 
 > TSMC Q4 2021 Earnings Call
 
-![](https://substackcdn.com/image/fetch/$s_!aIt2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F762af444-7a2e-4656-a7e1-5723f96eb702_1024x551.jpeg)
+![](z-images/73a77a6007abaefa0055a3354f824eaa.webp)
 
 While automotive is the largest growth sector on a percentage basis, HPC is the largest growth sector on an absolute dollar basis. The HPC category that TSMC names covers all sorts of processors, all the way from Apple’s M1 to AMD CPUs and Nvidia GPUs to networking switch ASICs and NICs. It is an incredibly broad category that will continue to be the backbone of growth as Nvidia, AMD, and in-house hyperscaler efforts blossom into full-fledged market dominance. TSMC had some interesting comments on Arm.
 

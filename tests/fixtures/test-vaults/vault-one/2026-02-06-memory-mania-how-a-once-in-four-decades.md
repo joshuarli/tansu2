@@ -22,7 +22,7 @@ Yet DRAM scaling has slowed significantly over the past few decades, and density
 
 Bitlines and sense amplifiers, once secondary concerns, are now dominant constraints. Every incremental shrink reduces signal margin, increases variability, and raises cost.
 
-![](https://substackcdn.com/image/fetch/$s_!CvGg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda0878c8-fd9f-4bef-8ffc-109915c2a982_1001x558.jpeg)
+![](z-images/98845a0806972217a367ab6e8474ecf2.webp)
 
 Source: Micron
 
@@ -32,7 +32,7 @@ This is a problem. When the system tries to read the data, it has to detect this
 
 ![A graph showing a line of gold
 
-Description automatically generated with medium confidence](https://substackcdn.com/image/fetch/$s_!Lw1D!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9f2fca5-03aa-4d33-96d8-cdace84b33b3_1379x684.png)
+Description automatically generated with medium confidence](z-images/1b21fbfb060013a61f6d66d211e11232.webp)
 
 Source: SemiAnalysis Memory Model - Sales@SemiAnalysis.com
 
@@ -50,7 +50,7 @@ Memory manufacturing, much like logic, is among the most capital-intensive indus
 
 ![A graph with blue and yellow lines
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!7rCY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F215bf7a5-3f55-4472-bb84-fef718e8573f_908x602.png)
+AI-generated content may be incorrect.](z-images/b390cf2c83fd65431d856b7369fb5695.webp)
 
 Source: SemiAnalysis Memory Model - Sales@SemiAnalysis.com
 
@@ -72,7 +72,7 @@ During the Windows PC supercycle of the early to mid-1990s, there were approxima
 
 ![A table with text on it
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!hXg_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5fb0f177-f9a5-4147-9e2f-0841704ab3ba_1000x492.png)
+AI-generated content may be incorrect.](z-images/33b1fd4d1ab9d691eb01d1e1ae8ec3ac.webp)
 
 Source: SemiAnalysis Memory Model - Sales@SemiAnalysis.com
 
@@ -84,7 +84,7 @@ However, such inflection-driven upcycles have not been sustainable in the long r
 
 ![A graph showing a line graph
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!TIHQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F850df7aa-8ff6-4027-a6bd-fb09a5539e63_1176x678.png)
+AI-generated content may be incorrect.](z-images/00c3c0b6e6a705f8d89c9cbb0d01fdc8.webp)
 
 Source: SemiAnalysis Memory Model - Sales@SemiAnalysis.com
 
@@ -96,13 +96,13 @@ During the 1993 memory supercycle, the DRAM industry entered a strong upcycle dr
 
 ![A graph with a line going up
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!KY1M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5bd12968-1a9f-42fc-a873-dd2333a6f405_1232x752.png)
+AI-generated content may be incorrect.](z-images/73c8cdaf736ed9a330880a86b4471bae.webp)
 
 Source: SemiAnalysis Memory Model - Sales@SemiAnalysis.com
 
 On the supply side, the industry was emerging from a prolonged downturn in the late 1980s because of intensified competition, declining margins, and a significant shakeout among U.S. and European DRAM suppliers. As a result, capacity expansion had been constrained and yields were uneven, leaving the supply suppliers ill-prepared to absorb the sudden surge in demand. With this perfect setup in both supply and demand, an industry shortage inevitably occurred. During 1993 and 1994, DRAM demand outpaced supply despite most fabs running at full utilization. Spot and contract prices for 4Mb and 16Mb DRAM rose sharply, and gross margins for leading suppliers surged well above 50%.
 
-![](https://substackcdn.com/image/fetch/$s_!H3iI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffe984e7a-d5c7-4e92-9147-bc1b3009e075_986x676.png)
+![](z-images/7dca32f7e4f01029784333d0c0066a92.webp)
 
 Source: SemiAnalysis estimates
 
@@ -110,7 +110,7 @@ Unsurprisingly, this set the stage for a downturn. Japanese incumbents and then-
 
 Rapid yield improvements further amplified supply, driving a sharp increase in bits per wafer. By 1995–1996, the market gradually flipped from shortage to oversupply. This led to sharp price declines of more than 60%, forcing widespread exits and accelerating industry consolidation.
 
-![](https://substackcdn.com/image/fetch/$s_!qAAO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F43d9692c-b9f0-4d1f-a448-be98079aa4aa_1074x644.png)
+![](z-images/2e9452001bd081aaa2d3ddbec02356e2.webp)
 
 Source: Integrated Circuit Engineering, SemiAnalysis
 
@@ -118,7 +118,7 @@ The 2010 memory supercycle started in roughly the 2nd half of 2009, driven by tw
 
 On top of this, smartphone demand growth was a near-vertical volume step-up. Global smartphonec by broader Android price-tier penetration and iPhone scaling. On the cloud side, while the servers’ shipment growth increased much more slowly compared to mobile during that period, the key change was the DRAM content per server. The industry was shifting toward higher-memory configurations to support consolidation, virtualization density, and early big-data workloads. DRAM content per server increased from single-digit gigabytes (GBs) to tens of GBs, representing a significant step-function increase in memory intensity per system.
 
-![](https://substackcdn.com/image/fetch/$s_!5i8t!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9a8fc3e9-5953-4099-a61b-6e348ad015e6_988x676.png)
+![](z-images/6a1a3d5abe877af4cbad04e9ce798f4c.webp)
 
 Source: SemiAnalysis estimates
 

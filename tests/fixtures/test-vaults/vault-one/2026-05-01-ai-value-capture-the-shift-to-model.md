@@ -26,7 +26,7 @@ In this article, we will explore where value from AI is accruing - from end user
 
 Finally - we introduce a new framework: the “One Chart to Rule Them All” that explores GPU Rental Economics and analyzes whom among the end users, the Neoclouds/Hyperscalers and the AI System suppliers are capturing the most value in the AI ecosystem.
 
-![](https://substackcdn.com/image/fetch/$s_!I-sV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b051759-fe13-4077-a95e-e8d96ec14332_1505x905.png)
+![](z-images/d1e3bae8e69abda6a02499b356ca7bc9.webp)
 
 Source: SemiAnalysis AI TCO Model
 
@@ -42,7 +42,7 @@ The world changed in December 2025, when Agentic AI began to *really work*. Semi
 
 The table below shows a handful of real examples from our own workflows, comparing token spend against what the equivalent human labor would have cost:
 
-![](https://substackcdn.com/image/fetch/$s_!G1n4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8038e05b-1fd8-4145-a721-edcf0b22b037_2153x853.png)
+![](z-images/59b919494ea84ace8316faa07ed28bdc.webp)
 
 Source: SemiAnalysis
 
@@ -62,13 +62,13 @@ Cost of production for token has fallen sharply because increases in accelerator
 
 The following chart shows throughput vs interactivity for B300s running DeepSeek R1 on 8k input tokens to generate 1k output tokens. The top line reflects token throughput with wideEP + disagg + MTP, the middle reflects wideEP + disagg and he lowest line is without any of the three software optimizations. The gap is startling with the same B300 able to yield~1k, ~8k, and ~14k tokens/sec/gpu on the same hardware. One can 14x throughput with software improvements alone.
 
-![](https://substackcdn.com/image/fetch/$s_!ayE7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ab53ef3-8fd3-402d-bf7d-930177e81d1b_2064x1270.png)
+![](z-images/b03ef85664c545ea34087014d11d8e1b.webp)
 
 Source: SemiAnalysis InferenceX
 
 If you factor in hardware improvements as well, then the difference is even more pronounced. The most optimized GB300 NVL72 configuration achieves ~17x higher throughput than the most optimized H100 configuration in FP8. If we switch to FP4, which Hopper doesn’t natively support, the difference jumps to 32x. Remember that the total cost of ownership per GPU is only ~70% higher for GB300 vs H100.
 
-![](https://substackcdn.com/image/fetch/$s_!elYt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7826e90-f3b0-4749-8d85-ce18a07d3604_1531x940.png)
+![](z-images/c085a9ddbed0807b7103c87ba214fa79.webp)
 
 Source: SemiAnalysis InferenceX
 
@@ -106,7 +106,7 @@ At the same time, compute supply remains structurally constrained. Upstream bott
 
 TSMC could raise prices materially, but they haven’t. This is a strategic error on their part. If not increasing prices, they could at least demand larger prepayments.
 
-![](https://substackcdn.com/image/fetch/$s_!wOAI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fea26fd90-ffad-4b1e-a873-94081c28f5c8_1868x1104.png)
+![](z-images/e6a9e85a4d9949299187b5f1c004ddbc.webp)
 
 Source: SemiAnalysis Foundry Model, SemiAnalysis Accelerator Model
 
@@ -120,11 +120,11 @@ Rubin, set to launch in 2H26, sits at the center of these dynamics. It delivers 
 
 In this context, Nvidia has room to increase pricing, particularly for systems like Rubin that deliver step-function performance gains. The incremental value created at the system level far exceeds the incremental cost, especially when viewed through $/FLOP or end workload economics.
 
-![](https://substackcdn.com/image/fetch/$s_!Gzf6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F04d13a8a-1f96-4b64-9a51-d293f287149c_2434x1728.png)
+![](z-images/9fa20cbd8ba9f49c436d2afb04908c37.webp)
 
 Source: SemiAnalysis AI TCO Model
 
-![](https://substackcdn.com/image/fetch/$s_!KlEs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F322450b9-b91e-43b1-91ba-5c52231fdee4_1437x982.png)
+![](z-images/8c397f3e43dbb77e83b75d21b6521ab0.webp)
 
 Source: SemiAnalysis AI TCO Model
 
@@ -149,7 +149,7 @@ This is why SemiAnalysis provides an industry-leading breakdown through our [VR 
 
 Both are key factors impacting the final pricing quote to the customers.
 
-![](https://substackcdn.com/image/fetch/$s_!6DrO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee19ef5f-b636-4ec1-a9a4-c11dc8bced96_1762x444.png)
+![](z-images/d7db040676786265fbcd67047089d942.webp)
 
 Source: SemiAnalysis Memory Model
 
@@ -162,7 +162,7 @@ Industry chatter suggests that Nvidia has secured substantial SOCAMM volume for 
 
 That said, broader DRAM pricing dynamics should still inevitably flow through. Further price hike in mobile LPDDR5X pricing in coming quarters should still be a critical pricing reference for SOCAMM, and SOCAMM should reprice accordingly given limited LPDDR5 allocation volume. We believe exit ’26 pricing for SOCAMM could exceed $13/GB, which is roughly in line with mobile DRAM pricing expected by the end of this year; accordingly, we view ~$10/GB as a reasonable assumption for Nvidia’s SOCAMM cost.
 
-![](https://substackcdn.com/image/fetch/$s_!5z_k!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F71e8437d-53eb-4d37-b7a1-5d43bcd2a130_2082x1330.png)
+![](z-images/974ac23302cd276f2f7dfba6fe825223.webp)
 
 Source: SemiAnalysis Memory Model
 
@@ -182,7 +182,7 @@ However, because SOCAMM2 is a socketed module in Rubin whereas GB300 uses an ord
 
 Hence, we would have expected overall capex per watt to rise as we transition from GB300 to VR NVL72. Yet to the contrary – current pricing only works out to a slight creep up in capex per watt from $37.4/W for GB300 to $38.1/W for VRNVL72. This is despite chip TDP almost doubling from GB300 to VR NVL72 (1400W to 2300W), and a material increase in FLOPs.
 
-![](https://substackcdn.com/image/fetch/$s_!bdAI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F46097fe3-eabd-4ca2-ad77-a1043bbc98e7_990x941.jpeg)
+![](z-images/3d9a3ecc23cdc21e599b105a8b20b691.webp)
 
 Source: SemiAnalysis AI TCO Model
 
@@ -190,11 +190,11 @@ This is unusual relative to broader trends in server capex per watt. Across AMD,
 
 Nvidia also has the opportunity to price discriminate on memory more than they do on the GPU because memory isn’t an anti-trust concern whereas the GPU is.
 
-![](https://substackcdn.com/image/fetch/$s_!Km5M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a954297-1d58-48dd-a375-37e068a206de_924x637.png)
+![](z-images/c59035485ef70db3eef0ff91fee349c8.webp)
 
 Source: SemiAnalysis AI TCO Model
 
-![](https://substackcdn.com/image/fetch/$s_!739-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff230ea96-bb31-4cc0-87b6-4dbfa5bb8709_1408x978.png)
+![](z-images/78c15bddd6149228386a4af641184897.webp)
 
 Source: SemiAnalysis AI TCO Model
 
@@ -208,7 +208,7 @@ Neoclouds lack the scale and networking expertise to customize and cost-optimize
 
 The disparity in networking costs between a Neocloud and hyperscaler becomes less significant, however, on a total cluster capital cost basis. For two comparable clusters, a 94% increase in networking cost for a Neocloud versus a hyperscaler translates to only to a 10% increase in all-in capital cost for a full rack-scale server. This excludes other variables such as power, utilities and operations, which will further erode cost differences attributable to networking equipment pricing disparity.
 
-![](https://substackcdn.com/image/fetch/$s_!DFS6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe4d7e07f-58d7-4bbb-8f89-59f4d763aee6_2262x957.png)
+![](z-images/95ea8ddea2ea0c1f213985f163753a34.webp)
 
 Source: SemiAnalysis AI Networking Model
 
@@ -232,11 +232,11 @@ Yet - with Compute demand well over compute supply, why should those in control 
 
 We’ve said that [TSMC’s N3 capacity is even tighter](https://newsletter.semianalysis.com/i/190110359/the-tsmc-n3-shortage). All major accelerator roadmaps have now converged on the N3 process node for this year and next year. Nvidia, Broadcom, Annapurna, MeidaTek and AMD are all fighting for more N3 wafer allocation from TSMC so that they can ship more compute to their customers. While N3 capacity is arguably the tightest constraint in the system, pricing remains relatively stable.
 
-![](https://substackcdn.com/image/fetch/$s_!sBJA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b15b856-fc6a-4df7-989e-90b2a3c2c57e_2692x1774.png)
+![](z-images/589f6af0e9c5030c84d6b977371c01ed.webp)
 
 Source: SemiAnalysis Foundry Industry Model
 
-![](https://substackcdn.com/image/fetch/$s_!J18X!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a787984-7145-4738-8161-5652d204ddd9_2692x1774.png)
+![](z-images/e1be86a4a97e65c1329ca40b6073c6d7.webp)
 
 Source: SemiAnalysis Foundry Industry Model
 
@@ -265,23 +265,23 @@ The Cost-based pricing approach starts with the premise that GPU deployments wil
 
 Therefore, the rental price charged under a cost-based framework is the price that earns the Neocloud a project IRR above the minimum hurdle rate for deployment. Most projects today tend to earn a return of mid-to high teens IRR. An illustrative GB300 deployment today will likely have a project IRR of 15.6% over a 5-year period with a 15% prepay.
 
-![](https://substackcdn.com/image/fetch/$s_!QCAl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bbe0fd4-467e-4e2b-880d-05b138a6afe3_727x566.jpeg)
+![](z-images/07b71bbec90ab92852a601858f71835e.webp)
 
 Source: SemiAnalysis AI TCO Model
 
 Neoclouds will aim for a similar IRR when deploying VR NVL72, which in turn determines what debut GPU rental prices for Vera Rubin might look like. With our all-in server cost for VR NVL72, a rental price of at least USD 4.92 per Hour per GPU rental price is required for a 5-year project with a 15% prepay to achieve the same project IRR hurdle of 15.6% that most GB300 projects use.
 
-![](https://substackcdn.com/image/fetch/$s_!RB2T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F122fdbf8-acd4-40a9-bcdb-b822857a8069_1038x871.jpeg)
+![](z-images/c3c7d951f149b7f46983953ddfb43d50.webp)
 
 Source: SemiAnalysis AI TCO Model
 
-![](https://substackcdn.com/image/fetch/$s_!N5LG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4fe88f0e-7194-4e9f-9b69-8c872ae0a5d4_1456x936.jpeg)
+![](z-images/b2b4ed772cb6df4d56ad3df2012db9d3.webp)
 
 Source: SemiAnalysis AI TCO Model
 
 Our second framework looks at value-based pricing. We anchor to the $/FLOP implied by existing SKUs and ask what that would translate to for Rubin. This represents the theoretical maximum a renter of compute would be willing to pay to remain indifferent between Rubin and current generation GPUs - and therefore serves as the ceiling for GPU rental pricing. Here - we look to the trend in improvement of rental prices per PFLOP.
 
-![](https://substackcdn.com/image/fetch/$s_!4qu2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F13ee4084-c663-44cf-b143-9891e30f5aff_2434x1728.png)
+![](z-images/9fa20cbd8ba9f49c436d2afb04908c37.webp)
 
 Source: SemiAnalysis AI TCO Model
 
@@ -289,7 +289,7 @@ For training workloads, we anchor to GB300 pricing by comparing rental cost per 
 
 The VR NVL72 price per TCO stands out in that, unlike for the GB300 and prior cards, there is an extremely large gap in Value-based and Cost-based pricing. If we are conservative and select a point slightly below the trend line - for instance a rental price of $0.55 per PFLOP - this would corresponds to $9.63/hr/GPU, nearly double the minimum rental price of $4.92/hr/GPU needed to cross Neoclouds’ return hurdle.
 
-![](https://substackcdn.com/image/fetch/$s_!zpKN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0ec95e34-a22d-4c14-9491-fb259b46538a_1499x925.jpeg)
+![](z-images/99e4278f191bc47651be3e3c0dd54056.webp)
 
 Source: SemiAnalysis AI TCO Model
 
@@ -305,7 +305,7 @@ This question can be answered by plotting observed GPU Rental Prices charged by 
 
 If Nvidia increases pricing for VR NVL72, the pricing curve shifts up and to the left. This is because a higher rental price is needed to offset this higher system cost while still earning the same IRR from the Neocloud perspective. This shift represents stronger bargaining power enjoyed by system suppliers like Nvidia.
 
-![](https://substackcdn.com/image/fetch/$s_!I-sV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b051759-fe13-4077-a95e-e8d96ec14332_1505x905.png)
+![](z-images/d1e3bae8e69abda6a02499b356ca7bc9.webp)
 
 Source: SemiAnalysis AI TCO Model
 
@@ -317,6 +317,6 @@ This suggests that there is meaningful room for Nvidia to increase server prices
 
 It is important to point out that this analysis has mainly focused on Rental Price/FLOP - but improvements in inference performance per TCO have been accelerating at an even brisker pace. Though we have yet to benchmark a VR NVL72 system at InferenceX, it is highly likely that there is an even sharper pace in cost decreases when it comes to dollars per token delivered by VR NVL72, meaning there could be even more headroom for Nvidia to capture more value from the overall ecosystem.
 
-![](https://substackcdn.com/image/fetch/$s_!WNV1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ef64f5b-4491-4b2d-931c-e4e9654a1f9d_1032x620.jpeg)
+![](z-images/56c54ee9b5864ab97d329294e364b659.webp)
 
 Source: SemiAnalysis AI TCO Model

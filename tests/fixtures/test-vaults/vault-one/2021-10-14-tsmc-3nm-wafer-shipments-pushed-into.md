@@ -14,7 +14,7 @@ TSMC had some major announcements this morning. The most important being their c
 
 While some outlets may call it a “delay” that isn’t technically true. TSMC has always high-volume manufacturing will begin in the 2nd half of 2022. While this is still the story, the start of production is not the same as shipments. TSMC recognizes revenue when they ship the product out of their fabs to partners. These comments are very clear, TSMC is not shipping 3nm until 2023. This would be 2.5 years after N5 began shipping to customers which was Q3 of 2020.
 
-![](https://substackcdn.com/image/fetch/$s_!mF2L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ffcb50296-22cd-44d3-b026-a3a932fad779_801x368.png)
+![](z-images/09f39b4889a3b8e9cdff1e091f3f3cc0.webp)
 
 This as we [reported](https://semianalysis.substack.com/p/qualcommmediatek-will-beat-apple), is too late for the new iPhone. The primary reasons TSMC has gave 3 months ago was that the technology is very complicated, and they agreed with a customer to ramp later. The comment very much reads like Apple collaborated with TSMC and agreed not to risk production issues and stick with N5/N4.
 

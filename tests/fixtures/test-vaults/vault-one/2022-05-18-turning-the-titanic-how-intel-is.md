@@ -48,11 +48,11 @@ Intel has restructured corporately so that teams have more direct goals. Intel r
 
 The most important change is that divisions are more clearly delineated. The Datacenter and AI Group (DCAI) is now more clearly separated from the Accelerated Computing Systems and Graphics Group (AXG) and the Network and Edge Group (NEX). The sales organization oversees sales and pricing to a large extent, but they still cooperate deeply with the actual divisions. These changes become more obvious when we dive into a business unit such as the Accelerated Computing Group or the Intel Foundry business.
 
-![](https://substackcdn.com/image/fetch/$s_!XA1Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F5a89496b-9ad4-4c7e-988b-e54dc0e445e4_1024x593.png)
+![](z-images/ed8e95739abb47cfa56828123de03b0a.webp)
 
 AXG has clear verticals that they must operate in. Anything related to GPUs as well as high performance computing. They are tasked with building out this technology and productizing it. So great, it has its very own P&L, great. The first snafu would come in that the majority of the graphics technology Intel currently ships is actually through consumer CPUs. How does one handle this?
 
-![](https://substackcdn.com/image/fetch/$s_!5npi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7af443fd-e1ca-46e2-8b5d-fbf2092476f9_1024x189.png)
+![](z-images/0f2d24dacf94701c35a414827e2a7ba4.webp)
 
 If you look at the fine print, Intel is having the client computing group do an intra-company revenue transfer of $700M in 2021 and scaling up to $1B in 2026 to compensate the accelerated computing and graphics team for their work. This in turn gives the team a base of revenue to deliver the client graphics IP from. The team has a clear starting budget, to start from. Raja Koduri and his team have clearly defined targets and must grow from there. As Q1 Intel earnings showed, there was a large operating loss of $390M on a base of $219M revenue for this group on a non-GAAP basis. Most of this came from the huge teams that are dedicated to making HPC, AI, and gaming GPUs a reality. These short-term losses are understood and accepted.
 

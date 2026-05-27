@@ -16,7 +16,7 @@ The past decade is the worst in Intel’s history, with much of the damage done 
 
 Let’s compare the combined resumes of the board that fired Gelsinger against his: which would you choose to rescue Intel? We think there's still a path forward from here, but it isn't with the current board.
 
-![](https://substackcdn.com/image/fetch/$s_!LKuG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7918e786-9ceb-43d9-a892-8f8490456db1_982x1024.png)
+![](z-images/b5f83b9def126f6452012b43fe0b8baa.webp)
 
 Short of changing his name to Grove, Noyce, or Moore, it’s hard to see how Gelsinger could be better suited to the job. Regrettably, the board lost its nerve before the dawn of Gelsinger’s turnaround. Semiconductors are one of the most complex industries, and it takes many years to course correct. In his final board meeting, Gelsinger presented an updated capital spending plan. The plan was to maintain substantial spending in Intel Foundry Services, but the board was so unhappy with the plan that they forced him out.
 
@@ -30,7 +30,7 @@ The problems at Intel began with the 10nm node (arguably 14nm). In 2016, TSMC an
 
 Intel’s products then suffered because of stagnant process tech. Competitors like AMD had the advantage of TSMC’s fabrication and in many cases better chip designs/architectures. Datacenter market share began to slip, and Intel's business issues only snowballed.
 
-![](https://substackcdn.com/image/fetch/$s_!c0uT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67cbee1c-166a-46b4-9d7f-8c21bec3d916_1024x595.png)
+![](z-images/0b26bd580339680550df5321f9d276af.webp)
 
 That's a well-understood part of Intel's history. However, for some reason, the board’s incompetence and leadership decisions are not usually part of the narrative. The actual fall of one of the greatest companies ever started more than a decade before this, and it started with Intel no longer being Intel culturally.
 

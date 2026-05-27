@@ -6,27 +6,27 @@ author: "Dylan Patel"
 description: "Our friends over at ICmasters have delved into the package of the Apple A14 Bionic."
 ---
 
-![](https://substackcdn.com/image/fetch/$s_!ND9P!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F240314ac-6e90-4a24-b91b-05269761f1fb_1200x998.png)
+![](z-images/8b51bb8ca9163bc04f26384bfc5d4557.webp)
 
 Our friends over at ICmasters have delved into the package of the Apple A14 Bionic. The die size has been unmasked, and it stands in at 88mm2. Despite cramming in 11.8 billion transistors, the die size is incredibly small thanks to utilization of TSMC’s 5nm process node.
 
-![](https://substackcdn.com/image/fetch/$s_!k8xS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F2ccc72fa-9235-4793-ba0e-0646ff2a60c5_1200x672.png)
+![](z-images/5dfaf5dca484144b3358380f0106fe1c.webp)
 
 The march of progress is not all rosy. Apple’s chips have historically achieved 90%+ of the process node’s theoretical density in their processors. This generation stands out by missing that mark by a large amount. A14 comes in at a cool 78% effective transistor density when compared to theoretical density. Despite TSMC claiming a 1.8x shrink for N5, Apple only achieves a 1.49x shrink.
 
-![](https://substackcdn.com/image/fetch/$s_!iCsF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F2e092954-0ed8-45c1-8f2d-03aac767169c_2279x585.png)
+![](z-images/11321ecfbd922c430859ada38f72b0ea.webp)
 
 This is not due to a failure of TSMC or Apple. These companies are clear leaders for the manufacturing and design of semiconductors respectively. Instead, this failure to convert theoretical to effective density stems from the slow death of SRAM scaling. SRAM is extensively used throughout a processor from registers to caches. Geoffrey Yeap of TSMC claims that the typical mobile SoC which consists of 60% logic, 30% SRAM, and 10% analog/IO.
 
-![](https://substackcdn.com/image/fetch/$s_!eUOH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7d27d2b-cd9a-46cf-af8c-0d920f81b03c_1200x675.jpeg)
+![](z-images/925459be90c2ded7b1d8716aa09b8f58.webp)
 
 TSMC’s N5 node diverges from prior shrinks by showing signs of slowing SRAM scaling. Despite being a full shrink with logic, the SRAM is a 1.35x shrink. This figure is overstated as it will end up being even lower once other the other assist circuitry is accounted for. Hence TSMC’s guidance of chip area reduction at 35%-40% with N5. SemiAnalysis expects this to be a trend that will persist with new nodes. TSMC and Samsung are already demonstrating 3D stacked SRAM which will help alleviate the issue of density.
 
-![](https://substackcdn.com/image/fetch/$s_!wcHm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6b6947ca-bbbe-4dde-bb83-469e0942498d_1280x720.jpeg)
+![](z-images/7b69aa682599dc50d68aa79036e6dd7a.webp)
 
 3D Stacking is not the silver bullet. Cost scaling has begun slowing dramatically. With TSMC N5 wafer pricing in the ~$17k range, it is clear cost per transistor has not fallen. Even if SRAM scaling kept up, the cost per transistor would still have remained flat from N7 to N5.
 
-![](https://substackcdn.com/image/fetch/$s_!Wrop!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F25e6115c-89e4-4224-ae97-35ca01034cd9_1147x663.jpeg)
+![](z-images/be78a557764f52956e82d299475e03f7.webp)
 
 *This article was originally published on [SemiAnalysis](https://semianalysis.com/apples-a14-packs-134-million-transistors-mm2-but-falls-far-short-of-tsmcs-density-claims/) on October 27nd 2020*.
 

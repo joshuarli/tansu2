@@ -30,25 +30,25 @@ We plan to:
 
 First, let’s talk about the impact this news has had on the ecosystem. TPU performance has clearly caught the attention of its rivals. Sam Altman has acknowledged [“rough vibes” ahead for OpenAI](https://www.theinformation.com/articles/openai-ceo-braces-possible-economic-headwinds-catching-resurgent-google?rc=63yhkf) as Gemini has stolen the thunder from OpenAI. Nvidia even put out a reassuring PR telling everyone to keep calm and carry on — we are well ahead of the competition.
 
-![](https://substackcdn.com/image/fetch/$s_!BB5Q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F416a8d57-1b5e-4ef6-8fd3-51ff018e02d2_916x562.png)
+![](z-images/2835b9a784273d938f4679e057ee1539.webp)
 
 Source: Nvidia
 
 We understand why. These past few months have been win after win for the Google Deepmind, GCP, and TPU complex. The huge upwards revisions to TPU production volumes, Anthropic’s >1GW TPU buildout, SOTA models Gemini 3 and Opus 4.5 trained on TPU, and now an expanding list of clients being targeted (Meta, SSI, xAI, OAI) lining up for TPUs. This has driven a huge re-rating of the Google and TPU supply chain at the expense of the Nvidia GPU-focused supply chain. While the “sudden” emergence of Google and the TPU supply chain has caught many by surprise, SemiAnalysis institutional product subscribers have been anticipating this [for the last year.](https://semianalysis.com/institutional/google-selling-tpu-systems-externally-further-tpu-revisions/)
 
-![](https://substackcdn.com/image/fetch/$s_!gSrk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78b1f0fd-ac35-4791-98d5-3c162727ffa3_1316x832.png)
+![](z-images/6545edb59cbd50a361cefeae5afef8d6.webp)
 
 Source: SemiAnalysis and Bloomberg
 
 Another reason Nvidia has been on the defensive is a growing chorus of skeptics who argue the company is propping up a “circular economy” by funding cash-burning AI startups, essentially moving money from one pocket to another with extra steps. We think this view is misplaced, but it has clearly struck a nerve inside Nvidia. The finance team issued a detailed response, reproduced below.
 
-![](https://substackcdn.com/image/fetch/$s_!-H8n!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb58d9d28-2045-4e28-853e-e94ee4380bf1_922x631.png)
+![](z-images/781fd4f2d9de5f8c0c4d88ef711ba5da.webp)
 
 Source: Nvidia FY26Q3 Earnings Responses, Bernstein Research
 
 We think a more realistic explanation is that Nvidia aims to protect its dominant position at the foundation labs by offering equity investment rather than cutting prices, which would lower Gross margins and cause widespread investor panic. Below, we outline the OpenAI and Anthropic arrangements to show how frontier labs can lower GPU TCO by buying, or threatening to buy TPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!20A7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6c9a4819-b0ac-4113-ac86-4795bd100188_977x275.png)
+![](z-images/4620b92d7b9fdd9b1a478f7b6d16efca.webp)
 
 Source: SemiAnalysis TCO Model, Anthropic and OpenAI
 
@@ -64,13 +64,13 @@ Onto the deal.
 
 The TPU stack has long rivaled Nvidia’s AI hardware, yet it has mostly supported Google’s internal workloads. In typical Google fashion, it never fully commercialized the TPU even after making it available to GCP customers in 2018. That is starting to change. Over the past few months, Google has mobilized efforts across the whole stack to bring TPUs to external customers through GCP or by selling complete TPU systems as a merchant vendor. The search giant is leveraging its strong in-house silicon design capabilities to become a truly differentiated cloud provider. Furthermore, it aligns with marquis customer Anthropic’s continued push to diversify away from its dependence on NVDA.
 
-![](https://substackcdn.com/image/fetch/$s_!uzv4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57447724-b889-4bd8-b4cf-3147213a8f2d_3303x1653.png)
+![](z-images/3cf9a2f0406193b7405a673fbdd21677.webp)
 
 Source: SemiAnalysis Tokenomics Model
 
 The Anthropic deal marks a major milestone in this push. We understand that GCP CEO Thomas Kurian played a central role in the negotiations. Google committed early by investing aggressively in Anthropic’s funding rounds, [even agreeing to no voting rights and a 15% cap on their ownership](https://www.nytimes.com/2025/03/11/technology/google-investment-anthropic.html) to expand the use of TPUs beyond internal Google. This strategy was eased by the presence of former DeepMind TPU talent within the foundation lab, resulting in Anthropic training Sonnet and Opus 4.5 on multiple types of hardware including TPUs. Google has already built a substantial facility for Anthropic, as shown below as part of our building-by-building tracker of AI labs.
 
-![](https://substackcdn.com/image/fetch/$s_!aSAq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d02869e-1b4e-4590-9cf6-0bd239188c7f_1746x1070.png)
+![](z-images/1e2d83194959b85a420eed4001ab9b09.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -88,7 +88,7 @@ While other hyperscalers have expanded their own sites and secured significant c
 
 Google’s workaround carries major implications for Neocloud providers and cryptominers looking to pivot to AI DC infrastructure. Instead of leasing directly, Google offers a credit backstop, an off-balance-sheet “IOU” to step in if Fluidstack cannot pay its datacenter rent.
 
-![](https://substackcdn.com/image/fetch/$s_!t7Va!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F52a04a94-9e9e-445e-b806-5a6cebd3f244_2236x1228.png)
+![](z-images/fdccf5020d7868cbdc53158f18cd06c9.webp)
 
 Source: TeraWulf
 
@@ -121,7 +121,7 @@ Today’s attention often centers on hardware for inference and post-training, y
 
 One of the key highlights of the new model include noticeable gains in tool calling and agentic capability, especially on longer-horizon tasks for economically valuable tasks. Vending Bench is an evaluation that aims to measure how well models would run a business over a long period of time by placing them as the owner of a simulated vending machine business and Gemini 3 destroyed the competition.
 
-![](https://substackcdn.com/image/fetch/$s_!iGAw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb2e21fa5-631e-460b-bc7b-280cbac462bf_1944x837.png)
+![](z-images/cd605d72ab3a1b2f5c5be1b58394abc5.webp)
 
 Source: Vending-Bench
 
@@ -139,7 +139,7 @@ There are 3 reasons for this. First, Google places a high internal emphasis on �
 
 The second reason is that up until 2023, Google’s primary AI workload was recommendation system models to power their core Search and Ad properties. RecSys workloads carry much lower arithmetic intensity compared to LLM workloads which means fewer FLOPs are required relative to every bit of data that is transferred.
 
-![](https://substackcdn.com/image/fetch/$s_!AYMn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F543cf57c-a4b5-40a3-98d0-7443c7c4f841_1906x1060.png)
+![](z-images/81f175df1ace303ee92117501b5340be.webp)
 
 Source: Meta
 
@@ -147,25 +147,25 @@ The third comes down to the utility of “peak theoretical FLOPs” numbers that
 
 After we ushered in the LLM era, there has been a clear shift in Google’s TPU design philosophy. We can see that with the 2 most recent TPU generations that were designed-post LLM: TPUv6 Trillium (Ghostlite) and TPUv7 Ironwood (Ghostfish) reflect that change. We can see in the chart below that for TPUv4 and v5, compute throughput was much lower than the Nvidia flagship at the time. TPUv6 came very close to the H100/H200 on FLOPs, but it came 2 years later than the H100. With TPU v7, the gap narrows further with servers available only a few quarters later, while delivering almost the same level of peak theoretical FLOPs.
 
-![](https://substackcdn.com/image/fetch/$s_!vv9d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9582080e-9c38-4b5e-b964-ad512e9a9106_2034x1188.png)
+![](z-images/31414f05d1cb0083376e622fa5278325.webp)
 
 Source: SemiAnalysis, Nvidia, Google
 
 What drove these performance gains? Partially it’s that Google started announcing TPUs as they ramp into production rather then after the next generation was being deployed. Furthermore, TPU v6 Trillium is manufactured on the same N5 node as TPU v5p with similar silicon area but was able to deliver a whopping 2x increase in peak theoretical FLOPs with significantly less power! For Trillium, Google quadrupled the size of each systolic array to 256 x 256 tiles from 128 x 128, and this increase in array size is what has delivered the increase in compute.
 
-![](https://substackcdn.com/image/fetch/$s_!gs9B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0be58268-c1c0-443e-a511-f7bb76961208_1816x676.png)
+![](z-images/5870b5a067bdfa1ad1e14a89fa46911c.webp)
 
 Source: SemiAnalysis, Google
 
 Trillium was also the last of the “E” (lite) SKUs which meant it was equipped with only 2 sites of HBM3. While Trillium closed the gap to Hopper on compute, it fell far short of the H100/H200 on memory capacity and bandwidth, with only 2 stacks of HBM3 vs 5 and 6 stacks of HBM3 and HBM3E respectively. This made it painful to use for novices, but the performance TCO achieved for Trillium is unbeatable if you get shard your model properly and utilize all those cheap FLOPS.
 
-![](https://substackcdn.com/image/fetch/$s_!XVId!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb39d7d10-8169-4ce5-99ab-4c35de4e78d2_1536x784.png)
+![](z-images/4fd0e7ada5439b7812b7e1209f162078.webp)
 
 Source: SemiAnalysis
 
 TPU v7 Ironwood is the next iteration where Google nearly completely closes the gap to the corresponding Nvidia flagship GPU on FLOPs, memory, and bandwidth albeit with general availability 1 year later than Blackwell. Compared to the GB200, FLOPs and memory bandwidth only have a slight shortfall, with capacity being the same with 8-Hi HBM3E, which is of course a significant shortfall to GB300 which has 288GB of 12-Hi HBM3E.
 
-![](https://substackcdn.com/image/fetch/$s_!FOKg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1c9096c-e855-47e2-ae5b-7f74f1f00dc1_1334x784.png)
+![](z-images/214dccb92bbbed2e548a4fa50efe0412.webp)
 
 Source: SemiAnalysis
 
@@ -175,13 +175,13 @@ While Google procures TPUs through Broadcom and pays a hefty margin, it is signi
 
 This more than makes up for the ~10% shortfall on peak FLOPs and peak memory bandwidth. This is from the perspective of Google and the price they procure TPU servers at.
 
-![](https://substackcdn.com/image/fetch/$s_!GoiK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd73646cf-f488-48aa-b5d9-9eb94561c325_1819x904.png)
+![](z-images/7ab925a36d87d45a5c03fe956a608c5c.webp)
 
 Source: SemiAnalysis AI TCO Model
 
 What about Google’s external customers when Google adds their margin on top? We assume that in the case where Google earns a margin on leasing TPU 7 to external customers that the TCO per hour can still be up to ~30% lower than the cost of the GB200 and ~41% lower than the cost of the GB300. This is what we believe is reflective of Anthropic’s pricing via GCP.
 
-![](https://substackcdn.com/image/fetch/$s_!R6Ly!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F009c184d-569e-4ab4-85d2-2fe616cbe3c2_1650x796.png)
+![](z-images/7bac1ec963e610eb201406ee283d06ec.webp)
 
 Source: SemiAnalysis AI TCO Model
 
@@ -203,29 +203,29 @@ There are other tricks that are employed, like running GEMMs on tensors filled w
 
 When we put together much lower TCO and higher effective FLOPs utilization, from the perspective of Google the $ per effective FLOP becomes much cheaper, with ~15% MFU being the breakeven with GB300 at 30% MFU. This means if Google (or Anthropic) manages to hit half the FLOPs utilization of GB300, they still come out even. Of course, with Google’s elite compiler engineer team and deep understanding of their own models, the MFU they can realize on TPUs could be 40% potentially. That would be a whopping ~62% reduction in cost per effective training FLOP!
 
-![](https://substackcdn.com/image/fetch/$s_!x_0X!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F361a49dc-a7e6-4834-a0b7-b61ba0be092c_1946x940.png)
+![](z-images/b6251848973a5979c3ad196a0de87a55.webp)
 
 Source: SemiAnalysis AI TCO Model
 
 However, when looking at the 600K rented TPUs, when we incorporate the higher TCO that Anthropic pays (ie inclusive of Google’s margin stacking) into this analysis, we estimate the cost to Anthropic to be $1.60 per TPU-hour from GCP, narrowing the TCO advantage. We believe that Anthropic can realize 40% MFU on TPUs due to both their focus on performance optimization as well as the TPU’s marketed FLOPs inherently being more realistic. This provides Anthropic with a staggering ~52% lower TCO per effective PFLOP compared to GB300 NVL72. The equilibrium where TCO per effective FLOP compared to the GB300 baseline is the same is at a much lower 19% extracted MFU for Anthropic. This means that Anthropic can suffer a sizeable performance shortfall relative to the baseline GB300 and the perf/TCO for training FLOPs still ends up being the same as the baseline Nvidia system.
 
-![](https://substackcdn.com/image/fetch/$s_!9K8W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fff2d4087-0bd0-4e35-8710-eb9603dc914e_1556x830.png)
+![](z-images/edf5a34b1238b224a7c02b008492b179.webp)
 
 Source: SemiAnalysis
 
 FLOPs are not the end all and be all for performance, memory bandwidth is super important for inference, especially on the bandwidth intensive decode step. It should be no surprise that $ per memory bandwidth for the TPU also ends up being much cheaper than GB300. There is significant evidence that at small message sizes such as 16MB to 64MB (loading an expert of a single layer), TPU’s even achieve higher memory bandwidth utilization then GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!e6pY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc4dd452f-da8a-4e3c-b522-26527097f0e1_1728x834.png)
+![](z-images/678e21b9bba5a9c13650e29e50291b60.webp)
 
 Source: SemiAnalysis AI TCO Model
 
 All of this translates into more efficient compute to train and serve a model. Anthropic’s release of Opus 4.5 continued the usual focus on coding, setting a new SWE-Bench record. The main surprise was a ~67% price cut on the API. This price cut paired with the lower verbosity and higher token efficiency of the model compared to Sonnet (76% fewer tokens to match Sonnet’s best score, and 45% fewer to exceed it by 4 points) means Opus 4.5 is the best model for coding use cases and could effectively raise Anthropic’s realized token pricing as Sonnet is over 90% of token mix today.
 
-![](https://substackcdn.com/image/fetch/$s_!ll-_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F403047d3-3008-4a21-9e7e-a00df6a9b691_2362x1180.png)
+![](z-images/7e0ede4f382e1681c0d64e45434d3523.webp)
 
 Source: SemiAnalysis Tokenomics Model, Anthropic as of 11/24/25
 
-![](https://substackcdn.com/image/fetch/$s_!AP2g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F18de9b63-a5ea-4161-9693-962d6aed6561_3397x1653.png)
+![](z-images/f5f85daa2c0ddd88812207d1fc7e5112.webp)
 
 Source: Anthropic and SemiAnalysis Tokenomics Model, 50:1 ISL:OSL
 
@@ -237,7 +237,7 @@ We can see this from comparing the GCP Anthropic deal to other large GPU-based c
 
 Under these assumptions, the TPU v7 economics show superior EBIT margins than the other large GPU-based cloud deals we have observed, with only OCI-OpenAI coming close. Even with Broadcom’s margin stack on the chip-level BOM, Google can still eke out far superior margins and returns than much more commoditized GPU deals. This is where the TPU stack allows GCP to be a truly differentiated CSP. [Meanwhile someone like Microsoft Azure, whose ASIC program is struggling, is confined to earning more mediocre returns in the mere business of leasing merchant hardware.](https://newsletter.semianalysis.com/i/178649945/other-asic-programs-vs-microsoft)
 
-![](https://substackcdn.com/image/fetch/$s_!HbvV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5276c013-7a03-43cd-b01b-7bc5ffd3d53f_2314x598.png)
+![](z-images/f15d54089e5099e93431844f9480e3f2.webp)
 
 Source: SemiAnalysis
 
@@ -247,33 +247,33 @@ We’ve so far discussed how TPUs compare to Nvidia GPUs, focusing on per chip s
 
 ## Ironwood Rack Architecture
 
-![](https://substackcdn.com/image/fetch/$s_!jRuL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F98f1262a-ca61-47ee-9a1e-b58d4cb4a277_1439x813.png)
+![](z-images/66f23653d6c88eeb6d131ff7c67b22e8.webp)
 
 Source: Google at Hot Chips 2025
 
-![](https://substackcdn.com/image/fetch/$s_!Ru3N!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a3b19e5-8159-4d64-8345-5ef508f382cd_2818x1587.png)
+![](z-images/6474372e597397c77a1a5acce1a713de.webp)
 
 Source: Google at Hot Chips 2025
 
 The TPU rack has a similar design over the last couple of generations. Each rack consists of 16 TPU Trays, 16 or 8 Host CPU Trays depending on the cooling configuration, a ToR Switch, power supply units, and BBUs.
 
-![](https://substackcdn.com/image/fetch/$s_!ArNq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5881ed93-4ea2-4447-8fe3-a611f6f03abb_793x1143.png)
+![](z-images/8a19cb9dd2819dc115c41a65339a3b05.webp)
 
 Source: SemiAnalysis
 
 Each TPU tray consists of 1 TPU board with 4 TPU chip packages mounted. Each Ironwood TPU will have 4 OSFP cages for ICI connections and 1 CDFP PCIe cage for the connection to the Host CPU.
 
-![](https://substackcdn.com/image/fetch/$s_!vOWB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e62de47-9252-4c5b-b221-49581764b9d0_788x917.png)
+![](z-images/f270e13bf7cda23cf114808d3bc5526a.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!vGIL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3346625c-6b2b-4335-8467-6a109fb64ace_1478x1288.png)
+![](z-images/7e6c2c50d07471eda0911b2bf5b8dc2d.webp)
 
 Source: Google
 
 Google has been implementing liquid cooled TPU racks since TPU v3 in 2018, but there are still some TPU generations in between that were designed to be air-cooled. The main difference between the liquid cooled and the air-cooled rack is that the air-cooled rack has 2 TPU trays to 1 host CPU tray ratio while the liquid cooled rack has a 1 to 1 ratio instead.
 
-![](https://substackcdn.com/image/fetch/$s_!eh3T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffaf8d0b1-f36c-456a-ab5b-34a4c8f30e40_744x900.png)
+![](z-images/47a4bee2ed0f20e98604cb2185bca93a.webp)
 
 Source: SemiAnalysis, Google
 
@@ -285,7 +285,7 @@ Overall, the TPU rack design is much simpler than that of the Nvidia Oberon NVL7
 
 The building block of Google’s ICI scale-up network for TPUv7 is a 4x4x4 3D torus consisting of 64 TPUs. Each 4x4x4 cube of 64 TPUs maps to one physical rack of 64 TPUs. This is an ideal dimension as all 64 TPUs can be connected electrically to each other and still fit in a physical rack.
 
-![](https://substackcdn.com/image/fetch/$s_!zChs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0de048fb-89a6-4865-8ff7-dbcbb7d2cda9_1740x2338.png)
+![](z-images/604e7e3e7cb04f09d7622cffc955edb2.webp)
 
 Source: Google, SemiAnalysis
 
@@ -295,7 +295,7 @@ Each TPU is always connected to 2 other TPUs via PCB traces within the compute t
 
 Connections within the interior of the 4x4x4 cube happen over copper, while connections outside of the 4x4x4 cube (including wrap-around connections back to the other side of the cube as well as connections to neighboring 4x4x4 cubes) will use optical transceivers and OCSs. In the below diagram, we see that as this is a 3D Torus network: TPU 2,3,4 (on the Z+ face) has a wraparound connection back to the opposite Z-axis face to TPU 2,3,1 (on the Z- face) using an 800G optical transceiver and routing through an OCS.
 
-![](https://substackcdn.com/image/fetch/$s_!DvYR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe0428839-ac3f-4ffc-923a-48295d2b9b19_2074x2144.png)
+![](z-images/afd91d7c2a4ba0d8618d2232c095e27d.webp)
 
 Source: Google, SemiAnalysis
 
@@ -303,13 +303,13 @@ As mentioned above, in addition to the 2 neighboring TPUs that are always connec
 
 TPUs in the interior of the 4x4x4 cube will connect to the 4 other neighbors exclusively using DACs, TPUs on the face of the cube will connect via 3 DACs and 1 optical transceiver, TPUs on the edge of the cube will connect via 2 optical transceivers and 2 DACs, while TPUs on the corners will connect via 1 DAC and 3 optical transceivers. You can remember how many transceivers a given TPU will use by looking at how many of the TPU’s sides are facing the “outside” of the cube.
 
-![](https://substackcdn.com/image/fetch/$s_!6rGG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0fd47a1d-3376-47a7-81c7-464e09a3909c_1302x1153.png)
+![](z-images/2b2a171144175db4ba32305e8e212bb2.webp)
 
 Source: SemiAnalysis
 
 The diagram above, as well as the table below, summarizes the number of respective location types for TPUs and can be used to derive the attach ratio of 1.5 Optical Transceivers per TPU v7. These transceivers connect to Optical Circuit Switches (OCSs) which enable connections between 4x4x4 cubes – more on that in the next section.
 
-![](https://substackcdn.com/image/fetch/$s_!SYnX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F68c6923d-2032-4c7d-b630-0adb7ac4a272_710x787.png)
+![](z-images/a2c2cf8e44e09d216da2ad064adfa5cd.webp)
 
 Source: SemiAnalysis, Google
 
@@ -321,19 +321,19 @@ The benefit of this approach is that the network can assemble smaller logical TP
 
 Unlike Electronic Packet Switching (EPS) switches such as an Arista Tomahawk 5 where there is a fixed total bandwidth that is further split into several ports of smaller bandwidth sizes, OCSs allow any bandwidth of optical fiber to be connected to its ports. OCSs is also low latency compared to EPSs because optical signals entering an OCS simply bounce from the input port to the output port. For EPSs, optical signals must be converted to electrical signals when entering the switch – one key reason why an OCS is typically more power efficient than an EPS. An EPS also allows routing of packets from any port to any port, while an OCS only allows you to route an “in” port to any other “out” port only.
 
-![](https://substackcdn.com/image/fetch/$s_!9p-p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F54289801-5e75-445f-96ef-bb9443981ff4_1653x990.png)
+![](z-images/465f9ac92ddaad295c8670598910507b.webp)
 
 Source: Google
 
 OCS ports only route individual fiber strands. This becomes a challenge for standard duplex transceivers because bandwidth is transmitted over multiple fiber strands, which reduces the effective radix and bandwidth of the OCS. To solve this problem, an FR optical transceiver is used to consolidate all wavelengths onto a single fiber strand to be connected to 1 OCS port. The Apollo Project innovatively achieved this in two steps. First, the 8 wavelengths – 1 wavelength for each 100G lane – are multiplexed through Coarse Wave Division Multiplexing (CWDM8) to transmit 800G over a single fiber pair, instead of 8 fiber pairs. Second, an optical circulator is integrated on the wave division multiplexing (WDM) transceiver to enable full duplex data flow, reducing requirements from 1 fiber pair to only 1 fiber strand.
 
-![](https://substackcdn.com/image/fetch/$s_!8Tqk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbb691eff-342c-4935-aef3-0ec7ae616fae_1610x896.png)
+![](z-images/98abf2c2822a0d89c04d88ebb38a2bac.webp)
 
 Source: Google
 
 The circulator forms a bi-directional link by combining the Tx and Rx fiber strands at the transceiver onto a single fiber strand that is sent to the OCS switch.
 
-![](https://substackcdn.com/image/fetch/$s_!CAnp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F22aa3bbe-7152-4dcb-aef3-4e203a942918_1581x473.png)
+![](z-images/667fbfb350966c2e76b8a81eecb71f39.webp)
 
 Source: Google
 
@@ -341,13 +341,13 @@ Source: Google
 
 Google’s ICI scale-up network is unique in that it allows the connection of multiple 64 TPU 4x4x4 Cubes together in a 3D torus configuration to create massive world sizes. The TPUv7 has a stated maximum world size of 9,216 TPUs but today, Google supports the configuration of TPUs into multiple different slice sizes of between 4 TPUs all the way up to 2,048 TPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!Qm1i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f178eb8-54c3-4944-836e-fcf8140436b0_3571x2394.png)
+![](z-images/73f06593dd8fa4633fb219db98260bfe.webp)
 
 Source: Google
 
 While Google can innovatively achieve an impressive scale-up cluster of 9,216 TPUs, the benefit of running training workloads on incrementally larger block sizes of up to approximately 8,000 TPUs at any point in time decreases. This is because larger block sizes are more prone to failures and disruption, therefore decreasing slice availability, which is defined by the fraction of time in which the ICI cluster is able to form a contiguous 3D torus slice.
 
-![](https://substackcdn.com/image/fetch/$s_!muYm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7601089c-f8bd-41e6-99bc-f80041ff6cad_1159x740.png)
+![](z-images/702ab77db2e3374ecb32fb7504e8ea30.webp)
 
 Source: Google
 
@@ -355,7 +355,7 @@ For slices that can fit entirely within a 4x4x4 Cube, we can simply carve these 
   
 To see how wraparound and inter-cube connections are made, let’s start by looking at how we would create a 64 TPU slice in a 4x4x4 topography. We can use the unit 4x4x4 cube of 64 TPUs corresponding to one physical 64 TPU rack to build up this topography. All 8 TPUs in the interior of the 4x4x4 cube can fully connect to all 6 neighbors using copper. If a TPU does not have an interior neighbor along a given axis, it will wrap around and connect to a TPU on the opposite side of the cube. For example, TPU 4,1,4 has no interior neighbor in the Z+ direction, so it will use one 800G optical transceiver to connect to an OCS assigned to the Z-axis, with the OCS configured to direct this connection to the Z- side of the cube, connecting to TPU 4,1,1. In the Y- direction, TPU 1,1,1 will use an optical transceiver to connect to a Y-axis OCS to link to the Y+ side of TPU 1,4,1 and so on.
 
-![](https://substackcdn.com/image/fetch/$s_!n0x9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00598db9-454f-4788-b769-7994f4089016_1212x1176.png)
+![](z-images/151907a1041a715053de281cc85e5eb7.webp)
 
 Source: SemiAnalysis, Google
 
@@ -367,7 +367,7 @@ These connections allow any “+” face of any cube to connect to the “-“ f
 
 There are two constraints to briefly point out. First, TPUs of one Index on a given face can never connect directly to a different index – so TPU 4,3,2 could never be configured to connect to TPU 1,2,3. Second, as the OCS essentially acts as a patch panel – TPUs connected on the input side cannot “loop back” to connect to any other TPU that is also connected on the input side of the OCS - as an example, TPU 4,3,2 can never connect to TPU 4,3,3. So – any TPU on the “+” face can never connect to the “+” face of any other cube, and any TPU on the “-” face can never connect to the “-” face of any other cube.
 
-![](https://substackcdn.com/image/fetch/$s_!PgAw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F961039f5-7304-4448-8ec3-354ba95581f2_2245x1261.png)
+![](z-images/0a330768409292dc53f7b2133459abe7.webp)
 
 Source: SemiAnalysis, Google
 
@@ -375,7 +375,7 @@ Let’s go larger and see how a 4x4x8 Topography could be set up. In this config
 
 It is important to remind readers that Cube A and Cube B depicted below are not necessarily physically located next to each other. Instead, they are connected via OCSs and they could each be in completely different locations in the datacenter.
 
-![](https://substackcdn.com/image/fetch/$s_!doQR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9ae9e2f-9d75-42af-b823-208452482bc8_2932x2196.png)
+![](z-images/927c0d8c49ac65b44aa29e18465ccd55.webp)
 
 Source: SemiAnalysis, Google
 
@@ -383,7 +383,7 @@ We will now move to a much larger topology – the 16x16x16 topology, which brin
 
 The maximum world size of 9,216 TPUs is built up using 144 4x4x4 cubes requiring 96 optical connections each amounting to a total requirement of 13,824 ports. Dividing this total port requirement by 288 (144 input and 144 output ports on each OCS) means we need 48 144x144 OCSs to support this maximum world size.
 
-![](https://substackcdn.com/image/fetch/$s_!-4OI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F427d34ea-5af3-45f5-ad19-d5b8070f0650_1560x1375.png)
+![](z-images/0fccc03a4e088b22a94a8bfbd6f7aab2.webp)
 
 ## Why use Google’s ICI 3D Torus Architecture?
 
@@ -395,7 +395,7 @@ But what is so great about Google’s unique ICI scale-up network – other than
 
 Even slices of the same size can be reconfigured differently. In the simple example of a Twisted 2D Torus diagrammed below, we see how looping across to an index of a different X coordinate instead of an index of the same X coordinate can reduce the worst-case number of hops and the worst-case bisection bandwidth. This can help improve all to all collective throughput. A TPUv7 cluster will twist at the 4x4x4 cube level.
 
-![](https://substackcdn.com/image/fetch/$s_!QSkD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F988dfb38-b5ba-43c3-9e2e-f8f7e79d1291_3868x1582.png)
+![](z-images/a4d8ba2571247d5e2d16187240507439.webp)
 
 Source: SemiAnalysis, Google
 
@@ -403,13 +403,13 @@ Reconfigurability also opens the door to a broad diversity of parallelisms. In a
 
 The fact that OCSs allow one to connect any “+” face of any cube to the “-“ face of any other cube means that there is complete fungibility of cubes. Slices can be formed out of any set of cubes. So if there are any faults or change in user demands or usage, this will not obstruct the formation of new topology slices.
 
-![](https://substackcdn.com/image/fetch/$s_!UC5Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5e48f64b-a36b-446b-b9cb-bc051862329d_962x675.png)
+![](z-images/31178754a1cc30fc2fac3b37c5b06848.webp)
 
 Source: Google
 
 **Lower Cost:** Google’s ICI network has a lower cost than most switched scale-up networks. Though the FR optics used can be slightly expensive due to the use of circulators, the mesh network reduces the overall number of switches and ports that are needed and eliminates cost arising from connections between switches.
 
-![](https://substackcdn.com/image/fetch/$s_!5GC1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F77d42a55-42e4-4788-843e-cfc50c720fb0_2054x942.png)
+![](z-images/06a20a3472ae09db8dd568158b153453.webp)
 
 Source: SemiAnalysis
 
@@ -427,7 +427,7 @@ The diagram below illustrates what an Ironwood DCN network using 32 racks holdin
 
 The DCNI layer connects the 4 aggregation blocks – depicted as the top layer in the diagram below. As with ICI, FR Optics are used to connect to the OCSs in order to maximize bandwidth per port on each OCS.
 
-![](https://substackcdn.com/image/fetch/$s_!2LWo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F526d2520-9342-492d-a4c5-98b0db6122ad_1341x1108.png)
+![](z-images/feed2c2ec470113891513a3b9b259c22.webp)
 
 Source: SemiAnalysis
 
@@ -435,7 +435,7 @@ While existing Ironwood clusters may only have 1 or 2 aggregation blocks, Google
 
 By using OCSs for the DCNI layer, the size of the DCN fabric can be incrementally expanded and the network can be re-striped to support new aggregation blocks. Furthermore, the bandwidth of aggregation blocks can be upgraded without having to change the make-up of the DCN layer. This allows the link speeds of existing aggregation blocks to be refreshed without changing the fundamental architecture of the network itself. The process of fabric expansion cannot go on indefinitely – at significant scale, it becomes unmanageable to rewire the network.
 
-![](https://substackcdn.com/image/fetch/$s_!CocA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd069c23-c468-41cf-9ece-2f8cf8f5efb0_1965x726.png)
+![](z-images/1cfd6b06b05eede8bf31f14a867dea94.webp)
 
 Source: SemiAnalysis, Google
 
@@ -452,13 +452,13 @@ Google has since revised their software strategy for externally-facing customers
 
 The externalization strategy is clear to see by looking at the number of contributions from various TPU software repos by Google. We can see a noticeable increase in vLLM contributions starting from March. Then from May, the “tpu-inference” repo was created which is the official vLLM TPU unified back-end, and since then there has been a flurry of activity.
 
-![](https://substackcdn.com/image/fetch/$s_!eSoG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F81b1cccf-0ee8-4833-b308-d65cd26bf111_1360x836.png)
+![](z-images/ade275474a5ff7c6e22fdb7a299f8a64.webp)
 
 Source: GitHub, SemiAnalysis
 
 Traditionally, Google only had first class support on the Jax/XLA:TPU stack (and TensorFlow/TF-Mesh RIP), but treated PyTorch on TPU as second class citizen. It relied on lazy tensor graph capture through PyTorch/XLA instead of having a first-class eager execution mode. Furthermore, it did not support PyTorch native distributed APIs (torch.distributed.\*) or support PyTorch native parallelism APIs (DTensor, FSDP2, DDP, etc), but relied on weird out of tree XLA SPMD APIs (torch\_xla.experimental.spmd\_fsdp, torch\_xla.distributed.spmd, etc.). This has led to a subpar non-native experience for external users that are used to the native PyTorch CUDA backend on GPUs and trying to switch to TPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!KE03!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f026b79-68bc-421f-9667-f332cbf63fec_1446x1012.png)
+![](z-images/6cbe68a497b56b10484f31a2ecd7c58e.webp)
 
 Source: XLA
 
@@ -466,7 +466,7 @@ In October, Google’s “Captain Awesome” Robert Hundt quietly announced in t
 
 Previously from 2020 to 2023, heavily used by a couple of teams at Meta FAIR used PyTorch XLA on TPUs but it was not widely adopted thus Meta leadership ended up cancelling the contracts in 2023. PyTorch XLA on TPUs is not a fun experience. The Meta FAIR GCP TPUs back then were even run using SLURM and not anything typical you would find on TPU stack like GKE/Xmanager/borg/etc.
 
-![](https://substackcdn.com/image/fetch/$s_!FSW5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb66dc94-a7f3-4fc4-a26d-fedace388034_1834x880.png)
+![](z-images/cc64ca15e30e4c5644d9d01253c99482.webp)
 
 Source: GitHub
 
@@ -474,23 +474,23 @@ This new PyTorch <> TPU will create a smoother transition for ML scientists that
 
 Pallas is the kernel authoring language for writing custom kernels for TPU (similar to cuTile or Triton or CuTe-DSL). Meta & Google have also started work on supporting Pallas kernels as a codegen target for the Torch Dynamo/Inductor compile stack. This will allow for native TPU integration with PyTorch’s native torch.compile API & allow for end users to register custom pallas ops into PyTorch.
 
-![](https://substackcdn.com/image/fetch/$s_!_bV4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F71b36c94-fe57-4209-9a8d-7f2586eb4de4_2498x1094.png)
+![](z-images/0c4326e0a1eab83fd397c40160a82ec4.webp)
 
 Source: GitHub
 
 In addition to the core in tree PyTorch native APIs, there is also work behind the scenes on integrating TPU pallas kernel language as a codegen target for Helion. You can think of Helion as a higher-level language for writing decently performing kernels in a high level language. Users can think about Helion as a low level Aten operators rather than as high level Triton/Pallas due to its similarity matching much closer to the Native PyTorch Aten ops.
 
-![](https://substackcdn.com/image/fetch/$s_!7nsN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F86f84fa9-784b-4604-be30-22c1c0c3565a_2546x1238.png)
+![](z-images/43c464b74f978fa5d50569fecf8ca6f7.webp)
 
 Source: PyTorch Foundation
 
-![](https://substackcdn.com/image/fetch/$s_!zlB6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1ab788f-8f2d-48bd-8783-1f11e8d26e24_1551x867.png)
+![](z-images/f401acad02fb140dfa17320bbef70a60.webp)
 
 Source: PyTorch Mark Saroufim
 
 Another area where the CUDA ecosystem is supreme is for open ecosystem inference. Historically, vLLM & SGLang support CUDA as first class (as ROCm as 2 <sup>nd</sup> class citizen). Now Google wants in to the vLLM & SGlang open inference ecosystem and have announced beta TPU v5p/v6e support for vLLM & SGLang through a very “unique” integration.
 
-![](https://substackcdn.com/image/fetch/$s_!Aa6z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F49d70e03-8d5e-41b1-930e-7137fa71d3bb_1860x720.png)
+![](z-images/86dc3e870fdcb378eff6ebfe2daa9901.webp)
 
 Source: vLLM
 
@@ -506,7 +506,7 @@ In the existing vLLM MoE kernel, we sort tokens by expert ID, dispatch tokens to
 
 To work around this issue, Google developers designed all-fused MoE. All-fused MoE dispatches tokens for one expert per device at a time while overlapping MoE dispatch & MoE combine communications & avoiding sorting tokens by expert ID. With all-fused MoE, the Google engineer reported 3 - 4x speedup over existing kernels.
 
-![](https://substackcdn.com/image/fetch/$s_!jnhx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2596f93b-0483-486e-8be6-6b5c38432030_1312x2706.png)
+![](z-images/807b3b1178917338a3c2e2c7506d0fb0.webp)
 
 Source: SemiAnalysis
 
@@ -514,7 +514,7 @@ Furthermore, another hardware unit in TPUs is the SparseCore (SC) used to accele
 
 At JAX DevLabs, we learned that programmability of SparseCore is a work in progress. We can expect Mosaic, the TPU custom kernel compiler, to compile in an MPMD fashion, where SCS and SCT executes different kernels, and different SparseCores can run different programs. We suspect once the programmability catches up, TPU MoE kernels would be able to perform dispatch and combine operations in a similar way as GPUs, instead of dispatching by expert IDs.
 
-![](https://substackcdn.com/image/fetch/$s_!zz1q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5010fb1d-576f-4449-ba71-a91911bc29d6_1734x800.png)
+![](z-images/8bd25950b4404a65ac75de7155f4eb45.webp)
 
 Source: Google
 
@@ -526,7 +526,7 @@ This week, there was an new inference benchmark on TPUv6e that dropped claiming 
 
 Secondly, Aritifical Analysis’s cost per million tokens is using the list price of $2.7/hr/chip for TPUv6e. No major customers of TPUs is paying anywhere close to that much for TPUv6e given the BOM is a tiny fraction of the H100. As everyone knows, most clouds have an high ball list price such that their account sales executives can do “car salesman” tactics and give massive discounts so that the customer thinks they are getting a good deal. [The SemiAnalysis AI TCO Model tracks the acutal market rental price of TPUs across all the various contract lengths (1 month, 1 year, 3 years, etc).](https://semianalysis.com/ai-cloud-tco-model/)
 
-![artificialanalysis](https://substackcdn.com/image/fetch/$s_!qd2X!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F68ac2ab4-62a4-46cb-951a-3cb778fcdb66_4096x1581.png)
+![artificialanalysis](z-images/1adc14a39ce385f9e7773af395816e0b.webp)
 
 Source: artificialanalysis
 

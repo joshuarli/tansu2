@@ -10,7 +10,7 @@ Nvidia was hacked for a vast sum of data and this hack is not only a disaster fo
 
 Lapsus$ demands are odd. The initial demand was for a payment, but later they tacked on many more demands including pushing driver updates, open sourcing much of their software, and fully removing any cryptocurrency limiters. Nvidia has yet to agree to any of these demands, and law enforcement has been involved. The contents of this hack that have already been released have major implications, but the threatened release on Friday would be a national security disaster.
 
-![](https://substackcdn.com/image/fetch/$s_!J86b!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fad7aa7e0-58b3-497e-a0ae-9903d5f2deb7_542x678.png)
+![](z-images/fbc8b2b5bd48551f64180232457bbfa2.webp)
 
 After the initial hack, Lapsus$ announced they had over 1TB of data. The group claimed that [Nvidia attempted to hack them back.](https://twitter.com/vxunderground/status/1497484483494354946?s=20&t=Xi7NvYlFXXlzyHEWmml3Og) The hackers responded by [releasing a file](https://twitter.com/darktracer_int/status/1497464801877839872?s=20&t=laV__odCAmU7zFfmH5LMCQ) that included password hashes of all Nvidia employees. This was severe blow, but relatively minor compared the other data they have released. Alongside the initial announcement, they also stated they were selling “full LHR V2.”
 
@@ -18,7 +18,7 @@ In February of 2021, Nvidia implemented LHR (Lite Hash Rate) on their newest RTX
 
 The group used their source code access to recompile the driver without these mining limiters and immediately began selling it for $10. They later revised this price to $1,000,000.
 
-![](https://substackcdn.com/image/fetch/$s_!97pe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdd51390a-7cd9-4849-9286-235821557a28_542x677.png)
+![](z-images/1ee7471949c87789e27b841420f8f206.webp)
 
 They also then released a file containing a large amount of data. This included all source code for drivers so other firms can recompile drivers. This source code included not only the gaming drivers, but also datacenter and AI GPU drivers, Nvidia’s proprietary AI upscaling technology known as DLSS, Ansel, Nvidia documentation, and Nvidia AI libraries such as NV-Torch and NV-Caffe. In addition, the file contains all of Nvidia’s GPU architectural configuration files for their next generation GPUs known as Hopper and Lovelace. Lastly, it also included Nvidia’s testers and simulation files.
 
@@ -26,7 +26,7 @@ This data alone shows Nvidia’s plans down to architectural decisions and confi
 
 Nvidia’s proprietary software is considered to be its edge over its competitors. Part of this includes the testers and simulator files. This shows how Nvidia simulates their chip design and weighs various architectural decisions. In short, this is a critical part of Nvidia’s proprietary design process, and it is now in the public domain. With this data, the multiple Chinese AI and GPU firms can kickstart and catch up massively on the design of their GPUs. Western competitors would not touch this with a 10 foot pole due to being illegal and unethical, but as shown by Huawei in the last two decades, many others will blatantly violate these norms.
 
-![](https://substackcdn.com/image/fetch/$s_!Ulgc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7d730d91-6b2f-4b18-989d-0804579d6be8_530x560.png)
+![](z-images/aa78cd98441b5f84a1364c3c75eaa4a2.webp)
 
 The group is now threatening to release a hardware folder that is 250GB. They allege this folder contains critical silicon design documents and code including the Verilog. With this access, there would be direct access to Nvidia’s design. In addition, they claim to have all details related to Nvidia’s Falcon control and security processor. Malicious semiconductor firms could look through these files, learn as much as possible and directly apply these learnings to their future products. They could go as far as reverse engineering the designs for SMIC’s 14nm process node. The only silver lining is that Verilog files may potentially be encrypted.
 

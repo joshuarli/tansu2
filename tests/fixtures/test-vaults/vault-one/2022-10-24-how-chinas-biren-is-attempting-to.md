@@ -10,7 +10,7 @@ Biren, China’s artificial intelligence hardware champion, is attempting to eva
 
 First some background on Biren. While many other Chinese firms are working on and shipping chips made for high-performance computing and artificial intelligence, Biren has the most advanced architecture and chip in production. After independently discussing Biren with multiple Nvidia employees, they all had positive things to say. One even told us they believe Biren is a bigger threat to Nvidia’s AI training hardware dominance than the competition from [Intel](https://www.semianalysis.com/p/intel-is-throwing-the-kitchen-sink), [AMD](https://www.semianalysis.com/p/amd-to-infinity-and-beyond), [Graphcore](https://www.semianalysis.com/p/graphcore-announces-worlds-first), [SambaNova](https://www.semianalysis.com/p/nvidia-in-the-hot-seat), or [Cerebras](https://www.semianalysis.com/p/cerebras-wafer-scale-hardware-crushes). It’s no surprise to hear that sort of comment when one looks at the amount of funding and how many of their engineers worked at major western firms including a large chunk of former Nvidia Shanghai.
 
-![](https://substackcdn.com/image/fetch/$s_!1KCe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa32f6ee7-cbce-4313-ac25-680d2cccee94_3004x1666.png)
+![](z-images/a69b4cfa0c5531b3334c50bbbc34a774.webp)
 
 Biren created a multi-chip module design that utilizes the TSMC N7 process node and [TSMC CoWoS-S](https://www.semianalysis.com/p/advanced-packaging-part-2-review) packaging. While there is [no fab in China capable of fabricating](https://www.semianalysis.com/p/chinas-smic-is-shipping-7nm-foundry) this advanced of an AI chip yet, multiple companies in China have achieved 2.5D integration. The die is shipped in two products, one is a 2-die module, BR100, and the other is a 1-die module, BR104. Each individual die maxes out at with specs of 1024 TOPS of INT8, 896GB/s of die-to-die interconnect, 256GB/s of Blink, and 128GB/s of CXL 2.0.
 
@@ -34,7 +34,7 @@ The BR100 is clearly excluded, but the BR104 has half of most of these specs. Wh
 
 The US government’s definition does not count the memory bandwidth of the product as IO. The interpretation of the regulation does not define if this refers to die/chiplets or completed packages either.
 
-![](https://substackcdn.com/image/fetch/$s_!9yxW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F26680f01-4879-4e57-823c-4a159635c0cd_3542x682.png)
+![](z-images/ceac3d2c9c858749bb7741809c43d60c.webp)
 
 Biren has attempted to evade the sanction by changing the specs of its products. They cut the number of BLink on BR100 from 8 to 7 which would reduce the BLink + CXL 2.0 bandwidth to 576GB/s. Biren believes this gets them under the hurdle of sanctions.
 
@@ -54,8 +54,8 @@ It’s also clear that the sanctions were not well written, particularly regardi
 
 Next, we will share some slides on Biren’s architecture. Of all AI hardware startups out there, this architecture bares the most resemblance to Nvidia’s.
 
-![](https://substackcdn.com/image/fetch/$s_!XQDg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fab1a3735-4277-45af-95db-616a566c326a_3022x1623.png)
+![](z-images/a22f509eb44f8606e3a6e5bddd57ce3e.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!3ydp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1a457214-f7ff-4dc2-872f-c9eb3f72b154_3023x1618.png)
+![](z-images/45a94031d344cf750e2d70cb213ddb7a.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!B8NH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1f158df8-61cf-444b-bae4-5dda1c4e983b_3023x1618.png)
+![](z-images/c0d57c86b14d6c3f587616d8ee7d3af4.webp)

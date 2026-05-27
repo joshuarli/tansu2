@@ -8,7 +8,7 @@ description: "Marvell continues their hot streak of amazing acquisitions by acqu
 
 Marvell continues their hot streak of amazing acquisitions by acquiring with the team over at Tanzanite. In just the last few years, Marvell has acquired Cavium, an Arm CPU and SOC specialist, Avera Semi, the storied IBM and GlobalFoundries custom ASIC unit, Inphi, a leader SerDes, TIAs, and DSPs, and Innovium, an up-and-coming scrappy fighter in the ethernet switch market. Tanzanite Silicon Solutions is much smaller than these other acquisitions, but it fills a very important hole in Marvell’s IP lineup. In all, it continues to increase Marvell's path to becoming the one stop shop for custom datacenter silicon solutions for the broader server market and cloud/hyperscale in-house efforts.
 
-![](https://substackcdn.com/image/fetch/$s_!vROb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Faaa83c34-eac9-4b0d-930c-e16d8d8261eb_873x379.jpeg)
+![](z-images/5416f6f2ac33b82556c0e2cd9e9f4527.webp)
 
 CXL is going to be a transformative technology due to its implementation as the standardized protocol for cache coherency and memory pooling. Tanzanite specifically is focused on memory pooling. Memory pooling is key as the industry move towards composable server architectures. We discussed this in [our piece about Ayar Labs](https://semianalysis.substack.com/p/ayar-labs-co-packaged-optics-revolution?s=w), but let's talk about it from the angle Marvell is going for.
 
@@ -20,25 +20,25 @@ This is where composable server architectures comes in. The core idea is that ha
 
 In any highly capital intense business, utilization rates are the most important factor to success. In semiconductor fabs for example, running at anything besides nearly maxed out, is very bad for profitability and long-term sustainability. DRAM in the server world has the same concept. Despite this fundamental fact of the business structure, cloud service providers do not have many levers to directly influence the utilization rates for DRAM within their datacenter. Each CPU has its DRAM memory directly attached to it via traditional memory channels. You slot in more or less memory when you build the server, or even upgrade it down the line, but that cannot be done on the fly as customers workloads shift.
 
-![](https://substackcdn.com/image/fetch/$s_!it0R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb22a13e-cda8-4d98-b524-1bdaaa32649d_1024x564.png)
+![](z-images/3a740136d30029a8e9d0688d8088acf5.webp)
 
 Micron recently put out this estimate, and we agree with them whole heartedly. The future vision of composable server architectures where CPUs, memory, and storage are partially disaggregated is going to happen. It will need multiple revisions of the CXL standard, but the standards organization is fully committed, and the industry agrees this is the best path forward to improving cost structure.
 
 This is where Tanzanite comes into the fold. Tanzanite has a “Smart Logic Interface Connector” (SLIC) SoC which enables independent scaling and sharing of memory and compute with low latency within and across servers. They are among the first companies to publicly demonstrate rack scale memory pooling across CXL. Astera Labs have also demonstrated similar technology, and Rambus is working on it too. We will talk about the progress of these companies has made including tape-out timelines in the subscriber only section. It is very likely that Samsung, SK Hynix, and Micron are also working on similar silicon, but there is no public confirmation. The DRAM vendors likely only focus on memory expansion, not pooling, for the short term
 
-![](https://substackcdn.com/image/fetch/$s_!FI-I!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8ef40b73-9dea-4715-8a2f-3f79888de3cc_1024x576.png)
+![](z-images/d331c0ae7b32488d0ac3c93af99847a4.webp)
 
 The current solutions for Tanzanite, Astera Labs, and Rambus are largely similar. They want to sell an ASIC that connects to other chips via CXL and then connects to standard DDR DIMMs. Tanzanite is specifically going for 32 lanes, which means 2Tbps of bidirectional bandwidth. Each of their 1st generation SLIC chips will contain 4 channels of DDR memory. The discussions we had with Tanzanite and the block diagram show off 4 CPUs connected to one SLIC ASIC. To clear up any confusion about the poor picture quality, I had permission to take cell phone pictures of their computer screen and show these images publicly, but was not able to get the direct high quality images.
 
-![](https://substackcdn.com/image/fetch/$s_!lyYh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcec8e641-53ea-44ac-bf48-d3aa7f888cd6_1024x768.jpeg)
+![](z-images/526e7baba9bef25c0e2a9e4a8a9f4aa9.webp)
 
 Here is a picture of the demo they were running in their office. Allocating memory to a CPU or removing it was quite seamless and quick. They were running the demo with Intel Sapphire Rapids CPUs and Intel FPGAs, but the ASIC is in the works.
 
-![](https://substackcdn.com/image/fetch/$s_!UyQ6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F37398c65-530f-438e-9e1e-8a752047aeb3_768x1024.jpeg)
+![](z-images/85f68ffe3d335886b4812ed9a7c729e1.webp)
 
 Pooling memory has huge benefits in that you can remove and add only the amount of DRAM needed. There is a latency penalty, which is the biggest concern. This amounts to “CPU to CPU NUMA latency” as per Tanzanite. They wouldn’t give exact figures unfortunately, but we estimate round trip latency would be in the 250ns range versus 100ns to 150ns typically for Intel Ice Lake and AMD Milan accessing their local memory.
 
-![](https://substackcdn.com/image/fetch/$s_!751q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7c7554d6-686b-4cc6-926e-06e7cd2cdbc9_1000x708.jpeg)
+![](z-images/541b94e06974cc47ab54c77b26dd4c56.webp)
 
 These CXL memory accelerators differ in that they offer the capability for pools of memory beyond just 1 CPU host. Samsung has created their own CXL memory modules, but they suffer from the fact that they can only connect to 1 node alone. They also come as a low volume custom product rather commodity unbuffered or registered DIMMs.
 

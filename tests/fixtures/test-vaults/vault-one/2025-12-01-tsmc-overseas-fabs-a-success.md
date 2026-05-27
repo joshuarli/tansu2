@@ -10,7 +10,7 @@ description: "Why Morris Chang Said U.S. Fabs Will Fail, Wafer Cost and Economic
 
 Earlier this year, U.S. President Donald Trump called TSMC “one of the most important businesses in the world.” Although he was incorrect, TSMC is *the* most important business in the world, his government and others do realize the importance of bringing TSMC into their countries.
 
-![](https://substackcdn.com/image/fetch/$s_!ADms!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F634c9c91-8d80-4b0b-81b7-fc3f75434523_810x540.jpeg)
+![](z-images/762bfaf4b0b79250826577cbb7ec2b4a.webp)
 
 TSMC CEO C.C. Wei, at the White House in March 2025, at that point “the most important man in the room” according to President Trump. Source: AFP
 
@@ -28,7 +28,7 @@ TSMC operates as a global leader in semiconductor manufacturing, collaborating w
 
 Of TSMC’s 83,000+ global employees, close to 90% are Taiwanese, including 88% of management-level staff. By location, 87% of employees work in Taiwan. The next-largest groups are based in China, the United States, and Japan.
 
-![](https://substackcdn.com/image/fetch/$s_!gX7A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F74f4b112-ae1c-4f8c-bf39-3291ee558dc3_1095x275.png)
+![](z-images/8efad61aca066aafd7643777c29381c3.webp)
 
 Source: SemiAnalysis
 
@@ -36,7 +36,7 @@ In manufacturing, over 90% of TSMC’s total capacity is in Taiwan—meaning tha
 
 Even as TSMC expands globally, Taiwan remains its largest talent base. It’s not just their base of operations, the company’s talent pipeline is also Taiwanese. With strong government support, TSMC has launched 57 semiconductor programs across 17 local universities, covering areas from fundamental science to advanced packaging. It also provides process design kits (PDKs) for educational use, ensuring a steady pipeline of skilled young engineers for the future.
 
-![](https://substackcdn.com/image/fetch/$s_!jQZv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc10f2055-7d42-4209-9a5e-77dfa027d598_1935x635.png)
+![](z-images/31146349a4217f9e677926b7c60ae6bd.webp)
 
 TSMC has an extensive university pipeline for both research and talent. Source: TSMC, SemiAnalysis
 
@@ -55,7 +55,7 @@ Unlike most Taiwanese companies - where boards are often dominated by major shar
 
 Today, TSMC’s 10-member board reflects that philosophy: 7 members are independent directors. Of the total, 4 are Taiwanese—including Chairman C.C. Wei, former CEO F.C. Tseng, and a representative of the Taiwanese government. The remaining members comprise five from the U.S. and one from the U.K.
 
-![](https://substackcdn.com/image/fetch/$s_!7BnH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F358f33ab-f14f-4309-a010-a01dd4cfa5c6_644x839.png)
+![](z-images/d8d1f6bbdd4d4c4dcf6e2b23b3195889.webp)
 
 Source: SemiAnalysis
 
@@ -103,7 +103,7 @@ We see this statement as an honest reflection of Dr. Chang’s long-standing bel
 
 It’s not just Morris Chang who is has doubts. The Arizona project, far larger in scale than WaferTech, has drawn intense scrutiny both inside and outside the company. Most concerns center on TSMC Arizona’s ability to achieve similar operational efficiencies to the Taiwan fabs.
 
-![](https://substackcdn.com/image/fetch/$s_!FyXc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2e9fc61f-eb66-4fed-87ac-8dd1be63bee8_2000x1333.webp)
+![](z-images/cd937894e72ba317ac546904bbf4ffb9.webp)
 
 TSMC founder Dr. Morris Chang toasts his favorite (?) customer at the tool-in ceremony for the Arizona fab. This same year he called the Arizona project “a very expensive exercise in futility.” Source: Bloomberg/Getty
 
@@ -131,7 +131,7 @@ Although the Trump and Biden administrations have continually pushed to bring th
 
 According to data from the Semiconductor Industry Association, most of TSMC’s raw material suppliers have not yet established facilities in Arizona. As a result, TSMC continues to rely largely on its supply chain and engineering in Asia. This limits the potential production scale of its Arizona fab until local suppliers scale up significantly and the CHIPS Act does not have enough money to incentivize a truly vertical supply chain.
 
-![](https://substackcdn.com/image/fetch/$s_!2z1I!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb140442d-0602-4fa0-af78-6de9710f8227_1268x824.png)
+![](z-images/228d6ec8b3621e72d5540893b89d5404.webp)
 
 TSMC Arizona supply chain. Much of the supply chain is localized, but the fab still depends on foreign sources for key components. Source: SemiAnalysis
 
@@ -147,7 +147,7 @@ It may not be TSMC’s preferred method of operating, but it makes sense from a 
 
 8 of the 10 largest companies in the world depend in large part on TSMC for their business (the 9 <sup>th</sup> is TSMC itself). Together, more than 1/3 <sup>rd</sup> of their combined $2T in revenue comes from hardware that requires TSMC products. That alone is **3% of U.S. GDP dependent on 1 square mile in southern Taiwan.** Bear in mind this is only a portion of the companies beholden to TSMC Taiwan production. Furthermore the entirety of the digital economy, automotive economy, and industrial production economy relies on chips from TSMC. The world economy would grind to a halt without TSMC.
 
-![](https://substackcdn.com/image/fetch/$s_!-Z1X!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4294cea2-6397-405f-ba00-b4e86820e683_961x510.png)
+![](z-images/4c21a7942ee783204f14ad1f0e45b741.webp)
 
 Source: SemiAnalysis
 
@@ -157,13 +157,13 @@ The U.S. and other governments recognize this and are attempting to reduce expos
 
 JASM produces the legacy 28 and 16nm nodes, planar and older finFET architectures, for specialty applications like CMOS image sensors and automotive. Sony is the main client. Phase 1 entered high volume production this year, phase 2 is planned and likely introduces 7nm-class, EUV-using nodes (N6).
 
-![](https://substackcdn.com/image/fetch/$s_!Unjv!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F505fdfc2-2d69-4613-bd7f-b3fc1aa0287c_1926x1574.png)
+![](z-images/34c1a2e82b2adc97d4a327d2c894f46d.webp)
 
 TSMC's JASM joint-venture fab in Japan. Source: SemiAnalysis, Airbus
 
 ESMC is similar to JASM, running 28 and 16nm-class nodes, but with a focus on Bosch and other European customers. Fab shell construction is underway for the first and only planned phase.
 
-![](https://substackcdn.com/image/fetch/$s_!WYyl!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F43616292-4295-400c-a171-22e8c6d76247_2106x1826.png)
+![](z-images/2610dfd50da0bd1c651648f75d42b271.webp)
 
 TSMC's European joint-venture fab, ESMC. Source: SemiAnalysis, Airbus
 
@@ -171,7 +171,7 @@ As TSMC announced earlier this year that it will expand its U.S. investment to $
 
 To achieve this scale, however, the current supply chain cluster will need significant expansion, cost reductions in raw materials, and improvements in talent recruitment. These challenges will require coordinated efforts from TSMC, its suppliers, and the U.S. government.
 
-![](https://substackcdn.com/image/fetch/$s_!W5K8!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F58d54d30-0881-408b-b8e5-792633828e2b_2438x1838.png)
+![](z-images/0555ea8abe7ebc80ff7d3631e586eaff.webp)
 
 TSMC Arizona existing and future front-end + packaging fabs. Source: SemiAnalysis, Airbus
 
@@ -209,13 +209,13 @@ The core and shell contract covers substructure work and CSA (Civil/Structural/A
 
 All phases are bid out to construction partners and organized by TSMC’s Facility Division. The Arizona site is planned as a multi-phase development, with each fabrication module containing a dedicated fab building and central utility plant (CUP), while sharing common backbone infrastructure.
 
-![](https://substackcdn.com/image/fetch/$s_!nsiW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6090dba-2f29-4a04-b9b2-f7d47cace44c_999x686.png)
+![](z-images/ec2ba790ff73c4026fb7ec1ee63e2f17.webp)
 
 Source: SemiAnalysis
 
 To maintain consistency and schedule, TSMC brought in its long-term construction partners from Taiwan, cultivated over the past decade through major fab projects. Five companies are involved in total—three from Taiwan and two from the United States. Based on their Arizona Registrar of Contractors licenses, we believe United Integrated Services, Marketech International Corp., and Okland Construction are the key contributors.
 
-![](https://substackcdn.com/image/fetch/$s_!1FOT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09c3dc5e-c205-459e-9e7f-5594e6cd5a8e_1138x843.png)
+![](z-images/8b2d239168a47e7f373c8d2950c5284e.webp)
 
 Source: SemiAnalysis
 
@@ -223,7 +223,7 @@ TSMC is currently shortening the interval between Phases 1 and 2, and Phase 3 is
 
 Notably, Taiwan imposes a maximum time limit on certain permitting requests, ensuring that TSMC can build fabs on a shorter and more predictable timeline.
 
-![](https://substackcdn.com/image/fetch/$s_!aEnI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fff43c613-7399-48d5-a481-a52977ca7a80_1474x811.png)
+![](z-images/1e47d65c2ca52efc23bb88be0a75000b.webp)
 
 Permitting in Taiwan is roughly twice as fast as in the U.S., including maximum time limits on certain approvals. This ensure strategically significant projects, including fabs, aren’t held up. Source: SemiAnalysis
 

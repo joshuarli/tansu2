@@ -52,13 +52,13 @@ Analysts always like to use their toolkits to understand companies, but our cont
 
 The perception of high debt loads is also another source of pushback, with the acquisition of VMWare taking Broadcom up to 2.9x debt/LTM Adjusted EBITDA. While Broadcom does load up debt when they acquire companies, we think the track record of growing free cash flow while deleveraging quickly post-acquisition AND paying shareholders considerable dividends while conducting buybacks mitigates this concern.
 
-![](https://substackcdn.com/image/fetch/$s_!EmOn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2564a6df-7a77-47d6-92dc-336c6eb0bba9_1979x1098.png)
+![](z-images/9305658b0a6462355764d74cafe8c6c8.webp)
 
 ## A brief historical overview of Broadcom and its roll-up strategy
 
 Broadcom is a portfolio of 16 semiconductor franchises and two main software franchises that have come together to form today’s five semiconductor segments and the infrastructure software segment. The best way to explain each of the segments is to trace the lineage of these franchises and how they came to form present day segments.
 
-![](https://substackcdn.com/image/fetch/$s_!PSeE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F71ecfee3-267f-443d-962f-4acc7cc4fc71_1991x1105.png)
+![](z-images/3acdf1749cda6570189c58584cdfe31a.webp)
 
 ## Wireless: The Apple Division
 
@@ -82,7 +82,7 @@ Over the years, the success of the filters and broader wireless business turboch
 
 ## Storage and Custom Silicon: The LSI Acquisition
 
-![](https://substackcdn.com/image/fetch/$s_!Ztct!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9fb09c4-a2f1-431e-9e0f-6285df503396_1841x1041.png)
+![](z-images/73ff8e4f7a34e218e61f8ce840d873d3.webp)
 
 In late 2013, Avago made its first major acquisition, purchasing LSI for its networking, storage and nascent custom silicon business. LSI’s largest business was in the Storage Area Network (SAN) product. A Storage Area Network is a high-speed network that provides access to a number of storage devices, making Solid State Drive (SSD), Hard Disk Drive (HDD) arrays or tape libraries accessible to any device on a network as if the storage drive was a local drive. LSI also had capabilities in using the Fibre channel protocol to implement SANs. Broadcom’s subsequent acquisition of Brocade Communications in 2016 solidified the storage segment by adding Brocade’s Fibre Channel and SAN directors to the segment.
 
@@ -90,7 +90,7 @@ The more interesting businesses that came in from LSI were the [billion dollar P
 
 Of course, this is accelerating massively due to generative AI. Custom Silicon products today include AI chips such as [Google’s TPUs](https://www.semianalysis.com/p/google-ai-infrastructure-supremacy), [Meta’s MTIA](https://www.semianalysis.com/p/meta-custom-silicon-whats-old-is), as well as [YouTube video encoding chips](https://www.semianalysis.com/p/google-new-custom-silicon-replaces), custom routing/switching silicon. Custom Silicon falls under Broadcom’s Networking segment, but we argue it deserves its own segment. More on that later.
 
-![](https://substackcdn.com/image/fetch/$s_!4r9G!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0dece1d3-55f4-4155-915c-1cd0016e8455_1841x1041.png)
+![](z-images/73ff8e4f7a34e218e61f8ce840d873d3.webp)
 
 ## Networking, Broadband and Avago’s 2015 Purchase of Broadcom
 

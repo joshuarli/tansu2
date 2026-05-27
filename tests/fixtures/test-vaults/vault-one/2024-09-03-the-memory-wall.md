@@ -8,19 +8,19 @@ description: "Winners & Losers in the 3D DRAM Revolution"
 
 The world increasingly questions the death of Moore’s Law, but the tragedy is that it already died over a decade ago with 0 fanfare or headlines. The focus is generally on logic, but Moore’s Law always also applied to DRAM.
 
-![](https://substackcdn.com/image/fetch/$s_!8zzK!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ed35062-121f-412e-aea9-0439fcc5a83f_1132x1318.png)
+![](z-images/1d7c0200c64952988b822c3edd9c6097.webp)
 
 The Original Scaling Laws - Source: 1965 The Future of Integrated Electronics – Gordan Moore
 
 DRAM doesn’t scale anymore. In the glory days, memory bit density doubled every 18 months – outpacing even logic. That translates to just over 100x density increase every decade. But in this last decade, scaling has slowed so much that density has increased just 2x.
 
-![](https://substackcdn.com/image/fetch/$s_!eJPq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcab4be20-9507-47a5-95b2-13544883eb66_1872x922.png)
+![](z-images/e7e22058ed862e9f89dd85e8a9c8f66a.webp)
 
 Source: SemiAnalysis
 
 Now with the explosion in AI, the balance of the industry has been upset even further. While logic chips have improved significantly in both density and cost per transistor function over time, improvements in DRAM speeds have been slow. Despite significant FUD, the cost per transistor continues to fall on TSMC’s 3nm and 2nm nodes. While with memory, the increased bandwidth is driven by heroic and expensive packaging.
 
-![](https://substackcdn.com/image/fetch/$s_!pZVr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F966cd4b6-272c-45e2-93c0-2a1c6f2872a8_1522x1022.png)
+![](z-images/c6fede5d7d67cb06df700b68f78389e0.webp)
 
 Source: Nvidia, SemiAnalysis
 
@@ -36,7 +36,7 @@ Starting with a primer on the background and history of DRAM, we’ll cover each
 
 There are several types of memory used in a computer. The fastest is SRAM (Static Random Access Memory) which is compatible with logic process technologies and located on the CPU or GPU. Because it is on a logic die, SRAM is also the most expensive type of memory – about 100x+ more expensive per byte than dynamic random access memory (DRAM) – and is therefore used only in small quantities. The opposite end of the spectrum is includes non-volatile NAND solid-state drives, hard-disk drives, and magnetic tape. These are cheap but too slow for many tasks. DRAM sits in the “goldilocks” zone between SRAM and Flash – just fast enough, just cheap enough.
 
-![](https://substackcdn.com/image/fetch/$s_!xxL6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01f7a2ef-7664-4fc4-87e5-4a43bbcfcff0_1624x632.png)
+![](z-images/9193c25ec6e188225cb3c62ec7e17845.webp)
 
 The memory hierarchy. Source: Enfabrica
 
@@ -46,7 +46,7 @@ DRAM can make up half the cost of a non-AI server system. Yet for the past 10 ye
 
 In principle, DRAM is simple. It comprises an array of memory cells laid out in a grid, each storing one bit of information. All modern DRAM uses a 1T1C cell, denoting 1 transistor and 1 capacitor. The transistor controls access to the cell, and the capacitor stores the information in the form of a small electrical charge.
 
-![](https://substackcdn.com/image/fetch/$s_!mfzu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1154591-77ce-42f4-8752-12020330b35e_521x475.png)
+![](z-images/2c3ea40b50fa6b3cda5ab366956473b9.webp)
 
 Basic DRAM circuit: an array of memory cells connected with a wordline along each row, bitline along each column. Activating 1 wordline and 1 bitline allows the cell where they intersect to be read or written
 
@@ -72,7 +72,7 @@ Modern DRAM is made possible by two separate and complementary inventions: the 1
 
 The 1T1C cell was invented in 1967 at IBM by Dr. Robert Dennard, also well known for his eponymous MOS transistor scaling law. Both DRAM and the scaling are based on MOS transistors (metal oxide silicon, the layers in the transistor gate).
 
-![](https://substackcdn.com/image/fetch/$s_!Rsr4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F272b2edb-c7b6-43dd-af7e-6f729d764d1d_1072x999.png)
+![](z-images/1ec17c05431c6f8c96df1743ac127891.webp)
 
 Dennard’s original patent for the 1T1C memory cell architecture. Source: U.S. Patent 3,387,286
 
@@ -84,7 +84,7 @@ At the time of invention, the small capacitance of the 1T1C cell made it infeasi
 
 The first modern sense amplifier was developed in 1971 by Karl Stein at Siemens, presented at a conference in California, and completely overlooked. The 1T1C architecture was not widely adopted at that point and Siemens had no idea what to do with this invention. Stein was moved to another assignment where he had a successful career unrelated to DRAM.
 
-![](https://substackcdn.com/image/fetch/$s_!Wp2-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F52c42f7e-3f11-4cbf-8c58-2b965654bff7_1033x566.png)
+![](z-images/2975a3eb9cd2688caf165d2424a1bf93.webp)
 
 Stein’s original sense amplifier patent. Source: U.S. Patent 3,774,176
 
@@ -96,13 +96,13 @@ It took more than 5 years for the sense amplifier’s time to come. Robert Proeb
 
 In the 20 <sup>th</sup> century, Moore’s Law and Dennard scaling ruled the semiconductor industry. At its zenith, DRAM density increases outpaced logic. DRAM capacity per chip doubled every 18 months, fueling the rise of Japanese fabs (who first exceeded US market share in 1981 and peaked around 80% in 1987) and later Korean companies (whose market share surpassed Japan’s in 1998). The rapid generational replacement of fabs on a relatively simple process created opportunities for new entrants with the funds to build the next generation fab.
 
-![](https://substackcdn.com/image/fetch/$s_!LD2e!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5db28368-bf61-4508-944b-d5f421a0267c_908x565.png)
+![](z-images/2639d28fe4a1574447fb9f2f4d7da4ab.webp)
 
 Price per bit reduced by 3 orders of magnitude over 20 years in a “golden age” of DRAM scaling. Source: Lee, K.H., A Strategic Analysis of the DRAM Industry After the Year 2000
 
 This pace was not feasible for long, and by the end of the 20 <sup>th</sup> century into the 21 <sup>st</sup>, logic had outpaced memory scaling significantly. Recent logic scaling has slowed to a pace of 30-40% density improvements every 2 years. But this is still good in comparison to DRAM which is roughly an order of magnitude slower than its peak, now needing 10 years for a 2x density increase.
 
-![](https://substackcdn.com/image/fetch/$s_!sP3M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F06fa2151-f906-4e4e-b69f-31806e707c50_803x452.png)
+![](z-images/87a37d44636993555e979614aba41e8f.webp)
 
 “It’s different this time”: no, memory cycles have been part of the industry for 50 years. Source: Lee, K.H., A Strategic Analysis of the DRAM Industry After the Year 2000
 
@@ -110,7 +110,7 @@ This scaling slowdown had knock-on effects in DRAM pricing dynamics. While memor
 
 Because DRAM is commoditized, suppliers are inherently much more susceptible to price fluctuations (in contrast to logic or analog) and must compete primarily on the raw prices of their goods when the market is low. Logic has only maintained Moore’s Law with increasing costs, DRAM does not have that luxury. The cost of DRAM is simple to measure, $/Gb. Relative to earlier periods, the last 10 years have seen a slow price decrease – only 1 order of magnitude in a decade when it used to take half that time. The characteristic peak and trough behavior of DRAM is evident as well.
 
-![](https://substackcdn.com/image/fetch/$s_!cTVv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F07104303-6471-4d17-9b57-1d8f7cc89e86_1276x758.png)
+![](z-images/62c986aa5624985b0bb514065944d0fe.webp)
 
 DRAM density scaling slows to 2x per decade, while price is driven by cyclical effects. Source: DRAMExchange, SemiAnalysis
 
@@ -120,7 +120,7 @@ Capacitors are difficult in many aspects. First, patterning is demanding as the 
 
 Next, multiple defect-free layers of a few nm thickness must be deposited on the walls throughout the hole profile to form the capacitor. Nearly every step strains the limits of modern processing technology.
 
-![](https://substackcdn.com/image/fetch/$s_!KpSa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d683331-b14b-44e2-9be5-7fa053d79caa_245x326.png)
+![](z-images/c42ac5169089c6fe3c382884390363ad.webp)
 
 DRAM storage capacitor requires many exquisite layers formed in a 100:1 aspect ratio hole (not to scale – real capacitors could be 10x taller than shown). Source: Applied Materials
 
@@ -134,13 +134,13 @@ In the short-term, DRAM scaling will continue along its traditional roadmap. Lar
 
 The short-term roadmap has 2 innovations: the 4F <sup>2</sup> cell layout and vertical channel transistors (VCT).
 
-![](https://substackcdn.com/image/fetch/$s_!lsDE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1adc3c45-a0a5-40a5-ad1b-129ce564c69b_896x455.webp)
+![](z-images/2006dd10eb807ade28f86563f45fe64b.webp)
 
 Samsung DRAM roadmap. Source: Samsung Memcon 2024, originally published by SemiEngineering
 
 Note that some companies, including Samsung in their roadmap, put VCT under the “3D” banner. While technically true, this is a bit misleading as VCT is distinct from what is commonly called “3D DRAM.”
 
-![](https://substackcdn.com/image/fetch/$s_!CDMF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9beb7021-7d67-4c41-994a-55c72a87fc22_1024x514.png)
+![](z-images/e0c168d83e98079996bbd04d6a68237d.webp)
 
 A standard 6F 2 layout versus 4F with vertical channel transistors. Source: CXMT IEDM 2023
 
@@ -180,7 +180,7 @@ This complexity detracts from yield. For example, Samsung’s DRAM design mishap
 
 Despite the high costs and yield challenges HBM3E is, for now, the most valuable and high-margin product the memory industry has ever had. This is primarily because for large-model AI Accelerators, no other flavor of DRAM is a viable alternative. While margins are likely to erode as Samsung improves yield, and Micron as they scale production, the memory appetite of AI accelerators will continue to grow – to some extent offsetting the benefit of this new supply.
 
-![](https://substackcdn.com/image/fetch/$s_!DFYi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd663f025-7f33-40ca-835e-ffe0f023e3ba_1240x379.png)
+![](z-images/b32302c2e46d90a3f4e59391004b84ef.webp)
 
 HBM dominates in bandwidth and packaging density. Source: SemiAnalysis
 
@@ -196,7 +196,7 @@ All leading AI GPUs now use HBM as their memory. Plans for 2025 have 12-Hi HBM3e
 
 The Grace CPU has high capacity LPDDR5X, while the GPU has high bandwidth HBM3. However, the CPU and GPU are on separate packages, connected over NVLink-C2C at 900 GB/s. This model is simpler to integrate but more difficult on the software side. The latency of memory connected to the other chip is much higher and could affect a significant number of workloads. As such, the memory is not quite uniform and comes with its own challenges.
 
-![](https://substackcdn.com/image/fetch/$s_!t5Qi!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc890a2a0-d36e-4ddb-b389-ab9741090a91_2134x1200.png)
+![](z-images/d2f926898a6b98383e0885c3b9c18a61.webp)
 
 Source: Samsung, Micron
 
@@ -210,7 +210,7 @@ HBM4 announcements predict that at least 2 different forms of base chip will be 
 
 Custom HBM can enable multiple other package architectures outside of the conventional CoWoS-based assemblies we see today. There could be repeater PHY to daisy chain multiple rows of HBM -though anything beyond 2 ranks would see diminishing returns.
 
-![](https://substackcdn.com/image/fetch/$s_!QKWs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0d848872-00c9-48e3-9ced-548e9c626921_1352x658.png)
+![](z-images/b9af1cdca563eb4470028c07594754d2.webp)
 
 Source: SK Hynix
 
@@ -220,7 +220,7 @@ All initial HBM4 will not use hybrid bonding, and we expect that to remain true 
 
 The connection between the CPU, GPU or accelerator, and memory is in the base chip. Improving this connection is one possible avenue for overcoming memory limitations. Eliyan, a startup funded by Micron and Intel amongst others, is spearheading this approach with their UMI custom interface.
 
-![](https://substackcdn.com/image/fetch/$s_!IG12!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd43509ad-0713-4ac0-b745-4b4c95966433_2739x2096.png)
+![](z-images/de64cfe5ee5149e7d408f8128ddbfce0.webp)
 
 Source: Eliyan
 
@@ -238,7 +238,7 @@ Micron showed [promising results at IEDM 2023](https://www.semianalysis.com/p/in
 
 MRAM is another promising research area. Instead of using electrical charges, data is stored by magnetic means. Most designs use magnetic tunnel junctions (MTJ) as the bit storage cell.
 
-![](https://substackcdn.com/image/fetch/$s_!X1HV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb640a71-bda0-4de0-89a9-20c46efa7791_892x673.png)
+![](z-images/ddf154e8b112b6fef01eec742db64c7e.webp)
 
 Magentic tunnel junction RAM, using magnetic mechanism rather than electrical. Source: SK Hynix
 
@@ -252,7 +252,7 @@ DRAM has been hamstrung from the beginning by its architecture. It is a simple s
 
 This paradigm is firmly entrenched: modern DRAM fabrication processes are so heavily optimized and specialized that they cannot realistically produce control logic. Industry group JEDEC (Joint Electron Devices Engineering Council) also enforces minimal intrusions from logic when developing new standards.
 
-![](https://substackcdn.com/image/fetch/$s_!wJ7P!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2a37746-c1ed-4919-9b53-848a50148fea_842x850.png)
+![](z-images/bf447c839c2bed7442c2daf0c36fabe7.webp)
 
 “Dumb” DRAM: control logic is separate from the memory, so commands must pass through a slow, inefficient interface. Source: SemiAnalysis
 
@@ -270,7 +270,7 @@ DRAM banks have *incredible* performance potential that goes almost completely t
 
 Banks are the basic unit of DRAM construction. They comprise 8 sub-banks each with 64Mb (8k rows by 8k bits) of memory. The bank activates and refreshes 1 row of 8k bits at once but transfers just 256 of them in or out in any I/O operation. This limitation is due to external connections from sense amplifiers: while the row is supported by 8k sense amplifiers, only 1 in 32 sense amplifiers (256) are connected out of the sub-bank, meaning read or write operation are limited to 256 bits
 
-![](https://substackcdn.com/image/fetch/$s_!Jvd-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F201752d9-91cf-4952-aa84-d69f080becb9_2736x1903.png)
+![](z-images/12638f28f93e815d7b5ad9d3b2b6d037.webp)
 
 (a) The dense mat of tall capacitors limits access to the sense amps. Source: SemiAnalysis. (b) A focused ion-beam \[FIB\] teardown of the senseamp region of a DDR4 DRAM. Source: Marazzi et al. ”HiFi-DRAM: Enabling High-Fidelity DRAM Research by Uncovering Sense Amplifiers with IC Imaging”, ISCA 2024 (c) A graphic of the edge of the Mat region in a 1β DRAM. Source: Micron
 
@@ -280,7 +280,7 @@ Even with this limited interface, 1 in 32 accessible at any one time, the peak r
 
 Further up the hierarchy, banks are connected in bank groups, which in turn connect to the interface out of the DRAM chip. In HBM, each die has 256 data lines with a peak throughput of 256 GB/s per die. This bottleneck can utilize only *1/16 <sup>th</sup>* of the underlying potential of the banks.
 
-![](https://substackcdn.com/image/fetch/$s_!1qjj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0c73dc0-1ec4-4171-a670-0494a26bc88e_748x694.png)
+![](z-images/e437a673739c6902f32709daade00f13.webp)
 
 Source: SemiAnalysis
 
@@ -292,7 +292,7 @@ With such a wasteful architecture, it’s inevitable that efforts will be made t
 
 Even simple theoretical examples show there is massive potential on offer here. Implementing the UCIe (Universal Chiplet Interconnect) standard would allow for 11 Tbps throughput per mm of edge – nearly 12x better than HBM3E. Energy per bit would go down by an order of magnitude from 2pJ to 0.25pJ. And UCIe is not even the latest solution… Eliyan’s proprietary Nulink standard, to take just one example, claims even greater improvements.
 
-![](https://substackcdn.com/image/fetch/$s_!_RF9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45f156b0-308a-4698-9e3d-9f7d3f3a2d85_784x364.png)
+![](z-images/fe4ee9dcb3c022d148a0d9546298daa0.webp)
 
 Source: Tom’s Hardware
 
@@ -306,7 +306,7 @@ There is low hanging fruit here: consider what could be done if HBM adopted the 
 
 The external interfaces on the base chip could be substantially upgraded to modern designs offering more than a terabyte/sec per mm of edge, at fractional pJ energy per bit. Someone is going to win big in the IP wars. While it’s possible that JEDEC will adopt one choice as standard, more likely it will be done by faster-moving memory / GPU-vendor pairs, as JEDEC usually takes years.
 
-![](https://substackcdn.com/image/fetch/$s_!S6IN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80a44926-f968-480e-b8f8-ebced851c14d_664x762.png)
+![](z-images/a0cc7953df195df8accab4b32f856287.webp)
 
 Source: SemiAnalysis
 

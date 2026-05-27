@@ -12,25 +12,25 @@ description: "Anthropic multi-gigawatt clusters, Trainium ramp, best TCO per mem
 
 Microsoft Azure now leads the market on quarterly new cloud revenue, and the gap between Google Cloud and AWS has materially narrowed especially with [Google's big moves on the TPU that we've been posting about for over a month](https://semianalysis.com/accelerator-model/). Markets have noticed. Year-to-date, Amazon is the clear laggard among the four tech-and-AI titans as investors mark down the company most for losing momentum in AI.
 
-![](https://substackcdn.com/image/fetch/$s_!AEa_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6227dc41-f0ed-4125-87c2-b52961d1b42c_1024x606.png)
+![](z-images/8f8210d1077e5daee7d75980ed935bbf.webp)
 
 Source: SemiAnalysis Core Research, company filings
 
 Today, SemiAnalysis is back with another out-of-consensus call. While the market overplays the Cloud Crisis theme, we call for an AWS AI Resurgence. We laid out our thesis a month ago to our [Core Research subscribers](https://semianalysis.com/core-research/), forecasting an upcoming acceleration beyond 20% year-over-year growth by the end of 2025.
 
-![](https://substackcdn.com/image/fetch/$s_!HfDU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F414c071a-3f68-4268-8f7c-94ba79182635_1024x509.png)
+![](z-images/9606b4103b9241649abb3511aaefbac7.webp)
 
 Source: SemiAnalysis Core Research
 
 Amazon’s savior has a name: Anthropic. The startup has been the clear outperformer in the GenAI market in 2025, multiplying revenue fivefold year-to-date to reach $5B annualized.
 
-![](https://substackcdn.com/image/fetch/$s_!lqu2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01c05a64-a990-4506-9f1d-d0690410b13a_1024x547.png)
+![](z-images/b24c862c19f5b973504043b390afdf4f.webp)
 
 Source: The Information, Reuters, Bloomberg, SemiAnalysis Core Research
 
 To keep that trajectory, Anthropic is betting hard on [Scaling Laws](https://semianalysis.com/2024/12/11/scaling-laws-o1-pro-architecture-reasoning-training-infrastructure-orion-and-claude-3-5-opus-failures/). While Dario’s startup draws fewer headlines than OpenAI, xAI and [Meta Superintelligence](https://semianalysis.com/2025/07/11/meta-superintelligence-leadership-compute-talent-and-data/), it isn’t shy about investment. AWS has **well over a gigawatt of datacenter capacity in final stages of construction** for its anchor customer. AWS is building datacenters faster than it ever has in its entire history. And there’s **much more on the horizon**.
 
-![](https://substackcdn.com/image/fetch/$s_!ZPks!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F348cc316-30b7-41e3-a083-911df1ae1a33_1024x576.png)
+![](z-images/f0d50a2c0cc89566cd8967fb6d9ebb50.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -46,7 +46,7 @@ Trainium2 lags Nvidia’s systems in many ways, but it was pivotal to the [multi
 
 Put plainly: Trainium2 is converging toward an **Anthropic custom-silicon program**. This will enable Anthropic to be, alongside Google DeepMind, the only AI labs benefiting from **tight hardware–software co-design** in the near horizon.
 
-![](https://substackcdn.com/image/fetch/$s_!Euws!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F377f07d4-2e4e-4833-afc7-dd75f876c777_1024x357.png)
+![](z-images/4e482ebd404acc010aa8fd46d05fe42f.webp)
 
 Source: AI Cloud TCO Model
 
@@ -65,7 +65,7 @@ To understand the causes of Amazon’s underperformance in the GenAI era, we can
 
 In the second category, our [ClusterMax AI cloud rating](https://semianalysis.com/2025/03/26/the-gpu-cloud-clustermax-rating-system-how-to-rent-gpus/) is the best way to compare relative strengths and weaknesses. Platinum and gold-rated AI Clouds have seen more traction than others and boast higher-than-average pricing power. As such, the likes of CoreWeave, Oracle, Nebius, Crusoe and Azure have outperformed the market for multitenant GPU clusters – which require high performance and advanced software layers.
 
-![](https://substackcdn.com/image/fetch/$s_!yi5j!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdbf0fa08-c2d5-42ef-a937-665ed42e6ce3_1024x615.png)
+![](z-images/bf35f0ef7dfbb63a5579f7865f4b8f9e.webp)
 
 Source: SemiAnalysis ClusterMAX GPU Cloud Rating
 
@@ -81,7 +81,7 @@ More important to AWS’ XPU business growth is the ability to **secure anchor c
 
 No firm better illustrates this than Microsoft. Azure’s AI outperformance over peers is entirely driven by its OpenAI partnership. As of Q2 2025 (June 2025), all of OpenAI’s >$10B cloud spending is booked by Azure.
 
-![](https://substackcdn.com/image/fetch/$s_!Zcru!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cf42542-67fc-456a-bc11-41ca08f65139_1024x508.png)
+![](z-images/8bda480f70751676e078a475b7a89cdf.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -91,7 +91,7 @@ Amazon understood early on the need for an anchor customer and [invested $1.25B,
 
 Amazon’s bet has been the right one. Anthropic is the clear outperformer in 2025 in the GenAI market, with revenue surging from $1B to $5B annualized. In this context, AWS’ underperformance understandably frustrates investors, but they’re misunderstanding the composition of Anthropic’s spending on training and inference.
 
-![](https://substackcdn.com/image/fetch/$s_!Pi7B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb77d4f69-7460-45f7-9709-b281de0a926c_1024x547.png)
+![](z-images/b24c862c19f5b973504043b390afdf4f.webp)
 
 Source: SemiAnalysis Tokenomics
 
@@ -100,7 +100,7 @@ There **are two clear reasons explaining why Amazon isn’t yet truly benefiting
 1. As of Q2 2025, Anthropic’s cloud spending is over 2x smaller than that of OpenAI.
 2. A large share of Anthropic’s spending is going to Google Cloud – one of Anthropic’s first major investors ($300M round late-2022) and preferred cloud partner in 2023 and 2024, before the expanded AWS deal.
 
-![](https://substackcdn.com/image/fetch/$s_!HERL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F315d7305-7da2-407b-a362-97b5a08962d3_1024x507.png)
+![](z-images/9d5849a30f9cb4755a15c79eea6ad523.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -112,19 +112,19 @@ The AWS infrastructure buildout is aimed at taking a chunk of this for its key c
 
 Their belief will materialize as early as this year. We show below three AWS campuses in final stages of construction, boasting over 1.3GW of IT capacity for the **sole purpose of serving Anthropic’s training needs**. The speed of construction is remarkable.
 
-![](https://substackcdn.com/image/fetch/$s_!J-9v!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feed0550a-e73f-4693-991e-fc95b5f6fc7a_1024x576.png)
+![](z-images/f0d50a2c0cc89566cd8967fb6d9ebb50.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
 While these datacenters look built from the skies, we don’t think they are generating any meaningful revenue yet. Trainium has faced some yield issues on the assembly phase – fairly standard for a new system. We think the three large AWS campuses will meaningfully contribute to AWS’ top line by the end of 2025 and jack up growth above the 20% YoY threshold.
 
-![](https://substackcdn.com/image/fetch/$s_!0ahn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2757411e-3e3d-465b-aa82-b637633ee401_1024x509.png)
+![](z-images/9606b4103b9241649abb3511aaefbac7.webp)
 
 Source: SemiAnalysis Core Research - Core Research is our institutional research service trusted by most of the world’s largest hedge funds and investors. Contact us to get the industry’s most granular insights on AI hardware, software and infrastructure.
 
 Anthropic isn’t stopping there. Its ~$13B funding round at a $183B valuation will provide capital to sign additional deals with AWS, Google, and others. AWS isn’t waiting standing still – they're already breaking ground on upcoming GW-scale datacenters to capture this growth.
 
-![](https://substackcdn.com/image/fetch/$s_!BRbQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F58e99612-92fc-46a8-a6c1-1b97237f9b05_1024x553.png)
+![](z-images/ce3539b7af2c94b91af8a57a0c1d6cdb.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -136,7 +136,7 @@ Let’s try to make some sense of their bet by digging into Trainium’s TCO and
 
 Trainium2 supply chain signals are currently extremely strong. Our industry-leading [AI Accelerator Model](https://semianalysis.com/accelerator-industry-model/) track both the package shipments and the system/rack shipments and they’ve surged since the beginning of the year. It *provides quarterly volume forecasts for the 10+ SKUs comprising the Trainium2 and Trainium3 product family and calls out suppliers set to disproportionately benefit from specific SKUs. [Contact us for more information](https://newsletter.semianalysis.com/p/Sales@SemiAnalysis.com).*
 
-![](https://substackcdn.com/image/fetch/$s_!iQ0J!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5e4a6cb-ee16-49ea-ad64-5288333af03c_1024x552.png)
+![](z-images/70566923c4342a81c89eb7612be4942b.webp)
 
 Source: SemiAnalysis Accelerator and HBM Model
 
@@ -151,7 +151,7 @@ A simple look at chip specifications shows Trainium as a clear laggard relative 
 - Nvidia’s GB200 has a **3.85x FP16 FLOPs advantage**, at 2500 TFLOP/s/chip vs Trainium2’s 667 TFLOP/s/chip. Note that spec sheet numbers are inflated compared to actual achievable FLOPs.
 - In terms of **Memory bandwidth, the gap narrows to 2.75x**, at 8000GB/s/GPU vs 2900GB/s/Trn2
 
-![](https://substackcdn.com/image/fetch/$s_!_gU7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Febe72b52-b6a4-4b23-8c3b-a85a6399d12d_1024x553.png)
+![](z-images/2515c5ddc8d440cf781b2e25974bbe6f.webp)
 
 Source: Amazon, SemiAnalysis
 
@@ -166,7 +166,7 @@ While Trainium appears materially behind, the picture changes once we factor-in 
 
 In the table below, we incorporate TCO into our comparison. While Nvidia has a material head on a TCO per effective training PFLOP, Trainium2 is highly competitive on a TCO per million Tokens and TCO per TB/s of memory bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!9MQi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3fa83400-60da-4742-8b8b-131e439ac2b7_1024x357.png)
+![](z-images/4e482ebd404acc010aa8fd46d05fe42f.webp)
 
 Source: AI Cloud TCO Model
 
@@ -184,7 +184,7 @@ Anthropic’s ramp will make it not only the only large external end-user of Tra
 
 Amazon is rolling out a new system-level architecture for its anchor customer. Currently, the two systems deployed by AWS are Teton PD and Teton PD Ultra. Next year, the new Teton PDS and Teton Max are set to ship in large volumes. [Our AI Accelerator Model provides the exact volumes and SKU-by-SKU breakdown on a quarterly basis](https://semianalysis.com/accelerator-industry-model/).
 
-![](https://substackcdn.com/image/fetch/$s_!mPc4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bfcf56c-0eb5-4cdc-9c3c-593978efdf66_1024x517.png)
+![](z-images/8b4c63a80621d52c85e1d1e464837d04.webp)
 
 Source: SemiAnalysis Accelerator Industry Model, AWS
 
@@ -192,7 +192,7 @@ The key difference **is the introduction of an all-to-all scale-up network dubbe
 
 **Four NeuronLinkv3 switch trays** will be placed in the middle of the rack with 16 compute trays above and below split evenly. [Certain supply chain vendors are set to benefit disproportionately, as highlighted two months ago on Core Research](https://semianalysis.com/core-research/) – our institutional research service trusted by the world’s largest hedge funds. That vendor is up 73% since our post. We see the introduction of PDS as an intermediate step in Trainium’s path to catch up with Nvidia. We also believe that Anthropic was heavily involved in the launch of this new system-level architecture.
 
-![](https://substackcdn.com/image/fetch/$s_!vYuT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faf62f51b-0cdc-4e58-80e0-ea8828c9d9ba_1024x292.png)
+![](z-images/df17f3f2a60865de7cdb167301457400.webp)
 
 Source: SemiAnalysis Accelerator Industry Model, AWS
 

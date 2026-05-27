@@ -10,7 +10,7 @@ One of the exhibits at the Flash Memory Summit we just attended was a historical
 
 In the coming weeks we will have more detailed posts about developments in flash memory, China’s YMTC, CXL, UCIe, and more in the coming weeks. Those pieces will also include more investment related information as well.
 
-![](https://substackcdn.com/image/fetch/$s_!e66V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fce38e5a9-ff06-45c2-8081-5b3048b816be_1001x586.png)
+![](z-images/e6280d8b32543915b438c0789219b797.webp)
 
 1952
 

@@ -12,7 +12,7 @@ There are many other firms that have rocketed up alongside Nvidia who don’t de
 
 IT budgets are limited. They can increase somewhat, but most likely Capex and Opex must be kept fixed at best for most enterprises given macroeconomic uncertainty. As such, the major boom in Nvidia sales comes directly from purchasing less non-GPU servers. The market has recognized traditional CPU sales will be weaker due to the AI spend shift. This is clearly shown off by Nvidia's revenue for datacenter being higher than Intel datacenter for the rest of the year.
 
-![](https://substackcdn.com/image/fetch/$s_!y_H7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9eacd0f7-a9d5-4555-9f58-6957b6ceac55_718x709.png)
+![](z-images/76a43271c3108e8ffb6882f6bbe1136e.webp)
 
 Above is a demonstrative cost breakdown for a standard CPU only server. The typical CPU server will vary heavily, so do recognize this is only the loadout we viewed as high-performance, but also high volume. It has a total cost of around $10,424 for a large volume buyer, including ~$700 of margin for the original device maker. Memory is nearly 40% of the cost of the server with 512GB per socket, 1TB total. There are other bits and pieces of memory around the server, including on the NIC, BMC, management NIC, etc, but those are very insignificant to the total cost on the DRAM side. We did include those components in the BOM costs shared above and below.
 
@@ -22,7 +22,7 @@ In general, while there will still be many normal servers, the percentage of the
 
 Separately, we also have a 8 GPU + 4 NVSwitch baseboard BOM cost breakdown between power delivery, memory, assembly, cooling, GPU cost, CoWoS cost, die cost, yield cost, HBM cost, etc. We will share that later.
 
-![](https://substackcdn.com/image/fetch/$s_!--h2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fffe15f59-3cea-4ac2-a76f-c41771f442cf_754x790.png)
+![](z-images/7563c14df93d6423308843ce1da54025.webp)
 
 Nvidia’s gross profit per DGX H100 is almost $190,000. Of course, R&D and other operating expenses bring this much lower. Regardless, this mammoth margin comes with a big shift in memory cost as a percentage of servers, despite DDR5 memory per server growing to 2TB. There will be other CPU based and storage servers in the front-end network, but the AI servers themselves have less than 5% of their total cost allocated to memory when excluding HBM.
 

@@ -16,19 +16,19 @@ The impact of this in robotics will be exponential compared to their last strate
 
 Due to the fact that robotics is a general purpose technology, this will have horizontal impacts on all manufacturing sectors and all other currently advantaged industries as well--textiles, electronics, consumer goods, etc. At the moment, the West is caught flatfooted: South Korea and Japan have a birth rate crisis that is throttling their manufacturing capabilities, European industrial sectors are being eaten alive by China and their inability to generate power, and the US is focused on other markets and procuring cheap overseas production, all the while China’s manufacturing capacity has gotten stronger and robotics is catching fire.
 
-![](https://substackcdn.com/image/fetch/$s_!szdb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5255e0bf-0af6-47aa-a0b3-c44a9f41e870_920x563.png)
+![](z-images/3cd146a0f3161c619d4a83e96b2be75c.webp)
 
 Source: SemiAnalysis, IFR.org.
 
 China’s robotics localization effort is well underway. Local firms are taking over the world’s largest market, approaching a 50% market share, compared to just 30% in 2020. While Chinese manufacturers are currently on par with Western giants in the low-end market, our supply chain review leads us to believe that local firms are beginning to take over the higher-end market segments. The rise of Unitree exemplifies this shift: the only viable humanoid robot on the market, the Unitree G1, is now entirely decoupled from American components.
 
-![](https://substackcdn.com/image/fetch/$s_!p3jB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8800ae2-90d3-4233-bf3b-b31ee888bab4_934x610.png)
+![](z-images/25aff8f59d8d2acf230f14108e3171c8.webp)
 
 Source: SemiAnalysis, IFR.org.
 
 Today, building an identical robot arm (modeled after the Universal Robots UR5e) in the US **is ~2.2x more expensive than in China**. Under the hood, the situation is even more alarming. Even if those components are labeled “Made in USA”, they rely *heavily* upon China-made parts and materials - with no viable scalable alternative.
 
-![](https://substackcdn.com/image/fetch/$s_!QSdf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd082f569-9321-438e-bfa3-4b3d7f624818_1241x1005.png)
+![](z-images/82bf9af354ee355dfbd624d131b92871.webp)
 
 Source: SemiAnalysis
 
@@ -36,7 +36,7 @@ Source: SemiAnalysis
 
 The commercial drone market exemplifies China’s scale/oversupply playbook in every strategic industry it has entered, however, this is the first example of the strategy in a robotics-adjacent market. Local leader DJI today accounts for over [80%](https://www.atlanticcouncil.org/in-depth-research-reports/issue-brief/a-global-strategy-to-secure-uas-supply-chains/) of the global commercial drone market… and 90% in the **American consumer market**! While the company was a first-mover, it maintained and consolidated its market position for over a decade thanks to China’s manufacturing dominance and economies of scale/oversupply strategy.
 
-![](https://substackcdn.com/image/fetch/$s_!O1yV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd7ed8ec7-cc26-4353-be30-d924d6ec9e3f_1588x997.png)
+![](z-images/0463c1e9e0bf401087c400c22b1d3b80.webp)
 
 Source: SemiAnalysis, Industry Estimates
 
@@ -50,7 +50,7 @@ Quickly after entering the Western markets, DJI’s incredible cost advantage an
 
 In the world of Robotics, manufacturing dominance is key. To build a complete and functional robot means recreating the robot countless times and fine-tuning each minor mistake until a solid, scalable, and cost-effective product. This luxury is readily available to those who have the manufacturing capacity nearby and at an affordable cost, and its absence means a disadvantage. With a share of GDP three times higher than that of the US, China’s industrial base outcompetes that of America’s in every possible way.
 
-![This image has an empty alt attribute; its file name is 300-mnfg-as-percent.png](https://substackcdn.com/image/fetch/$s_!nxxP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F90c9ac95-8a81-4489-a22a-58ab515aff86_1533x1028.png)
+![This image has an empty alt attribute; its file name is 300-mnfg-as-percent.png](z-images/ba8ec09cab6626b5a4a068a761a9ed52.webp)
 
 Source: Worldbank, FRED
 
@@ -81,7 +81,7 @@ General purpose robotics is the holy grail of robotics: a robot that can do any 
 
 Not even Google was able to overcome the data scarcity problem, having famously constructed an “arm farm” of 14 robots running continuously for 3,000 hours simply to achieve reliable grasping. This never left the lab. Data scarcity was a crippling challenge. Researchers were forced to build jerry-rigged robots due to the absence of hardware standardization, and then manually gather training data, a process that consumed vast amounts of time and resources.
 
-![](https://substackcdn.com/image/fetch/$s_!bWLV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe394a46b-8b83-4921-b6ec-04fe253a5162_2525x1318.png)
+![](z-images/51ae19dfb05e81a49937ecd9208da2da.webp)
 
 Source: Google - Large-scale data collection with an array of robots
 
@@ -97,7 +97,7 @@ An even more difficult domain for robots is the human-populated domain, in which
 
 Due to Chinese governmental investment and strategic declaration to accelerate robotics, the country has created incredible processes all while still under the usual rigid and fragile constraints of robotics systems. While still requiring perfectly structured environments and static tasks, China has implemented fully “lights-out” factories. Xiaomi’s “ [lights-out](https://itc.ua/en/news/xiaomi-s-new-smart-factory-will-operate-24-7-without-people-and-produce-60-smartphones-per-minute/) ” factory operates round-the-clock producing one smartphone per second - with zero humans employed. This is not the only [one](https://www.mobileworldlive.com/u-joy-cities-the-worlds-largest-5-5g-native-lights-out-factory/) [either](https://www.gsma.com/solutions-and-impact/technologies/internet-of-things/digital-industries-20/benefits-use-case/foxconn-lights-off-factory/), China is able to achieve this level of automation without general purpose robotics, and the implications for their production capacity when general-purpose arrives cannot be understated. This is not a statement that the US is losing, this is to demonstrate an absurd difference in manufacturing proficiency. This has nothing to do with cheap Chinese labor, this is a manufacturing country with a robust industrial base that has now created one single machine that can produce goods entirely autonomously. General purpose robotics would make this indistinguishable from a living organism, with mobile robots constantly moving around and solving tasks to support and keep the organism alive and functional.
 
-![](https://substackcdn.com/image/fetch/$s_!THTv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ac84441-67cb-49d2-b245-4ff2f5e56806_2560x1363.png)
+![](z-images/16be3d4316d67ce765056b74ac05058b.webp)
 
 Source: Xiaomi
 
@@ -107,7 +107,7 @@ This is only the first step in creating entirely automated machines to produce g
 
 Let’s take a step back and first understand the current state of the industry. There are many types of robots and form factors that have become much more diverse and feasible in the last few years. The robots that have been most compelling for implementing automation at scale for the past decades however have been the industrial robots.
 
-![](https://substackcdn.com/image/fetch/$s_!hIPY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d1d640e-5732-4b70-9e39-03de65964851_1158x1015.png)
+![](z-images/6acf513b826e18c904cc8792f2f15fd0.webp)
 
 Source: SemiAnalysis
 
@@ -120,13 +120,13 @@ They are required to work in [isolated cells](https://www.youtube.com/watch?v=RB
 
 These robots are not capable of adaptation: any small deviation in the environment can break their process. For example,in automotive industries, [spot welding metal panels](https://www.youtube.com/watch?v=gWwNsgw24NE) together is often automated. This task requires remarkable accuracy to ensure the panels are correctly positioned next to each other, the spot weld is exactly over the designated points, and the weld is applied with the same consistent force and duration **every time.** Due to the accurate nature of the task, any slight deviation in the positioning or timing can affect the weld, and consequently the structural integrity of the vehicle
 
-![](https://substackcdn.com/image/fetch/$s_!gQEj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d57ca50-6741-448f-b3e9-5a92b29abef2_1400x788.avif)
+![](z-images/6aa66c28a36d2893c6c3917a2ceeb1b2.webp)
 
 Source: KUKA’s automated spot welding
 
 Collaborative robots (cobots) are the proposed solution to a human populated environment subject to the inherent dynamism of the world - enabling a higher level of automation inside a factory. Similar looking to an industrial robot but a bit smaller, they trade-off payload capacity with higher safety, flexibility and programmability - and can easily be restaked and moved around a factory when necessary. These are often the robots that are given higher levels of AI capabilities for some tasks today (higher variability pick and place and sorting).
 
-![](https://substackcdn.com/image/fetch/$s_!SE-3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c78cedd-ba42-47fd-ac60-155d44f787ca_1097x408.jpeg)
+![](z-images/4334f882016c32cce4c4c99a4d7a5d1e.webp)
 
 Source: Futura Automation
 
@@ -134,13 +134,13 @@ Cobots sacrifice payload capacity and speed with weaker actuators and adding som
 
 Typically given the tasks that require less force and more finesse, cobots (collaborative robots) might be tasked with lightweight materials handling in between processes in a factory where the industrial robot would take the materials and perform the heavier tasks. Cobots can also work as a companion to other industrial machines like [CNCs](https://en.wikipedia.org/wiki/Numerical_control) (Computer Numerical Control) - where they can [load](https://www.youtube.com/watch?v=lNeRrsu4s3Y) the CNC with raw materials, retrieve the finished parts, and even perform routine supporting tasks like cleaning or quality checking. We show below an example of a robotic arm interacting with a CNC machine.
 
-![](https://substackcdn.com/image/fetch/$s_!_6rf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ff800cb-ea29-425b-8784-312d9842ca03_1261x400.avif)
+![](z-images/d1911f1b591068f223a349bfc0a59c1a.webp)
 
 Source: Productive Robotics
 
 Naturally, the share of cobots of all industrial robot installations has been rising fast, as they enable higher automation settings and improved factory ROI. Cobots are financially viable in industrial settings, as the environment can be structured enough to make sure the robot’s accuracy on tasks remains high. At the moment, there are **over four million robots installed and operating around the world**, with 90% of annual shipments being standard industrial robots and [10%](https://ifr.org/img/worldrobotics/Press_Conference_2024.pdf) cobots. Industrial robots are usually implemented in automotive sectors, packaging in food and consumer goods, and electronics manufacturing. Cobots are seen in the same industries performing more complex tasks that require great precision, but under the guidance and instruction of human workers
 
-![](https://substackcdn.com/image/fetch/$s_!XO8U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe92be323-325b-4805-8e83-625789a7db41_1131x923.png)
+![](z-images/b782a2526ff0f42e998225f9183a3f36.webp)
 
 Source: SemiAnalysis, IFR
 
@@ -148,13 +148,13 @@ While the scale of automation is impressive, there are reasons these robots are 
 
 ## The Rise of Mobile Robots
 
-![](https://substackcdn.com/image/fetch/$s_!urx4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F14792051-f63d-4e8c-b456-e23c183c38f0_1107x947.png)
+![](z-images/93125a1ad78daaf416600deba59d880e.webp)
 
 Source: SemiAnalysis
 
 Mobile robots have been the newest addition to the robotic fleet of automation, leveraging mobility to conduct transportation tasks and coordinating with other robots, however, all have different difficulties, domains, and advantages in their mobility capabilities. Autonomous Guided Vehicles were the first foray into mobility around the same time as cobots. Their job is simple: transport objects, like a package inside of an Amazon fulfillment center, to another location. These are still rigid as most other robots, requiring that some guidance be placed on the floor for the AGV to follow.
 
-![](https://substackcdn.com/image/fetch/$s_!1OBq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa09a0aa2-63d4-4023-969c-3a0cc66fa66f_1200x600.jpeg)
+![](z-images/e318ef771f1d3622ba79ae5f49da55ba.webp)
 
 Source: Amazon
 
@@ -170,27 +170,27 @@ On the hardware side, actuators, motors, and drives are the pieces that will phy
 
 At the higher-level in a factory, a Programmable Logic Controller (PLC) determines how a production line will be automated, sequencing each operation properly to ensure the entire automated process is functional. Within each robot, regardless of form factor, there is a Microcontroller Unit (MCU), or embedded systems with multiple MCUs, that is the dedicated processor handling low-level real-time tasks like reading sensor inputs, generating motor control signals, and running fast control loops. These systems are effectively the “brain” for most robotic systems.
 
-![](https://substackcdn.com/image/fetch/$s_!Mzr5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F08deadf8-7c19-4341-a2ab-e916ac711d81_500x343.png)
+![](z-images/524de98c5a88eaaf8a7e288e2b278ae5.webp)
 
 Source: BizLink
 
 In the world of robotics, high-precision motors are required to ensure the proper torque is applied to avoid damaging its surroundings. Servo motors are the most common option - they are self-contained systems that include a motor, a control circuit, and a feedback mechanism. This overhead enables the motor to actively adjust itself and maintain a desired position or motion. Servo motors are one of the few components in a robot where the market is not dominated by China and fairly well distributed across countries.
 
-![](https://substackcdn.com/image/fetch/$s_!mSOt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F65934ac3-436b-4501-b855-fafaeb1c10c1_740x402.png)
+![](z-images/138ba7cab6b2c0f84c7ce6e6a724f9e1.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!P4HE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F643c6ad2-ff9c-44ff-a7e4-b90da4c01563_1000x625.png)
+![](z-images/38eaa2daa27e803d93ae4c28ab758704.webp)
 
 Source: SolisPLC
 
 The control circuit is referred to as “drive”. This is a power electronics box designed to regulate the voltage sent to the motor, through an AC-DC-AC conversion (or AC-DC for a DC motor). Its main component is a power electronics switch such as a MOSFET or IGBT, which combined with a rectifier and capacitors can electronically modify the electrical signal.
 
-![](https://substackcdn.com/image/fetch/$s_!N3rS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F514a30e2-af2e-4666-b138-1982b830f25b_736x637.jpeg)
+![](z-images/f6a1936db36becfdd367d4f69a165bc4.webp)
 
 Source: Polytechnic Hub
 
 Gearboxes are also a common component found in servo motors. They are able to increase the force/torque of a motor, and increase accuracy. In essence, gearboxes reduce the speed of a motor, leading to a proportional increase in torque, which also enables the motor to make finer movements. Most gearboxes found in robotic systems have been largely produced by Japan’s Nabtesco.
 
-![](https://substackcdn.com/image/fetch/$s_!f7TI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2bca21d-8280-4cf0-ad7c-03c84e0a30bf_1024x815.png)
+![](z-images/a4ee46c8531bd137df527e405f2b71a0.webp)
 
 Source: Santram Engineers
 
@@ -198,17 +198,17 @@ Cameras and sensors are pivotal for the robot as well, as this has been the prim
 
 Industrial and precise robots are equipped with joint encoders, which allow the robot to understand the angle, position, or rotation speed of its joints. A broad set of sensors can be included such as touch and tactile sensors to understand pressure, texture, and more, proprioceptive sensors to understand physical internal states like balance, force-torque sensors to understand how much force-torque is being applied by a joint, etc. This market is a bit small/disjointed because the products are newer developments; however, most Western companies that are able to design and assemble these sensors will still typically buy the base materials from China.
 
-![](https://substackcdn.com/image/fetch/$s_!8yYS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0fca10ac-8970-4a4d-ac4e-6071eb5645c6_1000x582.jpeg)
+![](z-images/c51101655dd9a96845d43745acae3cce.webp)
 
 Source: Intel
 
 Then there are the “end-effectors”, which are whatever the robot may have at the end of its arm, typically a tool or a very basic gripper for most robots. Each end-effector has its own use-case and payload capacity, or the amount of weight it is able to “hold”, so whatever the purpose of the robot will dictate the end-effector it has installed. This is one part of the robot that China is not very involved in at all, most end-effector producers are German (Schunk, Zimmer Group, Festo, Schmalz) and some are even American (ATI Industrial Automation, Destaco). However, it’s likely that Chinese companies are simply producing their own end-effectors and not exporting them yet, as vertical integration is their main strategy. While “hands” are catching much of the spotlight right now, these are not widely implemented and are far from achieving sufficient dexterity. We will explore the challenges of dexterity and what road lies ahead for manipulation in the next article of the robotics series!
 
-![](https://substackcdn.com/image/fetch/$s_!Huy1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff91cb12e-8764-4390-9e2a-416e3cada9b7_1000x1000.png)
+![](z-images/80c52d69f5fcaec4d530a22ca1f3619e.webp)
 
 Source: IPR Worldwide
 
-![](https://substackcdn.com/image/fetch/$s_!OUBg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F486eb17e-5370-4b74-a2ba-7791e7555b1e_570x400.png)
+![](z-images/c41dbad06f89df9e4a691cafd3e696ac.webp)
 
 Source: Igus
 
@@ -226,19 +226,19 @@ Why didn’t the US follow suit? COVID was the largest wake up call in years reg
 
 On the hardware side, we will focus on what actually goes into generating locomotion in a robot: actuators/motors and their respective components. **There are many types of motors available for generating motion, steppers with precise angular control in open-loop systems typically found in 3D printers or CNC machines, brushless DC motors with high power-to-weight ratios to propel drones and EVs, but the most important in robotics tends to be the servo motor.** Most robotics companies, especially those of the Big 4, produce their own servo motors in-house and sell them individually as well. These are not terribly difficult to build, but manufacturing them at scale does create a bit of a moat for the aforementioned reasons: actuators must have incredible reliability and performance, so scaling up requires advanced manufacturing techniques to be nearly perfectly replicated. As such, the long-standing manufacturers of robotics components with the necessary expertise hold the largest market share are Yaskawa (Japan), Panasonic (Japan), Bosch (Germany), KUKA (now China), and Siemens (Germany). Rockwell (USA) must be named here as well because it holds some 7% of the servo motor market share, but this is also the only segment of the supply chain that is not dominated by any one player.
 
-![](https://substackcdn.com/image/fetch/$s_!rAdy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8211d546-c54b-4ac5-b56e-bb36e6691410_1800x1200.jpeg)
+![](z-images/79b0f793cb22699477fcf4cc394db26d.webp)
 
 Source: Moog GmbH
 
 Nearly 60% of the world’s gearboxes for medium-to-large industrial robots are supplied by Japan’s Nabtesco. Their difficulty to manufacture arises from the fact that almost every order is likely to be highly customized and tailored to the customer’s hardware specifications, yet must still meet the 99.99% accuracy threshold to replace a human.Gearboxes are absolutely pivotal for ensuring this precision, and therefore make up the largest % of COGS on an industrial robot at [14%](https://www.controleng.com/industrial-robot-value-comes-from-servo-motors-servo-drives-and-gearboxes/). The manufacturing of these gearboxes must be accurate to an unreal degree, and as such, typically only long-standing and established players with years of experience building them have refined their process and process technology enough to achieve this quality, hence the Nabtesco dominance. They manufactured their first cycloidal gear in 1980.
 
-![](https://substackcdn.com/image/fetch/$s_!fi7J!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feeb88426-8fc3-4f57-8fb4-630dbfda82d4_1124x1124.webp)
+![](z-images/9ed5b44d3f52ceb3cc25b367281e152d.webp)
 
 Source: CuratedIndustry
 
 There are even special types of gearboxes like Harmonic Drive (Japan), founded in 1970, which uses a patented strain-wave design for incredible precision. These are more expensive but a must-have in superprecise settings (like semiconductor fabrication) and as such have a strong presence at [15%](https://roboticpaint.com/how-japanese-speed-reducer-monopolize-the-industry/) of the gearbox market. However, to demonstrate what a proper industrial base and rapid iteration is capable of, Leaderdrive was founded in China in 2003 with the aim of manufacturing their own superprecise strain-wave gearbox. In just 14 years, the company had produced over 100,000 units and captured [90%](https://www.leaderdrive.com/about-us.asp) of the Chinese domestic market for strain-wave gearboxes.
 
-![](https://substackcdn.com/image/fetch/$s_!VtUE!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F547b4cda-a714-4bbf-80a3-2bb16b03dfe4_720x406.gif)
+![](z-images/fb24f89445b8dcdc611ccb5244131c58.gif)
 
 Source: makeagif
 
@@ -246,13 +246,13 @@ Source: makeagif
 
 Motors and gearboxes are not in short supply and are fairly cheap; however, motors nowadays have undergone a breakthrough. Most high-quality high-speed motors are now developed with permanent magnets (PM motors) to achieve higher power efficiency and power-to-weight ratio -- perfect for robots. Without getting into too much detail, permanent magnets effectively add more magnetism into the electromagnetic field of a motor, meaning less electricity is required to magnetize and can instead go toward generating motion. There remains one issue though, the process and elements that go into creating your typical Neodymium permanent magnet (NdFeB) is nearly entirely dominated by China with 90% of the market share. Of that 90%, roughly three producers in China hold a near-monopoly on it: Jingci, JL MAG, and Ningbo Yungsheng.
 
-![](https://substackcdn.com/image/fetch/$s_!WZMj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7b305e4-9040-45ff-8c0a-eb63c7e893d8_2403x756.png)
+![](z-images/3a5c750c301360ad37a588a9b52ebcff.webp)
 
 Source: ERMA
 
 While “rare earth” is a misnomer -- they are just as abundant as most other elements-- the process needed to refine Neodymium and produce a final permanent magnet requires around ~12 complex steps and a strong industrial capacity. China dominates this process as well at 93%. After the trade restrictions on [Chinese strategic minerals](https://www.reuters.com/markets/commodities/rattled-by-china-west-scrambles-rejig-critical-minerals-supply-chains-2024-12-06/), there are attempts to try to minimize this dependency on Chinese permanent magnets. For instance, MP Materials in the US to become the only fully vertically integrated rare earths company in all of North America. Australia’s Lynas, the world’s largest non-Chinese producer, is expanding and building another separation plant in the US with US DoD support of [USD$120M](https://lynasrareearths.com/lynas-awarded-us120m-contract-to-build-commercial-heavy-rare-earths-facility/), and the DoD doubled down in 2023 with another [USD$94M](https://www.sccommerce.com/news/e-vac-magnetics-build-first-us-facility-sumter-county) investment in e-VAC's Sumter County, SC plant to produce NdFeB permanent magnets. The US is concerned with a dependency on China for rare earths, but resolution is slow. While MP Materials went from construction to early production in a few years, actually establishing high-volume capacity requires a [5-10 year timeframe](https://www.gao.gov/assets/gao-10-617r.pdf).
 
-![](https://substackcdn.com/image/fetch/$s_!sJpJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F06d729e0-8fd8-42e3-9e92-f390dc8d6720_1486x1117.png)
+![](z-images/90c324d991ae02336f2fef319cc0e6b0.webp)
 
 Source: GAO
 
@@ -260,7 +260,7 @@ However, it’s likely that these companies will not catch up in scale without *
 
 Mining and materials beyond rare earth elements are just as -- if not more essential, and while this is not typically bottlenecked, they are largely under the control of China. Additionally, having raw ore deposits or being capable of mining doesn't imply too much for many of these elements. Many economies struggle to process these elements whereas China excels in this endeavor due to its advanced industrial economy. Stemming from two main initiatives in China, the Belt and Road initiative and Made in China 2025 initiative, the country has invested and built a well-paved path to absolute dominance over nearly the entire minerals processing industry.
 
-![](https://substackcdn.com/image/fetch/$s_!Hi26!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff457dc59-2eab-4809-9974-91f2d786ef5a_1588x997.png)
+![](z-images/db204a2bb354705d737bf9e8e0ec16cb.webp)
 
 Source: SemiAnalysis, Industry Estimates
 
@@ -274,7 +274,7 @@ All of the ore may come from other countries rich in deposits, but this means no
 
 China understands that without access to processed minerals, there is no first step to manufacturing a product. The Western nations have not woken up to the fact that reshoring manufacturing starts at these minerals.
 
-![](https://substackcdn.com/image/fetch/$s_!2-wP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbd638dd7-c9ee-48ee-acb4-939ac956a73d_1200x1375.jpeg)
+![](z-images/673a1cee6193c22773aeab8364a8f896.webp)
 
 Source: Visual Capitalist
 
@@ -290,13 +290,13 @@ In the case of robots, batteries are all different sizes, there is no standardiz
 
 Industrial automation through robotics has been long in the making over the past decades, and throughout this time, some countries have prevailed as paragons of what the automated future can look like, and some have lost their position. Let’s take a look at the current world powers, where they stand in the robotics race to automation, and the driving forces moving their markets. So how did the world leaders in robotics end up on top?
 
-![](https://substackcdn.com/image/fetch/$s_!7wRh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4e0a859c-6ac1-4f48-a1d5-dcdb28ff27a1_1368x1132.png)
+![](z-images/7a262f8b2ab82c76cb5b7c9d09267ecf.webp)
 
 Source: SemiAnalysis, IFR.org
 
 The Robotics landscape has historically been dominated by four countries: South Korea, Japan, Germany, and the US. China today is a major force, but we will deep dive into the country later in the report. A closer look at the four incumbents reveals common factors driving their success to varying extents:
 
-![](https://substackcdn.com/image/fetch/$s_!4Joz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9bb10283-435b-4ec2-8463-ddf4454e26c3_1600x1197.png)
+![](z-images/2063f3e7ba2537b692fdcad898fbac40.webp)
 
 Source: SemiAnalysis, IFR.org
 
@@ -327,7 +327,7 @@ There’s a number of reasons why the dissonance could be occurring in the US, a
 
 To add insult to injury, a closer look at the Western world’s automation growth reveals a peak in ~2016-18. Japan’s 2023 additions are still ~13% below the 2018 peak, and South Korea has not grown since 2016. The only country among the top 4 that has reached a new peak in 2023 is Germany… but their goliath KUKA has been acquired by China and is shifting manufacturing to Asia.
 
-![](https://substackcdn.com/image/fetch/$s_!Fzbr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6c7cb3af-963a-4595-b2ee-662df3aeb4aa_920x562.png)
+![](z-images/4b93da53411109fbe1b8fea97f6b60b4.webp)
 
 Source: SemiAnalysis, IFR.org
 
@@ -335,7 +335,7 @@ Source: SemiAnalysis, IFR.org
 
 KUKA is part of the small set of companies referred to as the “Big 4” in robotics, having dominated the industry for decades: FANUC (Japan), ABB (Switzerland/Sweden), Yaskawa (Japan), and KUKA (prev Germany, now China).
 
-![](https://substackcdn.com/image/fetch/$s_!THwY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3516e234-d895-4d1f-a98d-19fdfa39bc7e_1324x761.png)
+![](z-images/2150660200cea790ec6c0a67cc47b110.webp)
 
 Source: SemiAnalysis
 
@@ -355,13 +355,13 @@ The traditional industrial robotics market and the respective hardware is still 
 
 In China, the most impressive shifts are taking place, going from outside the top 10 in robots per 10,000 employees in 2018, to overtaking 3rd place in the world from Germany with 470 robots/10,000 employees in 2024. China’s annual root installations dwarf that of the four western incumbents **combined**.
 
-![](https://substackcdn.com/image/fetch/$s_!SqcJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F961f45cd-a0e9-4f7f-8ce1-ac901e1aa8a1_1647x974.png)
+![](z-images/4e9e144f2f5af83b9c24e02e62eae95c.webp)
 
 Source: SemiAnalysis, IFR.org
 
 A change of this scale can only be described as a robotics revolution. Many factors can point to how this happened, but most stem from their massive industrial sector and policies that continue to fuel it, like the Made in China 2025 plan, and aggressive government subsidies. Exact numbers are hard to pinpoint, and the EV industry is a key recipient, but it is clear that the broad industrial landscape is benefiting from at least tens of billions of dollars every year.
 
-![](https://substackcdn.com/image/fetch/$s_!p0GO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7dbf29e9-b954-4e6d-b915-31066b08b26b_769x514.png)
+![](z-images/e265958dbc8222a0888c49bb490f458f.webp)
 
 Source: Nikkei Asia
 
@@ -369,7 +369,7 @@ The Chinese manufacturing base is currently dominated by automotive and electron
 
 The Made in 2025 plan was the largest catalyst toward becoming the industrial and high-tech manufacturing giant it is today. Signed by Li Keqiang in 2015, the plan initiated the move from 40% of domestic content of core components in 2020 to 70% by 2025. Additionally, the plan highlights the following six of the ten priority sectors going forward: automated machine tools & robotics, new-energy vehicles and equipment, power equipment, modern rail transport equipment, new advanced information technology, and new materials. With a focus on the entire manufacturing chain and the development of both advanced and traditional industries, the country laid out the road map to become an economic juggernaut.
 
-![](https://substackcdn.com/image/fetch/$s_!Agsn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F102008bd-de99-4fff-b05c-2dd0485244c1_1472x931.png)
+![](z-images/0ffbc68fc5623c119edf899af05f3662.webp)
 
 Source: SemiAnalysis, IFR.org
 
@@ -398,7 +398,7 @@ While China is a clear laggard in all those areas, local firms are growing fast 
 
 However, the pace of capacity additions from 2025 to 2027 makes us think an oversupply situation is very likely - with the Chinese set to flood the market with cheap chips.
 
-![](https://substackcdn.com/image/fetch/$s_!ARr4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdef26522-7e38-4ad0-b040-7f245986a38e_1020x552.png)
+![](z-images/d75ec6da8c5361b8a438261ccb548cb5.webp)
 
 Source: SemiAnalysis Core Research
 
@@ -406,13 +406,13 @@ There are today **over 300 Chinese chip suppliers** in the automotive & industri
 
 We believe that power semiconductors like IGBTs and other analog systems like BMS are already highly localized. Western market leaders like Infineon will not be able to fully benefit from the growth of robots and their motor drives. While the company was pitching design wins with Chinese OEMs and its BoM in domestic robots at the end of 2023, these mentions are now absent from its presentations
 
-![](https://substackcdn.com/image/fetch/$s_!ko9K!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0f125f40-7e8e-451d-90ff-628fdbaa9061_2158x1164.png)
+![](z-images/42132e86a7d273bc70361d619d6f7c24.webp)
 
 Source: Infineon
 
 In the Microcontroller space, we believe that local supplier penetration is fairly low, but Chinese firms like Gigadevice and Geehy Semi are catching up. There are over 60 fabless startups developing MCUs in China, and while most of them won’t succeed, this intense competition will only encourage innovation. Lower-end MCUs are being localized while higher-end products remain for now, out of reach. We expect Chinese firms to catch up and NXP stands to lose the most, as the established industrial powerhouse - and is particularly worrisome as MCUs tend be be sold as “systems” alongside attached analog chips, boosting total content per unit.
 
-![](https://substackcdn.com/image/fetch/$s_!mC5c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc383470b-5824-4c16-8787-2546274860ec_2406x1270.png)
+![](z-images/8b36d8942a12c25b671c8786fac425a6.webp)
 
 Source: NXP
 
@@ -420,7 +420,7 @@ The analog markets are facing similar dynamics, with “Big Analog” US firms T
 
 In the sensor market, Chinese vendors are also gaining share aggressively. Melexis has been the only supplier to quantify the opportunity and provide a bullish forecast - expecting a 15% CAGR in industrial (and healthcare) sales. However, we believe that many sensors are already highly localized in China, such as temperature and humidity. Other more complex electronic sensors such as MEMS-based devices are not yet as penetrated, but it is just a matter of time. Therefore, long-term growth from Robotics is likely to disappoint.
 
-![](https://substackcdn.com/image/fetch/$s_!aZAe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00e68965-db1a-4efc-b097-c4408bd1167b_2482x1134.png)
+![](z-images/105f54485c8d3253a204fc2ede9d56ac.webp)
 
 Source: Melexis
 
@@ -432,7 +432,7 @@ The only area where the US (using Taiwanese fabs) is comfortably leading the mar
 
 We will dig much deeper into its architecture and that of its competitors in a future report. However, we note that Unitree is one of the world’s most advanced humanoid companies… and their G1 robot uses the Rockchip RK3588S.
 
-![](https://substackcdn.com/image/fetch/$s_!cMUg!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c2d694b-361d-49ec-a3c3-2946751df1ca_720x730.gif)
+![](z-images/20c70ef1371b5d1259fb66d9e92aff92.gif)
 
 Source: Unitree
 

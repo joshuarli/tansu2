@@ -12,7 +12,7 @@ Quantization has played an enormous role in speeding up neural networks – from
 
 Nvidia, for one, claims that it is the single largest component of the 1000x improvement in single-chip TOPS in the past 10 years, adding up to 16x. For comparison, the improvement in process technology from 28nm to 5nm has only been 2.5x!
 
-![](https://substackcdn.com/image/fetch/$s_!s-NB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2e6121a1-2c99-43b1-a512-04d915cc9aaa_2285x1279.png)
+![](z-images/2da48588312669d0d35d83c2a2e45481.webp)
 
 Bill Dally HotChips
 
@@ -26,7 +26,7 @@ The bulk of any modern ML model is matrix multiplication. In a GPT-3, massive ma
 
 What’s important is how each individual element in the output matrix is computed, which boils down to a dot product of two very large vectors – in the above example, of size 12288. This consists of 12288 multiplications and 12277 additions, which accumulate into a single number – a single element of the output matrix.
 
-![](https://substackcdn.com/image/fetch/$s_!p3Hm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F51a33db3-b579-4bd1-b274-6568a1159a78_1318x719.png)
+![](z-images/f5b6ecb86d495c6bff9ebd391568f8d7.webp)
 
 Typically, this is done in hardware by initializing an accumulator register to zero, then repeatedly
 
@@ -54,7 +54,7 @@ These goals are sometimes aligned and sometimes at odds – we'll dive into both
 
 The fundamental limit to compute performance in many ML chips is power. While the H100 can on paper achieve 2,000 TFLOPS of compute, it runs into power limits before then – so the FLOPs per joule of energy is an extremely relevant metric to track. Given that modern training runs now regularly exceed 1e25 flops, we need extremely efficient chips sucking megawatts of power for months in order to beat that SOTA.
 
-![](https://substackcdn.com/image/fetch/$s_!J1KK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda79e0ce-cba5-48c8-8344-a7cceb52e34c_2419x1277.png)
+![](z-images/a7ed52b44f2734846efb2a36a12af100.webp)
 
 Bill Dally’s HotChips
 
@@ -66,7 +66,7 @@ First, though, let’s dive into the most basic number format in computing: the 
 
 Positive integers have the obvious base-2 representation. These are called UINT, for unsigned integer. Here are some examples of 8-bit unsigned integers, otherwise known as UINT8, which goes from 0 to 255.
 
-![](https://substackcdn.com/image/fetch/$s_!Tsyk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23e7c1a5-fd00-4d1d-857a-e5767275655e_732x468.png)
+![](z-images/f8796d6039753fcb84c5c70f9b63b94f.webp)
 
 There can be any number of bits in these integers, but usually only these four formats are supported: UINT8, UINT16, UINT32, and UINT64.
 
@@ -78,7 +78,7 @@ Sign-magnitude is intuitive but inefficient – your circuitry has to implement 
 
 In unsigned int8, the maximum number 255 is 11111111. If the number 1 is added, 255 [overflows](https://www.gnu.org/software/autoconf/manual/autoconf-2.63/html_node/Integer-Overflow-Basics.html) to 00000000, IE 0. In signed int8 the minimum number is -128 and maximum is 127. As a trick to have INT8 and UINT8 share hardware resources, -1 can be represented by 11111111. Now when the number 1 is added, it overflows to 00000000, representing 0 as intended. Likewise, 11111110 can be represented as -2.
 
-![](https://substackcdn.com/image/fetch/$s_!_l6s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fccc7226a-1905-4170-8288-c7487d9b8fb4_733x620.png)
+![](z-images/2628d580ad146063cab18ffed85e29a4.webp)
 
 Overflows are used as a feature! Effectively, 0 through 127 are mapped as normal and 128 through 255 are directly mapped to -128 to -1.
 
@@ -106,11 +106,11 @@ So in addition to the sign and value, we now have an exponent as well. IEEE 754-
 
 *This is somewhat simplified – some special cases (subnormals, infinities, and nans) exist but are a story for another time. Just know that floating point is complicated and has special cases that need to be handled separately by the hardware.*
 
-![](https://substackcdn.com/image/fetch/$s_!6eio!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F885a855a-437b-4f21-a1ea-66729096c0c5_1050x876.png)
+![](z-images/e46df1537373bacec943921858444f34.webp)
 
 Other bit widths have been standardized or de facto adopted, for example FP16 (1,5,10), and BF16 (1,8,7). There the argument is centered around range versus precision.
 
-![](https://substackcdn.com/image/fetch/$s_!wyEC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf332844-ddf4-46fe-85e5-f8f263d3995a_1272x661.png)
+![](z-images/eccd955d8a4c66c32ff1dfe01158297d.webp)
 
 FP8(1,5,2 or 1,4,3) has some additional quirks recently standardized in an OCP standard, but the jury is still out. Many AI hardware firms have implemented silicon with slightly-superior variants which are [incompatible with the standards](https://x.com/dylan522p/status/1724345781056901409?s=20).
 
@@ -118,7 +118,7 @@ FP8(1,5,2 or 1,4,3) has some additional quirks recently standardized in an OCP s
 
 Coming back to hardware efficiencies, the number format used has a tremendous impact on the silicon area and power required.
 
-![](https://substackcdn.com/image/fetch/$s_!nDjn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2915e66-d5ed-4754-8237-a12ab1b9e8b3_2419x1277.png)
+![](z-images/65387d6d8e74900bb3404ca9b1d7ede4.webp)
 
 ### Integer Silicon Design Circuit
 
@@ -151,13 +151,13 @@ Remarkably, floating point multiplication can even cost \*less\* than integer mu
 
 Obviously, this is also extremely simplified, and in particular, denormal and nan handling which we haven't gone into takes up a lot of area. But the takeaway is that in low bit count floating point, products are cheap while accumulation is expensive.
 
-![](https://substackcdn.com/image/fetch/$s_!XAWx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F146857ef-f5d5-469e-9844-6c71aec022a0_883x1154.png)
+![](z-images/88d8b12e1e22f3e34d101f9466412e51.webp)
 
 FP32 Multiply Add Unit
 
 All pieces we mentioned are quite visible here - adding up the exponent, a large multiplier array for the mantissas, shifting and aligning things as needed, then normalizing. (Technically, a true “fused” multiply-add is a bit different, but we omit that here.)
 
-![](https://substackcdn.com/image/fetch/$s_!0OJs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb3cdcecf-7201-4dd1-b6c4-31c8dba69517_1492x816.png)
+![](z-images/c1c8b69ebea3c93cf36ffe39b84b85ab.webp)
 
 FP8 versus INT8 for efficient deep learning inference – Qualcomm
 
@@ -171,7 +171,7 @@ Since integer is always cheaper, why don't we use INT8 and INT16 everywhere inst
 
 We can think about every number format as a lookup table. For example, a really dumb 2-bit number format might look like this:
 
-![](https://substackcdn.com/image/fetch/$s_!0_FD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ac71cbe-d480-4665-b1bb-57b6a287604a_728x468.png)
+![](z-images/b0cadac3d1b57bc34dd7fccc2eb39718.webp)
 
 Obviously, this set of four numbers isn't terribly useful for anything because it's missing so many numbers - in fact, there are no negative numbers at all. If a number in your neural network doesn't exist in the table, then you all you can do is round it to the nearest entry, which introduces a little bit of error into the neural network.
 
@@ -181,11 +181,11 @@ For example, if most of the values in a neural network are near zero (which they
 
 In practice, neural networks are typically normal or laplace distributed, sometimes with substantial outliers depending on the exact numerics of the model architecture. In particular, with extremely large language models, [extreme outliers tend to emerge that are rare but important to the functionality of the model](https://x.com/_jasonwei/status/1648395280876965888?s=20).
 
-![](https://substackcdn.com/image/fetch/$s_!Nmuz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd9bf4366-42de-479d-be38-9f168b900725_547x477.png)
+![](z-images/2d9aeab5ea6a900d71322eb42f175e44.webp)
 
 Above shows the weights of part of LLAMA 65B. This looks quite like a normal distribution. If you compare this with the distributions of numbers in FP8 and INT8, it's pretty obvious that floating point focuses where it matters - near zero. This is why we use it!
 
-![](https://substackcdn.com/image/fetch/$s_!Zqey!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa1b2afdc-37ba-4f1b-82c6-a360512bffa2_518x435.png)
+![](z-images/70fa84f9d581b2a9b91209cf0a4665f5.webp)
 
 It's still not a great match to the real distribution, though – it's a bit too pointy still with sharp cutoffs every time the exponent increments, but way better than int8.
 
@@ -195,7 +195,7 @@ Can we do better? One way to design a format from scratch is to minimize the mea
 
 For example, Nvidia at HotChips touted a Log Number System as a possible path forward to continue scaling past 8 bit number formats. The error from rounding is generally smaller with a log number system, but there are a number of problems including the incredibly expensive adders.
 
-![](https://substackcdn.com/image/fetch/$s_!Hhvy!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F858e6bf5-d919-4312-b12c-ac2894435d74_1480x683.png)
+![](z-images/036f7a46e5e0d03335d846af0e571e25.webp)
 
 Bill Dally HotChips
 
@@ -205,11 +205,11 @@ A number of alternative formats exist: posits, ELMA, PAL, and others. These clai
 
 We personally are most hopeful for Lemurian Labs PAL, but there is a lot that has not yet been disclosed regarding their number formats. They claim their accuracy and range is better at 16 bits than both FP16 and BF16, while also being cheaper in hardware.
 
-![](https://substackcdn.com/image/fetch/$s_!1V6g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc8dbd3f9-bb4b-46ef-8b46-97dd6147867d_1539x778.png)
+![](z-images/f76d62c2d92d5b3817baf8a57cb24717.webp)
 
 As we continue to scale past 8-bit formats, PAL4 also claims a better distribution than log number systems like Nvidia floated at HotChips. Their on-paper claims are amazing, but there is no hardware that has implemented the format… yet.
 
-![](https://substackcdn.com/image/fetch/$s_!Mn6V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a8407a8-4d48-4d73-8ed3-8a5980c44774_1510x737.png)
+![](z-images/590cc32f6f1f78a7440ad6972fa1381d.webp)
 
 ### Block Number Formats
 
@@ -221,7 +221,7 @@ This approach has been around for a while - Nervana Flexpoint, Microsoft MSFP12,
 
 At this point there exist an entire zoo of possible formats with different tradeoffs. Microsoft has tried to quantify this design space for hardware:
 
-![](https://substackcdn.com/image/fetch/$s_!_ZTd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcdbb45f8-8377-46ed-8a37-09826b8422fc_2102x776.png)
+![](z-images/921c9a737501f751c80c871d396ccd79.webp)
 
 With Shared Microexponents, A Little Shifting Goes a Long Way
 
@@ -253,13 +253,13 @@ On the other end of the spectrum, quantization-aware training (QAT) changes the 
 
 Training is somewhat more complicated because of the backward pass. There are 3 matmuls – one in the forward pass and two in the backward pass.
 
-![](https://substackcdn.com/image/fetch/$s_!u5T6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96d976a9-e76c-4137-b2d9-968a9c749d18_1864x878.png)
+![](z-images/fb030525cb405ea6bfdb16a19a974a58.webp)
 
 Each training step ultimately takes in the weights, does a bunch of matmuls with various data, and produces a new weight.
 
 FP8 training is more complex. Below is a slightly simplified version of Nvidia’s FP8 training recipe.
 
-![](https://substackcdn.com/image/fetch/$s_!dBAV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F99b1ae90-aac0-4ff3-93e8-205af4796cba_1881x1102.png)
+![](z-images/aa873e1f65b663378dcaef10bab03183.webp)
 
 Some notable features of this recipe
 

@@ -8,11 +8,11 @@ description: "iFixit’s teardown of the iPhone 12 has revealed that there are 3
 
 [iFixit’s teardown of the iPhone 12](https://www.ifixit.com/Teardown/iPhone+12+and+12+Pro+Teardown/137669?revisionid=HEAD) has revealed that there are 3 mmWave antenna modules built by USI. USI is a Shanghai based SiP design and manufacturing company. This would be their first design win in the space. Apple ditching Qualcomm on this component despite using the rest of the Qualcomm X55 5G Modem RF system is quite the shocker. To emphasize the magnitude of this design win, every US phone shipment which included 5G mmWave to date has used antennas from Qualcomm.
 
-![](https://substackcdn.com/image/fetch/$s_!rjIp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8d279112-2dae-4f96-8c54-bce3c4822117_712x1024.png)
+![](z-images/d40f62c90d7aab57b11a45e1aca3fc51.webp)
 
 Qualcomm is the world leader in 5G mmWave solutions, so this loss is further evidence that their leadership is not infallible. There have been many rumors that Apple would develop a custom front-end, but most believed that would be for the sub 6GHz component. Instead, Apple is utilizing the Qualcomm SDR865 transceiver and subsystem.
 
-![](https://substackcdn.com/image/fetch/$s_!Gxkv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F01e17dee-6b76-4eae-8a71-9e8fb373561f_923x517.png)
+![](z-images/c57f762d44e46b553e136f283688f9f6.webp)
 
 Many would think this is a classic Apple supplier diversity and cost cutting measure, but Qualcomm loses specifically due to a technical deficiency. Qualcomm most advanced mmWave antenna module is the 2nd generation QTM525. This module has been advertised as being less than 8mm thick. The thinnest shipping device with the X55 modem and QTM525 antennas is the S20+ coming in at 7.8mm. The new iPhone thickness is 7.4mm. Qualcomm’s next generation QTM535 would be thin enough, but it is part of the 2021 X60 platform. Apple’s quest for maximum thinness necessitated developing a custom mmWave antenna.
 

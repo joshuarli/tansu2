@@ -30,7 +30,7 @@ This is why quantum computers are so powerful; they can explore a vast number of
 
 Now enjoy this awesome image from Valentin John, which explains superposition and entanglement with a highly topical/political joke scenario of the EU.
 
-![](https://substackcdn.com/image/fetch/$s_!lZnk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb37317ba-2078-498f-9c37-526b43a7df83_2048x1111.png)
+![](z-images/c689db730b08d719e429e877e2d14617.webp)
 
 The last important central concept to understand is **interference**. Each qubit is actually a representation of a quantum wave function. A quantum wave function is a mathematical description of everything in quantum mechanics. It describes the probability of finding a particle in a particular location or having a particular energy or spin.
 
@@ -38,7 +38,7 @@ When the qubits are entangled, their wave functions are added together into an o
 
 Like with waves in water, when we add quantum waves together, they can constructively interfere and add together to make a bigger wave (amplify), or destructively interfere and cancel each other out (suppress). In a quantum computer, the overall wave function sets the different probabilities of the different states. By changing the states of different qubits, we can change the probabilities that different states will come out when we measure the quantum computer.
 
-![](https://substackcdn.com/image/fetch/$s_!Rr1K!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd6627252-9561-45bc-9cdc-a5750820b5c1_1285x450.png)
+![](z-images/da1e452fd32bd4a2f05138e402eb5256.webp)
 
 Theoretically, by carefully manipulating the states of different qubits, quantum computers can use interference to change the probability distribution and solve problems much faster than classical computers.
 
@@ -70,7 +70,7 @@ There are many ways companies and startups are attempting to build a quantum com
 
 Qubits can be affected by minor levels of electromagnetic radiation, including cosmic rays, temperature, or mechanical vibrations. These interactions cause the qubits to lose their quantum properties, which can result in errors in the computation. The biggest challenge is how do you physically make a device that is completely shielded from the rest of an environment while it is running, but also physically controllable and measurable. Furthermore, this noise becomes more and more difficult to block as you add more Qubits to a system. The reality we have to accept is that there will be noise.
 
-![](https://substackcdn.com/image/fetch/$s_!GFje!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd4b5b5c-1302-4cb0-8f9e-3a858ac80d1e_3402x1659.png)
+![](z-images/1ed116ccd884e5b372f969b1c36c7c62.webp)
 
 PsiQuantum
 
@@ -80,19 +80,19 @@ There is no single process in the world with atomic precision 100% of the time f
 
 The reality is that it is hard to entangle these qubits, and they will lose their coherence quickly due to interference. The classical computing industry uses many redundant structures such as cores, interconnects, SRAM, and ALUs. The quantum industry needs an even larger degree of redundancy due to their sensitivity.
 
-![](https://substackcdn.com/image/fetch/$s_!EWhX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa1e48136-1e24-4c2c-ba6e-0302741e0b17_3780x2121.png)
+![](z-images/6cd8a4068683a7cfabb338fccaa9cbef.webp)
 
 Marketing will constantly claim “quantum supremacy” with a qubit number that would theoretically surpass classical computers at many operations, but these cannot be entangled for any reasonable duration. Once interference sets in and coherence is lost, the data is worthless, and the algorithm achieved no useful work. Error rates are very high when each physical qubit represents a logical qubit in your quantum computer.
 
 Instead, quantum computers need between 1,000 to 100,000 physical qubits entangled together to represent 1 noise-free qubit. This noise-free qubit has a significantly lower error rate and, therefore, can operate for many more clock cycles. Real computing could potentially be done. Even at the low end of estimates, the reality is it will take over a million qubits in a quantum computer to complete any useful work.
 
-![](https://substackcdn.com/image/fetch/$s_!DDQo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F179eba33-c5b7-414b-a1bb-cf85b7c3a1fb_3411x1662.png)
+![](z-images/9b8e4e6d93520f8c2a45f0f2dce6a9e5.webp)
 
 Regardless of the approach, noise from the outside world must be minimized; hence nearly every quantum computing approach attempts to operate at as close to 0 kelvin as possible. The problem with these cryogenic-cooled approaches is that when the computer is scaled to over a million qubits, what does that system look like.
 
 The key takeaway is that the number of qubits is not relevant to watch, but rather the error rates.
 
-![](https://substackcdn.com/image/fetch/$s_!dM3a!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F262e87cf-3e3a-443b-afe4-a84bc05acea8_3285x1866.png)
+![](z-images/125c5181db85a6cc035bbd07a2695140.webp)
 
 PsiQuantum
 
@@ -100,7 +100,7 @@ Dozens of companies believe their approach to a quantum computer is scalable. Ea
 
 PsiQuantum’s argument is that most quantum approaches rely on the electrical domain, which may work better on a small scale, but cannot scale to millions of qubits. Millions of qubits means a system with many chips and networking in between. The networking would also need to be cryogenically cooled and shielded to protect from outside interference.
 
-![](https://substackcdn.com/image/fetch/$s_!p8Lo!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3c1a4ec5-0a44-4e13-b1c0-65c8fbb34b5e_3621x1659.png)
+![](z-images/4747bf51ab14f47d166db1a8d6862031.webp)
 
 PsiQuantum
 
@@ -108,7 +108,7 @@ Photons are theoretically much easier to protect from interference when networki
 
 Because computing and networking is done in the optical domain, PsiQuanutm argues that their systems can operate at more normal temperatures than quantum computers operating in the electrical domain. Their systems are still currently in the single-digit kelvin range but compared to other quantum computers, which are pushing into the milli-kelvin range, that is much easier to achieve.
 
-![](https://substackcdn.com/image/fetch/$s_!LMVH!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0c1487c8-9796-493b-afac-4bc4afec0f59_3477x1716.png)
+![](z-images/32106964198ee3ff263bf0a7b7c1c6ae.webp)
 
 PsiQuantum
 

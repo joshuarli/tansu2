@@ -8,7 +8,7 @@ description: "NIL basics, why it won’t replace EUV, details of Canon’s tool,
 
 Every 6 months or so, we see another round of headlines about nanoimprint lithography disrupting EUV.
 
-![](https://substackcdn.com/image/fetch/$s_!nCI7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd73a8eb3-9d1c-46a8-bd91-d33ff3d6de73_1738x841.png)
+![](z-images/0ce56da670370df851b85e4f374930ad.webp)
 
 Source: Bloomberg, Financial Times, The Economist
 
@@ -20,17 +20,17 @@ We’ll explain those differences in theory versus actual in-fab practice in thi
 
 Nanoimprint lithography uses a patterned “stamp” to imprint a pattern in resin. In semiconductor production, it achieves the same end goal as photolithography à la ASML – transfer a pattern from a mask onto a wafer. These patterns are just 1 layer of the chip design. Stacking 50-100 layers, with patterning followed by other techniques like etch and deposition on each, eventually builds up a complete chip.
 
-![](https://substackcdn.com/image/fetch/$s_!EQdy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe39be91a-ea97-4e01-a3ef-cff9f458fb31_920x586.jpeg)
+![](z-images/006ae887f1c1dfe83e85d5c4630a14bc.webp)
 
 Source: Canon
 
 The most promising technique for nanometer-scale NIL was invented in 1996 and spun out from academia to a commercial entity in 2001 as Molecular Imprints Inc. (MII). Canon acquired MII in 2014, positioning it as their alternative at the time ASML was beginning to ship EUV into customer R&D fabs.
 
-![](https://substackcdn.com/image/fetch/$s_!8Gh0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F26ad2c37-8e89-40cd-92e1-e551fa479942_685x188.jpeg)
+![](z-images/ab8511afac5212c30c9ad73fdd0bd924.webp)
 
 Source: Canon Nanotechnologies
 
-![](https://substackcdn.com/image/fetch/$s_!wXfw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7bd2cd3-ccd9-485b-8bb1-ee990169f612_996x281.png)
+![](z-images/b3cdfb13573675fd617107decf053435.webp)
 
 Source: Molecular Imprints Inc. / Canon, SemiAnalysis
 
@@ -44,13 +44,13 @@ Canon calls its technology “J-FIL” for jet and flash and nanoimprint lithogr
 
 Producing an NIL imprint starts with dispensing photoresist on the wafer. Because the resist will be displaced in 3D, rather than capturing an image on a 2D plane as in photolithography, applying it in an even layer across the entire wafer is not optimal. So traditional spin-coaters aren’t used. Instead, an extremely high quality inkjet printer deposits resist in an optimized droplet pattern. This pattern improves resist flow during patterning, reducing voids and overflow.
 
-![](https://substackcdn.com/image/fetch/$s_!rrYI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c53ac9e-4507-44db-b845-5c5d59be4bf5_675x237.webp)
+![](z-images/c7bcce889bef641ac92977579630e4d9.webp)
 
 NIL resist stack. Source: Canon Nanotechnologies
 
 The resist deposition is done inside the patterning tool, to minimize queue time before patterning and wafer movement which could disturb the resist droplets. This puts resist coating in the critical path that limits wafer throughput, so speed is optimized – just one pass is needed, done in 1/3 <sup>rd</sup> of a second.
 
-![](https://substackcdn.com/image/fetch/$s_!mpTl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1dfd845-1168-49b3-9194-5cd2dfd98fd4_403x762.png)
+![](z-images/2c4c6b5d977f8af519265bdf5b9b9da7.webp)
 
 Imprint process flow. Note there is additional overhead in cycle time, not shown, due to wafer exchange and metrology. Source: Canon Nanotechnologies, SemiAnalysis
 
@@ -62,7 +62,7 @@ A UV flash cures the resin, solidifying it with the imprint of the mask. Then, i
 
 Because the resin is cured during the imprint process, there is no need for a post-exposure bake as used for photolithography. This saves time and cost, but ultimately less than 1% of total wafer cycle time and cost when added up. Unfortunately, as we’ll see below, this doesn’t offset the other time and cost penalties from NIL.
 
-![](https://substackcdn.com/image/fetch/$s_!AQ5B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0659197c-026b-4891-8fbf-f3b0877de1ec_1395x868.webp)
+![](z-images/945ef9ec0e200defb2c3f6d6bee83640.webp)
 
 Defect modes for improper resist coating and imprint contact. A) and C) non-filled features from insufficient resist volume B) deformed features from too much contact pressure. Source: Canon Nanotechnologies
 
@@ -72,7 +72,7 @@ Mask or “template” production is critical to NIL performance. A defect in th
 
 NIL masks use the same blanks as DUV optical masks, to take advantage of the existing ecosystem and economies of scale. A single exposure field of 26x33mm is patterned, with a circular region cored out to facilitate bowing during the contact process.
 
-![](https://substackcdn.com/image/fetch/$s_!7It5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2b1ad7e-716b-42c9-a82c-1dd10ae1efc8_989x746.jpeg)
+![](z-images/876b4e3de68fe49515f98ea7f8bced8d.webp)
 
 A patterned NIL mask. Note the patterned area itself, an exposure area of 26x33mm matching other litho tools. The circular cored-out area for bowing the mask is also visible. Source: Canon
 
@@ -90,7 +90,7 @@ NIL templates do not have this advantage. They must be written at the same featu
 
 In NIL’s favor, the field area to be written is 4x smaller than what a photomask requires, since it is just equivalent to the field size to be printed. The net effect is that NIL master template writing may take less time than writing a photomask, but will need the absolute best MBMW mask writer.
 
-![](https://substackcdn.com/image/fetch/$s_!sKUU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F763154b2-4778-4dc9-afd4-ceef27a0333b_2440x740.png)
+![](z-images/8a0d94b5725b161eccef00ff85311c73.webp)
 
 NIL mask production flow. Source: Molecular Imprints Inc. / Canon, SemiAnalysis
 
@@ -98,17 +98,17 @@ NIL mask production flow. Source: Molecular Imprints Inc. / Canon, SemiAnalysis
 
 Of all existing tools, the Canon NIL machine is by far the most advanced in terms of capability and commercial readiness. Like a photolithography scanner, it has a wafer and mask motion stage. The wafer stage has coarse and fine control horizontally in X, Y, and rotation about the Z-axis while the mask stage can move up and down in Z. Both stages move with a claimed 1nm precision.
 
-![](https://substackcdn.com/image/fetch/$s_!drbh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a5882d5-e05f-49af-b43b-03d309874bff_1050x845.jpeg)
+![](z-images/42bab093c73ba210c6f683034492a9c9.webp)
 
 Basic architecture of the Canon NIL stepper. Source: Canon
 
-![](https://substackcdn.com/image/fetch/$s_!X9Q5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fede99d4a-226f-4669-b146-6a17a7784aa4_1395x1043.webp)
+![](z-images/5151c62b8c1db1c55c68ca1f83ad3189.webp)
 
 Source: Canon
 
 Unlike most light-based scanners, it can perform alignment metrology at the same time as the actual patterning. This is done with microscopes imaging through the clear mask to read alignment marks just outside the imaging field, enabling simple closed-loop overlay control. Canon calls this “i-MAT” for Interferometric Moiré Alignment Technique. Feedback from the alignment metrology is used by the wafer and mask stages to correct any errors as imprinting takes place.
 
-![](https://substackcdn.com/image/fetch/$s_!LoUN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F86e4eea6-35ed-41a8-bdc3-687287a92025_360x159.png)
+![](z-images/dd7d6e4a699f3ef22a229680c56febeb.webp)
 
 Source: Canon
 
@@ -116,7 +116,7 @@ Low-order alignment errors (for example, the mask is 5nm too far left) can be co
 
 High-order alignment errors (for example, complex aberration patterns caused by uneven temperature across the mask) can be corrected by selective heating of the mask with a laser steered by an array of micromirrors. At their default position, all the mirrors will reflect the laser light through the mask, heating it. When MEMS actuators behind each mirror are activated, they move the mirror to steer the light off the mask, effectively making a “pixel” that can be turned on or off to heat the mask selectively.
 
-![](https://substackcdn.com/image/fetch/$s_!JQyA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F17a88b9f-f1c2-40c3-bee0-9eef497de779_1050x748.webp)
+![](z-images/1588f17223b68fb622b4a23e7e7779e3.webp)
 
 Source: Canon
 
@@ -124,7 +124,7 @@ One cell of the NIL tool can process one wafer at a time. The imprint process ta
 
 Compare this to leading ASML photo tools which can do 330 wph for DUV and 220 wph for EUV (in practice the throughput will be lower when considering uptime, exposure dose, and other factors. We use the advertised throughput here as the practical number for NIL isn’t known).
 
-![](https://substackcdn.com/image/fetch/$s_!--v2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F328577a0-c32d-4b44-b68e-a38bc377585b_1038x994.png)
+![](z-images/36ba23c1565e6fe0aaeccc3e46597001.webp)
 
 Simplified rendering of the NIL mask stage and its location within the tool. Source: Canon, SemiAnalysis
 

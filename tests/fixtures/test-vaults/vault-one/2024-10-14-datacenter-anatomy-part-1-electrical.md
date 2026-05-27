@@ -20,7 +20,7 @@ Blackwell has standardized the requirements and now suppliers and system designe
 
 These design shifts have already caused considerable impact. For example, Meta demolished an entire building under construction because it was their old datacenter design with low power density which they have used for many years. Instead they replaced it with their brand new AI-Ready design! Most datacenter designs are not ready for GB200, and Meta in particular has by far the lowest power density in their DCs compared to the other hyperscalers.
 
-![](https://substackcdn.com/image/fetch/$s_!uto5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ae5f53c-509f-4232-8a47-fc71cb47d261_2542x822.jpeg)
+![](z-images/8c147d2d6e15f7b2e8a2462632a65827.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -34,7 +34,7 @@ A Datacenter is a purpose-built facility designed to deliver power to IT Equipme
 
 Thirty years ago, these facilities resembled office buildings with beefed-up air conditioning, but the scale has massively increased since with consumers today watching billions of hours of YouTube videos, Netflix shows, and Instagram stories. This triggered deep changes in the way datacenters are built, as modern facilities can require >50x the amount of electricity per square foot compared to a typical office building, and facilitating heat dissipation for these servers calls for fundamentally different cooling infrastructure.
 
-![](https://substackcdn.com/image/fetch/$s_!4fqJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9efdb98a-a46e-4b41-9a8a-f56bfa90e7bf_1021x677.jpeg)
+![](z-images/8a7c0c0c419c0c571da85d171174b4a9.webp)
 
 Source: Data Center Dynamics
 
@@ -42,7 +42,7 @@ With such scale, any outage caused by a datacenter issue can incur significant r
 
 A useful framework to evaluate Datacenters based on expected downtime and redundancy is the “ [Tier” Classification from the Uptime Institute](https://uptimeinstitute.com/tiers), or the ANSI/TIA-942 standard (based on the Uptime’s Tiers), with the following four rating levels in the diagram below.
 
-![](https://substackcdn.com/image/fetch/$s_!n2YB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1e1a445-f050-413e-97ae-f778bced2444_2395x1800.jpeg)
+![](z-images/3d00894dc03622861ec5a57433245589.webp)
 
 Source: PRASA
 
@@ -62,19 +62,19 @@ We categorize facilities into three major brackets:
 
 **Retail Datacenters**: small facilities with a lower power capacity – at most a few Megawatts, but typically located within cities. They generally have many small tenants who only lease a few racks (i.e. a few kW). The value proposition lies in offering a strong network ecosystem by bringing together many different customers within the same facility. By offering easy interconnection to other customers and networks with low latency, operators of retail datacenters can lower customers’ networking costs. Thus, the business model of a retail datacenter operator is more akin to a traditional real estate play with its “location, location, location” value proposition.
 
-![](https://substackcdn.com/image/fetch/$s_!Je_G!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f37681d-58aa-4e7b-be59-e098e222dedd_1712x986.jpeg)
+![](z-images/de676a41b32885682e2c8175fe804ef5.webp)
 
 Source: Google Earth ( Here )
 
 **Wholesale Datacenters**: larger facilities in the range of 10-30MW. Customers in these facilities tend to lease larger areas, i.e. a whole row or multiple rows, and with the option to further expand. In contrast to retail datacenters, the value proposition is about deploying larger capacities and having scalability over time. Many wholesale datacenters are built out in phases to attain their ultimate capacity, which means they can expand as customers’ demanded leading capacity grows. Below is an example owned by Digital Reality.
 
-![](https://substackcdn.com/image/fetch/$s_!NuIw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F77ee092f-357c-4cb9-8077-1a3858835b76_1482x1140.jpeg)
+![](z-images/37436542c03288cf98fcc967d663942b.webp)
 
 Source: Google Earth ( Here )
 
 **Hyperscale Datacenters**: These facilities are commonly self-built by hyperscalers for their own exclusive use, typically with individual buildings of 40-100MW each, and part of larger campuses with multiple interconnected buildings. Such campuses are rated in the 100s of MW, such as the below Google site with close to 300MW of power. Big Tech firm can also engage a colocation provider to construct a “build-to-suit” datacenter that will be built to the specifications of the hyperscaler, then leased out to the hyperscaler. Build to suit lease sizes north of 100MW are increasingly common.
 
-![](https://substackcdn.com/image/fetch/$s_!HZCC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffada17a6-9427-4f9a-81b9-e89b72d9eddf_2178x1260.jpeg)
+![](z-images/465747621045d2876d3a1c03affd41d9.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -92,7 +92,7 @@ To give a bit of perspective on the power requirements of Hyperscale campuses, a
 
 The table from our previous [Datacenter deep dive](https://semianalysis.com/ai-datacenter-energy-dilemma-race) should also help you relate those capacity numbers to AI deployments: a 20,840 Nvidia H100 cluster requires a datacenter with ~25.9MW of Critical IT Power capacity. This is still set to rise tremendously, as people are now building [100,000 H100 clusters](https://semianalysis.com/100000-h200-clusters-power-network) and [Gigawatt clusters](https://semianalysis.com/multi-datacenter-training-openais).
 
-![](https://substackcdn.com/image/fetch/$s_!h_Hm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F553c9add-cb81-4c1c-be5c-89eb95749d98_1424x1068.png)
+![](z-images/1741cf0e271e4b0362626bdea636343f.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -108,7 +108,7 @@ But high voltage can be dangerous and requires more insulation, which isn’t su
 
 From the outside-in, power follows the following path:
 
-![](https://substackcdn.com/image/fetch/$s_!hjHk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0d29156c-5276-40ec-ad7b-6466a998eeba_1327x1137.jpeg)
+![](z-images/02db837a906f375faa73f86a484a40a0.webp)
 
 Source: DEAC
 
@@ -128,7 +128,7 @@ This diagram of course can vary dramatically based on the capacity of the Datace
 
 Modern Hyperscale datacenters are of course more complex than the diagram shown above. Such campuses typically have an on-site high-voltage electrical substation, such as the Microsoft site shown below, or the above Google complex.
 
-![](https://substackcdn.com/image/fetch/$s_!HMyz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F55087283-41d0-4b73-8839-480eea7fdb59_2172x1458.jpeg)
+![](z-images/ce582efa2e6a73c10bafae337d4ace86.webp)
 
 Source: Google Earth, SemiAnalysis
 
@@ -140,7 +140,7 @@ Typical High Voltage Transformers are rated between 50 MVA and 100 MVA: for exam
 
 Despite being a core piece of our electrical transmission system, transformers are very simple devices: they change the voltage and current of Alternating Current (AC) power from one level to another. This century-old technology works because electrical current produces a magnetic field – and AC produces a continuously changing magnetic field.
 
-![](https://substackcdn.com/image/fetch/$s_!LZTT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F97a9f6a9-af3a-4ac9-88ba-eceaacc6a6f2_1806x1034.jpeg)
+![](z-images/d0cff5ca3edef51939990d66b9871d13.webp)
 
 Source: The Engineering Mindset
 
@@ -148,7 +148,7 @@ Two copper coils are placed next to each other – when a portion of a wire is w
 
 If the secondary coil has less “turns” than the primary coil, power will be transferred at a lower voltage and higher current – this is an example of a step-down transformer.
 
-![](https://substackcdn.com/image/fetch/$s_!RUCU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2be968dd-b160-4711-9955-6bced6a07a16_2014x1332.jpeg)
+![](z-images/87ad61c64517c24bb27213903c811d6b.webp)
 
 Source: GeeksforGeeks
 
@@ -158,7 +158,7 @@ The two major components of a transformer are copper for the coils, and steel fo
 
 Back to Datacenters and our power flow: we now have medium voltage power at one of 11kV, 25kV or 33kV (depending on the cluster configuration and location) and want to send that power to IT racks. Modern datacenters are built in a modular fashion, and the following Microsoft Datacenter is a perfect example.
 
-![](https://substackcdn.com/image/fetch/$s_!HizW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa070a333-e879-497d-a899-f4f699b06c99_2134x1508.jpeg)
+![](z-images/c8b65fb1433a27e6bb3eb25374584a10.webp)
 
 Source: Google Earth, SemiAnalysis
 
@@ -166,7 +166,7 @@ A building is generally broken down into multiple Data Halls (blue rectangle)–
 
 Inside a Data Hall are located multiple “Pods”, and each Pod runs off its own dedicated set of Electrical Equipment: generators (orange rectangle), transformers (green rectangle), UPS and switchgear. In the above picture, we can see four generators and transformers per Data Hall. There are also four Pods per hall, which also means four low voltage Switchboards, and eight UPS systems assuming 2N distribution redundancy.
 
-![](https://substackcdn.com/image/fetch/$s_!R8nt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b06a8bb-6996-4001-abca-130b8ef52dd1_2024x1032.jpeg)
+![](z-images/07701b52522c316c28462639a02a5f13.webp)
 
 Source: Legrand
 
@@ -181,13 +181,13 @@ After stepping down from High Voltage (i.e. 115kV or 230kV etc) down to Medium V
 
 The diagram below helps to illustrate a typical HV and MV distribution: how power is stepped down from HV to MV then distributed by MV Switchgear generally placed either outside or inside the facility and configured such that each data hall can be supplied by two different power sources, leaving no single point of failure.
 
-![](https://substackcdn.com/image/fetch/$s_!CgTZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F478574eb-fef6-4f20-8228-24af193d4ddd_1994x1092.png)
+![](z-images/528664d6f98bce6f24e2c68095d696ea.webp)
 
 Source: Schneider Electric
 
 Medium Voltage switchgear is a factory-assembled metal enclosure filled with equipment to distribute, protect and meter power.
 
-![](https://substackcdn.com/image/fetch/$s_!jmp9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcbea7e05-312a-4a05-a3c3-237a675231f2_1280x960.jpeg)
+![](z-images/2d67363238862cdb674d8fbefd4915c7.webp)
 
 Source: Eaton
 
@@ -199,7 +199,7 @@ Inside these enclosures you will find the following devices:
 - A switch to turn the power on or off.
 - Medium voltage cables.
 
-![](https://substackcdn.com/image/fetch/$s_!G9a1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9dcee20b-1071-4738-8c18-2c9e0eac64bd_1080x883.png)
+![](z-images/a1caf15a8c7a44d6e7c6f22cb2c5d7da.webp)
 
 Source: Schneider Electric
 
@@ -209,11 +209,11 @@ Alongside every LV transformer is a generator that matches the power rating of t
 
 For context, a 3 MW generator has a horsepower north of 4,000, similar to a locomotive engine, and it is common to find 20 or more such units in a hyperscale datacenter! These units generally run on diesel, with natural gas being the main alternative. Datacenters commonly hold 24 to 48 hours of fuel at full load, and diesel’s superior ease of transportation and storage makes it often the preferred option. Diesel is also more energy efficient but pollutes more: due to regulatory constraints, diesel generators tend to be more expensive, as specific equipment is required to reduce environmental pollution.
 
-![](https://substackcdn.com/image/fetch/$s_!7qQY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F07006bcf-2569-43b7-a8e5-1a1b1f5f3de8_2022x1062.jpeg)
+![](z-images/6efc2c854b77981dfda85eaf706526f7.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!oMz8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F99300db6-1413-4188-83e3-a1db62958415_2456x1294.jpeg)
+![](z-images/d6c5716dcc5aa467d4d89103496a0d87.webp)
 
 Source: Data Center Frontier
 
@@ -224,25 +224,25 @@ Directly downstream from the Automatic Transfer Switch (ATS) is a uninterruptibl
 - A battery bank, either Lead-Acid or Lithium. Lead-acid batteries are being replaced by Lithium, though the latter does have strict fire codes to comply with.
 - A Static Bypass switch: if the UPS has a fault, the load will automatically switch to the main power source. The loan can also be manually switched if the UPS needs to be taken out of service for maintenance.
 
-![](https://substackcdn.com/image/fetch/$s_!35Fd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb167556-06e3-49ca-89a5-c7920dcea7ae_1844x1362.png)
+![](z-images/aecac6a7b63b5dd18d2056c33a3be9f4.webp)
 
 Source: Vertiv
 
 A UPS can be a large source of inefficiency, with 3-5% losses typical, and further exacerbated when the load is low. Modern units can improve efficiency to >99% by operating in standby mode (“VFD” below) and bypassing the AC-DC-AC conversion, but this increases the transfer time by a few milliseconds (ms) and poses a risk of a short power interruption.
 
-![](https://substackcdn.com/image/fetch/$s_!_WoS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9826c37c-197a-4525-9110-23e1bd369a7a_2292x1150.png)
+![](z-images/201d2f713c33ae2f1a492c281841152d.webp)
 
 Source: Vertiv
 
 Modern systems are modular: instead of having one fixed-size large unit, they are broken down into smaller “cores” that can be stacked together and working as one. In Vertiv’s latest product, cores are either 200kVA or 400kVA – for comparison, a Tesla Model 3 inverter can output 200kW of AC Power. In a modular UPS, up to ten cores can be stacked in one unit – and up to eight units can work in parallel to further improve capacity, at a maximum of 27MW.
 
-![](https://substackcdn.com/image/fetch/$s_!0lWw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F65d7d2b6-03b2-4b4d-ae3b-05af5c418300_2310x1266.jpeg)
+![](z-images/4de15c4c20c1b3e8eae6a288d62b7405.webp)
 
 Source: Vertiv
 
 A 2N redundancy on UPS systems (i.e. “2N Distribution”) for Rated 3 datacenters is typical. Downstream components such as PDUs will be 2N as well, allowing for a “Concurrently maintainable” facility.
 
-![](https://substackcdn.com/image/fetch/$s_!WXxI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdaafa512-1afc-41b4-8f70-582b752acd80_1644x1070.png)
+![](z-images/b45b6704b1b0d13d59264ad80165457a.webp)
 
 Source: Schneider Electric
 
@@ -252,7 +252,7 @@ In Catcher, instead of having two UPS systems each capable of handling the full 
 
 2N distribution, however, is the simplest to understand and it is commonly used by retail and wholesale colocation operators that operated Rated 3 datacenters. In 2N distribution, the two independent power distribution systems (from the UPS down to the whips) are known as A side and B side, with the IT racks able to use one side if power supply is interrupted on the other side due to any component failures.
 
-![](https://substackcdn.com/image/fetch/$s_!Wu0Y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83edbda0-b64c-4c67-8932-cca8dc685d4f_2452x1328.jpeg)
+![](z-images/c69d15fa240bebae2e04f10bd3156a45.webp)
 
 Source: SOCOMEC
 
@@ -260,7 +260,7 @@ We now have UPS power entering inside the Data Hall, and there are still a few o
 
 Racks are generally placed next to each other and form a row. In the picture below, each room has six rows with 26 racks each, but this can of course vary widely.
 
-![](https://substackcdn.com/image/fetch/$s_!qEtF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e3903d2-6a2b-471c-a38e-47404b226572_1334x1206.png)
+![](z-images/16de1ee6b3f46ba1558dd5c9d6577743.webp)
 
 Source: Schneider Electric
 
@@ -268,13 +268,13 @@ Power is distributed by either an overhead busway - a solid bar of conducting me
 
 When using busway, a power distribution unit (PDU) in addition to a remote power panel (RPP) is used to manage, monitor and distribute power to individual rows and racks using the busway. Tap-off units attached to the busway above each rack provide power to the rack using whips, flexible cables that run from the tap-off box to an in-rack power supply or to power shelves in the rack.
 
-![](https://substackcdn.com/image/fetch/$s_!eKOd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa204910-d943-4c4c-9052-c3271c032846_2560x818.jpeg)
+![](z-images/383e18d836eb1d6d4339971b06e6f097.webp)
 
 Source: Vertiv
 
 When using flexible power cables, a power distribution unit (PDU) outside of the rack is used, which also manages distribution and contains circuit breakers for the individual racks. These flexible power cables are then routed directly into each of the racks.
 
-![](https://substackcdn.com/image/fetch/$s_!lrVO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7b7b247e-e8f0-491e-a89e-2519fd27dc9c_2560x758.jpeg)
+![](z-images/90018dfa61087ca24be135d20dc36f3a.webp)
 
 Source: Vertiv
 
@@ -282,13 +282,13 @@ Those are two different solutions to accomplish the same goal: safely distribute
 
 Legacy datacenters tend to use flexible cables and PDUs, but when dealing with large amounts of power and high density, busway is often the preferred solution and has been widely adopted by hyperscalers for numerous years. To achieve redundancy, busways are used in pairs, powered by independent UPS systems and there are typically two busbar tap-off units for each rack – one for A side and one for B side, representing the two independent power distribution sides in a 2N distribution redundancy scheme.
 
-![](https://substackcdn.com/image/fetch/$s_!0LNa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd7962c94-e3f3-4b00-b456-3e6439c52c24_2560x1440.jpeg)
+![](z-images/1d208a46c44d3168d2e6f2ebb14c17b6.webp)
 
 Source: Datacenterknowledge
 
 Inside the rack, we often use vertical PDUs, shown in the below diagram. We have them on the two sides of the rack, one for A side and one for B side, to achieve 2N distribution redundancy, and thus no single point of failure.
 
-![](https://substackcdn.com/image/fetch/$s_!C0Zx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff38bb5ab-d88b-48ee-ac34-56cf08943495_1678x940.jpeg)
+![](z-images/7cd3f9ab4768209849547e6ed5bc882c.webp)
 
 Source: Vertiv
 
@@ -298,7 +298,7 @@ The above describes a typical power flow in a datacenter, but in their quest for
 
 In the OCP architecture, instead of vertical in-rack PDUs delivering AC power to each server (with each server having its own rectifier to convert AC to DC), central Power Shelves take care of that step, converting AC to DC for the entire rack and supplying servers with DC power via a busbar. Power shelves are typically modular - in the below example, we can see six 3kW modules per unit. The OCP design requires custom server design that includes a bar clip for connecting to the DC busbar and that does not have a rectifier inside.
 
-![](https://substackcdn.com/image/fetch/$s_!ViTP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F32392932-e625-4042-8a19-19c18464def7_707x1024.jpeg)
+![](z-images/55dc012b9be217bf7a39a0c62fd4732e.webp)
 
 Source: StorageReview
 
@@ -306,13 +306,13 @@ Power Shelves can also incorporate a Battery Backup Unit (BBU), with Li-Ion batt
 
 This also has the benefit of cutting in half the total battery capacity needed for the datacenter as there is no longer a need for both an A-side and a B-side UPS with only a single in-rack battery used for backup. The downside of this approach is that placing Lithium batteries inside the rack requires advanced fire suppression solutions to meet fire codes, whereas in a central UPS system, all the batteries can be isolated in a fire-resistant room.
 
-![](https://substackcdn.com/image/fetch/$s_!J7Qo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91294240-913b-45b9-b53b-c552e7bf9939_1528x1128.jpeg)
+![](z-images/f49f9fba066e4b9adc25a05b10569739.webp)
 
 Source: Schneider Electric
 
 To further improve efficiency, Google introduced the 48V busbar, as explained in detail in [our report on VRMs for AI Accelerators](https://semianalysis.com/energizing-ai-power-delivery-competition).
 
-![](https://substackcdn.com/image/fetch/$s_!jV-s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d45b8fa-f8c5-440f-9986-0e7ee999713a_3427x1905.png)
+![](z-images/a22d5f143351c3e05f8285871d86d77e.webp)
 
 Source: Google
 
@@ -330,7 +330,7 @@ The prime example of AI’s impact on computing density is the latest rack-scale
 
 Back to Datacenter Power: the key item here is 130 kW+ per rack. How different is that from the past? Let’s just look at the below chart: average rack densities used to be below 10kW, and Omdia projects a rise to 14.8kW by 2030. Omdia’s numbers are wrong even on a historical basis, and going forward this number will be much higher in the future.
 
-![](https://substackcdn.com/image/fetch/$s_!scK9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2822f5dd-8841-4e33-98c7-8c2ef3027979_1868x926.jpeg)
+![](z-images/4b72ccb3024d36adca46b64895ccf74f.webp)
 
 Source: Vertiv & OMDIA
 
@@ -340,11 +340,11 @@ Hyperscalers tend to have very varying rack densities that also differ across bu
 
 Referring back to the intro, Meta demolished an entire building under construction because it was it's old datacenter design with low power density which they have used for many years. Instead they replaced it a brand new AI-Ready design.
 
-![](https://substackcdn.com/image/fetch/$s_!v_Vc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb40f9fa0-199c-4938-b4aa-1ef41d94b18a_2542x822.jpeg)
+![](z-images/8c147d2d6e15f7b2e8a2462632a65827.webp)
 
 Power density, alongside cooling which we’ll explore in Part two, are the key reasons that led Meta to such a sharp turn. Meta’s reference design i.e. the “H” building has a much lower power density compared to competitors. While hyperscalers don’t publish the precise MW capacity of their buildings, we can estimate it using permitting data, utility filings and other data sources.
 
-![](https://substackcdn.com/image/fetch/$s_!dL4r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5907c766-6a48-4ecc-b5e7-b0ddf5703e7d_2082x958.jpeg)
+![](z-images/b94cb06d02218dfb4eb8d681a585d2e9.webp)
 
 Source: SemiAnalysis Datacenter Model
 

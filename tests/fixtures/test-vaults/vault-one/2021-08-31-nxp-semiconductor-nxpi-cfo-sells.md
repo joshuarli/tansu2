@@ -8,7 +8,7 @@ description: "NXP, the world leader in automotive semiconductors has been rumore
 
 NXP, the world leader in automotive semiconductors has been rumored to be acquired by Samsung for quite some time. The rationale is that Samsung wanted to move into the automotive industry as the semiconductor content per vehicle skyrockets from $100’s per car to $1000’s. NXP stands to benefit massively as the electrification and autonomy changes to the automotive industry. Recent shortages have increased eyes on the industry and cause people all around the world to recognize the importance.
 
-![](https://substackcdn.com/image/fetch/$s_!eS6f!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9e0c5b5a-7f14-421a-9d6f-276b5fd94e9c_811x1024.png)
+![](z-images/7f680100e1dfd9ec7c2459814b857300.webp)
 
 The [Korea Times](https://www.koreatimes.co.kr/www/tech/2021/08/129_314294.html) reported Samsung is starting to second guess this deal. The leader of Samsung, Lee Jae-young was released from prison early to lead Samsung forward. No acquisition can move forward without his approval, so his release was necessary to acquire NXP, or do any new major investments.
 
@@ -16,7 +16,7 @@ The [Korea Times](https://www.koreatimes.co.kr/www/tech/2021/08/129_314294.html)
 
 The alleged second guessing is because NXP is too expensive. The automotive shortages and all the commentary surrounding it as well as rumors of a deal have cause NXP to soar in valuation. Samsung is likely to make deals and investments with their humungous $120B+ pile of cash & other liquid investments, but perhaps they target other semiconductor firms.
 
-![](https://substackcdn.com/image/fetch/$s_!woNI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fce94f2e2-ab89-4eb3-9fbb-2f6593480095_1024x669.png)
+![](z-images/a24450c38e5099e6b7e208817c8077e1.webp)
 
 The CFO of NXP, Kelly Peter sold 142,311 of his 203,749 shares. This is a shocking amount of stock and far more than any previous sale by insiders in recent recorded history. Selling 69.85% of your shares all at once right after rumors of a Samsung acquisition falling apart is not a good look.
 

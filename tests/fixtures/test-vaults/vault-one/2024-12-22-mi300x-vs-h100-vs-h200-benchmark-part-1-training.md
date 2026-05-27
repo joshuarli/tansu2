@@ -12,7 +12,7 @@ description: "Training Performance, User Experience, Usability, Nvidia, AMD, GEM
 
 SemiAnalysis has been on a five-month long quest to settle the reality of MI300X. In theory, the MI300X should be at a huge advantage over Nvidia’s H100 and H200 in terms of specifications and Total Cost of Ownership (TCO). However, the reality is that the on paper specs as given below are not representative of performance that can be expected in a real-world environment. If AMD could deliver the below marketed performance with this memory, it would be a very strong competitor in the market.
 
-![](https://substackcdn.com/image/fetch/$s_!mIIy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F76cfa222-48b8-4151-9fa9-254179b08aa6_2184x1088.jpeg)
+![](z-images/22ce3b039afb813249e356723077f8d8.webp)
 
 Source: SemiAnalysis, Nvidia, AMD
 
@@ -51,7 +51,7 @@ Thank you to [Crusoe](https://crusoe.ai/cloud), [TensorWave](https://tensorwave.
 
 **We will be releasing a follow up article on inferencing for the H100, H200 and MI300X. We may also release a follow-up article in a few months to follow up on AMD training performance to see if out of box experience has improved and test other models such as LlaVa & Mamba.**
 
-![](https://substackcdn.com/image/fetch/$s_!3_1p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd9ce744-8e42-4b9a-9120-22ff0192a3f9_2354x1244.png)
+![](z-images/45577b94a0a23a2b021febadb915d263.webp)
 
 Source: SemiAnalysis
 
@@ -90,7 +90,7 @@ Before we dive into various facets of AMD’s software stack that hold AMD back,
 
 The MI300X launched in late 2023 with an exciting set of on paper specifications—featuring 1,307 TFLOP/s of FP16 compute (stronger than the H100’s 989 TFLOP/s), 5.3 TB/s of memory bandwidth, and 192GB of HBM3, 3.35 TB/s of memory bandwidth, and 80GB of HBM3. These specs outstrip those of the H200, which itself is, effectively, a memory-spec bumped version of the H100, delivering 4.8TB/s of memory bandwidth and 141GB of HBM3e.
 
-![](https://substackcdn.com/image/fetch/$s_!ZbMT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc456bf40-8aa2-4d89-b666-8d062323d41e_2184x1088.jpeg)
+![](z-images/22ce3b039afb813249e356723077f8d8.webp)
 
 Source: SemiAnalysis, Nvidia, AMD
 
@@ -98,7 +98,7 @@ On paper total cost of ownership for an MI300X deployment is extremely compellin
 
 At face value, the MI300X seems the best of both worlds: higher performance and lower total cost of ownership. At the time of its launch, it was logical to expect share gains to the underdog AMD from this compelling combination. The table below shows total upfront cluster capex – we present a more detailed breakdown of cluster capex components as well as a detailed networking BoM analysis in the sections at near the bottom of the article.
 
-![](https://substackcdn.com/image/fetch/$s_!VFYZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F08a6d76b-c20b-4def-b349-448abaf02e2f_1819x619.jpeg)
+![](z-images/13108fbff32e9335a215262b952ee1ee.webp)
 
 Source: SemiAnalysis AI TCO Model
 
@@ -114,13 +114,13 @@ Most FLOPS in a transformer-based architecture (i.e. ChatGPT, Llama, etc.) go to
 
 GEMMs take two input matrices, Matrix A and Matrix B, with Matrix A having the shape of (M, K), M rows and K columns, and Matrix B having the shape of (K,N) to produce an output matrix of shape (M,N).
 
-![](https://substackcdn.com/image/fetch/$s_!HK0B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F20b7820c-407a-4ce5-9311-33e1d9b41533_1499x1404.png)
+![](z-images/6b304d83252bd5935a7a84a0bb47a107.webp)
 
 Source: Nvidia
 
 Conceptually, each element of the resulting matrix is a sum of element-wise multiplications along the "K" dimension of the inputs. For this matter, the K dimension is also known as the reduction dimension.
 
-![](https://substackcdn.com/image/fetch/$s_!TwVU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F096e0e89-9404-49dd-88c2-18a86a0cf06b_1875x684.png)
+![](z-images/19614473704d8e79ee9c83c214ec3136.webp)
 
 Source: SemiAnalysis
 
@@ -140,13 +140,13 @@ For BF16, we can see that the H100 and H200 achieves roughly 720 TFLOP/s against
 
 This means that, despite a much higher marketed BF16 TFLOP/s, the MI300X is 14% slower than the H100 and H200. This AMD result used a custom docker image that was hand crafted by an AMD principal engineer yet still achieved slower performance than Nvidia’s GPUs. For our out of the box testing of the MI300X, the TFLOP/s throughput even slower than this! In addition to a custom image, AMD also requires the user to set numerous environment flags that aren’t set by default to reach these performance results.
 
-![](https://substackcdn.com/image/fetch/$s_!SrHc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F709f1dbd-d014-4737-b865-fdb53edf252d_1489x1084.png)
+![](z-images/a2802e28017e6e9abbdb285c28026871.webp)
 
 Source: SemiAnalysis
 
 Unfortunately, the story is worse for FP8. The H100/H200 achieves ~1,280 TFLOP/s out of the marketed 1979 TFLOP/s. The MI300X, in comparison, only reaches ~990 TFLOP/s. Thus, for FP8, the MI300X is 22% slower than H100. This is for both inputs being of the e4m3 FP8 ([i.e. 4 exponent bits and 3 mantissa bits](https://semianalysis.com/2024/01/11/neural-network-quantization-and-number/)) datatype.
 
-![](https://substackcdn.com/image/fetch/$s_!Da2e!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc5d7c11-6a1f-458d-9e3e-dd6e1624363e_1514x1152.png)
+![](z-images/ae2fa7c4adbe3f40efee487d83828744.webp)
 
 Source: SemiAnalysis
 
@@ -160,7 +160,7 @@ This major bug was ultimately fixed by AMD a few months ago after our bug report
 
 We have open sourced the GEMM benchmark used in our tests into a simple three liner that anyone can easily run:
 
-![](https://substackcdn.com/image/fetch/$s_!J9aD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcfc95cc8-cb39-4a7f-9717-ef5406c97b0b_821x571.png)
+![](z-images/7e4f17730da540adead348b5a5db5b90.webp)
 
 Source: SemiAnalysis
 
@@ -168,13 +168,13 @@ Source: SemiAnalysis
 
 Recently, a benchmark has been floating around the internet that claims that, on GEMMs, AMD MI300X’s performance is close to that of the H100.
 
-![](https://substackcdn.com/image/fetch/$s_!jicB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a5ff26d-c895-43ee-b940-a7ef197c4ca7_1024x548.png)
+![](z-images/5bbac4c7804e093073f76f13a0d5e370.webp)
 
 Source: Github
 
 There are two main issues with the benchmark: it isn’t properly carrying out L2 Cache clearing and also is simply taking the max performance, instead of the median/mean TFLOP/s over the course of the iterations for a specific shape. Without L2 Cache clearing between iterations, the benchmark does not accurately reflect real-world GEMM performance. Furthermore, since the TFLOP/s change based on which iteration it is on, you need to use a mean/median over at least 100 iterations as the basis for an accurate GEMM benchmark. OpenAI’s do\_bench provides L2 cache and mean/median out of the box by default, so we recommend that engineers use it for micro-benchmarking. Below, we have simplified the benchmark into pseudocode and have commented on the issues mentioned above.
 
-![](https://substackcdn.com/image/fetch/$s_!vY4j!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa9127f13-583a-4b0a-8037-a96876eeed4f_1470x880.png)
+![](z-images/ca0c2473e31ef35577eaf4e8285c382d.webp)
 
 Source: SemiAnalysis
 
@@ -186,11 +186,11 @@ From our HBM memory bandwidth benchmarking, we see that that MI300X indeed has w
 
 **As you will see in our upcoming H100 vs H200 vs MI300X inference article, memory bandwidth is very important for inferencing.**
 
-![](https://substackcdn.com/image/fetch/$s_!mD2z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F05fdf265-ecae-494e-bbd2-24b191d24768_1600x1114.png)
+![](z-images/3728e2763c8b26e8e232fbc3369e7438.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!0FAE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d1eef68-22bd-442f-810b-d039aee70a63_829x665.png)
+![](z-images/cdb791e57de6964364a13df021e1153b.webp)
 
 Source: SemiAnalysis
 
@@ -200,11 +200,11 @@ The only reason we have been able to get AMD performance within 75% of H100/H200
 
 When using public PyTorch, users have the choice of working with the latest stable images or a nightly PyTorch upload. **So, although a nightly PyTorch upload may have the latest commits that could potentially lead to better performance or could fix some bugs, but users must accept that the upload may not be fully tested and could contain new bugs** from Meta/AMD/Nvidia or other PyTorch contributors that have not been discovered yet. **Note that most end users are using the stable release of PyTorch.**
 
-![](https://substackcdn.com/image/fetch/$s_!xMmH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F26876a7b-8446-4e9f-b543-510bdc8d1921_3680x7420.png)
+![](z-images/b1eef288ab432b0149a340e7cf3365f1.webp)
 
 Source: SemiAnalysis, AMD
 
-![](https://substackcdn.com/image/fetch/$s_!81gK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6da81937-1fa0-40fa-854d-fb8c74e815c6_1024x453.png)
+![](z-images/b0702accc4d46dab3b48a2de579fce6e.webp)
 
 Source: Nvidia
 
@@ -212,7 +212,7 @@ Delightfully, Nvidia’s Docker images contain the complete set of developer too
 
 Until a couple weeks ago, the AMD docker images only supported PyTorch 2.3, which released 8 months ago. Mainline PyTorch 2.4 and PyTorch 2.5 have also since released and PyTorch 2.6 is about to come out in Q1 2025. We recommended to an AMD Principal Engineer and to AMD’s VP of AI that AMD should have the latest AMD PyTorch version – AMD has since started publishing containers for some of these AMD PyTorch versions. Docker image for AMD PyTorch 2.5 is still missing.
 
-![](https://substackcdn.com/image/fetch/$s_!6Sr4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09f56f85-cc14-47e0-9232-28e145214702_2057x1098.png)
+![](z-images/c105cd47883d07da02c541b3f714c8cd.webp)
 
 Source: Nvidia
 
@@ -226,7 +226,7 @@ AMD’s December 21 <sup>st</sup> Dev build is on a hanging development branch. 
 
 That being said, we are including these development build results as it is an indication of where AMD public stable release software will be 1-2 quarters from now. However, at the same time, when it comes to compete, 1-2 quarters from now, Nvidia Blackwell will already be widely deployed, while AMD MI355X will not commence shipments until H2 2025.
 
-![](https://substackcdn.com/image/fetch/$s_!Ud_A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24add0ee-f573-47e2-b9b6-81fbc1ba812d_3680x5640.png)
+![](z-images/2e1d6587c399be5370936b964a2e83d2.webp)
 
 Source: SemiAnalysis, AMD
 
@@ -244,13 +244,13 @@ For our SemiAnalysis model training benchmark, we will test four models, with th
 
 A Modern GPT/Llama/Transformer model is built by stacking the same transformer layer over & over again. As such, measuring the performance of just 4 layers is a great proxy for the overall performance of the model.
 
-![](https://substackcdn.com/image/fetch/$s_!pMnX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6177898-4068-4f94-976e-fe116180e7de_502x1141.png)
+![](z-images/fd70768ab2cb9fd4b4a9fdc845f80ccf.webp)
 
 Source: Imgur
 
 Furthermore, in modern LLM training for all frontier LLM models, pipeline parallelism is used which means that a couple of transformer layers are placed in each GPU server. Never in modern pretraining is a whole model placed on a single node.
 
-![](https://substackcdn.com/image/fetch/$s_!tOJY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7481b615-82be-41dc-931b-47cc8e70428d_2150x735.png)
+![](z-images/14decdbb0aafb3dd1dbe60d707ae7e6f.webp)
 
 Source: SemiAnalysis
 
@@ -270,7 +270,7 @@ We see that, for all models, the H100/H200 wins relative to MI300X public releas
 
 For the Dec 21 <sup>st</sup> MI300X internal WIP development branches build, we still see it perform worse than H100/H200 on GPT 1.5B. Furthermore, it performs slightly worse than H100 on Mistral 7B. For Llama3 8B and Llama3 70B Proxy, the Dec 21 <sup>st</sup> MI300X WIP development build performs better than H100/H200, but note that this is due to MI300X WIP development using an AMD engineer’s development branch that has not even been merged to the AMD main branch.
 
-![](https://substackcdn.com/image/fetch/$s_!FHsh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8c239ab5-1c2d-4303-8527-84498ef66c71_1491x1180.png)
+![](z-images/469a861eb5675869dda362b4eb0620d7.webp)
 
 Source: SemiAnalysis
 
@@ -282,7 +282,7 @@ For Mistral 7B which has a non-causal attention layer, AMD Nov 25th performance 
 
 Unfortunately, FP8 training on AMD only works on custom images such as our November 25 <sup>th</sup> VIP image and December 21 <sup>st</sup> WIP development branch image. When we first started trying AMD FP8 Training, it was slower than AMD BF16 Training on public releases.
 
-![](https://substackcdn.com/image/fetch/$s_!bj9H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ec9137f-add4-46d0-98b4-68050db8a439_1491x1181.png)
+![](z-images/1a81c006ad78cb06af0daeb967b521df.webp)
 
 Source: SemiAnalysis
 
@@ -292,7 +292,7 @@ It is interesting that the MI300X does not perform well on non-causal attention 
 
 While a lot of people putting out performance comparisons between hardware, most do not open source their testing code and they do not make easily reproducible. We took an open source approach, and we have open-sourced our single node training benchmark and made it easy to run with only a couple of lines:
 
-![](https://substackcdn.com/image/fetch/$s_!oBBD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2ec308cc-f094-4fdb-b165-16d1fa1b2da5_836x941.png)
+![](z-images/6eb6d993feeb536750070aa842cfdf23.webp)
 
 Source: SemiAnalysis
 
@@ -320,13 +320,13 @@ The scale up fabric on H100 and H200 is called NVLink and provides 450GByte/s of
 
 First, MI300X’s xGMI is a point-to-point fabric, which means that it isn’t *actually* providing 448GByte/s of bandwidth between GPUs pairs. Instead, each GPU can only talk to one another at 64GByte/s. A GPU can only reach the stated 448GByte/s if one GPU addresses all 7 other GPUs simultaneously. That means that, for Tensor Parallelism TP=2, the maximum bandwidth is 64GByte/s and 189GByte/s for TP=4.
 
-![](https://substackcdn.com/image/fetch/$s_!uQmX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ac85f6f-0fa0-4f51-be6b-88662b666680_1455x1147.png)
+![](z-images/82efc69f9bdd98e0c89f276cbd73b282.webp)
 
 Source: SemiAnalysis
 
 In contrast, since Nvidia’s NVLink uses a switched topography, one GPU can talk to another GPU at the full 450GByte/s. Furthermore, the four NVSwitches in H100/H200 support in-network reduction (referred to as NVLink SHARP (NVLS), enabled by default), a technique to reduce data movements by carrying out collectives/reductions inside the switch itself.
 
-![](https://substackcdn.com/image/fetch/$s_!mEap!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F77daa464-4fde-4e19-a96b-0b6195f59b82_2172x743.png)
+![](z-images/275dadf1328df8ef7ae25f090a8411f0.webp)
 
 Source: SemiAnalysis
 
@@ -336,11 +336,11 @@ We will showcase benchmarks across scale-up and scale-out networks for both the 
 
 Due to the way that compute-communication overlapping works, real-world message sizes range from 16MiB to 256MiB, with the default PyTorch DDP size being 25MiB (NVIDIA’s MLPerf 11,000 H100 GPT-3 175B run used a [message size of max 200MiB](https://github.com/mlcommons/training_results_v4.1/blob/b87b9e396f771345d4ef122ba33456304f15228d/NVIDIA/benchmarks/gpt3/implementations/eos-dfw_n1452_ngc24.04_nemo/config_common.sh#L69)). We also test 8GiB and 16GiB just to see what the peak bus bandwidth is, though these message sizes are not used in the real world. All these collectives discussed above are used during 3D Parallelism and FSDP/ZeRO Parallelism, which are common techniques for training frontier models.
 
-![](https://substackcdn.com/image/fetch/$s_!eW8o!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff528ea53-0b8c-4dff-8a48-c89ba475be2b_2259x1357.png)
+![](z-images/490bd7f215867cc0dadde4e62b2ee2b6.webp)
 
 Source: DeepSpeed
 
-![](https://substackcdn.com/image/fetch/$s_!qs_n!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F515beda1-3436-4319-8759-e74590c3530a_2206x1165.png)
+![](z-images/bf8d87fad1229971850c4187724febc0.webp)
 
 Source: Meta
 
@@ -348,25 +348,25 @@ Source: Meta
 
 We see that Nvidia does much better than AMD across all the real-world messages for every single collective. This is not surprising due to the H100/H200’s superior 450GByte/s NVLink switched topology with in-network reduction (NVLS), compared to MI300X’s 7x64GByte/s xGMI point-to-point topology.
 
-![](https://substackcdn.com/image/fetch/$s_!ipmr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffe08fabf-8ed6-4405-ab0d-2b700f7ea5b7_1725x1216.png)
+![](z-images/7c004fc0cf10a421ebf99d96a2cdad7a.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!YjGK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faf7610d4-3246-4dda-a955-81c0b48d5613_1592x1147.png)
+![](z-images/19353458dd42764ac907b05ccf74fba1.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!C3Qt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa06bb258-12dc-4f75-97ec-9d2a08347d0d_1593x1134.png)
+![](z-images/63abff8ad4b11c17b6af76ba9210ba8b.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!e3jw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F71df6db8-d62f-4f91-ae6c-78c1d08b6082_1594x1168.png)
+![](z-images/7ba5e237f8666c1a03ae0da841cb630c.webp)
 
 Source: SemiAnalysis
 
 To reproduce this test, you can use our open source ClusterMax-NCCL/RCCL benchmark, which we developed to be easily run with one line of Bash. ClusterMax is our upcoming evaluation quantitative performance and qualitative user experience for ranking H100/B200/GB200/MI300X Neocloud clusters. Look forward to our upcoming *“ClusterMax Neocloud Evaluation | How to Rent GPUs”* article.
 
-![](https://substackcdn.com/image/fetch/$s_!lB2M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F009fda89-6efa-4a29-a2dc-c55c6d8de066_3496x1568.png)
+![](z-images/89e6549ba7809f0670e2ea1e568ab45e.webp)
 
 Source: SemiAnalysis
 
@@ -374,13 +374,13 @@ Source: SemiAnalysis
 
 On both Nvidia’s H100/H200 and the MI300X, each GPU is connected to other nodes over the scale out network using a 400G Network Interface Card (NIC), connected directly every GPU. The H100/H200 reference design typically uses ConnectX-7 NICs for InfiniBand NDR or BlueField-3 for Spectrum-X Ethernet. Spectrum-X is NVIDIA’s custom Ethernet solution purpose-built for AI workloads. On the MI300X, the reference design recommends using RoCEv2 Ethernet with Broadcom Thor-2 NIC.
 
-![](https://substackcdn.com/image/fetch/$s_!ReH2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F003120b8-0c44-4463-b289-549993ea52cc_1100x624.png)
+![](z-images/d28e1efa256f862ccdca3160f5bd320f.webp)
 
 Source: Nvidia
 
 A typical GPU cluster almost always requires more layers than a single tier network, as a single-tier network can only support 128 GPUs (in the case of Broadcom Ethernet or Nvidia Spectrum X Ethernet) and 64 GPUs (for H100/H200 InfiniBand). In such a multi-tier network, deployments typically use an 8-rail optimized fat tree, where each one of the 8 GPU is connected to a separate switch (such a connection is called a “rail”). [In our AI Neocloud Playbook and Anatomy article, we explained in detail how a rail optimized network works](https://semianalysis.com/2024/10/03/ai-neocloud-playbook-and-anatomy/#cluster-level-networking-bill-of-materials).
 
-![](https://substackcdn.com/image/fetch/$s_!zE-8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ba221b3-91a8-43ae-b321-d63d0d42bb5c_1614x781.png)
+![](z-images/eb5f626215b13bb5b7eb1a1e0308a8fd.webp)
 
 Source: SemiAnalysis
 
@@ -394,7 +394,7 @@ We are also in the process of testing Google Cloud (GCP) H100’s in-house ether
 
 Below we show a 32 GPU all reduce collective test. You can see that MI300X RoCEv2 is in last place compared to normal InfiniBand H100 and InfiniBand H100 with SHARP enabled. Simply put, poor all reduce performance leads to poor scale-out training.
 
-![](https://substackcdn.com/image/fetch/$s_!_J8R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09a00702-0524-4521-b8d5-50b6356cca42_1594x1203.png)
+![](z-images/7c32e484ad18d128f5c877e9b4ff6afe.webp)
 
 Source: SemiAnalysis
 
@@ -408,27 +408,27 @@ To help alleviate these issues, TensorWave and SemiAnalysis are currently workin
 
 Another trend to notice is that for non-SHARP networks, all reduce collective’s speed will reduce logarithmically as you double the number of GPUs. In contrast, with SHARP, the speed/completion time stays the same. We have results for up to 1,024 H100s showing that IB SHARP all reduce is constant time across any number of GPUs in a collective. We will publish this in our upcoming *“Collective Deep Dive”* article.
 
-![](https://substackcdn.com/image/fetch/$s_!YA5D!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8577baae-b3f0-4fb9-b48d-84af6d4855bf_1473x1153.png)
+![](z-images/8548f5681a7a81850cc48fef7f811ad5.webp)
 
 Source: SemiAnalysis
 
 For all gather, all to all, and reduce scatter collectives, MI300X is anywhere from 2-4 times slower than InfiniBand. Unfortunately, we did not have access to Spectrum-X or InfiniBand SHARP benchmark data for all gather or reduce scatter.
 
-![](https://substackcdn.com/image/fetch/$s_!Sgry!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F27e21f6c-7eac-418f-8c68-095a30b28f1d_1670x1250.jpeg)
+![](z-images/124dc6dccf85de06ec9669edfd3a805e.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!Fhf1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2ce4511-0ba1-4935-99f1-027c1ac56ca1_1720x1221.png)
+![](z-images/6d390d094f0db2627dde803251bb6dff.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!DQvs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8baeab3c-61d2-44ec-a466-96c7e5c8496d_1723x1219.png)
+![](z-images/2988a94d53823472f9f435636474f65b.webp)
 
 Source: SemiAnalysis
 
 Below, we provide our nccl/rccl benchmarking script. Unfortunately, due to the nature of cluster-specific setups, it is not as simple as a one-liner. It does require you to follow the README.md of nccl/rccl and nccl-tests/rccl-tests to run properly. On AWS and Google Cloud, there may also be custom nccl adapters that you will need to install.
 
-![](https://substackcdn.com/image/fetch/$s_!0vkj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbbec630b-1202-41aa-8b71-9795891e335b_814x747.png)
+![](z-images/b33c9f591b8eb1055b306e7118380d44.webp)
 
 Source: SemiAnalysis
 
@@ -438,29 +438,29 @@ Due to poor internal testing (i.e. “dogfooding”) and a lack of automated tes
 
 [Although AMD’s own documentation recommends using PyTorch native Flash Attention](https://rocm.blogs.amd.com/artificial-intelligence/flash-attention/README.html#benchmarking-attention), for a couple months this summer, AMD’s PyTorch native Flash Attention kernel ran at less than 20 TFLOP/s, meaning that a modern CPU would have calculated the attention backwards layer *faster than an MI300X GPU*. For a time, basically all Transformer/GPT model training using PyTorch on the MI300X ran at a turtle’s pace. Nobody at AMD noticed this until a bug report was filed following deep PyTorch/Perfetto profiling showing the backwards pass (purple/brown kernels) took up far more time than the forward pass (dark green section). Normally, the backwards section should take up just ~2x as much time as the forward pass (slightly more if using activation checkpointing).
 
-![](https://substackcdn.com/image/fetch/$s_!OaLo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F358ec78a-dd8b-4604-a58c-d76c25837e2a_1481x209.png)
+![](z-images/d294f6423b13141595ea5e16a5f590a8.webp)
 
 Source: SemiAnalysis
 
 Another issue we encountered was that the AMD PyTorch attention layer led to a hard error when used with [torch.compile](https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html) due to the rank of the longsumexp Tensor being incorrect. What was frustrating is that this had already been fixed in internal builds of AMD PyTorch on May 30 <sup>th</sup>, but did not reach any AMD PyTorch distributions or even any PyTorch nightly builds until October when it was pointed out to them that there was a bug. This demonstrates a lack of testing and dogfooding on the packages AMD puts out to the public. Another core reason for this problem is that the lead maintainer of PyTorch (Meta) does not currently use MI300X internally for production LLM training, leading to code paths not used internally at Meta being buggy and not dogfooded properly. We believe AMD should partner with Meta to get their internal LLM training working on MI300X.
 
-![](https://substackcdn.com/image/fetch/$s_!vKh4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39607c82-c678-4bae-8963-bcdfa8141049_890x453.png)
+![](z-images/21b19964fb99c21d3ff13bc4aab8104e.webp)
 
 Source: SemiAnalysis
 
 On August 8 <sup>th</sup>, Horace He and the Meta PyTorch Team released [FlexAttention](https://pytorch.org/blog/flexattention/), a critical API for creating non-causal attention layers without losing speed. To previously use attention variants like document masking, sliding window attention, softcap, and Alibi, a user would need to spend weeks handcrafting their own kernel in CUDA/HIP language, and subsequently pybinding it to PyTorch. However, with FlexAttention, a user can quickly generate all the attention variants using the API. FlexAttention achieves great performance by using block sparsity by only calculating the blocks of the mask where needed, ignoring the rest.
 
-![](https://substackcdn.com/image/fetch/$s_!EDdS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd9dbce6b-eefc-40ca-b6f2-753e47118714_437x357.png)
+![](z-images/5f12e1490d0c3bdcd5858e7dc7bfafe3.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!-auV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59da3049-f7e0-419a-802f-4d2bbb774477_1600x1459.jpeg)
+![](z-images/5fd37cc5de094be95a5d290a3941bb50.webp)
 
 Source: Meta
 
 With sliding window attention, FlexAttention can improve performance by 10-20x! This is amazing for the end user, but unfortunately, MI300X FlexAttention was in a poor state and suffers from numerous AMD software bugs (including convergence issues) until but a couple days ago. While the latest PyTorch nightly now fixes for convergence issues, this contrasts starkly with FlexAttention on Nvidia, which has been available since August. That means a ~6 month gap exists between the availability of these fantastic Pytorch features on Nvidia and AMD’s platforms. For frontier AI labs, six months is a lifetime, with OpenAI, Anthropic, and Google having released numerous models in such a span.
 
-![](https://substackcdn.com/image/fetch/$s_!S1F-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6388946a-2f1b-4006-b084-03b863949371_1475x1009.png)
+![](z-images/d1bc9635bd22278fef643ceaa2256ed1.webp)
 
 Source: SemiAnalysis
 
@@ -470,7 +470,7 @@ AMD recommended we try PYTORCH\_ TUNABLE\_OPS to improve GEMM performance by swe
 
 When we tried PYTORCH\_ TUNABLE\_OPS on AMD, it led to an HBM memory leak of over 25 GByte out of the total MI300X capacity of 192GBytes, essentially wiping out the MI300’s HBM capacity advantage over the H100. The fix for this is to set a default hipBLASLt and rocBLAS workspace to prevent memory leaks.
 
-![](https://substackcdn.com/image/fetch/$s_!sAmf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa877f575-f237-4fde-8fa4-996f8180bf49_1024x540.png)
+![](z-images/fe7fdbb5117756fb2c277ef0de52a48e.webp)
 
 Source: PyTorch/AMD
 
@@ -478,7 +478,7 @@ As we mentioned earlier in this article, another issue we ran into was that ther
 
 Another issue is that certain AMD ROCm libraries could not be installed inside Docker due to AMD software CMake bugs leading to hard errors. This has since been fixed. On AMD GPUs, you need to pass in a convoluted set of flags to get the GPUs to be able to work inside a container, whereas with docker, getting GPUs to work is as simple as passing in “—gpus=all”. We recommend to AMD that they partner with Docker and ensure that Docker can autodetect GPUs for AMD as well, making the workflow as streamlined as when working with Nvidia GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!gvQ8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd46c3ac7-7cdd-4e97-ad4d-d7c7f1fd3d0a_3496x1300.png)
+![](z-images/b68afaa6847652f4c522d19d8cbce267.webp)
 
 Source: SemiAnalysis
 
@@ -486,7 +486,7 @@ Source: SemiAnalysis
 
 Many of AMD’s libraries are forked off Nvidia’s open-source or ecosystem libraries. AMD uses a tool called Hipify to carry out source-to-source translation of Nvidia CUDA to AMD HIP. While the motivation is understandable, **they arenevertheless building on top of their competitor’s platform** and cannot expect to match or surpass Nvidia’s user experience with this software development strategy. They need to contribute their software to the AMD ecosystem. For example, instead of supporting FP8 training by forking Nvidia/TransformerEngine and source-to-source translation, they should attempt PyTorch native FP8 training to work well on their own hardware. Currently, AMD PyTorch native FP8 training recipes don’t work on AMD and the unit tests don’t even pass yet, there is no CI/CD for AMD PyTorch native FP8 training.
 
-![](https://substackcdn.com/image/fetch/$s_!pKsS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F25b16d02-fbc7-4a54-b31f-42573d8784e3_1024x330.png)
+![](z-images/363257557ea4026b57f8fcc2b802206f.webp)
 
 Source: SemiAnalysis
 

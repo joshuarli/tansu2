@@ -10,7 +10,7 @@ If we map all the days this year and for the current semiconductor cycle, a hand
 
 With all the bad news, the market reaction for the general semiconductor industry was expectedly horrible. SOXX has had an incredible rally over the last month. From October 13th to November 15th, the Intraday low (287.82) to the high (390.59) was a 35% increase. Today’s news and reactions could indicate that the recent bull run for SOXX is over. As an aside, we generally don’t care to discuss short-term movements in the market, but this ~1 month move has been titanic, and it seems we are overextended.
 
-![](https://substackcdn.com/image/fetch/$s_!i9-h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F22323b34-8a05-4144-8881-5a5eed177b5c_1213x445.png)
+![](z-images/2de39bb285f41fef323303bd5b638f56.webp)
 
 ## Kulicke & Soffa – KLIC 0.00%↑
 

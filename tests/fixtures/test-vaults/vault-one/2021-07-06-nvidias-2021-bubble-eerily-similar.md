@@ -26,11 +26,11 @@ It is a fantastic company, but it is not currently worth more than $500B. The st
 
 SemiAnalysis believes a stock price correction will happen relatively soon.
 
-![](https://substackcdn.com/image/fetch/$s_!TQXZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9da500d-1aaf-48cd-af74-c4225b04c2d7_1024x314.png)
+![](z-images/14096837248564a21251000804db9d32.webp)
 
 This is not the first time Nvidia’s stock price has run away from the business. 2018 had an eerily similar setup. The market dynamics were somewhat different, but the core trend of temporary outsized growth persists. As a result, the banks take the outsized growth and extrapolate it out to absurd conjecture. This is done to justify ridiculous stock price targets. The following is from Jefferies, but most of the banking sell-side reports showcasing similarly absurd deductions.
 
-![](https://substackcdn.com/image/fetch/$s_!Kqrr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe563ab05-b6ea-46e9-9ef5-8751b3f2f34e_1024x522.png)
+![](z-images/3e884f17e8dc80eaa39c791927b8e156.webp)
 
 We will not rip into their numbers, or the ridiculous datacenter ecosystem narrative they spun. [It is just too easy and frankly unfair to tear apart the clueless sell-side banking semiconductor analysis.](https://semianalysis.substack.com/p/morgan-stanley-just-reduced-tsmcs)
 
@@ -40,7 +40,7 @@ The cyclical nature of the datacenter buildout has led to boom-and-bust cycles. 
 
 Covid and the digitization of the workplace has pulled forward years of societal structural changes. As the Covid pandemic begins to lift, there will be a digestion phase for the PC, cloud, and networking business. A return to the mean for these markets will occur and knock down datacenter growth to more reasonable figures.
 
-![](https://substackcdn.com/image/fetch/$s_!tl9h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F05c53202-c108-4e90-81a2-7c18a0cc7126_1023x627.png)
+![](z-images/83f3aa83101cc4ba993da1e54fae0124.webp)
 
 Some of the less sophisticated investors are even ignoring what the Mellanox acquisition has done for year over year growth figures. They are erroneously applying them forward!
 
@@ -48,19 +48,19 @@ Nvidia datacenter growth will not shrink like the previous cycle as it is a larg
 
 Just like the last cycle, there is a huge cryptocurrency bubble causing graphics cards to constantly be out of stock. The increase in hashing power this cycle far outstrips the previous bubble. The number of graphics cards slaving away in the cryptocurrency mines grew faster than the previous bubble.
 
-![](https://substackcdn.com/image/fetch/$s_!AG9S!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F51d3d80d-a084-4222-af88-b98759b1b163_1024x314.png)
+![](z-images/3baf759879ef4dbd1eb8b9fdaed1efd1.webp)
 
 People may scream that Ethereum ASICs exist (chips specifically designed to mine Ethereum coins), but the semiconductor world was very tight before the meteoric rise. These crypto mining firms cannot magically get a leading-edge wafer allocation from TSMC. They cannot pull wafer allocations from other clients that offer long-term demand to TSMC. They do not have the ability to snap their fingers and make substrates appear from thin air.
 
 As cryptocurrency pricing has tamed, GPU pricing is already rapidly approaching sane levels.
 
-![](https://substackcdn.com/image/fetch/$s_!d_aa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F96c6cf61-c729-4b60-9272-933aec9fb863_1024x525.png)
+![](z-images/4ac49b1cd7d5559a7d394ebb9d27dd1f.webp)
 
 https://www.3dcenter.org/news/hardware-und-nachrichten-links-des-34-juli-2021
 
 Furthermore, unlike the previous cryptocurrency mining bubble, there is no possibility for a future one. This was the final cryptocurrency GPU based mining bubble. Bitcoin has been fully ASIC for a long time, and Ethereum is moving that way too. More importantly, the Ethereum foundation is making major changes to the network such as moving to a proof of stake model. This will crush mining returns.
 
-![](https://substackcdn.com/image/fetch/$s_!8c3v!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F851dc2d4-b091-4e12-a26f-d810a2af8e0c_1024x626.png)
+![](z-images/f63566f9c758fba690d9fe16af8e46cd.webp)
 
 Do not confuse us, gaming is in a super cycle and there are a lot of gamers that will buy GPUs, but the >100% growth rate is nowhere near sustainable. As the world opens, some people will do things besides sit at home and play games. The covid pandemic created a long-term shift in the favor of gaming, but this is one that also has a digestion phase. The gaming business will not shrink in the second half of this year. As we move into next year, it is very likey that gaming sales flatten out completely.
 
@@ -68,7 +68,7 @@ The worst aspect of the current Nvidia stock price bubble is that it is partiall
 
 Yet many investors are buying because stock splits have led to big pumps. They likely hope to get out before the price dumps. Most recently, another firm with valuations that are far ahead of any business fundamentals had the same thing happen. Tesla is a firm that many would categorize as being a visionary leader, just like Nvidia. Many people believe that Tesla is changing the energy and automotive world, just like Nvidia is for computing and AI. Tesla announced a stock price split and the stock soared to record levels. After the split occurred, the price tanked.
 
-![](https://substackcdn.com/image/fetch/$s_!LcSc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F99e50dad-65df-448b-acbf-63d25d30fff2_1024x564.png)
+![](z-images/d71550a6047076177eb884aca4949da5.webp)
 
 We believe this pattern will occur again. Nvidia likely will not crater below $300B total market cap, but they will fall below the $500B+ they sit at today.
 

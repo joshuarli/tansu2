@@ -8,11 +8,11 @@ description: "Nvidia has beat earnings expectations yet again on the backs of da
 
 Nvidia has beat earnings expectations yet again on the backs of datacenter and gaming lines. Nvidia pulled in $5.66B in Q1 and are guiding for a mammoth $6.3B for Q2. This is $266M more than investors expected for Q1 and $890M more than they expected for Q2. There seems to be healthy growth in every sector except for automotive, but a deeper look reveals some potential concerns.
 
-![](https://substackcdn.com/image/fetch/$s_!Ipwv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5d444f1-8e8d-41a2-8b04-0f43853a60b8_1024x512.png)
+![](z-images/a0e4cb1f50b974f9a0c97362d6f495cd.webp)
 
 Datacenter is Nvidia’s darling child and the future growth engine for the company. On first glance it looks incredibly healthy. Diving into Q1 earnings reveals that Datacenter sequential growth from Q4 to Q1 is not as elevated as prior years. In the prior year, the quarterly growth was 18% for datacenter, but for this quarter there was a measly 7.6% quarterly growth. Additionally, last years Q2 growth had the benefits of Covid datacenter acceleration. This surge in demand will likely not be repeated with the global economy reopening. The Datacenter business is crushing it, but it likely will not keep the same YoY growth rate for much longer.
 
-![](https://substackcdn.com/image/fetch/$s_!lhsx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7eecebc-89f4-4e8f-9495-1fa927daaefc_1024x592.png)
+![](z-images/253a11d0babfa67c10c61254dce64c6e.webp)
 
 The OEM & Other growth looks tremendous. Nvidia obfuscated earnings here by stuffing the mining CMP series into this segment. In Q1, there was $155M of CMP mining GPUs sold. With that business pulled out, the OEM & Other business segment growth looks much more paltry. Even more significant is that Jensun Huang stated that CMP GPU sales in Q2 would reach $400M. Of the $640M growth Nvidia is projection from Q1 to Q2, nearly 40% comes from mining GPU sales! These are sales Nvidia likely will not have next year with Ethereum block chain changes or a potential crash in the crypto currency market. All of this inflates current earnings rather than being true long-term growth.
 
@@ -22,7 +22,7 @@ Investors and fans must recognize this when looking at the current records. They
 
 While Nvidia can clamor that CMP revenues will not hurt gaming in the long run, they also are trying to establish a narrative that gaming revenues are not inflated by crypto mining. Nvidia is refreshing their Ampere series GPUS with “LHR Low Hash Rate” GPUs. These are a slight spec bump on existing Ampere GPUs, but they also halve crypto currency mining capabilities. Or so Nvidia claims, when Nvidia released the RTX 3060, it was supposed to halve the mining rate there aswell, but it was quickly broken. We remain skeptical LHR GPUs will be full proof and stop mining.
 
-![](https://substackcdn.com/image/fetch/$s_!jPf3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F2f692def-ebb6-473b-957f-7b254d077d10_1024x484.png)
+![](z-images/b5d29f7be919cd2d7843c8c4269d5418.webp)
 
 The Ethereum networks hashing power indicates there are clearly many consumer GPUs are working away in the crypto currency mines. The biggest risk is that the network experiences a large dip like it did in the last crypto currency price crash. The network could also experience a huge decrease in hashing power by the switch to Ethereum 2.0 and proof of stake. Either of these two occurrences would have professional GPU miners flood the market with used GPUs. These used GPUs would then in turn destroy demand for new GPUs and significantly impact Nvidia’s sales.
 

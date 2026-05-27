@@ -27,7 +27,7 @@ To tame the hype, we must first know why the hype is there in the first place. E
 
 Now, everyone is looking forward to AMD’s MI300 which will be delivered later this year to El Capitan, their 2nd Exascale supercomputer win. For that reason, AMD’s upcoming MI300 GPU is one of the most discussed chips once you leave Nvidia land. SemiAnalysis has been discussing the [MI300 chip’s developments since the first half of last year](https://www.semianalysis.com/i/59924892/datacenter-gpu-and-ai). We’ve been closely following the software landscape for it with [Meta’s PyTorch 2.0 and OpenAI’s Triton](https://www.semianalysis.com/p/nvidiaopenaitritonpytorch). There hasn’t been this much buzz for a datacenter chip since Nvidia’s Volta GPU and AMD’s Rome CPU.
 
-![](https://substackcdn.com/image/fetch/$s_!q65s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbfd1877e-4029-4c7e-b702-a2f75a8b2d31_2880x3016.png)
+![](z-images/3e13735d24aa6e5a4e1f9d754719da02.webp)
 
 MI300, codename Aqua Vanjaram, is made up of several complex layers of silicon, and is frankly a marvel of engineering. CEO Lisa Su held up an MI300 package earlier this year at CES, giving us a look at how MI300 is structured. We see 4 quadrants of silicon surrounded by 8 stacks of HBM. That is the highest 5.6 GT/s speed bin of HBM3, with eight 16GB or 24GB stacks forming 128GB or 192GB unified memory at a whopping 5.6 TB/s bandwidth.
 
@@ -47,7 +47,7 @@ All variants of MI300 start with the same base building block known as the AID, 
 
 The most important part of the AID is that it is modular with regards to CPU and GPU compute. [AMD and TSMC use hybrid bonding](https://www.semianalysis.com/p/advanced-packaging-part-2-review) to connect the AID to other chiplets. This connection, through copper TSVs allows AMD to mix and match the optimal ratio of CPU vs GPU. The four AIDs communicate with one another with a bisectional bandwidth exceeding 4.3 TB/s, enabled with an Ultra Short Reach (USR) physical layer as seen on the chiplet interconnect in AMD's Navi31 gaming GPU, albeit this time with both horizontal and vertical links and with symmetrical read/write bandwidth. The square topology also means that diagonal connections require 2 hops vs 1 hop for adjacent AIDs.
 
-![](https://substackcdn.com/image/fetch/$s_!ARA8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F22b60d95-2275-4ce3-9efb-b1e437d52450_2880x3016.png)
+![](z-images/35f71282e6b23a7f55a395d3941d5512.webp)
 
 2 or 4 of these AIDs, with varying compute depending on the MI300 variant, are grouped together on top of a [CoWoS silicon interposer](https://www.semianalysis.com/p/advanced-packaging-part-2-review). There are two different tape outs for the AID, they are [mirrored much like Intel’s Sapphire Rapids](https://www.semianalysis.com/p/intel-emerald-rapids-backtracks-on).
 
@@ -57,7 +57,7 @@ The modular compute tiles on top of the AID can be either CPU or GPU.
 
 On the GPU side, the compute chiplet is called an XCD, codenamed Banff. Banff weighs in at around ~115mm <sup>2</sup> on the TSMC N5 process technology. It contains 40 total Compute Units although only 38CUs are enabled. The architecture is evolved from AMD’s MI250X, and on GitHub, AMD calls it gfx940, but publicly they call it CDNA3. It is optimized for compute and cannot really do graphics despite being a “GPU”. The same applies to Nvidia’s H100 really, which have most their GPC’s incapable of graphics.
 
-![](https://substackcdn.com/image/fetch/$s_!79Cg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8da7fe16-eadf-4b06-be4d-618f5c400eba_1216x705.png)
+![](z-images/ea41c2c40db68e48b18fb80d453076a4.webp)
 
 In total, each AID can have 2 Banff dies with 76 total CUs. The max XCD/GPU configuration of MI300 will offer 304 CUs. This compares to AMD’s MI250X with 220CUs.
 
@@ -69,7 +69,7 @@ Each AID can have 3 Zen 4 chiplets for a total of 24 cores. The max CCD/CPU conf
 
 AMD’s [MI300 is the most incredible form of advanced packaging in the world](https://www.semianalysis.com/p/advanced-packaging-part-1-pad-limited). There’s over 100 pieces of silicon stuck together, all sitting on top of a record breaking 3.5x reticle silicon interposer using TSMC's CoWoS-S technology. This silicon ranges from HBM memory layers to active interposers to compute to blank silicon for structural support. This massive interposer is close to double the size of the one on NVIDIA's H100. The packaging process flow for MI300 is very complex and we will have to dive into it separately another time to talk through the exact process flow and equipment utilized at each step as it really is [the future of the industry.](https://www.semianalysis.com/p/advanced-packaging-part-1-pad-limited)
 
-![](https://substackcdn.com/image/fetch/$s_!nJKd!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57b34c78-eff6-444c-9bd2-c02645c63fb2_624x363.png)
+![](z-images/ac7294e64ead97c71bce13826329f2e2.webp)
 
 S. -P. Jeng and M. Liu, "Heterogeneous and Chiplet Integration Using Organic Interposer (CoWoS-R)," 2022 International Electron Devices Meeting (IEDM), San Francisco, CA, USA, 2022, pp. 3.2.1-3.2.4, doi: 10.1109/IEDM45625.2022.10019517.
 
@@ -83,7 +83,7 @@ AMD MI300 comes in 4 different configurations, although we aren’t sure if all 
 
 MI300A is the one grabbing the headlines with heterogenous CPU+GPU compute, and is the version being used by the El Capitan Exascale supercomputer. MI300A is packaged with an integrated heat spreader on a 72 x 75.4mm substrate, and fits into socket SH5 LGA mainboards, with 4 processors per board. It effectively paid for the development costs. It is already shipping, but really ramps in Q3. The standard server/node will be 4 MI300A’s. There is no need for host CPU as that is built in. This is by far the best HPC chip on the market and will remain so for a while.
 
-![](https://substackcdn.com/image/fetch/$s_!s5IP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d57444c-19b8-499d-b4dd-31470460a9b5_1036x526.png)
+![](z-images/325b341d0ffbb5d07f5009a0236cab55.webp)
 
 MI300X is the AI hyperscaler variant that if successful would be the real volume mover. It is all GPU, for maximum performance in AI. The server level configuration that AMD is pushing here is 8 MI300X’s + 2 Genoa CPUs. It also comes with higher density SK Hynix 24GB HBM stacks.
 

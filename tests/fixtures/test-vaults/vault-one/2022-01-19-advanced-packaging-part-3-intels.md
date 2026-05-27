@@ -10,25 +10,25 @@ In [part 1](https://semianalysis.substack.com/p/advanced-packaging-part-1-pad-li
 
 Thermocompression bonding (TCB) is used in all current forms of HBM memory. Most of Intel’s packaging technologies also use TCB. Intel has made a very curious bet on the technology as a driver of their packaging needs, one that TSMC has not followed suit with at all. We will discuss how this technology and Intel’s unique role in the development of it which enables them to be a leader in advanced packaging, but we will also discuss some of the drawbacks. Intel looks to continue their spending on TCB tools with hundreds of millions of dollars of orders flying in for their expansions in Arizona, New Mexico, as well as the new $7B packaging facility in Malaysia. We will first explain the technology, Intel’s major role in development of this technology, and lastly the tool ecosystem.
 
-![](https://substackcdn.com/image/fetch/$s_!cPZZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F93f0f183-e22d-4c85-94db-032f836df3fa_1024x409.png)
+![](z-images/d915589a4cadca8fbedc9935e96e91a4.webp)
 
 To understand TCB’s advantages, we must first talk the drawbacks of flip chip packaging. As discussed in part 2, the standard flip chip process starts with depositing a flux or non-conductive paste. A die placement tool then accurately places chips on a substrate, interposer, or carrier. This is done in a batch process, so that many packages can have their dies placed all at once. The set of placed dies then go off to a reflow oven or continuous reflow belt furnace, which is also a batch process. Dozens, hundreds, or even thousands of packages are put in an oven, heated up to a temperature that melts the solder to finalize the bond, then those move on to future steps such as flux residue removal and underfill.
 
-![](https://substackcdn.com/image/fetch/$s_!UUht!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F56120e50-6878-4030-8ca2-cc1fc2f05318_1023x817.png)
+![](z-images/d3a75c1e678c070d13c31840431f2b59.webp)
 
 This process is incredibly fast but comes with some major drawbacks. The largest issues are related to the coefficient of thermal expansion (CTE). Because the entire package which consists of many different materials, being heated up in a reflow oven causes these different materials to expand at different rates. This isn’t the best analogy but work with us. If you have ever baked a pie, you know the pie crust, and the filling of the pie do not expand at the same rate. If you are not careful with several different factors, your filling will end up boiling over the top layer of crust and making that crust soggy.
 
 As the chip and substrate expand and cool, the difference in CTE can cause warpage. In addition, because dies are placed and then soldered later, the solder balls may not be making perfect contact with every copper pad causing chip gap variation. Lastly the die may not be placed perfectly flat. These minor issues can add up over time to cause early failures or worse electrical performance.
 
-![](https://substackcdn.com/image/fetch/$s_!eGYe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc0883c5-5ba7-45ae-b17b-083c01522deb_1024x805.png)
+![](z-images/ca67b166dd9c176593e74385cf927248.webp)
 
 The industry can look no further than many of the original passive interposer technologies. Failure rates for AMD’s Fiji based GPUs were quite high as the process didn’t result in perfect bonds and eventually thermal cycling ended up in products not working. These reliability concerns have improved over time as TSMC and ASE/SPIL have learned how to do interposer-based packaging, but they have not been solved entirely. These issues are still relatively common in environments where temperatures are not kept stable and the package cycles between high and low temperatures frequently.
 
-![](https://substackcdn.com/image/fetch/$s_!SFZx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe02a8ef0-e2d7-4381-b678-ecfbaed14b7a_1024x759.png)
+![](z-images/3647b86a301b12018ca381fb6e3182d9.webp)
 
 Enter thermocompression bonding. Rather than placing dies and shipping the entire assembly off to a reflow oven in batch processes, a singular tool will place individual dies, apply pressure, and heat them up to reflow the solder balls. TCB solves a few major concerns with standard flip chip. Heat is applied from the top of the chip, so only the chip and C4 solder connections heat up. This minimizes any substrate warpage issues. The force ensures even bonds with no gap variation or tilt. Lastly, when that force is applied, it can be accompanied with rapid vibration, which breaks up oxidation of metals on the copper bonding pad and solder ball. The bond that results in virtually no voids and no contamination.
 
-![](https://substackcdn.com/image/fetch/$s_!rveJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcba2ad29-3390-474e-a9f8-ee0aa1b1ce27_1024x632.png)
+![](z-images/589f9ec3671afba19ffc57aef9c1cc96.webp)
 
 TCB enables better electrical properties at the same IO pitch. TCB allows IO pitches to scale to smaller sizes. TCB also enables the packaging of thinner dies and packages. The latter is the reason HBM uses TCB and why Huawei experimented with TCB for the mobile chip market. TCB seems like an outright better technology versus the standard flip chip process flow, but that ignores one major element.
 
@@ -38,15 +38,15 @@ An advanced TCB tool places on the order of 500 to 1,000 die an hour and costs ~
 
 The curious part of this is that Intel owns nearly 300 TCB tools and the Malaysia packaging facility will double that tool count. The 300 tools far outpaces Intel’s advanced packaging uses. Intel uses TCB in many non-advanced packaging applications where the standard flip chip process would be perfectly fine. SemiAnalysis spoke with an Intel packaging engineer off the record, and the rationale was quite interesting. Given Intel’s heavy share in high power and high margin applications, the yield loss and reliability concerns far outweigh the miniscule, amortized cost of the tool per unit packaged.
 
-![](https://substackcdn.com/image/fetch/$s_!cBxa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcdda7718-da87-4cb4-8492-78be03844380_1024x761.png)
+![](z-images/df9583fe780511dd00bab9b2f9f7a1c8.webp)
 
 Furthermore, these tools give a lot of flexibility related to type of packaging. Intel can use the same tool for standard packages, 2.5d packages, and advanced 3d packaging. The above image is from [der8auer](https://www.youtube.com/watch?v=BQYsR0Upr1E), and it showcases an Intel Sapphire Rapids server CPU with multiple pitch sizes. There is a section that is 55-micron pitch for EMIB, and 100-micron pitch for the rest of the die to package connection. While this is theoretically possible without TCB, the implementation in the real world is much easier given the differences in size of pads and solder caps.
 
-![](https://substackcdn.com/image/fetch/$s_!L5kI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdbbca5d3-f84c-41ee-bd88-ccfde5eda760_817x241.png)
+![](z-images/c3a8073feb23e3db05ef5ca65f31145b.webp)
 
 The capabilities of TCB really start to shine when Intel moves to Foveros Omni. We discussed the technology more in [part 2](https://semianalysis.substack.com/p/advanced-packaging-part-2-review), but the copper pillars and ODI dies make Foveros Omni neigh on impossible to package with the standard flip chip process. The first Foveros Omni product will be Intel’s Meteor Lake, a mass market client architecture designed for 5W SOCs all the way up through high power desktops. (Edit: This was redefined to be Arrow Lake) Despite including many die, Omni enables large cost savings on manufacturing cost, selecting the optimal process node for IP and minimize die sizes to enhance yields. The package has various bump pitches from 130-micron, 100-micron, and 36-micron. Advanced 3D logic packaging isn’t only for the high performance applications.
 
-![](https://substackcdn.com/image/fetch/$s_!7fFt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F5cf0dce2-1ef4-43dd-9283-222fc86337a3_970x509.png)
+![](z-images/943b933d71b4548678e82bd07964d49d.webp)
 
 Meteor Lake Test Package
 
@@ -54,7 +54,7 @@ TSMC, Samsung, and many others will not be able to do this sort of packaging unl
 
 Hybrid bonding is capabilities beyond anything flip chip TCB can offer, but that technology operates at a completely different point on the cost and performance curve, which diminishes its ability to ramp in volume for the medium term. This will be discussed in part 4. Intel’s embrace of TCB has enabled them to create optionality’s around various IP and have many different blocks fabbed on many different nodes without a large penalty in die-to-die connections. The specifics about the strategy on design side are discussed in this article about the [Intel TSMC wafer supply agreement article.](https://semianalysis.substack.com/p/tsmc-wants-to-make-intel-dependent)
 
-![](https://substackcdn.com/image/fetch/$s_!KZX4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7080a7a-82fc-436b-acbd-b5eb34238048_846x1024.png)
+![](z-images/2907b2eb93572fd8e9f5edcd70dcf99a.webp)
 
 TCB has also been adopted in HBM applications as well. HBM dies need to be extremely thin. The image above is only memory 4 stacks, but as the industry scaled to 8 stacks and beyond, it has become mandatory for Samsung, SKHynix, and Micron to use TCB. In SKHynix’s upcoming 12 stack HBM3, the demands of die thinness have become so extreme, [each die is thinned to 30-microns](https://news.skhynix.com/sk-hynix-announces-development-of-hbm3-dram/). The bump pitch is similarly, incredibly dense. The only way to enable HBM stack is with TCB technologies currently, but the industry looks forward to potentially using more exotic forms of packaging such as hybrid bonding.
 

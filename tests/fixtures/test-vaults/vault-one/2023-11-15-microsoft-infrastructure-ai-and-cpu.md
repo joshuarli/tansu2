@@ -24,17 +24,17 @@ The Azure Cobalt 100 CPU is Microsoft’s 2 <sup>nd</sup> Arm based CPU that the
 
 Cobalt 100 is primarily based on Arm’s Neoverse Genesis CSS (Compute Subsystem) Platform. This offering by Arm diverges from their classic business model of only licensing IP and makes it significantly faster, easier, and lower cost to develop a good Arm based CPU.
 
-![](https://substackcdn.com/image/fetch/$s_!Nv8q!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F344495d2-226d-4ef5-b112-a2c60c768998_2206x1220.png)
+![](z-images/6a980a10157915729678507bd3ed6c28.webp)
 
 Arm provides verified and laid out blobs that have many aspects of the design process completed for vendors. We detailed this new business model more [here](https://www.semianalysis.com/p/arm-and-a-leg-arms-quest-to-extract).
 
 In the case of Cobalt 100, Microsoft is taking 2 Genesis compute subsystems and tying them together into 1 CPU.
 
-![](https://substackcdn.com/image/fetch/$s_!xk31!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb18e297-7758-4935-be4b-f9480f361172_2212x1228.png)
+![](z-images/b6e92743f20bcdf92ccf835bef85a61b.webp)
 
 This is similar to [Alibaba’s Yitan 710 CPU](https://www.servethehome.com/arm-based-alibaba-cloud-t-head-yitian-710-crushes-specrate2017_int_base/), which is also based on Neoverse N2. [Chips and Cheese profiled that here.](https://chipsandcheese.com/2023/08/18/arms-neoverse-n2-cortex-a710-for-servers/)
 
-![](https://substackcdn.com/image/fetch/$s_!OPB8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F792cef96-8110-4fc2-9777-ef1ffc6b99dc_2196x1216.png)
+![](z-images/575fd271316644aeaa01e61a377db822.webp)
 
 Arm has previously bragged that it only took 13 months from the kick-off of a project to having working silicon for a hyperscaler. Given Alibaba and Microsoft are the only customers for Genesis CSS that we know of, and Alibaba was the first to market, it is likely that Arm is talking about Microsoft on the slide below. There is also a possibility that Google’s Arm based CPU is using Genesis CSS as well.
 

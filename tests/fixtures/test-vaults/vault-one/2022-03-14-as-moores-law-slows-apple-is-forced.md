@@ -16,13 +16,13 @@ This all changes in 2022.
 
 [TSMC’s N3 has been delayed](https://semianalysis.substack.com/p/tsmc-3nm-wafer-shipments-pushed-into). For the first time ever, Apple will have 3 generations on the same generation of process density. Apple is using TSMC’s N4 process node, which is only a meager 5% increase in density for pure logic scaling. TSMC reports N4 process node revenue under their “N5” node on financial statements because they are the same node family and even share the same fabs.
 
-![](https://substackcdn.com/image/fetch/$s_!Jyzs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5b86cb9-de0e-44ad-833a-8a7dda2a3195_1023x467.png)
+![](z-images/8e4915251732b577e3c862641c9a1985.webp)
 
 Apple using the same node is completely unprecedented and means they have to face tough decisions. [A15 was already a relatively chunky 107mm2.](https://semianalysis.substack.com/p/apple-a15-die-shot-and-annotation) Apple faced a tough choice of forcing their various IP teams under strict area budgets and influencing long term designs, or a large increase in cost of manufacturing. [While Apple’s CPU performance gains have slowed down](https://semianalysis.substack.com/p/apple-cpu-gains-grind-to-a-halt-and), they will be implementing a large core change this year. In addition, GPU, NPU, media blocks, and ISPs are also getting improved. To accommodate their new architecture, Apple is going to spend quite a few more transistors. This will likely bring transistor counts up to around ~19 billion, and die sizes to ~130mm2.
 
 In addition, Apple will need to increase memory bandwidth for their SOC. They have been able to stay on LPDDR4x for 5 generations [by increasing on die cache sizes and improving utilization.](https://semianalysis.substack.com/p/apple-a15-die-shot-and-annotation) With the A16, the step up to LPDDR5 brings a large cost increase. Due to the way the 3 major DRAM companies have slowly increased output, cost per bit of DRAM has not really fallen. Memory prices are a major drag on computing.
 
-![](https://substackcdn.com/image/fetch/$s_!ReRM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6561c07f-c794-4f50-a31b-19c3adf20970_1096x696.png)
+![](z-images/f698d7d63f538326b68fe954c91d2a84.webp)
 
 The iPhone 13 ships with 4GB of LPDDR4x, moving to 6GB of LPDDR5 and to the larger A16 chipset would be cost prohibitive. This would result in more than a $40 increase in bill of materials (BOM). With numerous supply chain disruptions and cost increases for energy and commodities, it would be a difficult pill for Apple to also swallow the ballooning silicon costs as well. Apple could also increase prices, but that likely would eat into sales volumes.
 

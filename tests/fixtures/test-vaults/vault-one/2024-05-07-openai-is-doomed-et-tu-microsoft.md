@@ -10,7 +10,7 @@ All eyes are on how long the profitless spending on AI continues. [H100 rental p
 
 Most of the exuberance isn’t due to any sort of revenue growth, but rather due to the rush to build ever larger models based on dreams about future business. The clear target that most have in mind is matching OpenAI and even surpassing them. Today, many firms are within spitting distance of OpenAI’s latest GPT-4 in Chatbot ELO, and in some ways such as context length and [video](https://www.youtube.com/watch?v=wa0MT8OwHuk) modalities, some firms are already ahead.
 
-![](https://substackcdn.com/image/fetch/$s_!TXf-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4bf91480-95ad-409e-9cfb-9ccdcb7c5241_1579x954.png)
+![](z-images/03602abd6982407d4e731994ee16564c.webp)
 
 Source: SemiAnalysis, ArtificalAnalysis.ai
 
@@ -22,7 +22,7 @@ It’s not just the big tech firms that have rapidly caught up. Yesterday, China
 
 Furthermore, the pricing is incredibly cheap. Deepseek’s model is markedly cheaper than any other competitive model. Their pricing even leapfrogs [the ongoing race to the bottom of VCs investing in inference API providers who lose money serving Meta and Mistral models](https://www.semianalysis.com/p/inference-race-to-the-bottom-make).
 
-![](https://substackcdn.com/image/fetch/$s_!ONBj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a58c633-f733-4bdf-91a7-f56f7fea79c0_1552x1030.png)
+![](z-images/52adbaa428bf603f466871542492c145.webp)
 
 Source: SemiAnalysis, ArtificalAnalysis.ai, Various Model Benchmarks
 
@@ -32,17 +32,17 @@ Even assuming servers are never perfectly utilized, and batch sizes are lower th
 
 Even more interesting is the novel architecture DeepSeek has brought to market. They did not copy what Western firms did. There are brand new innovations to MoE, RoPE, and Attention. Their model has more than 160 experts with 6 routed to per forward pass. 236 billon total parameters with 21 billion active per forward pass. Furthermore, DeepSeek implemented a novel Multi-Head Latent Attention mechanism which they claim has better scaling than other forms of attention while also being more accurate.
 
-![](https://substackcdn.com/image/fetch/$s_!ZN6L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8aac5f93-78c8-4b1a-8cef-98fd92e3e05b_1526x619.png)
+![](z-images/4b80fdef2bc72fd810b2e40ab216bd34.webp)
 
 Source: DeepSeek
 
-![](https://substackcdn.com/image/fetch/$s_!pLOJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd02cf5c0-065d-4f7a-86c1-c383fc212ce2_1323x285.png)
+![](z-images/a57eb4544a52d9c970cd849eca003286.webp)
 
 Source: DeepSeek
 
 They trained the model on 8.1 trillion tokens. DeepSeek V2 was able to achieve incredible training efficiency with better model performance than other open models at 1/5 <sup>th</sup> the compute of Meta’s Llama 3 70B. For those keeping track, DeepSeek V2 training required [1/20 <sup>th</sup> the flops of GPT-4](https://www.semianalysis.com/p/gpt-4-architecture-infrastructure) while not being so far off in performance.
 
-![](https://substackcdn.com/image/fetch/$s_!AgQd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b80a125-64d6-4a7b-9a40-02cf09a01943_1564x1049.png)
+![](z-images/06bbffd9cefa8a508a0d66a62f9c3a81.webp)
 
 Source: SemiAnalysis, ArtificalAnalysis.ai, Various Model Announcements
 
@@ -74,7 +74,7 @@ The question is how?
 
 While Microsoft isn’t competitive with OpenAI, or even with Meta in AI talent, they are rapidly attempting to build up those skills as fast as possible. The pseudo-acquisition of Inflection gives them a quick jump to a decent model and a solid pre-training and infrastructure team, but more is needed to close the ever-moving target of OpenAI.
 
-![](https://substackcdn.com/image/fetch/$s_!6Wvu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f88abbc-c2be-4c3d-8219-b1e46f88770b_1499x931.png)
+![](z-images/42685518e5b37e59eadfb13e6b553fd9.webp)
 
 Source: SemiAnalysis, OpenAI, Inflection AI
 

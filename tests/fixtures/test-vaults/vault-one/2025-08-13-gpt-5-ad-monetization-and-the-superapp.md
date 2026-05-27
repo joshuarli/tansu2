@@ -12,7 +12,7 @@ To many power users (Pro and Plus), GPT5 was a disappointing release. But with c
 
 Analysts focused on the model capabilities are missing the much larger context of network effects that ChatGPT is gaining quickly. In November of 2023, ChatGPT wasn’t even in the top 100 websites; now it is number 5. Larger than X/Twitter, Reddit, Whatsapp, Wikipedia, and quickly approaching Instagram, Facebook, Youtube and Google. On the top 10 list, every single property is much older than ChatGPT.com, and the sheer number of unmonetized users is staggering.
 
-![](https://substackcdn.com/image/fetch/$s_!xSCS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe08a1988-9c46-4f80-9667-a3492e494cd9_1806x1016.png)
+![](z-images/da6ffeff638160f3939fc2e2dbc7b47f.webp)
 
 But that changes with GPT-5. OpenAI is laying the groundwork to monetize one of the largest and fastest-growing web properties in the world, and it all begins with the router.
 
@@ -24,7 +24,7 @@ On [OpenAI’s release website](https://openai.com/index/introducing-gpt-5/), th
 
 The router serves multiple purposes on both the cost and performance side. On the cost side, routing users to mini versions of each model allows OpenAI to service users with lower costs. On the performance side, it will enable many users to use thinking aka CoT (Chain of Thought) reasoning for the first time. Over 99% of the free users have yet to interact with a thinking model like o3, and for the average user, ChatGPT just got a huge upgrade. The number of free users exposed to thinking models went up 7x in [the first day](https://x.com/sama/status/1954603417252532479) and the number of paying users up nearly 3.5x.
 
-![](https://substackcdn.com/image/fetch/$s_!WRqr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcff176b6-615f-4f59-a917-3f1d343442b9_1704x856.png)
+![](z-images/3c924f5496fb5907cf58350df8e4e26e.webp)
 
 Source: OpenAI, SemiAnalysis
 
@@ -58,7 +58,7 @@ Now let's discuss, because it looks like an Agentic *Assistant* is a way that co
 
 Let's talk about Agentic purchasing and compare it to a search query today. Because LLMs have a core feature that Search does not, and that is scaling marginal costs. This is fundamentally different than the world search grew up in. Let's examine “ [Aggregation Theory](https://stratechery.com/aggregation-theory/) ” work of Ben Thompson, because the core feature was that most technology companies had zero marginal costs to an additional user. There were some fixed overheads for running the largest search engine, but the incremental cost of another query was virtually zero. Agents and LLMs kill this concept.
 
-![](https://substackcdn.com/image/fetch/$s_!B47f!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fce40cdd7-c2c2-4a9a-81fb-057c2cca282a_2028x1114.png)
+![](z-images/3e13bb424dbd54689b87310a288c5cd1.webp)
 
 Source: Arc-AGI
 
@@ -73,7 +73,7 @@ Before the router, there was no way for a query to be distinguished, and after t
 
 The search query on the other hand has a fixed cost. It would show a page ranking of websites, with a potential AI summary at the top. This is a fixed supply response to what could be a variably hard question. But now ChatGPT free (because of routing) can dynamically answer a harder question with a better answer, which is not how search is designed today. Below shows the value of a changing supply query to a harder question, the supply is fixed for Search.
 
-![](https://substackcdn.com/image/fetch/$s_!OHtn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F383ae154-0a6a-4d01-957f-7c6c167199e0_1024x476.png)
+![](z-images/6a81b159b941360f254b239d147c5cce.webp)
 
 Source: SemiAnalysis
 
@@ -87,7 +87,7 @@ The user wouldn’t pay via a cost of a subscription, but by transaction fees or
 
 And what’s more you can see the glimpses of this in their model release notes. They highlighted Gmail and Google Calendar integration, as well as new tool use benchmarks for services such as Telecom, Retail, and Airlines. Imagine a world where very little customer acquisition cost is spent on ads, but rather asking a helpful AI assistant to set up the best internet plan in your neighborhood.
 
-![](https://substackcdn.com/image/fetch/$s_!eJLa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcbbf124c-63b3-4375-93eb-867e8831c4bf_1850x1018.png)
+![](z-images/fa0332dc67b2a464755138ccbdb14fd4.webp)
 
 Source:OpenAI
 
@@ -131,7 +131,7 @@ OpenAI is firmly knocking on the door of technology giants Google and Meta and e
 
 A reminder that if we are talking about pure usage, only one company is growing users at a meaningful rate. It's OpenAI.
 
-![](https://substackcdn.com/image/fetch/$s_!BU_x!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6a6fa556-9e93-4aee-8821-b63a4ec0ff69_1942x968.png)
+![](z-images/5e9ba298d6752540132ad7f1347cb76d.webp)
 
 Source: SemiAnalysis, SimilarWeb
 

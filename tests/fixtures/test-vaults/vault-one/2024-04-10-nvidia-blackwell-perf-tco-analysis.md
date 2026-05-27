@@ -14,7 +14,7 @@ In the last generation, with the H100, the performance/TCO uplift over the A100 
 
 With Blackwell, that all changes as pricing is not up nearly as much generationally. This is due to competition from existing huge volumes of H100s and H200s and emerging challengers such as [hyperscale custom silicon](https://www.semianalysis.com/p/accelerator-model), AMD’s MI300X and Intel’s Gaudi 2/3 entering the market and making their own performance/TCO arguments. As such, Nvidia must make a compelling argument to sell their new generation. Of course, [they aren’t letting competition encroach in](https://www.semianalysis.com/p/nvidias-plans-to-crush-competition), with very aggressive, [perhaps even benevolent pricing](https://www.semianalysis.com/p/nvidia-b100-b200-gb200-cogs-pricing).
 
-![](https://substackcdn.com/image/fetch/$s_!VeBD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1cfad893-285e-4464-876a-c06e457c777a_3022x1964.png)
+![](z-images/cd2ce773bd3a9aafe57178340798cb32.webp)
 
 Source: Nvidia
 
@@ -34,7 +34,7 @@ The performance gains showcased at the keynote speech were achieved through impr
 
 The air-cooled 700W B100 will be the [first to ship](https://www.semianalysis.com/p/nvidia-b100-b200-gb200-cogs-pricing) and will deliver 1,750 TFLOPS of FP16/BF16 compute. The B100’s baseboard is made to slot into the same design used in today’s HGX H100 systems – forcing the B100 to run at lower power and clock speeds to remain within the thermal envelope of existing systems. Very soon after the B100 ships, the B200 will come to market at a higher power and faster clock speed, delivering 2,250 TFLOPS of FP16/BF16 compute. Furthermore, the use of liquid cooling in the GB200 NVL72 will allow the Blackwell GPU to run at even higher power levels, unlocking further performance upside – delivering 2,500 TFLOPS of FP16/BF16 compute – a 153% improvement over the H100 and H200. There is also a 1200W B200 that is not included in the table.
 
-![](https://substackcdn.com/image/fetch/$s_!aJMv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbeb184fa-9881-4032-8bf4-c538550b96a1_1154x747.png)
+![](z-images/795bb9290f771233a3f58e1654a9ec28.webp)
 
 Source: Nvidia, SemiAnalysis
 
@@ -42,7 +42,7 @@ FLOPS are only up 77% on FP16 and TF32 with B100, but as power increases, and co
 
 We should note that, even in the worst-case scenario, FP16 vs FP16, FLOPS are up 153% gen on gen, but memory bandwidth gains are smaller. The bandwidth gains from A100 to H100 were larger than that of this generation. [The memory wall is one of the greatest challenges facing the AI industry for future scaling.](https://www.semianalysis.com/i/97006309/machine-learning-training-components)
 
-![](https://substackcdn.com/image/fetch/$s_!_wgN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdc7c8bd6-c489-49ba-a1fe-5dfbd874f847_1350x800.png)
+![](z-images/3c948b69d7fee08b341338d153a7be79.webp)
 
 Source: Nvidia, SemiAnalysis
 
@@ -58,7 +58,7 @@ Normalizing by silicon area gain, the air-cooled B200 only delivers a 14% FP16 F
 
 Given the premise that twice the silicon area should require twice the power, it is important to analyze the isopower performance gains – that is – the FLOPS achieved per GPU watt.
 
-![](https://substackcdn.com/image/fetch/$s_!9Mcu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa440249d-8c9d-44e7-9b10-0c4a908f5583_1123x994.png)
+![](z-images/67728663e8fe1d630ed26777199deceb.webp)
 
 Source: Nvidia, SemiAnalysis
 
@@ -66,7 +66,7 @@ While the B100 does deliver 77% more FLOPS of FP16/BF16 with the same 700W of po
 
 The FLOPS cost similarly is unremarkable. The TFLOPS per $ for the GB200 NVL and B200 are not a meaningfully different story.
 
-![](https://substackcdn.com/image/fetch/$s_!wkEX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9321ee09-03cf-4b27-8da2-f040d3439ecf_1259x670.png)
+![](z-images/4a13617c42dd9f30642184f047ae8c21.webp)
 
 Source: Nvidia, SemiAnalysis
 
@@ -82,13 +82,13 @@ Google has been shipping 64 TPU passive copper connected subslices that are opti
 
 Below is probably the coolest chart we’ve ever seen regarding machine learning performance modeling and the search space of optimal total cost of ownership (TCO). It reveals a lot about LLM performance modeling and trends. It also shows a variety of different parallelism strategies, batch sizes.
 
-![](https://substackcdn.com/image/fetch/$s_!ANVY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a9e89b3-7ab9-4f0e-b407-4b9f6d9d2b5a_3024x1964.png)
+![](z-images/f79d0fa141007f5380508e1ef365af5c.webp)
 
 Source: Nvidia
 
 When running inference on smaller models on a single GPU, you generally end up with a curve like the below which shows very high interactivity (tokens/second/user) at low batch sizes, and as you increase batch size, throughput grows, but interactivity also comes down. There is a tradeoff curve between system throughput for all users (cost per token) versus single user interactivity (user experience).
 
-![](https://substackcdn.com/image/fetch/$s_!m4it!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2acdcefd-586b-44e3-9a77-58652e23dcf1_1352x926.png)
+![](z-images/86cc34d58b67f16ea152f6678c0e0a93.webp)
 
 Source: SemiAnalysis
 
@@ -96,7 +96,7 @@ Unfortunately, the simplicity of a single tradeoff curve is wiped away with mass
 
 For example, with GPT-4 MoE’s 55B attention parameters and 16 experts of 111B parameters each across 120 layers, that’s 1.831 trillion parameters at 8 bits per parameter, in total requiring 1,831 GB of memory.
 
-![](https://substackcdn.com/image/fetch/$s_!QOQe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4eaceeb1-4ff6-423e-bb39-022a11578271_544x530.png)
+![](z-images/16d10907c7041940e84e70beb56931cc.webp)
 
 Source: SemiAnalysis
 
@@ -114,7 +114,7 @@ In pipeline parallelism, the simplest form of parallelism, the model’s layers 
 
 Each token in each user’s query is sent sequentially through each GPU during the forward pass across all layers until it runs through the entire model. Because there are fewer layers per GPU, the model can now be held across all 16 GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!QmRB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feab501e6-cfde-455a-881f-a0e5f1bfd1ff_2539x806.png)
+![](z-images/1502e9c0125c96cd51b0011646f9c166.webp)
 
 Source: SemiAnalysis
 
@@ -128,7 +128,7 @@ The main benefit of pipeline parallelism is that memory capacity pressures are a
 
 Both Pipeline Parallelism and Tensor Parallelism have the benefit of overcoming memory capacity constraints (i.e. fitting the model into the system), but in tensor parallelism, every layer has its work distributed across multiple GPUs generally across the hidden dimension. Intermediate work is exchanged via all-reductions across devices multiple times across self-attention, feed forward network, and layer normalizations for each layer. This requires high bandwidth and especially needs very low latency.
 
-![](https://substackcdn.com/image/fetch/$s_!lBBL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e7a9974-01ee-4df6-8f5c-a56d2bbbff28_1772x1002.png)
+![](z-images/870b51654c26d40615631eb21c60daaa.webp)
 
 Source: Accelerating PyTorch Model Training
 
@@ -136,7 +136,7 @@ In effect, every GPU in the domain works together on every layer with every othe
 
 Scale up networks like NVLink and Google’s ICI enable tensor parallelism to be much faster than scale out networks.
 
-![](https://substackcdn.com/image/fetch/$s_!Z6s9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F13ac39d3-633c-4c45-ba6a-4fe500bd639b_1595x941.png)
+![](z-images/f2a17013d553e732f6c9b8876bd4099c.webp)
 
 Source: Nvidia
 
@@ -144,7 +144,7 @@ Tensor Parallelism allows memory bandwidth to be pooled and shared across all GP
 
 In the below example, interactivity (tokens/second/user) is 16 times better than the PP16 example, at 69.9 tokens/second/user vs the 4.4 achieved in the PP16 system. Total system throughput is accordingly 16 times greater as well, in this simplistic example.
 
-![](https://substackcdn.com/image/fetch/$s_!knvO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F74337f00-53fb-4374-9ec1-6766cff693ba_1506x549.png)
+![](z-images/249a29f9cd5abc96e147999803ef8a92.webp)
 
 Source: SemiAnalysis
 
@@ -158,7 +158,7 @@ While in Tensor Parallelism, all of the GPUs work together to host all layers, i
 
 In the below example of an EP16 system, each GPU hosts one expert. This lowers the total parameters loaded to only 166 B per expert domain, that is 55B for the replicated attention and 111B for each expert.
 
-![](https://substackcdn.com/image/fetch/$s_!v9e6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F06728865-70bd-47f5-a172-96d140d783a0_1505x617.png)
+![](z-images/761d806bbc762b99858bec2bbd4da0c8.webp)
 
 Source: SemiAnalysis
 
@@ -166,7 +166,7 @@ The fact that each expert domain also has to load the attention weights imposes 
 
 Recall that the use of Tensor Parallelism imposes a major communications penalty on memory bandwidth utilization, slowing down throughput. This effect is in opposition to the additional overhead from the attention layer in expert parallelism – and the degree of this communications penalty determines which effect dominates.
 
-![](https://substackcdn.com/image/fetch/$s_!7OLx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F40993087-bf48-4246-bf0b-e29640cad46c_1683x1006.png)
+![](z-images/bae0252bd826903d7d0cdd1d1b39c20e.webp)
 
 Source: A Hybrid Tensor-Expert-Data Parallelism Approach to Optimize Mixture-of-Experts Training. Singh et al.
 
@@ -178,7 +178,7 @@ Data parallelism is perhaps the simplest of all the parallelisms – essentially
 
 In the example below, there is no interactivity speed up because each Data Parallel System of TP16 has already hit the memory wall. Keeping the same number of total users at 100, total throughput is also the same as in the TP16 example. Data parallelism increases the headroom at which you can increase the number of users before hitting the FLOPS constraint due to having 32 total GPUs worth of FLOPS available (vs 16 for TP16), but if we do not introduce more users to the system, hence generating more throughput, going from TP16 to TP16 DP2 is a waste of resources.
 
-![](https://substackcdn.com/image/fetch/$s_!TcSl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F044b8bea-9bad-4c36-a92d-d5e046d1ec3a_1290x1103.png)
+![](z-images/d2242706165b7c9782150e944e7cb852.webp)
 
 Source: SemiAnalysis
 
@@ -192,7 +192,7 @@ In the below example of TP2 EP8 Parallelism, we implement 8 expert domains, with
 
 This enables higher interactivity at 57.8 tokens/s/user in TP2 EP8 vs 48.2 tokens/s/user in EP16. However, while there is less memory capacity/bandwidth overhead – moving to TP2 EP8 will introduce a communications penalty which again is omitted from this analysis.
 
-![](https://substackcdn.com/image/fetch/$s_!GrVS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6587136e-afb4-47f1-87c1-2677f09b00ef_2562x992.png)
+![](z-images/be9346d9df336aa7f57f2ec050d2a603.webp)
 
 Source: SemiAnalysis
 
@@ -208,7 +208,7 @@ When looking at the H200 running GPT-4 at FP8, the pareto optimal frontier of pa
 
 At TP8, the GPUs are all communicating via NVLink, and so the penalties aren’t that bad as interactivity (tokens per second per user) is scaled higher, but then, all of a sudden, the throughput tanks. This is due to TP being extended beyond 8 GPUs. To go from interactivity of ~6.3 to ~6.5 drives a ~23% decrease in total throughput per GPU. This is a very gnarly impact that is all because communications for tensor parallelism must now cross the boundary out of the NVLink network and onto InfiniBand/Ethernet.
 
-![](https://substackcdn.com/image/fetch/$s_!kcZe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0785926-1950-4646-bb19-fea9b8da2bfa_1361x937.png)
+![](z-images/563757861696f29c802f5b10b857b9c1.webp)
 
 Source: Nvidia, SemiAnalysis
 
@@ -218,7 +218,7 @@ Furthermore, this impact occurs yet again when hitting >16 and >32 GPUs for tens
 
 With this in mind - turning to the slide from the keynote speech – notice that the slide Nvidia used has chosen to benchmark off of TP64, the worst possible parallelism scheme to run on the H200.
 
-![](https://substackcdn.com/image/fetch/$s_!p6zE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F434d2373-17aa-4bba-9105-56ad0745bcfe_1584x992.png)
+![](z-images/bfd884076e96680eca684ad9bb3618d7.webp)
 
 Source: Nvidia
 

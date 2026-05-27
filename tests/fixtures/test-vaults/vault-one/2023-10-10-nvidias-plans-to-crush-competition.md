@@ -32,7 +32,7 @@ We will also include an discussion into the competitive dynamics and large wins 
 
 There is an important discussion to be had on Nvidia’s business tactics which some may even view as anti-competitive with regards to sales strategies and bundling. Nvidia’s strategic sourcing is also amazing to watch with regard to supplier management, CoWoS/HBM capacity acquisition, and development of specialized technologies such as optical switches and co-packaged optics.
 
-![](https://substackcdn.com/image/fetch/$s_!g9EU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F486c51a2-195a-4d4a-ba7a-281140c9bf64_2208x1230.png)
+![](z-images/56b545be7225f4039ce6a4c3c5510b4a.webp)
 
 Nvidia Slide
 
@@ -50,7 +50,7 @@ Ever since the early days of Nvidia, Jensen has been aggressive with his supply 
 > 
 > [Jensen Huang in conversation with Morris Chang, Computer History Museum, 2007](https://www.youtube.com/watch?v=u-x7PdnvCyI)
 
-![](https://substackcdn.com/image/fetch/$s_!SNae!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8278a1db-d3ba-407c-8652-294fbc3b2e7c_3600x1685.jpeg)
+![](z-images/18bfa741f6854a1d4e3e9cf261a0a1bb.webp)
 
 Comic commissioned by Nvidia commemorating Morris Chang’s retirement, you can see the full version here
 
@@ -94,7 +94,7 @@ Conveniently, these OEMs/ODMs participating in L40S and MGX hype games also get 
 
 The majority of this report is the juicy details of Nvidia’s new roadmap including details on the networking, memory, packaging, and process nodes utilized, various GPUs, SerDes choices, PCIe 6.0, co-packaged optics, and optical circuit switches. This includes multiple sides beyond just the one below.
 
-![](https://substackcdn.com/image/fetch/$s_!FMZt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a6a32a8-52e5-4797-afe8-ed85dcb37937_2208x1230.png)
+![](z-images/56b545be7225f4039ce6a4c3c5510b4a.webp)
 
 Due to competitive pressures from Google, Amazon, Microsoft, AMD, and Intel, we believe Nvidia accelerated their plans for B100 and “X100”. In response to this accelerated time schedules for Nvidia, we hear AMD completely cancelled their MI350X plans. Going back to the technical specifications we [exclusively detailed for the configurations of MI300](https://www.semianalysis.com/p/amd-mi300-taming-the-hype-ai-performance).
 

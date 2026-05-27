@@ -14,7 +14,7 @@ We will share which of these 28 upstream vendors have relatively large orders fr
 
 To recap, CoWoS is a “2.5D” packaging technology from TSMC where multiple active silicon dies (the usual configuration is logic and HBM stacks) are integrated on a passive silicon interposer. The interposer acts as a communication layer for the active die on top. The interposer and active silicon are then attached to a substrate that contains the I/O to place on the system PCB. [CoWoS is the most popular packaging technology for GPUs and AI accelerators, as it is the primary method to co-package HBM and logic to get the most performance for training and inferencing workloads.](https://www.semianalysis.com/i/133273576/the-real-bottleneck-cowos)
 
-![](https://substackcdn.com/image/fetch/$s_!CjsU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7dae3ae3-f074-40e5-8241-2a8f42ade96c_1293x488.png)
+![](z-images/e7eeeeb5985e55381995c6b0d8089135.webp)
 
 We will now detail the key manufacturing steps for CoWoS-S (the main variant).
 
@@ -28,7 +28,7 @@ The fabrication of a silicon interposer starts with taking a blank silicon wafer
 
 To form the TSVs, the wafer is coated with photoresist and then patterned using photolithography. The TSV is then etched into the silicon by using a Deep Reactive Ion Etch (DRIE) to achieve a high aspect ratio etch. An insulation (SiOX, SiNx) and barrier layer (Ti or TA) is deposited using Chemical Vapor Deposition (CVD). Then a copper seed layer is deposited using Physical Vapor Deposition (PVD). The trench is then filled with copper using Electrochemical Deposition (ECD) to form the TSV. The vias do not pass through the whole wafer.
 
-![](https://substackcdn.com/image/fetch/$s_!fBCi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ecb110f-3f9d-444d-8b98-233a6c499122_1935x1341.png)
+![](z-images/78fb2553446e5281d0414e8ea88620ef.webp)
 
 With the TSV fabrication completed, the Redistribution Layers (RDLs) are formed on the wafer's topside. Think of RDLs as multiple layers of wires to connect the various active chips together. Each RDL consists of a smaller via and actual RDL.
 
@@ -36,11 +36,11 @@ Silicon dioxide (SiO2) is deposited through PECVD, then photoresist is coated an
 
 In a typical recipe, Titanium and Copper is sputtered and the copper is deposited using electro-chemical deposition (ECD). However, we believe that TSMC uses extremely low-k dielectrics (perhaps SiCOH) to reduce capacitance rather than SiO2. The wafer is then removed of the excess plating metal using CMP. Mostly a standard dual damascene process. These steps are repeated for each additional RDL.
 
-![](https://substackcdn.com/image/fetch/$s_!b3mY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09d568cd-a1c9-48e8-8ad9-6e894d8236f6_1906x1363.png)
+![](z-images/5608ff134d08bc377b3757b438fdc699.webp)
 
 On the top RDL layer the under bump metallization (UBM) pads are formed by sputtering with copper. Photoresist is applied, exposed with photolithography to form the copper pillar patterns. The copper pillars are plated and then capped with solder. The photoresist is stripped and the excess UBM layer is etched away. The UBM and subsequent copper pillars are how the chips connect to silicon interposer.
 
-![](https://substackcdn.com/image/fetch/$s_!eMch!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc24f98b1-8204-4dbd-9086-f1acde98ee44_2961x1861.png)
+![](z-images/16357f2b48b2ed698de0c528a45b7801.webp)
 
 ## Chip on Wafer Key Process Steps
 
@@ -48,7 +48,7 @@ Known good logic and HBM dies are now attached to the interposer wafer using a t
 
 The gaps between the active die and the interposer are then filled with resin to protect the micro bumps from mechanical stress. The wafer is then baked again to cure the underfill.
 
-![](https://substackcdn.com/image/fetch/$s_!sEvE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb017275a-d65e-4252-aa3a-218368a17f8e_3604x1798.png)
+![](z-images/a4c2a343d3d90defeea64d661fb330a8.webp)
 
 Next, the top dies are molded with resin to encapsulate them and CMP is used to smooth the surface and remove any excess resin. The molded interposer is now flipped and thinned by grinding and polishing down to around 100um in thickness to reveal the TSVs on the backside of the interposer.
 
@@ -60,7 +60,7 @@ The backside of the interposer is plated and bumped with C4 solder bumps and the
 
 In the cross-section of Nvidia’s A100 below, we can see all the various elements of the CoWoS package.
 
-![](https://substackcdn.com/image/fetch/$s_!lYft!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5ddd4fb4-c3ef-4f50-b626-1b5ec1f58847_3376x2038.png)
+![](z-images/7f4e0c042990d1c640a732b30a3e80b7.webp)
 
 At the top is the chip die with RDL and the copper pillar microbumps which are bonded to microbumps on the frontside of the silicon interposer. Then, there is the silicon interposer with the RDL on top. We can see the TSVs pass through the interposer with 2 TSVs per C4 bump below. At the bottom is the package substrate.
 

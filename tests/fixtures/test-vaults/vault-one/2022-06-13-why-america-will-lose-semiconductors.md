@@ -10,7 +10,7 @@ The US has always been the world leader in semiconductors: design, manufacturing
 
 Before we get into the problem, let’s talk about the current state of the US’s semiconductor dominance. Most of the largest semiconductor equipment, design, and software companies are based in the US or have critical engineering in the US. In the equipment space, Lam Research, Applied Materials, and KLA are based is of the US. ASML, the widely known leader in lithography, does much of their critical engineering for the EUV Source and EUV Collector out of San Diego. These technology assets and teams come from the acquisition of San Diego based Cymer. ASML pays royalties to the EUV-LLC whose membership includes multiple US national labs. Without these tools, it is impossible to manufacture chips.
 
-![](https://substackcdn.com/image/fetch/$s_!1OUX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F13e668af-9625-4d48-8378-446c857528a9_3435x1902.png)
+![](z-images/77f26ef15339270f6e2371c210af16c5.webp)
 
 The critical software needed to be used to design chips is called EDA and it all comes from the US. Cadence, Synopsys, and Mentor Graphics (now owned by Siemens) are located in the US. Without this software, it is impossible to design modern chips.
 
@@ -26,7 +26,7 @@ Entrepreneurialism is what innovated and semiconductors in the first place. Ever
 
 [SemiEngineering.com](https://semiengineering.com/), one of the leading publications in the semiconductor industry, tracks monthly semiconductor and semiconductor adjacent industry startup fundraising by company headquarters location. Their data is compiled in the table below for May, but other months look very similar. This trend is terrifying for prospects of American hardware dominance. Not only is most of the assembly done in China, but the most well-funded startups in the semiconductor field and the most IPOs in the semiconductor field are occurring there well.
 
-![](https://substackcdn.com/image/fetch/$s_!_SL7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1acf39b4-f1ff-4f47-80bf-f6642bbcf849_1023x654.png)
+![](z-images/dc726a0ded381eee6e7e4af3ca02f160.webp)
 
 While startups and IPOs don’t necessarily indicate innovation, they are one of the corner stones of it. Not all startups will succeed, and it’s very likely the stricter funding models of US based startups will mean they are more likely to succeed, but the disparity is a big issue. America isn’t the land of entrepreneurship anymore, despite continuing to dominate other areas of the world such as Europe. It’s China.
 
@@ -44,7 +44,7 @@ Startups are not the only place where investment is lacking. This problem exists
 
 First let’s discuss the crux of the issue. The chart below shows total semiconductor wafer fabrication equipment spending by region. It shows that China by far is building the most fabs, which is driven by their favorable tax and regulatory policies as well as massive subsidies. The US is a tiny share of worldwide spending. If the current rate of spending holds, then in a decade, the US will be fabricating less than 10% of the world’s semiconductors and China will be fabricating nearly 30% of them.
 
-![](https://substackcdn.com/image/fetch/$s_!5Eak!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F16624aca-c571-4832-bc41-e6c6dae6ad39_1024x908.jpeg)
+![](z-images/025dcd0d0179328179cde39d726dfb07.webp)
 
 The US national, state, and local governments have created tax and regulatory policy that makes investing in new manufacturing capacity for semiconductors incredibly difficult. It takes mountains of money and many years to even get through the process of permitting and approval to being a project in the US. Furthermore, while these policies intend to protect the environment, they actually don’t. They simply slow down the process and increase costs.
 
@@ -70,7 +70,7 @@ Even if the startups and production facilities were in the US, there is now a se
 
 Most Americans who pursue a higher education do so in a non-STEM field. While not a negative in and of itself, this is a huge concern when viewed in light of the expected growing shortage of skilled workers in the semiconductor industry. Over 5 million people were granted degrees/certificates at postsecondary institutions in the US, yet not even 1/5th were in STEM according to the chart below from [Statista](https://www.statista.com/).
 
-![](https://substackcdn.com/image/fetch/$s_!-pTs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa0bd9624-1352-4fab-8b5c-c1cde66f7eaf_1024x607.png)
+![](z-images/6618d80cdab2b2595f453e2f367307ca.webp)
 
 2/3 of STEM PHD students in the US are foreigners. They were able to get student visas for their education, yet many of them have a very difficult time immigrating after their education despite hoping to do so. China has nearly 5 million people graduating with STEM degrees annually, population size differences make the gap between China and the US impossible to fill with domestic population alone.
 

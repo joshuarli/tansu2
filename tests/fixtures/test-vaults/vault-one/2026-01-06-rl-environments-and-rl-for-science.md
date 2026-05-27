@@ -14,7 +14,7 @@ Last June, we argued that scaling RL is the critical path to unlocking further A
 
 The best example of this is demonstrated by OpenAI. The company has used the same base model, GPT-4o, for all their recent flagship models: o1, o3, and GPT-5 series. Gains in the performance of OpenAI’s models for 18 months were being driven by post-training and scaling up RL compute alone. OpenAI has now fixed their pretraining problems, so with that vector of scaling unlocked, progress will be even more rapid.
 
-![](https://substackcdn.com/image/fetch/$s_!cYt8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e50fdb7-cb85-4d29-b665-bf4743c5d3f6_1142x634.png)
+![](z-images/0e1f39444a0d65ae1b95d996ad02c42f.webp)
 
 This is not to say that pre-training is dead: Anthropic, xAI, and especially Google all derived significant gains from scaling up pre-training. But OpenAI’s progress last year and ability to keep up using an older base model was existence proof of the efficacy of post-training.
 
@@ -30,7 +30,7 @@ To measure how much models are improving in utility and capability, OpenAI creat
 
 Models are asked to solve these problems, given a prompt and a set of supporting documents. Tasks include filing a tax return for a fictitious human, creating slides as a client advisor for a resort, and creating commercials from a given set of stock footage. Grading occurs through experts picking between a model’s answer and a human expert’s answer. This win rate, if equal, would then mean that a model’s performance is then in parity with a human expert. The best current model, GPT-5.2, scores around 71%, meaning its work is tied to or preferred from human outputs 71% of the time.
 
-![](https://substackcdn.com/image/fetch/$s_!utwm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F370d577f-508c-40df-b6d4-857bf1225db8_1022x575.png)
+![](z-images/3cbe6cd2e7eb05e6f8745ddbb12829e1.webp)
 
 Sample task set from GDPval. Source: OpenAI
 
@@ -38,7 +38,7 @@ While GDPval has some issues (e.g., skewed toward unusually specific digital wor
 
 The underlying trend is models being able to operate autonomously for longer. With improved capabilities over shorter and longer horizons, AI companies think that models can help invent the next version of themselves. OpenAI, for their part, target having autonomous AI researchers by a March of 2028. Anthropic projects that in 2027, systems like Claude will be able to autonomously find breakthroughs that would otherwise take years to achieve.
 
-![](https://substackcdn.com/image/fetch/$s_!2Q1-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d7a943d-bd4c-4a9a-8be7-c63038e40a79_1568x883.png)
+![](z-images/140088428a65afdb56b036cdb9f18f86.webp)
 
 Source: Anthropic
 
@@ -48,7 +48,7 @@ But this journey will require significant amounts of data and task curation. Com
 
 Historically, Scale AI was one of the largest data contractors for the labs but now has been mostly absorbed by Meta. Scale saw considerable spending from across all labs, with revenues north of $1.4B in 2024.
 
-![](https://substackcdn.com/image/fetch/$s_!h8nm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F12f97061-879f-43b5-8d42-acc3af9930f3_1652x977.png)
+![](z-images/d006cc12614a79e44b6677a9773d771e.webp)
 
 Source: Sacra, SemiAnalysis.
 
@@ -64,7 +64,7 @@ One set of companies focus on cloning websites. For example, environment compani
 
 These “UI gyms” often cost about $20,000 per website, and OpenAI has purchased hundreds of sites for ChatGPT Agent training and development. These environments are a one time purchase and are reused for future models. Trajectories and logs from previous runs are preserved and fed back into various stages of training, like mid-training.
 
-![](https://substackcdn.com/image/fetch/$s_!kvQ_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F04032584-5b2e-4b30-afa9-ba2fcc0f9ab9_2140x780.png)
+![](z-images/b945af3bb404a7dc5555ac22421ad553.webp)
 
 Source: A public talk by Karina Nguyen, SemiAnalysis
 
@@ -78,7 +78,7 @@ Most aforementioned companies close source their environments and serve them in 
 
 Others are building tooling for environments. [HUD](https://www.hud.so/) for example has tooling that allows for the wrapping any given software (e.g., a game, browser, google sheets) in a dockerized container, enabling its use as a scalable RL environment. Each container has two layers: the environment backend (the actual software being wrapped) and an MCP server that sits on top and exposes tool definitions the agent can call. When an agent issues a tool call like `click(x,y)` or `type(text)`, the MCP server translates it into an action on the underlying software and returns the resulting observation. This is generally scaled into many parallel instances. Each task includes a prompt, setup conditions, and success criteria that return a reward signal. Every tool call and observation is captured via telemetry, which is useful for debugging but also collected and fed into training at later stages.
 
-![](https://substackcdn.com/image/fetch/$s_!FnWW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa0e265cb-a9a1-4cc2-8baa-3b1a353d98a1_1480x1620.png)
+![](z-images/b95a3681fa7ef439b7c4705b092a34b9.webp)
 
 The highest in demand environments are coding environments. Understanding how these are built, structured, and assembled can provide a unique view into the infrastructure and engineering effort underpinning the progress we see today.
 
@@ -92,7 +92,7 @@ The pipeline starts with downloading the GitHub Archive, containing 30k repos an
 
 To automate environment configuration, an LLM generates installation instructions for each task. The model reads relevant files in the repository (README, setup.py, requirements.txt, Docker files), then synthesizes a structured JSON “recipe” specifying the Python version, dependency installation commands, and test execution commands.
 
-![](https://substackcdn.com/image/fetch/$s_!Y6RD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F997762d1-a8cc-47ab-b1b5-494566767783_1460x779.png)
+![](z-images/381f83fa27cf095ab6e77b104c8a725c.webp)
 
 Source: Badertdinov, Golubev et al.
 
@@ -104,7 +104,7 @@ Importantly, these approaches aren't mutually exclusive. PR mining captures real
 
 At scale, these pipelines produce tasks in the tens of thousands. DeepSeek ended up using 24,667 coding tasks extracted from GitHub for the training of V3.2. We know, from other labs like Kimi, that the infrastructure developed can support the instantiation of 10,000+ instances simultaneously. Generally speaking, the more difficult the task the more rollouts are needed during training. This is due to the problem being harder to solve, and the more rollouts, the more “shots on goal” the model has. However, this comes at the expense of each rollout being slower as throughput comes at the expense of speed.
 
-![](https://substackcdn.com/image/fetch/$s_!7Ln8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8df58ac-7c11-491d-9233-53f934d71a74_1536x1011.png)
+![](z-images/a294009b55c7ea6152648098e707bd22.webp)
 
 Source: SemiAnalysis
 
@@ -116,7 +116,7 @@ While software engineers construct the environment itself, often the workflows a
 
 Labs will go through human data contractor firms, who we will touch on shortly, who are looped in for their input on specific task creation. Contracts typically last at least a quarter and can be part time or full time. Contractors design tasks, write expected solutions, specify reward signals, and in some cases, grade model solutions. These reward signals can be in the form of rubrics, the writing of which can also involve contractors, or strict verifiers. These are the sort of experts that would be contracted to help build evals like GDPval.
 
-![](https://substackcdn.com/image/fetch/$s_!lCmR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44e8dce0-9fc7-4835-bd97-ac730132e885_1880x802.png)
+![](z-images/4bfa19d5c88a4e809265bfddbea9ff93.webp)
 
 Data processing pipeline from OpenAI. OpenAI has a private internal platform for contractors, named Feather, which data is processed through. Image Source: OpenAI
 
@@ -130,7 +130,7 @@ Revenue for these providers is mostly concentrated around western labs like Anth
 
 Chinese VC firms are actively trying to stand up Chinese data foundry competitors so they can fully serve the local ecosystem at cheaper prices than western ones. Most Chinese labs are still early to scaling RL: Qwen is currently spending around 5% of their pre-training compute on post-training. Successful homegrown data foundry business will drastically accelerate the transition, compute permitting, of course.
 
-![](https://substackcdn.com/image/fetch/$s_!qotS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F70e2bbd2-5bd8-4410-aace-24fef73f4e63_1606x1003.png)
+![](z-images/c770da76ae2d9b090cf7ceefd5aac49c.webp)
 
 Source: Aboda.ai, SemiAnalysis
 
@@ -138,7 +138,7 @@ In the case above, contractors provide full solutions with explanations. Contrac
 
 Firms like Mercor are also producers of a significant amount of grading rubrics, which can be used in a variety of different domains. Currently, most rubrics are written by humans, though there are some companies, like the LLM Data Company, trying to have models write grading rubrics. This can be done through, for example, connecting performant models to highly reliable MCPs to extract information to then be used in a structured rubric.
 
-![](https://substackcdn.com/image/fetch/$s_!GqlC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0265b727-8cc7-4774-98f9-023dea365b99_1493x1744.png)
+![](z-images/3c96570cbd5d986b6fff042baddb0e0d.webp)
 
 LLM Generated Rubric. Source: The LLM Data Company
 
@@ -162,7 +162,7 @@ We believe OpenAI buys from a smaller pool of vendors than Anthropic, though the
 
 They outspend the labs because they have many parallel areas they are trying to scale. ChatGPT Agent sees heavy use of UI Gyms. The model which won IMO Gold, a version of GPT-5.1 Codex Max, benefited from large amounts of math and code data. The consumer version sees a mix from all the programs in addition to targeted post-training around behaviour.
 
-![](https://substackcdn.com/image/fetch/$s_!Mzol!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec316bd5-13f2-4f91-971e-62102e1570ab_1446x840.png)
+![](z-images/5c5ff352964e785b6ce40168a9653c31.webp)
 
 Sample answer from the IMO winning model. Source: OpenAI
 
@@ -184,7 +184,7 @@ In the long run, though, how useful should we expect these models to be? Is the 
 
 There has been much speculation around the automation of jobs, particularly white collar work, due to AI. An interesting datapoint against this hypothesis can be found in OpenAI’s GDPval paper. OpenAI’s found that human experts were faster and finished tasks for a smaller cost than they would otherwise. With rising capability, humans were augmented, not automated.
 
-![](https://substackcdn.com/image/fetch/$s_!szHY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd48cf181-b0d4-4e01-af41-d3768ea66d19_1130x1100.png)
+![](z-images/cbd465526cfd1133912fb83d59b07492.webp)
 
 Source: OpenAI. SemiAnalysis data point is reflective of the speed and cost improvements gained through being a SemiAnalysis customer.
 
@@ -194,7 +194,7 @@ As another example, before the AI hype, many predicted that radiology will be au
 
 Radiology turned out to be more complicated than just scans.
 
-![](https://substackcdn.com/image/fetch/$s_!1l6B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50035824-6960-41dd-a500-980d0bc38d14_1140x925.png)
+![](z-images/1724b97ef12b9670241dd4da71261831.webp)
 
 Source: Works In Progress
 
@@ -206,7 +206,7 @@ Regardless of capabilities, there are some barriers to adoption. This includes b
 
 Agents can also be blocked from major sites, with this dynamic playing out between ChatGPT Agent and Amazon.
 
-![](https://substackcdn.com/image/fetch/$s_!hEdn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F29d60d24-7f6b-4aba-87bb-eb38e3bdd036_1016x380.png)
+![](z-images/f4f913b3b02a3d824131f17d31ca0a88.webp)
 
 Source: SemiAnalysis
 
@@ -232,7 +232,7 @@ In practice, the service has fallen short. We believe it is unstable and too exp
 
 In the longer term, this will change. OpenAI’s is targeting large enterprises who can spend millions, and in the aggregate, the labs will capture most of the revenue. For OpenAI, this will be done through the “Strategic Deployment” team, whose goal is to work directly with a customer to build custom models. OpenAI was early to bet on this service as an enterprise use case, and **enterprise** growth outpaced consumer in 2025 for the company.
 
-![](https://substackcdn.com/image/fetch/$s_!kiYf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc103b69d-c1f2-4a3e-8780-abd93fb63602_1040x995.png)
+![](z-images/da8c1b78cdc6edc269a578c6e949f0e9.webp)
 
 Source: OpenAI
 
@@ -254,13 +254,13 @@ The goal is to create a closed-loop RL systemwith rewards grounded in physical e
 
 This way, subagents handle what they are good at and general LLMs can be used for orchestrating. Orchestration may also extend to physical tools, like characterizing materials, for example.
 
-![Fig. 1](https://substackcdn.com/image/fetch/$s_!Tibh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67ec8066-bec8-4d85-afb9-0c08b0b62bf2_936x670.png)
+![Fig. 1](z-images/cefcbed404fc0a99084cccab89777d5a.webp)
 
 Sample existing closed loop system. Source: Wang et al, 2025
 
 This process of testing ideas through increasingly high-fidelity methods to derisk experiments before running them in a lab maps roughly onto a graduate student’s typical workflow.
 
-![](https://substackcdn.com/image/fetch/$s_!nwQx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F38ce44d5-ee80-4656-9a39-4b1a91873de6_1460x666.png)
+![](z-images/0413f38a79833e647f1ef92c52bb710c.webp)
 
 Periodic’s closed loop system. Source: Rohan Pandey.
 
@@ -268,13 +268,13 @@ Open-source models can be used as a starting point and mid-training can be done 
 
 In highly specific scientific domains, mid-training will lead to higher quality models after post training. Meta, in their recent code specific model, found that the benefits of mid-training extended even after other stages (e.g., SFT) were applied. Meta used 1T tokens for mid-training for a recent model, but we expect OpenAI to be using somewhere between 5-10x more.
 
-![](https://substackcdn.com/image/fetch/$s_!DVxi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F949e444d-605d-44bc-ab24-8b39d9b00554_1460x471.png)
+![](z-images/bf6e10c670100ac196cb2626d4eec294.webp)
 
 Source: Meta
 
 An example of data that it added into the mid-training stage is environment trajectories from previous runs. These are the collected rollouts that were generated when a previous version of the model was undergoing RL.
 
-![](https://substackcdn.com/image/fetch/$s_!nZ31!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7ea859aa-bfe3-44a3-b203-8a6785c66335_1077x913.png)
+![](z-images/45efc2cc0027fc4586419727153d46b2.webp)
 
 Source: Meta
 
@@ -306,19 +306,19 @@ Scientific experiments can vary wildly in time required for completion. In biolo
 
 ![A screenshot of a computer
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!0_LC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F31e4836d-b56b-4d50-b74a-c3119c191f47_937x296.png)
+AI-generated content may be incorrect.](z-images/cad83ce4e1ebd5de670c16e199e8c610.webp)
 
 Source: Nvidia, TogetherAI, SemiAnalysis
 
 One way around this would be to reward the model’s steps, not just its result. This rewards the model’s process and thinking, as opposed to just the final action. While it can be difficult to correctly identify what a “correct” step looks like, it can be approximated through the use of rubrics. In fact, this is exactly how OpenAI grades problems on open ended research tasks in a recent eval, Frontier Science, which measures a model’s ability to perform scientific research tasks. In practice during experiments, tasks can be split into individually rewarded ones that shrink down the grading time horizon.
 
-![](https://substackcdn.com/image/fetch/$s_!HRMu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbebca705-7e8a-491b-bd76-887242074973_1067x1008.png)
+![](z-images/9166a40493f3dedfc1ac14bd70e17199.webp)
 
 Source: OpenAI
 
 Long rollouts are also terrible for GPU utilization, which is why many of the labs have been utilizing methods like in-flight weight updates. Here, weights are exchanged and straggler rollouts continue with stale KV Caches. This allows for training to continue while straggler rollouts finish. The result can yield a 2x improvement on the amount of iterations for the same wall clock time.
 
-![](https://substackcdn.com/image/fetch/$s_!orCV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0eb2e6c0-c770-46c2-9a0a-ad28f85be884_1345x1120.png)
+![](z-images/690a2d0cb148b07fc2af51553c926724.webp)
 
 Source: Piché et al, 2025
 
@@ -328,7 +328,7 @@ Though pharma also posses large swaths of closed source datasets. We expect to s
 
 ![A diagram of a machine
 
-AI-generated content may be incorrect.](https://substackcdn.com/image/fetch/$s_!zcwh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2aed2777-73b3-4f31-b8ab-6683aa0b73fc_937x527.png)
+AI-generated content may be incorrect.](z-images/5db8667287acad90888a52ccddcdf035.webp)
 
 Source: Novo Nordisk
 

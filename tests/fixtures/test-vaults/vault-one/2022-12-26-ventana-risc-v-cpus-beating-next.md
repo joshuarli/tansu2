@@ -20,7 +20,7 @@ Ventana may be the most impressive due to the team, go-to-market strategy, and p
 
 Ventana’s team has a long and storied history in the industry, including building the first 64-bit Arm core. Much of that team flowed through the progression of Veloce, Applied Micro, Macom, and Ampere Computing. Ventana has raised $108M total, with enough runway to get to their 2nd generation CPU.
 
-![](https://substackcdn.com/image/fetch/$s_!p194!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fed52fb00-479c-4e17-91f2-201cde61ecf1_4000x2250.png)
+![](z-images/21c87f979394cc3a83a835e2e0d5d4cc.webp)
 
 Cutting right to the chase, Ventana’s Veyron VT1 per core performance is comparable to the Neoverse V series from Arm (V1 in [Amazon Graviton 3](https://www.semianalysis.com/p/amazon-graviton-3-uses-chiplets-and) and V2 in [Nvidia Grace](https://www.semianalysis.com/p/meta-discusses-ai-hardware-and-co)) but at higher clocks. Furthermore, it scales up to 128 cores within a 300W power budget. This is comparable performance to what [AMD’s Genoa can do](https://www.semianalysis.com/p/amd-genoa-detailed-architecture-makes). Ventana can also achieve twice the core counts of Amazon’s Graviton 3, albeit with higher power.
 
@@ -28,7 +28,7 @@ Another important distinction is that AMD Genoa and Graviton 3 are measured in s
 
 Before we go into technical details, we want to highlight the strength of the go-to-market strategy. Ventana isn’t only targeting the crowded bog-standard general-purpose CPU market. Ventana is making CPU chiplets that can be integrated into general-purpose CPU markets and various heterogeneous computing use cases. Furthermore, Ventana does not make the IO Die, but partners with firms on them. This unlocks a very different integration and partnership strategy. IO dies can either be taken off the shelf from existing providers or cheaply developed with mostly licensed IO and NOC IPs.
 
-![](https://substackcdn.com/image/fetch/$s_!1xYx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe306ed89-017f-423f-a28e-d471fbff1114_4000x2250.png)
+![](z-images/105a04fac6b64eb6b128bb50384f0c09.webp)
 
 The customers can focus on their use cases and domain-specific accelerators. These domain-specific accelerators can be integrated directly on the IO die, and/or a chiplet can be developed. This strategy could work very well for the hyperscaler market as that is the exact business model they want.
 
@@ -36,13 +36,13 @@ Companies like Amazon, Microsoft, Google, Meta, Alibaba, Tencent, and Baidu don�
 
 There is no need for every hyperscaler and ASIC to reinvent the wheel. They can buy and integrate high-performance CPU chiplets at a much lower cost than fully packaged CPUs. Furthermore, when it comes to heterogenous compute and customized designs, the CPU chiplet design allows them to keep power and latency between the accelerators and the CPU minimal.
 
-![](https://substackcdn.com/image/fetch/$s_!Eads!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fec6aacc3-dccd-4132-9442-fbe79189f38c_4147x2348.png)
+![](z-images/5f3bf77a3657b3b59a58d4159a5729c3.webp)
 
 An IO die can be developed and taped out on TSMC’s 16nm for ~$20M. An IO Die on TSMC 7nm can be designed and taped out for ~$30M. This IO die can scale from a couple of memory controllers and a few PCIe ports to a massive amount of IO and networking. The incremental costs to create a new processor with the exact mix of high-performance CPU and dedicated ASICs integrated into the IO die or as a chiplet is relatively low, given the volumes of hyperscalers.
 
 This business model can extend to the processors for 5G ORAN in the DU and RU, edge AI, edge gateway, in-memory databases, app/web hosting, storage servers, load balancers, caching appliances, content delivery networks, etc. [As Moore’s Law crawls](https://www.semianalysis.com/p/tsmcs-3nm-conundrum-does-it-even) and workloads become more targeted by processors, the engineering costs for application-specific accelerators will soar unless an open chiplet approach is taken.
 
-![](https://substackcdn.com/image/fetch/$s_!nctX!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3ecf9c69-4f1c-408d-8780-d62e6e1cbb8b_4000x2250.png)
+![](z-images/24be40d002261b28c32b6e1867eaf715.webp)
 
 Ventana utilizes the Open Compute Project’s ODSA BOW standard for packaging. We know of at least 4 different compute-type chiplets and at least 3 different IO-related chiplets being made within this standard. While UCIe will be the winner in the long term, in 2023 and 2024, BOW will be more prevalent in the short term. Ventana is planning for future versions to support either BOW or UCIe. The chiplets / IO Die all uses the AMBA CHI protocol, which is much lower latency and power than [CXL over UCIe.](https://www.semianalysis.com/p/cxl-deep-dive-future-of-composable)
 
@@ -50,7 +50,7 @@ While AMD does have a chiplet CPU architecture and a custom silicon business, th
 
 Ultimately, Ventana's strongest selling point is bringing the incremental cost of custom silicon to tens of millions of dollars from the current hundreds. When hyperscalers only buy some chiplets from fabless firms and the rest of their silicon directly from the foundries, the incremental cost per deployed package for a specific workload is significantly lower.
 
-![](https://substackcdn.com/image/fetch/$s_!wjhK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb6fcc8db-9f12-4d12-9346-739d8ba25bd8_4000x2250.png)
+![](z-images/61d055f9ce8bcfd9c8cd21fc21272c91.webp)
 
 The core itself is pretty impressive. It is an 8 wide out-of-order core with a massive 512KB instruction cache. Each core comes with a 3MB L3 cache slice, although this is easily configurable in future versions. The goals with the core are quite simple but tough to achieve. Maximum single-threaded performance, maximum core density, efficient scaling across cores, and predictable/low latency across cores. It is noteworthy that VT1 does not have the RISC-V Vector extensions, as those were ratified too late into the design process. VT2, a relatively fast follow-on, will have the RISC-V Vector extensions.
 
@@ -58,17 +58,17 @@ The chiplet Ventana has developed scales up to 16 cores. One would think a chipl
 
 The economics are impressive. Ventana is also designing its CPU to make it easier to port across process nodes. For example, Ventana has a partnership with Intel’s IFS accelerator program, and we believe they will tape VT2 on Intel’s 3 or 18A process technology.
 
-![](https://substackcdn.com/image/fetch/$s_!06k4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5df7dd7-08c7-49a3-8f75-dffe8a4c9204_3954x2830.jpeg)
+![](z-images/85e9f2b5c947c8a1516e2b277cab8b12.webp)
 
 The picture above shows one of the multiple packages designed for Ventana VT1. This specific IO Die contains significant networking capabilities such as ethernet, packet processing, and [CXL 2.0](https://www.semianalysis.com/p/cxl-deep-dive-future-of-composable) into a DPU. Ventana uses BoW for their chip-to-chip interconnect with this IO Die with 1Tbps in each direction. That link has less than 2ns of latency from the PHY-to-PHY connection with <0.5pj/bit transferred between the IO die and CPU core chiplet.
 
 Compared to Intel’s Sapphire Rapids, this is [lower latency (<2ns vs. 2.4ns) and lower power (<0.5pj/bit vs. 0.5pj/bit)](https://twitter.com/dylan522p/status/1560861377589399554?s=20&t=ra8zXMl1TzusEnn366DYNw), and compared to AMD’s Zen 4, this is lower latency and [much lower power (<0.5pj/bit vs. <2pj/bit)](https://www.semianalysis.com/p/amd-genoa-detailed-architecture-makes). The Ventana chiplet package is a [standard 8-2-8 organic substrate](https://www.semianalysis.com/p/the-future-of-packaging-gets-blurry) with [130um microbumps](https://www.semianalysis.com/p/advanced-packaging-part-1-pad-limited), whereas Intel had to use [their more costly EMIB advanced packaging](https://semianalysis.substack.com/p/advanced-packaging-part-2-review) with [55um microbumps](https://www.semianalysis.com/p/advanced-packaging-part-2-review) to achieve those results.
 
-![](https://substackcdn.com/image/fetch/$s_!D3ke!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F89c81507-fd4a-4e98-a48d-fc6bb34894d8_4000x2250.png)
+![](z-images/f84d4ef7e13c147505d38a13250840fb.webp)
 
 With the right go-to-market strategy and impressive performance, Ventana could be successful, but the software story is also a big part of the conversation. It took Arm a decade from announcing their push into server to getting deployed en mass. RISC-V will take a lot less time because the systems and software are more equipped to switch, but it is a big concern. Ventana knows this just as well as anyone else, where many members of the team experience exactly these teething pains as the first 64-bit Arm core and through their legacy to Ampere Computing.
 
-![](https://substackcdn.com/image/fetch/$s_!xuN7!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Faf5dd6b4-7a27-4481-8806-c03f0e7132c7_7187x3473.png)
+![](z-images/01a9e61757b8bd8a6963cc9ad9a4ddd8.webp)
 
 Ventana claims to have a ton of software for many applications ready, especially on the low-level, storage, and networking applications. Ventana has been able to work on software without its own silicon by using SiFive-based development boards, which have ISA compatibility. In that sense, the challenge of bringing the server software ecosystem to RISC-V started 3 years ago. If Arm took 10 years, and RISC-V is on an accelerated timeline that will take half the time, then potentially, we are only a couple of years away from RISC-V in the datacenter.
 
@@ -82,7 +82,7 @@ At the end of the report, there will also be a table with technical specificatio
 
 SiFive is the most well-known and successful firm in the RISC-V space. They have already sold a business unit to AlphaWave for $175M. SiFive has a very impressive valuation and a ton of runway. They are going in everything [from next-generation TPUs to NASA’s scalable space chiplets.](https://www.semianalysis.com/p/sifive-powers-google-tpu-nasa-tenstorrent) Suffice to say, SiFive has a ton of cores, and [X280 is the one we get the most excited about.](https://www.semianalysis.com/p/sifive-powers-google-tpu-nasa-tenstorrent) We will *only* put the X280, P470, and P670 in the core table below. SiFive’s sea of different CPU cores are regularly updated despite a pretty lean operation. This is due to their use of Chisel.
 
-![](https://substackcdn.com/image/fetch/$s_!vfer!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd51edef2-f2f1-4fec-a322-d648e76c14f7_1762x716.png)
+![](z-images/2aefaffbbf75c9c696b2f75eb9055e6f.webp)
 
 Chisel is a hardware design language used for designing CPUs. It is a relatively new language whose entire goal is to make it easier for hardware engineers to create complex designs quickly while still allowing them to achieve high performance. Chisel is written in a Scala-like intermediate language to create Verilog-based register-transfer-level (RTL) descriptions of digital circuits. From here, the process is similar to any other chip design flow. The Verilog is synthesized into a lower-level, gate-level description. This gate-level description is then used to create a physical layout of the circuit and create the actual chips.
 

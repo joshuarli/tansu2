@@ -20,7 +20,7 @@ This is where Ultra Ethernet Consortium comes in. Standardizing many improvement
 
 The Ultra Ethernet Consortium (UEC) Release Candidate 1 is a [substantial document, spanning 565 pages that was publicly released today](https://ultraethernet.org/wp-content/uploads/sites/20/2025/06/UE-Specification-6.11.25.pdf). This contrasts sharply with the Ultra Accelerator Link v1 specification, which prioritizes simplicity. UEC, by its very nature, is not simple; a direct read-through is nearly impenetrable. However, a structured approach can reveal its underlying logic.
 
-![](https://substackcdn.com/image/fetch/$s_!aGPU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F552392af-1423-4473-a26f-e14b286a0bd6_361x825.png)
+![](z-images/87d1a049c866a42c2a5ff56590f2d9fa.webp)
 
 Source: UEC Alliance - Ultra Ethernet Consortium
 
@@ -32,13 +32,13 @@ UEC operates under the Linux Joint Development Foundation (JDF) and functions as
 
 A crucial building block is Open Fabric Interfaces, also known as [LibFabric](https://ofiwg.github.io/libfabric/). Understanding LibFabric unlocks the first 120 pages of the UEC specification. LibFabric, an already widely adopted API, standardizes NIC usage. Existing bindings or plugins connect LibFabric to high-performance networking libraries such as NCCL (from Nvidia), RCCL (from AMD), MPI (the OG supercomputing parallel communications), SHMEM (shared memory), and UD (unreliable datagram) – styles of networking required in AI or HPC superclusters.
 
-![](https://substackcdn.com/image/fetch/$s_!YPC2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc5b3593e-5ae4-4f73-aee3-294f814b06ec_891x426.png)
+![](z-images/b6eb6965373c0d7055b96c734f30a029.webp)
 
 Source: OFI - https://ofiwg.github.io/libfabric/ - UEC is the OFI provider, a NIC with acceleration.
 
 UEC is not an entirely new invention. Instead, it builds upon an established open standard, defining an interoperable framework for its operation. Interoperability is clearly a core concern, as UEC places no constraints on how the API functions with a CPU or GPU. LibFabric revolves around command queues for data transmission, reception, and special values, alongside completions. This queue-based NIC interaction has been standard for over 40 years. UEC does not dictate how these queues are constructed with your GPU or CPU but mandates support for all LibFabric commands: sending, receiving, RDMA, atomics, and special commands. Over 100 pages detail how these commands are encapsulated in message headers, ensuring compatible execution across different vendor NICs. This effectively transitions LibFabric from a software stack on the CPU/GPU to a hardware-accelerated command set on the NICs.
 
-![](https://substackcdn.com/image/fetch/$s_!WDR6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60a18744-ad60-4300-be99-d19cba6f0dfa_450x301.png)
+![](z-images/f6cb07b4ea5d7b5002f864e0dafc20af.webp)
 
 Source: AMD - AMD is among the many supporters expected to interoperate on UEC networks
 
@@ -52,7 +52,7 @@ The specification truly becomes interesting in section 3.2, which details the pa
 
 UEC is explicitly designed for "fat" networks, characterized by multiple, equidistant, and equally fast paths between FEPs. A common modern implementation is a "rail" configuration. In a UEC network, this might involve a NIC with, for instance, an 800GbE interface comprising 8 lanes of 100 Gbps. At the switch rack, each of these 8 lanes connects to a different switch, perhaps 8 switches, each with 512 x 100G ports. This allows up to 512 FEPs to connect to these 8 ports. The UEC NIC is designed to "spray" messages across all 8 lanes by assigning an "entropy" number which hashes the lane assignment at each choice of output lane in the path. The sender chooses an entropy value to balance use of pathways to fill the full 800 Gbps throughput. Crucially, CPU or GPU applications remain unaware of this complexity; they simply queue messages via LibFabric, and the NIC handles the "magic of rails".
 
-![](https://substackcdn.com/image/fetch/$s_!ce1V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb5ef2118-f658-41ca-9545-cd6ab2c9dbed_2560x925.png)
+![](z-images/805d460a5dc17f9b5ce04079193ed5bd.webp)
 
 2 rail example: Pink Rail and Yellow Rail networks have same topology. Source: SemiAnalysis
 
@@ -74,7 +74,7 @@ Section 3.6 introduces UEC-CC, the congestion management system—optional, but 
 
 This mechanism is critical because the receiving FEP (one or more per NIC) is responsible for pacing senders. With datacenter round trip times (RTTs) of only a few microseconds, senders have a very short window of data they can transmit without receiving an ACK. The receiver decides how many new packets are granted, allowing senders to be paused within microseconds, generally preventing losses. The receiver gathers rich traffic condition information from ECN flags, distributed across multiple lanes and traffic classes, giving it both individual credit counts and an overview of all arrivals. It communicates its decisions to senders via ACKs and a special Credit CP command.
 
-![](https://substackcdn.com/image/fetch/$s_!iicg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3b7e8e8a-f955-4ac8-9b7c-85b5d0b22f10_2560x754.png)
+![](z-images/83ea6ab02208767190e53c52069d48a2.webp)
 
 Flow control between endpoints with a multilayer network. Source: SemiAnalysis
 
@@ -120,13 +120,13 @@ General interoperability must be checked, including not just “it works” but 
 
 Ultra-Accelerator Link's spec is less than half the length of UEC's, even though written with similar care. The Broadcom Scale-Up Ethernet description is careful but informal, a mere 20 pages, and assumes what it describes is simple and obvious.
 
-![](https://substackcdn.com/image/fetch/$s_!xS-l!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F804d9545-92ab-49ee-923f-136942e59a9a_885x604.png)
+![](z-images/002d7557d120e18d1f7a08651abdcee5.webp)
 
 Source: AMD/UALink - Ultra Accelerator Link focuses on the middle
 
 Both UALink and SUE focus exclusively on ScaleUp, akin to Nvidia NVLink. They support only a single switch layer and up to 1024 ports (i.e., GPUs or xPUs). This is significantly more limited than UEC's goal of scale-out networks with multiple switch layers and tens of thousands of endpoints. All three specifications assume an AI or HPC cluster with rail networks that maximize switch radix.
 
-![](https://substackcdn.com/image/fetch/$s_!gXNR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcccf2891-d743-45e0-b3cc-5853fbbacb27_1092x460.png)
+![](z-images/64964b09f0123aabd0f9c8354d04e5aa.webp)
 
 Source: Broadcom - SUE (at Broadcom) aims at single-level rail switch networks
 

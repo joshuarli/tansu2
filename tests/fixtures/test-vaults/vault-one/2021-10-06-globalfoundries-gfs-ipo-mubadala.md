@@ -8,23 +8,23 @@ description: "In 2008, Mubadala, the Abu Dhabi government owned sovereign wealth
 
 In 2008, Mubadala, the Abu Dhabi government owned sovereign wealth fund assisted AMD in divesting their manufacturing assets and spinning them off. They were compensated with a combination of direct payments, investments in AMD, and shares in the new firm, GlobalFoundries. The divestiture was a multi-year journey, but by 2012, AMD was completely detached financially. AMD was still tightly intertwined due to the WSA (wafer supply agreements), but that is a story for another day. The GlobalFoundries spin-off helped keep AMD alive, but for Mubadala it became an endless money pit.
 
-![](https://substackcdn.com/image/fetch/$s_!jUOW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff32190b9-b860-49ab-9d49-1892068c94ba_940x375.jpeg)
+![](z-images/088d437f624f27dc1ad93a1ee785c6fa.webp)
 
 Mubadala paid $1.8B for Chartered Semiconductor, a large Singaporean Foundry in 2009. Mubadala continuously pumped in money on R&D, capital expenditures to keep fabs up to date on tooling, and even acquiring a new one. They eventually bought IBM’s chip making business, more on this later. Through the years, many missteps, bad investments, and business failures have caused them to lose over $22.4B! Many of the riches from oil money were squandered away, and now Mubadala is hoping to recoup the investment. GlobalFoundries is having an initial public offering. The valuation isn’t set in stone quite yet, but previous rumors stated $25B. That number very likely could be too high.
 
 GlobalFoundries still retains [many critical intellectual properties and is even the best in some niches](https://semianalysis.substack.com/p/globalfoundries-is-a-leading-edge), but the business itself doesn’t seem to be well run. It runs at an astonishingly low utilization rate of 84% in 2020. At the same time TSMC and UMC ran over 95%. Utilization rates are incredibly important in semiconductor manufacturing as there are an incredibly high number of fixed costs such as clean rooms, process R&D, and semiconductor capital equipment. These costs don’t change much as you ramp production up and down, so a well-run fab will run as close to 100% as possible all the time. While fabs like TSMC and UMC will go from making insane amounts of money to a moderate about when the cycle turns from shortage to oversupply, GlobalFoundries will look a whole lot uglier. The timing of going public is not a coincidence.
 
-![](https://substackcdn.com/image/fetch/$s_!b1sa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6bd17276-f00a-4475-a38c-b8d182149374_1024x675.png)
+![](z-images/6f01ebd0bbc6bf23f05806dc2ef75a32.webp)
 
 Most of the IPO filings has a lot of waffling about how GlobalFoundries is the only American and European based foundry. It talks about the critical importance of having foundries in Europe and USA, and that being based outside of East Asia is critical. GlobalFoundries argues the west needs another champion as TSMC, Samsung, UMC, and SMIC are not based out of the west. This was a bit odd because the majority of GlobalFoundries production by wafer volume is in Singapore. These fabs in Singapore come from the Chartered Semiconductor acquisition. In addition, GlobalFoundries has committed to spending $4B capital expenditures on the Singapore fabs.
 
 This contrasts with the New York location receiving a commitment for $1B of capital expenditures. Despite all the talk about a western supply chain, the money isn’t where their mouth is. In addition, they are under contract to sell their East Fishkill 300mm fab to On Semiconductor for $430M. SemiAnalysis agrees that the west needs to promote supply chain diversity, but GlobalFoundries is bending the truth here.
 
-![](https://substackcdn.com/image/fetch/$s_!I0gB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7d9a9c69-e369-4829-9f9e-833309e502f8_1720x598.jpeg)
+![](z-images/0f780c4073c442f2973697984fd87d73.webp)
 
 GlobalFoundries really leans heavy on the subsidy angle by talking up being a big benefactor of the upcoming subsidies from the US and EU. What they tried to wave away is that they are heavily dependent on subsidies right now. In 2019, 2020, and the first half of 2021, GlobalFoundries received $698M of government grants related to the construction, operation of fabs alongside employment and R&D. This is an eye-popping number. It looks even worse when you consider GlobalFoundries financials.
 
-![](https://substackcdn.com/image/fetch/$s_!zhsa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc4127ded-abf3-4758-a814-a6baa4d35a0a_1024x675.png)
+![](z-images/c20851ab10581a34a03f610a46c1c470.webp)
 
 There are a lot of caveats to the numbers listed here. There are some distortions from items such as the sale of the ASIC business that was acquired from IBM to Marvell. Another major distortion is an accounting change related to revenue recognition for wafers and cancellation terms. Despite these, the general trend can be seen very clearly. GlobalFoundries has lost money of every wafer they sold due to their low utilization rates. In 2018, their utilization rate was 80%, 2019 was 70%, and 2020 was 84%. We suspect the first half of 2021 was higher, which is what finally pushed GlobalFoundries into the green on gross profit.
 
@@ -32,7 +32,7 @@ That wasn’t the only element that pushed them to make the first gross profit i
 
 The other item we want everyone to note is related to R&D. R&D has fallen from $926M in 2018 all the way to nearly half at $476 in 2020. Much of this can be attributed to the cancellation of leading-edge development, slowdown of FDX development, and other cost optimizations.
 
-![](https://substackcdn.com/image/fetch/$s_!2APQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9eac87b5-4c1d-4213-b9a3-c58d566168e6_1024x209.png)
+![](z-images/4ad4aef082b0d2d46f0a0ad2f1495843.webp)
 
 That leans perfectly into the IBM saga. IBM paid GlobalFoundries $1.5B to take over their chip making unit. This deal intended to be a long-term partnership where GlobalFoundries manufactured leading edge Power and Z series chips for IBM. IBM got to unload their manufacturing assets (read liabilities) and a lot of expensive obligations. Of course, GlobalFoundries dropped out of the leading-edge race, so IBM sued. IBM wants their $1.5B payment back on top of $1B of damages. This suit may have grounds, but it also may have gone a step too far with IBM claiming fraud. This was thrown out, but the rest of the case will proceed. Without having seen contracts, we can’t be sure how this plays out, but there is a possibility that GlobalFoundries ends up on the hook with a big bill.
 
@@ -40,15 +40,15 @@ In total, GlobalFoundries received $1.5B, the East Fishkill fab which is being s
 
 While on the topic of divestitures, GlobalFoundries also exit the MEMS business by selling Fab 3e to Vanguard for $236M. GlobalFoundries committed to building a $10B fab in Chengdu China for FDX technologies, but that never panned out and it was cancelled. GlobalFoundries took an estimated $34M loss on this operation failing.
 
-![](https://substackcdn.com/image/fetch/$s_!Tdms!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdcfceaa9-65cb-4e91-a57f-4c029d3aa162_1023x481.png)
+![](z-images/0e7848d3e1a3077dbe7dcfc0841d3311.webp)
 
 GlobalFoundries provided total wafer counts alongside revenues which allowed us to notice a terrifying trend. GlobalFoundries has decreasing wafer average selling prices. This means each wafer they sell is cheaper year over year. This flies in the face of the narrative that GlobalFoundries has espoused of primarily operating in specialized chips. We had to do some adjustments to account for the sale of the ASIC unit and accounting changes. Roughly 92% of GlobalFoundries revenue coming from wafer sales. The rest comes from photomask manufacturing, sourcing services, and post-fab manufacturing services such as packaging. One such example is of Tenstorrent, who gets their production, photomasks, and packaging done by GlobalFoundries. [Check out the analysis of their unique architecture.](https://semianalysis.substack.com/p/tenstorrent-wormhole-analysis-a-scale)
 
-![](https://substackcdn.com/image/fetch/$s_!pvZL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F669d7ff2-1c15-4698-8864-dec8ab9cc863_1024x481.png)
+![](z-images/efc8e35d68947d83b3b837c3fd4a13e8.webp)
 
 GlobalFoundries compared their Wafer ASPs to other firms. This comparison is meant to emphasize that GlobalFoundries operates in more specialty technology areas. There aren’t any 7nm or lower wafers like TSMC, but they also are not selling only old planar technologies like UMC and SMIC. Unlike UMC and SMIC, GlobalFoundries has a FinFET node. GlobalFoundries is also the leader in RF Silicon-on-Insulator solutions for communications, Fully Depleted Silicon-on-Insulator solutions (FD-SOI/FDX) and Silicon Germanium (SiGe) devices. GlobalFoundries is also attempting to pitch themselves as a leader on Silicon Photonics (SiPh).
 
-![](https://substackcdn.com/image/fetch/$s_!rwkz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F84d59c54-563f-44b7-aa69-7cb99c436521_1024x407.png)
+![](z-images/56d28c277a9de5c8e4696c4f0402634d.webp)
 
 GlobalFoundries has taken advantage of the chip shortage by extending their wafer supply agreements. They have racked up $19.5B in commitments with $10B in 2022-2023. Some of the companies in this list include Qualcomm, MediaTek, NXP, Qorvo, Cirrus Logic, AMD, Skyworks, Murata, Samsung and Broadcom. SemiAnalysis has deciphered the list with specific chip details for clients.
 
@@ -56,7 +56,7 @@ It’s no secret that AMD is and was their largest customer, but they have been 
 
 GlobalFoundries is also attempting to talk up that they are the single source for many chips. This is a good measure of how sticky business is with GlobalFoundries. 47% of wafer volume was single source in 2018. In 2020 that has risen to 61%. That also means at least 39% of the business that GlobalFoundries has is only due to low pricing and second sourcing reasons. It will be very difficult for margins to be increased on this portion of business. On the flip side, when looking at design wins, that number rises dramatically. 69% of designs in 2018 were single source only. In 2020, out of the 350+ design wins, 80% were single source. This lends credence to the idea that GlobalFoundries is becoming a specialty fab.
 
-![](https://substackcdn.com/image/fetch/$s_!WdYZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb2c67d7-3d24-4271-8130-0895e58496f3_1024x485.png)
+![](z-images/55d3e16b477688ab6dc9419778b9b5a3.webp)
 
 GlobalFoundries believes they can serve nearly 3/4ths of the foundry market with their 6 core technologies.
 
@@ -69,11 +69,11 @@ GlobalFoundries believes they can serve nearly 3/4ths of the foundry market with
 
 Astute readers may notice that many of these most promising technologies are SOI based. Most of that supply comes from Soitec. They are the worlds largest supplier of SOI wafers, and they have technological dominance here. They have slowly raised their market share from 33% to 42% to 52% at GlobalFoundries from 2018 to 2020. We expect it to continue to raise from here. SOI wafers are very expensive, and so taking dominating market share in GlobalFoundries fastest growing segments is going to bring a lot of future revenue for Soitec.
 
-![](https://substackcdn.com/image/fetch/$s_!WIzj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F24018efb-1462-4fc5-a3fa-229dc1c44fd0_1024x180.png)
+![](z-images/00d03129416b4b4829cac1c2c22e0f3d.webp)
 
 Despite all this interesting and frankly cool technology, GlobalFoundries isn’t even expecting to profit enough for the foreseeable future to issue dividends. We love when companies have outlets to invest, but when GlobalFoundries are not in the intensive race for Moore’s Law and is cutting R&D, we are skeptical. GlobalFoundries doesn’t have large capex plans relative to revenue either. Does management expect it to just tread water for the foreseeable future? Or worse, continue to burn buckets of cash?
 
-![](https://substackcdn.com/image/fetch/$s_!sYFV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F069e2f51-2f0e-4d85-bc0a-23b65bbb284c_1024x657.png)
+![](z-images/37aaf05959da720f13e09d38960c6e54.webp)
 
 Mubadala has spent over $22.4B on GlobalFoundries, through paid in capital and a loan which will be converted to paid in capital. In essence, all this profit from their other investments and oil has been funneled into a company that has lost money nearly every year. Despite all the claims of optimizing the company, divesting assets, realigning teams in engineering/sales/marketing, cutting R&D/capex, and even in the greatest semiconductor boom of all time, GlobalFoundries is still not turning a net profit or at full utilization rates.
 

@@ -26,7 +26,7 @@ This is the first time any vendor has ever released information that can be dire
 
 We compared Cerebras’s results to those from [Mosaic ML](https://www.mosaicml.com/blog/gpt-3-quality-for-500k). Mosaic ML is a machine learning training orchestration platform. They are cloud and hardware agnostic, utilizing multiple public clouds, and their own internal datacenters to minimize training costs. Mosaic is a good basis for an optimized GPU stack that is also easy to use because the user doesn’t have to deal with many of the typical hardware-related and scaling issues.
 
-![](https://substackcdn.com/image/fetch/$s_!7hRy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6b85936b-aaa5-4ca3-ad71-6b9057905f23_1685x438.png)
+![](z-images/a80997d8a2de4db5d9a82cb9bafe222b.webp)
 
 Cerebras and Nvidia are cost equivalent for training a large GPT style model!
 
@@ -38,7 +38,7 @@ Mosaic ML also says they can do better now with some clever techniques that they
 
 The other thing you may have noticed in the table is the days to train. While we did include this, we wouldn’t look too closely at it. Training time is a function of how large of a cluster of chips you can obtain. Scaling with GPUs and Cerebras Wafer Scale chips seems to be near perfect, ignoring the batch size issues. The first handful of results from Cerebras only uses 4 CS-2, with the largest using all 16 CS-2.
 
-![](https://substackcdn.com/image/fetch/$s_!_92y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcd750ee4-ce50-4c21-8fcc-5b65c08003a6_1366x617.png)
+![](z-images/a62280f1c38dca1123404668b0656930.webp)
 
 Cerebras also mentioned that long sequence lengths are "GPU impossible". That's simply not true. Multiple LLM companies and tech giants can do long sequence lengths with standard GPUs just fine, with very little effort.
 

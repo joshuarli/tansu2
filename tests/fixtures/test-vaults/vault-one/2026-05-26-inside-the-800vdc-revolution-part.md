@@ -6,7 +6,7 @@ author: "Nicolas Bontigui"
 description: "Four-Phase 800VDC Transition, Power Rack Economics, SST, Equipment Content/MW Build, Supplier Implications"
 ---
 
-![](https://substackcdn.com/image/fetch/$s_!rZmH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fafd57882-4edd-4d08-9ee9-923b94c43063_1672x941.png)
+![](z-images/f41b9e017b37086f066764bc1f44b112.webp)
 
 *We’d like to thank [DG Matrix](https://www.dgmatrix.com/), [Novos Power](https://www.novospower.com/), and [Aran Industries](https://aranind.com/) for their contributions and insights during the preparation of this deep dive.*
 
@@ -16,7 +16,7 @@ Across every major industry conference in the first half of 2026, our research t
 
 Every architectural shift looked excessive at first. Operators spent decades keeping water and leaks out of the data hall, then GPU thermal density made running coolant right up against the precious silicon unavoidable. Each shift happened anyway, because physics and the economics of compute do not negotiate. 800VDC is next, and the logic is the same. Tokens per watt are what matters.
 
-![](https://substackcdn.com/image/fetch/$s_!xgBF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fafb0968c-ec14-46c2-ad51-3b9165c49b52_1363x807.png)
+![](z-images/db445ddfacce719a95e693cbc126eaab.webp)
 
 Source: Nvidia, InferenceX
 
@@ -24,7 +24,7 @@ As GPU clusters become increasingly dense, with Kyber Ultra approaching 660kW pe
 
 We have been tracking this transition through our [InferenceX](https://inferencex.semianalysis.com/) and [Industrials Models](https://semianalysis.com/industrials-model/), which provide a bottom-up view of where efficiency gains materialize and which equipment categories absorb the disruption. The [Industrials Model](https://semianalysis.com/industrials-model/) includes a dedicated 800VDC module, building up from individual accelerator architectures to a top-down view of 800VDC penetration, MW adoption, and market sizing for equipment like the power sidecar and Solid-State Transformers (SSTs).
 
-![](https://substackcdn.com/image/fetch/$s_!glMB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F63ebd75b-d4b1-40d4-8f0a-69cb97a6c04c_1890x1377.png)
+![](z-images/a6528896b7f28959e14021173f42c968.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -34,7 +34,7 @@ The 800VDC revolution is set to dramatically change the revenue trajectory of ce
 
 This has enabled us to successfully call out both winners, and companies inaccurately pictured as losers by the market, before anyone else. If you are wondering whether UPS systems have a place in upcoming 800VDC distribution, what is the market opportunity for SSTs, or which suppliers are leading this transition, stick with us.
 
-![](https://substackcdn.com/image/fetch/$s_!b5qE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcc242d80-4fda-4460-ae14-822da54d6dd3_1890x1267.png)
+![](z-images/14397b571ff75620362e66b6f257eba6.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -50,7 +50,7 @@ This works at today’s rack power levels, but starts to fail as rack densities 
 
 - **Copper becomes unmanageable at 48–54 V.** A 1 MW rack at 48–54 VDC needs ~200 kg of copper busbars. At 1 GW scale, that’s hundreds of tons of copper — brutal on cost, weight, installation complexity, and routing space.
 
-![](https://substackcdn.com/image/fetch/$s_!jBHJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F888d7c8f-07ee-4e2e-a3fd-5d3cd58e0bbc_756x416.png)
+![](z-images/5a8d35973894cfebe0342f7c3462415e.webp)
 
 Source: Microsoft
 
@@ -62,7 +62,7 @@ At the end of the day, 800VDC is the physics enabler for 2,300W TDP chips and 60
 
 Bigger scale-up worlds mean denser racks, denser racks mean 600kW envelopes, and 800VDC is what makes those envelopes possible.
 
-![](https://substackcdn.com/image/fetch/$s_!Zdju!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe57debbb-8027-4f5a-8825-9812ecaf7d98_454x196.png)
+![](z-images/376877358d7b3793429720a557a2a5d5.webp)
 
 [Source: SemiAnalysis AI Networking Model](https://semianalysis.com/ai-networking-model/)
 
@@ -70,19 +70,19 @@ Bigger scale-up worlds mean denser racks, denser racks mean 600kW envelopes, and
 
 The move to 800VDC is a complex metamorphosis that rewrites the entire electrical architecture, introduces new safety standards, requires new regulatory frameworks, and, most importantly, forces operators to make very different strategic choices about when to walk away from their legacy AC distribution.
 
-![](https://substackcdn.com/image/fetch/$s_!jFxb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fba1a5d07-d348-4dbc-acdb-bb2ef8c27688_1386x773.jpeg)
+![](z-images/4e0543adfb552104b5812a6b8d7ef84f.webp)
 
 Source: SemiAnalysis
 
 We frame the 800VDC transition as progressing through four distinct phases. Phases 1 and 2, starting in late 2026 / early 2027, retrofit the existing AC distribution into 800VDC at the rack level via the power rack. Phase 1 is the early-mover stage, driven by hyperscalers willing to pay up for future-proofing and efficiency gains. Phase 2 kicks in once 800VDC-native systems begin shipping at volume. Phase 3 rewrites the electrical architecture itself, taking 800VDC distribution facility-wide. Phase 4 is the end state, built around new pieces of equipment that promise to render much of today’s electrical stack obsolete.
 
-![](https://substackcdn.com/image/fetch/$s_!tcxZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2b3214ee-66d2-4c17-87c7-1ae1b2ebd33a_783x581.png)
+![](z-images/aaeda06d9fdd95c6a201311bd5ef1557.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
 The result is a progressive adoption curve for 800VDC. We expect total incremental capacity powered by 800VDC to reach ~39GW by 2030. Through Phases 1 and 2, all addressable capacity is served by sidecars, since the underlying facility is still AC-distributed and the conversion happens at the power rack. The mix inflects in 2029 as facility-level HVDC distribution becomes viable and the first 800VDC-native sites come online, shifting the conversion stage upstream from the rack to the SST or MV rectifier.
 
-![](https://substackcdn.com/image/fetch/$s_!1nEP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F06965a33-fc34-4e70-9ca4-ec5107ff8c84_1890x1377.png)
+![](z-images/20e719264e9ccdd250cd75854dfdb2a3.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -90,7 +90,7 @@ Before diving into how the datacenter layout changes, we encourage readers to re
 
 ### Phase 1 (2026/2027): The White Space Retrofit
 
-![](https://substackcdn.com/image/fetch/$s_!-slb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9428195a-e4da-4064-9dce-82254fc383ba_1386x520.png)
+![](z-images/0b285278c6fb71ffab7c23c4627030f9.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -106,7 +106,7 @@ At the facility level, Medium-voltage AC enters the grey space and is stepped do
 
 The change occurs when we get closer to the IT racks. Instead of feeding 415V directly into in-rack power supply units, the AC feed now terminates at a standalone 42U cabinet named the HVDC power rack deployed at the row level.
 
-![](https://substackcdn.com/image/fetch/$s_!cziM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb13f6b9c-67c4-472c-b235-268f356b708d_746x505.png)
+![](z-images/726f032b989288819570b3f52338e6c0.webp)
 
 Source: SemiAnalysis
 
@@ -118,17 +118,17 @@ It is worth looking in more detail into the building block that underpins Phases
 
 **Key components that are commonly found in a sidecar power rack:**
 
-![](https://substackcdn.com/image/fetch/$s_!Rwv1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6be0c5cc-7516-4959-a99d-6e86bba0340a_753x370.png)
+![](z-images/0c9ae3ae50f4cd64f346d73f23f98365.webp)
 
 Source: Rittal
 
-![](https://substackcdn.com/image/fetch/$s_!of_7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F187fa976-8d37-4386-beff-0b2fd1d02e6f_2944x1757.png)
+![](z-images/2d0f047541038b6807c5799940dcb47b.webp)
 
 Source: SemiAnalysis
 
 But the sidecar concept did not emerge fully formed. It evolved through several OCP rack and power specification versions. The earlier iterations (ORv2 at 12V, ORv3 at 48V, and the HPR V1/V2 variants that pushed single-rack 48V designs up to ~190 kW with liquid-cooled busbars and upgraded 72 kW power shelves) are covered in [our Datacenter Anatomy series](https://newsletter.semianalysis.com/p/datacenter-anatomy-part-1-electrical). Here we focus on the versions directly relevant to 800VDC: the disaggregated sidecar designs where the voltage transition occurs.
 
-![](https://substackcdn.com/image/fetch/$s_!J4tE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2c026fa-22b4-4d72-a550-cbbba77f7f4d_1386x1383.png)
+![](z-images/32301e7006c73a419ea4a1998e12f608.webp)
 
 Source: OCP
 
@@ -136,13 +136,13 @@ Source: OCP
 
 HPR V3 is really where power and compute separate into distinct racks, the genesis of the “sidecar” concept. PSU and BBU shelves move into a dedicated 50VDC side power rack connected to the IT rack through horizontal busbars at the top and bottom of both. Both remain ORv3 HPR standard form factor. Power capacity tops out at 300 kW, limited by the horizontal crosslinks and the air-cooled vertical busbar inside the power rack.
 
-![](https://substackcdn.com/image/fetch/$s_!zQs3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faf3f744a-495f-41a7-9407-01c8fbb6d814_2079x1186.jpeg)
+![](z-images/945ec19c9ec35455213969f73868c3ea.webp)
 
 Source: OCP
 
 The insight is putting power conversion hardware in a rack optimized for power, with appropriate cooling, safety, and serviceability, rather than cramming it into a rack optimized for compute. The V3 power rack can be serviced independently, shrinking the blast radius of power-side failures. But V3 still distributes at 50VDC, which means busbar currents remain high (6,000A at 300 kW) and the crosslinks become the bottleneck.
 
-![](https://substackcdn.com/image/fetch/$s_!QYag!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c9fbf5b-dec2-4c3a-8a59-246c47722fcf_1386x865.png)
+![](z-images/e9262751ff24c5b0545e27ebc4ddb128.webp)
 
 Source: SemiAnalysis
 
@@ -163,7 +163,7 @@ HPR V4 is the version that bridges the OCP HPR lineage into the HVDC era. It mak
 
 V4 effectively represents the “pre-Diablo” state of HVDC sidecar design, developed primarily by Meta’s rack and power team. It proved the concept of disaggregated HVDC power delivery but was not yet a multi-vendor, multi-hyperscaler specification.
 
-![](https://substackcdn.com/image/fetch/$s_!H_K7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0b644aa9-b60e-41f9-9612-e756f8651db0_529x508.png)
+![](z-images/d9cfc15d8e40f1289322c2114814efac.webp)
 
 Source: Meta
 
@@ -192,7 +192,7 @@ Even within Diablo 400, the three co-authors diverge meaningfully. Meta runs 600
 
 Besides, an alternative sidecar topology uses an LV-input SST in place of the conventional rectifier-plus-PSU stack, like DG Matrix’s Interport Cell Series.
 
-![](https://substackcdn.com/image/fetch/$s_!UY3s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec9a3b5c-9d6c-49a5-8536-e4443d2ba29c_2079x1163.png)
+![](z-images/ffcfb16c58564c22fc1758e585ce21f8.webp)
 
 Source: DG Matrix
 
@@ -200,7 +200,7 @@ Source: DG Matrix
 
 The HVDC power rack is the headline new-equipment cost in the early retrofit phases. We estimate the ASP for the Power Rack to reach $400-500k per unit, roughly 10x the ~$40k ASP of standard AC power-rack equipment. On a deployed-MW basis, that lands near $500k/MW.
 
-![](https://substackcdn.com/image/fetch/$s_!2wzH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4827b631-2344-4950-ac59-ddb351fddc57_1890x1215.png)
+![](z-images/e4efb90a6759d84a4dd77c1387d4d4a2.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -210,7 +210,7 @@ The HVDC power rack is the headline new-equipment cost in the early retrofit pha
 
 We expect sidecar TAM to peak at ~$11B in 2028 before declining as facility-level 800VDC takes share in Phase 3. We assume a power rack content of $0.5M/MW.
 
-![](https://substackcdn.com/image/fetch/$s_!J-8p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F780dbef4-3c5d-46ef-a6b8-0ea6df09d65b_1681x1268.png)
+![](z-images/138f72122af90ef88bcb54007124f925.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -218,19 +218,19 @@ We expect sidecar TAM to peak at ~$11B in 2028 before declining as facility-leve
 
 The white-space retrofit represents a clear cost uplift in electrical content/MW versus current architectures, because Phase 1 essentially deletes nothing. We estimate the delta at roughly +$400-500k/MW, with the HVDC power rack accounting for the large majority.
 
-![](https://substackcdn.com/image/fetch/$s_!QjL3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bfbb2a8-ebbc-4484-823b-2854ef77494b_1386x966.png)
+![](z-images/4f40d4c994ff20edb6e6d60d06ca5b36.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
 ### Phase 2 (2027/2028): The Turning Point Comes with 800VDC-Native Compute
 
-![](https://substackcdn.com/image/fetch/$s_!CJQE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F43db1495-028a-4d04-b48b-0463c4250d43_1386x520.png)
+![](z-images/802c29add8dd7550b4c6b88cb88fc372.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
 Phase 1 was the start of the retrofit era. The real inflection point comes with the arrival of 800VDC-native systems. At that point, 800VDC stops being a future-proofing pilot and becomes a mandatory transition forced by physics and rack density. Operators electrifying the Kyber Rack have no AC fallback at the rack inlet, and we expect 800VDC penetration to spike sharply in this window. Because 800VDC-native silicon will land before facility-level 800VDC distribution is ready, the retrofit phase persists.
 
-![](https://substackcdn.com/image/fetch/$s_!0GfO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F16cce021-8310-4ce7-baf5-ccaf9c299d3b_1102x956.png)
+![](z-images/88698c6547759da09319851989dceac0.webp)
 
 Source: SemiAnalysis
 
@@ -238,7 +238,7 @@ Architecturally, Phase 2 looks very similar to Phase 1. Both retrofit the white 
 
 Earlier Kyber designs shown at OCP depicted a DC-DC PSU sidecar adjacent to the compute rack, but we now believe this approach is unlikely to be adopted at scale. A standalone sidecar consumes more aggregate floor and rack space than integrating the conversion stage into the blade itself, and the power module form factor has proven feasible within the compute tray’s volume constraints.
 
-![](https://substackcdn.com/image/fetch/$s_!av5u!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e19955d-8e2b-4f82-87d6-3c0c578f5961_736x416.png)
+![](z-images/5390988a19e634113eb720a6ed2e40fb.webp)
 
 Source: Delta
 
@@ -252,13 +252,13 @@ Traditional central UPS systems are probably the most contested piece of infrast
 
 As we covered in our [electricals deep dive note](https://newsletter.semianalysis.com/p/datacenter-anatomy-part-1-electrical), Google and Meta already took this aggressive approach years ago, bypassing the central monolithic UPS with “distributed UPS” architectures. In their architecture, AC power is distributed directly to the rack, the in-rack PSU handles AC-DC conversion, and rack-level Li-Ion Battery Backup Units (BBUs) provide the short-duration bridge power. This removes the central UPS’s AC-DC-AC conversion pair and improves efficiency, while also cutting in half the total battery capacity needed for the datacenter, since there is no longer a need for both an A-side and a B-side UPS.
 
-![](https://substackcdn.com/image/fetch/$s_!i_Xl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F478dd6fe-aa09-4cc9-b956-bc4ad2c256fe_1162x858.jpeg)
+![](z-images/0553fed2a04bef252c16f5562ed9f5ad.webp)
 
 Source: SemiAnalysis
 
 That said, managing distributed UPS or battery backup is more operationally challenging than running a traditional central UPS. We expect operators other than vertically integrated hyperscalers like Google and Meta to keep the Low Voltage UPS in place for redundancy and load fluctuation management, at least in the medium term.
 
-![](https://substackcdn.com/image/fetch/$s_!J_x_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F136f5799-ef84-44c5-98cc-05f58a3cc3de_1386x907.png)
+![](z-images/914d01d49c79ebfbf238852c325adc1c.webp)
 
 Source: SemiAnalysis
 
@@ -266,13 +266,13 @@ This is especially true for colocation providers, which prioritize flexibility a
 
 We expect different operators to adopt different architectural approaches to backup, and new alternatives are emerging. Medium Voltage UPS, operating at 4.16-34.5 kV directly at the grid connection point, is functionally similar to the rack-level Battery Rack but centralized at the grid interface rather than distributed across the data hall. ABB’s HiPerGuard runs at 98% efficiency and is already deployed at Applied Digital’s 400MW North Dakota AI campus. ON.energy was awarded few weeks ago a US patent that protects their MV double-conversion UPS architecture. The second alternative is facility-level BESS, which as we covered [in our deep dive](https://newsletter.semianalysis.com/p/ai-training-load-fluctuations-at-gigawatt-scale-risk-of-power-grid-blackout) operates at megawatt-to-hundreds-of-megawatts scale, provides 1-4 hour duration backup, and increasingly replaces or shrinks the diesel generator.
 
-![](https://substackcdn.com/image/fetch/$s_!PuWp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6fffb5d1-f88b-4f32-b529-370fe3077a0d_814x886.png)
+![](z-images/d0cc91beb4784537bede3dae610ec05d.webp)
 
 Source: United States Patent and Trademark Office
 
 ### Phase 3 (late 2028/2029): Redesigning the Electrical Architecture With a Centralized Rectifier
 
-![](https://substackcdn.com/image/fetch/$s_!UUBz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60b224eb-a095-46df-ac6b-36f6d93cebcc_1386x520.png)
+![](z-images/f2690ddddf16a8dfb180bf3eb60bda56.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -288,7 +288,7 @@ The grey space splits in two. MV transformers connecting the datacenter to the g
 
 In Phase 3, the AC switchboard’s function of splitting one feed into multiple protected outputs has to land somewhere. Three product categories are positioned to absorb it: (i) MW-scale rectifiers built with multiple outputs and integrated SSCB protection per output, turning the rectifier into its own distribution device; (ii) DC busway with breaker-equipped tap-off boxes that hold protection in the distribution medium, once DC-rated tap-offs with adequate arc interruption mature; and (iii) prefabricated grey-space pods that bundle rectifier, switchboard, and busway into a factory-built skid, particularly for hyperscaler procurement.
 
-![](https://substackcdn.com/image/fetch/$s_!OSbD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc35cd9ca-fc1d-414b-969c-0f3cf1019c76_985x1223.jpeg)
+![](z-images/b532418c1c9d84327e78c1da9d35f516.webp)
 
 Source: SemiAnalysis
 
@@ -296,7 +296,7 @@ Major AC switchboard incumbents (Schneider Electric, ABB, Eaton, Vertiv) have no
 
 Once the power is rectified, a DC busway replaces AC busway for hall-level 800VDC distribution. In traditional AC datacenters, busway systems have modular plug-in connections called tap-offs that branch power to individual racks or rows, similar to outlets on a power strip. You can add or remove these while the busway is energized. A feeder-only busway, by contrast, has no intermediate openings or tap-offs. Power enters at one end and exits at the other end or at predefined termination points.
 
-![](https://substackcdn.com/image/fetch/$s_!ktH_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2fb08c19-b4b8-4824-a168-0633a067f566_1386x629.jpeg)
+![](z-images/afafac40ef02cdd707fb7cf3213b51cf.webp)
 
 Source: SemiAnalysis
 
@@ -304,13 +304,13 @@ We expect early 800VDC deployments to use feeder-only busway because, essentiall
 
 To address these challenges, multiple proven protection paradigms exist at this voltage class from adjacent industries. The likely implementation combines multiple approaches, one being new generations of circuit breakers. More specifically, following the same solid-state trend already underway with Solid State Transformers, Solid State Circuit Breakers (SSCBs) are now being adopted. SSCBs use SiC or GaN to interrupt fault current in microseconds. Because semiconductor switches can simply stop conducting with no physical contact separation, there is no arc to extinguish in the first place.
 
-![](https://substackcdn.com/image/fetch/$s_!XxnJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37d8190a-4fb4-4530-8b1c-aba5bfebb503_907x518.png)
+![](z-images/f4714efd72aac0cd6637047c101279a8.webp)
 
 Source: VIOX
 
 The new-generation circuit breakers are already commercialized today. ABB has the Emax 2 (1500V DC) used in solar, energy storage or marine, as well as the SACE Infinitus (solid-state, 1000V/2500A, datacenter adaptation with Nvidia announced October 2025). LS Electric has the first UL-certified DC molded case circuit breaker at 1500V, listed for datacenter applications.
 
-![](https://substackcdn.com/image/fetch/$s_!mgEm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc91e91c3-5245-4fbc-97f2-fda76ea549ea_907x372.png)
+![](z-images/2749868769cdf331214ac8fddf4e2a91.webp)
 
 Source: ABB
 
@@ -328,7 +328,7 @@ The battery rack shares most of the power rack’s components and functions. The
 - **BBU shelves:** provide ride-through power during supply interruptions.
 - **Supercapacitors (optional):** absorb microsecond-to-millisecond transients that batteries are too slow to catch. They sit between the DC bus and the BBU, handling fast voltage excursions.
 
-![](https://substackcdn.com/image/fetch/$s_!Enwp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F34d6f68c-9b87-41df-a49a-d2c3d56c1f31_1386x771.jpeg)
+![](z-images/799b0a778d773b42e258b653f0616076.webp)
 
 Source: SemiAnalysis
 
@@ -342,7 +342,7 @@ Current modules are rated at roughly 5.5kW. With Rubin Ultra and 800VDC architec
 
 Delta, at GTC 2026, went further at the shelf level: its new 110kW power shelves embed 80kW of BBU capacity each, totaling 480kW across a six-shelf rack. Higher rack power demands proportionally more backup energy per rack, and higher-wattage modules deliver that energy with fewer physical modules, preserving space in the power rack.
 
-![](https://substackcdn.com/image/fetch/$s_!rMjS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ce99f2b-349b-4d73-9e4f-f59ceebcf67d_817x466.png)
+![](z-images/28a10269b547d5992f2dcd44372d48dd.webp)
 
 Source: Infineon
 
@@ -358,37 +358,37 @@ Generator architecture is already loosening at some hyperscalers independently o
 
 One reasonable question to ask is why power is rectified at the LV level and not directly from MV? The answer comes from semiconductor ratings. Rectifying from 13.8kV or 34.5kV requires devices rated above 10kV, which barely exist in commercial form today. That said, the gap is closing, and Wolfspeed’s 10kV SiC MOSFET has been commercially available as bare die since March 2026.
 
-![](https://substackcdn.com/image/fetch/$s_!IzqD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2b90ca4-19f8-4122-bf76-bdedbd15a5fd_455x336.png)
+![](z-images/8d13d24ccefc101398bbf242ba44a287.webp)
 
 Source: Wolfspeed
 
 The development of SiC MOSFETs above 10kV opens the door to a second evolution of Phase 3, where even the LV equipment drops out of the main power bus. Continuing the trend, this collapses additional conversion steps and brings new efficiency gains.
 
-![](https://substackcdn.com/image/fetch/$s_!oUo0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F326cfd75-b6d3-4761-a6f3-1aeb9cb39ced_907x420.png)
+![](z-images/a424079e0e62de63fab1457c2ddec843.webp)
 
 Source: Wolfspeed
 
 The end state of our HVDC timeline will push even further. Even though conventional rectifiers with series-stacked silicon devices can handle MV rectification, an emerging technology promises to do it in a much more efficient, compact, and faster way. That technology is our protagonist for the next chapter of our journey: Solid State Transformers.
 
-![](https://substackcdn.com/image/fetch/$s_!m__p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00ab48a9-5be0-4259-b897-652157d87f20_605x317.png)
+![](z-images/c6d189216dba26c8902d806b0cd9ac21.webp)
 
 Source: Infineon
 
 ### Phase 4 (>2029): SSTs, the End-State
 
-![](https://substackcdn.com/image/fetch/$s_!gyca!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd087f4a7-de52-454f-9e07-69816aed9df4_1386x520.png)
+![](z-images/6f330a85845668661d3b6f148cef9b24.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/https://semianalysis.com/industrials-model/)
 
 Finally, we get to the holy grail of DC power distribution: Solid State Transformers, or SSTs. These are a new category of power electronic devices that replace conventional iron-core transformers with high-frequency, semiconductor-based converters.
 
-![](https://substackcdn.com/image/fetch/$s_!mJOq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4372ece2-1a67-47c7-baa1-f25eb3a12c78_331x387.png)
+![](z-images/7bded96c841525d0de4e0673489a4f03.webp)
 
 Source: DGMatrix
 
 Phase 4 and its datacenter layout is very similar to Phase 3. The major change is that the SST replaces the LV AC-DC rectifier and low-voltage transformer with a single piece of equipment that converts directly from medium voltage to 800VDC. If we consider the ending of the previous section, the possibility of using a MV rectifies that rectifies directly from MV AC, the architecture is essentially identical.
 
-![](https://substackcdn.com/image/fetch/$s_!-cxL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb266777c-3ca3-4bed-8452-62503eb520d6_1386x773.jpeg)
+![](z-images/e9f26715840f0adce209c7c94a110295.webp)
 
 Source: SemiAnalaysis
 
@@ -400,7 +400,7 @@ An SST does the same job as the massive iron-and-copper transformers in every da
 
 The datacenter SST is a three-stage device. The input stage converts AC to DC, handling the dangerous medium-voltage level (13.8 to 45kV) using SiC MOSFETs rated at 3,300V or higher. The isolation stage is where the size reduction happens. A high-frequency transformer steps the voltage down while providing galvanic isolation between the utility / power-source and the datacenter. The output stage produces the final 800VDC that the distribution system needs, with no inverter required.
 
-![](https://substackcdn.com/image/fetch/$s_!7En1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F46fce799-3e1c-4c14-bdbb-6e758b9c8ceb_673x331.png)
+![](z-images/e1f3dd675cd1a64f87db01fabd0509cb.webp)
 
 Source: ETH Zurich
 
@@ -410,7 +410,7 @@ SSTs’ core value proposition is energy efficiency, which translates directly t
 
 SSTs are also dramatically smaller. A conventional transformer operates at 50 or 60 Hz and needs a massive iron core. An SST switches at 20,000 Hz or higher, shrinking the core by roughly 90%. That is where Infineon’s claimed 40x weight reduction and 14x size reduction (!) come from.
 
-![](https://substackcdn.com/image/fetch/$s_!YV78!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf7da904-41c4-4c9c-a180-68fbe8a1d67c_440x330.jpeg)
+![](z-images/f10e3b9c340beb7d7f92f960385de761.webp)
 
 Source: EENews
 
@@ -428,7 +428,7 @@ ETH Zurich’s comparative evaluation found that a line-frequency transformer pa
 
 The best public SST benchmark comes from ETH Zurich: 98% efficiency at 400kW in a 13.2kVAC-to-800VDC prototype presented at INTELEC 2025. Johann Kolar frames 98.0-98.5% as today’s state of the art for full-scale SSTs, with 99% as the next engineering target for datacenter units.
 
-![](https://substackcdn.com/image/fetch/$s_!_S1x!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a86f0e8-5162-4f44-9073-06b6648c1656_756x416.png)
+![](z-images/fca9c55245ca3617a49f82b29e8fd25a.webp)
 
 Source: ETH Zurich
 
@@ -438,7 +438,7 @@ Two data points suggest the scale-up is underway. Chinese trade press reports th
 
 ##### Vendor Landscape
 
-![](https://substackcdn.com/image/fetch/$s_!o5fP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3b95b712-76cb-4bbd-9459-45d71d908909_2838x2027.png)
+![](z-images/e4f1b95f13508a1f80ef86ddfee0119c.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -446,13 +446,13 @@ The vendor landscape is moving fast. DG Matrix (ABB-backed, Infineon SiC supply 
 
 Within the SST category, products are bifurcating along LV and MV input. DG Matrix and Amperesand are pursuing both, starting with LV-input SST skids (3.2-4.8 MW) that can be deployed today alongside existing AC distribution, and following with MV-input units as 3,300V-class SiC matures. Heron Power and Novos Power are concentrating on direct MV-input units that collapse the LV transformer and rectifier into a single device. Both paths converge on 800VDC at the output, but the LV path offers a shorter time-to-deployment at the cost of retaining the upstream MV-to-LV transformer.
 
-![](https://substackcdn.com/image/fetch/$s_!uVR4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff824cdb8-82ca-4971-9bfc-09504959cb20_2079x1169.png)
+![](z-images/613307e1890ece6d78cf79ae5534cc81.webp)
 
 Source: DG Matrix
 
 Novos Power claims a direct MV-to-800VDC SST with 50% smaller footprint and air cooling. On the incumbent side, Eaton acquired Resilient Power Systems in August 2025 for SST expertise. More than $320M flowed into SST startups in the twelve months ending March 2026.
 
-![](https://substackcdn.com/image/fetch/$s_!OYfg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb2f2021b-9ca6-46cf-9fa0-d8e7b6480ced_756x521.png)
+![](z-images/6bde79343bbfd8a87a1f7ae662ab10f5.webp)
 
 Source: Novos Power
 
@@ -460,7 +460,7 @@ Source: Novos Power
 
 The SST eliminates the LV equipment at ∼$0.55M/MW and the Phase 2 rectifier at ∼$0.20M/MW. At an estimated SST cost of ∼$1.0-1.5M/MW, we expect the first instances of SSTs to come at an upfront Capex premium over directly replaced equipment.
 
-![](https://substackcdn.com/image/fetch/$s_!OkLF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5b62e76-929d-457c-bebf-ed0e5b50778c_875x454.png)
+![](z-images/7df2bee342acce679991ac65438e8e64.webp)
 
 Source: Novos Power
 
@@ -472,7 +472,7 @@ On Phase 4 timings, this emerging technology is still in design phase, and we do
 
 By 2030, we expect SST TAM to reach ~$13B, capturing the demand displaced from the sidecar layer plus the incremental MV-to-800VDC conversion. We consider a content of $1.25M/MW. A portion of this opportunity is contested by MV rectifiers, but we expect SSTs to capture the majority share.
 
-![](https://substackcdn.com/image/fetch/$s_!jd8A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8448b6b6-c8fc-4378-84ad-67160b9401ea_1657x1250.png)
+![](z-images/bcb1d8851b4637efb33e6f2132746f86.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -482,7 +482,7 @@ By 2030, we expect SST TAM to reach ~$13B, capturing the demand displaced from t
 
 Total electrical content per MW stays in a $3.6-4.8M band across four of the five architectures we model. The main headline is a content migration from grey space to white space, and the resulting change in equipment mix.
 
-![](https://substackcdn.com/image/fetch/$s_!rhZU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd509581e-ad49-4ae5-9469-27d8f8abffb7_1890x1290.png)
+![](z-images/e5189705c6ce01065a9de65f2e32389a.webp)
 
 [Source: SemiAnalysis Industrials Model](https://semianalysis.com/industrials-model/)
 
@@ -520,7 +520,7 @@ Even beyond the code gap, daily reality may be harder. At 48V, a technician can 
 
 Flex, a major Nvidia manufacturing partner, has publicly advocated for in-depth hazard identification and safety training at 800VDC facilities.
 
-![](https://substackcdn.com/image/fetch/$s_!ENRR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa5461320-f56e-474f-b358-2d3da8a9bd43_907x290.png)
+![](z-images/f0949108d59d33ee8d06533432ca4dc9.webp)
 
 Source: Flex
 
@@ -530,7 +530,7 @@ Grounding cascades into protection-device count, fault behavior, insulation moni
 
 The Siemens/Nvidia paper “Protections for Data Centers Powered by Direct Current” identifies four options. A ±400V system can use high-resistance grounding (HRG), which tolerates the first ground fault and only requires fast interruption on the second, or solid grounding, which demands immediate clearing of any fault. An 800V monopolar system can float, with insulation monitoring on every branch, or run a solid-grounded return conductor.
 
-![](https://substackcdn.com/image/fetch/$s_!XLOp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c6cd4d7-a496-406f-961a-1a750f821b0b_907x436.png)
+![](z-images/8e29f46613ac1690ed6242e54fb5c8e8.webp)
 
 Source: Siemens, Nvidia
 
@@ -546,7 +546,7 @@ Beyond cooling, switchgear operating mechanism, lighting, fire suppression pumps
 
 That said, the supply chain is moving. The Delta CDU noted above is the leading edge, but most auxiliary categories (lighting, fire suppression, security) lack DC variants. With datacenter industrial capex heading toward >$400 billion in 2026 and electrical equipment at 30-35%, the incentive to develop DC-native products is growing.
 
-![](https://substackcdn.com/image/fetch/$s_!nWx_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd764419-81ad-4080-af93-2cd649efb4fb_907x216.png)
+![](z-images/228164cfea8610e863cde3df12b2625d.webp)
 
 Source: Delta
 
@@ -554,13 +554,13 @@ Source: Delta
 
 Innovation in DC distribution is ahead of codification, and standards still lag across most 800VDC equipment categories. Busway is a good example of progress. UL 857, the standard governing busway systems, originally capped coverage at 600V and defined values in root-mean-square (RMS). Edition 14, published in 2025, raised the ceiling to 1000VDC, and Edition 15 in development targets 1500VDC. Outside busway, certification paths remain absent, and every installation becomes a custom engineering project where the operator must qualify the product, negotiate conductor ratings, and obtain AHJ approval on a case-by-case basis.
 
-![](https://substackcdn.com/image/fetch/$s_!KYV0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6286e530-bd0e-4860-a636-292f1460e39a_687x330.png)
+![](z-images/2a919051400765dbc52af6691f240358.webp)
 
 Source: UL Solutions
 
 An OCP white paper targeting 2026 may help, and OCP working groups are coordinating with regulators and certification bodies to land initial standards by year-end 2026, but vendors are already presenting their prototypes. Delta demonstrated 800VDC air-cooled busway at OCP 2025, LS Electric exhibited DC power equipment at DistribuTECH 2026, and in almost all recent conferences the team has been present in, 800VDC-ready prototypes have been without a doubt the protagonists.
 
-![](https://substackcdn.com/image/fetch/$s_!tWgF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F846389b8-353b-4438-ada7-86da682a49b7_730x480.png)
+![](z-images/71e74a7a9efb5017d9800d97c2d5cd76.webp)
 
 Source: LS Electric
 
@@ -632,7 +632,7 @@ The alternative splits that 800V into two symmetric 400V rails around a grounded
 
 There’s also a tradeoff. That third conductor must be routed, terminated, and protected at every point in the power path. Across thousands of racks, it adds meaningful copper, connector hardware, and installation labor, and it complicates hot-swap connector design where the midpoint must make and break contact in a controlled sequence to avoid transient voltage spikes.
 
-![](https://substackcdn.com/image/fetch/$s_!mr9-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F423bf1e3-5ae5-44e6-9520-7aafe5525a60_907x510.png)
+![](z-images/1fd2130e8a6695651179659858f4dcdd.webp)
 
 Source: OCP
 

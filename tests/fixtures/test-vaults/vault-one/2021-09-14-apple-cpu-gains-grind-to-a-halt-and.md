@@ -10,11 +10,11 @@ Apple has been long hailed for having the best CPU cores for consumer workloads 
 
 Now with the A15, these gains are really slowed. Apple in general was very clammy about the A15 comparison in the new iPhone reveal. Instead of comparing it to the previous generation like they usually do, they opted to compare to ambiguous “competitors.” That’s great, but we are only a few months away from new Qualcomm, Samsung, and MediaTek chipsets.
 
-![](https://substackcdn.com/image/fetch/$s_!q8Wm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F426565e0-52bf-484e-b8d8-a0c943e31f18_1024x576.jpeg)
+![](z-images/834fdf1657480a92b1a2783b11cc1b03.webp)
 
 To quickly cover the specifications, it is a 2+4 core big little CPU and a 4 or 5 core GPU depending on whether its cut down in the regular iPhone or iPhone Pro/iPad Mini. The CPU is claimed to be 50% faster than the competition while GPU is claimed to be 30% or 50% faster depending on whether it is 4 cores or 5 cores. They are sticking with a 16 core NPU which is now at 15.8 TOPs vs 11 TOPs for the A14. There is a new video encoder and decoder, we hope it incorporates AV1 support. The new ISP enables better photo and video algorithms. The Pro models have variable refresh rate, so that likely necessitated a new display engine. Lastly, the system cache has doubled to 32MB. This was likely done to feed the GPU and save on power. SemiAnalysis also believes Apple did not move to LPDDR5 from LPDDR4X.
 
-![](https://substackcdn.com/image/fetch/$s_!9BQt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3cc6ccca-2fdc-47e8-83f1-191d491a6e74_1024x576.jpeg)
+![](z-images/a5423773bfa8ff99cb9f1c675799a1af.webp)
 
 There is a lot of difficulty with comparing to the previous generation A14, but the iPad mini does give us some help. They state the new iPad mini has a 40% faster CPU and 80% faster GPU versus the previous iPad mini which contained the A12. We had to do similar math last year as the iPad Air was announced with the A14 first and only compared to the previous iPad Air which contained the A12 as well. That announcement gave us us this quote below.
 
@@ -22,11 +22,11 @@ There is a lot of difficulty with comparing to the previous generation A14, but 
 
 The most important thing to note is that the CPU gains are identical from the A12 to A14 as they are from A12 to A15. The GPU gains are quite impressive with a calculated 38.5% improvement. This is larger than the A13 and A14 improvements combined.
 
-![](https://substackcdn.com/image/fetch/$s_!Tlza!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff2ab32e4-1fc2-4988-a78c-3df57ca173f7_1023x343.png)
+![](z-images/fd4e92e40ea073e8432fc727b262ab7a.webp)
 
 These are performance gains are generally paltry despite a huge increase from 11.8B transistors to 15B. Furthermore, with next year’s [A16 on the N4](https://semianalysis.substack.com/p/qualcommmediatek-will-beat-apple) process rather than N3, gains look to continue to slow. The [slowing of process technology, and especially SRAM](https://semianalysis.com/apple-a14-die-annotation-and-analysis-terrifying-implications-for-the-industry/) is going to be a hammer for the industry. Apple is clearly investing their transistor budget in the non-CPU aspects of the SOC. Fixed function and heterogeneous compute reign supreme.
 
-![](https://substackcdn.com/image/fetch/$s_!8hVj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9d32b3d4-1c3f-44df-89e9-e6306d368629_1024x676.png)
+![](z-images/9808bb4e821f739d64c16e2d90c9beb1.webp)
 
 It appears Apple has not changed the CPU much this generation. SemiAnalysis believes that the next generation core was delayed out of 2021 into 2022 due to CPU engineer resource problems. In 2019, Nuvia was founded and later acquired by Qualcomm for $1.4B. Apple’s Chief CPU Architect, Gerard Williams, as well as dozens of other Apple engineers left to join this firm. More recently, SemiAnalysis broke the news about [Rivos Inc, a new high performance RISC V startup](https://semianalysis.substack.com/p/rivos-inc-a-chip-off-the-old-block) which includes many senior Apple engineers. The brain drain continues and impacts will be more apparent as time moves on. As Apple once drained resources out of Intel and others through the industry, the reverse seems to be happening now.
 
@@ -36,15 +36,15 @@ Regardless of the paltry CPU gains and potential core architecture delays, Apple
 
 Edit: Adding statistics from initial benchmarks which further back the article.
 
-![](https://substackcdn.com/image/fetch/$s_!UQ5K!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F134fcad2-4be1-45bd-9239-470c60711261_1292x544.png)
+![](z-images/11f20ecf7bb45ff88dcf6e8146c71b8f.webp)
 
 Battery life increases are commiserate to increases in battery size for the most part. The stand out of course is the new LTPO panel and VRR in the Pro iPhones. There is also a bump in WiFi streaming, which indicates RF stack optimization and the improvements in the media block’s encoder/decoder that was mentioned above.
 
-![](https://substackcdn.com/image/fetch/$s_!H_ld!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F350ec3b7-8755-4a2f-9406-775cef7246f3_1507x1200.png)
+![](z-images/d1bcd1a22a603d4dc0e1fbb6fcbf3363.webp)
 
 CPU gains are 7.7% in single thread overall. In general increases are about the same as clock increases from 3GHz to 3.23GHz. The weak scaling on some of these indicates to me that LPDDR5 may not be present. Part of the motivation for this could be that the doubled LLC was sufficient and they didn’t need to spend the ~30% more on LPDDR5 vs LPDDR4x. Some tests may benefit from the LLC doubling to 32MB, others won't scale perfectly with clocks.
 
-![](https://substackcdn.com/image/fetch/$s_!hR5F!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9d36f0f7-af3a-4938-a37d-55d593aabeba_739x498.png)
+![](z-images/d492da80c323cc4fa9f71670f1c20aab.webp)
 
 The GPU comparison is the iPhone Pro Max vs Pro Max. This includes the full 5 core GPU in the A15. There is roughly a 50% increase in performance, but the SFFT sub score is particularly interesting. 150% would indicate doubled ALUs per GPU core. 130% is pretty dang close, and the 1 additional GPU core isn't enough for that alone. It's likely they went to 2xFP32 on the GPU.
 

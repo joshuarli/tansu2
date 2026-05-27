@@ -14,11 +14,11 @@ Moving to a different form of cabling is necessary to address this issue. The ob
 
 Today we will discuss the solution, active electrical cables (AEC), and their future use by Amazon, Microsoft, and Google. Furthermore, we will cover the competitive landscape of AEC and ACC products as well as the firms in the space, including Credo ( [CRDO 0.00%↑](https://substack.com/search/%24CRDO)), Astera Labs, Marvell ([MRVL 0.00%↑](https://substack.com/search/%24MRVL)), Broadcom ( [AVGO 0.00%↑](https://substack.com/search/%24AVGO)), Maxlinear ([MXL 0.00%↑](https://substack.com/search/%24MXL)), Point2, Spectra7, Macom ([MTSI 0.00%↑](https://substack.com/search/%24MTSI)), Semtech ([SMTC 0.00%↑](https://substack.com/search/%24SMTC)), and Alphawave Semi (£AWE.L). Lastly, we will discuss the SerDes IP used by these players.
 
-![](https://substackcdn.com/image/fetch/$s_!WVtv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F410efec6-d4d8-4474-b9a8-a7bf6d8a474f_1024x523.jpeg)
+![](z-images/47c73028bfcd52a197bd54e6a24f9b3d.webp)
 
 To further demonstrate the issue facing passive copper, imagine an [Nvidia HGX A100 server deployed by Microsoft for use by OpenAI to train large language models](https://www.semianalysis.com/p/the-ai-brick-wall-a-practical-limit). These contain 8 200G or 400G networking interface cards in a 4U server enclosure. As many as 8 of these servers are placed in a single rack, depending on rack power/cooling architecture, and connected to 1 or more networking switches. The cabling density is so high in the rack itself that it can be challenging to use passive copper simply due to cable thickness. This necessitates longer, more cluttered cable runs, leading to signal weakening, worse cooling, and increasing error transmission unless exceptional care is given to the design.
 
-![](https://substackcdn.com/image/fetch/$s_!crlk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4b1b60cb-97da-41f0-904b-9dea4882e593_800x501.jpeg)
+![](z-images/0f9b083eeea55c5a4488208846bb3f80.webp)
 
 Furthermore, similar issues could be faced even in standard CPU compute servers. When looking forward to the [AMD Genoa-based servers with 400G NICs](https://www.semianalysis.com/p/amd-genoa-detailed-architecture-makes) installed at Google, Microsoft, and Amazon, the same problem could crop up if the density of servers is high. For now, passive direct attached copper (DAC) still works outside extremely high-density plays, even for 4x100G. Some mitigation strategies include moving the top-of-rack (TOR) switch to the middle, dramatically reducing the average cable length, and enabling moving back to a more reasonable gauge DAC.
 
@@ -26,13 +26,13 @@ Andy Bechtolsheim, the founder of Sun and Arista Networks, always says that pass
 
 Even with this mitigation, there are other reasons to use AEC over DAC. Reliability is a crucial metric. In the current server rack architecture, a single TOR switch connects every server in a rack to the broader network. There is a single point of failure. According to this joint presentation by Microsoft and Credo, 2% of these to switches fail within the first three months.
 
-![](https://substackcdn.com/image/fetch/$s_!UG4N!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda953e10-e276-4594-bc66-5f6b27280de7_2330x1304.png)
+![](z-images/9ff95d034f8203ae74dc66e4ae431fe1.webp)
 
 If there is a failure in the TOR switch, then every server in that rack is now taken offline. SemiAnalysis believes [Amazon uses 32 1U Graviton 3 servers in a single rack](https://www.semianalysis.com/p/amazon-graviton-3-uses-chiplets-and). Each of these 32 servers contains 3 CPUs with 64 cores each. Each server shares a single NIC, which hooks into the TOR switch. This single point of failure at the TOR means that any failure brings down as many as 6,144 customers using m7g.medium or c7g.medium instances.
 
 There is some innovation happening to solve this problem. Dual ToR, Y cables, and X cables are all being developed to enable redundancy options for the NIC, TOR, or both.
 
-![](https://substackcdn.com/image/fetch/$s_!XS48!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4e9afdde-84fb-45c8-ac51-418a111b3510_3352x1186.png)
+![](z-images/798705e77f8ae6ad52207b9cdc9aebdf.webp)
 
 Now that we have the technology covered let’s talk about the specific uses of AEC in off-the-shelf AI hardware, custom AI hardware, and general purpose compute at 8x25G, 4x50G, and 4x100G by Amazon, Microsoft, and Google. We can also discuss the sourcing strategy. Furthermore, we will discuss NIC/Switch choices at these three firms. Lastly, we will also discuss the AEC product timing and SerDes IP licensing from Marvell, Astera Labs, and Alphawave. We can also share AEC and Optical ASPs for 4x25G, 4x50G, and 4x100G.
 

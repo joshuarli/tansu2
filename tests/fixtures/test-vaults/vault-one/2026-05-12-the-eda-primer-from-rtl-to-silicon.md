@@ -10,7 +10,7 @@ AI demand has been driving the explosion in compute over the past few years, res
 
 At the same time, the rush to bring compute into the market as quickly as possible has put design teams under immense pressure to compress timelines and speed up validation cycles from years to months. If you’re not fast, you will get lapped up and beaten by your competitors. Even a 3 month delay means billions of dollars.
 
-![](https://substackcdn.com/image/fetch/$s_!DnFl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73a3d545-201a-4fd6-80ed-3ac00bca8af5_2703x1307.png)
+![](z-images/55e65f655e71df5cb496aabdd764e451.webp)
 
 Source: Siemens
 
@@ -18,7 +18,7 @@ All this is happening while the engineering talent base is shrinking. Lucrative 
 
 One-third of the current U.S. semiconductor workforce is over 55. The pipeline of new graduates is nowhere close to filling that gap. Even Apple is actively funding education programs to encourage uptake in engineering. While their New Silicon Initiative has contributed to increasing interest and number of EE graduates, it barely moves the needle compared to the explosion in manpower requirements as transistor count grows at a Moore’s Law pace.
 
-![](https://substackcdn.com/image/fetch/$s_!g8Ki!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff0ad7783-01df-4ba1-8fe4-1c4375a7bb79_2341x1388.png)
+![](z-images/b95171ab09038e309d0155f0bf5ae949.webp)
 
 Source: Apple
 
@@ -28,7 +28,7 @@ After spending hundreds of millions of dollars on a new SoC design, there is no 
 
 As designs get more complex, testing is becoming more important to ensure all modules within a chip are interoperable and locally sound. **Verification**, the process of proving a design does exactly what it should before committing it to silicon, now consumes up to 70% of total project effort, depending on the design. Verification engineers are the fastest-growing job category in chip development, and the industry still cannot hire them fast enough.
 
-![](https://substackcdn.com/image/fetch/$s_!e_Z2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F34a09bc6-6476-44b3-a5b0-be76ccc0098d_2097x1390.png)
+![](z-images/a19549283db7e1a081faf1e916b17045.webp)
 
 Source: Siemens
 
@@ -44,7 +44,7 @@ Part 3 then assesses how AI is disrupting the EDA industry, covering the full ga
 
 ## A Brief History: From X-Acto Knives to the Big Three
 
-![](https://substackcdn.com/image/fetch/$s_!v-OM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbcb67b79-e19f-4d36-918f-0aff0aeebd7d_1413x1699.png)
+![](z-images/9a12cf1da5afe755662877f26f803e40.webp)
 
 Source: Intel
 
@@ -64,7 +64,7 @@ Compared to the early Rubylith days, logic synthesis not only speed up design, i
 
 Building a chip is a multi-year relay race with thirteen legs. Miss a handoff and the whole schedule slips, by months, or even by quarters. The diagram below lays out the full flow from a blank whiteboard to volume production. This article will go through the stages where EDA tools are used in the design flow.
 
-![](https://substackcdn.com/image/fetch/$s_!0MPX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F54f018b2-c963-4e6f-80fa-e3542fe93213_1236x1608.png)
+![](z-images/d6e39c1d1beb58025506762199662d9c.webp)
 
 Source: SemiAnalysis
 
@@ -98,7 +98,7 @@ These feasibility studies will then need to be greenlit by management before pro
 
 Closely tied to planning, the architectural layout is done alongside design space exploration. A high-level floorplan diagram sets the initial area bounding boxes for each logic and I/O block design team to work within. Each functional block is broken down into smaller elements that are easier to design and can be repeated multiple times across the design. These area budgets may increase over the design cycle based on features that may be added later that take more area. For example, a feature update in an Instruction Set Architecture (ISA) with additional computing elements to support new instructions. On the AI accelerator side, this equates to adding dataflow accelerators and doubling Matrix Multiplication engine widths.
 
-![](https://substackcdn.com/image/fetch/$s_!Ew9v!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F887679d9-bf01-4b33-a7d5-35acb41fef84_996x1105.png)
+![](z-images/7354890d71fd1065c139e1c0263cc245.webp)
 
 Source: Microsoft
 
@@ -114,7 +114,7 @@ With the architecture specified, engineers must then describe exactly what the c
 
 In the real world, transistors don’t switch instantaneously. There is a propagation delay where it takes some time for an input change to produce a stable output. This delay has two components: the gate delay (how fast the transistors themselves switch) and the wire delay (how long the electrical signal takes to travel along the metal interconnect to the next gate). At advanced process nodes, wire delay ends up dominating gate delay as transistors switch faster while datapaths lengthen with complex designs.
 
-![](https://substackcdn.com/image/fetch/$s_!MhPy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F55bdcfe0-6c33-4ce6-a893-019df77eed8e_891x1006.png)
+![](z-images/9d8cfc14ecc220a8bca36a49cc7484bb.webp)
 
 SRAM Cell Read Waveform. Source: MediaTek
 
@@ -150,7 +150,7 @@ As mentioned above, you will usually find more Verification engineers than any o
 
 The Verification flow takes two paths: Standard DV testing on one end, and Formal Verification with proofs on the other.
 
-![](https://substackcdn.com/image/fetch/$s_!OcX3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F81a13c32-0fda-4753-a0dd-cb83ba85c5cc_1724x643.png)
+![](z-images/fdd3615a04f648738f65e6800304409b.webp)
 
 Source: SemiAnalysis
 
@@ -198,7 +198,7 @@ While verification is often overlooked as the unglamorous side of chip design, i
 
 With the chip development process already taking years, software teams cannot afford to wait for silicon to arrive before beginning to write software for it. An operating system, firmware stack, and driver suite need to be substantially ready **before** the first chip comes back from the fab. To write software concurrently with hardware development, engineers rely on **Pre-Silicon Hardware Emulation**. The chip’s RTL design is mapped onto large arrays of FPGAs that execute the chips functions at 50MHz speeds. Programmable logic elements in the FPGAs are routed to roughly match the logical configuration of each design, enabling these emulators to run 1000x faster than pure software RTL simulation on a CPU.
 
-![](https://substackcdn.com/image/fetch/$s_!6cYE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6be9167d-88a8-4684-9776-4cda86191f6d_2408x1354.png)
+![](z-images/657d710bf84a954db92ba1e935295fd6.webp)
 
 Source: Synopsys
 
@@ -214,7 +214,7 @@ Logic synthesis transforms RTL code into a gate-level netlist, a connectivity ma
 
 On top of this, the synthesizer optimizes the netlist and works within the limits set by the design. It balances timing (can the gates in this circuit complete the operation within 4 clock cycles?), area (how many gates can I squeeze into the area set out by the architectural description?), and power (how many watts worth of power loss from the dynamic and static leakage of these logic gates?). These conflicting goals are somewhat mitigated by techniques such as minimizing repeated logic, sharing logic gates across multiple functions and retiming functions to reduce the load on critical paths. The tool explores thousands of alternative implementations to find the best tradeoff between these demands.
 
-![](https://substackcdn.com/image/fetch/$s_!D6FV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F280fc121-5c01-41ef-bf9e-03c5b3035e50_1735x822.png)
+![](z-images/a8a224208632d1edf080b80ab0bbad12.webp)
 
 Source: Synopsys
 
@@ -228,7 +228,7 @@ Equivalence checking is run at every major translation step, not just after synt
 
 ## Logic Gates
 
-![](https://substackcdn.com/image/fetch/$s_!cNdi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc587035c-febd-4239-adcc-49d130f87ec3_1618x989.png)
+![](z-images/b4dc5ced05b18cb14cc92527bc5dadde.webp)
 
 Source: SemiAnalysis
 
@@ -236,7 +236,7 @@ The synthesizer selects from a range of logic gates in a standard cell library, 
 
 ## Standard Cell Libraries
 
-![](https://substackcdn.com/image/fetch/$s_!CYJW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F196394b8-9d68-4512-bd67-dfb546d6c774_1195x655.png)
+![](z-images/d0ea2b80658874f195057c7075336698.webp)
 
 Source: TSMC
 
@@ -256,7 +256,7 @@ The standard cell library is the foundry’s main commercial interface with chip
 
 Physical Design tools must also account for the effects of the real world, namely on variability in manufacturing. A cell’s speed and power consumption may shift significantly depending on variations in Process, Voltage and Temperature (PVT). Libraries are therefore characterized across a range of PVT corners as shown below.
 
-![](https://substackcdn.com/image/fetch/$s_!xW48!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F54566545-4c0f-46fc-8573-730d6e609005_1684x1224.png)
+![](z-images/d2bad0799e9a953cfe8563e401c5ff2e.webp)
 
 Source: Keysight
 
@@ -268,7 +268,7 @@ Voltage is varied around the nominal supply. For example, 0.75 V nominal with co
 
 Standard cells define the active transistor layer at the bottom of the metal interconnect. The lowest metals, M0 and M1, are used within cells to connect transistors to pins. These are thin, high-resistance wires, fine for short distances inside a cell but not for routing signals across the die. Each alternating metal layer has lines that are perpendicular in orientation, with odd layers for north-south routing and even layers for east-west routing.
 
-![](https://substackcdn.com/image/fetch/$s_!T6bo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcf4678f7-16e3-483d-8c14-5db17f7fa3a3_2614x1220.png)
+![](z-images/7f07517fc6d76ce114de026981b980a0.webp)
 
 Source: Intel
 
@@ -289,7 +289,7 @@ Each PDK comes with the following information, each having their own industry st
 
 GDS (GDSII Stream) layout parameters may also be provided, giving an example of the full, exact physical layout for every transistor and metal layer, including diffusion regions, polysilicon gates, contacts, and vias. This file is what ultimately goes to the foundry for tapeout.
 
-![](https://substackcdn.com/image/fetch/$s_!vgQU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0aa1e31a-fe78-43b8-90ca-c104a01fad0d_1464x1022.png)
+![](z-images/fef01c4b9f0adc4cd7bbcf5227d0715f.webp)
 
 Source: Cadence
 
@@ -333,7 +333,7 @@ While the technology is over 20 years old, it has been crucial for education and
 
 ## Physical Design Tools and Functions
 
-![](https://substackcdn.com/image/fetch/$s_!9ZWE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93d54ced-1e7d-42b1-935d-69b94f88f722_1927x1051.png)
+![](z-images/3296d4b937deeb1e3ab75c776b1545e0.webp)
 
 Source: Synopsys
 
@@ -380,13 +380,13 @@ Before debugging can happen, silicon needs to be packaged to protect the fragile
 
 **Automatic Test Equipment** (ATE) from the likes of Teradyne and Advantest assesses every single chip coming off the production line, applying thousands of test vectors generated earlier by ATPG tools. **JTAG** debug interfaces within the chip provide direct access for post-silicon debugging of errata, when behavior deviates from expectations. Initial bringup features multiple rounds of testing, as more bugs are found and workarounds are implemented by updating the original firmware that was developed on FPGA emulators. In production runs, this step is known as **Final Test** (FT), where functionality is verified with tests that return a simple pass/fail result.
 
-![](https://substackcdn.com/image/fetch/$s_!yPve!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F63bb1b66-c1d5-4719-825c-91ff151645c1_1852x1594.png)
+![](z-images/b2414ec425cc02026555ca9e7cd4ddf4.webp)
 
 Source: MPI Corp
 
 To access every single wire coming out of the package, large breakout boards known as **Probe Cards** are used. Bringup engineers use them to isolate each signal pin from the package, hooking up oscilloscopes to the terminals to measure signal integrity and strength that meets design requirements.
 
-![](https://substackcdn.com/image/fetch/$s_!C_0W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8753715-003e-47c3-b0a2-181ba033f99a_1266x619.png)
+![](z-images/9b5b248329890eb77d626c483e32f2cb.webp)
 
 Source: Synopsys
 
@@ -394,7 +394,7 @@ EDA vendors also have a hand in this space, with Synopsys TestMAX family of post
 
 ## Burn-in Test
 
-![](https://substackcdn.com/image/fetch/$s_!YHVK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4674dcc-a230-4ab9-98c8-c9907d149c48_1263x836.png)
+![](z-images/5e89fdf26112b8b0ecca683bd48c1c79.webp)
 
 Source: NVIDIA
 
@@ -404,7 +404,7 @@ Test durations depend on the reliability requirements of each design, though on 
 
 ## Steppings
 
-![](https://substackcdn.com/image/fetch/$s_!ISEy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5ad84d28-4323-431a-bd80-66208d62a199_2507x1137.png)
+![](z-images/09faccac9057feae1a937dc78b66e148.webp)
 
 Source: Intel
 
@@ -415,7 +415,7 @@ From Intel’s example above, multiple rounds of **Engineering Sample** (ES) ver
 - Major Stepping (A0 to B0): Requires full flow from DE to DV to PV, verification engineers have to create a new coverage closure, full mask set update usually required.
 - Minor Stepping (A0 to A1): Typically a small mask change to the metal stack for bugfixes, implementing changes verified through circuit editing on the prior stepping. Minor Design and Physical Verification required.
 
-![](https://substackcdn.com/image/fetch/$s_!LvqB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd7eae985-409f-4955-9e12-b014d4157dc5_1869x1399.png)
+![](z-images/8e0e94c125fe73d327cc9010d57ace0a.webp)
 
 Source: GlobalFoundries
 
@@ -437,7 +437,7 @@ Additionally, these boards are bundled with ES silicon and are sampled with part
 
 Once the production ready stepping is qualified with satisfactory yield, the design can finally begin ramping up production and deployed with customers. However, the work does not stop. Failure analysis of defective silicon returned from customers can help iron out the last kinks in the design with minor revisions to the manufacturing flow. Design houses continue to work with TSMC as part of the Continuous Improvement Process (CIP) flows to help improve chip yields. FA engineers use tools such as **Synopsys Avalon** to map a given defect to the corresponding circuit schematic to identify the affected gates and wires in the design.
 
-![](https://substackcdn.com/image/fetch/$s_!eISQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ed30dca-96ee-4fb3-8986-a76266b5ffe5_845x874.png)
+![](z-images/eddac2016c4130947adb3650bd8e1048.webp)
 
 Source: Synopsys
 
@@ -463,7 +463,7 @@ For decades, chip manufacturing followed a strict handoff. Process engineers dev
 
 The DTCO flow chains the entire tool stack into a feedback loop: Sentaurus TCAD (device physics) → Mystic (PDK) → SiliconSmart/HSPICE (cell characterization) → IC Compiler II/StarRC/PrimeTime (chip-level PPA evaluation), where the results feed back to the process engineers. Process knobs are tweaked to push design rules beyond the conservative cookie cutter standard cells. The biggest companies such as Apple, NVIDIA and AMD have dedicated foundry departments that work closely with TSMC to engineer their own custom cell libraries to push PPA by as much as 15% over standard libraries. Routability improvements translate directly to lower delay, higher performance, lower power and even reduced area from higher area utilization in congested routing zones.
 
-![](https://substackcdn.com/image/fetch/$s_!Rwgs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e8f2c95-8048-4385-843a-bdf05e17a718_2121x712.png)
+![](z-images/ba34ec8d4f959471a787b62f67669a7a.webp)
 
 Source: TSMC
 
@@ -473,7 +473,7 @@ New transistor schemes such as TSMC’s FinFLEX and NanoFlex make DTCO almost ma
 
 System Technology Co-Optimization (STCO) extends the DTCO concept up one more level, from chip and process co-design to system and package co-design. It addresses chiplet partitioning decisions, packaging technology selection, cross-chiplet bandwidth and latency tradeoffs, multi-die thermal management and power integrity across the entire package. As single die scaling hits economic and physical limits, STCO is how the industry keeps delivering generational performance gains.
 
-![](https://substackcdn.com/image/fetch/$s_!14br!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7f349e62-ea48-46ec-98ac-15f284c3a199_2263x1261.png)
+![](z-images/0b05983c3b21870428b3f89c8f1a793f.webp)
 
 Source: Intel
 

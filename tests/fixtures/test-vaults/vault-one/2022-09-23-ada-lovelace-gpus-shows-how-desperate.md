@@ -10,7 +10,7 @@ Nvidia launched their new Ada Lovelace GPU lineup this week. In general, perform
 
 As a reminder, our [Ada Lovelace specifications from April](https://semianalysis.substack.com/p/nvidia-ada-lovelace-leaked-specifications?s=w) are near identical to what Nvidia announced this week. Additionally, [our die size estimates from April were 1% of the actual AD102 and AD103 die size and within 2% for AD104](https://semianalysis.substack.com/p/nvidia-ada-lovelace-leaked-specifications?s=w). This leaves us quite comfortable with the rest of our report on the unreleased lineup.
 
-![](https://substackcdn.com/image/fetch/$s_!Ywlj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3420c590-8d18-4d63-966d-e4701cefb734_1433x401.png)
+![](z-images/29ce17f0785c7f172e7abb5f3dbda9c8.webp)
 
 These die sizes are not too large in isolation, but the figure alone is misleading when considering cost per wafer differences with Ampere’s Samsung 8nm, Ada Lovelace’s TSMC N4, and AMD’s RDNA 3 TSMC N5/N6 process technologies.
 
@@ -24,7 +24,7 @@ Due to high wafer costs, GPU die costs are up massively, but the die is only a p
 
 More significant issues arise when we look further down the stack to the 379mm2 AD103 and 295mm2 AD104. This is where Nvidia faces the big crunch in costs. AD103 and AD104, alongside their accompanying packaging, memory, VRM, board, and cooler BOM, must sell in high-end GPUs for Nvidia to maintain margins. Nvidia generally stratifies various GPU dies into different GPU tiers. In the RTX 4000 generation, Nvidia faced a very tough decision. Rather than place the AD103 die in the 4080 series and the AD104 die in the 4070 series, Nvidia branded these different dies as the same GPU tier. This deceptive marketing places AD103 in the 4080 16GB and AD104 in the 4080 12GB. To be very clear, these are dramatically different GPUs. Nvidia should be shamed for this marketing decision, even if we believe they were forced to go this route due to manufacturing costs.
 
-![](https://substackcdn.com/image/fetch/$s_!G__W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd10f3dea-6880-489b-a261-1d34c64ba85d_1075x391.png)
+![](z-images/c6806102b6d25b1f768fc964260b1151.webp)
 
 The community of enthusiast PC gamers has already stuck to calling the 4080 12GB the 4070, and some are even considering it as an xx60 class GPU. In the past, Nvidia’s GPUs with a 384-bit memory bus like the 4090 were considered halo tier, 256-bit bus high end, and 192-bit bus were mainstream xx60 GPUs. Bus width isn’t an end-all-be-all way of measuring a GPU tier; manufacturing cost and performance are. Regardless, it should be noted that the enthusiast PC gamer community is thinking negatively about Nvidia. The same could be said of the [recent EVGA drama](https://www.igorslab.de/en/evga-pulls-the-plug-with-loud-bang-yet-it-has-long-been-editorial/). EVGA exited the GPU business, and gamers blamed Nvidia rather than recognizing [that EVGA was a poorly run business](https://twitter.com/dylan522p/status/1570895166827024385?s=20&t=lYN0f4yvfmZOwzteBcBFKQ) with unsustainable margins, much lower than other Taiwanese firms such as Asus, MSI, and Gigabyte.
 
@@ -32,7 +32,7 @@ Gamers see the 4080 12GB as Nvidia insulting them. It is [roughly on par with th
 
 The gaming GPU picture gets even more concerning for Nvidia when you factor in what AMD will announce on November 3rd. [Angstronomics posted exact details for AMD’s next-generation RDNA 3 architecture](https://www.angstronomics.com/p/amds-rdna-3-graphics). These details were independently confirmed by an AMD employee who said the packaging, die size, and architecture details were correct. We will ignore performance comparisons until independent 3rd party reviews come, but we want to help frame the cost disadvantage Nvidia has versus AMD’s Navi 31, Navi 32, and Navi 33. The figures in the table below are all relative to the 4080 12GB based on AD104.
 
-![](https://substackcdn.com/image/fetch/$s_!28fr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf202911-e5ce-4590-9261-f7dd1b136e72_1113x537.png)
+![](z-images/21031d53809306372353e03592e031ca.webp)
 
 While we did create dollar estimates, we want to avoid putting these dollar estimates in public as people will extrapolate those numbers to infinity and beyond. Die costs would have an additional high gross margin applied by Nvidia and AMD. Those marked-up dies will be assembled with memory and various board-level costs with an additional but smaller assembly and sales margin by firms like Asus. These figures do not account for those additional margins or the BOM for board-level costs such as VRMs and coolers, as there will be many variations of these GPUs from board partners. In general, those board-level costs will linearly increase with power levels, in which AMD is rumored to have an advantage in.
 

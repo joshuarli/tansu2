@@ -16,7 +16,7 @@ First we have to highlight GPT-5.5 from OpenAI. In our view, GPT-5.5 is now **ma
 
 There’s been at least one major lab releasing a new checkpoint purpose-built for coding every week for the past 3 months. GLM-5.1, Qwen3.6-Plus, Kimi K2.6, Composer 2, and Gemini 3.1 Pro all emphasize “agentic coding,” “long-horizon tasks,” or similar capabilities in their headlines. February was a particularly busy month.
 
-![](https://substackcdn.com/image/fetch/$s_!3Wy7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fef75e40e-4090-4254-85cb-a7af143a298e_1107x465.png)
+![](z-images/117c303a34326ab5c525f78567f722a9.webp)
 
 Source: SemiAnalysis Tokenomics Dashboard
 
@@ -32,7 +32,7 @@ Like all their other models, OpenAI will also be offering a [priority tier](http
 
 Separately, OpenAI also offers [GPT-5.3-Codex-Spark](https://openai.com/index/introducing-gpt-5-3-codex-spark/), but that’s a totally different model built to run on Cerebras. Specifically, it is a distilled version of GPT-5.3. There’s a big difference between offering faster tokens via running smaller batch sizes, changing the reasoning depth, and routing requests to a priority queue without changing the underlying model (priority and fast mode) vs running a dumber, smaller model (codex spark).
 
-![](https://substackcdn.com/image/fetch/$s_!7nqO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F847872ae-0100-4fe7-9795-ab9a32bb7350_2048x1245.png)
+![](z-images/1ef6c6c09329baf6f2142e7fce98bedb.webp)
 
 Source: SemiAnalysis
 
@@ -42,7 +42,7 @@ Both the standard and pro models offer different levels of reasoning: xhigh, hig
 
 Relatedly, OpenAI advertised in their model card that GPT-5.5 scores higher on benchmarks than 5.4 while simultaneously using less tokens. In other words, it’s more “token efficient.” This is an extremely important concept to understand, and we believe it will become a major talking point this year. As we [explained and quantified](https://semianalysis.com/institutional/mythos-might-be-66-cheaper-than-opus/) to [Tokenomics model](https://semianalysis.com/tokenomics-model/) subscribers last week, **cost per task, not cost per token, is the true north star metric that determines model pricing**. Mythos may be 5x more expensive than Opus on a per token basis, but much of that price increase is nullified because Mythos can solve the same problem using fewer tokens. It may also be a faster end to end response.
 
-![](https://substackcdn.com/image/fetch/$s_!hY-F!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F84462fd4-241b-4b43-b82c-a27c828373df_1344x1032.png)
+![](z-images/9af09a540e1dc582a05c00b643b97262.webp)
 
 Source: OpenAI
 
@@ -50,7 +50,7 @@ Source: OpenAI
 
 This all comes a short week after Anthropic’s release of [Claude Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7), a drop-in replacement for Claude Opus 4.6. Opus has been the daily driver for most of SemiAnalysis, and Opus 4.7 is a small improvement. With improved scores on many benchmarks and predictably good vibes, but not a step change, 4.7 has been reluctantly adopted by our team members. Why? Fast mode does not exist yet. For the first time, we have found that many of our engineers are willing to sacrifice a bit of quality (but not too much) for faster speed, claiming that the 2.5x faster for 6x the price tradeoff lets them hit “flow state”.
 
-![](https://substackcdn.com/image/fetch/$s_!2rIv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac858d28-1f4e-45c3-b85b-aaffdb155b79_605x523.png)
+![](z-images/2a8925d96242efc79c2e0c4ec99fa05f.webp)
 
 Source: of our frustration (i.e. Dylan on X )
 
@@ -70,7 +70,7 @@ Notably, many people have been accusing Anthropic of intentionally degrading the
 
 On April 23, a week after the Opus 4.7 release, Anthropic posted a postmortem detailing three bugs that they found in March/April. All three were present for weeks, and affected basically all users of Claude Code. One of the bugs is trivial, two are interesting, and all are real. When the harness is part of the product, the model gets blamed.
 
-![](https://substackcdn.com/image/fetch/$s_!mdbA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb9ec3283-81eb-42be-b1e8-7e407ee9de01_669x520.png)
+![](z-images/75d657204b875d92ade9677acad0249b.webp)
 
 Source: Anthropic Postmortem
 
@@ -96,41 +96,41 @@ On benchmarks, DeepSeek did not feel that standard benchmarks were good at captu
 
 Unfortunately, using public announcements on model performance benchmarks as a proxy for real world performance is unreliable. Conflicting incentives cause these labs to publish certain benchmarks and not others. Like this example, where DeepSeek takes a shot at the Kimi and GLM APIs:
 
-![](https://substackcdn.com/image/fetch/$s_!FYBp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F97798772-78d3-4415-9666-b861589ae8f2_883x478.png)
+![](z-images/ff4a7dd9b76d61c806036d45e28a3646.webp)
 
 Source: DeepSeek V4 Technical Report
 
 This is the reason why the [SemiAnalysis Tokenomics Dashboard](https://semianalysis.com/tokenomics-model/) tracks all major model performance claims, pricing, release dates, usage disclosures in an unbiased manner. We also do our own hands-on testing of all the major models. Below is an example of our tracking of meaningful benchmark performance across the major model releases. We will explain later why benchmarks are bad.
 
-![](https://substackcdn.com/image/fetch/$s_!3axV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7b7a31e7-1c77-485e-9fbc-dffe0705391e_1223x622.png)
+![](z-images/83a5714f3ab359aca02f061b63d79064.webp)
 
 Source: Tokenomics Model
 
-![](https://substackcdn.com/image/fetch/$s_!KuEt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F62119119-1b7c-424f-a660-3209869e178c_1223x622.png)
+![](z-images/236d465982ce3af8725b4a7e33303592.webp)
 
 Source: Tokenomics Model
 
 DeepSeek also open sourced a Mega-Kernel inside of DeepGEMM that supports both NVIDIA GPUs and **Huawei Ascend NPUs**. NPU support is claimed, but only the code for SM90 (Hopper) and SM100 (Blackwell) GPUs is released publicly. It is likely a goal to run a meaningful portion of the future inference traffic on Ascends. It is notable however that the parameter size fits just inside the memory domain of an 8x H20 HGX at FP4.
 
-![](https://substackcdn.com/image/fetch/$s_!yKXf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5db5e469-039f-41d4-9d34-213d7d08dd76_626x140.png)
+![](z-images/5874c48c9cc2063734cd5e2f5617311b.webp)
 
 Source: DeepSeek V4 Technical Report
 
 Mega MoE performance across various batch sizes is described in a PR:
 
-![](https://substackcdn.com/image/fetch/$s_!lTlw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4aa387b6-3c0d-4a90-b871-7d140f7fbc3b_879x833.png)
+![](z-images/64896dbeed43dfd3e3a536b2e25c9f41.webp)
 
 Source: DeepGEMM repo
 
 Of course, the key contribution of DeepSeek V4 is that it is open source. Thanks to an all nighter, our InferenceX team, collaborating with 10x engineers from vLLM/Inferact and NVIDIA, have published day-zero support on our H200 cluster. Support for Blackwell and AMD GPUs using vLLM, SGLang and TRT-LLM with Dynamo is a work in progress.
 
-![](https://substackcdn.com/image/fetch/$s_!OOY3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4065c980-ace4-4cf3-b483-7813612220f4_993x891.png)
+![](z-images/aa2c6e7e6a30139ae16216b584e37c56.webp)
 
 Source: inferencex.com
 
 Interestingly, day-zero support on H200 at FP8 performance of this model hits ~150 tok/sec throughput per GPU at 20 tok/sec interactivity on 8k in 1k out. For reference, V3 hits ~1.3k to 2.3k tok/sec of throughput per GPU at 20 tok/sec interactivity on 8k in 1k out. This is a new model and we expect meaningful optimization in the coming weeks. Watch [inferencex.com](https://inferencex.semianalysis.com/) for real time improvements.
 
-![](https://substackcdn.com/image/fetch/$s_!PQ6B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5575d5a3-8183-44e7-affb-7a82e96c4abb_688x428.png)
+![](z-images/23920768a3d2b2d61a30cadc9a15e590.webp)
 
 Source: DeepSeek V4 model card on Huggingface
 
@@ -152,13 +152,13 @@ Relatedly, another engineer commented that GPT-5.5 feels too conservative when i
 
 Here’s a concrete example that illustrates our overall impression on the strengths and weaknesses of Codex vs Claude Code well. We asked both Opus 4.6 and GPT-5.5 to make a new dashboard for our accelerator model and gave it the current [tokenomics](https://semianalysis.com/tokenomics-model/) dashboard as an example. As our institutional subscribers know, this dashboard includes a homepage that links to all the different tabs.
 
-![](https://substackcdn.com/image/fetch/$s_!Q_5U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F71b56470-9c8a-4c4c-ac48-16df0b781f3a_980x765.png)
+![](z-images/ee75d2a3530124441bc1497086bfaa83.webp)
 
 Source: SemiAnalysis
 
 Opus 4.6 made an identical looking homepage, whereas Codex ignored it entirely.
 
-![](https://substackcdn.com/image/fetch/$s_!zyzp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8e45427c-0853-40b0-8f9a-be2aa5b76dd9_2048x624.png)
+![](z-images/9daaa4ac1598307f266303efc035f852.webp)
 
 Source: SemiAnalysis
 
@@ -181,7 +181,7 @@ Even if GPT-5.5 is a better model, OpenAI needs to ship features at a faster pac
 
 The one thing that is always prominently featured in every new model announcement is a table comparing performance on various benchmarks.
 
-![](https://substackcdn.com/image/fetch/$s_!rGxw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff43f3ea7-dc3f-4abc-bc72-318d17340c8a_1840x1520.png)
+![](z-images/37c4236f0fb9175bbff76c583b16b361.webp)
 
 Source: every release, man
 
@@ -203,7 +203,7 @@ Really understanding the first two is how you determine if a benchmark is any go
 
 Released by academic researchers in 2020, [Measuring Massive Multitask Language Understanding](https://arxiv.org/pdf/2009.03300) (MMLU) is a set of 15,908 multiple choice questions covering 57 subjects. These questions were manually collected by university students from online sources like standardized tests and college exams/problem sets. All of them have exactly 4 choices and are publicly available, but they range in difficulty from “elementary” to “advanced professional”.
 
-![](https://substackcdn.com/image/fetch/$s_!mqaz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7101c7dd-afeb-4d70-b187-1b7db80f6197_869x445.png)
+![](z-images/5f386399b79e69c1e5a8f3d1974cbc0c.webp)
 
 Example MMLU questions. Source: MMLU
 
@@ -222,7 +222,7 @@ As each of these became saturated, their creators made harder versions (e.g. [MM
 
 The most relevant simple answer benchmark today is [Humanity’s Last Exam](https://agi.safe.ai/) (HLE). Released by Scale AI in January 2025, they sourced 1000+ experts from around the world to create 2500 questions on everything from algebraic geometry to classical ballet. 80% of the questions require an exact-match short answer and 20% are multiple choice. For the harness, you can choose to run the model with or without tools (e.g. web search and code execution).
 
-![](https://substackcdn.com/image/fetch/$s_!sdls!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41974b8e-2daf-485b-8315-89df5e16fb4f_866x561.png)
+![](z-images/8f0b765725afb156688f73dca1360f17.webp)
 
 Example HLE questions. Source: Scale AI
 
@@ -230,7 +230,7 @@ These questions obviously aren’t representative of real-world LLM usage and ar
 
 However, the labs still absolutely hillclimb all of these benchmarks during the RL stage of training. Google, for example, had a 9 figure budget in 2025 specifically for HLE style STEM questions, which they paid to data vendors like Mercor, Surge, and Handshake. It’s no coincidence that Gemini 3 Pro was a step-change improvement on the benchmark.
 
-![](https://substackcdn.com/image/fetch/$s_!joRH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0f08d1f-18de-4b3c-b1f5-8f99f62d3ae6_1217x123.png)
+![](z-images/c00e7dc337048b82eb8e78bb06e06568.webp)
 
 Source: Google
 
@@ -255,7 +255,7 @@ It is worth emphasizing that there was **no human verification** at any step in 
 
 In short, many of the SWE-bench tasks were straight up broken. For example, one task required the AI to perfectly match a 19 word error message in the eval despite not mentioning it at all in the problem description.
 
-![](https://substackcdn.com/image/fetch/$s_!t1H7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc8f9c79d-c547-4e61-a1e8-1b1b7864dfba_1750x914.png)
+![](z-images/622a7db2e0b27a35fd9e66f002da3619.webp)
 
 Example SWE-bench task description (left) with an unfair test (right). Source: SWE-bench
 
@@ -288,7 +288,7 @@ The harness is another step up from coding benchmarks. Agents are given access t
 
 Finally, to evaluate each task, OpenAI used additional expert contractors to compare the AI outputs to the human-provided solutions. They also created an AI grader that uses the rubric to rank solutions, but conceded it’s still not as reliable as the human experts. For this reason, they still use human experts for their official results, despite it being way slower and more expensive.
 
-![](https://substackcdn.com/image/fetch/$s_!la_Q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1a476f7-dd53-4b0c-ae6c-d06b642c831c_1738x874.png)
+![](z-images/e45920429c5386ffabd3d1448ab9e700.webp)
 
 Example GDPval task. Source: OpenAI
 
@@ -312,13 +312,13 @@ Hopefully the previous sections have convinced you that benchmarks are often wid
 
 Looking at the benchmarks companies choose NOT to report can also be telling. For example, OpenAI barely included any benchmarks in their [GPT-5.4 announcement](https://openai.com/index/introducing-gpt-5-4/) and didn’t compare it to any Anthropic models. We think this is because it would’ve gotten brutally mogged by Opus 4.6—which came out a month earlier. This matches our overall vibe of the model. Until yesterday, OpenAI’s models were worse than Anthropic’s for ~all agentic tasks.
 
-![](https://substackcdn.com/image/fetch/$s_!JrmK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F769da563-e416-490a-b822-cf4f4f6872da_714x345.png)
+![](z-images/a285727bf013535ff3a686e171700515.webp)
 
 Source: OpenAI
 
 With GPT-5.5, they’re finally back on the frontier, which is why Claude and Gemini were re-included in the benchmark table.
 
-![](https://substackcdn.com/image/fetch/$s_!lcJx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F60be0d68-55e2-4037-ac6a-0e33afcf3388_1174x540.png)
+![](z-images/797a39c3d798959b4befd61893557cf2.webp)
 
 Source: OpenAI
 
@@ -326,7 +326,7 @@ However, there’s still one benchmark that’s suspiciously missing. Coding is 
 
 Scrolling down all the way to the very bottom of the blog post reveals the answer:
 
-![](https://substackcdn.com/image/fetch/$s_!kXkH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf83b10e-7aad-4258-bf49-f651337c21c2_1159x348.png)
+![](z-images/20e2ef04e94167721ccf309693baf741.webp)
 
 Source: OpenAI
 
@@ -336,7 +336,7 @@ GPT-5.5 got mogged by Opus 4.7 (much less Mythos which scored 77.8%). This suppo
 
 As part of our alpha-testing, we also ran a number of benchmarks on GPT-5.5 vs 5.4 vs Opus 4.6. Here are the results:
 
-![](https://substackcdn.com/image/fetch/$s_!Iu7W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67cab2de-bb45-4356-a045-8aa70ca5ddf2_1308x1020.png)
+![](z-images/448b62669ec1d65da085e7c122727f38.webp)
 
 Source: SemiAnalysis Tokenomics Team
 

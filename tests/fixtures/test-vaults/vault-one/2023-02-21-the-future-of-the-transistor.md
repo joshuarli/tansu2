@@ -14,7 +14,7 @@ An ideal transistor does the following:
 2. Doesn’t allow any current to flow when turned off
 3. Switches as quickly as possible.
 
-![](https://substackcdn.com/image/fetch/$s_!WSgC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ffde20c-c267-414e-80a7-9a993d7a4391_635x558.png)
+![](z-images/89a0fc5a067bd07c021a653ae29ed138.webp)
 
 The 3 main components of a transistor: “gate,” “source,” and “drain”
 
@@ -22,23 +22,23 @@ The 3 main components of a transistor: “gate,” “source,” and “drain”
 
 Invented in 1947 at AT&T’s Bell Labs by John Bardeen, William Shockley, and Walter Brattain, the first transistors were known as “planar” transistors because all elements of the transistor, including the gate, source, and drain were situated on a two-dimensional plane.
 
-![](https://substackcdn.com/image/fetch/$s_!MYu5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcac067e6-c533-4e8e-ba68-7f0fc99f0795_524x429.jpeg)
+![](z-images/f33af394d1899abbb4680e21eebe7036.webp)
 
 https://www.asml.com/en/news/stories/2022/what-is-a-gate-all-around-transistor
 
 For many generations, the switching speed of planar transistors could be increased by shrinking the gate length. “Straining” the silicon channel also increases the switching speed. To strain channels, a layer of silicon is placed over a layer of silicon-germanium (SiGe). As the atoms in the silicon layer align with the SiGe layer, this leads to the links between the silicon atoms stretching, thereby straining the channel. In this configuration, where silicon atoms are further apart, atomic forces that interfere with electron movement are reduced. The electron mobility (i.e., how quickly an electron can move when pulled by an electric field) improves by 70% in strained channels, leading to transistor switching speed increasing by 35%.
 
-![](https://substackcdn.com/image/fetch/$s_!QSI2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7137f46a-87bd-4c2f-a218-0e0730982dd0_1000x725.png)
+![](z-images/9be715c1c605e8bd0e3b5f26aab71a04.webp)
 
 A further development that allowed for continued scaling was the development of “High-K/Metal” gates. At the 45nm node, the gate dielectric began to lose its insulating (dielectric) quality and exhibited too much leakage current (i.e., significant current would flow across a transistor when in its off state).
 
 The gate dielectric is a very thin insulation layer, traditionally made of silicon dioxide, that lies between the transistor’s metal gate electrode and the channel through which the current flows. Intel made a significant breakthrough in its 45 nm process (2007) by using a hafnium-based dielectric layer with a gate electrode composed of alternative metal materials. The rest of the industry followed 3 years later. The resulting combination yields a “high dielectric constant” or “high K” gate.
 
-![](https://substackcdn.com/image/fetch/$s_!fnGj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa96616d7-eab2-4a0e-ae14-752fc52634df_591x815.png)
+![](z-images/13c5422c4050f059badf4024b58f98ac.webp)
 
 As the transistor’s dimensions continued to decrease, the space between the source and drain decreased to the point where the gate lost the ability to properly control the flow of current in the channel. Because of this, planar transistors displayed significant “short channel” effects, especially below the 28nm node, where leakage current was excessive.
 
-![](https://substackcdn.com/image/fetch/$s_!3QTC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F607ed5b7-fa49-464d-9f93-5fc38819ae87_457x374.jpeg)
+![](z-images/b0ee6408a9d376f50c19f39fa528430f.webp)
 
 https://www.asml.com/en/news/stories/2022/what-is-a-gate-all-around-transistor
 
@@ -46,7 +46,7 @@ To address this challenge, the industry shifted to “3D” transistors, known a
 
 [In the FinFET, the gate wraps around the channel on three sides of a silicon fin, as opposed to just its top as in planar transistors.](https://alwaysbecurious.substack.com/p/learn-about-the-tiniest-new-transistors) This allows for greater control of the current that flows through the transistor; FinFET transistors have significantly faster switching times than planar transistors. In the early 2010s, Intel moved into production with FinFET at the 22nm node, and foundries like TSMC ramped up the FinFET at 16nm 3 years later.
 
-![](https://substackcdn.com/image/fetch/$s_!nj8u!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff505729a-7ec0-49fc-8321-20424ada969c_575x470.jpeg)
+![](z-images/ca34dcd8c1694e8f58c6c74cf80216ab.webp)
 
 https://www.asml.com/en/news/stories/2022/what-is-a-gate-all-around-transistor
 
@@ -54,7 +54,7 @@ Due to the limit of how thin/high fins can be made as well as how many fins can 
 
 In 2022, Samsung began using GAA in its 3nm process. Due to issues with yield, high-volume chips from Samsung’s 3nm GAP are expected in 2024. Intel has GAA on its roadmap with 20A process node which is manufacturing-ready in 2024 with products shipping in volume in 2025. TSMC has GAA with their N2 process node in 2025 or 2026. These production years are targets, and in our opinion, further delays from at least 2 of these players are likely.
 
-![](https://substackcdn.com/image/fetch/$s_!0vyU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcd38e658-4354-4065-bfe9-d375635409f7_1125x199.jpeg)
+![](z-images/d218ee4b6c01732f6c11069e1ff97056.webp)
 
 Beyond initial GAA processes include moving to forksheet or 3D complementary FET (CFET), in which the n and p channel are moved closer together or stacked vertically.
 
@@ -64,17 +64,17 @@ To continue roadmaps beyond 2nm, the transition to Gate-All-Around will also req
 
 2D materials are crystalline solids consisting of a single layer of atoms. The most well-known 2D material is Graphene, an allotrope of carbon consisting of a single layer of atoms arranged in a hexagonal lattice. However, it is important to note that graphene does not have a bandgap.
 
-![](https://substackcdn.com/image/fetch/$s_!pzQO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9a3e9e1a-9b7b-4013-8a73-2f9b674ea805_2000x1143.png)
+![](z-images/f31ffe7fe8d53b1f139f8ecaedbdf2c5.webp)
 
 Semiconductors are defined by their band gap: the energy required to excite an electron stuck in the valance band, where it can’t conduct electricity, to the conduction band, where it can. The band gap needs to be large enough so that there is a clear contrast between a transistor’s on and off states, and so that it can process information without generating errors. Despite its high electron mobility, without a bandgap, graphene can’t be used as a semiconductor material. Although graphene has a bandgap when doped, doped graphene does not allow for sufficiently low off-currents or high on-currents.
 
 The most promising 2D materials for next-gen nanosheets come from the “Transition Metal Dichalcogenide” or “TMD” sub-family. Materials from this group include Molybdenum disulfide (MoS <sub>2</sub>), Tungsten disulfide (WS <sub>2</sub>), and Tungsten Diselenide (WSe <sub>2</sub>). TMDs have the desired combination of bandgap + mobility required for < 5nm channel thicknesses.
 
-![](https://substackcdn.com/image/fetch/$s_!xOmj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F906e5e1d-38f3-45b9-8907-903fada20c42_1201x639.png)
+![](z-images/d1ad02026e2a8ffe222807423b6d1d5c.webp)
 
 This was highlighted by H.-S. Philip Wong in his HotChips 2019 Keynote, “ *What will the next node offer us?”*
 
-![](https://substackcdn.com/image/fetch/$s_!unFV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2bbc2787-7df9-4cfa-b76c-332274c3f84e_1201x632.png)
+![](z-images/c17052863c8310e55544ebf812811ded.webp)
 
 While Carbon Nanotubes (CNTs, which are 1-dimensional materials) were also highlighted, they remain notoriously difficult to manufacture after 30+ years of R&D. To achieve the desired performance metrics for transistor applications, millions of individual tubes have to be grown (i.e., density) and all aligned the same way (i.e., alignment). Also, with CNTs, you’re only dealing with Carbon. 2D materials are far more versatile, referring to an entire family of materials, and in theory, are easier to manufacture than CNTs. Large-area monolayer sheets can be grown and then transferred.
 
@@ -88,7 +88,7 @@ Exfoliated graphene refers to pure flakes of graphene delaminated from graphite;
 
 As you can imagine, when you have a material/wafer where properties vary so wildly, metrology/inspection becomes incredibly difficult.
 
-![](https://substackcdn.com/image/fetch/$s_!bX3W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8624bf51-944e-40b3-b519-692425fddcbf_318x319.jpeg)
+![](z-images/341ae9e6d90cf99f9a14c8a9b36f7b82.webp)
 
 Example of “grain boundaries” that occur during CVD growth of graphene. Such growth is referred to as “polycrystalline”
 
@@ -104,11 +104,11 @@ Current methods to transfer 2D materials from their growth substrates to target 
 
 Today’s 2D material transfer methods are sufficient for some applications/devices like sensors or “roll-to-roll” / displays, but do not clear the bar for CMOS in terms of quality, throughput, and contamination.
 
-![](https://substackcdn.com/image/fetch/$s_!4Mma!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0824de86-b6ae-4fb2-ac58-601c51df38cc_1430x781.png)
+![](z-images/f3a82c7838e325685386f0eeaf375c20.webp)
 
 Example transfer process used today for graphene.
 
-![](https://substackcdn.com/image/fetch/$s_!7bpy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F128081a8-9c5b-420b-9a1b-5d6f691f8f7a_1172x652.png)
+![](z-images/5438994716fa67dc66fa0d8dd41f37ae.webp)
 
 Example graphene device process flow by Oxford Instruments
 
@@ -126,7 +126,7 @@ Lastly, the transfer is more versatile, allowing for heterostructure, stacked, a
 
 The 68 <sup>th</sup> annual IEDM meeting in San Francisco offered a great perspective on the future of the semiconductor and computing industries. Notable amongst the industry leaders’ presentations in attendance was Intel’s commemorating 75 years of the transistor, which presented both a look at the past and a vision for what may lie ahead.
 
-![](https://substackcdn.com/image/fetch/$s_!8mub!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2565c33e-8003-404d-bbdc-a71add9b7345_624x309.png)
+![](z-images/fca604a28cea22fbae9142aedd55fd97.webp)
 
 Ann Kelleher’s Keynote at IEDM, “Celebrating 75 years of the transistor! A Look Ahead Towards the Next Generation of Innovation Opportunities”
 
@@ -138,11 +138,11 @@ At IEDM, there was a specific session for 2D Channel Technology, co-chaired by D
 
 Papers/presentations focused on various aspects of 2D transistors, including the channel, gate dielectric, substrates/materials required, and lowering contact resistance to increase device performance. What follows is a technical review of some of these papers:
 
-![](https://substackcdn.com/image/fetch/$s_!HwqX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd58b2290-fffe-44ce-ba26-cf329300a68e_1430x632.png)
+![](z-images/5d410644b0caf1b47af419c4e2af2d9b.webp)
 
 Amongst the developments presented was research by Peking University in China, illustrating top gated CVD grown WSe <sub>2</sub> pFETs with a drain current of 594 uA/um, in addition to a WSe <sub>2</sub> /MoS <sub>2</sub> based CFET <sup>1</sup>. The CFET structure, when compared to traditional planar ICs showed an 8% improvement in performance in addition to a 44% reduction in area. A number of challenges remain, mostly in manufacturability. The CFET demonstrated in this paper was nearly manufactured in a fab-compatible manner, with the exception of a wet transfer technique used for the MoS <sub>2</sub> channel in the nFET. Scalable dry transfer techniques will be critical to moving such technology to production.
 
-![](https://substackcdn.com/image/fetch/$s_!oYYQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F44e4e3df-897f-45a3-955a-f7434ec401d3_936x368.png)
+![](z-images/52312b06703a4103cded9f75a3514e44.webp)
 
 2D CFET Structure and Integration Area Reduction. Vertical stacking can lead to much higher-density components without performance loss.<sup>1</sup>
 
@@ -150,7 +150,7 @@ An R&D challenge in this vertical stacking approach is largely in placing the so
 
 Contact resistance is merely one component of the total resistance of a device; spacer resistance is another major contributor to poor device performance, particularly in pFETs. TSMC, in another IEDM paper, utilized WO <sub>x</sub> formed by oxidizing multilayer WSe <sub>2</sub> in conjunction with a WSe <sub>2</sub> channel as a low-resistance spacer dopant <sup>3</sup>. WO <sub>x</sub> serving as a high p dopant, was found to lower the Schottky barrier height, leading to lower total resistances despite the addition of the dopant (1 kΩ-um).
 
-![](https://substackcdn.com/image/fetch/$s_!VzST!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7a58e95-6e5d-44d0-93f1-e5239138dfa0_777x585.png)
+![](z-images/348456ab7ce71ff5b3a874fce4daaba1.webp)
 
 pFET with WO <sub>x</sub> dopant formed by oxidizing multilayer WSe <sub>2</sub>.<sup>3</sup>
 
@@ -189,7 +189,7 @@ Every time the industry has had to solve a major material/process technology to 
 
 As Sri Samavedam (SVP CMOS technologies, IMEC) [recently mentioned](https://spectrum.ieee.org/the-transistor-of-2047-expert-predictions), “In this industry, it usually takes about 20 years from \[demonstrating a concept\] to introduction into manufacturing. It is safe to assume that the transistor or switch architectures of 2047 \[marking the 100 <sup>th</sup> anniversary of the transistor\] have already been demonstrated on a lab scale.”
 
-![](https://substackcdn.com/image/fetch/$s_!8PtD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8a100a7-9c5e-43ae-bb8d-dad7ef85b320_1430x691.png)
+![](z-images/afe4174614b9a5d33fffcdade918b2e0.webp)
 
 ## About Lab 91, Inc:
 

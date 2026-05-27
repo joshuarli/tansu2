@@ -6,7 +6,7 @@ author: "Ivan Chiam"
 description: "TSMC N3 Wafer Shortages, Memory Constraints, Datacenter Bottlenecks, Supply Chain Wars Winner"
 ---
 
-![](https://substackcdn.com/image/fetch/$s_!xoJj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc74983e-edab-47a0-801c-fffe0839a20e_4000x4000.png)
+![](z-images/409240fe4359fc5b7d576e71d48164ed.webp)
 
 ---
 
@@ -16,13 +16,13 @@ Token demand is skyrocketing and the need for AI compute continues to accelerate
 
 From our own experiences, we have reached out to every neocloud we know asking if they have small clusters available, but everything is already firmly locked up. This tight supply environment explains the sharp reset in hyperscaler capex plans. Consensus estimates have moved materially higher across the board, with Google standing out as the most extreme example, where 2026 capex expectations have roughly doubled versus prior expectations, primarily driven by datacenter and server spend.
 
-![](https://substackcdn.com/image/fetch/$s_!InA2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F685652e0-3bff-448a-a33f-f1f16feb6b61_1844x1038.png)
+![](z-images/a04de39a56bb0f3e1ace44a5bedd4f18.webp)
 
 Source: Company Earnings, Bloomberg
 
 This is a tremendous level of spending, and hyperscalers would deploy even more capital if they could, but they are constrained by one critical factor: silicon supply. There is simply not enough advanced logic and memory fabrication capacity to support the pace of compute deployments. While the AD (After Da launch of ChatGPT) era has been riddled with various constraints such as CoWoS packaging and datacenter power, we are now firmly in the silicon shortage phase.
 
-![](https://substackcdn.com/image/fetch/$s_!f-w8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb3eb393-a811-44e0-b4f3-7c5ebf1b7f87_2030x1076.png)
+![](z-images/7b08c31a706597b99e710a9ed3a12913.webp)
 
 Source: SemiAnalysis Accelerator Model
 
@@ -30,7 +30,7 @@ Source: SemiAnalysis Accelerator Model
 
 One of, if not the, biggest constraints is TSMC’s N3 logic wafer capacity. TSMC’s N3 family started shipping for revenue in 2023, with demand initially driven primarily by smartphones and PCs. [N3 got off to a shaky start, with the first variant “N3B” having yield issues and being too expensive relative to the density improvement.](https://newsletter.semianalysis.com/i/175660907/tsmc-3nm-fab-costs) Greater adoption came with the refined N3E process, a relaxed variant with far fewer EUV layers and therefore lower cost. Key smartphone and PC customers include Apple, which uses N3 variants for its M3 to M5 Mac chips and A17 to A19 iPhone processors, Qualcomm for its Snapdragon 8 Elite series, MediaTek for its Dimensity smartphone SoCs as well as select automotive and PC chips, and Intel for its Lunar Lake and Arrow Lake client processors.
 
-![](https://substackcdn.com/image/fetch/$s_!lpP7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbe6a510f-f4ee-4ee8-9267-22ccd427f99c_1860x1038.png)
+![](z-images/ca055cec519cea95b5243b1465955caf.webp)
 
 Source: SemiAnalysis Foundry Model
 
@@ -38,7 +38,7 @@ Up until today, N3 demand has been driven primarily by consumer electronics. In 
 
 We can see in the table below the industry-wide convergence toward TSMC’s N3 family as the leading process node for AI accelerators heading into 2026. NVIDIA transitions from 4NP with Blackwell to 3NP with Rubin. AMD, typically the earlier adopter of new nodes, has already adopted N3 for MI350X and will stay on N3 for the AID and MID tiles for MI400 (XCD is N2). Google’s TPU roadmap shifts fully to N3E starting with TPU v7, with TPU seeing a huge upsize in program volumes this year. AWS also transitions to N3P with Trainium3. Meta’s MTIA follows a similar path, though it will be at much lower volumes.
 
-![](https://substackcdn.com/image/fetch/$s_!F7JO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0129d5ef-d8c3-46a8-a8f5-e69d5e4a84b5_1896x1180.png)
+![](z-images/9443527769825cfa6f84e24a763ebe08.webp)
 
 Source: SemiAnalysis Accelerator Model
 
@@ -46,7 +46,7 @@ This shift is not limited to XPU silicon. The Vera CPU used in VR racks uses N3P
 
 This sudden convergence of N3 adoption coupled with the continued growth of AI compute demand has resulted in a huge demand shock for N3 wafer capacity. TSMC has been caught flat-footed, with wafer capacity expansion failing to keep pace with surging AI demand. How did this happen? Although the greatest compute buildout in history began in late 2022, TSMC’s capex only exceeded its previous peak in 2025. This year, TSMC is going to smash through last year’s record Capex, because they have realized how far customer demand is exceeding their capacity.
 
-![](https://substackcdn.com/image/fetch/$s_!siy0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6fd015f7-6e9e-4a42-b5c9-2c359d65dd59_1424x742.png)
+![](z-images/55358a2423ee7576e9519bcb64f2aa01.webp)
 
 Source: Company Filings
 
@@ -58,11 +58,11 @@ Now, let’s look at just how tight things are. N3 accelerator wafer demand ramp
 
 AI-related (accelerator, host CPU, and networking N3 demand) therefore ends up taking up just under 60% of N3 output this year. The remaining 40% is primarily for smartphone and CPU. Demand from these sources fully utilizes the entirety of N3 capacity, which gives TSMC little chance of being able to add more capacity. This tightness gets even more severe in 2027, even with TSMC adding N3 capacity. We model AI demand to be 86% of 2027 N3 wafer output nearly entirely squeezing out smartphone and CPU wafers. Part of this shift is driven by planned smartphone roadmaps transitioning to N2, but tight N3 capacity is certainly playing a part in hastening this transition. For product lines that remain on N3, demand is unlikely to be entirely fulfilled.
 
-![](https://substackcdn.com/image/fetch/$s_!bywn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5b707af9-3845-4437-9c68-561f36658df4_1868x1104.png)
+![](z-images/e6a9e85a4d9949299187b5f1c004ddbc.webp)
 
 Source: SemiAnalysis Foundry Model, SemiAnalysis Accelerator Model
 
-![](https://substackcdn.com/image/fetch/$s_!tcQC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0183a621-85de-4e9b-b829-6e6d90fddaa6_2092x1186.png)
+![](z-images/508b94c114c750fe07a766bc3406ba49.webp)
 
 Source: SemiAnalysis Accelerator Model
 
@@ -76,11 +76,11 @@ With demand running far ahead of supply, TSMC is expanding capacity and pushing 
 
 Why can’t TSMC simply add more N3 wafer starts? Like the memory suppliers, TSMC is constrained by available cleanroom space. Additional usable fab area must first be built before equipment can be installed and new capacity brought online. For the next 2 years, TSMC will not be able to add enough capacity to fully meet demand. As a result, for companies to get more wafer allocation in the meantime, others will have to give up their existing precious allocation, and this just may happen.
 
-![](https://substackcdn.com/image/fetch/$s_!u-E7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F450c33c0-062f-486e-aff1-1db8c0dc68b4_2020x1088.png)
+![](z-images/41d6a6c9fd802560fe86584f6fe3c644.webp)
 
 Source: SemiAnalysis Foundry Model
 
-![](https://substackcdn.com/image/fetch/$s_!fzVm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F12d5f30f-d1ba-4037-aa57-763d58a3bde1_2571x1505.png)
+![](z-images/b84ef98f3260a72340ade2a47261c050.webp)
 
 Source: SemiAnalysis Foundry Model
 
@@ -92,11 +92,11 @@ However, rising memory prices are now flowing through to handset BOM costs and u
 
 In terms of what this means for shipments, reallocating 5% of total smartphone N3 wafer starts in 2026 (5% of 437k wafers) to AI accelerators would enable the production of ~0.1 million additional Rubin GPUs or ~0.3 million additional TPU v7s. In a more extreme scenario where 25% of total smartphone N3 wafer starts in 2026 are reallocated to AI accelerators, TSMC could manufacture ~0.7 million additional Rubin GPUs or ~1.5 million additional TPU v7s. However, logic is only part of the equation for an AI accelerator chip, memory supply and advanced packaging is also needed.
 
-![](https://substackcdn.com/image/fetch/$s_!86sv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb40dd801-4946-431b-bcd4-b99550108971_1376x320.png)
+![](z-images/eae504cef05279baee5bf0604064d9c1.webp)
 
 Source: SemiAnalysis Foundry Model
 
-![](https://substackcdn.com/image/fetch/$s_!N61c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6f4f58ae-8668-4da8-8143-b528a369cd1a_2018x1084.png)
+![](z-images/0adb8933ef7e318e6b6b8d7e564d3a41.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -106,23 +106,23 @@ The [global memory shortage](https://newsletter.semianalysis.com/p/memory-mania-
 
 On a wafer-per-bit basis, HBM consumes roughly three times more wafer capacity than commodity DRAM, a gap that could widen to nearly four times as the industry transitions to HBM4 this year and even larger in HBM4E next year. As a result, incremental HBM growth diverts a disproportionate share of DRAM wafer capacity away from commodity DRAM, reinforcing structurally tight memory conditions.
 
-![](https://substackcdn.com/image/fetch/$s_!3wRG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe3edd595-4b9d-4d67-8da2-ee97a6f6e053_2136x1126.png)
+![](z-images/54488001f2358c6c4369b0c922b57213.webp)
 
 Source: SemiAnalysis Memory Model
 
-![](https://substackcdn.com/image/fetch/$s_!3eWl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faab0bd24-a53a-4e2a-a0ea-7daa0057e0f8_2004x1094.png)
+![](z-images/0c82ec7a775a9aff441d2022da9d905a.webp)
 
 Source: SemiAnalysis Memory Model
 
 This pressure is being amplified by rapid increases in HBM content per accelerator. HBM bit shipments are inflecting sharply, driven primarily by rising memory capacity per device rather than unit growth alone. For NVIDIA, the move from Blackwell to Blackwell Ultra and Rubin increases HBM capacity by 50%, with Rubin Ultra driving a further ~4×increase. Similar step-ups are occurring across hyperscaler ASICs, with TPU v8AX and Trainium3 also migrating to 12-Hi stacks from 8-Hi in their previous generation, while AMD’s memory capacity increases by 50% from MI350 to MI400.
 
-![](https://substackcdn.com/image/fetch/$s_!vlh2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F17bae206-924e-4e87-a7f1-c91a3f257c9e_2098x1130.png)
+![](z-images/7bf095b0efeca6d88316853733650234.webp)
 
 Source: SemiAnalysis Accelerator Model
 
 Another tightening dynamic is the push toward higher HBM pin speeds. Customers such as NVIDIA are targeting approximately 11 Gb/s pin speeds for HBM4, a requirement that remains difficult for memory vendors to achieve at acceptable yields. While SK Hynix and Samsung are making better progress toward meeting these specifications, Micron is lagging behind in HBM4, a dynamic we discussed in our [Rubin article](https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution) and within the [Accelerator & HBM Model](https://semianalysis.com/accelerator-hbm-model/) as early as January. This escalation in performance requirements, as customers demand higher pin speeds and vendors struggle to deliver at scale, further constrains effective HBM supply.
 
-![](https://substackcdn.com/image/fetch/$s_!nRle!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5c55d753-0c40-4c17-83f1-e3d2063f7cfc_2134x1226.png)
+![](z-images/1bd67310cb301e7da8726f76df4627be.webp)
 
 Source: SemiAnalysis Memory Model
 
@@ -130,7 +130,7 @@ Beyond HBM, server DRAM demand is also strengthening. AI server system memory wi
 
 Across the DRAM market, accelerating deployment of AI and general-purpose servers and rising DRAM content per system is expected to drive server DRAM demand higher over time. This demand should more than offset softness in smartphones, PCs, and consumer electronics over the next two years as memory prices rise.
 
-![](https://substackcdn.com/image/fetch/$s_!2Opv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4f090096-02d5-4aaf-b7b2-d0233652675f_2002x1180.png)
+![](z-images/27dfe4dd4408ebef5a00bc4446613fda.webp)
 
 Source: SemiAnalysis Memory Model
 
@@ -140,7 +140,7 @@ To incentivize more HBM wafer starts vs commodity wafers, customers would likely
 
 Another key implication is the reallocation of bits from consumer applications to server and HBM, a dynamic we have been highlighting since 2H25. In our latest analysis in Memory Model, we highlight the impact of consumer shock on potential bit reallocation. In an extreme scenario where there is a 50% cut in consumer unit shipments, approximately 55,390 million Gb would be released, equivalent to roughly 14% of total DRAM demand in 2026. Under a 25% cut scenario, around 27,690 million Gb would be freed up, representing about 7% of total DRAM demand and nearly 80% of this year’s HBM demand.
 
-![](https://substackcdn.com/image/fetch/$s_!qN_X!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd82a56a-592f-48d7-8269-232c73920309_2379x504.png)
+![](z-images/505c5f9a049242751cb2e233bba54a38.webp)
 
 Source: SemiAnalysis Memory Model
 

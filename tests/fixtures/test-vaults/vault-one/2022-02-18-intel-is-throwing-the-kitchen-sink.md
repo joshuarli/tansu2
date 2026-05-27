@@ -58,7 +58,7 @@ Another gargantuan change is the shift back to OKRs. We won’t dive too far int
 
 The biggest and most monumental task in Intel’s turn around is process technology. The Intel 7 to Intel 4 ramp is roughly 2 years behind TSMC and their N7 to N5 process node ramp. As mentioned earlier, Intel gets to have a period of catchup where they aren’t inventing the wheel. This should allow Intel 4 and Intel 3 to be smoother ramps.
 
-![](https://substackcdn.com/image/fetch/$s_!o6Kr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb149a966-38c5-437b-af5d-0ce0aee7fbc6_1024x533.png)
+![](z-images/6f8f25f6e4b588178e7b26a5288382fc.webp)
 
 Intel 20A is where the real test is. Intel has to deliver huge changes such as RibbonFET and PowerVia, two features that are not in volume production yet anywhere in the industry. To achieve this goal, they have introduced a new modular design architecture. They are dubbing it Tick-Tock. It appears the major front end transistor pitch scaling comes with the tick node and the tock involves optimization and further enhancements to that base.
 
@@ -68,19 +68,19 @@ The example Intel is offering is with PowerVia, or what the industry calls backs
 
 Intel has a custom version of their Intel 3 process node where they are testing the process flow of building the transistor layer, building the signal interconnects, bonding another to a support wafer, then flipping the combined wafer, revealing nano TSVs on the original wafer, and creating the power delivery network. This module of the process can be fully tested and debugged independently of the change in transistor architecture, RibbonFET. Active risk assessments and contingencies are in place for these high-risk process changes to ensure a delay in a module does not cause a delay for the entire process node.
 
-![](https://substackcdn.com/image/fetch/$s_!wBOl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa1cb2161-32b0-49ac-abce-9f46a7e7ab50_1024x532.png)
+![](z-images/5e83522890dc977f1cf5805b4590d4db.webp)
 
 Only the tock nodes are being offered within the foundry service model. Just like TSMC ramps their newest nodes such as N5 with Apple before other customers hop on, it seems Intel will do internal designs on their tick node. TSMC often has much larger waves of customers on their TSMC N5P and N4 type nodes, and this same logic applies to Intel’s tocks where their foundry customers are offered the more complete tock nodes. This is another level of de-risking for foundry customers as they will know Intel de-risked most of the node internally a year before they ramp.
 
-![](https://substackcdn.com/image/fetch/$s_!d2cC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4e871d6c-ec41-4c1b-bc57-b69c7adae6b8_1024x539.png)
+![](z-images/4cbd0d6d197024f4ad40690480e0d2e8.webp)
 
 Intel is ramping multiple products on Intel 4 including Meteor Lake and a custom ASIC for networking. Meanwhile, Intel 3 will ramp with 2 Xeon products which will be discussed in the datacenter section. Intel will be taping out and running test wafers in their fab for these 2024 products in the second half of this year.
 
-![](https://substackcdn.com/image/fetch/$s_!oclL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2c792a4-e1fb-478a-9d67-7ea6e4fda270_1023x499.png)
+![](z-images/6e1777f21fcef37a4e01f33236a2104e.webp)
 
 Intel is also developing 20A and 18A with different teams. These will introduce the aforementioned RibonFET, PowerVia, and High NA EUV Lithography. Intel says they are running IP test wafers for a 2024 client product in the second half of this year. 18A is going to ship foundry customers some test chip in the first half of this year, and IP shuttles in the second half. Neither of these are full chips, but they are good process for getting potential customers comfortable with the process node. Pat Gelsinger went as far as showing an 18A SRAM test wafer on stage!
 
-![](https://substackcdn.com/image/fetch/$s_!eyUs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc1284284-c9d8-4c5c-9f02-aa892f0d08ea_1024x576.jpeg)
+![](z-images/1eb182ec5dfcbc0f9674b2f6758ded52.webp)
 
 There was also some information shared on packaging, but for those of you who have read our multi-part series on advanced packaging, literally nothing from the presentation is new.
 
@@ -98,7 +98,7 @@ The foundry business is critical to Intel maintaining scale, utilization rates, 
 
 In many cases, a new tool version would be released which was better suited for the task at hand, but instead of purchasing that new tool, Intel would engineer the process around the old tool. In the model of copy-exact, where the same tool and process is used across all sites in a ramp, Intel orders more of the old tool which may not be as efficient per dollar spent. We talk more about the topic in [this article from last month.](https://semianalysis.substack.com/p/is-intel-shipping-tools-out-of-us)
 
-![](https://substackcdn.com/image/fetch/$s_!Bhwg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fba6260f8-f976-48b1-bc8a-b2ea2826f2ec_1024x565.png)
+![](z-images/a93768bdf4203bc93ba78b695d56557b.webp)
 
 In addition to the capital efficiency benefits from keeping old nodes ramped, Intel benefits by having consistently high wafer starts. In semiconductor manufacturing, utilization rates are king. A perfect example is GlobalFoundries, who [Mubadala lost over $22.4B on](https://semianalysis.substack.com/p/globalfoundries-gfs-ipo-mubadala) over the course of a decade. They were plagued with low utilization rates, and now they are running at 100% utilization rates and will do so for the next few years. This single change has propelled them to becoming a profitable company and a worthwhile investment.
 
@@ -108,13 +108,13 @@ Intel’s entrance into foundry is not just diversification, but also one of nec
 
 Intel also mentioned the possibility of partnering and signed MOR with Brookfield Asset Management for funding the construction of fabs. Brookfield Asset Management is an international real estate and private equity firm. They are heavily involved in many different businesses, but we believe this partnership would be designed to take advantage of investors who have pushed down rates for infrastructure and real estate lease backs to very low levels. Many firms build a headquarters, only to sell it to a company like Brookfield Asset Management and lease it back for the long term. We can certainly envision a plan where Intel builds a fab shell and sells it to Brookfield along side the terms for a multi-decade lease.
 
-![](https://substackcdn.com/image/fetch/$s_!6-nk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F43e1bfd8-9c5a-45ad-9390-70e75db559b8_1024x554.png)
+![](z-images/bb6c1e98b061a0cbbc971e6bcd7bd943.webp)
 
 Intel’s spending is heavily heard towards technology development in 2022 relative to other years. 2022 and 2023 will include a large buildout of fab shells. These fab shells would have the option of sitting empty until needed so Intel can be more flexible in ramping capacity. Spending on tools is up in 2022 and 2023, but the juice will really come in 2025 and 2026 when the foundry business begins to spend heavily on tools.
 
 Intel’s long-term model will include spending roughly 25% of revenue on capital expenditures. While this is lower than the 35% of 2022 and 2023, it is higher than Intel has historically spend. Capital intensity is up and that is great for firms such as Applied Materials, ASML, Lam Research, KLA, Tokyo Electron, Onto, Nova, Entegris, etc.
 
-![](https://substackcdn.com/image/fetch/$s_!-S3R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F72da144c-92d8-4e81-99f4-74406f1dafa8_1024x565.png)
+![](z-images/9cacbd2996e7a59c5efb60222d9fec4b.webp)
 
 Intel specifically mentioned that these capital expenditure numbers are net. This means that if Intel can offset the spending via government grants and subsidies, the potential partnership with Brookfield Asset Management, and customer prepayments, their spending will only go up. Intel is conservatively penning in 10% for these offsets, but they could end up much higher if the US and EU finally recognize that they will fall completely behind in hard technology without semiconductor subsidies to match those already in place within the tax code and government budgets of countries in Asia.
 
@@ -126,11 +126,11 @@ With this acquisition falling through, Intel had to turn their head to another f
 
 ## Tower Semiconductor
 
-![](https://substackcdn.com/image/fetch/$s_!Ypz-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1b093bba-9b84-456c-898f-56f824ff3f42_1023x554.png)
+![](z-images/38771dc9b87e27c08deaa6d2109eec74.webp)
 
 The acquisition of Tower Semiconductor plugs much needed gaps in Intel's foundry offerings for process nodes beyond leading edge FinFET. Tower Semiconductor gives them teams who have been profitably running specialty technologies that interface with multiple external clients in a successful manner. Intel's biggest hole in the foundry arena is the lack of capabilities in the creation and maintenance of simple yet flexible Process Design Kit (PDK). Old Intel utilized mostly flows that were very custom tailored to their internal needs which increased development time for chip designs. This is a non-starter in the foundry business. As Intel tries to adopt more industry standard flows, PDK capabilities are an area they need a lot of help with. Towers capabilities in specialty niche technologies really boost their ability to create and offer flexible and extensible PDKs.
 
-![](https://substackcdn.com/image/fetch/$s_!9SUv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F94174de9-f98f-4fa0-ab06-574e7c6200ee_1024x408.png)
+![](z-images/29fb09a29d67d17401b9ef53859e2c63.webp)
 
 Tower Semiconductor offers a wide array of technology from RF CMOS, SiGe power ICs, discrete devices, CMOS image sensors, photonics, RFID, bipolar CMOS (BiCMOS), silicon-on-insulator (SOI), LDMOS transistors, MEMS, wafer bonding, Y-Flash memristors, and high-performance analog. Panasonic is Tower’s largest customer, but they have many other customers. Below is our breakdown of the technologies offered by Tower.
 
@@ -149,17 +149,17 @@ Tower Semiconductor offers a wide array of technology from RF CMOS, SiGe power I
 
 The acquisition of Tower enables Intel to offer a more complete array of technologies with which they can leverage their scale to deliver. Tower needs Intel for help with scaling their fabs for the capability to supply large verticals such as battery management systems in electric vehicles and silicon photonics. Intel gets to hit the ground with existing relationships with foundry customers and leverage those to create further engagements in Intel Foundry Services.
 
-![](https://substackcdn.com/image/fetch/$s_!bQCL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F04974cba-0acd-4f68-a89a-db0a66e4a040_1024x569.png)
+![](z-images/94950a77c2ce1af170cba523f0d4405b.webp)
 
 Tower Semi and Intel together will be focused on the segments of compute, mobile, and automotive. Intel says they are one of two foundries in the world that spans from micron level nodes all the way through sub 10nm nodes. The other is TSMC. Intel is trying to position themselves as the only competitor. This rhetoric ignores the fact that Intel with Tower still lacks heavily in the 45nm to 28nm process node range.
 
-![](https://substackcdn.com/image/fetch/$s_!JgoK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F458fabf4-1fe1-4dd0-98d9-d347821388b7_1024x512.jpeg)
+![](z-images/a53d873177237d933122fa195880663b.webp)
 
 Intel is announcing another foundry customer, Cisco. Cisco Silicon One has been an interesting strategy from service provider networks with deep buffered routers to power and cost optimized web scale top of rack switches, from line cards to switches. Cisco Silicon One has been a big user of Samsung Foundry, but it looks like Intel has taken that business away. [Achronix](https://semianalysis.com/achronix-goes-public-the-only-independent-leading-edge-fpga-silicon-and-ip-provider/) and [Amazon](https://semianalysis.substack.com/p/amazon-graviton-3-uses-chiplets-and?r=cyw3q) are already customers for whom Intel ships to and collects revenue from, as we have written about in the past.
 
 They also are the foundry contractor for the US governments RAMP C program which includes collaborations with Qualcomm, IBM, Synopsys, Cadence, and Microsoft. They claim they more than 5 “anchor prospects in design engagement” and more than 30 test chips in 2022. Intel is targeting the automotive market in ADAS, RF, sensors, and power management and even has a team within the foundry services business geared to target this business.
 
-![](https://substackcdn.com/image/fetch/$s_!4V36!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7504f132-f145-4fe1-93be-019c2001acd7_1023x541.png)
+![](z-images/ca9aa089075cd614d44cee5120f22f3d.webp)
 
 Intel claims that the existing foundry business was $800M in 2021. Even with business from [Achronix](https://semianalysis.com/achronix-goes-public-the-only-independent-leading-edge-fpga-silicon-and-ip-provider/) and [Amazon](https://semianalysis.substack.com/p/amazon-graviton-3-uses-chiplets-and?r=cyw3q), this seems high. We are not sure where the rest of this revenue is coming from. Our estimate for Achronix and Amazon is still under $500M even in the most optimistic scenarios. Perhaps Intel is also capturing revenue from the department of defense already.
 
@@ -167,11 +167,11 @@ Intel claims that the existing foundry business was $800M in 2021. Even with bus
 
 Let’s be clear, Intel gets demolished in server until at least 2024 and potentially beyond. At the same time, Icelake versus Milan is as bad as it gets. Sapphire Rapids versus Genoa is still a massive gap, but the gap is not as large. Rolling forward, Emerald Rapids must fight Genoa and Bergamo. It will not be able to beat either. The most interesting thing is the 2024 products.
 
-![](https://substackcdn.com/image/fetch/$s_!hVNb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F187373a5-7025-48f0-9e9f-8c7c901fc5f1_624x416.png)
+![](z-images/2635cc6714bcd8471e1c517a6c669e70.webp)
 
 Granite Rapids (GNR) has been redefined yet again, as has Sierra Forest. Granite Rapids was initially a 2022 product. It was pushed to 2023 and had its capabilities tweaked. It is now a 2024 product and has had the CPU cores moved to the Intel 3 node. The same has occurred with Sierra Forest (SRF). Ever since the first redefinition, we have known they would both be part of the Birch Stream platform which utilizes the LGA7529 socket. The process node hasn’t always remained the same. It seems Intel has also move Sierra Forest from TSMC N3 to Intel 3. This is a very positive signal for internal nodes health. Regardless, Granite Rapids is not competitive with AMD’s Turin, and Sierra Forest likely doesn’t compete with Bergamo +1.
 
-![](https://substackcdn.com/image/fetch/$s_!RO-g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd5704e3c-1c64-40ac-964d-7aef1f1db9ea_800x201.png)
+![](z-images/ffc21c8793f82681cd4446e45152ad46.webp)
 
 The AI segment is even worse. Habana has poor software and little to no traction. The team that Intel bought has already had to delay Habana's initial offering multiple times due to software and the 2nd generation part on TSMC N7 is also delayed to later this year instead of late last year like they initially told Intel when the purchase was made. Overall, Intel didn't do their due diligence with this purchase and it shows.
 
@@ -187,7 +187,7 @@ Intel’s networking hardware helps alleviate concerns of all 3 points, while al
 
 Intel also has products for the core network with CPUs, NICs, and programable switches for core routers and NFV workloads. The Colocation edge includes server hosting outside of massive datacenters, and CPUs and NICs sell into this vertical. Intel also sells into the network edge with CPUs, NICs, and FlexRAN software for the RAN hub and edge compute. SnowRidge is an SOC which sells into the network edge and 5G base stations. Lastly on-premises edge includes Xeon/Atom CPUs, Movidus VPU, FPGAs, and various software such as OpenVino.
 
-![](https://substackcdn.com/image/fetch/$s_!9d-L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F53921636-2f8f-442f-a85e-46fc5aefb45e_1024x581.png)
+![](z-images/f2ab1b60b67d364ea429cf06d7d9b81e.webp)
 
 Tam is growing at 12%, but Intel expects network and edge to grow at mid-teens. They will gain share and be a huge winner on the edge. Nick McKeown is a rockstar who has had many successful companies in products in this industry. His most recent effort that was purchased by Intel, Barefoot, is ahead of its time by offering programable switches and being the first switch with co-packaged optics. We expect Intel to start eating networking switch share rapidly in the >100Tbps switch era. Pat Gelsinger seems to indicate he had to woo him to lead the group, and it’s a blessing for Intel that they have him.
 
@@ -195,11 +195,11 @@ Tam is growing at 12%, but Intel expects network and edge to grow at mid-teens. 
 
 While we are super optimistic on the network and edge group, we are not optimistic at all on AXG. They have to build a massive software suite, and while OneAPI has already surpassed AMD’s GPU software, it’s nowhere close to Nvidia’s. The Xeon products with HBM are only useful in very small niches. The GPU IP has a long way to go and fighting both Nvidia and AMD is going to be really difficult. Furthermore, Intel is using external nodes for their gaming GPUs, so they cannot use the IDM advantage to compete on cost either. Their worse architecture will show through directly to die sizes and BOM.
 
-![](https://substackcdn.com/image/fetch/$s_!2KMI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1888914e-aa7d-48db-8ac1-3ff54f30601b_1024x593.png)
+![](z-images/ed8e95739abb47cfa56828123de03b0a.webp)
 
 It doesn’t help that Intel’s slide were somewhat deceptive. Anyone get excited about the 4M units of GPUs shipped in 2022 and the >$1B revenue figure? Yea we were too, initially… until we started looking at fine print.
 
-![](https://substackcdn.com/image/fetch/$s_!Stba!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F311438a7-ba5d-41cd-b463-cee19cf18144_1024x189.png)
+![](z-images/0f2d24dacf94701c35a414827e2a7ba4.webp)
 
 Do you see it?
 
@@ -213,7 +213,7 @@ Is Intel just selling low end GPUs to get market share?
 
 They have 2 dies which they will sell, and the smaller of the two is only 128 execution units. For reference, the last generation Tiger Lake integrated GPU was 96 execution units, and next generation Meteor Lake goes up to 192 execution units. The vast majority of Intel’s GPU volume will sell into the market at ~$75 or less ASPs and offer worse performance than AMD’s integrated graphics and worse than Intel’s next generation iGPU as well.
 
-![](https://substackcdn.com/image/fetch/$s_!K-Og!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc85151f9-dd70-4ae5-8373-8968a3022a31_1024x513.png)
+![](z-images/dce6e5c147a6ad1dc4f073f9e577372b.webp)
 
 The only out we can see is Intel’s claim of 4M units shipped doesn’t mean shipped for revenue. For the first generation of discrete GPUs, Intel could potentially be switching to the super market model where they do not get paid until the ODM sells the laptop or GPU through to the end user or channel. This would be pretty smart because then Intel can stuff the channel with their inferior GPUs, and ODMs take no risk on their balance sheet if they do not sell. They would even be incentivized to sell Intel GPUs due to the amazing return on invested capital that they get.
 
@@ -221,7 +221,7 @@ We respect Raja Koduri, the leader of Intel’s AXG, but he has a very difficult
 
 The only positives here are the AV1 encoding GPU and blockchain accelerator which look really nice. We aren’t crypto people, but we do track performance, network sizes, hashing power, and semi demand closely. The custom design services could be successful, but there’s a massive question mark here about what sort of semicustom deals could sit here.
 
-![](https://substackcdn.com/image/fetch/$s_!ozFY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F91edb70b-6229-41b8-8189-d1cf672ff0f4_1024x546.png)
+![](z-images/ea80725afd400dcfa7995c5f7f2b1373.webp)
 
 Falcon Shores is an interesting and ambitious product, which combines GPU and CPU on the same carrier, but it will be later than Nvidia’s Grace Hopper and AMD’s next generation HPC processor.
 
@@ -229,11 +229,11 @@ Falcon Shores is an interesting and ambitious product, which combines GPU and CP
 
 And it goes from bad to worse here. Intel’s client group is their largest, but some of the projections here are very questionable. Intel projected PC units to be above 350M in 2022 and continue to grow from that number in years ahead. Just to be clear, no analyst or market research firm is projecting PC units to continue to remain so high. Even AMD has 2022 as flat for total units. Most have 2022 as flat at 350M units, then a return to equilibrium. Intel’s data is very non-consensus. These feed into their financials by the way...
 
-![](https://substackcdn.com/image/fetch/$s_!tjhL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc86b86a1-6ecd-408e-acaa-fcb5f12f3a30_1023x565.png)
+![](z-images/6caa04fdfe14136af810c140a5703ff0.webp)
 
 As far as competitiveness, Intel’s roadmaps on mobile are somewhat competitive. They aren’t dominating AMD like they claim with Alder Lake, but there is decent competition. We expect the performance lead to flip flop back and forth for AMD and Intel.
 
-![](https://substackcdn.com/image/fetch/$s_!JYT7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F79fc346d-dc2e-4816-82c1-3a557862f8d6_1024x574.png)
+![](z-images/cea38ff05355c491a94749af79f109ab.webp)
 
 ## Software and Mobileye
 

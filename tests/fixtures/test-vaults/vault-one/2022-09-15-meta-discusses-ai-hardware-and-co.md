@@ -10,17 +10,17 @@ Meta’s Alexis Black Bjorlin (VP of Infrastructure Hardware) discussed AI model
 
 A common trend that we have discussed is the issue of [DRAM scaling](https://semianalysis.substack.com/p/cxl-deep-dive-future-of-composable) and [network scaling](https://semianalysis.substack.com/p/ayar-labs-co-packaged-optics-revolution?s=w). Both these trends are sides of the same coin; FLOPs are growing faster than we can get [data in and out of a chip/package](https://semianalysis.substack.com/p/advanced-packaging-part-1-pad-limited) every generation. This isn’t a new phenomenon, but combatting the mismatch is becoming more and more difficult.
 
-![](https://substackcdn.com/image/fetch/$s_!ygaF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fab7e3b85-482b-4807-8475-db0642aca2f5_3319x1852.jpeg)
+![](z-images/cb4514c51074e08b72770e51e42d180c.webp)
 
 Meta spoke about these challenges regarding future model scaling. They commented that a large training cluster could be as much as 6 Megawatts today. They said that these training clusters would be 64 Megawatts in the future. The largest public supercomputers in the world are currently 20 Megawatts to 30 Megawatts. An incredible amount of power will be sucked down for training AI models. The costs to train these models will continue to soar.
 
-![](https://substackcdn.com/image/fetch/$s_!i2rW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fedbbbe89-bfd2-44d7-8c93-7850a697fb9d_3449x2092.jpeg)
+![](z-images/335a9ddc942ac88fac81b770006c8733.webp)
 
 Meta presented a power breakdown for a training cluster. In the 200GB/s bandwidth per node accelerator generation, the accelerator servers consume most of the power. If we move a few generations forward from 200GB/s per node to 1200GB/s per node, networking balloons quickly to consume more than 70% of the power. Traditional optical modules and ethernet-based fabrics will not work. The world must move to HPC-optimized fabric switches with co-packaged optics. These problems are most apparent in the DLRM models that Facebook runs due to their massive extent tables.
 
 This is where it’s obvious Nvidia is playing a different game. We’ve discussed [Nvidia’s co-packaged optics research before](https://semianalysis.substack.com/p/globalfoundries-fotonix-the-leading). With [Nvidia’s strategic investment in Ayar Labs and collaboration on co-packaged optics](https://semianalysis.substack.com/p/ayar-labs-co-packaged-optics-revolution?s=w), Nvidia is poised to tackle this problem in a way most other AI startups have not considered. They also [have partnerships with GlobalFoundries](https://semianalysis.substack.com/p/ayar-labs-co-packaged-optics-revolution?s=w) and TSMC for exploring co-packaged optics further.
 
-![](https://substackcdn.com/image/fetch/$s_!aMU1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F56596887-eba5-4e0d-ad08-93b04f5c3126_1501x802.png)
+![](z-images/9ed8080cbd2856a3a33a2bdc0baca041.webp)
 
 Nvidia has built its own custom fabric that connects between many nodes. The primary purpose of this network is for memory sharing, sharding models across many nodes, and allowing for all-reduce operations on in-flight data.
 

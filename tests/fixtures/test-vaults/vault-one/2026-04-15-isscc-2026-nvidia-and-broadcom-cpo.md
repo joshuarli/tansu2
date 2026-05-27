@@ -26,11 +26,11 @@ Samsung was the only one among the top three memory vendors to present a technic
   
 The technical details presented at ISSCC, combined with industry chatter we have gathered, clearly demonstrate that Samsung’s HBM4 is competitive with its peers. Notably, it can meet the pin speed required for Rubin while staying below 1V. While Samsung still lags SK Hynix in terms of reliability and stability, the company has made meaningful progress in closing the gap on the technology front and could challenge SK Hynix’s dominance in HBM. Their 1c-based HBM4 paired with an SF4 logic base die appears to deliver stronger performance in pin speed.
 
-![](https://substackcdn.com/image/fetch/$s_!8SFa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F515a99f4-5397-4b1a-9f95-d9a3dff37521_2880x1620.jpeg)
+![](z-images/614be87e8efefd44b60677176b6f5937.webp)
 
 Samsung HBM3E vs. HBM4 Specifications. Source: Samsung, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!t-2P!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F773189fd-1dd5-434a-aa0c-694db785b9c9_2880x1620.jpeg)
+![](z-images/6de2bbcf8f86f6d563eba6477fe24873.webp)
 
 Samsung HBM4 Die Shots and Cross-Section. Source: Samsung, ISSCC 2026
 
@@ -40,7 +40,7 @@ The most obvious architectural change from HBM3E to HBM4 is the process technolo
 
 The key architectural challenge arises as AI workloads demand higher bandwidth and faster data rates from HBM. By moving the base die to the SF4 logic process, Samsung enables higher operating speeds and lower power consumption. The operating voltage (VDDQ) fell 32%, from 1.1V in HBM3E to 0.75V in HBM4. A logic-based base die provides higher transistor density, smaller device dimensions, and better area efficiency due to smaller transistors and larger metal-layer stack availability as compared to a base die fabricated on a DRAM process. This helps Samsung’s HBM4 achieve — and significantly surpass — JEDEC’s HBM4 standard that we explain more at the end of this section.
 
-![](https://substackcdn.com/image/fetch/$s_!SBki!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff3e96393-ade6-49e3-82fa-8127beff5ad4_2880x1620.jpeg)
+![](z-images/ef2d1aca56d7a0ea5a428be7000776f8.webp)
 
 Samsung HBM4 Adaptive Body-Bias Control and Process Variation. Source: Samsung, ISSCC 2026
 
@@ -60,7 +60,7 @@ In a stacked DRAM architecture, multiple core dies are vertically integrated on 
 
 The increased stack heights and channel counts, from 16 to 32, compound this challenge. As the channel counts and stack heights increase, the variation between the dies accumulates, causing larger timing mismatches across channels and dies that impact the achievable tCCDR and overall HBM performance.
 
-![](https://substackcdn.com/image/fetch/$s_!YCM6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe56f1735-adbc-4038-8473-b27f5ae002fb_1611x1352.jpeg)
+![](z-images/c1d4d43821cf078d21de718f9b461b15.webp)
 
 Samsung HBM4 Per-Channel TSV RDQS Auto-Calibration Scheme. Source: Samsung, ISSCC 2026
 
@@ -70,11 +70,11 @@ This calibration accounts for both global delay variation between stacked core d
 
 Some of our readers who are well versed in memory technology may be asking: How is there enough die area to accommodate the significant increase in TSV counts? This is where the 1c node becomes important. Compared with the previous 1a node, 1c further shrinks the DRAM cell area, freeing up die space that can be used to integrate the larger number of TSVs required for HBM4.
 
-![](https://substackcdn.com/image/fetch/$s_!FNwT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F35b20c2b-2f00-4d4c-b05a-578d695a51c1_2880x1620.jpeg)
+![](z-images/5a548aa9137df62fbd27bed69aaa6939.webp)
 
 Samsung HBM4 PMBIST Test Pattern Operation. Source: Samsung, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!06LM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec777954-f7fa-44fb-a8b3-f295d57f3e59_2880x1620.jpeg)
+![](z-images/9429177bac26a548982b681d7d0958ca.webp)
 
 Samsung HBM4 PMBIST vs. HBM3E MBIST Comparison. Source: Samsung, ISSCC 2026
 
@@ -84,7 +84,7 @@ This approach represents a notable departure from HBM3E. As discussed earlier, t
 
 This enables much more robust debugging and better yield learning for HBM. Engineers can create targeted stress patterns to validate critical timing parameters such as tCCDR and tCCDS, identify corner-case failures earlier in manufacturing, and accelerate characterization during chip-on-wafer (CoW) and system-in-package (SiP) testing. Put simply, PMBIST improves test coverage, debug efficiency, and ultimately production yield as HBM stacks grow more complex and operate at higher speeds.
 
-![](https://substackcdn.com/image/fetch/$s_!E1zF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a03c69a-dc9b-4dfb-a6d2-ad4315760852_2880x1620.jpeg)
+![](z-images/606e490ded0ed4de3e0f925c68019533.webp)
 
 Samsung HBM4 Shmoo Plot. Source: Samsung, ISSCC 2026
 
@@ -96,13 +96,13 @@ Samsung’s implementation significantly exceeds the baseline specification of t
 
 Both Samsung and SK Hynix showed off their LPDDR6 chips. We will discuss Samsung’s chips first and turn to SK Hynix’s later.
 
-![](https://substackcdn.com/image/fetch/$s_!Odn_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb15266c9-bc1e-4365-9316-28d2a6e36fac_2880x1620.jpeg)
+![](z-images/6b4d7c5957d4431bd8fc51fca4fdea6e.webp)
 
 LPDDR5X vs. LPDDR6 Comparison. Source: Samsung, ISSCC 2026
 
 Samsung presented their LPDDR6 architecture and detailed the power-saving techniques used.
 
-![](https://substackcdn.com/image/fetch/$s_!Ysn8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0098a613-71de-4d6c-b446-2a203e66fef7_2880x1620.jpeg)
+![](z-images/889b6081ac0b4b0fac6db2616549a7b2.webp)
 
 LPDDR6 Sub-Channel and Bank Structure. Source: Samsung, ISSCC 2026
 
@@ -110,13 +110,13 @@ LPDDR6 adopts a 2 sub-channel per die architecture, with 16 banks in each sub-ch
 
 The dual sub-channel architecture also means that there is twice the amount of peripheral circuitry, such as command decoders, serialization and control. From the die shots provided by both Samsung and SK Hynix, the penalty is about 5% of the total die area, leading to a reduction in total bits per wafer.
 
-![](https://substackcdn.com/image/fetch/$s_!79tH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F68f2f392-7912-4f69-9c53-ef6c4f6942b6_2880x1620.jpeg)
+![](z-images/9767ad2b9e93f40a7c485c2fca9496b0.webp)
 
 LPDDR6 Signaling Options. Source: Samsung, ISSCC 2026
 
 Unlike GDDR7, which uses PAM3 signaling, LPDDR6 will continue to use NRZ. However, it does not use standard NRZ as the eye would not have sufficient margin. It uses wide NRZ with 12 data (DQ) pins per sub-channel and a burst length of 24 per operation.
 
-![](https://substackcdn.com/image/fetch/$s_!GQm1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1737c518-8a4f-4042-a536-513a9f769cb8_2880x1620.jpeg)
+![](z-images/29346767db9de8eae96f57254ff23974.webp)
 
 LPDDR6 Metadata and DBI Bit Allocation per Burst. Source: Samsung, ISSCC 2026
 
@@ -127,33 +127,33 @@ DBI is a power-saving and signal integrity mechanism. Before a burst is sent out
 To calculate the effective bandwidth, you must account for these metadata and DBI bits like so: Bandwidth = Data Rate × Width (24 b) × Data (32 b) / Packet (36 b).  
 For 12.8 Gb/s, you get 34.1 GB/s, and for 14.4 Gb/s, you get 38.4 GB/s.
 
-![](https://substackcdn.com/image/fetch/$s_!bjV0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F986010c2-7d39-4d5f-b195-76d6c653c5ea_2880x1620.jpeg)
+![](z-images/1597e3ddff62a980952ab3bc382c2b3f.webp)
 
 Samsung LPDDR6 High-Frequency Power Domain Optimization. Source: Samsung, ISSCC 2026
 
 LPDDR6 has two constant power domains, VDD2C at 0.875V and VDD2D at 1.0V. By carefully choosing which peripheral logic is using which power domain, read power has been reduced by 27% and write power reduced by 22%.
 
-![](https://substackcdn.com/image/fetch/$s_!QJ_x!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8741b331-6528-4e4f-a064-722f271f43a0_2880x1620.jpeg)
+![](z-images/37aa81d0b5c624371e234f593d7405d6.webp)
 
 Samsung LPDDR6 I/O Power Switching at Low Data Rates. Source: Samsung, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!iMMC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F06109578-4db8-490e-b963-1968a2ebacb0_2880x1620.jpeg)
+![](z-images/aa15a985d16fca83771704770b3437c6.webp)
 
 Samsung LPDDR6 Additional Low-Power DQ/CA Paths. Source: Samsung, ISSCC 2026
 
 LPDDR is primarily used at low data rates of 3.2 Gb/s and below when idling. Samsung focused heavily on saving power at these lower data rates through careful use of the voltage domains, reducing both standby and read/write power consumption.
 
-![](https://substackcdn.com/image/fetch/$s_!Tycr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F931c917e-8cf5-4e59-9b07-45faa91aeee0_2880x1620.jpeg)
+![](z-images/39f3b40c4de32a5b50e13fb8393785fd.webp)
 
 LPDDR6 RDL Timing and Layout Benefits. Source: Samsung, ISSCC 2026
 
 By using a redistribution layer (RDL), Samsung can locate related circuits closer together physically. This shortens critical delay paths and reduces their sensitivity to voltage and temperature variation. At the high frequencies of LPDDR6, tighter timing and reduced variation are essential.
 
-![](https://substackcdn.com/image/fetch/$s_!UXaU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F295c4906-10e2-4877-909b-d7c76e61a6f4_2880x1620.jpeg)
+![](z-images/495d5013f206f8ccedb25142cb9ca2b5.webp)
 
 Samsung LPDDR6 Specifications and Die Shot. Source: Samsung, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!003E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6c037b47-34b6-41db-b615-2e62e41bba05_2880x1620.jpeg)
+![](z-images/0b9b5d7e8f62895968c554b0da684386.webp)
 
 Samsung LPDDR6 Shmoo Plot. Source: Samsung, ISSCC 2026
 
@@ -161,13 +161,13 @@ Samsung’s LPDDR6 can reach a data rate of 12.8 Gb/s at 0.97V, and up to 14.4 G
 
 ## Samsung SF2 LPDDR6 PHY - Paper 37.3
 
-![](https://substackcdn.com/image/fetch/$s_!EUBE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F46165883-4137-4a8e-8fbd-76ee3b9dafd5_2880x1620.jpeg)
+![](z-images/6cca71a15a47b494439a4949e29e0395.webp)
 
 Samsung LPDDR6 PHY Test Chip Specifications and Die Shot. Source: Samsung, ISSCC 2026
 
 Samsung also unveiled PHYs on the logic die interface with LPDDR6. The PHYs are fabricated on their new SF2 process and support up to 14.4 Gb/s. The PHYs take up 2.32 mm of shoreline and 0.695 mm² of area, with bandwidth densities of 16.6 Gb/s/mm and 55.3 Gb/s/mm² respectively.
 
-![](https://substackcdn.com/image/fetch/$s_!NkaV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffa36890f-e205-4a23-8281-71bf8c199448_2880x1620.jpeg)
+![](z-images/549a5c74838b1be8e115cfaf827c48b9.webp)
 
 Samsung LPDDR6 PHY Efficiency Mode Power Reductions. Source: Samsung, ISSCC 2026
 
@@ -177,7 +177,7 @@ The PHYs can augment the efficiency mode by gating the high-speed clock path for
 
 ## SK Hynix 1c LPDDR6 - Paper 15.7
 
-![](https://substackcdn.com/image/fetch/$s_!Mi3M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c8da198-d711-4b0a-8fcd-0d7fce1aa327_2880x1620.jpeg)
+![](z-images/87283f6f38489d37c2b226a0a34cd784.webp)
 
 SK Hynix LPDDR6 Specifications and Die Shot. Source: SK Hynix, ISSCC 2026
 
@@ -185,17 +185,17 @@ SK Hynix unveiled their first 1c DRAM products, both in LPDDR6 and in GDDR7 pack
 
 Although SK Hynix did not state the area or density of the LPDDR6 chip, we estimate the bit density will reach 0.59 Gb/mm², based on the relative density increase of their GDDR7.
 
-![](https://substackcdn.com/image/fetch/$s_!s1zW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd451b064-d3c9-43a0-b92b-e26efd5df094_2880x1620.jpeg)
+![](z-images/57b330597bfbca21e8c795ec61d4a252.webp)
 
 SK Hynix LPDDR6 Shmoo Plot. Source: SK Hynix, ISSCC 2026
 
 In their shmoo plot, SK Hynix showed that they can reach a data rate of 14.4 Gb/s at 1.025V, the same as Samsung. However, they can only reach 10.9 Gb/s at 0.95V as compared to Samsung’s 12.8 Gb/s at 0.97V. This indicates that SK Hynix may have worse power efficiency at lower pin speeds when compared to Samsung, having to run at higher voltages to maintain reliability.
 
-![](https://substackcdn.com/image/fetch/$s_!_oDZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c3722fa-72c1-4ad3-9df8-2910380ab1d2_2880x1620.jpeg)
+![](z-images/3761d6aede2f9625fde88daf0d508e8e.webp)
 
 SK Hynix LPDDR6 Efficiency Mode Architecture. Source: SK Hynix, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!io7g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F001bcb01-81d3-42d2-b0a2-832688185377_2880x1620.jpeg)
+![](z-images/164436be1d17a690499c52e71268617f.webp)
 
 SK Hynix LPDDR6 Efficiency Mode Power Savings. Source: SK Hynix, ISSCC 2026
 
@@ -203,23 +203,23 @@ Like Samsung’s LPDDR6, SK Hynix’s LPDDR6 also features two modes, a normal m
 
 ## SK Hynix 1c GDDR7 - Paper 15.9
 
-![](https://substackcdn.com/image/fetch/$s_!02R2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75df5c4b-d65e-4d6e-ad17-46db43d1c124_2880x1620.jpeg)
+![](z-images/bad7b03b71bbfa1c3cdb02ae1163ec55.webp)
 
 SK Hynix 1c GDDR7 Specifications and Die Shot. Source: SK Hynix, ISSCC 2026
 
 While the LPDDR6 is a generational leap with new memory technology, SK Hynix’s GDDR7 on their 1c process shows an even greater improvement, clocking up to 48 Gb/s at 1.2V/1.2V. Even at only 1.05V/0.9V, it can clock up to 30.3 Gb/s, higher than the 30 Gb/s memory in the RTX 5080.
 
-![](https://substackcdn.com/image/fetch/$s_!M7-j!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb54fd8fd-325c-495b-bd98-4187c051138b_2880x1620.jpeg)
+![](z-images/13566cf4c0e4b089572828f0674f66ee.webp)
 
 Samsung 1z GDDR7 Shmoo Plot and Die Shot. Source: Samsung, ISSCC 2024
 
-![](https://substackcdn.com/image/fetch/$s_!zcG2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5fcf00cd-4001-4a32-8220-0846b9baa526_2880x1620.jpeg)
+![](z-images/ffbcf4a0b811caf7e2e4502fb9c04a4f.webp)
 
 Samsung 1b GDDR7 Specifications and Die Shot. Source: Samsung, ISSCC 2025
 
 The bit density achieved is 0.412 Gb/mm², compared to 0.309 Gb/mm² on Samsung’s 1b process, and 0.192 Gb/mm² on Samsung’s older 1z process.
 
-![](https://substackcdn.com/image/fetch/$s_!tQdH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa8119950-b6d0-424a-af28-90305882aae1_1731x703.png)
+![](z-images/e4d304eecae6b16fe85e3a9a027432c0.webp)
 
 LPDDR5X vs. GDDR7 Density Comparison Across Vendors. Source: SemiAnalysis
 
@@ -237,19 +237,19 @@ We have extensively covered challenges in continuing to scale DRAM.
 
 At [VLSI 2025, SK Hynix detailed their own 4F² Peri-Under-Cell (PUC) DRAM](https://newsletter.semianalysis.com/i/174558662/dram-4f2-and-3d). At ISSCC, Samsung disclosed their own implementation of a 4F² Cell-on-Peripheral (COP) DRAM. PUC and COP are the same architecture with different names.
 
-![](https://substackcdn.com/image/fetch/$s_!R4vq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d73da51-6e13-4c3f-a013-11188a56fcaf_2880x1620.jpeg)
+![](z-images/9574de7d81a0e42a3e7c8c4e36097a5a.webp)
 
 4F² VCT DRAM Cell Architecture. Source: Samsung, ISSCC 2026
 
 The architecture for 4F² cells is the same as SK Hynix’s, with vertical channel transistors (VCT), and capacitors above the drain.
 
-![](https://substackcdn.com/image/fetch/$s_!4BMO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb889dd90-99fa-42d6-acc7-c8198d858390_2880x1620.jpeg)
+![](z-images/41bdf00728773bad2842a12201ec2fea.webp)
 
 Cell-on-Peripheral (COP) DRAM Stack Architecture. Source: Samsung, ISSCC 2026
 
 The vertical architecture presented by Samsung is essentially the same as that used by SK Hynix, with a cell wafer hybrid bonded on top of a peripheral wafer. With this architecture, it is possible to use a DRAM node for the cell wafer while using a more advanced logic node for the periphery.
 
-![](https://substackcdn.com/image/fetch/$s_!cEvZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff2c22653-7ddd-4eb8-87da-131a04a44314_2880x1620.jpeg)
+![](z-images/229d78077c8f02ea085411e7635ccbc1.webp)
 
 COP Architecture Comparison for DRAM vs. NAND. Source: Samsung, ISSCC 2026
 
@@ -257,11 +257,11 @@ Samsung notes that hybrid bonding for COP has already been used for NAND. This i
 
 Moreover, the number of inter-wafer connections for DRAM is an order of magnitude higher than for NAND and requires much tighter pitches. To reduce the number of inter-wafer interconnections, Samsung has employed two novel approaches.
 
-![](https://substackcdn.com/image/fetch/$s_!vZzA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F058cc85d-e7c7-4d2c-bafe-43cdc55f9607_2880x1620.jpeg)
+![](z-images/68e6cc32bc6ed09c72f9870ec3ad048c.webp)
 
 COP NOR-Type Sub-Wordline Driver Optimization. Source: Samsung, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!Q4d0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F148125f3-7781-496c-9df5-f4ef6dd56b70_2880x1620.jpeg)
+![](z-images/21f8c9bd1c7ff58dc513c0dde1785ca9.webp)
 
 COP Even/Odd Column Select MUX Optimization. Source: Samsung, ISSCC 2026
 
@@ -269,19 +269,19 @@ First, they have reorganized the sub-wordline drivers (SWD) from 128 per cell bl
 
 Next, they split the column select into an even and an odd path. This requires twice the multiplexers (MUX) but halves the column select line (CSL) count to 32 per data pin.
 
-![](https://substackcdn.com/image/fetch/$s_!-Vrx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F76c17f7b-d3ae-4595-bee1-b49403715d62_2880x1620.jpeg)
+![](z-images/856778e154e966056e7b695697ffcf16.webp)
 
 COP Core Circuitry Layout Under Cell Array. Source: Samsung, ISSCC 2026
 
 With hybrid bonding, the core circuitry, that is, bitline sense amplifiers (BLSA) and SWD can be placed under the cell array. The goal is for the core circuits to occupy the same area as the cell array to increase overall density.
 
-![](https://substackcdn.com/image/fetch/$s_!2ZFO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe3f4b60f-a3f5-4985-a5f6-d3a804ae9a69_2880x1620.jpeg)
+![](z-images/6a04415a6b425973b5f330fb7f22150a.webp)
 
 COP Core Circuitry Layout Options. Source: Samsung, ISSCC 2026
 
 Samsung adopted the “sandwich” structure, which allows them to maximize the area efficiency of the core circuitry, and reduce the edge region area, which is not under any cells.
 
-![](https://substackcdn.com/image/fetch/$s_!NQFx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1824aa4-f1c3-4174-94c7-320067ca2401_2880x1620.jpeg)
+![](z-images/f8c6238c64a8b8f8acc0a7cc0dd347bc.webp)
 
 COP Sandwich Structure Area Efficiency. Source: Samsung, ISSCC 2026
 
@@ -289,7 +289,7 @@ The area used by the core circuitry was reduced from 17.0% down to only 2.7%, a 
 
 In traditional DRAM, increasing the number of cells per bitline would result in a significant increase in chip area, while for VCT DRAM, the increase is almost negligible as the core circuitry is all below the cells.
 
-![](https://substackcdn.com/image/fetch/$s_!cPId!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3bfef447-2020-4611-af35-496a0f7926c9_2880x1620.jpeg)
+![](z-images/a7b66b39bc989b2293b7d7703ec73a7c.webp)
 
 Samsung 4F² COP DRAM Summary and Die Shot. Source: Samsung, ISSCC 2026
 
@@ -303,13 +303,13 @@ Despite these challenges, we still expect 4F² hybrid bonded DRAM to arrive in t
 
 SanDisk and Kioxia demonstrated their BiCS10 NAND, with 332 layers and 3 decks. This is the highest reported NAND bit density, at 37.6 Gb/mm², dethroning the previous champion, [SK Hynix’s 321L V9](https://newsletter.semianalysis.com/i/184077729/3d-nand-hynix-321-layer).
 
-![](https://substackcdn.com/image/fetch/$s_!xViG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f240c14-4a4f-4fab-bc19-194185a47c6b_2880x1620.jpeg)
+![](z-images/0f6ce493c655ca1629146ce94bebcf5c.webp)
 
 BiCS10 Die Shot and Density Comparison vs. SK Hynix and Samsung V9. Source: SanDisk/Kioxia, ISSCC 2026
 
 Despite using a similar architecture with 6 planes, 3 decks, and a similar number of layers, SK Hynix falls behind, with 30% lower bit density. In a QLC configuration, BiCS10 has a bit density of 37.6 Gb/mm², while SK Hynix’s V9 has a bit density of only 28.8 Gb/mm². While in a TLC configuration, the densities are 29 and 21 Gb/mm² respectively, another example of SK Hynix’s trailing position.
 
-![](https://substackcdn.com/image/fetch/$s_!mqol!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6701cf01-e5c3-4aeb-87e6-ab7e99222f7d_2880x1620.jpeg)
+![](z-images/866564b2a424c1a8a97cfa09a0384510.webp)
 
 NAND 1×6 vs. 2×3 Plane Configuration Comparison. Source: SanDisk/Kioxia, ISSCC 2026
 
@@ -317,13 +317,13 @@ Moreover, BiCS10 features a 6-plane configuration, increasing IO bandwidth by 50
 
 A 1x6 configuration has fewer ground pads and reduces area by 2.1%. However, the lower number of ground pads and vertical power tracks constrains power distribution.
 
-![](https://substackcdn.com/image/fetch/$s_!qU7L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1c58eb6-654f-4ec5-9d5b-14d27c7f3679_2880x1620.jpeg)
+![](z-images/69c8209c113ea3c869a23d28b093bea2.webp)
 
 BiCS10 CBA Additional Top-Metal Layer for Power Distribution. Source: SanDisk/Kioxia, ISSCC 2026
 
 By using the CBA (Cell Bonded Array) architecture, SanDisk and Kioxia are able to customize the CMOS wafer process. By adding another top-metal layer in parallel to the existing one, they created a stronger power grid and overcame their power distribution constraints.
 
-![](https://substackcdn.com/image/fetch/$s_!6HeL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3c965c54-2786-4298-bdfc-f916f5133490_2880x1620.jpeg)
+![](z-images/96ff96d94d3a4ddf58cce4986a5e81aa.webp)
 
 Multi-Die NAND Idle Power Penalty and Die-Gating Solution. Source: SanDisk/Kioxia, ISSCC 2026
 
@@ -331,11 +331,11 @@ Stacking more dies is essential to increasing storage density. However, in multi
 
 ## MediaTek xBIT Logic-based Bitcell - Paper 15.2
 
-![](https://substackcdn.com/image/fetch/$s_!m8pd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa42110ab-a204-4a5f-8977-830bd38e06ea_1283x461.jpeg)
+![](z-images/94d691607f7e7b045a91bc300fde2510.webp)
 
 SRAM HC Bitcell Density vs. Logic-Based MBFF Across Nodes. Source: MediaTek, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!NbiN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda693b39-6780-47ce-ac48-bf8a5b5a489f_2880x1620.jpeg)
+![](z-images/31308693b6fbb822b0f3634fac3e5a6b.webp)
 
 SRAM Bitcell Scaling Limitations: Area and Voltage Constraints. Source: MediaTek, ISSCC 2026
 
@@ -343,23 +343,23 @@ SRAM Bitcell Scaling Limitations: Area and Voltage Constraints. Source: MediaTek
 
 It is well known that [N3E’s high-density bitcell is a regression from N3B’s, falling back to N5’s density](https://newsletter.semianalysis.com/i/175660907/n3-technology-nodes). In this paper, MediaTek shed some light on the high-current bitcell. N3E’s high-current bitcell increased in area by 1-2% over N5. The density decreased from ~39.0 Mib/mm² to ~38.5 Mib/mm². Do note these figures do not account for assist circuitry overhead.
 
-![](https://substackcdn.com/image/fetch/$s_!_Cbb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8879827-c259-4dfd-a9ae-79a59dbfc37d_2880x1620.jpeg)
+![](z-images/3c81d2515203c73e12c3351719715f0e.webp)
 
 8T Bitcell NMOS/PMOS Layout Challenges with Logic Rules. Source: MediaTek, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!oxdV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd4abf3fe-77e4-4333-a1c8-da1eeedb5789_2520x1408.jpeg)
+![](z-images/30f2a9b09834f449b782e6aa4c139376.webp)
 
 MediaTek 10T xBIT Balanced Bitcell Circuit Design. Source: MediaTek, ISSCC 2026
 
 In modern logic nodes, 6T bitcells have 4 NMOS and 2 PMOS transistors, while 8T bitcells have 6 and 2 respectively. The unequal number of NMOS and PMOS transistors requires specialized rules and makes layout more inefficient. MediaTek’s novel bitcell is a 10-transistor cell, named the xBIT, with 4 NMOS and 6 PMOS transistors or vice versa. The two variants of the bitcell can be arranged together into a rectangular block, with 20 transistors, storing 2 bits.
 
-![](https://substackcdn.com/image/fetch/$s_!n1LG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa550e975-e262-4350-8c6f-380c90b3ae01_2520x1408.jpeg)
+![](z-images/282cd559f1ad0c9f036bbf8aa62bc1a5.webp)
 
 xBIT vs. Foundry 8T Density and Power Comparison. Source: MediaTek, ISSCC 2026
 
 When compared to the PDK’s standard 8T bitcells, the xBIT achieved 22% to 63% higher density, with the largest gains at lower wordline widths. Power has also improved greatly, with the average read/write power reduced by over 30%, and leakage reduced by 29% at 0.5V. At 0.9V, performance was similar to an 8T bitcell and at 0.5V, although it was 16% slower than the 8T bitcell, it was fast enough not to be the bottleneck in a processor, and the voltage range was large enough for voltage-frequency scaling.
 
-![](https://substackcdn.com/image/fetch/$s_!xu_9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6f2a3a1a-a796-4979-8477-fab6bf41c58d_1699x1094.jpeg)
+![](z-images/bf42cf42aeaaa0b50a19e7dec64abb6f.webp)
 
 xBIT Shmoo Plot. Source: MediaTek, ISSCC 2026
 
@@ -371,31 +371,31 @@ We will be doing a deep dive into SRAM and its scaling factors in an upcoming ne
 
 TSMC presented an updated STT-MRAM on their N16 node, building on their previous work from ISSCC 2023. TSMC is positioning the MRAM as an embedded non-volatile memory (eNVM), for use in automotive, industrial, and edge applications, which do not need the most advanced technology but instead reliability.
 
-![](https://substackcdn.com/image/fetch/$s_!AEKe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb74d1b16-3ff4-4bca-8df1-6e8909f865d1_2880x1620.png)
+![](z-images/1eebd65174b63a9f3239d0b97ff7bbb4.webp)
 
 TSMC N16 MRAM Design Features and Die Floorplan. Source: TSMC, ISSCC 2026
 
 The MRAM features dual-port access so reads and writes can occur simultaneously — critical for over-the-air (OTA) updates in automotive, where the system cannot halt reads while firmware is being written.
 
-![](https://substackcdn.com/image/fetch/$s_!mICA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2bb08e47-26dd-4357-b813-60ec053c33d4_2880x1620.png)
+![](z-images/fd88be61534ca4eaf299e6dcc19816c7.webp)
 
 TSMC N16 MRAM Shmoo Plot at -40 °C and 150 °C. Source: TSMC, ISSCC 2026
 
 It features interleaved reads across modules with independent clocks, raising throughput to 51.2 Gb/s at 200 MHz. On silicon, the 84 Mb macro achieves 7.5ns read access time at 0.8V across -40 °C to 150 °C.
 
-![](https://substackcdn.com/image/fetch/$s_!qUbb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ac17a55-6e1f-415f-bebb-b5dd0c966ea9_2880x1620.png)
+![](z-images/d09482f2657b648b8b14ba4e209114d3.webp)
 
 TSMC N16 MRAM Modular Macro Architecture. Source: TSMC, ISSCC 2026
 
 The architecture is modular — configurable in 16 Mb, 8 Mb and 2 Mb modules that compose into macros from 8 Mb to 128 Mb. By combining large 16 Mb modules with a few smaller 2 Mb and 8 Mb modules, the capacity can be fine tuned to the needs of any design. For example, 5× 16 Mb modules and 2× 2 Mb modules form an 84 Mb macro.
 
-![](https://substackcdn.com/image/fetch/$s_!yxjs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbe9063a9-d2b4-4d04-9dfd-ebf11aac4259_2880x1620.png)
+![](z-images/b3cc36f94e674a2c46d416b0d3c636fa.webp)
 
 TSMC N16 MRAM Endurance and Reliability. Source: TSMC, ISSCC 2026
 
 As stated earlier, reliability is where embedded MRAM lives or dies. After 1 million endurance cycles at -40 °C, the hard error rate stays well below 0.01 ppm — well within ECC correction range. Read disturb at 150 °C is below 10⁻²² ppm at typical read voltages, effectively negligible. The 168 Mb test chip passes reflow and supports 20-year retention at 150 °C, meeting stringent automotive requirements.
 
-![](https://substackcdn.com/image/fetch/$s_!hLrV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0ef20058-3a8c-4df0-85e1-5912e2da26ff_2880x1620.png)
+![](z-images/6bfe232970b1da955f411e4e2c1c6927.webp)
 
 TSMC N16 MRAM Specification vs Prior Work. Source: TSMC, ISSCC 2026
 
@@ -403,7 +403,7 @@ Compared to the old MRAM on the same N16 node, the bitcell has shrunk 25% from 0
 
 While Samsung Foundry also published work on 8LPP eMRAM this year, TSMC’s is far more promising. It targets the needed features, has great performance, and is on a cheaper N16 node.
 
-![](https://substackcdn.com/image/fetch/$s_!09sO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F87ac2737-caab-46a2-8b88-417507719b1a_2880x1620.png)
+![](z-images/6788a296cefdc7f993ae9f9af482b5bc.webp)
 
 TSMC N16 MRAM Flash-Plus Roadmap. Source: TSMC, ISSCC 2026
 
@@ -417,7 +417,7 @@ Several papers from major optics vendors tackled optical interconnects that will
 
 The choice of optical signaling format will affect the go-to-market timeline for scale-up co-packaged optics (CPO). Nvidia is ramping up production of COUPE optical engines that support 200G per lane PAM4 for scale-out switching in the near-term.
 
-![](https://substackcdn.com/image/fetch/$s_!gqo1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa1a30ce9-0d17-45f9-9e83-026ba5f0a876_2880x1620.jpeg)
+![](z-images/0e001b7497c001287ad6ad6550df2df7.webp)
 
 Nvidia DWDM Architecture Overview. Source: Nvidia, ISSCC 2026
 
@@ -427,7 +427,7 @@ Clock forwarding means that SerDes can be made somewhat simpler by removing the 
 
 Earlier in March, just before OFC 2026, the [formation of the Optical Compute Interconnect MSA](https://www.businesswire.com/news/home/20260312254951/en/Optical-Scale-up-Consortium-Established-to-Create-an-Open-Specification-for-AI-Infrastructure-Led-by-Founding-Members-AMD-Broadcom-Meta-Microsoft-NVIDIA-and-OpenAI) (OCI MSA) was announced, and it will focus on a 200 Gb/s Bi-directional link, with each of transmit and receive formed using 4 lambdas of 50G NRZ, which will be sent bi-directionally across the same fiber. Did I hear anyone mention OCS?
 
-![](https://substackcdn.com/image/fetch/$s_!Eh4Q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F62c2c764-5aab-4981-aedc-1e6ba3864cf4_2869x1869.jpeg)
+![](z-images/8d88029431e09289fb0de2144736ad26.webp)
 
 OCI MSA Optical Link Specifications. Source: OCI MSA
 
@@ -437,7 +437,7 @@ Much of Nvidia’s published research on scale-up CPO has centered on DWDM, thou
 
 The OCI MSA also illustrates different implementations, an On-Board Optics (OBO), a version of CPO that is integrated via the substrate on the ASIC package, and a version where the optical engine is integrated directly on the interposer. The implementation illustrated in the middle figure (b) will be the most common one used for scale-up and scale-out CPO for the next few years, but it still requires some form of serialized links that can pass through the ASIC substrate and will still require some form of SerDes on both sides. For example, UCIe-S could be used as a protocol for such transmission.
 
-![](https://substackcdn.com/image/fetch/$s_!r0uo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F02eb01f6-1c42-4388-b07d-744346a1d768_2262x1962.jpeg)
+![](z-images/59a245f4e12a2c0090b17fceb309b895.webp)
 
 Optical Engine Integration Levels (OBO, Substrate CPO, Interposer CPO). Source: OCI MSA
 
@@ -445,13 +445,13 @@ The “Final Boss” when it comes to implementing CPO will be when the optical 
 
 ## Marvell Coherent-Lite Transceiver - Paper 23.2
 
-![](https://substackcdn.com/image/fetch/$s_!B76F!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc24a930f-d8f1-4622-96e6-9a39a7388ea5_2880x1620.jpeg)
+![](z-images/c95b2a964c9a088b7cdee195c675c0f5.webp)
 
 Direct Detection vs. Coherent-Lite vs. Coherent Transceiver Comparison. Source: Marvell, ISSCC 2026
 
 Marvell presented an 800G transceiver for coherent-lite applications. Traditional transceivers have a limit on how far they can reach, less than 10 kilometers. Coherent transceivers support much further reach, but they are complex, consume more power, and are more expensive. Marvell’s Coherent-lite transceiver targets a middle ground with respect to power consumption, cost and range, which is perfect for large datacenter campuses with links spanning at most tens of kilometers.
 
-![](https://substackcdn.com/image/fetch/$s_!1xhk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9995a322-bad8-4a3c-97e1-b84fde0aa424_2880x1620.jpeg)
+![](z-images/7e916245894314b2bbae390bd53dac99.webp)
 
 Coherent and Coherent-Lite Optical Band Comparison. Source: Marvell, ISSCC 2026
 
@@ -459,13 +459,13 @@ Coherent transceivers primarily use C-band wavelengths for their low attenuation
 
 Coherent-Lite transceivers instead use O-band wavelengths, which have near-zero dispersion over the relatively short distances on a datacenter campus. This enables minimal DSP processing, saving power and reducing latency.
 
-![](https://substackcdn.com/image/fetch/$s_!oACP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0faa6bfc-c1c4-44bc-b8c8-c3b14f466c32_2880x1620.jpeg)
+![](z-images/250b8b2dca58f64c79c1860f75e0fd7b.webp)
 
 Marvell Coherent-Lite Transceiver Architecture. Source: Marvell, ISSCC 2026
 
 The Coherent-lite transceiver is a DSP-based pluggable module consisting of two 400G channels. Each 400G channel runs a dual polarization QAM and consists of two parallel modulation streams, X and Y.
 
-![](https://substackcdn.com/image/fetch/$s_!qDgr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcc181023-63b7-4e6e-8769-eb69fdc1ca81_682x375.jpeg)
+![](z-images/4e6bb5cb53a630fdcf0478efc19db550.webp)
 
 Marvell Coherent-Lite Measured Link Performance. Source: Marvell, ISSCC 2026
 
@@ -475,7 +475,7 @@ Higher-order modulation coupled with the dual polarization using X and Y axes de
 
 This modulation scheme is not entirely new to the industry, but it is now being brought into the datacenter campus setting for use in those shorter links.
 
-![](https://substackcdn.com/image/fetch/$s_!jtsE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79b51c03-3812-498e-8f41-b9465e2c8164_2880x1620.jpeg)
+![](z-images/56d96089e346eaec6846ad3616f27dc8.webp)
 
 Marvell Coherent-Lite Performance vs. Prior Coherent Transceivers. Source: Marvell, ISSCC 2026
 
@@ -483,19 +483,19 @@ Marvell’s approach significantly reduces power to only 3.72 pJ/b excluding sil
 
 ## Broadcom 6.4T Optical Engine - Paper 23.4
 
-![](https://substackcdn.com/image/fetch/$s_!3q6a!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F47fde40b-9947-4fac-b9db-2ac5e7592aec_2880x1620.jpeg)
+![](z-images/17503199d2c76f724b325e0ad74a567a.webp)
 
 Broadcom Tomahawk 5 51.2T CPO Optical Engine Die Shot and Package. Source: Broadcom, ISSCC 2026
 
 Broadcom showcased progress on their 6.4T MZM optical engine (OE) consisting of 64 lanes of ~100G using PAM4 modulation. The optical engines were tested in a Tomahawk 5 51.2T CPO system. One CPO package consists of eight 6.4T OEs, each with a PIC and an EIC, on TSMC’s N7 process.
 
-![](https://substackcdn.com/image/fetch/$s_!vT7z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F021fa5c2-1bfd-455b-84cc-730cabf6362c_2880x1620.jpeg)
+![](z-images/54adf6b7fd016791c8611f3e1ad73255.webp)
 
 Broadcom Tomahawk 5 CPO Optical Engine Packaging. Source: Broadcom, Hot Chips 2024
 
 While Nvidia uses COUPE, Broadcom uses a Fan-Out Wafer-Level Packaging approach for this OE. [Broadcom will be switching to COUPE in the future](https://newsletter.semianalysis.com/i/178153689/tsmc-coupe-is-emerging-as-the-integration-option-of-choice), but older generation products like this OE still use other supply chain partners. Here are the promising results from their demonstration:
 
-![](https://substackcdn.com/image/fetch/$s_!0Dva!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F179ad311-5e3a-40c0-8fb6-f809fb2f8342_2880x1620.jpeg)
+![](z-images/3bd2a244c3a1e0515d7f0e6390cf31ff.webp)
 
 Broadcom 6.4T OE Egress Transmitter Performance. Source: Broadcom, ISSCC 2026
 
@@ -505,19 +505,19 @@ As multi-die designs become the norm, die-to-die interconnects are a critical bo
 
 ## Intel UCIe-S - Paper 8.1
 
-![](https://substackcdn.com/image/fetch/$s_!Ejnk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7669995-eecb-4441-843f-bfaa0348e31e_2494x1403.jpeg)
+![](z-images/32dfdf08dbf75b25ada71a2adc27a461.webp)
 
 Intel UCIe-S Die-to-Die Link Die Shot and Overview. Source: Intel, ISSCC 2026
 
 Intel presented their UCIe-S compatible die-to-die (D2D) interface. It can reach up to 48 Gb/s/lane over 16 lanes with UCIe-S and up to 56 Gb/s/lane with a custom protocol. It works on a standard organic package for a distance of up to 30mm. Interestingly, it was manufactured on Intel’s 22nm process.
 
-![](https://substackcdn.com/image/fetch/$s_!J1Ms!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fccbdc885-60a6-4372-b840-6e6525a06002_2494x1403.jpeg)
+![](z-images/a19c40af14b9626582e47b7985a1a898.webp)
 
 Intel UCIe-S vs. Other Die-to-Die Link Comparison. Source: Intel, ISSCC 2026
 
 At VLSI 2025, Cadence demonstrated their own UCIe-S die-to-die interconnect on N3E. Despite the node disadvantage, Intel has managed to best Cadence’s interconnect in data rate, channel length and shoreline bandwidth, only losing out in energy efficiency.
 
-![](https://substackcdn.com/image/fetch/$s_!NLKz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Febe7307b-d87f-43d1-b7df-4b6cfbc8211a_2786x1606.jpeg)
+![](z-images/de6e41745de7300f1415ff0ed3738983.webp)
 
 Intel Diamond Rapids Multi-Die Architecture Overview. Source: HEPiX via @InstLatX64
 
@@ -525,13 +525,13 @@ The interconnect presented by Intel is likely to be a prototype of what will be 
 
 ## TSMC Active LSI - Paper 8.2
 
-![](https://substackcdn.com/image/fetch/$s_!kR_h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F903517c9-6ff3-4ac5-9d4a-c0130cb9cbea_2880x1620.jpeg)
+![](z-images/7d159918bf7c4d3448f929adc32b35ae.webp)
 
 TSMC Passive vs. Active LSI Comparison. Source: TSMC, ISSCC 2026
 
 TSMC’s advanced packaging division presented their Active Local Silicon Interconnect (aLSI) solution. As opposed to standard CoWoS-L or EMIB, aLSI improves signal integrity and reduces the complexity of PHYs and SerDes on the top dies.
 
-![](https://substackcdn.com/image/fetch/$s_!Gjwp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa8f473a9-3f0e-4b7a-b717-2bc9999adae6_2880x1620.jpeg)
+![](z-images/34bda92e10bbd60e1f1b64d520612215.webp)
 
 TSMC Active LSI Die-to-Die Link Overview. Source: TSMC, ISSCC 2026
 
@@ -543,19 +543,19 @@ The ‘active’ part of aLSI comes from replacing the passive long-reach metal 
 
 The ETT integrates a driver, an AC-coupling capacitor (Cac), an amplifier with both negative and positive feedback, and an output stage. Running the signal through the Cac introduces peaks in the signal transition edges, which is then picked up by the dual-loop amplifier, hence the edge-triggered nomenclature. The amplifier leverages both positive and negative feedback loops to stabilize the voltage level. In this design, Cac is set to be 180 fF for a 1.7 mm channel length, with 2kΩ resistance on die A and 3kΩ on die B respectively.
 
-![](https://substackcdn.com/image/fetch/$s_!wpmP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc151958f-7fdb-4903-b06a-38a0eace27d5_2667x1500.jpeg)
+![](z-images/2eb63b87205e367fb4db189e68b49ee7.webp)
 
 TSMC CoWoS-L Integrated Power Delivery with eDTC. Source: TSMC
 
 These aLSI bridges can also integrate embedded deep trench capacitors (eDTC) along the front-end to improve power delivery to the PHY and D2D controllers. Instead of compromising the power grid by having a bridge die in the way, aLSI with eDTC improves both the power and signal routing along the D2D interfaces.
 
-![](https://substackcdn.com/image/fetch/$s_!Yp1W!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d837ed3-5395-4e1a-b579-c95f1d9497cc_2880x1620.jpeg)
+![](z-images/60f54fd8317542952c640804c5e75edd.webp)
 
 TSMC Active LSI Routability and Cross-Section. Source: TSMC, ISSCC 2026
 
 Only 388 µm of shoreline is required for 64 TX and 64 RX data lanes, coming out to a total area of 0.330 mm². Only the top 2 metal layers are required for routing the signals. The remaining metal layers can be used for the front-end circuitry.
 
-![](https://substackcdn.com/image/fetch/$s_!7zt3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2747466-8e4c-4447-ad94-6c2e8b71ea4a_2880x1620.jpeg)
+![](z-images/c53ed59b6254b8c2fd675986615d65e8.webp)
 
 TSMC Active LSI Shmoo Plots at KGD and KGP Stages. Source: TSMC, ISSCC 2026
 
@@ -563,7 +563,7 @@ TSMC explained how the Active LSI can be tested at multiple stages. The first is
 
 They showed shmoo plots at the KGD and KGP stages, both showing the interconnect hitting 32 Gb/s at 0.75V and 38.4 Gb/s at 0.95V.
 
-![](https://substackcdn.com/image/fetch/$s_!jY_b!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff44de7d8-9b9f-4086-a305-6c16677e9895_2880x1620.jpeg)
+![](z-images/cb58054af5003d84dba0153b9f397938.webp)
 
 TSMC Active LSI Die Shot and Power Breakdown. Source: TSMC, ISSCC 2026
 
@@ -571,31 +571,31 @@ The package reveals two SoC dies and two IO dies. Interestingly, the test vehicl
 
 As for the power, the total is only 0.36 pJ/b at 0.75V, with only 0.07 pJ/b being used by the ETT in the Active LSI. Below is a comparison with other D2D solutions.
 
-![](https://substackcdn.com/image/fetch/$s_!GHcE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd194a9ff-d0ee-4e74-98a9-1f426f98205c_2880x1620.jpeg)
+![](z-images/c21aa6df64d4ff76c5cc1dbe537cf6a8.webp)
 
 TSMC Active LSI vs. Other Die-to-Die Interconnects. Source: TSMC, ISSCC 2026
 
 ## Microsoft D2D Interconnect - Paper 8.3
 
-![](https://substackcdn.com/image/fetch/$s_!2aNW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d6415fa-2e4a-4565-af88-6db7a3c95dbc_1309x1267.jpeg)
+![](z-images/2fa022d133bf9e098fd969daf577b863.webp)
 
 Microsoft D2D Test Vehicle Layout and Routing. Source: Microsoft, ISSCC 2026
 
 Microsoft also detailed their die-to-die (D2D) interconnect. Their test vehicle includes two dies and two pairs of D2D nodes for interconnection. A full mock-up of the power delivery network and routing were included to mimic clock gating and crosstalk.
 
-![](https://substackcdn.com/image/fetch/$s_!3kjp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1bc8b78e-9738-4558-a155-efbddcf0dbbe_472x677.jpeg)
+![](z-images/be7e0b13473659ca1548826b2ec10983.webp)
 
 Microsoft D2D Interconnect Die Shot. Source: Microsoft, ISSCC 2026
 
 The interconnect on their test die occupied 532 µm of shoreline and had a depth of 1350 µm. The test vehicle was fabricated on TSMC’s N3P node, and the interconnect was tested at two data rates, 20 Gb/s at 0.65V, and 24 Gb/s at 0.75V.
 
-![](https://substackcdn.com/image/fetch/$s_!i2ue!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fffed7179-ed8f-414b-8aeb-2ff273f25784_2880x1620.jpeg)
+![](z-images/347b74b0ef248cf03786a2c87bd92e06.webp)
 
 Microsoft D2D Power Consumption Breakdown. Source: Microsoft, ISSCC 2026
 
 Microsoft reported two power consumption figures, one with both analog and digital system power, and one with only analog power. The latter is what most die-to-die interconnects report. At 24 Gb/s, the system power is 0.33 pJ/b and the analog power is 0.226 pJ/b, while at 20 Gb/s, the system power is 0.25 pJ/b and the analog power is 0.17 pJ/b. The power at idle state is 0.05 pJ/b.
 
-![](https://substackcdn.com/image/fetch/$s_!qn-K!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F65fefab9-0819-4c73-8c7b-39b778230934_2880x1620.jpeg)
+![](z-images/a5d163f476993f4e37ee2eae9a8eca15.webp)
 
 Microsoft D2D vs. Other Die-to-Die Interconnects. Source: Microsoft, ISSCC 2026
 
@@ -611,7 +611,7 @@ From small mobile CPUs to large AI accelerators, ISSCC featured first-time archi
 
 Every year, MediaTek presents a different aspect of their flagship mobile CPUs. This year is no different, and the focus of this year’s mobile CPU presentation was on boosting and thermal management.
 
-![](https://substackcdn.com/image/fetch/$s_!G7l7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F29b40070-6df4-435c-9621-f7837da8602f_2880x1620.jpeg)
+![](z-images/309c807c84bfdcd7167e5ea4b00aa407.webp)
 
 MediaTek Dimensity 9500 C1 Ultra Core Process Optimization. Source: MediaTek, ISSCC 2026
 
@@ -623,25 +623,25 @@ The rest of MediaTek’s paper focuses on dynamic performance optimization by ut
 
 ## Intel 18A-on-Intel 3 Hybrid Bonding - Paper 10.6
 
-![](https://substackcdn.com/image/fetch/$s_!L-SD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc1e02d7-2ca4-4129-9200-e99084fa4cfc_1792x1265.jpeg)
+![](z-images/72e38a128f32551d0326bd47f4d6a971.webp)
 
 Intel M3DProc 18A and Intel 3 Die Floorplan. Source: Intel, ISSCC 2026
 
 Intel disclosed their first hybrid bonded chip, the M3DProc. It consists of an Intel 3 bottom die, and an 18A top die. Each die contains 56 mesh tiles, cores and DNN accelerator tiles, respectively. The two dies are bonded together with Foveros Direct, hybrid bonding at a 9μm pitch.
 
-![](https://substackcdn.com/image/fetch/$s_!Ysv3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F636479de-4917-48f9-b513-7c57fe81968e_2494x1403.jpeg)
+![](z-images/1f96a1844b5b1ed869a07d1c6455ad1f.webp)
 
 Intel M3DProc 3D Mesh Architecture. Source: Intel, ISSCC 2026
 
 The mesh tiles are arranged in a 14×4×2 3D mesh, with SRAM being shared across both dies.
 
-![](https://substackcdn.com/image/fetch/$s_!6vZe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2a08665-501d-4c3b-a54a-0bfae0dc5258_2412x910.jpeg)
+![](z-images/ed0c340d6d9a327ba1fa54b45ded36d8.webp)
 
 Intel M3DProc 2D vs. 3D Throughput and Energy Efficiency. Source: Intel, ISSCC 2026
 
 Intel found that the 3D mesh reduces latency and increases throughput by almost 40%. They also tested the energy efficiency of transferring data, with 2D being within the 56 mesh tiles of the bottom die, and 3D being 28 adjacent mesh tiles across both dies. The results show that the Hybrid Bonding Interconnect (HBI) had a negligible impact on efficiency.
 
-![](https://substackcdn.com/image/fetch/$s_!aWNv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4877bf3c-30c1-4278-b85e-65ddbc343f1b_1362x1400.jpeg)
+![](z-images/bd0cd9a19f3a891caca6d933bba844fd.webp)
 
 Intel M3DProc Tile Bonding Floorplan. Source: Intel, ISSCC 2026
 
@@ -653,13 +653,13 @@ The M3DProc achieves 875 GB/s 3D bandwidth, while each CWF compute die only achi
 
 ## AMD MI355X - Paper 2.1
 
-![](https://substackcdn.com/image/fetch/$s_!o-hR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F62444551-a7bc-4619-ae99-74199208f209_2880x1620.jpeg)
+![](z-images/dad7ac068bb74edb7714e479520ea1c3.webp)
 
 AMD MI300X vs. MI355X XCD Comparison. Source: AMD, ISSCC 2026
 
 AMD presented on their MI355X GPUs. In conference presentations, AMD usually rehashes prior announcements while only introducing one or two new pieces of information. This paper was much better in that regard, explaining how the MI355X XCD and IOD were improved as compared to the MI300X.
 
-![](https://substackcdn.com/image/fetch/$s_!zxX3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0f76dac-c592-4dd4-ab6d-0d1054fc2f8b_2880x1620.jpeg)
+![](z-images/c5a412138e16f414bb5578cff955c55b.webp)
 
 AMD MI300X vs. MI355X XCD Area Efficiency. Source: AMD, ISSCC 2026
 
@@ -669,19 +669,19 @@ They also used denser placement algorithms, similar to how the Zen 4c cores used
 
 There are two approaches when performing the same calculations with many different data formats like FP16, FP8, MXFP4, etc. The first is using shared hardware, where every format goes through the same circuits. However, this comes with a power cost as there is little optimization for each format. The second option is each data format using an entirely different set of circuits for calculations. However, this takes up a lot of additional space. Of course, the optimal approach is somewhere in the middle. This optimization was an important focus for AMD.
 
-![](https://substackcdn.com/image/fetch/$s_!tuPF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c313972-5315-4d1e-aa02-be6f1ffad996_2880x1620.jpeg)
+![](z-images/a72893a10f95ef27ce5510942bab6992.webp)
 
 AMD MI355X XCD Frequency and Power Efficiency Gains. Source: AMD, ISSCC 2026
 
 As the next node with improved transistors, N3P provides performance improvements by itself. Nevertheless, AMD was able to improve frequency iso-power by 5% before process node improvements. They also designed multiple flip-flop variants with varying power and performance characteristics deployed across different areas of the chip depending on usage and architectural requirements.
 
-![](https://substackcdn.com/image/fetch/$s_!Yxoy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8b8604cb-0c0d-404c-942a-7b8fe000edd8_2880x1620.jpeg)
+![](z-images/0fb60ac501eab42d92bacd5406ef4e59.webp)
 
 AMD MI355X IOD Merging Power Efficiency. Source: AMD, ISSCC 2026
 
 MI300X featured 4 IO Dies. MI355X cuts that down to two. By doing this, AMD saves area on die-to-die interconnects. A larger monolithic die improves latency and reduces SerDes and translations. Moreover, the efficiency of the HBM was also improved by increasing the interconnect width. The saved power could be reallocated to the compute dies to increase performance.
 
-![](https://substackcdn.com/image/fetch/$s_!rkb_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faee3a34c-c53c-4661-ac14-8907a7764064_2880x1620.jpeg)
+![](z-images/d6b62b2279ea38393f0521f7eb704288.webp)
 
 AMD MI355X IOD Interconnect Power Optimization. Source: AMD, ISSCC 2026
 
@@ -691,7 +691,7 @@ As a large die with many routing options between any two areas on the chip, AMD 
 
 Rebellions is a South Korean startup working on AI accelerators. At ISSCC, they published the first architectural breakdown of their new accelerator, the Rebel100. Unlike other accelerators, which are generally manufactured at TSMC, Rebellions chose Samsung Foundry’s SF4X node. With Nvidia, AMD, Broadcom and others hogging most of TSMC’s capacity, this allows them more flexibility.
 
-![](https://substackcdn.com/image/fetch/$s_!HCo6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff2ea04c2-71cf-4065-98b1-606182921d24_1068x801.jpeg)
+![](z-images/31d3fe3b3f307ad384a1c15c361903aa.webp)
 
 Rebellions Rebel-Quad (now Rebel100) Summary from Hot Chips 2025. Source: Rebellions via ServeTheHome
 
@@ -703,13 +703,13 @@ I-CubeS has not seen adoption among any of the leading AI accelerators, and this
 
 The first is a networking ASIC by eSilicon on Samsung’s 14LPP with HBM2. Baidu’s Kunlun1 accelerator is similar, using Samsung’s 14LPP process and 2 HBM2 stacks. When the CoWoS-S capacity was very tight back in 2023, Nvidia outsourced a small amount of H200 production to I-CubeS. Then, there is the Rebel100 and lastly, a planned accelerator from Preferred Networks on the SF2 process.
 
-![](https://substackcdn.com/image/fetch/$s_!Wj1c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91f29194-e088-40ef-b134-ac45449d21ae_2880x1620.jpeg)
+![](z-images/a682aad51d75151df52e7cc7948bb5a3.webp)
 
 Rebellions Rebel100 Multi-Die Architecture. Source: Rebellions, ISSCC 2026
 
 The Rebel100 uses 4 compute dies and 4 HBM3E stacks. Each die has 3 UCIe-A interfaces. However, only two are used on each die, clocked at 16 Gb/s.
 
-![](https://substackcdn.com/image/fetch/$s_!Rt0c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b5a17f-feb0-4c70-b528-cae2a38c11f3_2880x1620.jpeg)
+![](z-images/b50feceaaa44e63717e3c802b19d4d65.webp)
 
 Rebellions Rebel100 Package-Level Modularity. Source: Rebellions, ISSCC 2026
 
@@ -717,11 +717,11 @@ Rebellions claims that the design is reconfigurable at the package level, where 
 
 Rebellions stated that the IO chiplets would be taped out by 1Q2026. There was no provided timeline for the memory chiplets.
 
-![](https://substackcdn.com/image/fetch/$s_!kIab!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcbab43a4-26b7-4011-bfeb-ea01c4902a56_2880x1620.png)
+![](z-images/2e26ce717500cb04926967cb45563629.webp)
 
 Rebellions Rebel100 Summary and Roadmap. Source: Rebellions, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!NxmQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F759c00f2-e242-404b-a841-5e4458a75e4c_2880x1620.png)
+![](z-images/fd7021821050a3fc354afd48898f2a4c.webp)
 
 Rebellions Rebel100 Integrated Silicon Capacitors for HBM3E Power Quality. Source: Rebellions, ISSCC 2026
 
@@ -733,25 +733,25 @@ Microsoft detailed their Maia 200 AI accelerator. The paper was less of a resear
 
 While the Maia 100 was designed in a pre-GPT era, Maia 200 was designed for the current age of models and specifically inference. Earlier this year, Maia 200 nodes were made generally available on Azure.
 
-![](https://substackcdn.com/image/fetch/$s_!3VIK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0c381cad-9332-483a-9fd7-8de08cd7d90a_2880x1620.jpeg)
+![](z-images/df03ca52b6fff2a0d70e25578e2cc5dc.webp)
 
 Microsoft Maia 200 Specifications Summary. Source: Microsoft, ISSCC 2026
 
 Maia 200 is the last holdout of reticle-scale monolithic designs. Every major HBM-equipped training and inference accelerator has moved on to multi-chip designs with 2, 4, or even 8 compute dies per package. Every single mm² of the die has been hyper-optimized for one purpose. Unlike with an Nvidia or AMD GPU, there is no legacy hardware for media or vector operations. Microsoft has pushed the reticle-scale monolithic approach to its limit on TSMC’s N3P process, packing in over 10 PFLOPs of FP4 compute, 6 HBM3E stacks, and 28× 400 Gb/s full-duplex D2D links.
 
-![](https://substackcdn.com/image/fetch/$s_!oV7g!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F98820b64-6a10-4132-b24a-a2122f7417ad_2880x1620.jpeg)
+![](z-images/ec9cdb9a1f2b13db6c9a519f8888d085.webp)
 
 Microsoft Maia 200 Package Cross-Section. Source: Microsoft, ISSCC 2026
 
 On the package-level, Maia 200 is very standard, mimicking the H100. A CoWoS-S interposer, with 1 main die, and 6 HBM3E stacks.
 
-![](https://substackcdn.com/image/fetch/$s_!1q24!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4949a336-f267-4f4c-b813-1f6af0d7f629_506x541.jpeg)
+![](z-images/cd8ab271d303f136cbdf22ea4a072547.webp)
 
 Microsoft Maia 200 Die Floorplan. Source: Microsoft, ISSCC 2026
 
 The long sides of the chip are covered in 3 HBM3E PHYs each, while the short sides each have 14 of the 28 lanes of 400 Gb/s D2D links. In the center, there is 272 MB of SRAM, with 80 MB of TSRAM (L1) and 192 MB of CSRAM (L2).
 
-![](https://substackcdn.com/image/fetch/$s_!Wj4l!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F62240549-cf4a-4472-8294-7b7b2bca21fa_2880x1620.jpeg)
+![](z-images/0107080656ea989d1b3fd4738b67de43.webp)
 
 Microsoft Maia 200 Scale-Up Network and IO. Source: Microsoft, ISSCC 2026
 
@@ -763,11 +763,11 @@ We will be publishing a deep dive into the Maia 200, its microarchitecture and n
 
 ## Samsung SF2 Temperature Sensor - Paper 21.5
 
-![](https://substackcdn.com/image/fetch/$s_!S6Ri!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5ae89ead-c1e7-409c-912f-bf86d659e2c0_2880x1620.png)
+![](z-images/ca51c941f0df167ed4959259b34c4a61.webp)
 
 Traditional Temperature Sensor Tradeoffs. Source: Samsung, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!2aBs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F66a71ead-cde8-4e94-9ea5-ddf5caebf775_2880x1620.png)
+![](z-images/89fe43dd914c968f6cfda4fc721dc7f5.webp)
 
 Samsung SF2 Metal Resistor-Based Temperature Sensor Tradeoffs. Source: Samsung, ISSCC 2026
 
@@ -775,7 +775,7 @@ Samsung presented a compact temperature sensor on SF2, replacing the traditional
 
 The metal resistor offers 518× higher sheet resistance than an equivalent routing metal, requiring roughly 1% of the area for the same resistance. As it sits in the upper metal layers, it leaves plenty of room for any circuitry underneath and eliminates FEOL area overhead. Although it has a low resolution, the benefits more than make up for it.
 
-![](https://substackcdn.com/image/fetch/$s_!J1CI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F22987230-7e2a-4317-b244-f4e76930494b_2880x1620.png)
+![](z-images/b3b44472cc44017c517752198a3d996f.webp)
 
 Samsung SF2 Temperature Sensor Stacked Implementation. Source: Samsung, ISSCC 2026
 
@@ -785,11 +785,11 @@ As mentioned earlier, the metal resistors have a lower temperature coefficient o
 
 For the time-to-digital conversion (TDC), they replaced the large linear delay generator used in prior work with a compact ring oscillator-based (RO) TDC, cutting delay generator area by 99.1%. The RO also doubles as the system clock, with phase-interleaved counting preventing non-monotonicity.
 
-![](https://substackcdn.com/image/fetch/$s_!f54k!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd264f4-0a79-4823-8ab5-1cbfd4627f9f_2880x1620.png)
+![](z-images/b30e86fe9eba056a1983171409549b64.webp)
 
 Samsung SF2 Temperature Sensor Conversion Time and Accuracy Comparisons. Source: Samsung, ISSCC 2026
 
-![](https://substackcdn.com/image/fetch/$s_!nCIv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0d4c4094-3c4e-42fc-a4d5-6087d122c98a_2880x1620.png)
+![](z-images/7bde951a56e9775303884c63a938d0c3.webp)
 
 Samsung SF2 Temperature Sensor vs. Prior Work Comparison Table. Source: Samsung, ISSCC 2026
 

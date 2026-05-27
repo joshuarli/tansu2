@@ -16,11 +16,11 @@ Despite this lack of notoriety, Austria’s EV Group and IMS Nanofabrication are
 
 IMS Nanofabrication was founded in Vienna in 1985. They skated along with exciting research but no impactful products for a couple of decades. In 2009 they received an investment from Intel due to the promising nature of their multi-beam direct writing programable electron beam system. Eventually, Intel even acquired the firm as they released the first commercial multi-beam mask writer in 2016. This product and its derivatives are required for all process nodes beyond 7nm.
 
-![](https://substackcdn.com/image/fetch/$s_!gfnK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F54554f7e-4eba-4492-a78d-16d2130b88cb_3681x1851.png)
+![](z-images/524b6beda79a615a07b22d9204c7839d.webp)
 
 EUV lithography is seen as the biggest bottleneck for advanced semiconductor manufacturing, but these more than $150 million tools are paperweights without [photomasks](https://semianalysis.substack.com/p/die-size-and-reticle-conundrum-cost). A decent metaphor is that photomasks can be thought of as a physical stencil that lithography tools require to pattern layers of a chip. In turn, IMS Nanofabrication’s multi-beam mask writers can be considered the stencil drawer. Much like in the years of the printing press or block printing, a master printer would meticulously create the base design that all prints would come from; the mask writer helps create the mask set, which is then printed on numerous final chips.
 
-![](https://substackcdn.com/image/fetch/$s_!doJi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf41ea6c-046b-415d-9243-959a0b19315e_3795x2049.png)
+![](z-images/6df1e555aac0b90c4276622aaeb743c3.webp)
 
 Multi-beam mask writers are actually more precise and accurate than EUV lithography tools, but they are incredibly slow, which is a significant reason why they are used only for creating the mask set. IMS Nanofabrication has a competitor in NuFlare (Toshiba), but NuFlare’s tools are less precise, and slower. Furthermore, their multi-beam mask writers are only starting to enter the market many years after IMS Nanofabrication. Over 98% of production EUV masks have been fabricated using IMS Nanofabrication’s multi-beam mask writers.
 
@@ -36,7 +36,7 @@ EV Group is a private firm based in Austria, so most folks likely haven’t hear
 
 Their dominance in this field means that most CMOS image sensors fabricated by Sony, Samsung, and Omnivision utilize their technology for backside illuminated CMOS image sensors or hybrid bonded image sensors. Nearly every smartphone, automotive, and security camera sensor touches an EV Group tool.
 
-![](https://substackcdn.com/image/fetch/$s_!DupN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe36953e4-e31c-4389-8bb9-88bfdaa25a27_1697x845.png)
+![](z-images/000597e73cd02f1a777f31a42b01849e.webp)
 
 Furthermore, their technology is used in [China’s](https://semianalysis.substack.com/p/2022-nand-process-technology-comparison) [YMTC](https://www.youtube.com/watch?v=NUeybwTMeWo) fabricates. EV Group’s wafer-on-wafer hybrid bonding tools are critical to YMTC achieving the highest cell array efficiency in the industry. This use of hybrid bonding for NAND is also on [the future roadmap for SK Hynix, Kioxia, Western Digital, Samsung, and Micron](https://semianalysis.substack.com/p/2022-nand-process-technology-comparison).
 
@@ -48,7 +48,7 @@ Currently, the transistor layer (front-end) is fabricated, then the contacts, th
 
 Backside power delivery network seeks to solve this by adding a 2nd interconnect layer for power delivery on the other side of the transistor layer. The signal and power delivery interconnects can be separately optimized for their specific task. Intel plans to introduce this technology at their 20A node in the 2024/2025 time frame, and TSMC plans to introduce it as an optional part of their 2nm node in the 2025/2026 time frame.
 
-![](https://substackcdn.com/image/fetch/$s_!-kvA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9b4081c-29e1-4650-bd9d-367238650c81_1253x689.png)
+![](z-images/bda2bc644b701d5a922e814958c133fa.webp)
 
 We explained the process flow and technology in [February.](https://semianalysis.substack.com/p/intel-is-throwing-the-kitchen-sink)
 

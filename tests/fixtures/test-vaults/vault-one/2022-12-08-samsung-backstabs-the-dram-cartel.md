@@ -16,7 +16,7 @@ Previously, we have shared our [tracking sheet of 106 capital projects by semico
 
 A quick summary of the biggest players is shown here, but we will discuss more than these firms.
 
-![](https://substackcdn.com/image/fetch/$s_!k316!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff3d21cb3-bf30-4df7-bb31-d919dbbc7a01_1218x717.png)
+![](z-images/8de38807cf6386cee0a816a9d1ca331f.webp)
 
 **Samsung – $SSNLF**
 

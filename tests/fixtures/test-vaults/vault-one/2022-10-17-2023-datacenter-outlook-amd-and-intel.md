@@ -12,7 +12,7 @@ AMD has held pre-briefings for their next-generation 96-core Zen 4-based Genoa s
 
 This report will quantify 2023 units, average selling price, and revenue for existing server CPU lines such as Rome/Milan and Ice Lake SP, as well as next-generation Genoa, Bergamo, Sienna, and Sapphire Rapids. We expect 2023 server units to be 5.4% lower than 2022 and 5.1% lower than 2021. Those detailed figures will be shown at a deeper level further below, but at a high level, DDR5 / PCIe 5.0 based x86 server platforms will only ramp to ~18.2% of total units shipped in Q4 2023. This is a slow ramp on volumes. Content is the more important metric, and we expect ~34% of bits shipped into datacenter CPUs to be DDR5 in Q4 2023.
 
-![](https://substackcdn.com/image/fetch/$s_!J1UQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd4eaaef7-0630-474f-a530-95185bdea130_1198x395.png)
+![](z-images/3f27883220fbe8125cf4cd135752cc87.webp)
 
 Since the Rome CPU launch in late 2019, AMD’s market share in servers has increased rapidly. More importantly, their average sales price went from below Intel’s to well above it due to superior TCO. In 2 years, AMD more than doubled its market share. Going forward, we expect AMD’s share of x86 server units to increase from 13.9% in Q2 2022 to 21.2% in Q4 2023. AMD’s revenue share will balloon well beyond this figure due to high average sales prices (ASP). Quantifying AMD’s ASP increases going into the future will be more important than unit gains.
 
@@ -26,7 +26,7 @@ These upfront capital costs are a minuscule portion of the actual cost of operat
 
 These teams at hyperscalers sole jobs are maintaining this model and weighing different hardware options for various workloads. A gross oversimplification for TCO, an Amazon employee told us that he sometimes uses when on the go, is that a deployed server’s cost is 10x power cost.
 
-![](https://substackcdn.com/image/fetch/$s_!mQlX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F71c1ae94-0a33-404e-8e4a-a8aff426222f_1690x497.png)
+![](z-images/0bb78dc5d8b9b3b42493b2bd91c7f514.webp)
 
 Under this oversimplified model, upgrading to a 2-socket Genoa-based server from 4 existing 2-socket Skylake/Cascade Lake-based servers (2 CPUs vs 8 CPUs) is a net present value positive transaction. The payback period for Capex spent is roughly ~18 months. The payback period for a Rome/Milan server upgrade would still be ~4 years. The improvements are even more significant when you start considering new features related to security, CXL, and AVX512.
 

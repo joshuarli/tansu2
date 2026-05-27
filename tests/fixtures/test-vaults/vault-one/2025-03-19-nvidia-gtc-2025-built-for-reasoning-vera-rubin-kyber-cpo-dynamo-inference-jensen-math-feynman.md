@@ -14,7 +14,7 @@ AI model progress has accelerated tremendously, and in the last six months, mode
 
 GTC this year is all about addressing the new scaling paradigms.
 
-![](https://substackcdn.com/image/fetch/$s_!7X_y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd108a7a2-436c-42e1-9763-b82291d624de_2219x1298.png)
+![](z-images/799050b2eea24d692655fda8a40ccd21.webp)
 
 Source: Nvidia
 
@@ -28,7 +28,7 @@ The concern on token deflation is akin to discussing the fiber bubble's per-pack
 
 Nvidia provides numbers supporting Jevons’ Paradox case. Models now take >100T tokens, and a reasoning model is 20x more tokens, and 150x more compute.
 
-![](https://substackcdn.com/image/fetch/$s_!nzCz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb751d51-0085-45ec-8b11-c12fb6177fe3_871x602.png)
+![](z-images/fc65ad822035b6cfcbcccadf62054064.webp)
 
 Source: Nvidia
 
@@ -48,13 +48,13 @@ Now, let’s go review the roadmap.
 
 ## GPU and System Roadmap
 
-![](https://substackcdn.com/image/fetch/$s_!CwyW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8103a7d6-b5e9-49cc-9e44-4b2a626617e7_1787x950.png)
+![](z-images/4cb218865b8f0a326b9888fef77d22b9.webp)
 
 Source: Nvidia
 
 ## Blackwell Ultra B300
 
-![](https://substackcdn.com/image/fetch/$s_!qyfT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3880684b-639a-4d70-9045-ae7ec3ed6cb8_1205x905.png)
+![](z-images/c61104e440590ed870a57353b0a98bd9.webp)
 
 Source: Nvidia
 
@@ -74,11 +74,11 @@ Another important detail of B300 is that it will introduce the CX-8 NIC, which o
 
 ## Rubin Specifications
 
-![](https://substackcdn.com/image/fetch/$s_!zk80!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45efcb00-7ef4-4a21-a4c6-5d9fedb867b5_1158x653.png)
+![](z-images/46d38b1996b9eecd163180ca447b270a.webp)
 
 Source: Nvidia
 
-![](https://substackcdn.com/image/fetch/$s_!y5k3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F199f62e9-7afd-4ab2-85ea-6e7185bf14e7_1570x814.png)
+![](z-images/f5eb5ccf81a185e892b0e869d8259de0.webp)
 
 Source: SemiAnalysis
 
@@ -101,7 +101,7 @@ This is where the new nomenclature comes in. The new rack will be named **VR200 
 
 Nvidia’s HBM capacity will remain the same at 288GB generation on generation but is upgraded to HBM4: 8 stacks of 12-Hi with the same 24 GB layer density. The move to HBM4 affords a bandwidth increase, with 20.5TB/s of aggregate bandwidth, mostly from the bus width doubling to 2048 bits wide, with a pin speed of 6.4Gbps, the current cap in the JEDEC standard.
 
-![](https://substackcdn.com/image/fetch/$s_!4hUk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc0619d4-02da-467c-8068-6d9cf758bca6_1826x1012.png)
+![](z-images/c57214dd91293a291ed73a455e1eaf93.webp)
 
 Source: SemiAnalysis
 
@@ -113,7 +113,7 @@ On the NVSwitch side, the NVSwitch ASIC will also double aggregate bandwidth, ag
 
 ## Rubin Ultra Specifications:
 
-![](https://substackcdn.com/image/fetch/$s_!B3dK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67439399-3abb-4014-8687-89bce3544b06_1205x650.png)
+![](z-images/fb1ca01e88c91dc2d1e5c1f8ad1729e1.webp)
 
 Source: Nvidia
 
@@ -123,7 +123,7 @@ We think this package will be split with two interposers on a substrate to avoid
 
 The system has 365TB total of Fast Memory comprising of 147TB of HBM and 218TB of LPDDR. Each Vera CPU has 1.5TB of LPDDR, and since there are 144 Vera CPUs, this would amount to a total of 218TB of LPDDR.
 
-![](https://substackcdn.com/image/fetch/$s_!80JI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3bba797f-6780-425c-8cbc-f570bf73b012_1024x503.png)
+![](z-images/7fe919fa0a0cfba2dbda9129627419e7.webp)
 
 Source: SemiAnalysis
 
@@ -133,13 +133,13 @@ This is also when we will see the introduction of the Kyber rack architecture.
 
 One of the key new features is the Kyber Rack Architecture. Nvidia is increasing densification by rotating racks 90 degrees for increased density. Given the NVL576 (144 GPU packages) configurations, this is another incredible increase in densification for larger scale-up world size.
 
-![](https://substackcdn.com/image/fetch/$s_!k6Ro!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9a1db37-1166-422e-a85f-c21c17b7d9ca_1205x650.png)
+![](z-images/fb1ca01e88c91dc2d1e5c1f8ad1729e1.webp)
 
 Source: Nvidia
 
 Let’s look at the key differences between the Oberon rack architecture and the Kyber rack architecture:
 
-![](https://substackcdn.com/image/fetch/$s_!XLZn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cca1b3a-c211-4197-9be4-5f502eedee62_3452x1239.png)
+![](z-images/c910a0c670324647da0da2422011806e.webp)
 
 Source: SemiAnalysis
 
@@ -157,7 +157,7 @@ Source: SemiAnalysis
 	- In future datacenter hall layout, there will be a [standalone power rack](https://semianalysis.com/2025/02/13/datacenter-anatomy-part-2-cooling-systems/), standalone cooling rack, and a stand alone switch rack.
 		- This is also one of the main reasons why Nvidia is announcing the roadmap for the Kyber rack architecture so early—to prepare the supply chain for upcoming changes in datacenter infrastructure at both the compute hall and rack levels.
 
-![](https://substackcdn.com/image/fetch/$s_!X6ed!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9b64962-1b35-4d53-ab0e-c47457d23bf9_1015x1024.png)
+![](z-images/cb149c85d05280c424f9ad27cf1fbdc0.webp)
 
 Source: Nvidia
 
@@ -175,7 +175,7 @@ In GPUs, GEMMs are performed on the tensor core. Tensor cores have been getting 
 
 On bf16 (bfloat16) Hopper, calculating the softmax in the attention layer requires takes 50% of the cycles of the GEMMs. This requires overlapping by the kernel engineer to "hide" the latency of the softmax making it challenging to write kernels.
 
-![](https://substackcdn.com/image/fetch/$s_!9gk_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F727c5b2d-6252-4f46-8fd6-3326e8edb01e_937x481.png)
+![](z-images/f1f7bfd4b040322967666783a9c018b4.webp)
 
 Source: Tri Dao @ CUDA Mode Hackathon 2024
 
@@ -185,7 +185,7 @@ The challenge we have been describing so far has been described in the Hopper wo
 
 On Blackwell Ultra, the MUFU unit for calculating the softmax portion of the attention mechanism improves by 2.5x compared to standard Blackwell. This will alleviate the requirement for perfect overlapping to hide the computation of the softmax with the GEMM calculation. With this 2.5x speedup in the MUFU, the CUDA developer has more tolerance for overlapping without losing the performance of their attention kernel.
 
-![](https://substackcdn.com/image/fetch/$s_!ufGL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8007bb0a-e3f8-4466-a08f-4bd200360e54_1414x757.png)
+![](z-images/651cad51f832c2974bd4c6296f2438d7.webp)
 
 Source: Tri Dao @ CUDA Mode Hackathon 2024
 
@@ -195,7 +195,7 @@ This is where Nvidia’s new inference stack and Dynamo come to the rescue.
 
 In last year’s GTC, Nvidia discussed how the GB200 NVL72’s larger 72-GPU scale-up world size allowed it to deliver a 15x increase in inference throughput vs an H200 at FP8.
 
-![](https://substackcdn.com/image/fetch/$s_!LGI9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbdc9823f-a477-419f-aef2-cd2e0ebdc8d3_975x634.png)
+![](z-images/65f639fff742c6da629a8718cb8f47f1.webp)
 
 Source: Nvidia
 
@@ -207,7 +207,7 @@ The next leap in inference throughput from hardware will come with the scale-up 
 
 In the software world, Nvidia is announcing Nvidia Dynamo – an open AI engine stack that is focused making it easier to deploy and scale inference. It has the potential to disrupt VLLM and SGLang – delivering multiple features that VLLM doesn’t have and at higher performance. Together with the hardware level innovations, Dynamo will offer yet another shift in the throughput vs interactivity curve to the right – particularly improving throughput for higher interactivity use cases.
 
-![](https://substackcdn.com/image/fetch/$s_!ncT0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F017e9808-a454-459c-bcbe-07be396b07f0_2309x1332.png)
+![](z-images/6c17d5bd63de2834e3b61642978ae2a6.webp)
 
 Source: Nvidia
 
@@ -227,7 +227,7 @@ Similarly – in the decode phase – it is important to ensure sequence lengths
 
 The router also load balances across each replica serving the model which is something vLLM and many other inference engines do not support.
 
-![](https://substackcdn.com/image/fetch/$s_!nJJB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc03590d3-5ca8-458b-b33a-fd3ce3101b47_1149x686.png)
+![](z-images/5d575eb045c1bf750e4283affb7025b1.webp)
 
 Source: Nvidia
 
@@ -237,7 +237,7 @@ The GPU Planneris an autoscaler of both prefill and decode nodes, spinning up ad
 
 This additionally supports changing the ratio of GPUs used for decoding and for prefill – this is especially useful for cases like Deep Research, where more prefill is required as opposed to decoding, as these applications need to review a huge amount of context but only generate a comparatively small amount.
 
-![](https://substackcdn.com/image/fetch/$s_!QVr_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff9f0fec7-e131-4ff1-9938-0a7d427429c8_1170x633.png)
+![](z-images/fa55f53eeefe4d57ecdccdf908760bc5.webp)
 
 Source: Nvidia
 
@@ -249,7 +249,7 @@ The low-latency communications library is a set of new algorithms within the Nvi
 
 Since AMD’s RCCL library is a carbon copy fork of NVIDIA’s NCCL, Sylvain’s NCCL refactor will continue expanding the CUDA moat and causes AMD’s RCCL to lose thousands of engineering hours to sync Nvidia’s major refactor into RCCL. While AMD spends thousands of engineering hours to sync Nvidia’s changes, Nvidia will use that time instead to continue advancing the frontier of collective communications software stack & algorithms.
 
-![](https://substackcdn.com/image/fetch/$s_!TYw7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F12365f8e-7215-40cc-a6f3-380296b095d5_1024x608.png)
+![](z-images/7f3df277396b05059a6bcdef4240af7f.webp)
 
 Source: Nvidia
 
@@ -259,7 +259,7 @@ To transfer from prefill nodes to decoding nodes, low latency high bandwidth com
 
 NIXL will also abstract away the complexity of sending and receiving data movements between CXL, local NVMe, remote NVMe, CPU memory, remote GPU memory and GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!MSL-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b7b0130-da82-4d6c-b321-a69cdcc0e1da_1151x654.png)
+![](z-images/189c1660946081d1ab78ac7b8cb17dee.webp)
 
 Source: Nvidia
 
@@ -267,7 +267,7 @@ Source: Nvidia
 
 The KV-Cache Offload Manager allows more efficient overall execution of prefill overall by saving the KVCache from prior user conversations in NVMe storage rather than discarding it.
 
-![](https://substackcdn.com/image/fetch/$s_!1v3x!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc596bc00-30ba-492a-a72f-4bcb3f303527_1024x633.png)
+![](z-images/e17ac1cda31463ef87cf8dd77461ca73.webp)
 
 Source: Nvidia
 
@@ -277,7 +277,7 @@ Instead, with NVMe KVCache offload, when a user steps away, the KVCache can be o
 
 This frees up capacity on the prefill nodes to handle more incoming volume, or alternative could reduce the size of the prefill deployment needed. The user will also have a much better experience with faster time to first token as there is now much less time needed to retrieve the KV Cache vs computing it.
 
-![](https://substackcdn.com/image/fetch/$s_!VHl9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb906f51-e5ce-496b-bcf1-5021bd5ca4b7_1014x683.png)
+![](z-images/a7f87a94eed94e2f94b32633a2e8a1e8.webp)
 
 Source: Nvidia
 
@@ -289,7 +289,7 @@ The result of all of these features is a very impressive speedup for inference a
 
 Lastly – because Dynamo handles disaggregated inference and expert parallelism broadly, it particularly helps on individual replication and higher interactivity deployments. Of course – having many nodes is a prerequisite for Dynamo to fully leverage its capabilities and deliver meaningful improvements.
 
-![](https://substackcdn.com/image/fetch/$s_!hv6A!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e5bb716-01fe-431b-b07a-7371d0e52836_1165x790.png)
+![](z-images/45c257e13bcd366f475ef1f56363033b.webp)
 
 SourceL Nvidia
 
@@ -299,7 +299,7 @@ Soon after finishing his discussion on Blackwell, Jensen drove the point home by
 
 Clearly, Nvidia is pursuing a relentless pace of improvement – as Jensen puts it: “When Blackwells start shipping in volume, you couldn’t even give Hoppers away”
 
-![](https://substackcdn.com/image/fetch/$s_!xu3Q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F72c74dfc-0aed-4e1a-9150-0c5602f147c1_2132x1427.png)
+![](z-images/25cdd2d211fa913400ec53e9c924a258.webp)
 
 Source: Nvidia
 
@@ -309,19 +309,19 @@ Our clients that have subscribed to our [AI Cloud Total Cost of Ownership (TCO) 
 
 Indeed, our H100 rental price forecasting framework operates exactly off the point Jensen was illustrating. We combine our estimates of future install base, cluster total cost of ownership as well as future chip capabilities to build a forecast pricing curve. So far, the framework has been instructive. We first published our H100 rental price forecast model in April 2024 to clients – the model has predicted H100 rental pricing with 98% accuracy from early 2024 to today.
 
-![](https://substackcdn.com/image/fetch/$s_!Za83!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3faa18c2-f8e2-48f2-8c79-69dcf399cfb2_1724x1128.png)
+![](z-images/98109e5b25f43a0dddab452b3bb7a1d4.webp)
 
 Source: AI TCO Model
 
 ## CPO Insertion
 
-![](https://substackcdn.com/image/fetch/$s_!u5Wl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e0e97a0-6cc1-4e6e-8756-64c32d8bb0a1_1231x701.png)
+![](z-images/3edf63aa2b3c144c142b4117b690de46.webp)
 
 Source: Nvidia
 
 In the keynote speech, Nvidia announced its first co-packaged optics (CPO) solution to be deployed in their scale-out switches. With CPO, transceivers are now replaced by external laser sources (ELSs) that together with Optical Engines (OEs) placed directly adjacent to the chip silicon facilitate data communication. Instead of plugging into transceiver ports, fiber optic cables now plug into ports on the switch that route the signal directly to the optical engines.
 
-![](https://substackcdn.com/image/fetch/$s_!i1fR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcfefa490-05cc-4e87-8d33-a47f9816f675_1267x659.png)
+![](z-images/42c512ee8b0eafad53df44751a3e6a5e.webp)
 
 Source: Nvidia
 
@@ -329,13 +329,13 @@ The primary advantage of CPO is significantly reduced power consumption for a fe
 
 Our analysis shows that for a 400k\* GB200 NVL72 deployment, moving to CPO-based two-layer network from a DSP-transceiver based three-layer network can yield up to 12% total cluster power savings – reducing transceiver power from 10% of compute resources to only 1% of compute resources.
 
-![](https://substackcdn.com/image/fetch/$s_!4x5w!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd28da705-0950-4c9c-9e89-c809514fa1c8_888x571.png)
+![](z-images/0269c4fa507275f12eccc9c25df03201.webp)
 
 Source: SemiAnalysis
 
 Nvidia launched a number of CPO-based switches today including a CPO version of the Quantum X-800 3400, which itself [debuted a year ago at GTC 2024](https://semianalysis.com/2024/03/25/nvidias-optical-boogeyman-nvl72-infiniband/). It features 144 ports at 800G, for a total throughput of 115T, and will include 144 MPO ports and 18 ELS. This switch will be rolled out in second half of 2025. The Spectrum-X switch featuring 512 ports of 800G is also of interest as it can allow very high radix at high speeds – allowing very fast and flat network topologies. This Ethernet CPO switch will be rolled out in the second half of 2026.
 
-![](https://substackcdn.com/image/fetch/$s_!x1RX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8de9ed6b-33a7-418c-bc99-8ee7e39a023d_948x592.png)
+![](z-images/0bb2ed3c77659a3472054a448d89d838.webp)
 
 Source: Nvidia
 

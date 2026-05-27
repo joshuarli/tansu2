@@ -8,7 +8,7 @@ description: "How High-NA EUV can be economically viable at the 1.4nm process no
 
 Intel’s 18A node gets most of the spotlight recently – with an ongoing battle between TSMC’s and Intel’s management teams on the merits of TSMC N2 vs Intel’s 18A. However, it is 14A that will be the make-or-break node for Intel Foundry. Winning customers starts with process technology, and Intel is betting big here, but they need a generation where everyone gets comfortable. Customers will use 18A to dip their toes in the Intel waters with less critical chips that are not core to their business; if all goes well, they will look to 14A as the main process for their linchpin designs – think the largest, expensive dies like AI accelerators, CPUS, and potentially even mobile in 2027.
 
-![](https://substackcdn.com/image/fetch/$s_!3ixu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6df00e0e-57ec-441d-9038-ef0b7e90b67e_1730x837.png)
+![](z-images/3d2d0d202a016ebd1734c317f4d8c310.webp)
 
 Source: Intel
 
@@ -26,7 +26,7 @@ And other chipmakers have publicly signaled that high-NA is too expensive throug
 
 Why, then, would Intel Foundry bet its future on high-NA if it is more expensive? At SPIE Lithography and Advanced Patterning, and now more recently with Intel’s new announcement, we finally heard the answer: **directed-self assembly (DSA)**, Intel’s magic bullet that dramatically lowers lithography costs.
 
-![](https://substackcdn.com/image/fetch/$s_!E04K!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F13afb197-ea06-4d8e-a130-73af00001086_2537x1160.png)
+![](z-images/4a2e4814a7b01ec4e1c924eeea984e76.webp)
 
 Source: Intel
 
@@ -42,13 +42,13 @@ Lower exposure doses allow the scanner to run at or close to its maximum, stage-
 
 The mechanism of DSA is there in the name: a chemical that is “self-assembling” and does so in the location where it is “directed.”
 
-![](https://substackcdn.com/image/fetch/$s_!esQG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7483d154-5278-4527-80f3-db0deaeb5836_2021x753.png)
+![](z-images/752a285bb8ca07d34cebbba3891c0589.webp)
 
 DSA integration flow, Source: (Han, E. et al. "DSA materials and processes development for ≤ P24 EUV resist L/S pattern rectification," Proc. SPIE 12956 (2024))
 
 “Self-assembly,” despite the complex chemistry behind it, is an intuitive concept – components that start off randomly arranged organize into a useful structure when energy is added to the system. Imagine (this is slightly hyperbolic) a Lego set that builds itself when you bake it in an oven.
 
-![](https://substackcdn.com/image/fetch/$s_!Rbqk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa8bff5de-53a4-4813-a77e-850160406268_625x643.png)
+![](z-images/8b782bbb826c33e1778f740ae982b329.webp)
 
 Self-assembly of a block copolymer: the blocks organize themselves when heated, Source: (Gornev, E et al. "Cellular automata method for directed self-assembly modeling," Proc. SPIE 11022 (2019))
 
@@ -60,13 +60,13 @@ In practice, this means coating a wafer with PS- *b­* -PMMA and baking it for l
 
 But this method of self-assembly alone is pretty useless, since the placement and orientation of the lines is more or less random. It needs to be guided, and that’s where lithography comes in.
 
-![](https://substackcdn.com/image/fetch/$s_!mLqe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e6a6a10-a7ea-4d4a-ae55-8163dae95a10_1554x1117.png)
+![](z-images/2ff58844cbb710b8c28cc6ca3b4c328d.webp)
 
 Single EUV exposure vs. resist rectification with EUV + DSA. The lower middle image shows self-assembly without a guide pattern: looks neat, but not useful for integrated circuits, Source: (Han, E. et al. "DSA materials and processes development for ≤ P24 EUV resist L/S pattern rectification," Proc. SPIE 12956 (2024))
 
 An EUV exposure is used to produce the guide pattern: this defines the orientation and position of the self-assembly. The process is very similar to a normal EUV lithography flow, except the pattern is transferred from photoresist to a special underlayer customized for DSA. This underlayer has a chemical affinity for only one of the block copolymers. With this patterned underlayer, during the bake the copolymers will not only align relative to each other but also relative to the underlayer – so the line placement is exactly where desired.
 
-![](https://substackcdn.com/image/fetch/$s_!E4B_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fef5c07b2-5963-48d0-88a9-cbf224d2c4be_778x950.png)
+![](z-images/0b90ed135fef3c75ff5218570305ea0b.webp)
 
 Chemical “magic” of DSA: block copolymer self-assembles in lines, aligned with a guide pattern underneath, Source: (Han, E. et al. "DSA materials and processes development for ≤ P24 EUV resist L/S pattern rectification," Proc. SPIE 12956 (2024)) & SemiAnalysis
 
@@ -74,13 +74,13 @@ The critical dimension of these lines is defined by the length of each polymer c
 
 And here’s the key detail for the EUV-produced guide pattern: it can be produced with much lower doses. The DSA molecules self-assemble into lines with very low line edge roughness (LER), regardless of the LER of the guide pattern. They will align with the *average* of the guide pattern. As long as the guide pattern is placed accurately (which it can be, EUV overlay is very good), the LER of the EUV exposure can be poor – DSA can heal it. Relaxing image quality requirements for the EUV exposure means the dose can be reduced by 50% or more.
 
-![](https://substackcdn.com/image/fetch/$s_!JDRN!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcfd6cd78-a5d6-43ba-969f-deea56f93f60_1906x573.png)
+![](z-images/c14bcb7e4b4e82a6b89a4d09ffdefc71.webp)
 
 Healing with DSA vastly improves low-dose EUV image quality flow, Source: (Han, E. et al. "DSA materials and processes development for ≤ P24 EUV resist L/S pattern rectification," Proc. SPIE 12956 (2024))
 
 We use the 50% number for dose reduction as a reasonable assumption based on existing, replicated work. Early R&D work from Intel using a “novel underlayer” that can be patterned directly with EUV exposure, rather than by pattern transfer from photoresist, shows 25 mJ/cm <sup>2</sup> dose is viable – a 3-4x reduction. If this is what can be brought to production, then the cost savings are much higher than even what we model below conservatively.
 
-![](https://substackcdn.com/image/fetch/$s_!NNEp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5ded2f28-04bf-4733-81ce-8e72d8dc88b1_2289x1023.png)
+![](z-images/ad32daf359fda639a47978743b3f69d4.webp)
 
 EUV doses of just 25 mJ/cm 2 can be achieved with a patternable underlayer + DSA, Source: (Han, E. et al. "DSA materials and processes development for ≤ P24 EUV resist L/S pattern rectification," Proc. SPIE 12956 (2024))
 
@@ -88,7 +88,7 @@ The final piece of the patterning puzzle is a dry etch: PS- *b* -PMMA can be sel
 
 Ultimately the experimental results speak for themselves. Intel showed exceptional yield results for a self-aligned EUV litho-etch-litho-etch scheme when using DSA to rectify the pattern:
 
-![](https://substackcdn.com/image/fetch/$s_!POg1!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4d0a1b8-21d2-468a-831c-03a748816d5c_896x668.png)
+![](z-images/1719d04e40f4d866c496b13b2ee59534.webp)
 
 Substantial yield improvement on low pitch metal & via layers by using DSA, Source: Intel
 

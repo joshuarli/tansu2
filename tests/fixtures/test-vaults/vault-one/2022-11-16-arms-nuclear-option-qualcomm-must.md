@@ -148,7 +148,7 @@ The other major topic to discuss is surrounding [Qualcomm's claims that Arm is c
 
 The counterclaim/defense from Arm directly addresses them but doesn’t say much beyond stating they deny the allegations. Here’s a snippet of what it looks like.
 
-![](https://substackcdn.com/image/fetch/$s_!2iiK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F04203a14-c1b4-4443-8a95-0b9f96f9d9bd_580x390.png)
+![](z-images/8cdfdd17922cbcc26d459e82a2847fc7.webp)
 
 Discovery will reveal what proof (or lack thereof) Qualcomm has for its claims that the Arm business model is changing.
 

@@ -12,11 +12,11 @@ If true, semiconductor equipment spending by firms in the US will likely be subs
 
 Intel is currently building out their Ireland Fab 34 as well as some US Fabs for their Intel 4 process node. This is an expensive undertaking, but one that will catch Intel up in process technology if all goes well. The tooling is incredibly expensive, not just from the expensive EUV and DUV lithography tools, but also for all the other associated equipment. Lithography tools will be roughly 20% of Intel’s spending in Ireland, but many other firms are also receiving orders. One such firm is the Japanese giant, Tokyo Electron.
 
-![](https://substackcdn.com/image/fetch/$s_!V2l5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdc3796fc-d1e6-4fdb-8e9f-fd0da691de8d_1024x574.png)
+![](z-images/d70878a5d446a1722ab62068af1c088f.webp)
 
 Intel recently put out a [press release](https://www.intel.com/content/www/us/en/newsroom/news/ireland-milestone-fab-34.html#gs.ndl8ce) about Ireland’s Fab 34 in which they announced the first tool had been shipped in. The tool in question was called a lithography resist track for EUV by Intel. This tool coats a wafer with photoresist solution by spinning it rapidly. It then passes the wafer on to the lithography tool which reflects light off a mask, exposes the photoresist, and causes a chemical reaction which changes the solvency of the photoresist. The wafer then gets handed back to this tool which bakes the wafer, develops the photoresist, and then rinses away the residual photoresist. [We describe the process in detail as well as technological developments and the competitive dynamics within the photoresist and track markets in this article.](https://semianalysis.substack.com/p/lam-research-tokyo-electron-jsr-battle)
 
-![](https://substackcdn.com/image/fetch/$s_!MqEN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc879fb4-b075-4364-be10-aa518256321f_1024x576.jpeg)
+![](z-images/4624e8ea218c76a701f425be5d82931f.webp)
 
 The tool that Intel shipped didn’t come from the manufacturer though. It came from Intel’s Oregon facility. That’s very odd given the tool is a CLEAN TRACK LITHIUS Pro Z from Tokyo Electron.
 

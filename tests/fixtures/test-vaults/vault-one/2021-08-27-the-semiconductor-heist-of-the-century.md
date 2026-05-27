@@ -14,7 +14,7 @@ As part of the emphasis on the Chinese market, SoftBank succumbed to pressure an
 
 **This is the tech heist of the century.**
 
-![](https://substackcdn.com/image/fetch/$s_!ChZH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4856fea2-70a8-4adf-b49a-9fc8ae1da5d8_700x394.jpeg)
+![](z-images/0502b5861bc87ad27121ea7d2358ee86.webp)
 
 Before we get to the event they held and the significance of it, let’s do a recap. In 2020, Arm and a handful of the investors agreed to oust Allen Wu, the CEO of Arm China. He was ousted for using his position as the CEO of Arm to attract investments in his own firm, Alphatecture. Examples such as the following and more can be found [here](https://www.ft.com/content/dc55d4c9-1065-4db0-98a4-f7f0c1de563b).
 
@@ -26,13 +26,13 @@ Despite formally being fired, Allen Wu has remained in power. He ousted executiv
 
 Arm has halted the transfer of any IP to entities on export control list. According to Arm, no IP has been stolen. Simultaneously, Arm has also tried to appeal to the government stating that this is bad for the Chinese semiconductor industry.
 
-![](https://substackcdn.com/image/fetch/$s_!fH3V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F191d81a9-78bc-4733-bfbd-ca1b93b7a37a_1024x566.png)
+![](z-images/8e4f750c910fa3fa82c23ae68b38845b.webp)
 
 This leads us to the present day, where Arm China held an event at which they formally declared their independence. They proclaimed that 安谋科技 is China’s largest CPU IP supplier. It was born from Arm, but is an independently operate, Chinese owned company.
 
 The event comprised of cheering on 安谋科技 business. Some of the fanfare was emphasizing that 安谋科技 had a cumulative 20B shipments since formation. It has over 90 partners, 29 of which have achieved mass production of chips using the IP. These shipments range from mobile, network infrastructure, 5G and IoT. They were developed by the company’s 400+ person R&D team that is based entirely in China.
 
-![](https://substackcdn.com/image/fetch/$s_!rZjC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbd962c7b-16e1-4a76-aa18-5175720e453a_1024x567.png)
+![](z-images/7a8466040b5810f5a56ac1e1372634aa.webp)
 
 Besides standing out and calling themselves an independent entity, they also announced and rebranded IP which was independently developed. It is called the Power Core line and it goes under the XPU title. The IP blocks include NPUs, SPUs, ISPs, and VPUs, but they made it clear they will extend beyond this.
 
@@ -40,7 +40,7 @@ The NPU, neural processing unit, is especially interesting because Arm itself ha
 
 Most of this IP is targeted at mobile or IoT type use cases. The SPU, security processing unit, is specifically geared to creating secure enclaves and being a management engine. The ISP, image signal processor, is meant to take inputs from cameras and process them into a digital form. It applies various techniques and operations to enhance the raw images. The ISP is geared to work with the NPU to analyze images and videos in order to identify people, objects, and events. These IP blocks are critical for emerging applications which will deploy billions of cameras in China over the next decade. Lastly, there is the video processing unit which is meant to encode and decode videos in common formats such as H264, VP9, and soon AV1.
 
-![](https://substackcdn.com/image/fetch/$s_!3g2P!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0a53fb40-8469-4004-9be6-1ef7110da7d8_600x209.png)
+![](z-images/79081cb7b66b1d532d5268cf880b413b.webp)
 
 Arm China, 安谋科技, is asserting their independence. It is the most publicized instance of a joint venture in China going rogue, but also the most dangerous one. The Arm China board is not in agreeance with Allen Wu, but he still holds power despite his formal removal. Minority stake joint ventures have had control wrestled away from the parent company, but this may be the most brazen attempt yet.
 

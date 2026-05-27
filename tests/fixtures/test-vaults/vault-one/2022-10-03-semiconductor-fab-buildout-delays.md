@@ -10,7 +10,7 @@ The semiconductor manufacturing world has seemingly flipped in a few months, wit
 
 Before we dive into our projections, let’s start by level-setting the historical figures, as different sources will estimate these freely. The core metrics to watch in this industry are semiconductor revenue, capacity additions (wafer fabrication equipment), and existing capacity (millions of wafer square inches shipped).
 
-![](https://substackcdn.com/image/fetch/$s_!5xwH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F05dc24fd-9878-465d-910f-0be836f11dbe_628x511.png)
+![](z-images/0e40d3bdabf187f3b2957d312f4c9f5e.webp)
 
 The key metric determining margins for the fabs and the industry is revenue per unit area of silicon. As such, we track this metric very closely alongside capacity adds. Industry margins have soared as revenue per square inch increased rapidly in 2021. This metric will not remain this high. Current and future fab buildouts will bring it below historical levels.
 
@@ -18,7 +18,7 @@ Much of the capacity here is older than 300mm, 90nm to 28nm. These nodes tend to
 
 To dive deeper into historical figures, here are our figures for front-end wafer fabrication equipment by semiconductor device type.
 
-![](https://substackcdn.com/image/fetch/$s_!zD-Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3c22c624-22ca-48bb-897d-9931e248de86_1316x323.png)
+![](z-images/422c0108e8e4754a272388e5ca994b7a.webp)
 
 Now let’s get into projections. Even the industry group, Semi, has [cut their 2022 figures to a mere 9% year-over-year growth](https://www.semi.org/en/news-media-press-releases/semi-press-releases/global-fab-equipment-spending-forecast-to-reach-all-time-high-of-nearly-%24100-billion-in-2022-semi-reports), but we believe their figures lag behind reality. We have 2022 WFE down 0.6% versus 2021. The breakdown for spending from 2022 to 2025 will be shown at the end of this report. The market is very dynamic, and there are delays out of 2022 for specific fabs and entire segments. China has been the biggest contributor to growth over the last few years. We believe that Chinese wafer fabrication equipment purchases will be down 14% year-on-year, primarily due to utilization rates dropping rapidly. There is also a component of fraudulent companies being taken down, with more than a dozen arrests and general prudence surrounding semiconductor subsidies in China.
 

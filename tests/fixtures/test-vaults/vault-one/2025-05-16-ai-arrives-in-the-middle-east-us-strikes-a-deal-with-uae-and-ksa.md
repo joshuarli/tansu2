@@ -20,7 +20,7 @@ The new U.S. pacts with the UAE and Saudi Arabia reshape the AI landscape on thr
 
 This announcement is no surprise to us. Our [datacenter model](https://semianalysis.com/datacenter-industry-model/) has long flagged the Middle East’s rise: we forecast north of 6 GW of operational datacenter capacity by 2030 – and believe there is still significant upside risk. In addition, [our Accelerator model](https://semianalysis.com/accelerator-model/) shows the UAE’s G42 alone ordering hundreds of thousands of GPUs for 2026. We track these projects building-by-building and quarter-by-quarter.
 
-![](https://substackcdn.com/image/fetch/$s_!04Bh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffaa37b07-887a-4177-af14-ee4e6fbce38c_1539x791.png)
+![](z-images/6d71a2954d510c398ad7cf7611b874a7.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -73,7 +73,7 @@ This new money cushions AI buildouts against a tougher credit market and tariff 
 
 The Middle East can plug both gaps. Lowering financing costs, and keeping the AI infrastructure buildout rolling.
 
-![](https://substackcdn.com/image/fetch/$s_!YfFq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0afd2bc-c162-4f18-a7d8-13c367b15fd1_940x373.png)
+![](z-images/a3d400ae0d5d9793866876c02dc16a68.webp)
 
 Source: SemiAnalysis AI Cloud TCO Model
 
@@ -129,7 +129,7 @@ Physical security remains essential. Unannounced inspections—quite literally c
 
 Human-intelligence safeguards is another layer. Social engineering tactics like bribes, candidate placement and other techniques that can place insiders that could compromise important information. As such, background screens, insider-threat training, and continual liaison with U.S. and Emirati intelligence agencies to ensure correct implementation and defence.
 
-![](https://substackcdn.com/image/fetch/$s_!NWfh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2b158f56-e2ec-4059-95d0-36b20d734456_781x288.png)
+![](z-images/6fb6d03e956f2de9b05e4d1600a3958d.webp)
 
 Source: Wikipedia. The Swiss Cheese model. Despite each layer having some holes, multiple layers allows for more complete security.
 

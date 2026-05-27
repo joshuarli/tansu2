@@ -45,7 +45,7 @@ Particularly significant individual tariff rates include a 34% on all imports fr
 
 The chart below illustrates the US tariff rates applied to several major global trading partners, effective April 9 (many nations are at 10% until 90 days from now).
 
-![](https://substackcdn.com/image/fetch/$s_!drEL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F320d9ebb-cb85-4027-a3d7-b3563b8c0f30_908x578.png)
+![](z-images/c9a821a4caf76bc4818290dc9cfd3ea0.webp)
 
 Source: The White House, SemiAnalysis
 
@@ -53,7 +53,7 @@ The tariffs introduced by the Trump administration are set to cause significant 
 
 The dramatic increase in tariffs is illustrated in the graph below, which shows the US effective tariff rate from 1900 through April 9, 2025. After reaching highs of nearly 30% in the early 20th century, US tariffs declined steadily following World War II, mainly remaining under 10% for the past 70 years.
 
-![](https://substackcdn.com/image/fetch/$s_!2pk1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F22e3bc5a-ab8a-44d6-90fd-62a8cac30bec_2520x1870.png)
+![](z-images/acd21e6221d74c4f3dfb08392d2f98e0.webp)
 
 Source: Monthly US Treasury Statement, US Bureau of Economic Analysis, The Budget Lab at Yale, SemiAnalysis
 
@@ -74,7 +74,7 @@ The new reciprocal tariffs will not apply in the following cases:
 
 [Annex II](https://www.whitehouse.gov/wp-content/uploads/2025/04/Annex-II.pdf) of Trump’s April 2 executive order outlines the items under the Harmonized System (HS), a global product classification system for customs exempted from the administration's sweeping tariffs. The HS 8541 and 8542 categories cover several semiconductor devices, such as diodes, transistors, and integrated circuits, with HS 8541 including several discrete devices and HS 8542 encompassing different types of electronic integrated circuits. The relevant items are listed in the table below:
 
-![](https://substackcdn.com/image/fetch/$s_!vqFw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F625971f2-768e-49df-852d-8f35f2138633_1638x1254.png)
+![](z-images/04a9cb61475b59901eac68d2b410df42.webp)
 
 Source: The White House, SemiAnalysis
 
@@ -86,7 +86,7 @@ Nevertheless, **we identified a significant loophole in the current tariff struc
 
 In addition to the above-listed exempted items from [Annex II](https://www.whitehouse.gov/wp-content/uploads/2025/04/Annex-II.pdf), the White House’s executive order also removed several critical raw materials for making chips and batteries from the scope of the new tariffs. While GPUs are not included in the exemptions, this decision still supports the Trump administration’s stated goal of bolstering US manufacturing, particularly in the semiconductor sector, which depends heavily on imported raw materials and chemicals to produce high-value goods like equipment, components, and batteries. We list these key minerals in the table below, alongside their strategic importance.
 
-![](https://substackcdn.com/image/fetch/$s_!DozN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdce3672b-f03c-4cbd-a79d-6c20da75cca3_820x804.png)
+![](z-images/b4ab6b69d3a4a742138db369dd4cfab2.webp)
 
 Source: The White House, SemiAnalysis
 
@@ -136,25 +136,25 @@ Let’s start with the BoM of a GB200 NVL72 rack. The three primary HTS codes fo
 
 As shown below, final servers and server parts & accessories are the primary ways of importing components in the US. Nvidia is the primary driver of the large increase in 2024.
 
-![](https://substackcdn.com/image/fetch/$s_!Neju!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39ed5ee1-5610-4ff7-bc16-4f16dd37ed56_1331x759.png)
+![](z-images/a1be9d91c09570a2297e50f74b3fb998.webp)
 
 Source: Census Bureau, SemiAnalysis
 
 Looking deeper, Mexico is the largest import hub of finished servers. Historically, 75%-80% of servers were imported from Mexico. Taiwan took share from Mexico in 2023 and 2024, as Mexico’s share fell to ~2/3. This might suggest that while most CPU servers are shipped from Mexico, Taiwan’s share of GPU servers is higher. However, Mexico seemingly has the capacity given YTD 2025 data suggests that Mexican supply chains are reacting to tariff risk.
 
-![](https://substackcdn.com/image/fetch/$s_!86dL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d2037e5-90da-4d38-ae51-500c4d6d44da_1216x639.png)
+![](z-images/33e4c2cb886b29c9a590931f6a472577.webp)
 
 Source: Census Bureau, SemiAnalysis
 
 “Parts and accessories” reveal a much higher dependence on Asia. Taiwan dominates, but China is a significant player, too. Given the increasing mix shift to GB200, NVIDIA imports may shift more towards Taiwan moving forward. However, given the USMCA driven loophole, the supply chain may try to re-export these components through Mexico to incur zero tariffs.
 
-![](https://substackcdn.com/image/fetch/$s_!aYeh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc8cb1e57-d832-4fc3-93f2-3fd5bb2db5c0_1217x638.png)
+![](z-images/c779c575af5e4dc0ed21c5a746662574.webp)
 
 Source: Census Bureau, SemiAnalysis
 
 Finally, the “automatic data processing units” rely even more on Taiwan—but Mexico’s share is rising fast.
 
-![](https://substackcdn.com/image/fetch/$s_!cD6L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec07e880-4a58-4d53-b628-7c33fcf1eaa3_1124x637.png)
+![](z-images/d18b53f46306fcb6567eb558f221627e.webp)
 
 Source: Census Bureau, SemiAnalysis
 
@@ -198,7 +198,7 @@ The miscellaneous components (power, cooling, and cables) within the IT rack are
 
 Datacenter construction costs are set to rise, but the industry will likely be able to absorb the impact. 70% of the bill of materials is driven by a broad range of [cooling](https://semianalysis.com/2025/02/13/datacenter-anatomy-part-2-cooling-systems/) and [electrical](https://semianalysis.com/2024/10/14/datacenter-anatomy-part-1-electrical/) equipment. Refer to our deep dives for more information. These industrial goods are highly reliant on global trade – either through direct imports, or via raw materials and finished subcomponents.
 
-![](https://substackcdn.com/image/fetch/$s_!mhrX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe49c0b4c-fcd3-4662-97d6-d41bd5fe1657_2182x1366.png)
+![](z-images/3bc4f3c85e0f0f4083a1e17705ca8c7b.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -209,19 +209,19 @@ However, we don’t think Trump tariffs are fatal to the datacenter industry for
 
 Even if we assume a 15% increase to the colocation leasing cost to compensate for tariffs (which is an upper-case scenario), the TCO of operating a GPU cluster only increases by 2%. The vast majority of costs are driven by server costs.
 
-![](https://substackcdn.com/image/fetch/$s_!6it0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fafd4d963-da43-46cc-b4dc-4be443b6797c_1970x518.png)
+![](z-images/1e134f4367e1314848435a942ac83904.webp)
 
 Source: AI Cloud TCO Model
 
 We show below a scenario where a flat 20% tariff rate is introduced globally. We estimate that electrical & cooling costs (70% of datacenter BoM) would increase by mid-to-high single digits. This is not insignificant, but we don’t think this poses a major issue to GPU Cloud providers, given the TCO dynamics dominated by hardware capital costs.
 
-![](https://substackcdn.com/image/fetch/$s_!xVhv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F22e8ec87-e348-4807-bfd5-cc433453acea_1744x754.png)
+![](z-images/1a669a99ca1209dac20fb47156a67aeb.webp)
 
 Source: SemiAnalysis Datacenter Model
 
 Hyperscale data centers generally purchase high-end, high-capacity components that tend to have a higher range of domestic production vs imports. Schneider Electric, the world’s leading equipment supplier for datacenters, disclosed that 83% of its North American COGS are not imported (Mexico & Canada excluded from this number).
 
-![](https://substackcdn.com/image/fetch/$s_!KoW6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e64456d-605e-4197-8213-38fa5825d294_2324x1306.png)
+![](z-images/b005f33b0af92b04a62e19d3a179d342.webp)
 
 Source: Schneider Electric
 
@@ -239,7 +239,7 @@ Even if the system is domestically assembled, many components are imported:
 
 We show below a breakdown of US imports – but this is a broad category and includes other power electronics systems, such as inverters used alongside solar panels.
 
-![](https://substackcdn.com/image/fetch/$s_!zid4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50e45d0d-f3db-43b1-8fcb-04627f6166b3_1602x946.png)
+![](z-images/8bf2f6c80d7f314b1e79cb58234373a0.webp)
 
 Source: Census Bureau, SemiAnalysis Datacenter Model
 
@@ -251,7 +251,7 @@ A high portion of metal-enclosed LV and MV switchgear used in US hyperscale data
 - The share of imports coming from Asia in subcomponents like relays and instrument transformers is quite high.
 - Like UPS, enclosures and internal wiring are a sizeable portion of the BoM and are largely assembled domestically.
 
-![](https://substackcdn.com/image/fetch/$s_!NTeR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f3d7f1e-3178-4f99-9d64-f5b0090d2efd_1273x803.png)
+![](z-images/0c5b0dce296bd54255588f4433e0ac2b.webp)
 
 Source: Census bureau, SemiAnalysis Datacenter Model
 
@@ -259,7 +259,7 @@ Source: Census bureau, SemiAnalysis Datacenter Model
 
 Generators are the least impacted by tariffs. The domestic share of assembly is extremely high, and the manufacturer typically builds the most expensive component – the engine. Alternators are the other large COGS item, and the share of imports is higher, with Europe claiming the top spot.
 
-![](https://substackcdn.com/image/fetch/$s_!ir6E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78c04fa5-b86c-460e-bbdc-8e7b3af479ac_1427x1166.png)
+![](z-images/da3a20e20dc8703d4153d48b9cc5f39d.webp)
 
 Source: Census bureau, SemiAnalysis Datacenter Model
 
@@ -270,7 +270,7 @@ US datacenters require two types of transformers: high power units (50-10 MVA) f
 - High-power transformers are ~80% imported, primarily due to the lack of GOES (Grain-Oriented Electrical Steel) manufacturing. Mexico, Canada, and South Korea are the primary trade partners.
 - MV/LV transformers are much more commonly manufactured domestically—north of 50%—with most imports coming from Mexico and other Latin American countries, as well as South Korea.
 
-![](https://substackcdn.com/image/fetch/$s_!O9xk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a707a1b-4517-41d6-b980-4cd61e4e18c1_1923x1195.png)
+![](z-images/b4d2caf7bb888482fc13a1a4186e9c3e.webp)
 
 Source: Census Bureau, SemiAnalysis Datacenter Model
 
@@ -282,7 +282,7 @@ While there are many different cooling configurations, air-cooled chillers are t
 - Heat exchangers found inside chillers (the evaporator and the consender) are also largely built in-house.
 - Fans and motors are much more reliant on foreign countries, with Germany, China and Japan leading the charge.
 
-![](https://substackcdn.com/image/fetch/$s_!fobI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7345d34-60f7-493f-8f91-f3ba84a58413_1564x1169.png)
+![](z-images/f1e0a9a49e824c59eb6c1dd872dba8fa.webp)
 
 Source: Census Bureau, SemiAnalysis Datacenter Model
 
@@ -294,7 +294,7 @@ Optical modules are significantly affected by tariffs as most of their productio
 
 Based on these initially announced tariff rates and each region’s share of imports to U.S. in the segment, we estimated the blended tariff rate for optical modules to be 40%, or 27% (ex-China). While these figures are quite high, we believe it is likely that negotiations between the U.S. and other countries will lead to revised tariff rates post the 90-day grace period, resulting in lower effective tariff rates than the ones currently outlined.
 
-![](https://substackcdn.com/image/fetch/$s_!PWlp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff4a01b92-6286-449a-adc3-de5cb8b8d986_1059x540.png)
+![](z-images/5133fbab321f9d9d7c90b16af25d1ee5.webp)
 
 Source: Census Bureau, SemiAnalysis Networking Industry Model
 
@@ -322,7 +322,7 @@ Another important consideration is that lasers are not standalone end products �
 
 Switch ASICs are typically manufactured in TSMC’s leading-edge fabs, using advanced process nodes. Companies like Arista, Celestica, and Accton lead in switch system design and manufacturing, but they can rely on contract manufacturers for product assembly. These contract manufacturers are typically based in places like Vietnam, Thailand, Malaysia, Mexico, Taiwan, and China, and are thus subject to tariffs in respective countries or regions. In the paid subscriber section below, we’ll have a more detailed analysis of the regional supply chain landscape for CPO (co-packaged optics) switches.
 
-![](https://substackcdn.com/image/fetch/$s_!_vTs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffae9dcb7-b600-400f-bd76-47c55780a7bf_1111x595.png)
+![](z-images/ff03daa08750f092cc8985fc0189f971.webp)
 
 Source: Census Bureau, SemiAnalysis Networking Industry Model
 
@@ -332,19 +332,19 @@ The new tariffs make the U.S. less competitive in chip manufacturing. Given the 
 
 For fabs, the tariffs make the U.S. versus Taiwan cost delta *worse*. Our model shows that a leading-edge logic or DRAM fab is roughly 15% more expensive just for equipment, excluding any change in construction costs. Operating costs will also grow as many key raw material inputs are only produced abroad. Assuming these costs are passed directly to customers, the premium on a U.S.-based chip is well over 32% versus the identical product from Taiwan. With the Taiwan tariff rate at 32%, a chip produced in Taiwan and subject to tariffs will still be cheaper than one produced in a new-build U.S. fab.
 
-![](https://substackcdn.com/image/fetch/$s_!PzXF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff7a95e15-c0f5-43d2-95fb-db58de69a073_1276x684.png)
+![](z-images/cb9f63313c063f7cad0cbbf9909cac33.webp)
 
 Source: usatrade.census.gov, SemiAnalysis Wafer Fab Equipment Model
 
 Many critical wafer production tools are only available as imports for U.S. fabs. ASML and TEL are the two most important foreign suppliers.
 
-![](https://substackcdn.com/image/fetch/$s_!jEFG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8aea4ba8-40a8-449c-9e86-58c58665fd76_1270x672.png)
+![](z-images/70149d2dcd2f4c8f1017936fa9da1b1d.webp)
 
 Source: usatrade.census.gov, SemiAnalysis Wafer Fab Equipment Model
 
 The U.S. has effectively no domestic capacity to produce 300mm wafer blanks.
 
-![](https://substackcdn.com/image/fetch/$s_!zUtV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc79f4ed4-ee58-45cf-bd4f-ad9d113bf18b_1273x671.png)
+![](z-images/e8b928719215a24024e36c0bb42db659.webp)
 
 Source: usatrade.census.gov, SemiAnalysis Wafer Fab Equipment Model
 
@@ -352,7 +352,7 @@ U.S. fabs rely almost entirely on photoresist imports from Japan.
 
 Some may mistake this as an argument that the Taiwan tariff rate is not high enough. This is wrong, as raising that rate kneecaps U.S. companies’ incentive to build AI data centers onshore and generally decreases U.S. access to advanced semiconductors, the lifeblood of the modern world.
 
-![](https://substackcdn.com/image/fetch/$s_!gA4x!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F46d0494d-7a88-4ccf-8565-88754b5640a3_1265x663.png)
+![](z-images/30ce207d9d2cb7ceefa4dbd9a6337d33.webp)
 
 Source: usatrade.census.gov, SemiAnalysis Wafer Fab Equipment Model
 
@@ -368,7 +368,7 @@ We’ll discuss specific impacts and potential winners and losers by company aft
 
 Traditionally, tariffs only impact physical goods crossing borders – with services being exempted. In the case of digital services, even if governments were to try to impose tariffs, there is no good mechanism in place tax bits of data moving across a network. This of course is highly advantageous to the US, as its share of global datacenter capacity is significantly higher than its share of global GDP. Simply put, America is a net exporter of computing power.
 
-![](https://substackcdn.com/image/fetch/$s_!cgHA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5daa4aaf-1935-4501-9e29-9eb3ab8f1f91_726x369.png)
+![](z-images/51a370d4d066ee91072d4f33a54beffa.webp)
 
 Source: Census bureau, SemiAnalysis Datacenter Model
 
@@ -399,7 +399,7 @@ In addition, taxing at the EU level could prove challenging, as it requires all 
 
 For EU policymakers, the next step would be to expand taxes to Cloud Computing. While Europe does have a sizeable data center market, it remains inferior to its potential, based on Europe’s share of the Cloud Services spending (IaaS/PaaS).
 
-![](https://substackcdn.com/image/fetch/$s_!dHKt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F82084496-857e-4051-aa10-aed39e8bfaf2_1511x875.png)
+![](z-images/1ae129101d93f57265f8952931c74c4f.webp)
 
 Source: Census bureau, SemiAnalysis Datacenter Model
 

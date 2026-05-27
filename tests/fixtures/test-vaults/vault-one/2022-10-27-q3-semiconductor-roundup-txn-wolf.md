@@ -40,7 +40,7 @@ As an aside, we’ve done tons of work for a client on silicon carbide; we inves
 
 [
 
-![X avatar for @dylan522p](https://substackcdn.com/image/fetch/$s_!TnFC!,w_40,h_40,c_fill,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Favatars%2Fdefault-light.png)
+![X avatar for @dylan522p](z-images/be4381e113eb5a4053a300726de24dfc.webp)
 
 Dylan Patel@dylan522p
 
@@ -54,7 +54,7 @@ Call me crazy but I sold my Cree Wolfspeed despite having been bullish about the
 
 ](https://twitter.com/dylan522p/status/1460696696674000915?s=20&t=KTOQdABsMRTI_NtNugmSLg)[
 
-![X avatar for @dylan522p](https://substackcdn.com/image/fetch/$s_!TnFC!,w_40,h_40,c_fill,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Favatars%2Fdefault-light.png)
+![X avatar for @dylan522p](z-images/be4381e113eb5a4053a300726de24dfc.webp)
 
 Dylan Patel@dylan522p
 
@@ -68,7 +68,7 @@ Competitors talking really big on SiC revenue guides $1B $ON exiting 2023 $STM $
 
 ](https://twitter.com/dylan522p/status/1460696698037149699?s=20&t=KTOQdABsMRTI_NtNugmSLg)[
 
-![X avatar for @dylan522p](https://substackcdn.com/image/fetch/$s_!TnFC!,w_40,h_40,c_fill,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Favatars%2Fdefault-light.png)
+![X avatar for @dylan522p](z-images/be4381e113eb5a4053a300726de24dfc.webp)
 
 Dylan Patel@dylan522p
 

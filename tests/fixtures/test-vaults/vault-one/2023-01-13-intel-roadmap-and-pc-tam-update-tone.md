@@ -24,7 +24,7 @@ The sad thing is that Intel’s forecasting is not good. In fact, for most of th
 
 Of course, every company has a free pass for inaccurately estimating 2020 because forecasting a global pandemic is impossible.
 
-![](https://substackcdn.com/image/fetch/$s_!EQAb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa999b48-4ee2-44f7-8ffd-686303be49e3_1228x687.png)
+![](z-images/7a43fbb0066028368a2847cd67affcbc.webp)
 
 2022 is where some criticism could come in. Management teams should refrain from building hyper-aggressive unit estimates into their financial models. It makes them untrustworthy.
 
@@ -52,11 +52,11 @@ AMD, for example, projected “down high single digits,” which was far more ac
 
 This was yet another odd place to brag. Much of the industry was expecting minus ~10% for 2022, roughly 300 million units, and Intel was predicting 350 million units. They said this new demand was permanent. Intel stuffed the channels, and they had to stop when demand slowed. The channel has way too much PC inventory. As a percentage of the size of the market, it’s even higher than the smartphone oversupply.
 
-![](https://substackcdn.com/image/fetch/$s_!AFFa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd8ace004-8292-42b1-b875-a71880a02495_1887x1045.png)
+![](z-images/2b9b0557fb6f17fcae94d2a3f3479210.webp)
 
 The historical figures show an interesting breakdown, particularly regarding the various eras of computing. In the 2010s, refresh rates lengthened at an incredible pace, leading to significantly fewer PC sales. Furthermore, the total installed base of PCs shrank as more basic tasks such as banking, payments, and emailing could be done on low-end smartphones in the developing world. Of course, smartphones are not a substitute for a PC, so that is not a trend that should stick around forever.
 
-![](https://substackcdn.com/image/fetch/$s_!s0VZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4f3f463d-468a-475b-86de-4c15aa8bcc58_1885x1057.png)
+![](z-images/dd064078b12cd348d9449780813f9bad.webp)
 
 > A simple TAM formula for all of you to remember is installed base divided by refresh rate plus new users. Internally, we split new users in 2 categories: increased density, additional PCs in the home or business; and increases in penetration, i.e., new households.
 > 
@@ -68,7 +68,7 @@ Generally, there are a few growth vectors. In the west, we are entirely focused 
 
 The other important vertical is PC use in the developing parts of the world, particularly Asia, Africa, and Latin America. The number of PCs per person there is much lower, and the use of smartphones for basic computing is required to be much higher. People in these parts of the world will graduate to having PCs for work, education, and leisure eventually.
 
-![](https://substackcdn.com/image/fetch/$s_!F7oS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fad81b130-1a06-40f5-a735-cd71010ecd67_1898x1062.png)
+![](z-images/e0d77b918acc2bcc849dd25e38b65f89.webp)
 
 Intel projects long-term PC TAM to be 300 million annual units. This is hard to stomach for many people, given that PC lifecycles continue to lengthen due to the lack of new applications that would cause an upgrade cycle beyond the Covid upgrade cycle. Most users only use basic office applications, video calls, and web browsers. Intel is assuming a 6.5-year replacement cycle, but multi-core laptops with an SSD and >=8GB RAM with an SSD should be fine for the vast majority of users for much longer.
 
@@ -94,7 +94,7 @@ Are these executives SO SCARED of rattling the stock price that they'll go so ha
 
 Everyone must be wearing ballet shoes because they're walking around on tiptoes.
 
-![](https://substackcdn.com/image/fetch/$s_!qaRG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa9f828d7-6b04-4c51-b3a8-69870148ce85_1897x1056.png)
+![](z-images/1c09442453d82247bc5eeebb501ab764.webp)
 
 The consumer TAM slides shared some interesting data about PC usage versus before covid.
 
@@ -108,7 +108,7 @@ It surprised us to hear this bit about the commercial PC market from Intel.
 > 
 > Christoph Schell, Chief Commercial Officer
 
-![](https://substackcdn.com/image/fetch/$s_!5-q8!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28c6fca9-c47e-43c0-a978-2c5607e4184b_1906x1068.png)
+![](z-images/9480d7ea0e88d0a50503b3b8968a74bf.webp)
 
 Not gonna lie; Christoph seems quite out of touch with the typical consumer after having been an executive for decades.
 

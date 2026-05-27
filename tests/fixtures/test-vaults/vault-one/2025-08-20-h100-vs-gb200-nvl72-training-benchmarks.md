@@ -57,19 +57,19 @@ Turning to the GB200 NVL72, the rack scale server alone costs $3.1M for a typica
 
 When comparing across all three buyer types, from Hyperscalers to Neocloud Giants to Emerging Neoclouds, the GB200 NVL72’s all-in capital cost per GPU comes to about 1.6x to 1.7x the all-in capital cost per GPU of the H100.
 
-![](https://substackcdn.com/image/fetch/$s_!DrGS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F660ecea3-8430-4b34-908a-f5aa7b406d01_1024x446.png)
+![](z-images/01ea2103b4d7ffe30cf27358776b489d.webp)
 
 Source: SemiAnalysis
 
 Comparing the two systems’ operating cost of ownership, we find that the Opex per GPU for the GB200 NVL72 is not that much higher than that of the H100. The cost difference comes from the fact the GB200 NVL72 has a higher all-in power consumption per GPU than the H100. This is primarily driven by the fact that the GB200 chip consumes 1200W per chip vs 700W for the H100.
 
-![](https://substackcdn.com/image/fetch/$s_!01C3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24d5c68d-8e3d-45a3-808d-0a73f79a87e4_1544x557.png)
+![](z-images/3b08c67ae1bb9848a71478c7fbe0e5ec.webp)
 
 Source: SemiAnalysis
 
 When factoring in both capex and opex in order to arrive at the total cost of ownership (TCO), we see that TCO for the GB200 NVL72 is about 1.6x higher than TCO for the H100. This means that the GB200 NVL72 needs to be at least 1.6x faster than the H100 in order to have an performance per TCO advantage when compared to the H100.
 
-![](https://substackcdn.com/image/fetch/$s_!78Vl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1b219c54-4bdf-4784-8887-8b00c086ce7d_2560x447.png)
+![](z-images/fc0e8d427e88f45a4bfaf905f86a6533.webp)
 
 Source: SemiAnalysis
 
@@ -97,7 +97,7 @@ To elaborate, GPT3 175B’s hidden dimension is 12,288, which means if one were 
 
 The sequence length of the benchmark follows the [original GPT-3 paper setup](https://arxiv.org/pdf/2005.14165) and uses 2,048 seq length as well as a global batch size of 256 samples. This means the model will see 500k (Global Batch Size \* Seq Len) tokens before each optimizer step.
 
-![](https://substackcdn.com/image/fetch/$s_!xXRL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F38b36a55-66ef-44bc-97ee-c65336dd1998_1475x679.png)
+![](z-images/b419d4fb1684f666d1f6d3884c745952.webp)
 
 When looking at BF16 model flops utilization (MFU), we see a considerable improvement from 34% MFU to 54% MFU over the course of 12 months, amounting to a 57% improvement in training throughput solely from software improvements across the CUDA stack. This improvement results from NVIDIA CuDNN/CuBLAS engineers writing more optimized fused wgmma kernels, NCCL engineers writing more optimized collectives that use fewer SMs for communication among other improvements. At the end of the day, it is the full software stack optimization that matters.
 
@@ -121,7 +121,7 @@ Strong scaling refers to scaling compute resources while keeping the model size 
 
 On the other hand, weak scaling refers to scaling compute resources to solve larger problems at a constant time. AI Training inherently utilizes weak scaling since you can scale up your model size and your global batch size (depending on convergence) by scaling up the number of GPUs used a training job.
 
-![](https://substackcdn.com/image/fetch/$s_!vD8M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe118b2e6-fbeb-4389-b52e-940e75fdea6a_1024x723.png)
+![](z-images/448b8206109a9b02575984dbedece19e.webp)
 
 Source: SemiAnalysis, Performance and Scalability – SCENET Summer School
 
@@ -131,7 +131,7 @@ In this benchmark, we examine how training performance for Llama3 405B varies as
 
 In the table below, we see how as we increase the GPU cluster size from 576 H100s to 2,304 H100s, both FP8 MFU and BF16 MFU hover around 43% MFU and 54% MFU respectively across all sizes. In the training run published in the [Llama 3 Herd of Models Paper](https://arxiv.org/pdf/2407.21783), researchers used 16k H100s to train Llama 3 405B, [achieving a BF16 MFU of 41%](https://arxiv.org/pdf/2407.21783) for pretraining using a similar parallelism strategy. Note that the above pre-training runs used a sequence length of 8192, whereas for mid-training context extension, each sample’s sequence length is 131,072 instead of 8,192. This longer sequence length requires context parallelism across 16 nodes resulting in MFU dropping to 38% due to the additional communication needed for ring attention.
 
-![](https://substackcdn.com/image/fetch/$s_!91Fo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3edeacd-176b-4c1e-b368-18473a2d70ad_1024x535.png)
+![](z-images/8bdf54068a3d9fd31662e97b1137650e.webp)
 
 Source: SemiAnalysis
 
@@ -147,7 +147,7 @@ This means that for the same energy as the average US household consumes in a ye
 
 Next, we look at Llama3 70B training performance for different cluster sizes. As we increase the cluster size from 64 H100s to 2,048 H100s, we see that performance for FP8 drops by 10%, dropping from 38.1% for 64 GPUs down to 35.5% for 2,048 GPUs. It is quite interesting that the MFU drops by so much (on a percentage basis – which is what really matters given the low MFU base) because the per data replica batch size doesn’t change as we scale up and the parallelism also strategy doesn’t change. All runs still continue to use TP=4,PP=2, and context parallel=2 – the only real change is adding more data replicas. Interestingly, for BF16, the drop in MFU is far smaller at only 1-2%, dropping from 54.5% MFU for 64 H100s down to 53.7% for 2,408 GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!FxsA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5745ecee-4c3a-4d79-9128-c62e755aedf9_1767x925.png)
+![](z-images/280d2ca28bfc1b543448f67f34b879fb.webp)
 
 Llama3 405B is 5.7x larger than Llama3 70B, and as with any dense models, the number of FLOPs required is linear with respect to the number of parameters. As such, the cost to train Llama 3 405B should be 5.7x greater than that of Llama 3 70B. In practice, at the ~2k H100 scale, Llama3 405B is 5.4x more expensive in terms of the cost per million tokens using BF16.
 
@@ -157,7 +157,7 @@ In terms of power consumption, we see that for FP8, training consumes 10% more e
 
 Larger models like Llama3 405B and Llama3 70B both use tensor parallelism, pipeline parallelism and data parallelism, but training Llama3 8B only requires context parallelism across the 8,192 sequence length for each pair of GPUs within the NVLink domain and uses data parallelism to spread the work beyond across other pairs of GPUs. In this analysis – we also look at training performance with respect to time in order to gauge how software improvements across the stack have affected training performance. We see that performance has only improved slightly from November 2024 to April 2025, the latter date being a full 23 months after Hopper began mass deployment.
 
-![](https://substackcdn.com/image/fetch/$s_!8cPh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7168e971-f701-4d8c-9739-0b0262435014_2260x1099.png)
+![](z-images/574898e43c4096fdbb6ce1536cfe17cb.webp)
 
 In the next section, we deep dive into the current state of GB200 NVL72 training performance as compared to training on the H100. We will discuss benchmarks from training DeepSeek 670B MoE and Llama4 400B MoE, analyzing GB200’s performance per total cost of ownership (TCO) vs that of the H100.
 

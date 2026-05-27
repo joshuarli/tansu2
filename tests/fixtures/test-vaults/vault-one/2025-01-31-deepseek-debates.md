@@ -22,7 +22,7 @@ High-Flyer is a Chinese Hedge fund and early adopters for using AI in their trad
 
 DeepSeek now has grown into a serious, concerted effort and are by no means a “side project” as many in the media claim. We are confident that their GPU investments account for more than $500M US dollars, even after considering export controls.
 
-![](https://substackcdn.com/image/fetch/$s_!rMUO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39cab87f-3291-4eb9-9355-c1b1eb696e79_975x368.png)
+![](z-images/39336a765616c87c06b05c1f04ad8908.webp)
 
 Source: SemiAnalysis, Lennart Heim
 
@@ -32,7 +32,7 @@ We believe they have access to around 50,000 *Hopper GPUs*, which is not the sam
 
 We believe DeepSeek has access to around 10,000 of these H800s and about 10,000 H100s. Furthermore they have orders for many more H20's, with Nvidia having produced over 1 million of the China specific GPU in the last 9 months. These GPUs are shared between High-Flyer and DeepSeek and geographically distributed to an extent. They are used for trading, inference, training, and research. For more specific detailed analysis, please refer to our [Accelerator Model](https://semianalysis.com/accelerator-industry-model/).
 
-![](https://substackcdn.com/image/fetch/$s_!yfHm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F055c28ff-9ad9-422a-a8b5-61cbfa326e68_2196x872.png)
+![](z-images/4da6139af2f8a6d511867d607de7eea9.webp)
 
 Source: SemiAnalysis
 
@@ -60,13 +60,13 @@ So how was DeepSeek able to have such a large cluster? The lag in export control
 
 V3 is no doubt an impressive model, but it is worth highlighting *impressive relative to what*. Many have compared V3 to GPT-4o and highlight how V3 beats the performance of 4o. That is true but GPT-4o was released in *May of 2024*. AI moves quickly and May of 2024 is another lifetime ago in algorithmic improvements. Further we are not surprised to see less compute to achieve comparable or stronger capabilities after a given amount of time. Inference cost collapsing is a hallmark of AI improvement.
 
-![](https://substackcdn.com/image/fetch/$s_!w9PC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F907678eb-2886-499e-ad43-36c9fd9be879_975x459.png)
+![](z-images/d9e3e614b6ec3147da439ea5d6e9ccf5.webp)
 
 Source: SemiAnalysis
 
 An example is small models that can be run on laptops have comparable performance to GPT-3, which required a supercomputer to train and multiple GPUs to inference. Put differently, algorithmic improvements allow for a smaller amount of compute to train and inference models of the same capability, and this pattern plays out over and over again. This time the world took notice because it was from a lab *in China*. But smaller models getting better is not new.
 
-![](https://substackcdn.com/image/fetch/$s_!IXuJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb39c0193-339c-4e63-bb1d-55504b1e5d6e_975x554.png)
+![](z-images/10ddbb492a07a0942f872cb7ed8adbf1.webp)
 
 Source: SemiAnalysis, Artificialanalysis.ai
 
@@ -74,7 +74,7 @@ So far what we've witnessed with this pattern is that AI labs spend more in abso
 
 When investigating the cost for GPT-4, we see a similar decrease in cost, although earlier in the curve. While the decreased difference in cost across time can be explained by no longer holding the capability constant like the graph above. In this case, we see algorithmic improvements and optimizations creating a 10x decrease in cost and increase in capability.
 
-![](https://substackcdn.com/image/fetch/$s_!cyiw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c3a6b7a-93dd-4f6c-9367-b3a93146913b_1024x610.png)
+![](z-images/6ff9c46d054d85082a9ad8db26f59c1d.webp)
 
 Source: SemiAnalysis, OpenAI, Together.ai
 
@@ -92,13 +92,13 @@ Note that the R1 paper makes *no mention* of the compute used. This is not an ac
 
 But some of the benchmarks R1 mention are also *misleading.* Comparing R1 to o1 is tricky, because R1 specifically doesn't mention benchmarks that they are not leading in. And while R1 matches in reasoning performance, it's not a clear winner in every metric and in many cases it is worse than o1.
 
-![](https://substackcdn.com/image/fetch/$s_!ymND!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28789d0f-8d48-491b-af3d-2012619f5736_1020x354.png)
+![](z-images/629fd9d4bb46e0006cd5fafad1eb68cc.webp)
 
 Source: (Yet) another tale of Rise and Fall: DeepSeek R1
 
 And we have not mentioned o3 yet. o3 has significantly higher capabilities than both R1 or o1. In fact, OpenAI recently shared o3’s results, and the benchmark scaling is vertical. "Deep learning has hit a wall", but of a different kind.
 
-![](https://substackcdn.com/image/fetch/$s_!K8M3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91731feb-d9fd-438b-8931-447b6cf70a60_975x635.png)
+![](z-images/d6b80e9833ee0fea93da52e726af3360.webp)
 
 Source: AI Action Summit
 
@@ -108,7 +108,7 @@ While there is a frenzy of hype for R1, a $2.5T US company released a reasoning 
 
 On reported benchmarks, Flash 2.0 Thinking beats R1, though benchmarks do not tell the whole story. Google only released 3 benchmarks so it's an incomplete picture. Still, we think Google’s model is robust, standing up to R1 in many ways while receiving none of the hype. This could be because of Google’s lackluster go to market strategy and poor user experience, but also R1 is a Chinese surprise.
 
-![](https://substackcdn.com/image/fetch/$s_!DBth!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feaf6e4b3-1b75-4e21-a157-52c29add65ac_1017x1024.jpeg)
+![](z-images/6a3a36fc5d6ab83a66e1103b1b7de0a9.webp)
 
 To be clear, none of this detracts from DeepSeek’s remarkable achievements. DeepSeek’s structure as a fast moving, well-funded, smart and focused startup is why it's beating giants like *Meta* in releasing a reasoning model, and that's commendable.
 

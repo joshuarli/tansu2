@@ -32,7 +32,7 @@ Lithography is the central process in high-volume semiconductor manufacturing. W
 
 Once you go past the limits of the lithography tool, you can still keep scaling single feature sizes by moving to various multi-patterning schemes. Below is a simplified depiction of “litho-etch-litho-etch (LELE),” one of the most common multi-patterning schemes. We will bucket other schemes like SADP and LELB into the same bucket as LELE for simplicities sake here.
 
-![](https://substackcdn.com/image/fetch/$s_!eaP5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff78f0711-8fd2-4ae5-a993-cdae9f1c9180_1051x832.png)
+![](z-images/2176854b97329cd7fa9ed390541f2d0c.webp)
 
 The LELE process flow goes through the full lithography cycle twice to achieve feature sizes tighter than what a single patterning step is capable of. The full cycle can be dozens of different process steps including deposition of hard masks, underlayers, mid-layers, BARC, CMPs, cleans, strips, spin coats, bakes, develops, exposures, etches, and various metrology/inspection steps in between.
 
@@ -40,7 +40,7 @@ The key point is that going from a single lithography cycle to a LELE process in
 
 Applied Materials is specifically targeting EUV multi-patterning reduction as the 1 <sup>st</sup> use case for Sculpta. They claim they can achieve the same features fidelity as LELE with a single litho cycle and Sculpta.
 
-![](https://substackcdn.com/image/fetch/$s_!9Jor!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F921592c0-0b90-453f-8f99-f469704859b9_2666x1377.png)
+![](z-images/ae65516630531e6888e48a7fa228d376.webp)
 
 > We estimate about 25 kilowatt-hours per wafer, about 0.5 kilograms of CO2 equivalent emissions per wafer and about 15 liters of water per wafer per LE (Litho-Etch) loop. And on the right box, we show the cost. We estimate about $350 million of capital cost per 100,000 wafer starts per month and about $70 per wafer manufacturing or OpEx cost per wafer per EUV loop. The cost savings, we estimate about $250 million of capital cost per 100,000 wafer starts per month and about $50 per wafer of manufacturing costs saved.
 
@@ -54,45 +54,45 @@ That analysis is overly simplistic and pattern shaping cannot be used everywhere
 
 The core of Centura Sculpta is being able to perform a new type of step called pattern shaping. Pattern shaping is shooting a ribbon beam of plasma at the wafer at an angle. The angle can be controlled from 0 to 70 degrees compared to the wafer. The zero angle is 90 degrees from the angle of the wafer. Perpendicular.
 
-![](https://substackcdn.com/image/fetch/$s_!_OCf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F34f16ec9-5c53-48db-bbad-a59140bf9cc6_2012x1052.png)
+![](z-images/8df07ea6cbb82ccf2c4bc1824186a126.webp)
 
 The plasma beam travels in one dimension in order to keep the processing uniform across the wafer. The purpose is unidirectional elongation of features in 1 direction. Pattern shaping can be performed in any direction by rotating the wafer around and running the beam across the wafer again.
 
-![](https://substackcdn.com/image/fetch/$s_!l1qg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd83f823e-676a-4247-a5f0-583c58186548_2008x1062.png)
+![](z-images/bb1ec3dfd333fe2a0ba7314c29820a79.webp)
 
 It is critical for pattern shaping to not affect the critical dimensions of the silicon features that need to stay the same. This means that only changing the feature on one axis is critical. Applied Materials says that they can change a single dimension by a factor of 20 units of length for every 1 unit of length in the other direction.
 
-![](https://substackcdn.com/image/fetch/$s_!Yl-c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9fec0437-7d6d-4ecc-8bb7-683068202a06_1100x522.png)
+![](z-images/fffc5c702ec03554542c44e2666a1f53.webp)
 
 This is highly selective directionally. The fab can also control how much a pattern is elongated by increasing or reducing the time spent being bombarded by the ribbon beam. Etch time is an important lever that the fabs can play with.
 
 Another consideration for keeping shapes uniform is making sure that the beam angle is optimized for a variety of different structures on the wafer.
 
-![](https://substackcdn.com/image/fetch/$s_!JUuk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2429a8d-6190-43dc-80b6-d7297fb6e59b_2206x990.png)
+![](z-images/411bc84bc8a1e8c4349b72e3a02cda59.webp)
 
 If the beam angle is incorrectly aligned, then you could have shadowing occur on structures of different sizes.
 
-![](https://substackcdn.com/image/fetch/$s_!xjo0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9777d4c1-13c5-40c1-a3b9-5f9f50e4292f_2013x1082.png)
+![](z-images/175a3da80dc0e0f756575b6e750b578a.webp)
 
 If the planarization layer and the hard mask have different etch selectivity, then the plasma beam will cause the sidewalls to not be uniformly straight.
 
 The sidewall profile of a feature must be optimized or there will be performance, power, or yield issues.
 
-![](https://substackcdn.com/image/fetch/$s_!Oxx6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d1f9795-2fce-48cf-aeb9-117cb25e2810_2022x1063.png)
+![](z-images/a1e65a2d214ce16dda2510fd55fae8fd.webp)
 
 The angling of the plasma beam is incredibly important for fabs to optimize to ensure features of various sizes will have uniform and consistent elongation amounts. Using a higher angle vs lower angle will juggle factors such as the time required to etch, the erosion rate of the top layer, and the erosion rate of the bottom layer to keep the critical dimension intact. Each application will have different beam angles and time. Applied Materials has worked on multiple different chemistries so the beam can be used with a variety of hard masks, underlayers, and midlayers.
 
-![](https://substackcdn.com/image/fetch/$s_!5fuS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcc6fb089-3cf3-48c0-a32a-8e0356f3cf81_2028x1063.png)
+![](z-images/78511646df2b90776bbb87ec294be3ba.webp)
 
 Pattern shaping happens after the develop, clean, and etch through of the photoresist and anti-reflective coating layers.
 
-![](https://substackcdn.com/image/fetch/$s_!b2Zw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3f48c444-4f1e-478e-b342-df58bc389d2d_2016x1082.png)
+![](z-images/29702018b9526700ba1f71ab45c1d1b9.webp)
 
 Once the pattern shaping has occurred then the pattern transfer etch can be done. This allows pattern shaping to be used even if you have multiple masks and patterning stages. Pattern shaping can be combined with multi-patterning.
 
 Pattern shaping doesn’t just need to be in the direction of the existing features. It can also be done at any arbitraty angle. For us, this seemed more of a showcase of Applied’s alignment and process control with the Sculpta rather than there being an actual use case of asymmetric shaping. We can’t think of a usecase for asymmetric shaping, but please do share if you think there is one.
 
-![](https://substackcdn.com/image/fetch/$s_!Cu-G!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23902a6e-f798-4970-ab85-8904feafc8d4_2011x1078.png)
+![](z-images/d1783cb9ed231b872881b2a4d89ae1cc.webp)
 
 Now that we have covered what pattern shaping is, it’s time to cover the actual use cases for pattern shaping.
 
@@ -102,17 +102,17 @@ There are 3 major use cases for the Scuplta tool: Tight hole and slot pattern, n
 
 The first application is getting hole and slot patterning with tight corner-to-corner dimensions using traditional litho-etch (LE) methods you would require multi-patterning. With pattern shaping, you have the advantage of only needing to use only one LE step to get tight corner to corner. Tight corner-to-corner is important because it lets you be able to put more features, into the same area. In this case with vias, this gives you improved performance and power characteristics due to having more area for the vias.
 
-![](https://substackcdn.com/image/fetch/$s_!T5B9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec29b50a-768a-4fcf-ad56-858ad0d0cdfb_2009x1073.png)
+![](z-images/7c77a075c51767cf9903ccfc65cfc5f7.webp)
 
 In the image above, you can see on the left how a tight corner-to-corner would be accomplished using conventional self-aligned LELE techniques. You require 2 different masks for a tight corner-to-corner of the vias but with pattern shaping, you can use a single mask to create all the vias without tight corner-to-corner, then shape the vias to have a tight corner-to-corner.
 
 The second application is producing trenches with a tighter tip-to-tip pattern. This is very similar to the first application, but with a different feature type. In this application, pattern shaping is used to get two sets of lines as close together as possible without using a second mask.
 
-![](https://substackcdn.com/image/fetch/$s_!DpHl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe17af23d-d9aa-4b03-973e-3ee65a227a78_2018x1081.png)
+![](z-images/e19a44fb420cf1e6c005e2cb2104d14b.webp)
 
 On the left is the conventional LELE technique. The first mask creates the lines then the second mask creates a split between the two to get as tight of a tip-to-tip spacing as possible. With pattern shaping, you use one mask to create the 2 sets of lines with a loose trench in the middle. Then Sculpta can remove as much material as possible to make the trench as thin as possible.
 
-![](https://substackcdn.com/image/fetch/$s_!oWhu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F915cace0-fdb3-485f-aa0b-14b23d6428e5_2020x1088.png)
+![](z-images/13a22e1ad489b1755d1e5220e2be109c.webp)
 
 The third application is reducing stochastic bridge defects. Stochastic bridge defects are places on a line where the etch was not able to remove all the material that it should have. Generally, this is because the photoresist layer was not exposed properly by the lithography too. For a more through explanation of stochastics see here.[SemiAnalysis](https://www.semianalysis.com/p/embracing-chaos-the-imperfect-art?utm_source=substack&utm_campaign=post_embed&utm_medium=web)
 
@@ -124,11 +124,11 @@ All manufacturing in the world is built upon stacking multiple processes and sys
 
 These defects can cause increased power by the electrons going places that they shouldn’t be. It can also cause a yield reduction if a bridge ends up connecting 2 critical layers together resulting in a short or communication error. With pattern shaping, Applied Materials says that Sculpta can reduce these defects by over 90%.
 
-![](https://substackcdn.com/image/fetch/$s_!ji8d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F53eef56a-b07a-4214-b29a-114da28fada1_2017x1058.png)
+![](z-images/f6b9c9729d898bd99177ba966790566b.webp)
 
 In a different presentation, ASML talked about how shrinking the tip to tip beyond 27nm starts to increase the stochastic defects exponentially with EUV single patterning. Pattern shaping would help with significantly decreasing those pattern defects because the lithography tool can pattern a more relaxed feature and have Sculpta shape into the tighter tip-to-tip. Pattern shaping would also help with reducing trench-to-trench defects in the same way.
 
-![](https://substackcdn.com/image/fetch/$s_!ppe7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe54631b7-6373-4458-a527-0df765ffebdf_3485x1468.png)
+![](z-images/93f76bdce6b1c5e2480902761048f024.webp)
 
 It should be noted that ASML’s data is for simplistic flows, complex routing that is used in real chips would push the defect wall at or above 30nm with current resists.
 
@@ -136,17 +136,17 @@ It should be noted that ASML’s data is for simplistic flows, complex routing t
 
 The metal stack is one of the most important parts of any process node. It is what enables routing signals around a wafer. The metal stack has more than a dozen layers that compose it, but the most important layers are the layers M0 to M4. In terms of layout on modern process nodes, the M0, M2, and M4 are critical metal layers that are perpendicular to the gates and M1, and M3 are parallel to the gate.
 
-![](https://substackcdn.com/image/fetch/$s_!MCEd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fed42483c-a503-4859-bea2-3d49b6f6db7d_950x449.jpeg)
+![](z-images/d4959925899ecc93bfb453ea50de7f8d.webp)
 
 The metal stack of a chip is an area with many complex and difficult tradeoffs. The denser and thinner you make each metal layer, the more routing of signal can be done, and ultimately, the more useful transistors can be fit into any given area. However, this comes at big cost.
 
 The thinner you make a metal wire the higher resistance that wire will have. Remember Ohm’s law from high school. Ohm’s law states that R = (V/I) where R is resistance, V is voltage, and I is current. Although Ohm’s law does not hold exactly true with such small wires, process node integration engineers must grapple with increasing resistance of a circuit for denser metal layers. They can compensate by increasing the voltage or reducing the current. The simplified tradeoff is that a denser metal stack costs more power to send a signal versus a more relaxed metal stack. It is not always a good thing to shrink the metal pitches.
 
-![](https://substackcdn.com/image/fetch/$s_!tT1R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7cfbec64-d814-495d-908b-c4299013f153_950x353.jpeg)
+![](z-images/36fad55c2c3979e0a7dc59b8016dfd36.webp)
 
 Copper is the metal of choice for 3nm and 4nm process nodes from Intel, TSMC, and Samsung. With single patterning EUV, ~32nm is about the limit for line spacing with current resist chemistries and overlay capabilities. For vias this number is actually higher. For simplicities sake, let’s say the limit for EUV single patterning is 30nm for all features.
 
-![](https://substackcdn.com/image/fetch/$s_!Wt9q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F722080e9-54ce-47a4-b991-80a78a0d249f_2094x1474.png)
+![](z-images/a9ad5ade0ac4975693a566033aa9e17e.webp)
 
 Demonstrative not real
 
@@ -158,35 +158,35 @@ This is where multi-patterning comes in. The goal is not to pack more wires in, 
 
 For simplicities sake, let’s say the limit of multi-patterning is now 15nm instead of 30nm. In reality, the current limit of LELE EUV is more in the range of ~21 to ~23nm. The upper bound is [TSMC’s pitch on the M0 metal layer for their N3E process node.](https://www.semianalysis.com/p/tsmcs-3nm-conundrum-does-it-even) The lower bound is the 2nm class node we will discuss later. Just to note, multi-patterning doesn’t halve the pitch directly due to some margin being given up due to [stacking overlay errors and stochastics](https://www.semianalysis.com/p/embracing-chaos-the-imperfect-art).
 
-![](https://substackcdn.com/image/fetch/$s_!OUmS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67f7907e-5622-493a-b986-e6d3e66a3437_2226x1464.png)
+![](z-images/8ca82be21f24b039030c27cb9b31f887.webp)
 
 Demonstrative, impossible with LELE EUV and pattern shaping
 
 If our pixel size is now 15nm, with multi-patterning in this **oversimplified demonstrative imaginary example**, the routing density would remain the same. Instead, this increase in fidelity would be used to deposit proportionally more copper relative to SiO2. The copper line width improves from 30nm to 45nm and the tip-to-tip spacing improves as well. The SiO2 insulator is still there to prevent the copper signals from intermixing and shorting the chip.
 
-![](https://substackcdn.com/image/fetch/$s_!fQOT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0b5a8a53-e0e4-40f0-a6f0-10e1dadd1e70_950x353.jpeg)
+![](z-images/36fad55c2c3979e0a7dc59b8016dfd36.webp)
 
 The increased line width and tip-to-tip spacing leads to a massive decrease in resistance and improvements in power and performance. Note that tip-to-tip and line pitch do not both improve with the move from single patterning to SALELE or pattern shaping, this example is **exaggerated and unrealistic** to show the potential benefits **conceptually**.
 
 In the real world, the benefits are smaller, but needed, and one of the primary use cases of pattern shaping. The density of features is such that can already be achieved with single patterning, but the shapes of those features cannot. Pattern shaping helps bring the features that lithography can print, to the shapes the fab desires.
 
-![](https://substackcdn.com/image/fetch/$s_!Hizp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F87956ef3-86fd-42f0-9a7d-f8df67ca93d1_2666x1375.png)
+![](z-images/db803a448e1b40cc12ce84dfdb990e8b.webp)
 
 There is also a yield and power tradeoff with regard to metal layers and via layers. Vias are how the different metal layers are connected. Each layer is fabricated then stacked perfectly on top of each other. Process margin and overlay determine the ability to stack these up perfectly.
 
-![](https://substackcdn.com/image/fetch/$s_!suQv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F002fc70a-b4c8-464d-a279-2323d736069c_1830x932.png)
+![](z-images/3d073c853643474202432dbca28f6a9f.webp)
 
 Any misalignment could cause a layer to miss the one below it so that no connection is made where there should be one (opens). Even worse, the metal layer could connect with another layer it isn’t supposed to, creating incorrect connections (shorts). Because pattern shaping is a selective process, the fab can tune up or down the directional etch in the direction or amount they need to minimize shorts and opens while maximizing size of the feature.
 
 Resistance issues are very significant, especially on the lower vias where pattern shaping would be the most applicable. On TSMC’s N3E node, over 90% of via resistance is caused by V0 through V5.
 
-![](https://substackcdn.com/image/fetch/$s_!auk7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F667b24bd-6037-4f92-b3a2-4f6888307aff_1618x1410.png)
+![](z-images/c756bfdb3f07332de5f7c25546d482b2.webp)
 
 TSMC
 
 The next 9 vias are quite insignificant as far as via resistance goes. If the V0 through V5 vias could be made larger, but still fit inside the same area, then resistance would decrease, and density would not be impacted.
 
-![](https://substackcdn.com/image/fetch/$s_!t4fr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa675ac32-498c-4120-8e2c-4a10d1646a31_2666x1363.png)
+![](z-images/099c01f853e6dabf7061aff90308482d.webp)
 
 The tradeoff of better fidelity from multi-patterning is great from a power and performance perspective for the metal stack, but it hurts significantly from a cost perspective. The number of process steps per metal layer nearly doubles.
 

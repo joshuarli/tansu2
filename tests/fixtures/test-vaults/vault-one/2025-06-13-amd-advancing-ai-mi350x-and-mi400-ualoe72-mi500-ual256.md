@@ -39,7 +39,7 @@ The on-paper specs for the MI350X and the MI355X are both competitive to the HGX
 
 [SemiAnalysis benchmarking has shown](https://semianalysis.com/2024/12/22/mi300x-vs-h100-vs-h200-benchmark-part-1-training/) that even though the MI300X and the H100 each show the same on-paper TFLOP/s for FP16 as for BF16 (i.e. Nvidia’s FP16 TF = BF16 = 989 TFLOP/s, AMD’s FP16 = BF16 = 1307 TFLOP/s) in practice – each card delivers different realized TFLOPs when running FP16 vs BF16. We will be publishing an article in the near future running microbenchmarks to figure out a realistic TFLOP/s for MI355X FP6 versus FP4.
 
-![](https://substackcdn.com/image/fetch/$s_!OShk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0dbf89d7-a405-4a9a-939f-da8bf2af0d29_1616x578.png)
+![](z-images/3a72f1fbc7f8bf0b5e03e1b8586ce710.webp)
 
 Source: SemiAnalysis
 
@@ -51,7 +51,7 @@ In terms of HBM, the MI350/MI355 has the same memory bandwidth and capacity as B
 
 For the MI350/MI355’s scale-up network, AMD was able to “overclock” their XGMI protocol (which uses PCIe 5.0 PHY Serdes) by 1.2x from 64GByte/s to 76.8GByte/s. It does thus by using PCIe 5.0 PHY extended speed mode which offers ~38GT/s per link instead of 32GT/s per link. Despite this, comparable Nvidia products still crush the MI350/MI355’s scale up network speed because the HGX B200/B300 uses a switched all to all topology which is 1.6x faster than that of the MI350/MI355’s mesh topology based scale-up network. When it comes to the GB200 NVL72/GB300 NVL72, there is really no comparison or competition versus the MI350/MI355’s scale-up solution, because the GB200 NVL72/GB300 NVL72 is a true rack scale solution connecting 72 GPUs within a single scale-up domain while the MI350/MI355 only connects 8 GPUs together in its scale-up domain.
 
-![](https://substackcdn.com/image/fetch/$s_!wQ_B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4761c86a-12e9-42a3-9110-3e7d827bd110_1127x975.png)
+![](z-images/108b745b5cf1cedfe136005a48914296.webp)
 
 Source: SemiAnalysis
 
@@ -65,7 +65,7 @@ AMD’s pitch on the competitiveness of the MI355X centers around the fact that 
 
 With that said, this product segment will ship meaningful volumes, depending on the MI355X’s software quality and the price that AMD is willing to sell at. We expect that it could gain the most traction among users of small to medium models that do not benefit from large scale-up world sizes. But when it comes to reasoning models and frontier inference deployments that do benefit from large-scale disaggregated deployments or employ mixture of experts that can take advantage of large scale up networks, the GB200 NVL72 will still dominate on performance and perf per TCO, especially when it comes to inference.
 
-![](https://substackcdn.com/image/fetch/$s_!b3hV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe1a3295f-0074-45b9-a44d-a281e4d92143_1471x632.png)
+![](z-images/8665c538189e3ceaf5b03026016dca44.webp)
 
 Source: SemiAnalysis
 
@@ -95,19 +95,19 @@ The MI355 “128 GPU Rack” is rack scale from temu dot com. Calling the MI355 
 
 As we will elaborate on further, this means that the MI355X “rack-scale solution” has 18x worse collective performance compared to the GB200 NVL72. For the MI355X, a GPU in UBB8 server A can only talk to a GPU in another GPU in UBB8 server B in the same rack at 400Gbit/s over Ethernet versus, whereas for the GB200NVL72, GPUs in different compute trays communicate at 900GByte/s.
 
-![](https://substackcdn.com/image/fetch/$s_!MlcO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e5c9244-689c-49f9-94fb-74f92cb73fe5_963x441.jpeg)
+![](z-images/46beecb2227d44ed90fd63d3486b458c.webp)
 
 Source: AMD
 
 If the MI355 128 GPU rack is considered to be a “rack scale solution”, then why not call the many H100 racks as a “rack scale solution” too? Obviously, if the MI355 is labeled a “rack scale solution”, the H100 should be considered a “rack scale solution” too. This is a ridiculous proposition as nobody is calling xAI’s H100 deployment with 64 GPUs per rack a “rack scale solution”. Like the MI355, this H100 deployment does not have a coherent scale up domain across all 64 GPUs, it is just eight HGX H100 NVL8 servers in a rack.
 
-![](https://substackcdn.com/image/fetch/$s_!l9Wg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1ef59ca-a43e-4546-8aca-5a37d8755032_1199x800.jpeg)
+![](z-images/35d6d85005608898b222bff6bafdf318.webp)
 
 XAI’s “rack scale solution”. Source: ServeTheHome
 
 When it comes to inference and training of mixture of experts models, the most important and communications intensive collective is the all to all operation, which routes tokens to the correct expert. For all to all communication, the MI355X is 18x slower than the GB200 NVL72 and 2x slower than the HGX B300 NVL8. For training models using 2D+ parallelism, a common LLM pattern is using an all reduce with a split mask of 0x7, and for this operation, the MI355X is also 18x slower compared to GB200 NVL72. This example illustrates that MI355X is clearly not rack scale and not in the same league as the GB200 NVL72.
 
-![](https://substackcdn.com/image/fetch/$s_!FrPT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9d15aa33-b0a1-46cc-83ce-14d8aae7c595_1322x748.png)
+![](z-images/4b1664ca87a8390ac4990b7bf59d5526.webp)
 
 Source: SemiAnalysis
 
@@ -139,7 +139,7 @@ One of the main challenges with increasing AMD adoption is that there are curren
 
 For reasoning inference tasks (1k input, 4k output), the MI300X needs to be priced at under $2.10-2.40/hr for a 1-month contract in order for it to have a competitive performance per dollar with H200. The MI325X needs to be priced between $2.75/hr/GPU to $3.00/hr/GPU, depending on interactivity, to be competitive. This a price range that no AMD Neocloud offers without extensive negotiations, which means that Nvidia currently wins on performance per dollar for rentals in part as a result of this market inefficiency.
 
-![](https://substackcdn.com/image/fetch/$s_!he-N!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4e4c7ac3-bb71-4442-bcb3-d175e0419346_1600x954.png)
+![](z-images/37e3065aa7ecb53e241b7ec282560887.webp)
 
 Source: SemiAnalysis
 
@@ -153,7 +153,7 @@ With these incentives in place – one could make the argument that these Neoclo
 
 The launch of AMD’s developer cloud is also a key strategy towards making AMD’s compute universally available at a competitive price. As part of this launch, AMD has massively lowered its prices for renting MI300X GPUs, democratizing access to a broader demographic of developers. Unfortunately, at the time we tested it out, there default quota was set to zero GPUs and getting an increase to the GPU quota was difficult. We recommend to AMD that they set their default quota for new users to at least 16 MI300X GPUs in order to more effectively introduce developers into their ecosystem. Since AMD developer cloud on demand price is set at a much more reasonable price of 1.99$/hr/GPU price, we expect that AMD Neoclouds that offer on demand MI300 will likely need to cut their pricing today’s high levels of $3/hr/GPU down to $2/hr/GPU to match.
 
-![](https://substackcdn.com/image/fetch/$s_!0Nje!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41cb9b83-52e0-4dc7-a77b-01950af62c75_1121x532.png)
+![](z-images/a9edfe54deb9918e39f3a8fe32ac98f9.webp)
 
 Source: SemiAnalysis, AMD
 
@@ -185,7 +185,7 @@ Last month, AMD submitted their first MLPerf Training run for single node Llama2
 
 [When it comes to benchmarking, we like how AMD demonstrates clearly when their solutions are working well by presenting easy to follow reproducible instructions for their MLPerf runs](https://rocm.blogs.amd.com/artificial-intelligence/reproduce-mlperf-training-v5.0/README.html). This is in contrast to Nvidia’s MLPerf submissions which are very hard to reproduce.
 
-![](https://substackcdn.com/image/fetch/$s_!Rwqj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5e06951-94dd-4c69-ae96-77291ef76ca3_1708x956.png)
+![](z-images/b7d973c1ceb0f90c81922b5de44026f1.webp)
 
 Source: AMD
 
@@ -195,13 +195,13 @@ AMD currently is wasting lot of engineering resources and money on their pet pro
 
 In fact, Meta, OpenAI, x.AI all want the opposite of this and want AMD to have better support for multi-node inferencing using at least 16 GPUs through the use of techniques such as DeepEP and disaggregated prefill.
 
-![](https://substackcdn.com/image/fetch/$s_!cFXW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5948c718-6a46-4252-b3d7-d39152fa5b7b_1236x698.jpeg)
+![](z-images/451e29ee4b664e5338a2867651de319b.webp)
 
 Source: AMD
 
 ## MI355X Manufacturing – Updated Chiplet Architecture
 
-![](https://substackcdn.com/image/fetch/$s_!_Iu8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d1dd3c5-8be4-4b71-aa94-58727f99cf06_1748x1053.png)
+![](z-images/11a1081eadbfcf596c3d6229c236ac9b.webp)
 
 Source: SemiAnalysis
 
@@ -211,7 +211,7 @@ The benefit is clear for cross-chiplet communications, eliminating an entire axi
 
 However, this arrangement also places extra importance on 3D stacking yields. AMD continues to use TSMC’s SoIC hybrid bonding process, which now needs to attach twice as many Accelerator Complex Dies (XCD) onto each base die, potentially compounding yield losses and additional silicon wastage should there be issues. AMD choosing this route speaks to the maturity of TSMC’s SoIC flow and their deep partnership with AMD’s Foundry Technology & Operations teams spanning over 5 years as the lead customer for SoIC.
 
-![](https://substackcdn.com/image/fetch/$s_!-0Ru!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7a4b9cc7-8f7b-40e1-be95-f778ea334af7_2560x1695.png)
+![](z-images/8281783151099ec81e63a180c19b2d6d.webp)
 
 Source: AMD Advancing AI
 
@@ -235,7 +235,7 @@ However, compared to Nvidia’s Blackwell design, CDNA 4 has no asynchronous fea
 
 AMD has made great improvements this year to their developer content on the [ROCM blog](https://rocm.blogs.amd.com/). We came to AMD Advancing AI hopeful that AMD would host many developer sessions across the stack but the set of talks and sessions left us underwhelmed. There were no talks on most of the AMD libraries from RCCL to Composable Kernels to rocSHMEM to aiter, etc. We hope that AMD will broaden the set of talks and seminars so as to allow developers to hone in more on their areas of interest in a more focused conference later on in the year.
 
-![](https://substackcdn.com/image/fetch/$s_!7m84!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F570ad021-a55d-41cd-bfab-80a0ff1c3c92_1974x920.png)
+![](z-images/da80069fc98ee6ed7c5bafc942350e54.webp)
 
 Source: SemiAnalysis, Nvidia, AMD
 

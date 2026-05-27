@@ -96,7 +96,7 @@ The primary cost benefit of this “dongle” is that it offloads Amazon’s man
 
 Even with much more conservative estimates of 2 CPU cores saved per Nitro, with [per-core cost estimated at 1/4 <sup>th</sup> that of reserved list price](https://aws.amazon.com/ec2/dedicated-hosts/pricing/), the savings of Nitro exceed $7 billion annually.
 
-![](https://substackcdn.com/image/fetch/$s_!kDad!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F015f611c-8735-4e2e-9924-346c8aa5ffb8_2436x396.png)
+![](z-images/f5ec83b1dd4055346f8abf402fca2a59.webp)
 
 The removal of these workloads from server CPU cores to the custom Nitro chip not only greatly improves cost, but also improves performance due to [removing noisy neighbor problems](https://www.semianalysis.com/p/is-ampere-computings-cloud-native) associated with the hypervisor, such as shared caches, IO bandwidth, and power/heat budgets.
 
@@ -104,19 +104,19 @@ Furthermore, customers also reap the benefits of improved security by adding an 
 
 In addition to the hypervisor offload savings, as Nitro has evolved, it has also taken a central role in many networking workloads. For example, IPsec can be offloaded, which alone could be many millions in savings for each of Amazon’s major customers.
 
-![](https://substackcdn.com/image/fetch/$s_!1_eC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24ad1614-08e2-40d2-a406-1a1c94059def_1248x769.png)
+![](z-images/af8e2f494bdac525037c2292c956149b.webp)
 
 The core of Amazon’s custom silicon efforts comes directly from their work with and later acquisition of Annapurna Labs in 2015. Annapurna was focused on server SOCs for networking and storage. It should be noted that Nitro is not just 1 chip, even though we are referring to it as such. There are multiple generations with multiple variants for different use cases.
 
 Most of Amazon’s top services beyond EC2 are related to storage and databases. Nitro is the major enabler of a durable competitive advantage for Amazon in these workloads. Classical server architectures places at least some storage within every single server, which leads to significant [stranding of unused resources](https://www.semianalysis.com/p/cxl-enables-microsoft-azure-to-cut).
 
-![](https://substackcdn.com/image/fetch/$s_!oZZp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6bb942cd-5803-45a4-bbc2-7baafa0abba7_2607x1352.png)
+![](z-images/ef36ebaeb172fbf071425e7c6de6efe7.webp)
 
 Amazon is able to remove that storage from every server and move it into centralized servers. The servers that customers rent can then boot off of the networked storage. Nitro enables this to be done even with high-performance NVMe SSDs. This shift in storage architecture helps Amazon save tremendously on storage costs as customers do not need to pay for any more storage than they want to use. Customers can dynamically grow and shrink their pools of high-performance storage seamlessly.
 
 This is extremely costly from a compute and networking perspective using general-purpose hardware, but Nitro can provide services such as virtual disk to the tenant's virtual machines at a lower cost due to being on an in-house workload-specific ASIC.
 
-![](https://substackcdn.com/image/fetch/$s_!kfmG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F349ee4a4-0393-4b32-9d2e-285563124e4a_1248x645.png)
+![](z-images/9cbccaba0ab0ce334b8289ac950c19d3.webp)
 
 Amazon’s focus on storage extends out to co-designing the ‘AWS Nitro SSD’ controller [with Marvell](https://www.semianalysis.com/p/marvelldeepdive2022). These SSDs focus on avoiding latency spikes and avoiding latency variability as well as maximizing the lifetime of the SSD through advanced, Amazon-managed wear leveling. [Future variants will include some compute offload](https://www.semianalysis.com/p/marvelldeepdive2022) to improve query performance.
 
@@ -139,15 +139,15 @@ Firstly, they provide a way for AWS to reduce its costs and to offer better valu
 
 Our estimates have Amazon’s in-house Graviton 2 and 3 CPUs as nearly 1 million units in 2022. This alone is a respectable enough volume to justify an in-house CPU program with core design outsourced to Arm, especially as Amazon continues to substitute AMD and Intel CPU purchases with their own. Amazon’s vertical integration play is a no-brainer, even if the only benefit was cheaper CPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!sukd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff8d535ce-7d99-458f-95de-6572c7eda961_1822x656.png)
+![](z-images/30b54ceddcf541bfd6ae91041f3774f6.webp)
 
 Comparing Amazon’s Graviton unit volume to the general market, and they are still currently dwarfed by Intel and AMD. While we believe Amazon has out-shipped [Ampere Computing](https://www.semianalysis.com/p/is-ampere-computings-cloud-native) in the Arm server space with their in-house installations, there is still a big gap compared to the x86 vendors.
 
-![](https://substackcdn.com/image/fetch/$s_!t1cI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffe74bb9c-c353-43ea-ba91-2b1ef8ea866c_2262x658.png)
+![](z-images/f7b0b539a9b4848c981568f282c46b73.webp)
 
 Now if we examine average sales prices, AMD commanded the highest sales price in the industry due to their high mix of 48-core and 64-core server CPUs with unmatched IO capabilities. Intel and [Ampere Computing have similar ASPs](https://www.semianalysis.com/p/is-ampere-computings-cloud-native), ranging around $600. We used our own estimates on manufacturing, packaging, and test costs for Graviton 2 and Graviton 3. Note IP licensing costs are not accounted for, but likely they aren’t that high, [given Amazon has a sweetheart deal with Arm](https://www.semianalysis.com/p/arms-nuclear-option-qualcomm-must).
 
-![](https://substackcdn.com/image/fetch/$s_!rsru!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb93d4df5-544b-417c-923f-6abf00294920_1801x655.png)
+![](z-images/8455b08c39235cab727260c83493effc.webp)
 
 If CPUs were assumed to be 1-to-1 replacements, then the switch to in-house silicon by Amazon saves them hundreds of millions of dollars. Of course, not all CPUs are equal. Even AMD’s last generation Milan is still faster than Intel’s, Amazon’s, or [Ampere’s](https://www.semianalysis.com/p/is-ampere-computings-cloud-native) current generation in many ways. Even ignoring the outlier that is AMD, the potential savings from Graviton in 2022 are >$300M. Now layer on the fact that Amazon’s CPUs are [higher performance than Intel’s](https://www.phoronix.com/review/graviton3-amd-intel/9) while also [using less power](https://www.semianalysis.com/p/amazon-graviton-3-uses-chiplets-and), and the savings start to grow rapidly. We believe the total cost of development of Graviton is likely in the ~$100M annual range, which gives them >$200M of savings.
 

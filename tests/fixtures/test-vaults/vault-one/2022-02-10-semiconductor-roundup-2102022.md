@@ -44,7 +44,7 @@ The single sourcing of business is a major point. We wrote up GlobalFoundries te
 
 GlobalFoundries will be growing capacity in Malta, Dresden, and Singapore by more than 50% by 2023 versus 2020.
 
-![](https://substackcdn.com/image/fetch/$s_!wE0L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F055ac7f0-f56a-41ca-a1c6-1d11a2e21771_1024x356.jpeg)
+![](z-images/45304d1091adb65196b243c3817b1096.webp)
 
 GlobalFoundries secured many long-term contracts with prepayments. Along side these terms, they also expect for ASPs to rise 10% year over year in 2022 versus 2021. The industry is structurally higher cost due to changes like these being inked in for the long term across many parts of the supply chain.
 
@@ -78,7 +78,7 @@ We were a bit bearish on the order book [last post](https://semianalysis.substac
 
 Honestly, we are flabbergasted the China issues did not impact them more. KLIC revenue still outpaces their orders in the quarter by a bit, but even ignoring the huge backlog, the valuation is cheap at the number of orders in quarter level. What’s scary is the guidance and commentary on the call makes it seem like the next quarter orders will be down a decent bit and possibly under $300M.
 
-![](https://substackcdn.com/image/fetch/$s_!zVG0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7720886f-a1f7-459b-af53-10b3436d0b4d_1024x413.png)
+![](z-images/d04fb5f99491abf2572d09589a630a36.webp)
 
 [We predicted $7 EPS in 2022](https://semianalysis.substack.com/p/kulicke-and-soffa-industries-klic-771) which was well above consensus. This quarter is good progress on that number. Gross margins and operating margins crept up despite a slightly smaller revenue number, which shows operationally, they are digesting the huge growth well. Our $7 EPS contemplates the massive ~24% of market cap that is sitting in cash and short-term investments. We expected $400M of this would be deployed for buybacks in Q2 and Q3, but that isn’t the case. It is looking more like $300M will be used, with most coming in Q3 and Q4.
 
@@ -115,7 +115,7 @@ There were decent progress updates on the engineered systems, probe systems, pro
 
 The capital management day was nice, we recommend you [check it out.](https://investor.ti.com/) The one thing we wanted to point out was that the movement in the stock because of the capital management day was braindead. Here is a company who is saying we are going to invest in ourselves to keep growing, and we will continue to return most of our cash to shareholders via dividend and buyback, and the stock goes down. The reason it went down was squarely this slide, which is ridiculous. Investing in growth is good. Internal manufacturing is a margins booster as long as you are utilized and given how analog works, they will be utilized.
 
-![](https://substackcdn.com/image/fetch/$s_!FFDz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc247763-b13b-41d6-9b11-1420c4c1450e_1024x576.jpeg)
+![](z-images/2500051c72b823a7272d70b26a227453.webp)
 
 **Power Integrations**
 
@@ -153,19 +153,19 @@ GlobalWafers likewise, failed in their $5B buyout of Siltronic. As a result, the
 
 This chart from Sumco is amazing. Inventories for logic and memory are crunching, and turnover for existing raw wafer supplies is falling. The difference in logic inventories is much larger. Unfortunately the lack of Y axis prevents us from knowing what days of inventory are like, but some fabs could start hitting bumps for capacity of raw wafers. This trend doesn’t sound like it will reverse anytime soon. Easy to see why the major fabs of the world rushed to buy up all the capacity and likely are doing the same with GlobalWafers.
 
-![](https://substackcdn.com/image/fetch/$s_!oF4p!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fcadd9777-7526-4058-83ca-906a41fef917_1024x723.png)
+![](z-images/ab6557efae0dbdae7ccbbcad663aba48.webp)
 
 Sumco had some very interesting charts for projections into the future aswell. Given they say they are booked through 2026, their numbers for 2022-2025 are likely going to be very accurate one would assume.
 
-![](https://substackcdn.com/image/fetch/$s_!PKD_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ffd31a087-709c-441a-9cfa-e411304fb63d_1024x645.png)
+![](z-images/eb9937f8fdac73a1e6e39aa1567559cd.webp)
 
 A bit surprising, they see DRAM wafer volumes continuing to grow 10% a year, but to keep bit growth going, it has to be done. If so, given the lack of scaling, we should expect some new greenfield announcements out of Samsung, SKHynix, and Micron this year. All 3 are really running out of clean room space on the DRAM front. With the head of Samsung out of jail, we expect Samsung to announce some gnarly announcement this year in regard to memory and logic capex. Something that could make [TSMC’s $40B-$44B gauntlet seem like a bit of a meme.](https://semianalysis.substack.com/p/tsmc-throws-down-a-40b-44b-gauntlet)
 
-![](https://substackcdn.com/image/fetch/$s_!14cA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4de84cc0-d5a6-4d04-bf7e-870a62135f95_1024x662.png)
+![](z-images/e09919a4b6e90a0059010ebb0b984352.webp)
 
 Also the fact they see smartphone units continuing to grow is pretty wild. Our view is that it stays flat at 1.4B volumes with the only increment being content growth. Phone lifetimes are extending after all. Perhaps Sumco is misattributing some Logic, NAND, and DRAM that is going into servers as going into mobile. Or perhaps we are wrong…
 
-![](https://substackcdn.com/image/fetch/$s_!tXLy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F16eeffd9-00a9-4469-b65f-fe3968a07589_1023x642.png)
+![](z-images/a5d140e86d3a583236e659c6f2c0d20f.webp)
 
 With the capital spending and lack of new capacity over the next couple years, everything looks great for the substrate guys. Be wary of what China substrate guys are doing because they could crash this whole market. GlobalWafers looks especially vulnerable due to their increased spending on capex and attempts to enter the compound semi substrate markets.
 

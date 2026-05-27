@@ -36,7 +36,7 @@ Cluster deployments are an order of magnitude larger in scale with Gigawatt-scal
 
 What’s interesting about Colossus 2 is that it uses both dry and adiabatic cooling units. In a recent social media post, we indicated how the 400MW Critical IT capacity will be supported by a hybrid cooling system with around 130 dry coolers and around 135 adiabatic cooling units. Let’s see how this translates into gallons of water consumed.
 
-![](https://substackcdn.com/image/fetch/$s_!ZXOR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F109adcc7-5f30-4306-84bc-65fff97242a4_2287x2191.png)
+![](z-images/ebffcbc0006abc5a1b5aec3875fb2db5.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -52,7 +52,7 @@ Finally, we get to the water footprint embedded in the nucleus of every datacent
 
 Everything considered, **we obtain an annual water footprint of 346 million gals/year (1,310 million liters/year) or 0.9 million gal/day**, which is close to our initial expectations, and implies a WUE of 0.51L/kWh. Now that we have our first fighter in the ring, let’s leave the semiconductors for a moment and turn to the burgers.
 
-![](https://substackcdn.com/image/fetch/$s_!6TG8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a115840-4d24-4d27-a598-ef36dd5d2653_2807x761.png)
+![](z-images/4dc22ee67745e6ee707ed22f555e251a.webp)
 
 Source: SemiAnalysis
 
@@ -72,7 +72,7 @@ Putting it all together and considering the weight of each ingredient in a Doubl
 
 Let’s get to the burger sales. Public sources indicate average store revenues in the order of $5.8M per year. Assuming burgers are 60% of revenue and an average sandwich price of $5.80, we get to around 600k “Double-Double equivalent” burgers sold per year. Multiply that by the water footprint per burger, and we get **a total footprint per store of 147 million gals / year!**
 
-![](https://substackcdn.com/image/fetch/$s_!C3Oz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9d68e1b-6c78-4232-9efe-6d567c346b93_883x219.png)
+![](z-images/ddbe9b55e6dbbca68150cb457cc552e1.webp)
 
 Source: SemiAnalysis
 
@@ -86,7 +86,7 @@ We’re sure that at this point many of you are thinking, “Well, yes, but burg
 
 Before we wrap up, let’s run a few more numbers. Using the same assumptions on Colossus as before, plus a few additional technical assumptions on prefill/decode throughput and input/think/out token sequences, we estimate up to 3.9 quadrillion output tokens could be generated per year. This translates into 8.9 million tokens per gallon of footprint. At 245 gallons per burger, that’s 2.7 billion output tokens per burger (!). Even more, if we assume a daily request number of 30 queries per day and an average output length of 375 tokens, **we get to the conclusion that a single burger’s water footprint equals using Grok for 668 years, 30 times a day, every single day.**
 
-![](https://substackcdn.com/image/fetch/$s_!dcds!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9da73e26-93d2-4db1-a4f8-a03cfb0c2355_2057x784.png)
+![](z-images/d1262a82bbf76e2e57bdb0f116677be2.webp)
 
 Source: SemiAnalysis
 

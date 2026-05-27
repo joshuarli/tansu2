@@ -10,7 +10,7 @@ Nvidia’s software expertise has propelled them to completely dominating the ma
 
 This same software then locks users into Nvidia hardware and prevents other firms from getting developer attention for their potentially better hardware solution. Nvidia is now leveraging this same playbook to extend their business to automotive, AI enterprise software, and omniverse enterprise software.
 
-![](https://substackcdn.com/image/fetch/$s_!EgS6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc26da82-040d-44f8-a1ad-9419b47a0f5a_1024x515.png)
+![](z-images/4e2d9625bb1052b94898e0e9af89e717.webp)
 
 Nvidia looks unstoppable, but there is competition with a successful strategy for preventing Nvidia from swallowing the entire industry.
 
@@ -22,7 +22,7 @@ Arguably the most successful example deals with telecommunications networks, spe
 
 The telecommunication network is split into 2 functions, the radio access network, which handles sending and receiving data from the end user, and the core network which handles the packet processing and traffic related to the network. Intel has long since invaded that core network by offering commodity x86 hardware. The big advantage was that telecommunications providers switched to a cloud like model with containerization and virtualization.
 
-![](https://substackcdn.com/image/fetch/$s_!ELax!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6af01579-7a2f-45ae-8bf7-88bd21ddc98f_1023x558.png)
+![](z-images/b44d0a327805fbc26e431615e17a9941.webp)
 
 With the radio access network, this is a more recent change. In the days of 3G and 4G networks, the radio access network base stations were often built upon custom ASICs from the likes of a Ericsson, Nokia, or Huawei. These custom ASICs were in charge of running signal processing and packet processing for network functions and involved very low-level network software. In essence, the whole stack was highly customized. Highly customized is great when performance and energy efficiency are there, but it also causes higher unit costs due to higher fixed costs. Highly customized silicon solutions also tax software engineering resources.
 
@@ -32,7 +32,7 @@ With the radio access network, this is a more recent change. In the days of 3G a
 
 That’s where the OpenRAN Alliance comes in. The entire purpose of this open organization is to attempt to open up the 5G infrastructure market for radio access networks. Dr. Katti was deeply involved in the founding of the OpenRAN Alliance and currently co-chair’s it.
 
-![](https://substackcdn.com/image/fetch/$s_!0OF2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F88717188-0e6b-467e-b34d-7d25de3aac0b_1024x568.png)
+![](z-images/3220458af86dfe0ae0a1c4544f213ce5.webp)
 
 Intel has purpose built a software stack called FlexRAN to move some of these workloads onto commodity hardware to maximize programmability but keep performance and power efficiency high. While this software itself is completely open and adheres to the core principals of ORAN and VRAN, it does require the user run it on Intel hardware. This reference architecture has been adopted by Verizon, Dish, Rakuten, and many others. Instead of buying base stations which are integrated pieces of hardware and software from an Ericsson, Huawei, or Nokia, telecom operators can procure servers from a commodity server player such as Dell or Supermicro.
 
@@ -40,7 +40,7 @@ These telecom operators can then run a cloud stack on it which could come from R
 
 The issue with moving the radio access network to commodity hardware is that the workload is a digital signal processing workload. This DSP workload includes code that is difficult for CPUs to process, such as forward error correction (FEC). Latency requirements are on the order of 1 millisecond for layer 1 of a radio access network. Given the speeds of 5G networks, running this code on commodity CPUs could cripple performance and cause power and costs to soar.
 
-![](https://substackcdn.com/image/fetch/$s_!n7KD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F90a43f0d-6637-4684-a79a-df95e5df8654_1024x568.png)
+![](z-images/3fb78b3b1a3eeae7b590882dcc129963.webp)
 
 The various processing of a radio access network is split into many layers. The digital signal processing of radio signal to packets is generally grouped into what the industry calls Layer 1. Customized hardware is still currently required for the Layer 1 code. Intel has their Mount Bryce eASIC, Marvell has their Octeon platform, and Qualcomm has their [DU X100](https://semianalysis.substack.com/p/qualcomm-mwc-2021-network-infrastructure). Nvidia is attempting to use GPUs for this Layer 1 acceleration, which we discussed in [our article about Qualcomm’s 5G infrastructure silicon last year.](https://semianalysis.substack.com/p/qualcomm-mwc-2021-network-infrastructure) We have yet to see Nvidia’s solution gain any major traction, so we are unsure if it is viable. All these solutions involve utilizing a specific hardware accelerator for Layer 1 which sort of defeats the purpose of OpenRAN. The Layer 1 processing is a black box that cannot be modified or substituted easily.
 
@@ -52,7 +52,7 @@ In addition to benefits in flexibility and programmability, there are power and 
 
 Intel’s involvement in the creation of the OpenRAN standard is in stark contrast to what Nvidia tends to go for which is a closed solution built on their hardware and software. Intel embraced an open method so that other hardware providers such as Marvell and Qualcomm can get involved. At the same time, Intel has utilized their incredibly flexible CPU hardware with the right amount of integrated purpose-built hardware to achieve amazing programmability, performance, and power. Their software teams have built a stellar compilation and task scheduling framework inside the open source FlexRAN software solution. The co-development of more specialized hardware with open and easy to use software frameworks has allowed Intel to go from a non-player to majority market share holder.
 
-![](https://substackcdn.com/image/fetch/$s_!DMOf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F806956de-8ee0-48db-b973-83cbbade2bea_1024x474.png)
+![](z-images/e982c02cd92a95bfedfde898e5dbdf2e.webp)
 
 Intel’s Network and Edge group has used this playbook for the AI inference market aswell. OpenVINO is an open-source tool kit for vision inference, neural network optimizion, and inference deployment for AI models. It is a layer above Intel’s OneAPI foundational level software. Other software and hardware vendors can contribute to OpenVINO and use it freely. The purpose of OpenVINO is that it can take the back half of PyTorch or TensorRT and act as a compression library for that model. It tweaks and customizes the model specifically for the intended target hardware. The runtime library then takes the model and distributes the inference workload to the available compute in the most efficient way possible.
 
@@ -86,7 +86,7 @@ Another example of the hardware-software codesign playbook comes with the networ
 
 Intel has created a software stack called IPDK which is available at IPDK.io. This competes directly with Nvidia’s DOCA for DPUs. Marvell and Pensando, which was recently purchased by AMD for $1.9B, also have their own software stacks. IPDK is unique in that it is a public development kit that abstracts out the IPU hardware. It can be run on any hardware, not just Intel’s IPUs due to the consistent abstraction, including Xeon servers and even competitors DPUs. Marvell for example has [presented their Octeon DPUs running on IPDK](https://www.youtube.com/watch?v=nn7R72cnXlA).
 
-![](https://substackcdn.com/image/fetch/$s_!xqAD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd974f14c-f3b2-4ca8-82a4-aa1b826fabb8_1024x570.jpeg)
+![](z-images/b60edf93e9eea1872f25a1a30abf6a44.webp)
 
 This open software stack is gaining traction, and it prevents Nvidia from monopolizing the emerging field of DPUs which could be >$50B TAM in a handful of years. This strategy also appears successful given Intel has wins with the Mount Evans IPU at firms like Google and Alibaba. Firms such as Amazon, AMD, and Nvidia could adopt this software platform for their own hardware.
 
@@ -108,7 +108,7 @@ Dr. Sachin Katti, CTO’s of Intel Network and Edge Group, is a professor at Sta
 
 Intel’s IPDK supports P4. Nvidia’s DOCA still does not support P4. Sources say Nvidia's DOCA will support P4 later this year. Nvidia is lacking behind Intel and Marvell in software support for their DPUs. This time to market advantage with software capabilities and deployment is how Intel can fight back Nvidia’s titanic software-hardware optimization lead in the server space.
 
-![](https://substackcdn.com/image/fetch/$s_!mS2E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa843de08-5da0-4e53-8d49-651c0e55bff9_1023x571.png)
+![](z-images/0293ee55575721e39d77a046b41927db.webp)
 
 Nvidia supports P4 in some of their NICs and Switch silicon, but they also have created SHARP, Scalable Hierarchical Aggregation and Reduction Protocol into their switches. Some capabilities of P4 are replicated in SHARP, but others are not. Nvidia’s SHARP includes accelerated collectives include write broadcast (all\_gather), reduce\_scatter, and broadcast atomics. Intel is battling Nvidia’s proprietary SHARP with P4. Intel’s 25.6T Tofino 3 networking switches have similar large AI model training capabilities.
 
@@ -120,7 +120,7 @@ Intel’s fastest growing business within Network and Edge is the Internet of Th
 
 Intel has used this same strategy with Open Visual Cloud which is built for content delivery networks. They have also built SmartEdge which helps enable the Kubernetes cloud stack on edge processors.
 
-![](https://substackcdn.com/image/fetch/$s_!Tk7-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdd8cfd0e-098e-45fe-9a77-0f86390a5c37_1024x601.png)
+![](z-images/be8363f01fc3355ded0a9c79e534c805.webp)
 
 To summarize, the playbook for stopping Nvidia from dominating with their hardware-software co-optimization across all of datacenter, networking, and edge compute, is succinctly described by this quote from the conversation.
 

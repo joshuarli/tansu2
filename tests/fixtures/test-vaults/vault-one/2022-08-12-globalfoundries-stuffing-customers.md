@@ -10,4 +10,4 @@ GlobalFoundries recently had their capital markets date, so we want to share our
 
 Today we want to talk about how they are stuffing their customers with inventory, why their long-term commitments aren’t as rosy as they proclaim, why the geopolitical valuation argument holds very little water, and why we are negative on the firm’s stock.
 
-![](https://substackcdn.com/image/fetch/$s_!flq_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa329bef1-c2a1-45bb-b0af-3aec84de5966_1487x803.png)
+![](z-images/fee6f4bc4ca44e4e7a96303b01eb1a4f.webp)

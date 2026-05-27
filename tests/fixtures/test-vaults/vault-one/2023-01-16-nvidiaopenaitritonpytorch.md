@@ -16,7 +16,7 @@ The 1,000-foot summary is that the default software stack for machine learning m
 
 A handful of years ago, the framework ecosystem was quite fragmented, but TensorFlow was the frontrunner. Google looked poised to control the machine learning industry. They had a first movers’ advantage with the most commonly used framework, TensorFlow, and by designing/deploying the only successful AI application-specific accelerator, TPU.
 
-![](https://substackcdn.com/image/fetch/$s_!kJXt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8e2121a6-9982-4d67-8347-293dcd047047_1334x873.png)
+![](z-images/3d8c7effec1148dcd552ea121c204466.webp)
 
 [https://thegradient.pub/state-of-ml-frameworks-2019-pytorch-dominates-research-tensorflow-dominates-industry/](https://thegradient.pub/state-of-ml-frameworks-2019-pytorch-dominates-research-tensorflow-dominates-industry/)
 
@@ -47,11 +47,11 @@ In the past, the dominant factor in machine learning training time was compute t
 
 Nvidia’s FLOPS have increased multiple orders of magnitude by leveraging Moore’s Law, but primarily architectural changes such as the tensor core and lower precision floating point formats. In contrast, [memory has not followed the same path](https://www.semianalysis.com/p/cxl-enables-microsoft-azure-to-cut).
 
-![](https://substackcdn.com/image/fetch/$s_!NZz0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3a422e2d-f2d2-404e-aad4-dec31f47ce77_1187x862.png)
+![](z-images/8f52920f266715b33ffc29e1c9ff1509.webp)
 
 If we go back to 2018, when the BERT model was state of the art, and the Nvidia V100 was the most advanced GPU, we could see that matrix multiplication was no longer the primary factor for improving a model’s performance. Since then, the most advanced models have grown 3 to 4 orders of magnitude in parameter count, and the fastest GPUs have grown an order of magnitude in FLOPS.
 
-![](https://substackcdn.com/image/fetch/$s_!sVkQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5c718323-fd9c-4c6d-8ea3-815dea887386_1513x487.png)
+![](z-images/a5c33abd946622ef331d91cdfb975386.webp)
 
 https://arxiv.org/pdf/2007.00072.pdf
 
@@ -61,7 +61,7 @@ Even in 2018, purely compute-bound workloads made up 99.8% of FLOPS but only 61%
 
 As models continue to soar in size, large language models take 100s gigabytes, if not terabytes, for the model weights alone. Production recommendation networks deployed by Baidu and Meta require dozens of terabytes of memory for their massive embedding tables. A huge chunk of the time in large model training/inference is not spent computing matrix multiplies, but rather waiting for data to get to the compute resources. The obvious question is why don’t architects put more memory closer to the compute. The answer is $$$.
 
-![](https://substackcdn.com/image/fetch/$s_!HVQK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa62c2392-d588-4fdf-8872-e51ba3335250_704x513.jpeg)
+![](z-images/5eb2a6e3c657ca45afa2e20608a3a7eb.webp)
 
 Memory follows a hierarchy from close and fast to slow and cheap. The nearest shared memory pool is on the same chip and is generally made of SRAM. Some machine-learning ASICs attempt to utilize huge pools of SRAM to hold model weights, but there are issues with this approach. [Even Cerebras’ ~$2,500,000 wafer scale chips](https://www.semianalysis.com/p/gpt-model-training-competition-heats) only have 40GB of SRAM on the chip. There isn’t enough memory capacity to hold the weights of a 100B+ parameter model.
 
@@ -79,7 +79,7 @@ The next step down in the memory hierarchy is tightly coupled off-chip memory, D
 
 DRAM followed the path of Moore’s Law for many decades. When Gordon Moore coined the term, Intel’s primary business was DRAM. His economic prediction about density and cost of transistors generally held true until ~2009 for DRAM. Since ~2012 though, the cost of DRAM has barely improved.
 
-![](https://substackcdn.com/image/fetch/$s_!IHk-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3f3c7f05-649b-4f02-91be-61c84a30888f_1697x883.png)
+![](z-images/57d2148a908f8cb0c055df206fe2dd55.webp)
 
 The demands for memory have only increased. DRAM now [comprises 50% of the total server’s cost](https://www.semianalysis.com/p/cxl-enables-microsoft-azure-to-cut). This is the memory wall, and it has shown up in products. Comparing Nvidia’s 2016 P100 GPU to their 2022 H100 GPU that is just starting to ship, there is a 5x increase in memory capacity (16GB -> 80GB) but a 46x increase in FP16 performance (21.2 TFLOPS -> 989.5 TFLOPS).
 
@@ -103,7 +103,7 @@ Referring back to why PyTorch won, it was the increased flexibility and usabilit
 
 As such, one of the principal optimization methods for a model executed in Eager mode is called operator fusion. Instead of writing each intermediate result to memory, operations are fused, so multiple functions are computed in one pass to minimize memory reads/writes. Operator fusion improves operator dispatch, memory bandwidth, and memory size costs.
 
-![](https://substackcdn.com/image/fetch/$s_!nhiM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F40995db9-3a8d-4917-8943-c313807d92b9_3420x1952.png)
+![](z-images/bd669819c4d70fc3ea002fcf0f604b71.webp)
 
 https://horace.io/brrr\_intro.html
 
@@ -111,7 +111,7 @@ This optimization often involves writing custom CUDA kernels, but that is much m
 
 The increase in operators made both creating the model within PyTorch easier and the performance of Eager mode faster due to having fewer memory read/writes. The downside was that PyTorch ballooned to over 2,000 operators over a few years.
 
-![](https://substackcdn.com/image/fetch/$s_!s-pN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F437175e3-1af1-451e-941e-5715858cff16_690x862.png)
+![](z-images/538dc20cad60849406958ecf7d7544c5.webp)
 
 We would say software developers are lazy, but let’s be honest, almost all people are lazy. If they get used to one of the new operators within PyTorch, they will continue to use that. The developer may not even recognize the performance improvement but instead, use that operator because it means writing less code.
 
@@ -139,7 +139,7 @@ The performance improvements from PyTorch 2.0 will be larger for currently unopt
 
 PyTorch 2.0 also brings [advancements to distributed training](https://www.youtube.com/watch?v=bGo-2xNvNAc) with better API support for data parallelism, [sharding](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/), [pipeline parallelism](https://github.com/pytorch/tau), and tensor parallelism. In addition, it supports dynamic shapes natively through the entire stack, which among many other examples, [makes varying sequence lengths for LLMs much easier to support.](https://www.youtube.com/watch?v=rn-kJQ-7JmQ) This is the first time a major compiler supports Dynamic Shapes from training to inference.
 
-![](https://substackcdn.com/image/fetch/$s_!GeJ1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F05aab965-a207-4d01-b680-6c0fb7bdcc8a_936x656.png)
+![](z-images/fc6cab7a648dff6eea7d24a2710917e5.webp)
 
 ## PrimTorch
 
@@ -153,7 +153,7 @@ Dynamo lowers all complex operations to the ~250 primitive operations in PrimTor
 
 TorchDynamo already works for [over 99% of the 7,000 PyTorch models tested](https://dev-discuss.pytorch.org/t/torchdynamo-update-8-torchdynamo-passed-correctness-check-on-7k-github-models/663), including those from OpenAI, HuggingFace, Meta, Nvidia, Stability.AI, and more, **without any changes to the original code**. The 7,000 models tested were indiscriminately chosen from the most popular projects using PyTorch on GitHub.
 
-![](https://substackcdn.com/image/fetch/$s_!cn9l!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d458fdc-ae3c-406c-9ca2-16f011b7081a_1058x736.png)
+![](z-images/d31a49157b132c134d95a24c648bbb84.webp)
 
 Google’s TensorFlow/Jax and other graph mode execution pipelines generally require the user to ensure their model fits into the compiler architecture so that the graph can be captured. Dynamo changes this by enabling partial graph capture, guarded graph capture, and just-in-time recapture.
 
@@ -161,7 +161,7 @@ Google’s TensorFlow/Jax and other graph mode execution pipelines generally req
 - Guarded graph capture checks if the captured graph is valid for execution. A guard is a change that would require recompilation. This is important because running the same code multiple times won't recompile multiple times.
 - Just-in-time recapture allows the graph to be recaptured if the captured graph is invalid for execution.
 
-![](https://substackcdn.com/image/fetch/$s_!s3ut!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc42cb6d-5aaa-471b-b65f-fae82146fbd2_1920x966.png)
+![](z-images/66241fc0f0805baec0f90a137412aa64.webp)
 
 PyTorch’s goal is to create a unified front end with a smooth UX that leverages Dynamo to generate graphs. The user experience of this solution would be unchanged, but the performance can be significantly improved. Capturing the graph means execution can be parallelized more efficiently over a large base of compute resources.
 

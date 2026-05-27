@@ -12,7 +12,7 @@ The first portion of this report will explain HBM, the manufacturing process, dy
 
 As AI models grow in complexity, AI systems require memory with higher capacity, lower latency, higher bandwidth, and improved energy efficiency. Different forms of memory have different tradeoffs. SRAM is extremely fast but low density. DDR DRAM is high density and cheap but lacks bandwidth. The most popular memory today is on-chip HBM which strikes the balance between capacity and bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!i8jF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79988328-1635-4895-be95-1c18bf5064f2_1536x883.png)
+![](z-images/e28a290f8dbd993115066cf8a099b75a.webp)
 
 Source: Rambus
 
@@ -24,7 +24,7 @@ In this report, we will examine HBM's present state, what’s happening in the s
 
 First, a brief primer on HBM - what makes it special and challenging to manufacture. While HBM is commonly associated with multiple DRAM dies stacked in a 3DIC assembly, the other key feature is HBM’s much wider data bus, improving bandwidth even with mediocre signaling speeds. This significantly wider bus results in HBM being far superior in terms of bandwidth per package than any other form of memory.
 
-![](https://substackcdn.com/image/fetch/$s_!iKBN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c51757f-88bb-437a-999c-4a655fff1c7d_1902x823.png)
+![](z-images/713a5125de26ac1a779623be59571930.webp)
 
 Source: SemiAnalysis
 
@@ -40,7 +40,7 @@ The other difference is at the back-end, where the HBM needs to be stacked to 9 
 
 We can see the huge growth in HBM bit demand that has come alongside AI accelerator demand. Despite the rapid rise of custom ASICs, Nvidia will still command the lion’s share of HBM demand in 2027, driven by its aggressive roadmap, where Rubin Ultra alone pushes per GPU capacity to 1 TB. Broadcom follows as TPU and MTIA volumes surge, while incremental OpenAI and SoftBank projects add a smaller but noticeable lift. Amazon also emerges as one of the top HBM customers. For Amazon, it has a strategy of procuring HBM directly rather than through design partners, helping them to lower their cost. For a detailed, chip-by-chip bit forecast, refer to our **[Accelerator Model](https://semianalysis.com/accelerator-model/)**. It includes projections for revenue and bit demand by memory vendor, as well as wafer starts and TSV capacity, broken down by supplier. The model also tracks HBM pricing across different generations, and provides chip-by-chip HBM type, layers, stack counts, capacity and bandwidth.
 
-![](https://substackcdn.com/image/fetch/$s_!INpL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1acb3f0f-006f-4798-b40a-6362803634de_1024x487.png)
+![](z-images/a897b8e8c99777e891642e2280b4e326.webp)
 
 Source: SemiAnalysis
 
@@ -52,7 +52,7 @@ TSVs require etchers to create the vias, and deposition and plating tools to fil
 
 For bumping, this is mainly deposition, plating and stripping. Also, optical inspection tools from Camtek and Onto are available to check that the bumps are not defective and are of the correct profile.
 
-![](https://substackcdn.com/image/fetch/$s_!WwY5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F578862fb-3005-4772-a99e-b7d938813e5a_1280x720.png)
+![](z-images/504fc39f7f429deac539f757e5b8522d.webp)
 
 Source: Applied Materials
 
@@ -64,7 +64,7 @@ The use of force on the other hand increases the risk of causing damages to bump
 
 The process is also far more productive. A batch mass reflow and single over-mold step are used for joint formation, compared to a complete TCB step for joint formation for each and every layer with TC-NCF.
 
-![](https://substackcdn.com/image/fetch/$s_!AESs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4b9a645c-ff17-4c1d-b7b4-540b08cc26c9_1682x740.png)
+![](z-images/963546535f6b7484feed81e3ab987f35.webp)
 
 Source: SK Hynix
 
@@ -78,7 +78,7 @@ One of HBM's key challenges is delivering power up the stack with power TSVs. Re
 
 Similarly, Micron's surprising leapfrog in HBM technology (Micron didn’t even offer standard HBM3) was due to its focus on TSVs and the power delivery network. The TSV network seems likely to be the point of differentiation that allows Micron to claim 30% lower power consumption, though that claim is yet to be verified.
 
-![](https://substackcdn.com/image/fetch/$s_!o94Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78b0616b-6cd4-4ed4-b779-d409bcae1d7c_2293x1198.png)
+![](z-images/ef5e720bb4cfd329fd9074f0dc43a6f0.webp)
 
 Source: Micron
 
@@ -96,7 +96,7 @@ Hanmi made an early bet to focus on thermocompression (TC) bonders for HBM, a se
 
 This set off a firestorm at Hanmi who, understandably, were upset to see a competitor winning with higher prices despite not being qualified on Hynix’s process for HBM supply to Nvidia, the largest and most important HBM customer.
 
-![](https://substackcdn.com/image/fetch/$s_!VX65!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e541c74-0239-4f66-b0e8-d78fa58c8583_640x427.jpeg)
+![](z-images/82b3b9ad8f1f75a0da5ec606850b3664.webp)
 
 A proud Hanmi employee stands next to a TC bonder in his cleanroom suit. (source: Hanmi)
 
@@ -112,7 +112,7 @@ As HBM is one of the key ingredients for accelerators, and with export restricti
 
 Huawei, which has never seen a high-tech market it doesn’t want to enter, has its own HBM affiliates with XMC (Wuhan Xinxin) producing the HBM wafers and SJSemi (Shenghe Jingwei Semiconductor) packaging them. Current capacity is at R&D scale, not high volume, but is planned to ramp in coming years. Both XMC and SJSemi are entity listed and thus restricted from buying equipment with U.S.-origin content (GlobalFoundries recently got a slap on the wrist despite selling more than $17 million in chips to SJSemi without a license).
 
-![](https://substackcdn.com/image/fetch/$s_!7xuU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e126eac-88ea-44d3-8387-309ce40b99ab_1024x811.png)
+![](z-images/414ff26cde661728cd97d66bd266bdf3.webp)
 
 XMC’s DRAM / HBM fab, supplying Huawei’s domestic HBM efforts. (Source: Google, SemiAnalysis)
 
@@ -128,7 +128,7 @@ HBM3 and HBM3E are going up to 12-hi stacks and with bump-based interconnect, 12
 
 Height relaxation can go even further. 775um is the standard thickness of a silicon wafer. HBM needs to be the same height as the logic die it is co-packaged with. To have something higher than a 775 um stack, the logic wafer would also need to be thicker and the current equipment is not designed to accept thicker wafers. One potential solution could be to raise the molding of the interposer underneath the logic to raise it and ensure coplanarity with the neighboring HBM, though this lengthens the traces and implementing silicon bridges for interconnect will not be straightforward.
 
-![](https://substackcdn.com/image/fetch/$s_!C3AL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4e6e019a-4951-48ed-9016-30e955c7d313_1024x398.png)
+![](z-images/3c4052f3a5418a1170469ee97e88de4d.webp)
 
 Source: SemiAnalysis
 
@@ -152,7 +152,7 @@ To deliver more performance - increasing memory capacity and bandwidth along wit
 
 Here we can see this in Nvidia’s roadmap. HBM capacity explodes from the A100’s 80 GB of HBM2E to a 1024 GB of HBM4E for Rubin Ultra. Memory bandwidth per chip also increases dramatically. From Ampere to Blackwell Ultra, the biggest absolute and relative increase in the bill of materials comes from the additional HBM content- benefitting the memory vendors (primarily SK Hynix).
 
-![](https://substackcdn.com/image/fetch/$s_!lNTR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd948fcb8-3afb-4dab-8d4d-23ee094efbb5_1024x290.png)
+![](z-images/432697755d15702f7444e8c3b48efa55.webp)
 
 Source: SemiAnalysis
 

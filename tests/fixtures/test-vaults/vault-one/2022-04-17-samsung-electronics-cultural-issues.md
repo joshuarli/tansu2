@@ -20,13 +20,13 @@ First off let’s start with perhaps the tamest part of this story before progre
 
 Why did Samsung initiate this “Game Optimizing Service”? To keep heat and power consumption in check of course. Heat and power consumption have been running rampant the last couple generations as node issues have cropped their heads at Samsung. Even going back years, all the way to Samsung’s in-house CPU, the design failed due to poor leadership. Samsung also had a GPU team that they canned. Both these instances are just yet more examples why developing your own silicon is much harder than it may appear. Cultures at a design house and fab are critical to success. These genius engineers need the correct motivation, direction, and leadership.
 
-![](https://substackcdn.com/image/fetch/$s_!CPkk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9106b83d-4bb1-4c19-90de-11268442955f_633x892.jpeg)
+![](z-images/f418d45b0ebc0ebb68b35addd3b9e219.webp)
 
 After the inhouse GPU architecture failure, many fans of Samsung were excited for the pivot to [adopting AMD’s RDNA based GPU IP.](https://www.anandtech.com/show/14492/samsung-amds-gpu-licensing-an-interesting-collaboration) This excitement was very short-lived. The issues related to foundry and process nodes really reared their heads with the current generation [Exynos 2200](https://drive.google.com/file/d/1Bj58pQPiwS4y6cXyk2SFle9e8zzoLzPm/view). Performance per watt is abysmal. The performance and power consumption of the RDNA based GPU weren't the only issues with this SOC.
 
 Samsung initially planned to launch the Exynos chip more broadly across the world. Some analysts and trade publications were even projecting as high as 60% of total Galaxy S22 series volume to be Exynos 2200 based and 40% Qualcomm S8G1 based. Of course, this turned out to be a dud, and the actual Exynos volume ended up being less than 25%. While we don’t think the plan was ever to go up to 60%, we did hear Samsung wanted to move up the share of Exynos processors up to 40%. The shortfall in volume was mostly due to performance and yields.
 
-![](https://substackcdn.com/image/fetch/$s_!IaW6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F51804c13-f7d1-4af3-b3f6-3bd2521cb2f0_1024x655.png)
+![](z-images/8c4d056cef2f866f5da2c3523b4e8bd9.webp)
 
 Samsung’s Exynos 2200 has been reported to have [abysmal yields](http://www.thelec.kr/news/articleView.html?idxno=16234). This is partially due to their use of the 4LPE node. This node innovated over the 7/5nm families of Samsung by [offering a 198nm UHD cell height](https://www.linkedin.com/posts/yuzo-fukuzaki-12408111_samsung-exynosabr2200-4lpe-activity-6917180674298761216-8yXC/?utm_source=linkedin_share&utm_medium=member_desktop_web) versus the prior node having 218nm UHD cell height. The yields for this node are rumored to be as low as 20%. These seem way too low, but we have heard the parametric yields were horrendous even though catastrophic yields were fine. Another source told us the final shipping chip came in with the higher power and lowered performance targets, resulting in around 80% parametric yields. Regardless, rumors say there is an [agreement between the executives](https://m.clien.net/service/board/park/16995380) to ship the newest node possible even if it doesn’t make economic or power/performance sense. Talk about top-down culture issues.
 
@@ -60,7 +60,7 @@ S.LSI has also hit other blunders recently, such as in the image sensor market. 
 
 Samsung DRAM, the cash cow of Samsung Electronics, hasn’t been smooth sailing either. 5 years ago, Samsung was undoubtedly better than Micron and SK Hynix in density, performance, and cost structure. Some estimates put them as far as a year and a half ahead in those days. Now, Samsung is arguably behind Micron and SK Hynix in some of these metrics despite a much larger volume relative to these two peers. Samsung’s overly aggressive behavior with process development, which stems from cultural issues, is the culprit.
 
-![](https://substackcdn.com/image/fetch/$s_!TXNn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F39816318-fa7a-4f00-892f-323aceba6d4a_1024x587.png)
+![](z-images/a71141abb888fd751ccec167754cca06.webp)
 
 As a brief primer, DRAM density and cost scaling have slowed down tremendously as capacitor scaling has slowed. The 1Xnm generation was the first indication of this massive slowdown, but since then, cost scaling with each node has only been around 15%. Density gains have been so tepid, that the DRAM manufactures have turned to using letters as the suffix rather than numbers like they did in the pre-20nm generation. Samsung was quite a bit ahead at the 1Y generation relative to the competition in cost, power, and performance.
 
@@ -68,7 +68,7 @@ This all changed with the 1Z generation. Samsung had decided to be very aggressi
 
 Samsung dominated early shipments for EUV tools by soaking up ~50% of them. Samsung attempted to insert it in DRAM as well as their botched early 7nm logic attempt. The 1Z DRAM node never ramped fully. This trend has continued with the next generation 1 Alpha node, which increased EUV utilization further. This node reportedly took longer to develop. While Samsung has claimed 1 Alpha as in mass production for quite some time, it has still not ramped significantly either. Meanwhile, SK Hynix and Micron have been able to catch up on cost, performance, and power with their 1Z generation, which did not utilize EUV.
 
-![](https://substackcdn.com/image/fetch/$s_!t9tz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa38be212-9220-477d-82a4-3d78c14add6b_1024x526.jpeg)
+![](z-images/de277377bd784e9be21c19a3c5d47381.webp)
 
 Furthermore, with the 1 Alpha generation, Micron continues to push with DUV only while SK Hynix has started to insert EUV. As such, Micron is already ramping 1 Alpha while both SK Hynix and Samsung have been quite tepid with their volume ramps. SemiAnalysis estimates that Micron currently has the cost advantage with DRAM due to being able to shift all their volume to the 1 Alpha generation and achieve the best density and cost across their entire lineup.
 

@@ -16,7 +16,7 @@ The largest variant EMR-XCC, bumps core counts to 64 from 60 on SPR. However, th
 
 The other major change is that Intel dramatically increased shared L3 cache, from 1.875MB per core on SPR up to a whopping 5MB per core on EMR! That means a top-end SKU comes with 320MB of shared L3 cache across all cores, 2.84x the maximum that SPR offers. Local Snoop Filters and Remote Snoop Filters have also increased accordingly to accommodate the large L3 cache increase (LSF – 3.75MB/core, RSF – 1MB/core).
 
-![](https://substackcdn.com/image/fetch/$s_!_5ff!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7bcec9fe-311b-41a0-8635-5e9e58cf8ce0_1732x532.jpeg)
+![](z-images/873f6e0b5b3d1d9d46fc74ecea4f18ca.webp)
 
 DDR5 Memory support has been increased to 5600 MT/s from 4800. UPI speeds for inter-socket communications have been upgraded from 16 GT/s to 20 GT/s. Oddly, despite higher inter-socket speeds, the number of total sockets supported is down from 8 to 2. This was likely done to speed time to market as it only affects a tiny portion of the market that AMD doesn’t compete in anyways. All this is drop-in compatible with existing “Eagle Stream” platforms on the same LGA 4677 Socket E1. PCIe lane counts remain the same, although CXL bifurcation support is added finally, which was a sore spot for Sapphire Rapids.
 
@@ -28,39 +28,39 @@ While drafting floorplan mockups for EMR, we found it impossible to cram the nec
 
 Although not discussed much publicly, Intel also did a complete ground-up re-design of Sapphire Rapids during its [darkest days on its way to production E5 stepping](https://www.semianalysis.com/p/the-dark-side-of-the-semiconductor). Believe it or not, there are *two* different physical designs and die sizes for the Sapphire Rapids chiplets.
 
-![](https://substackcdn.com/image/fetch/$s_!FN88!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a0cb739-65cf-46cb-931e-c8e09c247a72_1130x775.jpeg)
+![](z-images/d3881258711e6e819885b1448e637940.webp)
 
 Raja Koduri showed the larger, earlier version of SPR at Architecture Day 2021, and is also featured in 3 <sup>rd</sup> party teardowns of early engineering samples. The smaller, newer variant of SPR was shown at Vision 2022, which is used by the final production SKUs.
 
 Intel has shown the wafers for both versions of SPR. The earlier revision had 137 gross dies per wafer while the final version had 148. This required going all the way back to the floor planning and physical design of the chip. One major benefit is that it improved the cost structure of Sapphire Rapids by manufacturing 8% more dies per wafer.
 
-![](https://substackcdn.com/image/fetch/$s_!3v9V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F072ab3c6-1a57-43b9-bee9-0bc42cf43582_6400x3500.jpeg)
+![](z-images/72109ef33d627444fcdb2405c9ea4458.webp)
 
 In the [numerous silicon revisions done during SPR’s prolonged bring up](https://www.semianalysis.com/p/the-dark-side-of-the-semiconductor), we identified that Intel changed the physical design and layout of the cores and periphery to achieve a 5.7% area reduction. The I/O area (North Cap) has been reimplemented to save 0.46 mm in die height. The horizontal spacing between I/O blocks has also been optimized, saving 0.46 mm in die width. The mesh tile area that houses the CPU cores, caches, and memory controller also had to shrink by 3.43% in area to fit in the tighter floorplan, with tweaks reduce to the CPU core width and tile spacing.
 
-![](https://substackcdn.com/image/fetch/$s_!PQba!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F437673a2-1959-4310-8b51-795641476edd_8000x4832.jpeg)
+![](z-images/5b26f27b04a50e850813492b49ba4abe.webp)
 
 In general, it is quite uncommon for design teams to make 2 different layouts and die sizes of the same product before launch, as time to market is paramount. Perhaps the many delays to Sapphire Rapids gave them enough time to pursue additional area savings. If it launched on the original 2021 target, we likely would not have seen this smaller revision, at least initially.
 
 In a similar vein, Intel applied the same principles of layout optimization for EMR, particularly in accommodating the huge L3. Here, we show a mockup of changes to the core and mesh tile, including a significantly taller SRAM section above the core to house the additional L3 cache and Snoop Filters. With this, the area of each core tile has increased by 11.8%. Thanks to optimizations in SRAM physical design, Intel were able to fit 3200 KB more L3 cache along with a larger LSF and doubled RSF by adding just 1.41 mm².
 
-![](https://substackcdn.com/image/fetch/$s_!zNlA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5caa2b52-6808-4607-a59c-c1f1eb6821ad_2696x1115.jpeg)
+![](z-images/16fea0f4964b0626481ccb34e7706893.webp)
 
 ## Emerald Rapids Floorplan
 
 Below is the floorplan layout for EMR-XCC. Across both dies, the 66-cores plus I/O sections are lashed together on a 7x14 mesh interconnect network.
 
-![](https://substackcdn.com/image/fetch/$s_!xGGf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff7ad95eb-e145-4418-b934-cac79f9607bc_7750x5650.jpeg)
+![](z-images/e0dd72c18e189a1b75a9afe10df7d78f.webp)
 
 In the middle, the mesh network crosses the off-chip boundary 7 times over EMIB. This compares with the 8x12 mesh across four dies on SPR with 20 off-chip crossings. The implications of this topology change will be covered in the performance section below.
 
 From the layout shown above, we show that despite how similar the two chiplets are, they are in fact using different tape outs and mask sets, with Intel once again going with mirrored dies as was done with SPR. Using the same die rotated 180 degrees would halve the mask set requirements but complicate their Multi Die Fabric IO across EMIB.
 
-![](https://substackcdn.com/image/fetch/$s_!A0qN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffe95ad57-d43e-4890-9499-20e2b808e608_6096x4986.jpeg)
+![](z-images/fbb97f10efb7ea8cbb29ed22278c246c.webp)
 
 Speaking of EMIB, the number of silicon bridges has gone down considerably from 10 to just 3, with the middle one being wider to fit 3 mesh columns. The odd number of mesh columns is also featured on the [monolithic version of SPR](https://www.angstronomics.com/p/monolithic-sapphire-rapids), and could also be part of why they had to mirror the dies, as a rotation would mess with alignment and complicate wire crossings.
 
-![](https://substackcdn.com/image/fetch/$s_!s9bg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff630e598-5a56-4d22-96df-f8bb70cec951_1681x544.jpeg)
+![](z-images/9851301aeaf6aa7fb5c7becc93f98c43.webp)
 
 With this new layout, we can see the true benefits of chiplet reaggregation. The percentage of total area used for the chiplet interface went from 16.2% of total die area on SPR to just 5.8% on EMR. Alternatively, we can look at core area utilization I.E. how much of the total die area is used for the compute cores and caches. That goes up from a low 50.67% on SPR to a much better 62.65% on EMR. Part of this gain is also from less physical IO on EMR, as SPR has more PCIe lanes that are only enabled on the single socket workstation segment.
 
@@ -76,6 +76,6 @@ Despite using less silicon area per CPU, EMR actually costs more than SPR to pro
 
 In fairness, if we were to isolate the benefit of the layout changes to cost, we should be comparing EMR to a hypothetical SPR with 5MB L3 per core. Area estimations from this taller, theoretical die lead to 136 gross dies per wafer or 34 CPUs per wafer for this 4-chiplet variant, making it identical to the actual 2-chiplet design. Furthermore, reducing the number of EMIB dies from 10 to 3 would definitely improve packaging costs and yields for the 2-chiplet solution.
 
-![](https://substackcdn.com/image/fetch/$s_!OE1y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff8a77b2c-0082-4a88-bfe7-3e200ca9c0aa_1575x948.jpeg)
+![](z-images/96c30799d5af0411fc48175092b54adf.webp)
 
 So, if the layout changes and chiplet reduction didn’t help with cost, then what is the primary driving factor for EMR?

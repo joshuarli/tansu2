@@ -24,25 +24,25 @@ Alongside gate all around transistors, BSPDN is the other key innovation in the 
 
 Scaling circuits mean both the transistors and the interconnects must shrink. In the past this was almost an afterthought, but scaling interconnects has become more difficult then scaling transistors. For example, most EUV lithography is actually used on interconnects (contacts, vias, and metal layers), not the transistor layer itself. Along with decreasing the physical dimensions of the wires themselves, more transistors on a chip mean more interconnects. This drove a steady growth in the number of interconnect layers required. More layers mean higher fabrication costs, difficulty in routing design, and lower performance as signal paths get longer.
 
-![](https://substackcdn.com/image/fetch/$s_!3h5K!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2087b01-0138-445a-aa2b-14549dda16f9_1295x457.jpeg)
+![](z-images/d501385911b79aaadfe1c8ea10669cc5.webp)
 
 Source: Intel IEDM 2023
 
 This didn’t mean the industry stopped progressing. Materials innovations, design technology co-optimization (DTCO), and EUV lithography drove interconnect scaling to today’s current process nodes. But as that playbook becomes more increasingly more expensive and limits continued shrinking. The calculus of implementing BSPDN is starting to make sense. It’s not a new idea, just one whose time has come. And it’s about time for innovation in interconnects, it’s been almost 30 years since the last evolution of interconnects, which was the shift from aluminum to copper in 1997.
 
-![](https://substackcdn.com/image/fetch/$s_!M2b9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb802a8f-e646-4243-8495-234babc797aa_1076x624.jpeg)
+![](z-images/1fc4a2fd4ab47c99de2a783717ae94c4.webp)
 
 Source: Intel, SemiAnalysis
 
 The core idea of BSPDN is to move the wiring for power to the backside of the wafer. It opens up breathing room for signal routing, which stay on the frontside, and power which is moved to the backside. Architecturally, this means that standard cells shorter than 6T (track) are more feasible. 6T refers to the cell height of standard cells which are the basic building blocks of digital logic, such as a NAND gate, and the height of the cell is commonly measured as a multiple of T, the number of Metal 2 wires or “Tracks” the cell spans. Shorter is better: smaller cells enable increased density without scaling the underlying features such as fins, gates, and metal interconnects. Scaling more features is expensive because it requires better lithography.
 
-![](https://substackcdn.com/image/fetch/$s_!-6G1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc18b8b8f-8449-4a4c-8ae8-d3d6a91f04b9_1673x968.png)
+![](z-images/13fdeac63d7ba6ea2b19bb88126b65c3.webp)
 
 Standard cell scaling finFET vs. GAA + Buried Power Rail. Source: SemiAnalysis
 
 Viewed from overhead, the top and bottom of a standard cell are bound by wide metal rails in the M2 metal layer. These rails supply power and reference voltage to the cell and are connected to the rest of the power delivery network in higher metal layers. These rails are part of the total 6T height of typical frontside-only cells – moving them to the backside means the cell can be shrunk to 5T or shorter.
 
-![](https://substackcdn.com/image/fetch/$s_!v9pv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbe96a9cd-815f-41d7-9dea-6fb15491f3a2_676x642.jpeg)
+![](z-images/6c0c0ca0d369004e104c832837ccad18.webp)
 
 Architecture benefits of BSPDN: adding PowerVia increases density via shorter cells while reducing cost by relaxing the M0 pitch. Source: Intel
 
@@ -54,7 +54,7 @@ Altogether BSPDN offers roughly 15-20% improvement in power usage versus a simil
 
 There are three distinct approaches being explored and/or implemented for backside power delivery: buried power rail, power via, and backside contact.
 
-![](https://substackcdn.com/image/fetch/$s_!zA5F!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe604d5a6-f5ce-413a-8780-e150ce6d05b2_1595x899.jpeg)
+![](z-images/0e12a0147a0af04c38c61470e0043d97.webp)
 
 Source: Applied Materials
 
@@ -62,19 +62,19 @@ Source: Applied Materials
 
 Buried power rail (BPR) is the simplest of the backside power implementations. Early research used this scheme and subsequent architectures built on this core idea. It entails moving the power rail from its normal location atop the transistors in the M2 metal layer, to its own level below the transistors. This enables an architectural shrink as the wide power rails are replaced by a thin, tall rail tucked closely beneath the transistors. However Buried power rail still connects to the transistors via a frontside metal layer, and to the power delivery network on the backside with through silicon vias (TSV). This means the overall cell height can be reduced by ~1T, or roughly 15%.
 
-![](https://substackcdn.com/image/fetch/$s_!_f0e!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fde4888f0-7965-4132-af44-a49bdcb83366_426x491.png)
+![](z-images/c5a5db77e655640f6a9ac6a54fa3238c.webp)
 
 Conventional vs. BPR: buried power rail fabricated beneath the transistors on wafer frontside, then connected to backside power network. Source: Intel
 
 Constructing BPRs is relatively simple but has one major risk: using metal in the front-end-of-line (FEOL). Metal is traditionally limited to middle-of-line (MOL) and back-end-of-line (BEOL) processes, after the transistors have been fabricated. This is to avoid contaminating the semiconducting devices with conductive metal. Fabs are serious about this – many have FEOL-specific tools forbidden from running any wafers that have metal layers. Fabs must break this rule to construct buried power rails, as by definition BPRs must be integrated before the transistors. In reality nobody wants to break this rule, and it appears BPR will not be adopted in any HVM processes.
 
-![](https://substackcdn.com/image/fetch/$s_!ixt1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3abab111-f5ad-46fa-8bec-40745e441ceb_1227x684.jpeg)
+![](z-images/d38ff81d22c99f4065009b0c51f9112b.webp)
 
 Buried power rail requires the use of metal in front-end processing steps. Source: Intel
 
 Aligning the initial backside features connecting to the buried rails is another challenge. Bonding onto the support wafer induces distortions that must be corrected, making post-bonding litho much more difficult. ASML and others have made remarkable progress here, and post-bonding overlay capabilities are good enough for BPR schemes – but at the edge of spec for more complex options like backside contacts.
 
-![](https://substackcdn.com/image/fetch/$s_!9TRV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F787afa46-b1ae-4ae9-b7ed-a87a3a2788dd_1355x614.jpeg)
+![](z-images/73dbf62964b534b6bfbfde604b276d98.webp)
 
 Source: imec
 
@@ -85,7 +85,7 @@ PowerVia is Intel’s backside power solution. It improves upon BPR in two major
 1. Power rails are moved to the wafer backside, avoiding contamination risk of BPR.
 2. Better cell scaling as power routing is eliminated from the wafer frontside.
 
-![](https://substackcdn.com/image/fetch/$s_!GYWN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0ebec989-18eb-4e3e-b090-a4b911aaa8e0_638x491.png)
+![](z-images/ef82f50a900724b0c93c6b999b2efe3c.webp)
 
 PowerVia connects to the side of the transistor contact, avoiding any power routing on the frontside. Source: Intel
 
@@ -93,7 +93,7 @@ PowerVia is a clever evolution of the BPR concept. During front-end processing P
 
 The only added step from a traditional all-front side scheme is the tall, skinny PowerVia constructed just after the transistor contacts. This via runs from the contact deep into the bulk wafer substrate. After completing the frontside, the wafer is flipped, bonded, and thinned. Because the vias extend deep into the wafer backside, they can be revealed during thinning without risking damage to the transistors. This clever “self-aligned” approach greatly simplifies the backside patterning that must align to the PowerVias (self-aligned in this contact really means the alignment requirements are greatly relaxed i.e. cheaper and better yielding).
 
-![](https://substackcdn.com/image/fetch/$s_!3j45!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf5a4f55-4468-4e63-93fe-0f6fd8acd0b2_1428x629.jpeg)
+![](z-images/ed0e6438342cba7207ade627b7764d5d.webp)
 
 Source: Intel
 
@@ -105,7 +105,7 @@ Yet there is still some standard cell scaling left on the table. The PowerVia, w
 
 Direct backside contacts (DBC or BSC for BackSide Contact) offer a way to eliminate the contribution of power to standard cell height. In other words, they achieve the greatest scaling benefits of any backside power scheme. The idea is a natural extension of BPR and PowerVia- rather than route the power from the top or side of the contact, route it through the bottom.
 
-![](https://substackcdn.com/image/fetch/$s_!Qcvz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79d252ed-7160-4bfe-ae45-057fecef8914_825x491.png)
+![](z-images/7160c249749c6b7e8cb88a17878acd62.webp)
 
 Source: Intel
 
@@ -113,7 +113,7 @@ While the idea is simple, it turns out that backside contacts are the highest ri
 
 For direct backside contacts, the requirements are much more difficult. Contacts for power routing are formed beneath sources and drains. The source to drain distance is roughly equivalent to the contacted poly pitch (CPP), the distance from gate to gate. The CPP of modern processes is well known so it gives us a rough idea of the pitch required for the BS contacts – on the order of 50nm. This is well beyond the resolution of a single ArF immersion exposure, necessitating a more expensive multi patterning schemes or EUV. Overlay also becomes challenging as the spec is somewhere <5nm. Normally this is not a problem for high-end scanners but extremely challenging here due to the high-order distortions locked in by wafer bonding.
 
-![](https://substackcdn.com/image/fetch/$s_!gxjl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff2fe0b5c-152e-4721-a521-f47beeb862b2_1565x510.png)
+![](z-images/6e13dcb4a638a38e10794bbb72ab641c.webp)
 
 Self-aligned backside contact integration scheme using a non-conductive placeholder. Source: IBM + Samsung
 
@@ -141,7 +141,7 @@ Additionally, their roadmap does not include backside power delivery. This will 
 
 Samsung is also “customer challenged” but pushing ahead with an ambitious roadmap. They were technically the first to mass produce GAA back in 2022 at the SF3E node, but this was not productized in any meaningful way. SF2 is therefore more of an evolutionary node rather than revolutionary. It’s likely that one of Samsung’s upcoming nodes will add a 4 <sup>th</sup> nanosheet to the stack – most others are using 3 for the foreseeable future. SF2P will offer higher speeds with slightly lower density than SF2.
 
-![](https://substackcdn.com/image/fetch/$s_!odFw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff82c3e34-cb3f-4bc7-9125-cbb2134ff7fe_2133x1200.jpeg)
+![](z-images/70831d39ce5be0fd86324afe39f65a2a.webp)
 
 Samsung logic roadmap including backside power starting with SF2Z. Source: Samsung
 
@@ -151,7 +151,7 @@ SF1.4 will scale both metal and gate pitches and involve some sort of change to 
 
 Intel is already ramping its GAA + BSPDN node, 18A. The preceding 20A process was recently abandoned but for financial reasons, not technical. With the recent report that 18A defect density is on-track, it appears the process tech is maybe the one thing going well at the company right now.
 
-![](https://substackcdn.com/image/fetch/$s_!cj0w!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feb64b043-4cf9-496a-8878-f0b719c52bd3_1599x897.jpeg)
+![](z-images/2ef954acbd29065fb25a064acda5bef9.webp)
 
 Intel will be the first to market with a GAA + BSPDN process. Source: Intel
 
@@ -161,13 +161,13 @@ Notably, Intel is using a PowerVia scheme for backside power. As we detailed abo
 
 With N2, TSMC continues its steady drumbeat of process node improvements that have driven its share price to continue compounding years of gains. N2 is ramping to high volume next year with TSMC’s first GAA architecture but without BSPDN. Variants N2P and N2X offer mild improvements in 2026 along with the first GAA + backside power node, A16, in the 2nd half of the year. Like Samsung they are choosing to dive headfirst into BSPDN with a backside contact scheme rather than the easier, more conservative BPR or PowerVia options.
 
-![](https://substackcdn.com/image/fetch/$s_!26ME!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fef4e643d-7f1c-45e0-bea8-b337b0ebeb0e_1600x898.png)
+![](z-images/109465baad777132c7fe3b9c9389cdf4.webp)
 
 TSMC debuts GAA at N2 in 2025, followed by GAA + BSPDN on A16. Source: TSMC
 
 Their implementation of backside contacts appears to be conservative in its 1 <sup>st</sup> generation. A claimed 7-10% density increase is roughly half of what’s possible from cell scaling in theory. This is probably done to maintain design compatibility with N2, likely the FEOL will stay the same and only routing must be redone to utilize the backside power network. IR drop is also significantly reduced with up to 20% power improvement possible.
 
-![](https://substackcdn.com/image/fetch/$s_!D-5B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F912a20d6-2571-46c3-b7de-b13736f03faf_2046x1150.jpeg)
+![](z-images/ea1d8f73de74db248bc9334bd4943b98.webp)
 
 A16 takes a conservative approach to scaling, favoring design compatibility with N2. Source: TSMC
 
@@ -183,13 +183,13 @@ Contacts, connecting transistors in the bit cell to power and signal, also restr
 
 SRAM periphery, like other logic, still benefits from modern DTCO (design technology co-optimization) and other scaling techniques. When TSMC claims as 22% SRAM density improvement from N3E to N2, it comes mostly from periphery scaling. Unfortunately, in key applications such as working memory and L2 or L3 caches, periphery is only a small percentage of the total SRAM area and thus the benefits will not be as strong here. Overall performance improvements, if they meet claims, will come primarily from logic cells, not SRAM.
 
-![](https://substackcdn.com/image/fetch/$s_!Sv4T!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F52da44e8-bc9b-422a-a851-36a80d293f6d_848x337.png)
+![](z-images/d1b847e59741cacb6d18a04dec32ce8d.webp)
 
 Source: TSMC, Intel, Samsung
 
 The real high-volume introduction of GAA will be 2025 for all three large foundries, with Rapidus following in 2027. Intel will be first by a year or so with BSPDN, but at a density closer to 3 nm processes despite the name 18A.
 
-![](https://substackcdn.com/image/fetch/$s_!ozv6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5307df32-dce8-4ace-99a3-e75ab84e622f_1024x706.png)
+![](z-images/89026e6072a886092cd3f7b294e4cf31.webp)
 
 Source: TSMC, Intel, Samsung, Rapidus, SemiAnalysis
 

@@ -8,7 +8,7 @@ description: "Foundry Cost Wall, Whale Customers, Datacenter Share, The Money Pr
 
 Before Pat Gelsinger took over Intel as CEO, the company spent over a decade in a slow descent due to a focus on financial engineering. The decline was set in motion by the then CEO, Paul Otellini, who made the shortsighted decision to turn down the iPhone contract due to apprehension over margins. The main concern was that Apple's customization demands would be costly and would be amortized over low volume projections that turned out to be woefully underestimated by Intel. This led to Intel missing out on the last decade’s largest area of growth: mobile.
 
-![](https://substackcdn.com/image/fetch/$s_!kPvN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F236f8050-c3fc-4713-88a7-3d18fbb5cc0f_1130x733.png)
+![](z-images/2db2ce37bc6b2a1fb4aff1daa5bc35cd.webp)
 
 Intel’s own assessment of its process lead & lag, Source: Intel Foundry Investor Update 2023
 
@@ -18,7 +18,7 @@ The loss of mobile fed most leading-edge volume growth to competitors which in t
 
 Thankfully, the era of complacency at Intel is over, and they have now recognized many of their pitfalls. [Intel is now attempting to building a world-class systems foundry](https://www.semianalysis.com/p/intel-is-throwing-the-kitchen-sink). That’s different from a traditional wafer foundry business of only making the best process technology. Instead, Intel wants to make the best technology at every layer of the stack and make it available to anyone. [System level engineering is far more important in the AI era as shown by Google’s TPU and Nvidia’s GB200 rack.](https://www.semianalysis.com/p/google-ai-infrastructure-supremacy) To be clear, the jury is still out on whether Intel can execute on these ambitious plans. Nvidia, AMD, Broadcom, TSMC, and the hyperscalers are all beating Intel at each of their core competencies and beating or partnering with these firms is not going to be easy.
 
-![](https://substackcdn.com/image/fetch/$s_!4TLs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1fb5ff4-0179-4092-a0c3-84e000a5b87c_1376x768.png)
+![](z-images/b03ad1707d0b052000601ff532adea6e.webp)
 
 Source: Intel
 
@@ -34,13 +34,13 @@ Intel’s goal is to be the 2 <sup>nd</sup> largest foundry by 2030. While not a
 
 Consider Intel’s position versus TSMC in 2020: Intel’s “state-of-the-art” 10nm process was finally entering the market at low volume, years behind and less dense than TSMC’s 7nm node. Meanwhile, TSMC was already shipping tens of thousands of 5nm wafers a month to Apple and Huawei. Intel’s former position of consistently holding a 3-year process node lead evaporated to being 2 years behind TSMC by 2020.
 
-![](https://substackcdn.com/image/fetch/$s_!6rmU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc56ed168-7abf-48ff-b108-6502c9130cf3_1599x897.png)
+![](z-images/c8417e68a686d27da28fd95dcb2db2ad.webp)
 
 Source: Intel
 
 Now, it appears they are getting back on track. Intel’s Technology Development team (TD), led by Dr. Ann Kelleher, is trying to catch up. They are rapidly iterating on many node transitions trying to bring to market many new techniques from [PowerVia](https://www.semianalysis.com/i/48973667/intel-process-technology), [Backside Power Delivery](https://www.semianalysis.com/i/48973667/intel-process-technology), and new [semi-damascene metallization schemes](https://www.semianalysis.com/p/intel-genai-for-yield-tsmc-cfet-and) to new tooling such as [Sculpta](https://www.semianalysis.com/p/euv-requirements-halved-applied-materials) and High-NA EUV ([even if it’s not cost effective](https://www.semianalysis.com/p/asml-dilemma-high-na-euv-is-worse)). They have a variety of node variants coming with feature enhancements, performance increases, and even 3D TSV capabilities.
 
-![](https://substackcdn.com/image/fetch/$s_!kUOP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb380138e-647b-403a-97a2-49b5a2dde09f_1386x772.png)
+![](z-images/4421c3773cbc7dd2eab2ecc4c1f7de68.webp)
 
 Source: Intel
 
@@ -54,13 +54,13 @@ Furthermore, Meteor Lake has had paltry volumes due to its high-cost structure. 
 
 Intel’s charts like the below from their foundry day also show that they have no plans of ramping Intel 4 production meaningfully. Intel 18A is only significant wafer volume in 2026.
 
-![](https://substackcdn.com/image/fetch/$s_!ut0S!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3262c52b-1a35-4c60-bc78-070c608c895a_2349x1236.png)
+![](z-images/0a8db9f7ce7a87cc8d353826e1b9fa8a.webp)
 
 Intel “Roadmap: Final Scale, Pace, and Processes dependent on business conditions and incentives”, Source: Intel
 
 Despite this, there is still abundantly clear evidence showing that Intel is progressing rapidly. While Sierra Forest and Granite Rapids samples to major customers look decent, they are still not competitive with AMD’s Turin. Intel’s goal is to actually leapfrog Intel 4 and 3 in terms of volume production by the end of 2025 with 18A with new product launches that are actually competitive. Intel’s Clearwater Forest test chip has taped-out using 18A logic chiplets packaged on an Intel 3 base die with EMIB & Foveros Direct (Cu on Cu hybrid bonding – see our [advanced packaging series](https://www.semianalysis.com/p/hybrid-bonding-process-flow-advanced) for more details).
 
-![](https://substackcdn.com/image/fetch/$s_!Y4u5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb36b21b-f4dc-4d5d-8e93-5a18f0f82d74_1296x958.jpeg)
+![](z-images/0572b57aa924bb18fd1e69197c75e9fc.webp)
 
 Source: Intel Clearwater Forest
 
@@ -70,19 +70,19 @@ This is the first evidence of a crucial, if obvious, dynamic going forward: ever
 
 That is perhaps the most exciting part about Intel’s foundry effort. They have got the leading EDA and IP companies, Arm, Synopsys, Cadence, Siemens (Mentor Graphics), and Ansys all investing heavily. There is a swath of IP coming from these vendors from Arm CPU cores, fabrics, die to die connectors, high speed 112G and 224G SerDes, PCIe 6 and 7, and various memory IP.
 
-![](https://substackcdn.com/image/fetch/$s_!_PVE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7f9878cb-9deb-4ca3-8ab3-d7e40e09b9e6_1920x1440.jpeg)
+![](z-images/c15e96a8ebd167250b78a1097f502774.webp)
 
 Source: Intel & Synopsys via HardwareLUXX
 
 To be clear TSMC still has a tremendous advantage here, but Intel is focusing on closing the gap. An easy example is that TSMC had at least 7 companies tape out 224G SerDes on their 3nm, (Broadcom, Marvell, Nvidia, MediaTek, Alphawave, Synopsys, and Cadence), where as we are only aware of 1 for Intel’s 18A.
 
-![](https://substackcdn.com/image/fetch/$s_!EFIW!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F20eb5cbe-2d16-438d-91bd-925664dfb00a_1920x1440.jpeg)
+![](z-images/8093c081a73583af105e8ea545ad8ad6.webp)
 
 Source: Intel & Synopsys via HardwareLUXX
 
 If this IP is delivered and it works well, then firms can actually come to Intel with their unique technology and package it with standard chiplets, IP, and existing and customizable Intel chips/datacenter/software platforms and come out with much more complete systems. At least that’s the pitch.
 
-![](https://substackcdn.com/image/fetch/$s_!66WZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff06720d1-58c9-45f6-9735-1cf3256c4052_1376x766.png)
+![](z-images/b59a1883126e9e5b270276385207091f.webp)
 
 Source: Intel
 
@@ -92,13 +92,13 @@ Publicly, Intel’s Product business units are free to choose whatever fab they 
 
 The primary reason Intel needs foundry is volume. Costs of transistors continue to scale with shrinks. Intel admits in the 2 <sup>nd</sup> half of the 2010s they had minimal cost scaling, but with the rapid progress to 7, 4/3, and 20/18A, they will bring back the economic scaling.
 
-![](https://substackcdn.com/image/fetch/$s_!poQk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F991dacc3-12f9-4752-9fa8-5f7e2b712adb_1388x776.png)
+![](z-images/31f0b2b3f5ea6c02366c477ad37886dc.webp)
 
 Source: Intel
 
 The misleading aspect of this chart is the volumes. Some folks claim transistor cost scaling stopped at 28nm, but that is wrong. [The design costs incremented up massively with FinFET nodes](https://www.semianalysis.com/p/the-dark-side-of-the-semiconductor). Fixed costs again increment up meaningfully with EUV, gate all around transistors, backside power delivery, and High-NA EUV.
 
-![](https://substackcdn.com/image/fetch/$s_!J_CX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28c160c7-0f9c-4d62-9d92-a068e3a24477_1371x770.png)
+![](z-images/0a209151b0481cdf1b563c5ca229c2f6.webp)
 
 Source: Intel
 
@@ -120,7 +120,7 @@ For TSMC’s nodes where most of the capacity is more than 5 years old, the big 
 
 As an IDM, Intel’s CPU-heavy product portfolio meant that their manufacturing focus was on leading edge processes. Intel didn’t maintain these “forever” nodes (although for a time it appeared as if Intel 14nm was going to be a forever node but not by choice) because their only customer (Intel themselves) had little need for them. Consequently, Intel didn’t have this ever-growing pool of mature wafer capacity that was capable of generating cash flow seemingly into perpetuity.
 
-![](https://substackcdn.com/image/fetch/$s_!ZRRL!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0779ac4d-eba8-4d22-bb5a-491a1727f3b7_1391x782.png)
+![](z-images/f2c850a07bf4ec4cfeaa64912f2f5f9b.webp)
 
 Source: Intel
 
@@ -132,7 +132,7 @@ Building 150,000+ wafers a month of leading edge capacity requires a lot of inve
 
 This is even after Intel pulled out accounting tricks like extending equipment depreciation periods for equipment to 8 years from 5. Add on the additional ~$20bn of annual capital expenditure to ramp up all the new nodes and fabs and FCF has been negative over the previous 2 years. To plug the financing hole Intel has had to rely on a wide variety of capital sources to fund everything: traditional debt financing, government support, and even more creative financial engineering schemes like the Brookfield fab deal to find a way to pay for everything.
 
-![](https://substackcdn.com/image/fetch/$s_!EKAU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa6305d2c-75d7-46eb-ad63-f21627b0dcfc_549x469.png)
+![](z-images/61b3d0155fcdf42844915d8ecfd80aee.webp)
 
 Source: SemiAnalysis Estimates
 

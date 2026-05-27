@@ -22,7 +22,7 @@ Even ignoring the lack of a moat regarding GPU clouds (outside of a cozy relatio
 
 In other words, since capital is the only real barrier to entry, not physical infrastructure, it’s no surprise there are so many new entrants.
 
-![](https://substackcdn.com/image/fetch/$s_!-mFr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F27a54ff5-da5e-42ce-acb9-d4dddecb9ae3_1518x1323.png)
+![](z-images/67fa99eb1ccac96d791c1056d01b6267.webp)
 
 OEM pricing with networking costs allocated to server level, not hyperscale
 

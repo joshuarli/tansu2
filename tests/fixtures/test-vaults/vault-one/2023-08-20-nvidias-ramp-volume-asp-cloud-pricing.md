@@ -14,7 +14,7 @@ For example, Super Micro disappointed lofty expectations after a >300% share pri
 
 Let’s talk through the supply chain for this latter example. If Nvidia placed orders in March, even if TSMC started production right away, there is a multi-month process of processing polished silicon wafers into wafers full of 4nm chips. Next, there is the [CoWoS packaging supply chain, and many layers of test, as described here](https://www.semianalysis.com/p/ai-expansion-supply-chain-analysis). Nvidia then takes these completed H100 chips from TSMC and consigns them to Foxconn which makes the H100 SXM modules. Then these are shipped to Wistron who has consigned the modules and integrates 8 of them alongside 4 NVSwitches, cooling, and delivering a completed and tested H100 baseboard.
 
-![](https://substackcdn.com/image/fetch/$s_!WtC_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24aa2b4e-62f9-4895-9b23-dcd7fe9350a6_2724x794.png)
+![](z-images/6176cd4dca9eba41563e5584afa35a3c.webp)
 
 Finally, Nvidia gets to ship these GPU baseboards to server manufacturers and recognize revenue in July, 4-5 months after production started. Now the server OEM/ODM needs to build the server, and in many cases help install it in the datacenter on another continent. Super Micro in this example may only get to recognize revenue as late as October which won’t show up until they release their FY Q2 2024 earnings report in January next year. Coreweave can only start renting these servers in November of 2023. This example is fictitious to exaggerate the challenges of revenue recognition points as well as the different fiscal reporting periods of each company. The supply chain is generally faster in each individual step.
 
@@ -26,7 +26,7 @@ Stay tuned for what we believe they are will do with that mountain of cash.
 
 *We will be hosting [AI and Semiconductor Symposium in Taiwan](https://www.eventbrite.com/e/ai-and-semiconductor-symposium-tickets-692838296997) with on September 3rd with many foundry, packaging, ODM suppliers, and buyside in attendance. Topics covered include the future of AI infrastructure, the next-generation model architectures employed by Google’s Gemini/Future OpenAI GPT, Chinese analog/power semi fab buildouts, and Nvidia’s current acquisition target. Speakers include multiple members of SemiAnalysis, [FabricatedKnowledge](https://www.fabricatedknowledge.com/), [Asianometry](https://www.asianometry.com/), [Alethia Capital](https://www.aletheia-capital.com/), and **a special secret guest**. [Register here](https://www.eventbrite.com/e/ai-and-semiconductor-symposium-tickets-692838296997) if you can come!*
 
-![](https://substackcdn.com/image/fetch/$s_!ChBC!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F708e06b6-e7e2-4317-abef-dae4def59a20_1414x2000.jpeg)
+![](z-images/20d2cb987cb946179fa26b7fc8512bdd.webp)
 
 ## Nvidia Estimates – Sniff Testing The Hype
 

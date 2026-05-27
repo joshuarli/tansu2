@@ -22,13 +22,13 @@ Then we will cover the battle waging between chip-on-wafer (D2W) and wafer-on-wa
 
 This is part 5, primarily focused on the process flow, so let’s get started.
 
-![](https://substackcdn.com/image/fetch/$s_!pmat!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1adb147-cacc-48f2-87c1-ccb0571bcea8_1632x881.png)
+![](z-images/f5d911088ebffaf2c99b03e40ba387d8.webp)
 
 In the history of packaging, the last major paradigm shift was from wire bonding to flip chip. Since then, more advanced forms of packaging such as wafer level fan outs and TCB have been incremental improvements of the same core principles. These packaging methods all use some kind of bump with solder as the interconnect between silicon and package or board. These technologies can scale all the way down to ~20-micron pitch.
 
 So far, the major packaging types and process flows we have discussed in our multi-part advanced packaging series have been at that 220-micron to 100-micron scale and mostly used solder as the medium between the various chiplets’ copper interconnects. To scale further there needs to be another paradigm shift: bumpless interconnects with hybrid bonding. Hybrid bonding scales beyond 10-micron interconnect pitch with a roadmap to the 100’s nanometer regime, and it does not use any intermediary such as solder that has higher resistance.
 
-![](https://substackcdn.com/image/fetch/$s_!ScVJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb68e3e41-68f5-4172-8f95-4e8facf1a8bb_3376x2038.png)
+![](z-images/7f4e0c042990d1c640a732b30a3e80b7.webp)
 
 Nvidia A100 cross section, Silver blobs on the C4 bumps (~130-micron pitch) and on the copper pillars (~50-micron pitch) are solder.
 
@@ -40,13 +40,13 @@ Instead, the interconnects of different chips or wafers are directly connected w
 
 Hybrid bonding is used for the vertical (or 3D) stacking of chips. The distinguishing feature of hybrid bonding is that it is bumpless. It moves away from solder-based bump technologies to direct copper-to-copper connections. This means the top die and bottom die are flush against each other. Instead of bumps, both dies just have copper pads that can be scaled to ultra-fine pitches. There is no solder, so the problems related to solder are avoided.
 
-![](https://substackcdn.com/image/fetch/$s_!PkN6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdde8c3bf-3b20-4bd5-b1a6-07981b3baeca_1920x1080.jpeg)
+![](z-images/d922106b516ea20e46fdcfa70b005e38.webp)
 
 From the above image, we can see a cross-section of AMD’s 3D V-Cache, which uses TSMC’s SoIC-X die-to-wafer hybrid bonding. The bond interface between the top and bottom silicon is a hybrid bonding layer that is present on top of the metal layers of the silicon dies. The hybrid bond layer is a dielectric (now most commonly SiO or SiCN) that is patterned with copper pads and vias that are usually sub-10-micron pitch.
 
 The purpose of the dielectric is to insulate each pad so that there is no signal interference between the pads. The copper pads are connected to the chip metal layers with Through Silicon Vias (TSVs). TSVs are needed to deliver power and signal to the other die in the stack. As the bottom die is placed “face down” these vias are needed to connect the metal layers on the top die, passing through the transistor layers to the metal layers on the bottom die.
 
-![](https://substackcdn.com/image/fetch/$s_!VVP1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F118962cf-0c57-4665-b02b-9ca0f360f9b9_552x525.png)
+![](z-images/f26fe63a49bb4822af53346d75efdc82.webp)
 
 It is these copper pads that the signals pass through for die-to-die communication. The reason why the bond is “hybrid” is because it is a combination of a dielectric-dielectric bond, and a direct copper-to-copper bond. There is no additional adhesive or materials used in between the bond interfaces.
 
@@ -60,15 +60,15 @@ In any discussion about hybrid bonding, particles will come up. This is because 
 
 A particle of just [1 micron height results in a bond void of 10 millimeters in diameter](https://ieeexplore.ieee.org/document/9058783) which would result in a defective bond. With a bump-based interconnect, there is always a gap between the device and substrate which can tolerate some particles, as underfill or non-conductive films are used.
 
-![](https://substackcdn.com/image/fetch/$s_!zoCI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F23434868-490e-4f9d-b812-44ab51c29b4f_828x219.png)
+![](z-images/b1cb14163dcfb0bf63ee83ef97e99f5b.webp)
 
 Maintaining cleanliness is critical, and this is very challenging. Particles come from many steps such as wafer dicing, grinding, and polishing. Any kind of friction also generates particles, which is an issue, especially because hybrid bonding involves mechanically picking up dies and placing them on top of the other chips. There is a lot of movement in the tool coming from the die bond-head as well as the die flipper. Particles are unavoidable, but there are several techniques to mitigate the yield impact.
 
-![](https://substackcdn.com/image/fetch/$s_!7E25!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c8b2260-6fbb-4cb9-90a2-8e04002e89a9_1384x650.png)
+![](z-images/ec1e1c89e71ee3267ac0b7acf0703cf1.webp)
 
 Of course, wafer cleaning is performed regularly to get rid of contaminants. However, cleans are imperfect and do not get rid of 100% of the contaminants in a single pass, so it is better to avoid contaminants in the first place. Cleanrooms required for hybrid bonding are far more advanced than those required for other forms of advanced packaging.
 
-![](https://substackcdn.com/image/fetch/$s_!miJQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa75c9d2e-61fd-494f-bf1b-b3288118cfbb_2340x753.png)
+![](z-images/d9e99849015b9cda199291a9078331ad.webp)
 
 Therefore, hybrid bonding generally requires class 1 / ISO 3 clean rooms and equipment or better. TSMC and Intel, for example, are going all the way to ISO 2 or ISO 1 classes. This is one major reason why Hybrid Bonding is considered a “front-end” process, i.e it happens in environments similar to fabs rather than those of traditional packaging players (OSATs). It is very difficult for OSATs to pursue hybrid bonding given this upgrade in cleanliness requirement. Most OSATs would need to build newer more advanced cleanrooms if they wanted to be involved in hybrid bonding, whereas firms like TSMC and Intel can use older fabs or build to similar standards as their existing fabs.
 
@@ -80,7 +80,7 @@ The combination of cleanliness required and increase in tools contributes to a h
 
 The surface smoothness of the hybrid bonding layers is also extremely critical. The HB interface is similarly sensitive to any kind of topography, which would create voiding and an ineffective bond. The surface roughness threshold is generally said to be 0.5nm for the dielectric and 1nm for the copper pads. To achieve this level of smoothness, chemical mechanical planarization (CMP) is performed and is highly a critical process for hybrid bonding.
 
-![](https://substackcdn.com/image/fetch/$s_!I1Yk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3eb0ed23-fe74-4401-ad37-27b062f7788a_1200x676.jpeg)
+![](z-images/8ed7a3a69282b0a1988fe2ebf1bd8a59.webp)
 
 After polishing, this smoothness needs to be maintained all the way through the flow. Any steps that could damage this surface, such as harsh cleaning, are avoided. Even probing for wafer sort needs to be adjusted so the surface does not become damaged.
 
@@ -88,7 +88,7 @@ After polishing, this smoothness needs to be maintained all the way through the 
 
 First, a discussion on W2W or D2W. Hybrid bonding can be completed via wafer-to-wafer (W2W) or die-to-wafer (W2W) processes. W2W means two fabricated wafers are bonded directly together. W2W offers higher alignment accuracy, throughput, and bond yields. The vast majority of hybrid bonding is currently completed via W2W, given its relative ease.
 
-![](https://substackcdn.com/image/fetch/$s_!89Vy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F895717e5-2251-4e19-9835-a219eb56f74a_1024x706.png)
+![](z-images/171331982fe6d08f476af3463f09af16.webp)
 
 What makes W2W bond yield higher is that the alignment and bonding steps are separated. In W2W tools there is a separate chamber that performs the alignment. Once the top and bottom wafers are aligned, they are moved into the bonding chamber (which is in a vacuum), where they are pressed together with a bit of force and after a period of around 20 minutes, the initial pre-bond is formed.
 
@@ -100,7 +100,7 @@ W2W bonding is great, but one major limitation is the inability to perform a waf
 
 Given this, W2W is used for wafers where yields are high which generally means on smaller designs. In the below chart we can see how the relationship between chip area and cost for W2W and D2W. W2W is cheaper at smaller die sizes as wafer yields will be higher. However, the W2W cost curve is much steeper as we go to higher die sizes and that is primarily driven by the cost of lost good dies. As chip size goes up the portion of good die per wafer decreases, resulting in more bonding of defective dies and good dies.
 
-![](https://substackcdn.com/image/fetch/$s_!6rhr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fec88cc70-a729-49ee-bc51-7501d0fe91a2_902x623.png)
+![](z-images/8ca4c351a594536a2f7ee06282b6f568.webp)
 
 We can see that W2W is used for smaller chips that have high yields: CMOS image sensors, [3D NAND](https://www.semianalysis.com/p/the-impending-chinese-nand-apocalypse-e01), and so far only in logic for the [Graphcore Bow IPU](https://www.semianalysis.com/p/graphcore-announces-worlds-first).
 
@@ -108,27 +108,27 @@ While the Graphcore Bow IPU is a larger HPC chip, the top die isn’t leading ed
 
 There are multiple levers with regard to cost. The main ones are wafer cost, D0 (defect density), and bond yields. Each of these levers can result in higher or lower costs. Note these are example figures to stress the point. Do not use the chart below as it does not show the actual cost for bonding. For actual costs for today’s products, contact us for our AMD MI300X costing report or the Zen 3, Zen 4, and Zen 5 hybrid bonding costing report.
 
-![](https://substackcdn.com/image/fetch/$s_!BQOY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1b4f1a9-4075-4e2d-aa82-e01cba8eaef0_2146x931.png)
+![](z-images/7a3306ba1b810532601a14d8b1f46993.webp)
 
 As can be seen, D2W is more expensive on small dies, but with large dies, this flips. W2W is more expensive. The ability to test and bond only known good die (KGD), instead of risking defects stacking and wasting good silicon, is critical and why die-on-wafer (D2W) is the first to be productized. It can deal with worse yields but still have a commercially viable product.
 
-![](https://substackcdn.com/image/fetch/$s_!r-dh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F58fd782b-c172-4da5-b2cf-0e09657e693e_2818x737.png)
+![](z-images/ee54a0711e554090b239b60895f709bd.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!5Y9k!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb8fd9222-5ff7-453d-8a5b-58e935db45bc_2336x631.png)
+![](z-images/823bfab630c339f52b9c0d178d24ab0d.webp)
 
 To get around limitations we need to go to D2W. D2W bonding is much more challenging. After a wafer sort is performed, KGD are singulated from the top wafer, and attached individually onto the base wafer via a pick and place tool. This is more challenging in terms of bonding as there are several more bond steps per wafer. These additional steps introduce more particle contamination especially from die singulation and from the movement of the bond-head during pick-and-place.
 
 D2W can be a “collective” process, where KGD are aligned and first temporarily bonded onto a reconstituted carrier wafer. Then the reconstituted carrier wafer is bonded onto the base wafer for the actual pre-bond. This is to separate the alignment and bond like with W2W and allows for a cleaning step before the final pre-bond to get rid of any contaminants that have been accumulated. The drawback is the additional steps involved and the additional W2W bond step creates more chance of alignment error.
 
-![](https://substackcdn.com/image/fetch/$s_!0XLs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F90ec8164-ed4a-461b-8437-f525054822d8_2202x978.png)
+![](z-images/383aa9631ab71544334a06bdcc655e88.webp)
 
 This is actually a simplistic flow as the bottom die can reconstituted on a carrier wafer too. So for both top and bottom chips are diced from the original silicon wafer and KGD are sorted. Both sets of chips are bonded onto precise locations on their respective carriers. Then, the 2 carrier wafers are bonded with a W2W process. This is done in TSMC SOIC. As such, there are 5 bond steps used for each AMD 3D V-cache chip (bottom CPU die to carrier, 3D V-cache chiplet to carrier, 2x dummy silicon to carrier), and wafer on wafer.
 
-![](https://substackcdn.com/image/fetch/$s_!DA7E!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffeabbdd0-b5ab-4c56-aacb-b9dbb3c1606e_1794x1821.png)
+![](z-images/03e36fe520f09897316ff02579281028.webp)
 
 Reconstituted processes can also be used for more extreme options for heterogeneous integration. [Intel demonstrated “quasi-monolithic chips (QMC)” at IEDM 2022.](https://www.semianalysis.com/i/100427011/foveros-direct-reconstituted-wafer-on-wafer-bonded-paper) One example of a QMC application they showed off was a package with 2 dies each on the top and bottom heterogeneously integrated. For both the top and bottom, each die was attached to a carrier wafer. Then the wafer was molded with thick inorganic oxide such as SiO2. The W2W bond was performed. The molded chips were then singulated and attached to a package substrate to complete the flow.
 
-![](https://substackcdn.com/image/fetch/$s_!KFGW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe3d1916b-0924-43e5-bb98-6147f5334b2c_1212x291.png)
+![](z-images/d58a30817ba8f6bd07408d91f4c16847.webp)
 
 Notice there can be TSV’s in the area that is reconstituted.
 
@@ -142,9 +142,9 @@ One thing to note is that W2W is far ahead of D2W in alignment, so if your desig
 
 Next lets go over the process flows for D2W and W2W in more detail.
 
-![](https://substackcdn.com/image/fetch/$s_!W8po!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F26731116-cc24-493e-b86e-74c1e9577dcd_1966x292.jpeg)
+![](z-images/b97ed71a9ff97082e0980c01cb78a13a.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!N4OY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa5cd76cf-c350-4e61-a8c0-db642ac47d8e_1718x229.jpeg)
+![](z-images/aee62d10404f7567ca701e6ee5d123ab.webp)
 
 ## TSV formation
 
@@ -154,7 +154,7 @@ For a 3DIC, the die on the bottom needs to be able to communicate with the packa
 
 Most common for 3DIC is the “via-middle” approach as the TSV runs between the metal layers, through to the transistor layers and revealing itself on the backside of the chip so that there is now a layer of interconnect on both sides of the chip which we will describe.
 
-![](https://substackcdn.com/image/fetch/$s_!soVH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F17da1d7d-7381-4a0a-8939-71c837520584_2389x1216.png)
+![](z-images/9dc9d585c8d3880d9afed7556cc7d2b9.webp)
 
 We went over the TSV flow [here](https://www.semianalysis.com/i/135455698/silicon-interposer-key-process-steps), but will recap it in this report.
 
@@ -166,7 +166,7 @@ TSV formation is not trivial and can be time consuming, especially due to the de
 
 After the wafers’ bond interface, the hybrid bond layer is fabricated on top of the BEOL of a wafer. This is the same regardless of W2W or D2W. This is a layer of dielectric film patterned with fine-pitch copper vias. The dielectric, usually Silicon Carbon Nitride (SiCN) is deposited via PECVD. Then the pads are formed. Holes for the copper pads are patterned using lithography and etched away. A barrier and seed layer is deposited, then plated with copper using a typical copper damascene process.
 
-![](https://substackcdn.com/image/fetch/$s_!6I_Q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ffa5c75-8128-479c-8c3f-e6322f0ef8af_1268x689.png)
+![](z-images/37982344f2a26f7ad88b5a3b8ce54e16.webp)
 
 Then, there is a CMP step to grind down and smoothen the dielectric surface and achieve the correct profile of the copper. [A notable feature of the copper pads is that they are recessed until ~1-micron pitch](https://www.semianalysis.com/i/58498676/sonys-leading-micron-pitch-hybrid-bonding). As mentioned before, a smooth surface is critical to forming a good bond. [Roughness of the dielectric must be contained within 0.5nm, and within 1nm for the copper pads](https://ieeexplore.ieee.org/document/9026700).
 
@@ -184,11 +184,11 @@ For D2W only, a wafer sort is performed and the KGD are singulated and reconstit
 
 Probing can create small amounts of damage on the copper pad surfaces, ruining the smoothness of the surface during the CMP process. While the damage to the pads is minor and usually acceptable in most cases, HB is far more very sensitive to small amounts of topographical changes as these would affect bond quality. One way to address this is to compensate for this in the initial CMP and then performing another round of CMP post-probing to polish out any damage caused by probing.
 
-![](https://substackcdn.com/image/fetch/$s_!Clwj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b7908c9-4136-4405-a77d-9c3a6fee0c1e_564x378.png)
+![](z-images/e04267872420abd76883adeff18b2350.webp)
 
 For singulation / dicing, an issue is the particles that are generated from the process. [Blade dicing](https://www.semianalysis.com/p/disco-corporation-the-world-leader) is generally not used as it is the most dirty: resulting in a lot of particles and a lot of yield loss. [Laser dicing and plasma dicing](https://www.semianalysis.com/p/disco-corporation-the-world-leader) are preferred to blade dicing as they are much cleaner processes, but still particulate matter is generated. Plasma dicing is the most extreme method and is a similar mechanism to etching away the scribe separating the dies. However, this is much lower throughput given the time it takes to etch through the whole wafer.
 
-![](https://substackcdn.com/image/fetch/$s_!AkvN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6db2bf0-c18b-4299-9c13-66db0f5902e0_992x652.png)
+![](z-images/bc686796023005562682c9cd007dadf8.webp)
 
 Disco is the leader in this. their stock has more than tripled since we wrote about them.
 
@@ -200,7 +200,7 @@ The 2 wafers are now treated to prepare for the bond. They are treated with N2 p
 
 After the treatment, a final clean is performed to get rid of any accumulated particles. It is important that prior to bonding, the incoming wafers are as clean as possible. Cleaning needs to be thorough but also non-damaging to maintain the integrity of the HB interface. The best way appears to be deionized water-based cleans assisted by [megasonics](https://www.semianalysis.com/p/acm-research-chinas-most-successful). Cleans that use a scrubber or are plasma-based can be too damaging and/or introduce contaminants.
 
-![](https://substackcdn.com/image/fetch/$s_!4kVv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3c68a15f-2722-40a7-9386-6b8ec6d1c50c_861x776.png)
+![](z-images/0f068a345a2b8bd1be5ed16444510549.webp)
 
 ## Bonding
 
@@ -216,7 +216,7 @@ After alignment the wafers are moved into the bond chamber where they pressed to
 
 Post-bond inspection can be completed in-situ via acoustics and if alignment is insufficient then the bond can also be re-worked.
 
-![](https://substackcdn.com/image/fetch/$s_!XT5H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5968a62d-3a58-4643-9a2f-494b3c5fbcf2_559x651.png)
+![](z-images/dff166bfc5f6feb8928696b0330d14d3.webp)
 
 In W2W tools, there is a separate chamber that performs the alignment. Once the top and bottom wafers are aligned, they are moved into the bonding chamber (which is in a vacuum) where they are pressed together with a bit of force and after a period of around 20 minutes the initial pre-bond is formed. Key to W2W is that it is a much cleaner process in that there are fewer steps. Before the alignment and bonding, the wafers can be cleaned to remove most of the particles. Die singulation, a source of particle contamination, only happens after the bond.
 

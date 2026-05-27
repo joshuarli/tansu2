@@ -28,7 +28,7 @@ It is a testament to the competence of utility engineers that **power quality** 
 
 Nearly every part of the grid, fossil-fuel and nuclear plants, transformers, high-voltage lines, runs on **alternating current (AC)**. Within AC electric systems, **voltage** and **current** oscillate at a *very* tightly managed region-specific frequency: 60 Hz (60 cycles per second) in North America and 50 Hz in Europe and Asia. Residential loads typically operate with one oscillating line, but industrial loads like datacenters typically receive **three-phase** power, in which each power line is in fact three wires with three oscillation cycles running offset from each other.
 
-![](https://substackcdn.com/image/fetch/$s_!J52X!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F543d34a1-2c27-4db2-8152-a22ea233dd28_1618x1232.png)
+![](z-images/be43ddffb0b89c95c459932b07d7c364.webp)
 
 Source: Wikipedia - Three-phase Electric Power
 
@@ -38,7 +38,7 @@ The winter-2021 freeze in Texas proved the point. Extreme cold sent heating dema
 
 To keep the lights on, ERCOT cut power to homes and businesses, slashing demand until it matched the crippled supply.
 
-![](https://substackcdn.com/image/fetch/$s_!UDMl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc65ca665-11bd-40c8-9f07-9eb76980864f_2314x1198.png)
+![](z-images/4c2d0bba5f2406890499b283f72bdcbd.webp)
 
 Source: Practical Engineering
 
@@ -53,7 +53,7 @@ AI computing systems are typically synchronous. A large GPU training run can inv
 
 The chart below published by Google Cloud suggests a ~15x difference in load fluctuations between a Cloud datacenter and an AI datacenter, from 1.5 MW to 15MW.
 
-![](https://substackcdn.com/image/fetch/$s_!_qAI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb2a584d4-b5c9-4618-a273-1247a6dc9568_2326x798.png)
+![](z-images/bfd05b3a08d04e6776d8bc751b22f76d.webp)
 
 Source: Google at OCP EMEA Summit 2025, SemiAnalysis
 
@@ -70,7 +70,7 @@ This is a non-exhaustive list and, to be clear, many of these can be partially s
 
 The below paper shows some empirical results of a training run.
 
-![](https://substackcdn.com/image/fetch/$s_!kHhG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa92e862-f85e-46ed-9115-5c52867f3d0a_1664x1264.png)
+![](z-images/b189f28b0a34fc8b3a90d28f167216e1.webp)
 
 Source: AI Load Dynamics–A Power Electronics Perspective
 
@@ -83,7 +83,7 @@ Empirical evidence of large-scale inference deployments (DLRMs) from the likes o
 
 The second point is best exemplified by DeepSeek’s very unique inference deployment to efficiently serve millions of users with a small GPU footprint - [which we explained in depth to our Core Research clients](https://semianalysis.com/core-research/).
 
-![](https://substackcdn.com/image/fetch/$s_!kLVu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7b37f17d-f79f-4437-9340-966e44b7baa7_1716x1300.png)
+![](z-images/2ad4b6c5c87be02f1b85dcecc738edc8.webp)
 
 Source: AI Load Dynamics–A Power Electronics Perspective
 
@@ -95,7 +95,7 @@ To understand the magnitude of the problem and potential risk, we take a step ba
 
 A second identical building is under construction since January 2025, taking the campus to Gigawatt-scale by mid-2026.
 
-![](https://substackcdn.com/image/fetch/$s_!j8A4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F10bda619-24b8-4810-ae1b-ff1959e1f5ff_2271x1374.png)
+![](z-images/0f18b94184d088610a1e4ffcff4fe57c.webp)
 
 Source: SemiAnalysis Datacenter Model
 
@@ -103,7 +103,7 @@ This caught ERCOT’s (Electric Reliability Council of Texas) attention - the or
 
 To be clear, datacenter load queues all around the world are filled with duplicates, and ERCOT is no exception. The 108GW figure is not realistic ([and neither is its datacenter load forecast](https://semianalysis.com/datacenter-industry-model/)). A future SemiAnalysis report will dig deeper into this topic, but data is already available in our Datacenter model.
 
-![](https://substackcdn.com/image/fetch/$s_!n8-m!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79a09674-cb14-40eb-a4c9-67c7ec9b93f2_2048x1218.png)
+![](z-images/7b4154ae86caff9a46a6f7daba74e2af.webp)
 
 Source: ERCOT
 
@@ -117,7 +117,7 @@ Supply change typically involves activating or deactivating electric generators,
 
 Typically, sub-second voltage and frequency balancing was managed by system **inertia.** Because conventional electric generators are very large spinning magnets, the inherent momentum of those rotating masses could soak up small imbalances in electric supply and demand, at the cost of excess heat and less efficient operation.
 
-![](https://substackcdn.com/image/fetch/$s_!VyX2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd6aee200-8ace-42b6-8e90-d7a0a8920fab_2094x1194.png)
+![](z-images/cc118261a2503232b4eb51361b408f36.webp)
 
 Source: Balancing the Grid: POSOCO report on assessment of inertia in the power system
 
@@ -133,7 +133,7 @@ Although ERCOT discussed power quality concerns at length, their notes suggested
 
 ERCOT considered a particular fault response relevant to datacenters: the **low voltage ride-through (LVRT)**. A low-voltage ride-through is not a response to a total power outage so much as a **transient** blip in which input voltage may sag, for example, 30% below baseline for a length of time between 30 milliseconds and 5 seconds. This type of outage would reflect standard operation of a distant **recloser** clearing a **fault**. Reclosers are, in a sense, breakers that can “re-close” automatically. If a recloser senses a problem, it will trip, wait for a set amount of time, and reconnect.
 
-![](https://substackcdn.com/image/fetch/$s_!_A4R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa076d8f-27e0-4ed8-89cf-62eedc4cd786_700x486.png)
+![](z-images/b4c86bd17397eb0187d5f46c6738f4e5.webp)
 
 Source: Tavrida Electric
 
@@ -141,7 +141,7 @@ Often, the recloser will run this cycle of trip-wait-reconnect-trip two or three
 
 If the fault was on the circuit directly feeding a datacenter, the datacenter would simply see an outage for a short period of time. However, because the grid is a deeply interconnected system, a fault on a different circuit would send shockwaves through the grid in the form of abrupt drops in voltage. In an LVRT, the datacenter would see voltage drop because of that distant fault, and then the voltage would return once that recloser trips. If that recloser resets without issue, then the datacenter doesn’t see any other dips in voltage. But if that recloser cycles a few times before clearing the fault or giving up, then the datacenter may see a few voltage sags in succession. The challenge in an LVRT is to stay online, “riding through” the low voltage blip, without disconnecting from the grid.
 
-![](https://substackcdn.com/image/fetch/$s_!EvAK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7898a395-a55c-4c6a-aacc-fea1fa6fef00_1817x987.png)
+![](z-images/b5aaf3056f354b1f4316333eb53554cc.webp)
 
 Source: Low-Voltage Ride-Through Operation of Grid-Connected Microgrid Using Consensus-Based Distributed Control
 
@@ -151,7 +151,7 @@ This switch to backup power is fine for a datacenter, the diesel backup fuel is 
 
 Note that this isn’t a new issue. In July 2024, a faulty transmission line caused 1.5GW of datacenters in Virginia to unexpectedly disconnect from the grid and turn on their backup power. Dominion Energy successfully managed the issue without a major outage, but had to take drastic action. But [given the load growth coming to the US](https://www.semianalysis.com/p/ai-datacenter-energy-dilemma-race), and the aforementioned AI training load profile, the Virginia issue could become much more common.
 
-![](https://substackcdn.com/image/fetch/$s_!Jwb2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fccec8c77-f8d2-4921-ac16-27f592a2fc24_1935x794.png)
+![](z-images/b001b6e6e4222e60fa62b65f16d718be.webp)
 
 Source: North American Electric Reliability Corporation (NERC)
 
@@ -166,7 +166,7 @@ The weather scenarios were:
 - Summer Peak (SP): maximum electric load across Texas; a late afternoon three days into a heat wave.
 - High Renewable Minimum Load (HRML): “ **duck curve** ” electric load across Texas; midday on a sunny spring or fall day, the intersection of minimum electric load versus maximum behind-the-meter solar production.
 
-![](https://substackcdn.com/image/fetch/$s_!qtiv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78fe2dff-f579-4381-9ba8-3a09be8ccd66_1200x1200.png)
+![](z-images/c8befba673ffe072599b27b8fe5bc7d4.webp)
 
 Source: Visual Capitalist
 
@@ -186,7 +186,7 @@ Cheng found that in all four assumption sets the ERCOT grid system would see at 
 
 **Base Case Datacenter Disconnection Risk**
 
-![](https://substackcdn.com/image/fetch/$s_!rMCH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1db6fab-e1ed-4760-bd1c-1ba4c7919624_1970x486.png)
+![](z-images/5cdf092a615a8aefcd1fe082f3f172c3.webp)
 
 Source: ERCOT
 
@@ -194,13 +194,13 @@ Installing a synchronous condenser (basically, a giant electromagnetic flywheel)
 
 **Datacenter Disconnection Risk + SynCon**
 
-![](https://substackcdn.com/image/fetch/$s_!3Vag!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F98be74a3-04f9-450b-b64b-e7ae1bc28a8f_1698x420.png)
+![](z-images/6d21d1aca897db4511b5cdeed340f3ca.webp)
 
 Source: ERCOT
 
 Moreover, synchronous condensers are expensive systems. The capital cost for these systems [comes out to $30k-60k per MVA Reactive](https://market.us/report/synchronous-condenser-market/). At the installation spec used in Cheng’s model, this would cost $10M-20M to install for a 1 GW datacenter.
 
-![](https://substackcdn.com/image/fetch/$s_!-nGQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5af56019-8430-49e7-a3d7-3522aa7edc1b_1733x974.png)
+![](z-images/3b442bb9e4dc9abda9a408f328450dc9.webp)
 
 Source: Wikipedia - Synchronous Condenser
 
@@ -208,27 +208,27 @@ Source: Wikipedia - Synchronous Condenser
 
 The second presentation by Luis Hinojosa carried forward the knock-on consequences of so many datacenters disconnecting from the grid in response to a transient fault. He found that if more than about 2.6 GW of electric load disconnected from the grid at once, grid frequency across the ERCOT system would rise beyond the 60.4 Hz “danger zone” set by the ERCOT Dynamics Working Group.
 
-![](https://substackcdn.com/image/fetch/$s_!xueB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09cbc12b-9834-4cb3-9113-988bcf3f72cc_2208x962.png)
+![](z-images/e1757f88a29d93d1aeabac78ae56257c.webp)
 
 Source: ERCOT
 
-![](https://substackcdn.com/image/fetch/$s_!t4cK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F260c07c1-22fb-4649-9c40-3f9ad74613e4_1136x586.png)
+![](z-images/955a730d000159f77ed5efe059f66273.webp)
 
 Source: ERCOT
 
 Even a smaller 2 GW disconnection would also cause **rate of change of frequency (ROCOF)** instabilities beyond what ERCOT considers safe.
 
-![](https://substackcdn.com/image/fetch/$s_!otUL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb8a89b25-c466-4ca9-8329-4ddc439b1c08_2310x1008.png)
+![](z-images/51949ff983ed5fc691e132f6f05d13f6.webp)
 
 Source: ERCOT
 
-![](https://substackcdn.com/image/fetch/$s_!bH-m!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff30a0cd2-86f7-456a-820f-e641166fb550_1090x586.png)
+![](z-images/ebd199b6375a9346ba12aa3ce738fcd2.webp)
 
 Source: ERCOT
 
 That scale of disconnection would also cause problems for voltage quality, if more than 2.5 GW of load disconnected at once, large swaths of the Texas grid would see damaging voltage issues.
 
-![](https://substackcdn.com/image/fetch/$s_!coPZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff232e9b4-f9c2-46ee-a578-eafcc96e9432_2062x604.png)
+![](z-images/5c44475a9c5aa5122b33a521c118219f.webp)
 
 Source: ERCOT
 
@@ -250,7 +250,7 @@ Below we start by discussing Battery Energy Storage Systems (BESS), and for subs
 
 Tesla believes that the best solution to the power quality problems that datacenters face are large-scale batteries on the scale of 100s of megawatts or gigawatts. At a May 2025 ERCOT meeting, Tesla presented a slide deck basically unchanged from the deck presented at a [larger April 2025 workshop on large loads](https://www.nerc.com/comm/RSTC/LLTF/LLTF_April_Meeting_&_Technical_Workshop_Presentations_.pdf) run by the North American Electric Reliability Council (NERC). The slide deck focused on their Megapack 2 XL battery pack, shown below.
 
-![](https://substackcdn.com/image/fetch/$s_!QBxq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F98e2ea13-8dd9-4f10-a880-961aa88c659d_1971x1071.png)
+![](z-images/e7e73b93b9c8af1a95f90a99e9db0857.webp)
 
 Source: Tesla
 
@@ -260,13 +260,13 @@ It demonstrates the promise of **battery energy storage systems (BESS)** for dat
 
 A megawatt-scale battery connected to an inverter can manage power quality issues through rapid charging and discharging, this is called **fast frequency response.**
 
-![](https://substackcdn.com/image/fetch/$s_!88Yw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5f2b4d1-f231-43be-91b2-6d6bc575e2b6_1789x1043.png)
+![](z-images/50487b373aba1d75b0b31d777bf2e8a7.webp)
 
 Source: Tesla
 
 Tesla describes BESS as a more viable option for managing demand fluctuations than alternative solutions like diesel generators or capacitor banks. We explain how datacenter capacitors work and whether we think Tesla’s claim is true behind paywall. Tesla’s deck assumes a Megapack 2 XL would be installed *in tandem* with existing measures like generators and UPSs. One slide suggests that installing a BESS in series with a generator allows for smoother operation (and by extension improved lifespan) for that generator.
 
-![](https://substackcdn.com/image/fetch/$s_!v_jL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39357d2d-8137-4b34-842e-861adf1ad913_1936x791.png)
+![](z-images/1ae5c4abef8e2a3cdc33101c4e6a527d.webp)
 
 Source: Tesla
 
@@ -282,19 +282,19 @@ In today's power-constrained environment, the incentives shift. Demand response 
 
 This is due to fundamental grid design principle. Many potential locations have limitations on how much electricity can be generated or transmitted to that given location. However, those constraints are only relevant for 20-90 hours per year, or 0.25-1% of the year. Those **peak times** when the grid sees maximum electric load for the year are the *specific* design specification for much physical infrastructure the grid needs. Notably, because those peak times are driven primarily by air conditioning and behind-the-meter solar, they’re reasonably predictable: late afternoons, deep into summer heat waves, as behind-the-meter solar generation falls away for the day.
 
-![](https://substackcdn.com/image/fetch/$s_!uQEI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F230c9f12-7ee5-443b-afe9-e84b0bc1ccd1_1877x1086.png)
+![](z-images/5af78c2a8570e79404c4614dcdfe38c4.webp)
 
 Source: Rethinking Load Growth - Assessing the Potential for Integration of Large Flexible Loads in US Power Systems
 
 xAI's participation to a demand-response program in Memphis, TN was key to accessing grid power faster than typical timelines. While onsite natural gas turbines enabled the cluster to be set up in four months, xAI has also built a substation and is drawing 150MW from the grid - less than a year after requesting the load, which is remarkably fast.
 
-![](https://substackcdn.com/image/fetch/$s_!YTOJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4765bea4-a026-40a6-afae-08c69ea240ac_2000x812.png)
+![](z-images/7370a218e4eb484ad22d1df9a33db1ba.webp)
 
 Source: Tesla
 
 However, implementing demand response has challenges on the customer and the utility side. On the customer side, no one likes *doing* demand response, in many cases, it requires cutting lights, air conditioning, and “nonessential” process loads. Backup power becomes a necessity, and Tesla suggests that BESS are a good fit: instead of cutting load, the datacenter can discharge energy from the BESS to reduce electric demand at the meter.
 
-![](https://substackcdn.com/image/fetch/$s_!_xKZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faea28e42-34c7-4270-8b25-36d8b0f28780_1924x838.png)
+![](z-images/b90920abbd0c3970c93f3c66a0f9f507.webp)
 
 Source: Tesla
 

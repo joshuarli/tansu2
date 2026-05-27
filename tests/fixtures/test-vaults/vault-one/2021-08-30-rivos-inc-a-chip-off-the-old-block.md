@@ -8,13 +8,13 @@ description: "We recently wrote about a new CPU startup that has been garnering 
 
 We [recently wrote](https://semianalysis.substack.com/p/a-chip-off-the-old-block-new-risc) about a new CPU startup that has been garnering very impressive leadership and architects from all over. We have now confirmed the name, Rivos Inc. They are still in stealth mode and only 3 months into formation, but they are one to keep an eye on. Rivos is based in Santa Clara and Austin, and they are hiring heavily in many areas if anyone is looking to work at an exciting RISC V startup that is targeting to be the first high-performance RISC V core. We recommend you check them out. The executives and leadership are very impressive and storied engineers. They even share the same office as Nuvia, another Apple CPU spin-out that is now a core part of Qualcomm’s roadmap.
 
-![](https://substackcdn.com/image/fetch/$s_!89hc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb38857d6-1684-4554-af30-86b80b186a38_132x64.png)
+![](z-images/138d1c964fc032336b5c8e398e872c0f.webp)
 
 Still fresh on our minds is Nuvia, an Arm based CPU firm whose leadership was ex-Apple. They rushed onto the scene and as soon as the product of their work was visible, they were snatched up for $1.4B. Nuvia had multiple offers at or over $1B.
 
 This new startup that SemiAnalysis has found includes many engineers coming from a similar source, Apple. There was a bit of an exodus in their senior CPU leadership all over again, but this has also touched many other firms such as Google, Qualcomm, Intel, and more.
 
-![](https://substackcdn.com/image/fetch/$s_!nSSc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F4c3e98a1-84de-4c65-b2d1-38f2adc70beb_1024x640.png)
+![](z-images/b75f9dc9f25dde176a0dcc6c4245075d.webp)
 
 Rivos may be even more stacked with talent then Nuvia was a few months into their journey. We will go through the executives as well as a brief summary of where the staff engineers have worked.
 
@@ -28,7 +28,7 @@ Tse-Yu Yeh is the VP of Silicon Engineering. He started at Intel. He also went t
 
 Ken Dockser is lead CPU Architect. He has gone from DEC to NexGen Microsystems to MIPS to VLSI to IBM. He was the Qualcomm Director of Datacenter where he led the Centriq server CPU product. This product was competitive and starting to get wins including at CloudFlare and Chinese hyperscalers. It was cut short when an aggressive takeover attempt meant Qualcomm had to cut teams which had yet to be profitable in order to appease shareholders. He moved on to become the director of R&D at Qualcomm where he headed the Cloud AI 100. This is Qualcomm’s AI Inference geared product that is [racking up wins in the edge and even has a hyperscaler win](https://semianalysis.com/qualcomm-hits-a-homerun-ai-100-powerful-ai-inference-acceleration-for-the-edge/). He also led Qualcomm’s RISC V effort and is on the RISC V Board of Directors!
 
-![](https://substackcdn.com/image/fetch/$s_!Knk-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F62eae071-8de9-42b3-a4f4-38e4b7f71ef7_1024x769.jpeg)
+![](z-images/7ba8ad282b5df2b849603d76b587833e.webp)
 
 Beyond these executives, we found another dozen employees. We will leave them out as we do not believe non-executives should have their privacy violated. We will list some of their successes though. Besides the senior staff from Apple, there are quite a few other seasoned Apple employees. Furthermore, they have a Google chip lead. Some folks from the Cavium/Marvell teams including the principal architect and director have joined up. They have veterans from other failed CPU attempts such as Xeon Phi. The list of expertise continues with a board member from JEDEC, the organization who sets standards for memory and much more. We were also able to find other leaders from Intel and AMD.
 

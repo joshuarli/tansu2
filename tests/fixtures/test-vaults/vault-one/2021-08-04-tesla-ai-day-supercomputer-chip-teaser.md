@@ -8,29 +8,29 @@ description: "We try to stay fact based with our analysis, but recently an image
 
 We try to stay fact based with our analysis, but recently an image was posted of a Tesla chip that leads to an immense amount of speculation that we would like to dip out toes in. It was posted by Dennis Hong, a world-renowned researcher for robotics and autonomous driving. He is a professor and runs a large lab at UCLA. His [tweet](https://twitter.com/DennisHongRobot/status/1422435800755568644?s=19) only states Tesla AI Day alongside the date of August 19th, time, and location of the event. The timing is quite interesting considering Tesla just built what could be considered by some, the world’s 3rd largest supercomputer. That was built [with Nvidia GPUs using Super Micro Systems.](https://www.servethehome.com/tesla-supercomputer-with-nvidia-a100-80gb-and-perhaps-supermicro-shown/)
 
-![](https://substackcdn.com/image/fetch/$s_!aijh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F21a996eb-eab4-4c63-8585-c6ffda93f991_872x872.jpeg)
+![](z-images/041a25d203f8c1123d335ecc9294c6d1.webp)
 
 At first glance it looks like there is a carrier, heatsink, and power delivery. The most interesting part of course, is the chips. It has a large array of BGA solder pads and a 5x5 array of chips. This type of packaging looks incredibly unorthodox and the only thing we can think of is TSMC’s integrated fan out system on wafer technology (InFO\_SoW). [Here is the link to the paper on IEEE.](https://ieeexplore.ieee.org/document/9159219)
 
-![](https://substackcdn.com/image/fetch/$s_!_1CQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F72fd0d3a-a7a2-4304-afb0-0400085e0c36_762x433.png)
+![](z-images/86e9d7801553d2a332b931fe9afe1283.webp)
 
 This image looks remarkably similar to the Tesla chip and offers some insights. Just like the tesla image, there is a cold plate. Various chips arrange in a grid, an InFo Wafer, and connectors. The structures look to be a 1 to 1 match but the exact details them look to be slightly different than the initial TSMC research.
 
 > InFO\_SoW eliminates the use of substrate and PCB by serving as the carrier itself. Close packed multiple chips arrays within a compact system enable the solution to reap the wafer-scale benefits such as low latency chipto-chip communication, high bandwidth density and low PDN impedance for greater computing performance and power efficiency. In addition to heterogeneous chips integration, its wafer-field processing capability has enabled chiplet-based design for greater cost saving and design flexibility.
 
-![](https://substackcdn.com/image/fetch/$s_!-GWi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F53870feb-3658-47a9-8746-7d2d4392291c_1024x246.jpeg)
+![](z-images/02278ea41edb86ffb03303afdc535449.webp)
 
 This breaks through the current barriers with multi-chip modules. With an interposer-based technology such as Nvidia datacenter GPUs, they are limited by interposer manufacturing limits. TSMC’s 5th generation CoWoS-S recently [went into mass production with interposers that are 3x the reticle limit](https://fuse.wikichip.org/news/6031/5th-gen-cowos-s-extends-3-reticle-size/). The reticle limit is 26mm by 33mm and is associated with the maximum area a lithographic machine can pattern in one instance. This method involves reticle stitching and other manufacturing difficulties because the interposer is a silicon chip itself. This type of packaging has limitations in scaling the number of chips for huge AI workloads.
 
-![](https://substackcdn.com/image/fetch/$s_!Esao!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F88be63c1-70c2-4d72-9048-7ac32f911a94_923x370.png)
+![](z-images/2a1615393be8beea69a8a7d4c0757ab2.webp)
 
 The other method is with flip chip packaging. The most well-known MCM design with this type of packaging is AMD CPUs. They do not have the issues with reticle limits, but there are huge drawbacks in terms of power and wire density. You burn significantly more power on inter chip data transfers and the bandwidth between chips is limited. This type of packaging would not suit well to huge AI workloads because of these limitations.
 
-![](https://substackcdn.com/image/fetch/$s_!P7jR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe0f98355-0698-4d58-9888-360ee781f279_788x408.png)
+![](z-images/bf4cd4d6f1ecd65bee22dd71f6a0d10e.webp)
 
 With the scaling that Tesla may hope to achieve in their Dojo supercomputer design, there will be an immense amount of heat. InFO\_SoW is capable of 7,000W of power. This is compared to Nvidia’s datacenter A100 GPU which comes in configurations as high as 500W. With this requires immense consideration for cooling, and the TSMC paper on InFO\_SoW offers a solution.
 
-![](https://substackcdn.com/image/fetch/$s_!xcqI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd045fa92-66f1-4955-9c36-ec61b0b9adc8_655x364.png)
+![](z-images/7d00024658e353178200e69fd759e123.webp)
 
 This image is quite crude, but the cold plate in the Tesla image looks similar in that it has many inlets and outlets. Water-cooling is a necessity with this level of power and heat density.
 

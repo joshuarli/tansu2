@@ -16,7 +16,7 @@ There are a wide range of emotions and thoughts around the community on the Amaz
 
 It may feel very out of place to quote Eminem, but give us a moment and it will all make sense.
 
-![](https://substackcdn.com/image/fetch/$s_!YUOI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2d1cfc38-96ff-41a3-9b6e-cb8e18918ce4_1024x1024.jpeg)
+![](z-images/bedeb63124d696732f142e095f761213.webp)
 
 Made with DALL-E 3, isn’t it so cute!
 

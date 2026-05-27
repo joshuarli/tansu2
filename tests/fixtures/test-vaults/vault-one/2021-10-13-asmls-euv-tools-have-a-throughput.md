@@ -8,11 +8,11 @@ description: "EUV light source power is a constraining factor for leading edge w
 
 EUV light source power is a constraining factor for leading edge wafer manufacturing. Each $150M EUV machine currently has a laser light source with power numbering a few hundred W. ASML has done a fantastic job with Trumpf of scaling power up from less than 100W to where we stand today, but it is not enough. The current EUV uses CO2 lasers shot at micro droplets of tin liquid in order to emit EUV light. This extreme ultraviolet light is collected via collection mirrors, focused, then used for patterning on wafers. This method will not scale forever, and it is already a limiting factor. With upcoming high-NA EUV, it will be even more of a limiting factor.
 
-![](https://substackcdn.com/image/fetch/$s_!EP0z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0ffe1ccb-76e2-40ce-a2de-13b6be37220c_1024x574.png)
+![](z-images/e0e3638ef9dd999b665447abab239742.webp)
 
 TSMC N3 will have about 20-25 EUV exposures per wafer. A TSMC fab with 10 EUV machines running N3 wafers would only be capable of ~15,000 wafers per month at current power output and uptime rates. As such, the industry needs EUV machines to have a much higher power light source or leading edge will be heavily constrained. This solution is quite far off, but it has quite a few investors including Intel. Rather than firing a laser at tin droplets and attempting to collect the light, Lyncean is firing a laser into a synchrotron.
 
-![](https://substackcdn.com/image/fetch/$s_!bXjG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9457d978-e939-4c30-be21-27c6f2ff64e1_1023x477.png)
+![](z-images/ca999edd2829b0db89757716a912d046.webp)
 
 The synchrotron almost looks like a particle accelerator. It accelerates the electrons, spins them around and focuses them. Using magnets, the electrons are wiggled around, and this causes them to emit photons. The light can be collected, focuses, and used for a variety of experiments. While this is a large machine at 5 meters by 12 meters, it is smaller than gargantuan EUV machines that they should fit into. Lyncean has demonstrated and sold 2Kw EUV light sources and can scale this much further. This would be 4x what ASML and Trumpf are attempting to ship in 2025. They can stack 4 of these light sources fairly easily as well. The pricing is $30M-$50M. SemiAnalysis doesn’t think this will replace the current method of generating EUV light anytime soon due to collection issues, but we thought the technology was really cool, so we had to share!
 

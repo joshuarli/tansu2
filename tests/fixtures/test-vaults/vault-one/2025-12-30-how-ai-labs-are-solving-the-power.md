@@ -14,7 +14,7 @@ Nearly two years ago, we were the first to predict a looming power crunch. In ou
 
 The chart below tells the story: in Texas alone, **tens of gigawatts of datacenter load requests** pour in **each month**. Yet in the past 12 months, barely more than a gigawatt has been approved. The grid is sold out.
 
-![](https://substackcdn.com/image/fetch/$s_!U377!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe566cdd5-3ecc-4023-8fd5-a4c8f47f777d_2930x1507.png)
+![](z-images/af031037105579ba86c574436dff52c4.webp)
 
 Source: ERCOT 2024 Large Flexible Load Task Force (LFLTF)
 
@@ -22,7 +22,7 @@ However, AI infrastructure cannot wait for the grid’s multiyear transmission u
 
 Eighteen months ago, Elon Musk shocked the datacenter industry by building a 100,000-GPU cluster in four months. Multiple innovations enabled this incredible achievement, but the energy strategy was the most impressive. xAI entirely bypassed the grid and generated power onsite, using truck-mounted gas turbines and engines. As shown below, xAI has already deployed over 500MW of turbines near its datacenters. In a world where [AI Labs are racing to be first with a Gigawatt datacenter](https://newsletter.semianalysis.com/p/xais-colossus-2-first-gigawatt-datacenter), **speed is the moat**.
 
-![](https://substackcdn.com/image/fetch/$s_!hlM-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb467823e-102f-47aa-97ec-e1d399f8f77b_1024x555.jpeg)
+![](z-images/dcb69cf48698523ed1511457f63837fe.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -36,7 +36,7 @@ The beneficiaries extend far beyond the usual suspects. Yes, GE Vernova and Siem
 
 To understand growth and market share by supplier, we built a building-by-building tracker of sites deploying onsite gas in our [Datacenter Model](https://semianalysis.com/datacenter-industry-model/). The results surprised us: **12 different suppliers have now secured >400 MW of datacenter orders each in the US alone, for onsite gas generation.**
 
-![](https://substackcdn.com/image/fetch/$s_!H5El!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3aea9513-1713-449a-827e-18713518ede2_3731x2214.png)
+![](z-images/8bc00cb1c33a4e2301800baae2fe0d49.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -44,7 +44,7 @@ However, onsite power generation brings its own set of challenges. Power costs a
 
 Again, clever firms like xAI have found remedies. Elon's AI Lab even pioneered a new site selection process - building at the border of two states to maximize the odds of getting a permit early! While Tennessee couldn't deliver on time, Mississippi happily enabled Elon to build a GW-scale power plant.
 
-![](https://substackcdn.com/image/fetch/$s_!HTmM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa08393e1-6f99-44dc-a37f-b7769ba26623_852x1362.png)
+![](z-images/32835f244bd9e3c5a08091d3db910dee.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -65,7 +65,7 @@ These insights appeared in our [Datacenter Industry Model](https://semianalysis.
 
 But we’ve hit a tipping point. The large datacenters coming online in 2024-25 secured their power in 2022-23, before the gold rush. Since then, the scramble has been relentless. We estimate **roughly a terawatt of load requests** have been submitted to US utilities and grid operators.
 
-![](https://substackcdn.com/image/fetch/$s_!v-ZP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8b85901-01b1-4e0f-9ce0-ff4cc0b718bd_2521x1600.png)
+![](z-images/0e5410eaba4fb09f015392cd1875d542.webp)
 
 Source: SemiAnalysis Datacenter Industry Model
 
@@ -74,7 +74,7 @@ The result is gridlock - literally. As we explained in **[AI Training Load Fluct
 1. **Real-time balancing**: Electricity supply and demand must match nearly perfectly, every second. A mismatch risks blackouts for millions, as we saw with the Iberian Peninsula blackout in April 2025.
 2. **System studies**: Every large new load (datacenter) or supply (power plant) triggers deep engineering studies to ensure it won’t destabilize the network. And in some places, grid topology changes so quickly that load studies go obsolete before they’re completed.
 
-![](https://substackcdn.com/image/fetch/$s_!0N9x!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85df89ad-eea6-4a86-8354-803d96c25129_624x355.png)
+![](z-images/f433b745a459ce181bea4b75779ced81.webp)
 
 Source: 2025 ITP portfolio
 
@@ -87,13 +87,13 @@ When hundreds of developers simultaneously submit interconnection requests, the 
 - Speculative requests clog the queue for everyone, encouraging more speculative requests elsewhere
 - The vicious cycle accelerates
 
-![](https://substackcdn.com/image/fetch/$s_!C4x3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf329af2-9a83-430c-a068-680d2eaaa3e9_1204x652.png)
+![](z-images/02af7fa63a68aaab76ade174a042cd30.webp)
 
 Source: PJM Load Analysis Subcommittee
 
 The supply side is equally constrained. The timeline from interconnection request to commercial operation now stretches to **five years** for most generation types.
 
-![](https://substackcdn.com/image/fetch/$s_!IijO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdc289e35-2585-43af-a588-90b1a61674bd_1248x540.png)
+![](z-images/050334380696834c9b866ab3cfbe1c66.webp)
 
 Souce: Lawrence Berkeley National Lab
 
@@ -116,23 +116,23 @@ BYOG involves a complete re-thinking of the way we build power plants. Tradition
 - There is typically a multi-year lead time to get large turbines, and current lead times are at an all-time high.
 - Once delivered, construction and commissioning of a large combined-cycle power plant takes **~2 years - an eternity in the AI era.**
 
-![](https://substackcdn.com/image/fetch/$s_!aCmX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb33e8f47-7c0c-4644-ae01-0fd20dd53e71_1300x930.png)
+![](z-images/0f16433952dd3c6061b24bdc988d5b13.webp)
 
 A combined cycle gas turbine (CCGT). Source: Knoxville News Sentinel
 
 AI Datacenter “BYOG” power plants re-shape the playbook, and xAI led the way for the industry. To deploy faster, Elon’s AI Lab relied on small modular 16MW turbines from Solar Turbines, a CAT subsidiary. The turbines are small enough to be transported by standard long-haul trucks. They’re deployed in a matter of weeks. Elon didn’t even buy them – he rented from Solaris Energy Infrastructure to bypass the equipment lead time. He also leveraged VoltaGrid’s fleet of mobile truck-mounted gas engines to deliver faster!
 
-![](https://substackcdn.com/image/fetch/$s_!EVEo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7270f9f8-addf-403b-b3dc-77a98cd5665b_1430x908.png)
+![](z-images/d131195c96f63e93f5f96e73bc210e7c.webp)
 
 Solar SMT130 (rated for 16 MW). Truck for scale. Source: CAT (Solar Turbines)
 
-![](https://substackcdn.com/image/fetch/$s_!hzZH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9ed803a-d129-4fe1-920b-6a13a9e5a274_1600x900.png)
+![](z-images/c8b9c51c10a8bd7ea1ba2453c2efeaa1.webp)
 
 Source: Tom’s Hardware
 
 Other hyperscalers quickly followed suit. Meta’s deployment in Ohio, with Williams, is illustrative – with their power plant comprising five different types of turbines & engines, clearly the design pattern was “I’ll deploy whatever I can get on time!”
 
-![](https://substackcdn.com/image/fetch/$s_!22Zm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0c11789-f392-49d6-8874-060fa89a919d_624x428.png)
+![](z-images/cb2e97efa32b9fb8dc255349da96d149.webp)
 
 Socrates South Satellite Image (Nov 11, 2025)
 
@@ -148,7 +148,7 @@ Among gas generators available to datacenter developers, there are three broad c
 
 There are additional onsite power options such as co-locating with an existing nuclear power plant, building onsite SMRs, Geothermal, and many more, but we won’t discuss them in this report. For the most part, these other solutions are not driving net new power generation in the next ~3 years.
 
-![](https://substackcdn.com/image/fetch/$s_!TPvU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1dc2e3bb-1ade-48e5-9f6f-0d74e22d79b3_705x238.png)
+![](z-images/b6a94f66c25febd5a1696c7e6ba9902d.webp)
 
 Understanding which solutions are the best fit for certain use-cases requires digging into the core tradeoffs. We see the following as most relevant:
 
@@ -170,17 +170,17 @@ Having said that, let’s now deep dive into the different types of gas power pl
 
 Gas turbines run on a Brayton Cycle: compress air, burn fuel in it, and route the hot gas through a turbine. Turbines are differentiated by **inlet temperatures**. Lower temperatures correspond to lower installation costs, lower maintenance costs, lower peak efficiency, and slower ramp rates.
 
-![](https://substackcdn.com/image/fetch/$s_!9NYx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffbdea229-e3c1-46f2-bc1a-d4790ea57eee_1129x594.png)
+![](z-images/4eeb4bb4fb9a760bd650114e01c6d61a.webp)
 
 An aeroderivative gas turbine is simply a jet engine bolted to the ground. GE Vernova’s aeros derive from GE jet engines; Mitsubishi Power’s from Pratt & Whitney; Siemens Energy’s from Rolls-Royce. Because jet engines are designed to deliver massive power in a compact, flight-worthy package, they are relatively easy to adapt for stationary power. Extend the turbine shaft, bolt a generator coil to the end, add intake and exhaust mufflers, and feed fuel from tanks or a pipeline. This is, in part, why Boom Supersonic could pivot so quickly into aeroderivative gas turbines: most of their engineering and manufacturing is carryover.
 
-![](https://substackcdn.com/image/fetch/$s_!FCLx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7443f969-4531-4e17-b8e3-f8229eed9f78_624x495.png)
+![](z-images/a3b802f81eded0736f50e7770773dd0a.webp)
 
 Mitsbishi Heavy FT8 MOBILEPAC (rated for 30 MW). Source: Mitsubishi Heavy Industries
 
 We show below a view of the Martin Drake power plant, w/ 6x GE Vernova LM2500XPRESS units. This is how electric utilities deploy aeroderivatives, as “peaker plants” for sudden supply shortages in the grid.
 
-![](https://substackcdn.com/image/fetch/$s_!6cUt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37829f1d-54b2-4235-a7e2-0e31424b03bd_796x676.png)
+![](z-images/0111999e764afa12c91f8ee57ba69f30.webp)
 
 The core manufacturers for aeroderivative gas turbines are similar to those of heavy-duty gas turbines: GE Vernova, Mitsubishi Power, and Siemens Energy dominate the market, selling both aeros and lower-temp **industrial gas turbines (IGTs)**. Additionally Caterpillar also produces IGTs under the Solar brand name, as does Everllence (formerly MAN Energy Systems).
 
@@ -202,7 +202,7 @@ At current rates, aeros cost **$1,700-2,000/kW** in all-in capital expenditure, 
 
 Industrial gas turbines work on the same cycle as aeros and share benefits like compact footprints, modularity, and relatively fast lead times. But they are designed from scratch for stationary use rather than adapted from aviation. They typically run at lower inlet temperatures and use simpler designs, which lowers service costs at the expense of efficiency and ramp speed.
 
-![](https://substackcdn.com/image/fetch/$s_!nonU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F573a0140-75ab-47ca-96c2-51534f6adc44_624x396.png)
+![](z-images/3a46eade08e3a184c07afbc73fa6af4a.webp)
 
 Cutaway of SMT130 IGT. Source: Solar Turbines
 
@@ -210,7 +210,7 @@ Simple-cycle IGTs span roughly 5–50 MW and ramp from cold to full output in ~2
 
 The most common dedicated industrial gas turbines are the **Siemens Energy SGT-800** and **Solar Titan Series**. However, smaller heavy-duty gas turbines like the **GE Vernova 6B** also sometimes take on similar use cases.
 
-![](https://substackcdn.com/image/fetch/$s_!EVEo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7270f9f8-addf-403b-b3dc-77a98cd5665b_1430x908.png)
+![](z-images/d131195c96f63e93f5f96e73bc210e7c.webp)
 
 Solar SMT130 (rated for 60 MW). Truck for Scale. Source: CAT (Solar Turbine)
 
@@ -235,17 +235,17 @@ Reciprocating engines function like automotive engines, but at a much larger sca
 
 RICEs can ramp from cold to full output in 10 minutes, similar to aeros in practice. This lets RICEs work as peaker plants or as backup generators, eliminating the need for diesel backups. On paper, RICE O&M looks higher than for turbines because there are more moving parts. In practice, they handle fuel impurities, dust, and high ambient temperatures better than many turbines and suffer less de-rating in hot climates.
 
-![](https://substackcdn.com/image/fetch/$s_!p6G-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa722cd1c-5759-413a-952c-f31727d7fba9_946x570.png)
+![](z-images/0a364419707b3bbe47ab8f93368edf9c.webp)
 
 Medium-speed engine manufacturing is fairly consolidated, with the primary manufacturers being Wärtsilä, Bergen Engines, and Everllence (formerly MAN Energy).
 
-![](https://substackcdn.com/image/fetch/$s_!w7M2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe36502d2-404f-4d3c-b963-b9f2410c1733_624x269.png)
+![](z-images/a22786ff1666c65afc85c7074447f97e.webp)
 
 Bergen B36:45V20AG (rated for 11.3 MW). Person for scale. Source: Bergen Engines
 
 High-speed engine manufacturing is not as consolidated as turbines. Outside the prominent players in Jenbacher, CAT, Cummins, and Rolls Royce subsidiary MTU, there are a wide range of manufacturers, because high-speed gas engines are functionally equivalent to the diesel engine designs currently used for backup power at many datacenters. The most consequential reciprocating engine is the **Jenbacher J624**, a 4.5MW turbocharged gas engine that can be containerized for easier logistics. This system is the preferred generator for VoltaGrid’s energy integration services.
 
-![](https://substackcdn.com/image/fetch/$s_!dpqj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7173c083-7b7f-4487-a7b0-8ce07e685f6e_1430x953.png)
+![](z-images/573af07e9b83021014e20731cfb4ffe3.webp)
 
 Source: VoltaGrid
 
@@ -257,7 +257,7 @@ At current rates, reciprocating engines cost **$1,700-2,000/kW** in all-in capit
 
 High-speed engines can be much faster to deploy. For example, at the initial Colossus 1 deployment, xAI leveraged 34 VoltaGrid truck-mounted systems, incorporating high-speed engines from Jembacher. High-speed engines, in particular, are popular with **energy procurement vendors** (described later). Their wide availability and small unit size offer faster time-to-power. We show below a VoltaGrid 50MW deployment in San Antonio, with twenty Jembacher J620 (rated 3.36kW per unit).
 
-![](https://substackcdn.com/image/fetch/$s_!rt8Z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc54c17fc-0c9c-48e8-81bd-93ae63be79fb_1157x552.png)
+![](z-images/e27bedd109b8676c85cf300f5eebe5ce.webp)
 
 Source: Voltagrid
 
@@ -267,19 +267,19 @@ The tradeoff is scale: to build a 2 GW onsite gas system with 5 MW engines, you 
 
 A fairly niche solution is now taking an increasingly large share of the pie: fuel cells. Often associated with hydrogen, Bloom Energy’s SOFC fuel cells can run on natural gas too and are pitched as baseload generation. We first called out Bloom Energy as a big winner in last 2024 in the [datacenter model](https://semianalysis.com/datacenter-industry-model/). Since then the orders have skyrocketed.
 
-![](https://substackcdn.com/image/fetch/$s_!kALS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdd4de2e8-06ba-451d-8831-d1ff2f9b65f7_624x354.png)
+![](z-images/a76441e61175a5014006979250876c17.webp)
 
 Source: Power Engineering
 
 Bloom’s “Energy Server” is made up multiple ~1kW stacks, assembled into ~65kW modules, and packaged into a 325kW power generator. To date, the largest operational SOFC-based power plants are in the tens of MW, mostly in the US and Korea.
 
-![](https://substackcdn.com/image/fetch/$s_!wdJs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6537eded-6e51-4f4e-846e-e4053ea6d3d1_1248x678.png)
+![](z-images/2e5715b0885e5e8dce9b5d057620f382.webp)
 
 Source: Bloom Energy
 
 The way they generate energy is very different from that of traditional generators. There is **no combustion process**. Instead, oxygen is electrochemically reduced to oxide ions, which flows through a ceramic electrolyte. At the other end of the fuel cell, these ions combine with hydrogen atoms stripped from methane natural gas. This combination releases water, CO2, and electricity.
 
-![](https://substackcdn.com/image/fetch/$s_!2jTq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c6fea39-20de-4b4f-ae57-fe8584103bed_726x547.png)
+![](z-images/edc9264a2dbf96274e7fce48913198d2.webp)
 
 This fundamental difference provides Bloom’s fuel cells with a key advantage: they do NOT generate material air pollution, besides CO2. The permitting at the EPA level is significantly smoother and easier than that of combustion generators. That’s why we often see them in population centers, such as near offices.
 
@@ -287,7 +287,7 @@ Bloom’s killer feature is the speed of deployment. It barely requires precast 
 
 In the AI era where speed is the moat, that advantage alone is enough to place Bloom on the map.
 
-![](https://substackcdn.com/image/fetch/$s_!Dn77!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff0a47e4f-78d3-4fb9-be28-194a66e88720_1248x650.png)
+![](z-images/c40f1cd1efe10f9d1c30c3c0d422b503.webp)
 
 Source: Bloom Energy Installation \[YouTube\]
 
@@ -295,9 +295,9 @@ Bloom’s main challenge is cost. Fuel cell efficiency is quite good, with an eq
 
 Maintenance has historically also been notably higher than other solutions. Individual fuel cell stacks last roughly **5-6 years**, then must be replaced and refurbished. This per-cell replacement makes up ~65% of service costs, although specific numbers are kept close to vest. Bloom discloses little about its materials beyond the use of ceramics in the cell core, but claim that their fuel cells have no critical mineral dependence on China or other contested regions.
 
-![](https://substackcdn.com/image/fetch/$s_!6GCg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F79098fb0-5f05-49f3-91af-1e4cec6c5a31_1505x788.png)
+![](z-images/5e547b476767adcc957a8367e1112398.webp)
 
-![](https://substackcdn.com/image/fetch/$s_!Fa4r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09c9b4cc-eeba-44ca-a84a-15876c9eff84_1570x837.png)
+![](z-images/d20ca3d8a334cc49acbc149e519c00ff.webp)
 
 Source: Bloom Energy
 
@@ -324,7 +324,7 @@ Large turbines are grouped into classes based on combustion (turbine inlet) temp
 
 As shown below, these systems are both very large and heavy. The installation and commissioning process can take a while.
 
-![](https://substackcdn.com/image/fetch/$s_!ORUY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fea7ede7b-a314-4d9c-b59f-d7593149bf3e_740x814.png)
+![](z-images/7a5a5719fd11a6f5cb645c4b5c1eacd5.webp)
 
 A view of the Three Rivers CCGT in Grundy County, IL. Satellite Image.
 
@@ -332,7 +332,7 @@ A view of the Three Rivers CCGT in Grundy County, IL. Satellite Image.
 
 Combined-cycle gas turbines (CCGTs) exploit the fact that simple-cycle exhaust is still very hot, hot enough to boil water into steam. Routing exhaust through a heat recovery steam generator (HRSG) produces steam for a separate steam turbine and generator. The result is a second round of power from the same fuel. By turning one turbine’s trash into another turbine’s treasure, CCGTs can run 50-80% more efficiently than a simple-cycle turbine.
 
-![](https://substackcdn.com/image/fetch/$s_!jqfC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F27759ab0-bc15-4f96-8334-804f10759535_1216x700.png)
+![](z-images/785a62f2f539235d36847a33c77db398.webp)
 
 The CCGTs most vaunted for large loads are heavy-duty CCGTs, which can reach gigawatt-scale outputs. However, even small aeroderivative or industrial gas turbines can be sold with an integrated steam turbine, which can dramatically increase power output with near-identical fuel inputs. Common configurations are:
 
@@ -364,7 +364,7 @@ Bridge power brings two advantages:
 
 To ensure reasonable uptime, xAI paired the turbines with MegaPacks. That also enables to smooth out load fluctuations – an issue we’ll discuss below.
 
-![](https://substackcdn.com/image/fetch/$s_!6JEN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb4ab9185-d960-4f39-964b-1ac2ab6c757c_1248x938.png)
+![](z-images/c5d8cc8dc14d79b5711a9bf02a72a07a.webp)
 
 Satellite image over xAI Memphis
 
@@ -415,7 +415,7 @@ In hot climates, such as the American Southwest, derating may require **10–11 
 
 Crusoe’s Abilene site for Oracle and OpenAI uses a version of this setup, with a deployed fleet of ten turbines, with five GE Vernova LM2500XPRESS aeroderivative gas turbines and five Titan 350, good for 360MW of nameplate generation.
 
-![](https://substackcdn.com/image/fetch/$s_!wGjg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F650ec585-1693-45aa-9a14-557f2260d942_1418x648.png)
+![](z-images/2b14726696d373c0c08543bb6db7013a.webp)
 
 Source: Citrini Research
 
@@ -423,7 +423,7 @@ Source: Citrini Research
 
 Meta and Williams are building a pair of 200 MW behind-the-meter gas plants to power Meta’s New Albany Hub, which we have covered in this article: [Meta’s new ultra-fast “tent” datacenters in Ohio – SemiAnalysis](https://semianalysis.com/core-research/metas-new-ultra-fast-tent-datacenters-in-ohio/)
 
-![](https://substackcdn.com/image/fetch/$s_!22Zm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0c11789-f392-49d6-8874-060fa89a919d_624x428.png)
+![](z-images/cb2e97efa32b9fb8dc255349da96d149.webp)
 
 Socrates South Satellite Image (Nov 11, 2025)
 
@@ -444,7 +444,7 @@ To match the “three nines” of uptime provided by the grid, an onsite power p
 
 Redundancy introduces a new headache for operators: there is a tradeoff between the size of a system and the “overbuild” ratio. While H class and F class turbines are more energy-efficient than aeros, the higher redundancy needs means than, if poorly designed, an islanded system based on heavy duty turbines can yield higher power costs than aeros. Other solutions than a simple “overbuild” must be considered, such as using smaller turbines as “backup”, batteries, or even a grid connection.
 
-![](https://substackcdn.com/image/fetch/$s_!aLdg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4fdac23d-4633-4d53-9af9-00056a9fe69c_2848x1504.jpeg)
+![](z-images/728c34fdbd21a6a42b48f88c1f4c2767.webp)
 
 To understand the overbuild ratio, we can use a practical example. In Shackelford County, TX, VoltaGrid is poweing a 1.4GW datacenter (IT capacity) with 2.3GW of Jembacher systems (64% overbuild). We can break this down in the following way:
 
@@ -459,13 +459,13 @@ AI compute load, particularly training, is highly variable, including megawatt-s
 
 - **Synchronous condensers** – These are essentially generators spun up as motors, with no mechanical load. Once synchronized to the grid, they consume only small losses. During sudden load changes, they absorb or supply **reactive power**, stabilizing voltage and adding short-duration inertia. Their energy capacity is small, so they help for seconds, not minutes.
 
-![](https://substackcdn.com/image/fetch/$s_!mykf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb3fbaa17-60c6-448d-ba22-818942df9adb_624x624.png)
+![](z-images/ccaadb43f3570c49c3fcbcd55142936f.webp)
 
 Source: Baldor.com
 
 - **Flywheels** – These add a real rotational energy buffer. A motor-generator is coupled to a large flywheel and connected between generation and load. Flywheels can inject or absorb **real power** (not just reactive) for **5–30 seconds**, smoothing transients, generator trips, and voltage dips. Bergen, for example, packages flywheels alongside its engines via an affiliate vendor.
 
-![](https://substackcdn.com/image/fetch/$s_!xzZd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c30a014-762b-4dfa-9e3c-8fe8c86bca2a_1430x1430.png)
+![](z-images/c81d361eadf8385c0f34ae1ee200a2b8.webp)
 
 Source: Piller Power
 
@@ -473,7 +473,7 @@ Source: Piller Power
 
 VoltaGrid combines RICE fleets with synchronous condensers. Bergen Engines has sold engines with flywheels from a vendor under the same parent company. Engine manufacturer Wärtsilä has a battery energy storage vertical that they may bundle with datacenter projects. Bloom claims that their fuel cell systems don’t need any equipment to manage load fluctuations. The exact system used depends a bit on local constraints and mostly on what the vendor prefers to use. xAI prefers to use Tesla’s Megapacks for backup and handling load fluctuations.
 
-![](https://substackcdn.com/image/fetch/$s_!vNpH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F881af022-a429-4287-bd7e-bdf87ed4337a_1248x1118.png)
+![](z-images/e9f396d317f8dcd58a02bd55631f4faa.webp)
 
 Megapacks + MACROHARD
 
@@ -493,7 +493,7 @@ Of the major gas generation manufacturers, only Bloom Energy, Caterpillar, and n
 
 Since the mid-‘90s, the gas turbine industry has seen *two* boom-bust cycles rock the industry. The first boom, between 1997 and 2002, was driven by electric power deregulation in parts of the United States, which pulled in new companies as **independent power producers**, as well as (ironically enough) high expectations of electric demand growth coming from the dotcom bubble, as popularized by the Huber and Mills paper “The Internet Begins with Coal.” Large players like Calpine, Duke, Williams, and NRG placed block orders for turbines, sending GE Vernova (then GE Power) and Siemens Energy (then Siemens AG’s power segment) into lunar order volumes. GE shipped more than **60 GW** of gas turbines in 2001; Siemens peaked at **20+ GW** in 2002.
 
-![](https://substackcdn.com/image/fetch/$s_!x29-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F69e6ba37-ea1c-45f7-8344-1e09ccfe8643_1451x728.png)
+![](z-images/b2f2bc3aabe6187dc4ee8fb0c53e1d9d.webp)
 
 Source: Energy Information Administration
 
@@ -507,7 +507,7 @@ However, within gas turbines, even a guarantee of high future demand may not pus
 
 Gas turbine blades and vanes are among the high watermarks for civilizational technological competence, requiring an insane quality of metallurgy and machining to manufacture properly.
 
-![](https://substackcdn.com/image/fetch/$s_!uCwQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F74b05e80-124e-4fcb-9a09-424938593d89_624x413.jpeg)
+![](z-images/ed5b7acb8a3c39a30d5ff3206bc51f2a.webp)
 
 Machining a single turbine blade. Source: Reliable Turbine Services, LLC
 
@@ -522,7 +522,7 @@ These companies supply not only industrial and electrical gas turbines but also 
 
 Additionally, heavy-duty gas turbine production is constrained by logistics. The turbine cores alone are 300-500-ton systems that need specialized barges, rail cars, and truck trailers to transport. Even after permitting, heavy-duty gas turbines need 24-30 months to build, install, and test before they are ready to run. Aftermarket OEMs can build new plants around refurbished cores, but moving and integrating those cores remains a major challenge. These constraints are less severe for aeros and IGTs, which are small enough to ship on standard containers or conventional trailers.
 
-![](https://substackcdn.com/image/fetch/$s_!SPjw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F563ad592-27dd-4381-9f6e-7c30aa41be91_1619x1079.jpeg)
+![](z-images/e330cb346753632cb486546db87c771c.webp)
 
 Siemens SGT5-800H H-Class turbine on a self-propelled modular transport (SPMT). Source: Siemens China
 
@@ -530,13 +530,13 @@ Siemens SGT5-800H H-Class turbine on a self-propelled modular transport (SPMT). 
 
 As often, in times of constraints, many smart firms are exploring solutions. ProEnergy was one of the first to come with innovations. Its PE6000 program retrofits CF6-80C2 engine cores from Boeing 747 and delivers operational aeroderivative gas turbines with near-identical specs and packaging to the GE Vernova LM6000.
 
-![](https://substackcdn.com/image/fetch/$s_!PfPy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F722e94e6-b9c2-48c7-b7d3-9f1bd09e9bc3_1237x643.png)
+![](z-images/137c97702e04558f5fbb283053b0d922.webp)
 
 ProEnergy PE6000. Source: Datacenter Dynamics
 
 More recently, Boom Supersonic has announced the development of the **Superpower** aeroderivative gas turbine, based on their supersonic jet engine design. Its proposed form factor looks remarkably similar to the GE Vernova LM2500, and it operates on the same principle: a small jet engine that can fit in one shipping container (with auxiliary intake, controls, and exhaust equipment fitting in 1-2 more shipping containers). Testing for this engine is still underway, but preliminary advertised specs suggest the Superpower will produce 42 MW per unit, even at high ambient air temperatures.
 
-![](https://substackcdn.com/image/fetch/$s_!cZFk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F15b3afb5-850a-498c-a925-9609aa84637d_4096x2304.jpeg)
+![](z-images/22e4de95b3dbfc3c4b5b310b7f3c30b4.webp)
 
 Source: @bscholl, Twitter
 

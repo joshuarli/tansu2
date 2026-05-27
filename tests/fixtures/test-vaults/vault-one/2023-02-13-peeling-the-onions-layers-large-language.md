@@ -14,7 +14,7 @@ description: "Ad Engine, Crawl, Index, and Query Processing disrupted by LLMs"
 
 The first round of optimization is simple. Token output counts for 84 different real examples of Bing GPT were significantly lower, ~350, vs. the 2,000 used for ChatGPT. In most cases, people want to avoid reading huge chunks of information when interacting with search. This estimate accounts for tokens that are not displayed to the user. The subsequent optimization is that the [top 2,000 keywords account for 12.2% of searches](https://backlinko.com/google-keyword-study), and many more are also purely navigational searches. Let’s assume that 20% of searches will not require an LLM. Lastly, Google has significant infrastructure advantages using the in-house TPUv4 pods versus Microsoft/OpenAI using Nvidia-based HGX A100s.
 
-![](https://substackcdn.com/image/fetch/$s_!MSLe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8e23a20-76bf-4747-9323-4347df228815_2984x924.png)
+![](z-images/63bd356b99c85240a6a2915db541e507.webp)
 
 These simple optimizations bring the additional costs for implementing an LLM into search to only $3 billion for Google. The Capex costs for Google on the hardware alone would be on the order of ~$20B, including datacenter infrastructure, if everything was set up perfectly from the get-go. This is before [new hardware such as Nvidia H100 and Google’s TPUv5](https://www.semianalysis.com/i/101860582/hardware-improvements) or various techniques such as [MoE, sparsity, pruning, model distillation, kv cache, and early exit](https://www.semianalysis.com/i/101860582/software-improvements) improve costs.
 
@@ -98,7 +98,7 @@ We don’t mean to rehash too much from [last week’s LLM latency discussion, w
 
 Even at 2,000ms of latency, 4x that of regular search including internet delays and 20x of processing time, PaLM can only take 60-input tokens (~240 characters) and output 20 tokens (80 characters), and that is when parallelized across 64 TPUv4s, all the while only achieving ~35% utilization.
 
-![](https://substackcdn.com/image/fetch/$s_!Ythj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff55aee84-cb84-416e-9b38-0ce2068defb4_1205x961.png)
+![](z-images/a8dc6b94ce6896c17427cecdcc9de8c0.webp)
 
 The big takeaway is that the big LLMs need to be used during the non-time-sensitive portions of the search stack. Furthermore, larger batch sizes can achieve much higher utilization rates in those portions of the stack, albeit with higher latency.
 

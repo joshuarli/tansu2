@@ -44,7 +44,7 @@ Platforms can provide IaaS infrastructure as well as setup and procurement suppo
 
 Another interesting emerging business model that sits outside the above categories are VC Clusters, whereby a Venture Capital (VC) or VC-like entity sets up clusters for the exclusive use of portfolio or other affiliated companies. Notable examples include Andromeda, [Computefund.ai](https://computefund.ai/), and [Andreesen Horowitz’s planned GPU Cluster](https://www.theinformation.com/articles/andreessen-horowitz-is-building-a-stash-of-more-than-20-000-gpus-to-win-ai-deals). With in-house clusters, these VCs can provide very flexible options for compute rental – offering large 512 or 1k GPU clusters for short periods of times well below what other Neoclouds would charge in exchange for equity. They can also offer generous rental terms to lean further into portfolio or affiliated companies.
 
-![](https://substackcdn.com/image/fetch/$s_!vOm0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe347a756-d864-4e1b-983e-9bde22c34e53_1024x479.png)
+![](z-images/947c75f0dab0447a6290e394c6e8bbd6.webp)
 
 Source: SemiAnalysis
 
@@ -60,7 +60,7 @@ Most Neocloud Clusters being deployed today have 2048 or fewer GPUs. The most co
 
 OEMs and Nvidia will naturally seek to upsell when quoting out a BoM. The BoM is usually subdivided up into four categories: compute chassis level, rack level, cluster level and software level.
 
-![](https://substackcdn.com/image/fetch/$s_!W6SJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee9c7400-29f2-45e3-9c27-56767659cef9_875x639.jpeg)
+![](z-images/6d4fa01058bb35c0627a829d970a88c5.webp)
 
 Source: SemiAnalysis
 
@@ -70,7 +70,7 @@ We will start at the lowest level of abstraction, the compute chassis bill of ma
 
 Fine tuning this quote is the easiest optimization available to an AI Neocloud. The step in this optimization is to choose a mid-level Intel CPU given many customer’s workload will not use the CPU much anyways. LLM training is a very GPU intensive workload but for the CPU, the workload intensity is incredibly light. A CPU will mostly be running simple tasks such as the PyTorch and other processes that are controlling the GPU, initializing network and storage calls, and potentially running a hypervisor.
 
-![](https://substackcdn.com/image/fetch/$s_!G8IZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F63bed6d9-bb0b-4203-858d-64842590b4a9_1335x800.png)
+![](z-images/52c64896a46209304b22b8a9da6ee5bd.webp)
 
 Source: SuperMicro
 
@@ -80,11 +80,11 @@ For example, on AMD CPUs, you need to use NCCL\_IB\_PCI\_RELAXED\_ORDERING and p
 
 Many standard offerings have 2TB of CPU DDR5 RAM, but most of your customers will not be using that much. RAM is the 4 <sup>th</sup> most expensive part of the compute chassis BoM. We recommend downgrading from the standard 2 TBytes to only 1TByte of RAM. Most customers of your Neocloud are not likely to ask about RAM capacity as their workloads are not CPU RAM limited at all.
 
-![](https://substackcdn.com/image/fetch/$s_!tkmt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F72b39708-91f7-404f-b058-e17879ea5e10_1071x535.png)
+![](z-images/f9283decd9fb4341518438d4f8d7d53e.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!W3l2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F968dd75b-9eed-4329-9044-572c2dba3bca_1096x714.jpeg)
+![](z-images/7b0949554a2fc542b03d0de555428ecf.webp)
 
 Source: SuperMicro
 
@@ -92,13 +92,13 @@ Moving beyond core compute components, another potential cost saving is to remov
 
 But your Neocloud customers are not going to be using much CPU compute anyway, so it doesn’t matter if you are using some of the host CPU cores for network virtualization. In many cases you will handing over bare metal servers to your customers anyways, obviating the need for any network virtualization. Moreover, Bluefield-3 DPUs are considerably expensive to the extent that buying another 54-core CPU is cheaper than purchasing a Bluefield-3. Skip the Bluefield-3 altogether and go with standard ConnectX for front end.
 
-![](https://substackcdn.com/image/fetch/$s_!Hzgu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F63b4952d-4ea0-46d6-93f5-8ae99ce7b750_1600x900.jpeg)
+![](z-images/2c667de564f043d8c0c76085a28db1d3.webp)
 
 Source: Nvidia
 
 Putting these first few cost optimizations together, we estimate that there is a savings of $13.6k, bringing the cost of one compute node (i.e. one server) down from $270k USD to $256.4k USD - roughly a 5% savings. In a 1024 H100 cluster with 128 compute nodes, that is a savings of $1.74M USD. This pricing goes lower lower with solid volume. Contact us with help negotiating and designing.
 
-![](https://substackcdn.com/image/fetch/$s_!tJpE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F16e77c19-2983-4e15-ad3f-6dc0242aa617_1063x597.png)
+![](z-images/30fd20ef421b95edf4d2cad2b85bb622.webp)
 
 Source: SemiAnalysis
 
@@ -106,7 +106,7 @@ In a typical BoM, each H100 compute server will have eight 400Gbit/s ConnectX-7 
 
 While we believe that this might present a better performance per total cost of ownership for certain workloads, most Neoclouds’ target customers are not interested in having anything less than 8x400Gbit/s InfiniBand bandwidth per compute server. Because it does impact workload performance. This is one of the primary reasons why many firms are allergic to Google Cloud. Google Cloud deploys H100s with 8x200G Ethernet using Falcon/GRD. This impacts performance in some cases even if Google does get to save money.
 
-![](https://substackcdn.com/image/fetch/$s_!fXNf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee205804-b185-4716-ae4e-dccfd43c714f_1266x697.jpeg)
+![](z-images/15414acd111acf12bb46cd902cd51181.webp)
 
 Source: Nvidia
 
@@ -130,7 +130,7 @@ For the frontend network, Nvidia and the OEM/system integrator will usually have
 
 The next low hanging fruit would be from out of band management networking. The default BoM includes SN2201 Nvidia Spectrum 1GbE switches, but the pricing of these switches is at a considerable premium which is hard to justify for something as simple as out of band networking. This would the equivalent of buying branded Advil instead of the generic Ibuprofen. Using any generic out of band switch will reduce out of band network costs, and as such, we would recommend using a generic 1GbE switch.
 
-![](https://substackcdn.com/image/fetch/$s_!evOB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F58fa8d97-61bc-4286-9bba-2e825ea03d64_1482x907.png)
+![](z-images/98721a381c6a2904223ff1658d32babe.webp)
 
 Source: SemiAnalysis
 
@@ -140,7 +140,7 @@ The Backend network is where the choices get more complicated and require a far 
 
 First, we will talk about the Nvidia reference network topology. The reference topology is a two tier 8-rail optimized fat tree with non-blocking connectivity. In a non-blocking fat tree network, if you arbitrarily divide nodes into pairs, then all pairs should be able to communicate to each other at full bandwidth at the same time. Although in practice, this is often not exactly the case due to congestion, imperfect adaptive routing and additional latency of additional switch hops.
 
-![](https://substackcdn.com/image/fetch/$s_!JRjL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff2ff06f5-cc7f-4c7a-9bce-12c6d919d308_1117x740.jpeg)
+![](z-images/26af6880cedb93d718a543efed088b1d.webp)
 
 Source: Nvidia
 
@@ -150,11 +150,11 @@ The main benefit of a rail optimized network is to reduce congestion. If all GPU
 
 The first diagram below illustrates an 8-rail optimized network in which there are 8 parallel flows from collective communication used to connect to 8 different leaf switches, while the second diagram illustrates a non-rail optimized design with servers connecting to a ToR switch.
 
-![](https://substackcdn.com/image/fetch/$s_!EL2D!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F497421ba-645e-4c36-b28b-550698de7582_1614x781.png)
+![](z-images/8d16f53dce362640e530462155680c6e.webp)
 
 Source: SemiAnalysis
 
-![](https://substackcdn.com/image/fetch/$s_!TZ7-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F587968b2-ca33-48bc-b1a7-d6965c8a6ff7_1809x792.png)
+![](z-images/9ae5005444b3a6ae25e1dc3721376c8b.webp)
 
 Source: SemiAnalysis
 
@@ -166,7 +166,7 @@ Unfortunately, congestion is not something that can be easily measured through n
 
 One other benefit of a rail optimized topology is that since most of the traffic will be local to the leaf switches, it is possible to oversubscribe the spine layer of your network, an architectural optimization that we will discuss later on in this article.
 
-![](https://substackcdn.com/image/fetch/$s_!jX9y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcfc524f0-4cbc-4066-97b2-cb4eaf029fc5_1139x791.jpeg)
+![](z-images/d83b7a641019086842a9d1b7c716be8d.webp)
 
 Source: Nvidia
 
@@ -174,43 +174,43 @@ Source: Nvidia
 
 The use of optics for networking has the advantage of much longer reach, but the drawback is in its added power requirements and very high cost of optical transceivers, particularly when purchasing through Nvidia directly, which is basically a must for InfiniBand networking. Optimizing the physical network topology and rack layout can allow you to reduce the use of optical transceivers, saving them only for when the longer reach is actually required.
 
-![](https://substackcdn.com/image/fetch/$s_!HllQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91bf1126-5981-423a-af5c-62630a6c95f7_1536x2048.jpeg)
+![](z-images/133fa65d42d5bfda0222dc3fb8a43b90.webp)
 
 Source: Daniel Gross
 
 In the Nvidia Reference Design, the leaf switches are on a separate networking rack and the spine switches are on a dedicated networking rack meaning that using 100% optics is required.
 
-![](https://substackcdn.com/image/fetch/$s_!YrtO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F092c5674-ef7c-479d-9d1f-a005aeae3380_1614x781.png)
+![](z-images/9078e21b80009294cb617d2637e3f6bc.webp)
 
 Source: SemiAnalysis
 
 One network topology that can be considered to this end is a **non-blocking Top of Rack (ToR) design**. Most people coming from a traditional networking background will instantly recognize this design as it is the most common design in traditional networking where there is a switch in the middle or at the top of the rack that connects to all the servers in the rack. Since distances from the ToR switch to the server are less than 3 meters, we can use “cheap” passive copper cables called Direct Attach Copper (DAC) cables to connect from the server to the leaf switch. For this design, we recommend placing the InfiniBand switch in the middle to shorten the distance that the DAC cables need to travel.
 
-![](https://substackcdn.com/image/fetch/$s_!5m8s!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0019415d-e1d3-444a-8832-e47289c0f423_476x957.png)
+![](z-images/d79fb2da5293d45569257611537b9322.webp)
 
 Source: SemiAnalysis
 
 From the leaf switch to the top tier spine switches we will have to use optics. This is expensive, but at least 50% of your connections will now be replaced with cheaper DAC copper cables.
 
-![](https://substackcdn.com/image/fetch/$s_!Pxm2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F18db89ee-bd81-4a91-a16c-d60cdc61aed6_1809x792.png)
+![](z-images/9ae5005444b3a6ae25e1dc3721376c8b.webp)
 
 Source: SemiAnalysis
 
 Unfortunately for this design, you will not be able to implement 8-rail optimized networking, and as such you will commonly run into congestion hotspots at your spine layer even if it is non-blocking as there are now 8 flows going across multiple levels of switches, meaning that each flow will need to dynamically use different paths to avoid congestion. In a perfect world where you have perfect adaptive routing, ToR will work well as a topology since the routing will always avoid a congested route. But in reality, because perfect adaptive routing does not exist, and implementing this topology will hurt network performance a lot.
 
-![](https://substackcdn.com/image/fetch/$s_!HZsa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd01d6f51-a490-44a0-a1e8-fbf7b375b094_1024x947.png)
+![](z-images/d81437be2baa53855e612fe72e227c06.webp)
 
 Source: Nvidia
 
 In the diagram below is our simulated heatmap of this non-blocking top of rack fabric where the lighter blue color indicates less bandwidth due to congestion and dark blue means near full line rate. As you can see, using a ToR topology, it is possible to reach line rate but there is still considerable congestion due to all 8 flows going into one switch, with throughput becoming far more jittery and less bandwidth with these flows due to congestion.
 
-![](https://substackcdn.com/image/fetch/$s_!hLq2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb5106d7c-44de-452b-bb60-c48c11160878_908x917.png)
+![](z-images/8afb794654550c6b7f76c215106a4510.webp)
 
 Source: SemiAnalysis
 
 Even though the performance of this design is not particularly good for multi-tenant environments like Neoclouds, the cost savings are huge, saving 34.8% of the backend InfiniBand fabric cost.
 
-![](https://substackcdn.com/image/fetch/$s_!-8OG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a21dcfd-a0da-4602-8c5f-2f0457f56b1b_1235x326.png)
+![](z-images/1eb591d6494a826c864295314b70f592.webp)
 
 Source: SemiAnalysis
 
@@ -220,7 +220,7 @@ Source: SemiAnalysis
 
 This is where a virtual modular switch comes in. It has the same logical topology as the Nvidia reference design but can use copper from the leaf switches to the spine switches due to clever floor planning and switch location planning.
 
-![](https://substackcdn.com/image/fetch/$s_!CVrE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F68c906c0-8d32-4fae-9809-fa4180c29ae6_1644x763.png)
+![](z-images/31b4cc626a1515a520a538f7293cf1ff.webp)
 
 Source: SemiAnalysis
 
@@ -232,13 +232,13 @@ This design should give us the best of both worlds, but what are the drawbacks o
 
 Unfortunately, these switch-to-switch DAC copper cables often tend to have a poor bend radius and are very thick, leading to blocking of air flow. We have seen designs like this being deployed in production before, and if you cable manage it well, these issues can be overcome. This problem can also be tackled using active copper cables (ACC), which are almost as thin as multimode fiber and have a good blend radius. Unfortunately, one potential issue that we heard about is that the error rate on Nvidia’s LinkX NDR ACC cables is not very good.
 
-![](https://substackcdn.com/image/fetch/$s_!f3Dc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0ea1dbf-324f-4994-96f2-a0e765f167ad_1115x825.png)
+![](z-images/03440df6f0200f9c9ba98f0b939a27f2.webp)
 
 Source: SemiAnalysis
 
 Using this non-blocking virtual modular switch design, **we can save 24.9% on the Backend network** compared to the reference architecture while maintaining the same performance. One other huge benefit is that passive copper is generally way more reliable than optical transceivers. Transceiver failure rate is high with the lasers being the primary component of failure. This high failure rate introduces costs in terms of the replacement transceiver parts, cluster downtime and labor needed for repairs.
 
-![](https://substackcdn.com/image/fetch/$s_!aYLh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2ff4aceb-191d-4f40-98ec-1ddb117f8bd7_1695x518.png)
+![](z-images/ee9261085db8bc71808bf773bd86f958.webp)
 
 Source: SemiAnalysis
 
@@ -250,19 +250,19 @@ That traffic will stay local to the first level of switches, while your less ban
 
 On Meta’s 24k H100 cluster, they implemented a 7:1 oversubscription between pods, but we believe that designing in a more conservative oversubscription makes more sense, and we recommend using just a 2:1 oversubscription for small clusters.
 
-![](https://substackcdn.com/image/fetch/$s_!O6Xv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fafab1c3f-be0c-4b90-9251-67983663f899_1591x763.png)
+![](z-images/b4464486494661be4969fb8301ebd93c.webp)
 
 Source: SemiAnalysis
 
 The benefit of this design is that instead of requiring 16 spine switches for 1024 H100s, you only need 8 spine switches. When combining a 2:1 oversubscription with the Virtual Modular Switch design, we can have fewer switches in the middle rack. This means cable management is much easier. Another benefit is empty ports on your leaf switches so in the future, when you have heavier inter-pod traffic, you can easily add more spine switches and reduce the degree of oversubscription.
 
-![](https://substackcdn.com/image/fetch/$s_!mRXq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F62e95616-536e-4220-9fa8-59bd219fe913_1391x1064.png)
+![](z-images/aa19e31e654515af6bcbe8b1df9a4a45.webp)
 
 Source: SemiAnalysis
 
 We estimate that the cost saving for 2:1 oversubscription with the **virtual modular switch will be 31.6% compared to the reference architecture**, an improvement over the 24.9% savings when only using the non-blocking virtual modular switch design. The only drawback of a non-blocking design (other than the higher cost) is that you need to allocate your customers to physical servers decently well and avoid fragmentation between pod boundaries. We believe that with a competent team, this can be easily achieved.
 
-![](https://substackcdn.com/image/fetch/$s_!Pif8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Febabc5ab-04bb-455c-a9f2-6e6175818646_1697x526.png)
+![](z-images/f2e9ad0aa37abe2d8b51fc9d190b70e8.webp)
 
 Source: SemiAnalysis
 
@@ -270,7 +270,7 @@ Nvidia also offers their own physical modular switch for NDR InfiniBand through 
 
 The CS9500’s liquid cooling requirement is why we recommend just deploying a virtual modular switch instead of a physical modular switch for most Neoclouds. The current GB200 driven demand for liquid cooling-ready colocation, and the crunch of colocation supply in general means there will not be much reasonably priced capacity for emerging Neoclouds. Since Nvidia prices based on value to the end user, and as this physical modular switch may be very valuable to large cluster deployments (think O(10k) to O(100k)), we believe that this costs more than just making your own virtual modular switch.
 
-![](https://substackcdn.com/image/fetch/$s_!ExTS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d7bf232-cdad-4f48-b5ad-957d4ab64a87_1000x667.jpeg)
+![](z-images/034c5c2945d3613a9c96b9cc63afb276.webp)
 
 Source: FRONTERA
 
@@ -282,19 +282,19 @@ An alternative to purchasing UFM would be to use the open subnet manager which i
 
 We will talk about the next most expensive part of an H100 cluster, networked NVMe storage. This is something that all customers want and is practically a requirement for running SLURM. There are basically only two line items for a storage deployment, your physical storage servers and your storage software vendor licenses such as with Weka or Vast Data, etc. These are the most popular vendors due to their channel partnerships with OEMs.
 
-![](https://substackcdn.com/image/fetch/$s_!h8QW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F760cc81a-a5d9-4519-8320-9076c85068cb_1003x478.png)
+![](z-images/4ead85ae5449ba464bc84820e25b2150.webp)
 
 Source: Weka
 
 For high availability, most storage software vendors recommend you deploy at least 8 storage servers. Indeed, most Neoclouds only deploy the bare minimum of 8 storage servers. With 8 storage servers, you will get between 250GByte/s to 400GByte/s of aggregated storage bandwidth at big block sizes across all storage servers. That’s more than enough to cater to most reasonable or unreasonable AI workloads one could possibly run on 1024 H100s.
 
-![](https://substackcdn.com/image/fetch/$s_!E1u3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F22a384bd-f52a-4d19-8262-1276c49355dd_572x272.png)
+![](z-images/5b0844b7279de3e31a644e6210c06e51.webp)
 
 Source: SuperMicro
 
 Because lead times for storage are very short, we recommend you start off with 2 PetaBytes of total storage capacity for a 1024 H100 cluster as you can easily expand storage if you see your customers are utilizing your deployed capacity. Our recommendation is to leave enough ports, NVMe drive bays, power and rack space within your storage deployment to allow for easy expansion. Most of the storage cost is in the storage software license and not the physical storage servers itself.
 
-![](https://substackcdn.com/image/fetch/$s_!0SRD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f55223b-d43a-4e0b-b06e-c73426cb055e_1240x199.png)
+![](z-images/6b648be0c67fb9d9eb5420b8a8def972.webp)
 
 Source: SemiAnalysis
 
@@ -312,7 +312,7 @@ In the default Superpod Reference Architecture, Nvidia and their OEM partners wi
 
 As you can see below, with the Nvidia Superpod Reference Architecture (RA), the all-in cost for the cluster comes up to ~$318k per compute server (excluding storage), but using the SemiAnalysis Optimized Architecture with a 2:1 oversubscription, total all-in cost will just be $283k per compute server (also excluding storage). We have helped Neoclouds optimize further beyond shown through negotiation help, and further cost cutting especially on larger clusters.
 
-![](https://substackcdn.com/image/fetch/$s_!jmVJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fea96c5ef-d5e8-4f71-8820-0e3fe395faea_1480x911.png)
+![](z-images/e5e472fe37e8874c4d0ac9746e7d4028.webp)
 
 Source: SemiAnalysis
 
@@ -336,13 +336,13 @@ Finally, 100% of customers also must be able to manually get an interactive term
 
 Neoclouds like Crusoe and TogetherAI are the gold standard. Because they have all the required InfiniBand drivers, GPU drivers, and scheduling software installed out of the box, they can charge a premium over their competitors and have lower churn.
 
-![](https://substackcdn.com/image/fetch/$s_!eNGQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff967e248-1abb-43b1-855a-e9c223e37a57_2168x715.png)
+![](z-images/d419ad6c0b82e35b5dde3c84189e0955.webp)
 
 Source: TogetherAI
 
 The next user requirement for a minimum valuable experience is having a snappy shared home directory and shared data storage directory. All GPU nodes and login nodes will have shared storage mounted at /home/$USER/ and at /data. What this really means is that when the end user can launch an interactive terminal into any GPU node, the node will have the same home directory and files. This is fantastic as it means that every GPU Node allocated to the user is fungible and the user need not care about exactly which GPU server they are using. Furthermore, when launching multi-node training jobs, all of the user’s code is automatically on every GPU node so the user doesn’t need to manually copy code over ssh (scp) to each node.
 
-![](https://substackcdn.com/image/fetch/$s_!GUIa!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F26e9a8c7-5a9d-4bb5-af94-4815580fd2f2_1672x747.png)
+![](z-images/6003b577d9ef982966abdca37303d415.webp)
 
 Source: SemiAnalysis
 
@@ -352,13 +352,13 @@ Next, the LOSF problem can easily be avoided as it is only an issue if you decid
 
 The below diagram, produced during our testing on Crusoe’s cluster, demonstrates how a cluster storage solution that is optimized and free of the LOSF problem should behave. As you can see, the time to complete importing PyTorch into the python process stays relatively flat even when scaling up GPU count.
 
-![](https://substackcdn.com/image/fetch/$s_!KdK0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2a87294c-f233-42e0-b3f7-c879c1968c7f_1286x852.png)
+![](z-images/9255664a984aac4e9e43353afe4e6bff.webp)
 
 Source: SemiAnalysis
 
 This is a world of difference to a cluster that is running on unoptimized shared storage, where the time required to import PyTorch in a Python multi node training run explodes, often causing the cluster to be completely unusable. Notice the difference between Crusoe, the gold standard, and how another cluster with LOSF issues would behave.
 
-![](https://substackcdn.com/image/fetch/$s_!IVaB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6af5f775-b94a-4a24-8e44-3b8142766f80_1286x848.png)
+![](z-images/f0372cbf2de4193ef42107b0d56655ca.webp)
 
 Source: SemiAnalysis
 
@@ -366,13 +366,13 @@ Source: SemiAnalysis
 
 Unless an entire customer (tenant) rents the whole physical cluster out for a long term, each physical cluster will probably have multiple concurrent customers. This means that you need to provide isolation of the frontend Ethernet and backend InfiniBand networks as well as implement isolation of storage between customers. Each customer will typically be renting each GPU server as a whole unit, that means on compute server virtualization is not strictly needed as there is only one customer per physical server. Spending time on subdividing nodes is not worth it. Isolation is easy to set up for the frontend ethernet network using the standard vLANs. In vLAN, while the physical ethernet fabric is shared, each customer’s nodes are only able to talk to other nodes that are assigned to the same customer.
 
-![](https://substackcdn.com/image/fetch/$s_!GYT7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00d5ed4f-e715-423d-a467-17041697c0d8_1951x760.png)
+![](z-images/f0b7aab0ed211d731e7dd07ed7de2152.webp)
 
 Source: SemiAnalysis
 
 InfiniBand multi- tenancy is not as easy to set up and automate when compared to Ethernet vLAN, but the learning curve is very quick. In the InfiniBand universe, network isolation is accomplished using Partition Keys (pKeys) - essentially the same concept as vLAN. Each customer gets its own isolated InfiniBand network through pKeys and only nodes with the same pKeys can talk to each other.
 
-![](https://substackcdn.com/image/fetch/$s_!mmHN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5c03fc79-4bc8-436d-adf6-050e5088c01e_1931x734.png)
+![](z-images/117d15443494bc56c7113b311d77af27.webp)
 
 Source: SemiAnalysis
 
@@ -380,27 +380,27 @@ The creation and attachment of pKeys can either be easily done through the UFM U
 
 Unfortunately, we have seen from our own experience testing that some Neoclouds have pkeys that are not properly set up, allowing one customers’ users to be able to see their other tenants’ nodes on the InfiniBand network. We highly recommend that customers personally verify that their InfiniBand network is properly isolated from other customers.
 
-![](https://substackcdn.com/image/fetch/$s_!uPWh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5647d102-d584-4272-8984-bf4b87baf6a0_1195x732.png)
+![](z-images/fe9820dd485faadb4b9f5bc003255987.webp)
 
 Source: Nvidia
 
-![](https://substackcdn.com/image/fetch/$s_!F0N6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F773ad294-b669-4123-9821-104f9586b038_913x486.png)
+![](z-images/f59df9ebe04ea4b054a6b1c8a2cdf0ff.webp)
 
 Source: Nvidia
 
 Multi-tenancy is especially important when it comes to storage. Fortunately, storage is also quite simple to manage as the major storage providers in the AI space, Weka and Vast both support multi-tenancy as a first-class primitive.
 
-![](https://substackcdn.com/image/fetch/$s_!h-rV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0ace0d0a-eb88-4022-9dfb-86bb0b1b8d39_1986x743.png)
+![](z-images/0566bd816550b4d3cd891e357772016f.webp)
 
 Source: SemiAnalysis
 
 Within Weka and Vast’s Data software, you can easily create Tenants (called Organizations in Weka) and set up an access control policy for each storage volume to be assigned to just one tenant. This software provides strong guarantees that if the policies are set up correctly, then each customer’s users will only be able to access their own storage volumes.
 
-![](https://substackcdn.com/image/fetch/$s_!Bj3i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa6b3e559-aa4f-4e0d-bff2-84674232ef7d_1572x746.jpeg)
+![](z-images/b4916a1c39001d515217346150d11f9d.webp)
 
 Source: Vast Data
 
-![](https://substackcdn.com/image/fetch/$s_!G443!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2fedd95a-3e12-4bad-966a-6c99822de7e7_2304x847.jpeg)
+![](z-images/053f979a8123298b124f30d9781e5044.webp)
 
 Source: Weka
 
@@ -410,7 +410,7 @@ For H100 SXM, the lowest unit of compute is one server, which means that each se
 
 When using VMs, if a physical GPU server being used by a customer breaks, then the Neocloud is able to easily migrate or spin up a new VM for the customer on a hot spare.
 
-![](https://substackcdn.com/image/fetch/$s_!wyQh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f2bf3a7-f690-4f12-8b19-2e432de9f34d_1393x659.png)
+![](z-images/84d575069e52846af9fc4c14f8116c74.webp)
 
 Source: SemiAnalysis
 
@@ -418,13 +418,13 @@ Creating virtual machines on GPU VMs can be done using an open-source hypervisor
 
 You will also need to bind your vLAN ethernet interface to your GPU VM. Creating CPU VMs using the common hypervisor is a simple task that most Computer Science grads can do nowadays. To make a VM into a GPU VM, you also need to do PCIe Passthrough for your GPUs and InfiniBand NICs. Fortunately for Neoclouds, NVIDIA has yet to figure out a way to charge for PCIe passthrough on their GPUs and NICs. We have also seen Neoclouds use [SR-IOV](https://docs.nvidia.com/networking/display/mlnxofedv522230/single+root+io+virtualization+\(sr-iov\)) to create virtual InfiniBand NICs and pass though into the Virtual Machine instead of just the physical InfiniBand NIC, although using SR-IOV is not strictly needed.
 
-![](https://substackcdn.com/image/fetch/$s_!2QMP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d6bd621-80ef-4502-9539-cbadecd55803_1995x782.png)
+![](z-images/e744eb939412c4f415654a07f734d278.webp)
 
 Source: SemiAnalysis
 
 One additional step that you need to remember to carry out is to manually pass in the NUMA regions and PCIe topology file in /etc/nccl.conf through the NCCL\_TOPO\_FILE variable since NCCL and the Nvidia-drivers now operate inside that GPU VM and therefore are unable to auto detect the NUMA regions and the PCIe topology. Without this step, NCCL performance will operate at 50% the bandwidth of what it should be operating at.
 
-![](https://substackcdn.com/image/fetch/$s_!xZRw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F031437ff-b5ba-4372-9bba-e43dc5a2abe0_2318x739.jpeg)
+![](z-images/49a08d481c02319fd09a2bb1c346b12f.webp)
 
 NCCL PCIe Topoloy File, Source: SemiAnalysis
 
@@ -434,7 +434,7 @@ Since there are 1-2TB of CPU RAM, kvm-qemu hypervisor out of the box takes a lon
 
 The important benefit of a fast boot up is that when a customer’s GPU server inevitably fails, the Neocloud operator can very quickly deploy a VM to their hot spare node and add it into the customer’s SLURM cluster, allowing the customer to be able to very quickly resume training.
 
-![](https://substackcdn.com/image/fetch/$s_!nVQ6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0422b889-123d-46a1-9934-2ae81b21e4ff_809x672.png)
+![](z-images/72f30da1371652525c4739b19b82a66e.webp)
 
 Source: SemiAnalysis
 
@@ -442,13 +442,13 @@ Source: SemiAnalysis
 
 In terms of monitoring dashboards, at a bare minimum, we recommend having Nvidia Datacenter Manager dashboard through Grafana and Prothemeus, allowing users to track GPU temperatures, Power Usage and active XID errors.
 
-![](https://substackcdn.com/image/fetch/$s_!SLLY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3211eab1-3966-4347-9c65-354cc707fe61_2974x1604.png)
+![](z-images/75e40d04cbbcacccacdb059a09d6ef50.webp)
 
 Source: SemiAnalysis Internal GPU Dashboard
 
 Furthermore, we also recommend that Neoclouds install ipmi-exporter to monitor overall fan speeds, temperatures and other BMC metrics. It is standard practice when running CPU deployments to have some sort of centralized dashboard with all of these metrics.
 
-![](https://substackcdn.com/image/fetch/$s_!nRKT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F65a202a3-7395-4dbf-9347-63790ee7be76_1920x971.png)
+![](z-images/f6762ffe99abb00fecf7994ed5ea6896.webp)
 
 Source: Grafana
 
@@ -456,7 +456,7 @@ The software architecture for the monitoring involves having an IPMI exporter an
 
 Advanced NeoCloud operators will also have a promtail logger that aggregates each server’s diagnostics messages (dmesg) logs. Two common concerning dmesgs that should be promptly flagged are Cable being Unplugged as well as NIC and/or transceiver temperatures overheating. Either of these messages probably indicates that you have a flapping InfiniBand Link that needs to be promptly addressed before customers start churning.
 
-![](https://substackcdn.com/image/fetch/$s_!9syL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb8e9b925-510d-4315-9580-06309044df97_1208x817.png)
+![](z-images/02ab2121c6b23f830b682f71c470edfd.webp)
 
 Source: SemiAnalysis
 
@@ -468,7 +468,7 @@ Some of the most common problematic InfiniBand UFM error codes to track are 110 
 
 We highly recommend that Neocloud operators have a support ticketing system like Jira to keep track of all hardware failures and customer issues. Without a ticketing and customer management system, issues will fall through the cracks and cause increased customer churn.
 
-![](https://substackcdn.com/image/fetch/$s_!Udwk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6374ba0f-2d5f-4d3a-9b59-e0d90859f2af_1665x860.jpeg)
+![](z-images/c5d49e5fc0d11720d9ad116f5f06e697.webp)
 
 TensorWave Jira Portal, Source: TensorWave
 
@@ -486,7 +486,7 @@ In ClusterMAX-NCCL, we test against all the important message sizes from 16MiB t
 
 If your node is configured properly, you should see results similar to the below:
 
-![](https://substackcdn.com/image/fetch/$s_!EpsF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4e7e7f2a-d70e-4e9c-9b19-41a8033aaeb0_1634x847.png)
+![](z-images/b9b8bbca0b198fb3d2f6c6cd5cff8b91.webp)
 
 Source: SemiAnalysis
 
@@ -494,7 +494,7 @@ Delivering competitive pricing, strong reliability and a properly set up cluster
 
 Basically, by being able to speed up training by 10-15%, the customer can save 10-15% of their GPU spending or alternatively take the same GPU dollar budget and train their model on 10-15% more tokens leading to a model performance boost. We don't believe the value created by Together can be replicated elsewhere without cloning Tri Dao.
 
-![](https://substackcdn.com/image/fetch/$s_!tZmi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F38efa77c-4cb4-41c2-b71e-fb0d8f0a84c2_2000x1064.png)
+![](z-images/3cdf362d6b1f73ffecce12523ee6071c.webp)
 
 Source: TogetherAI
 
@@ -502,7 +502,7 @@ Source: TogetherAI
 
 Cluster deployments typically leverage OEMs’ rack scale integration and deployment teams. These teams will integrate and test at the individual server level and at the cluster wide level during which networking testing will be carried out at OEMs’ integration factory. We recommend that the cluster wide high temp burn in should last at least 3-4 weeks to catch all the infant mortality related failures among the node’s components. It is extremely common for integration teams to pitch using LINPACK as their burn in and acceptance process, but we don’t believe that this is a very good test as LINPACK does not utilize the network much nor does it sweat the GPU’s HBM memory very much, instead only utilizing and testing the GPU’s FP64 cores. ML Training by contrast is very network, HBM and BF16/FP16/FP8 tensor core intensive and as such, we believe that a burn in and acceptance test that actually burns in related components is needed.
 
-![](https://substackcdn.com/image/fetch/$s_!KbBT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2d3f22fa-4313-439b-ac08-b2d413d36ecf_1193x805.png)
+![](z-images/526a723d48ab23939905206614d7eda6.webp)
 
 Source: SemiAnalysis
 
@@ -518,13 +518,13 @@ As mentioned above, failures are very common during the early phase of a Neoclou
 
 This is another dimension where TogetherAI and Crusoe score strongly as they are some of the few Neoclouds that do multiple weeks long burn in prior to handing over clusters to customers. Furthermore, companies that have hired and retained people that have years of prior experience operating Nvidia GPUs and InfiniBand Networking will tend to encounter much lower failure rates since a lot of knowledge on setting up reliable clusters is part of an unwritten Tribal knowledge base on how to properly debug and prevent errors from happening for AI Clusters.
 
-![](https://substackcdn.com/image/fetch/$s_!zmWS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F919e82cd-1005-447c-a0d0-0a6cde699bc1_1294x650.png)
+![](z-images/086395b38ead91ce37c33629812d1efa.webp)
 
 Source: Yi Tay
 
 We see that a top tier H100 operator typically experiences a mean time between failures of 7 days for a cluster that has 512 H100s. For these top tier operators, most of the time, failures are easily fixable by just restarting the node.
 
-![](https://substackcdn.com/image/fetch/$s_!sllX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb2aea0dc-f580-4c4f-a0e0-89ffb1213e6b_971x356.png)
+![](z-images/e2c98fe406578c95fa65ce607aaf6917.webp)
 
 Source: SemiAnalysis
 

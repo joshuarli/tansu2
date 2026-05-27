@@ -18,13 +18,13 @@ Part of this is due to new entrants, and with more options to rent. Currently, t
 
 For the past 12 months we have spent time creating the GPU Cloud ClusterMAX™ Rating System, or ClusterMAX ™ for short. We have independently tested and/or collected customer feedback from as many GPU clouds as possible. We believe that with this first GPU Cloud Rating, we will cover **90% of the GPU rental market by GPU volume**. We hope to include more providers in our next rating exercise so that we can evaluate their quality.
 
-![](https://substackcdn.com/image/fetch/$s_!at9n!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa4160e7-37d5-4e61-bd2c-088c6fd32f35_778x868.png)
+![](z-images/944a249055df5b7815e39ba81f315ed5.webp)
 
 Source: SemiAnalysis
 
 This isn’t an exhaustive list of GPU providers. We have a much more extensive list of players that we are aware of, and the entire market map is shown in the following image. This list appears to be expanding daily, but many of the neoclouds are not yet ready for customers. This is the point of ClusterMAX™, as it’s a simple tool to help you navigate complexity. It is probably worth spending your dollar on a ClusterMAX™ rated provider.
 
-![](https://substackcdn.com/image/fetch/$s_!tYUS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d241640-86e6-4a2b-acab-16410696343b_1024x562.png)
+![](z-images/9187ef719075af94041c75434fc524c1.webp)
 
 Source: SemiAnalysis
 
@@ -32,7 +32,7 @@ Our rating classifications are Platinum, Gold, Silver, Bronze, and UnderPerform.
 
 In addition we will also be discussing the market for H100 rentals, where it's headed from here, Hyperscaler vs Neocloud pricing, cluster level TCO, cluster returns and scenario analysis, various debates around demand, and applying this framework/analysis to Coreweave and their IPO.
 
-![](https://substackcdn.com/image/fetch/$s_!Aj29!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc5e7a2bb-74d5-4f52-9035-42a3ac7fa09d_1024x211.png)
+![](z-images/6a862aa5b74775929d798b70ddd3c2c6.webp)
 
 Source: SemiAnalysis
 
@@ -59,7 +59,7 @@ Source: SemiAnalysis
 
 The goal of the ClusterMAX™ rating is to evaluate and benchmark the more than 100 GPU providers. This provides the broader ML community with an understanding of the capabilities, features, advantages, and disadvantages of each GPU provider. This better informs a provider which GPU cloud(s) can best meet their needs. Our second objective is to provide a set of guidelines to help raise the bar across the whole GPU cloud industry. Currently, the bar is lower than you can imagine.
 
-![](https://substackcdn.com/image/fetch/$s_!KVgd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e5d7753-8cfc-4b4e-94cb-aa313c6feb6e_1024x560.png)
+![](z-images/a35b744c113edd9a5780a6c3a3fb813b.webp)
 
 Source: South Park
 
@@ -107,7 +107,7 @@ Jensen Huang, Chief Revenue Destroyer, said last week, “When Blackwells start 
 
 Back in April 2024, our pricing model in the [AI Cloud Total Cost of Ownership Model](https://semianalysis.com/ai-cloud-tco-model/) suggested such an outcome. GPU prices declined throughout 2024 due to a ramp up in H100 production, with this decline continuing into late 2024 as buyers pivoted to focus on their Blackwell strategy. One year later, our forecasts have been dead on, with a 2-3% margin of error for H100 SXM.
 
-![](https://substackcdn.com/image/fetch/$s_!dxj7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd57f668f-d504-4b6d-a513-9145e2746ba1_1024x670.png)
+![](z-images/4f44f93e57749751038d212b87915608.webp)
 
 Source: SemiAnalysis
 
@@ -125,7 +125,7 @@ The market cost of compute is then determined by a weighted average of the cost 
 
 The below table provides a simple example of the workings behind this forecast. Here, we see that the GB200 NVL72 offers a 75% lower inference unit cost in terms of $/M tokens vs an H100 and a 56% lower training cost in terms of $/hr per effective PFLOP. This means that if the GB200 NVL72 sets the market cost of compute, then the H100 would have to be priced 65% lower per hour than the GB200 NVL72 in order for buyers to be indifferent between renting the two. The H100 would have to be set at a rental of $0.98 per hour per GPU to compete with a GB200 NVL72 priced at $2.20 per hour per GPU.
 
-![](https://substackcdn.com/image/fetch/$s_!r6Z9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F609df1e8-dde3-471f-a54f-7b1618faf9b1_1734x1204.png)
+![](z-images/6bc59fa8e16ec78b419987079e5fe8d0.webp)
 
 Source: SemiAnalysis
 
@@ -212,19 +212,19 @@ Lastly, for the **Offboarding Phase**, we evaluate if there is vendor lock-in. H
 
 90% of customers prefer Kubernetes for inference workloads, and about 50% of the customers use Slurm for training. Top-ranking GPU providers are increasingly differentiating themselves by offering fully tested, out-of-the-box managed Kubernetes and Slurm environments, in addition to providing raw GPU node offerings without pre-configured schedulers. Customers universally prefer these managed scheduling solutions, as self-setup Slurm and self-setup Kubernetes consume valuable GPU resources and may take days to set up, directly increasing costs and delaying productive work.
 
-![](https://substackcdn.com/image/fetch/$s_!722h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7b85212-7b86-46e8-92a3-8e6ed858ae34_1024x765.png)
+![](z-images/20888bbea201ad9f9de1bd6621921454.webp)
 
 Source: Futurama
 
 We expect that Slurm will remain popular well into the distant future. A common misconception is that the choice of scheduler is independent of whether virtualization is used. You can have bare metal Slurm, or you can have Slurm with VMs. Slurm and bare metal are not mutually exclusive. The same applies to Kubernetes; you can have bare-metal Kubernetes, as is the case at CoreWeave, or have Kubernetes with virtual machines, such as in GKE or EKS.
 
-![](https://substackcdn.com/image/fetch/$s_!EO5v!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F34dc8687-e088-4457-86c4-7cc3b246da1e_522x238.png)
+![](z-images/950cdba6da43f119cb088181e5622039.webp)
 
 Source: SemiAnalysis
 
 When providers offer managed Kubernetes and Slurm platforms, this enables customers to maximize their GPU utilization, significantly reducing their time-to-useful work. Notably, even technically sophisticated organizations such as **Meta** and **Jane Street** choose to use CoreWeave's managed Slurm and Kubernetes offerings due to their effectiveness and reliability. CoreWeave’s managed Slurm and Kubernetes go a long way to help increase goodput and increase time to value. A notable exception is OpenAI, which opts out of managed schedulers due to heightened security and operational paranoia surrounding artificial general intelligence (AGI).
 
-![](https://substackcdn.com/image/fetch/$s_!lyqe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe122a7c8-31ca-481b-9e31-0576c680ca6e_1024x523.png)
+![](z-images/ca0ad6f518cd43e482f4962cedbd1f44.webp)
 
 Source: SemiAnalysis
 
@@ -240,7 +240,7 @@ Managed object storage options are equally crucial for flexible, cost-effective,
 
 For ML inference workloads, performance-oriented storage ensures that models are loaded rapidly from storage production scenarios. Slow or inefficient storage can cause noticeable delays, degrading the end-user experience or reducing real-time responsiveness of AI-driven applications. It is, therefore, vital to assess whether GPU cloud providers offer robust managed parallel filesystem and object storage solutions, ensuring that these options are optimized and validated for excellent performance across varied workloads.
 
-![](https://substackcdn.com/image/fetch/$s_!qLx0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a75169d-d2ad-48ce-acca-53c1bd1cb2f5_1024x643.png)
+![](z-images/6bf2c0559000b5a172d8833e4764e696.webp)
 
 Source: Nvidia
 
@@ -250,13 +250,13 @@ Next, the LOSF problem can easily be avoided as it is only an issue if you decid
 
 The diagram below, produced during our testing on Crusoe’s cluster, demonstrates how a cluster storage solution optimized and free of the LOSF problem should behave. As you can see, the time to complete importing PyTorch into the Python process stays relatively flat even when scaling up GPU count.
 
-![](https://substackcdn.com/image/fetch/$s_!DY01!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe62a9ae7-da31-449c-a81a-106344a4727c_1024x677.png)
+![](z-images/b34812276e5da1807024c4734a7e3152.webp)
 
 Source: SemiAnalysis
 
 This is a world of difference to a cluster that is running on unoptimized shared storage, where the time required to import PyTorch in a Python multi-node training run explodes, often causing the cluster to be completely unusable. Notice the difference between high-performing storage and how another cluster with LOSF issues would behave.
 
-![](https://substackcdn.com/image/fetch/$s_!OvEt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F533539f2-bedd-44a2-8ad0-001ad8a2ad1b_1024x678.png)
+![](z-images/a23602dd004f7f6184bb151f54dc2ccf.webp)
 
 Source: SemiAnalysis
 
@@ -266,7 +266,7 @@ When selecting GPU cloud services, thorough validation of NCCL/RCCL networking p
 
 A network that is half as slow on all reduce leads to a 10% drop in performance on MFU on an O(70B) training and a 15-20% drop in MFU for an O(8x7B) mixture of expert models. It is a common misconception that inference does not need high-speed networking. In reality, inference providers apply network-bandwidth-intensive techniques like [disaggregated serving](https://arxiv.org/abs/2401.09670) to achieve cost-effective, high-performance inferencing. Disaggregated serving has been an industry standard for years, and last week NVIDIA open-sourced [Dynamo](https://github.com/ai-dynamo), a distributed inference framework, further democratized disaggregated serving and many other inference optimization techniques.
 
-![](https://substackcdn.com/image/fetch/$s_!MPg7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F47be025a-3693-4527-a3bb-249e73e22848_1024x538.png)
+![](z-images/5a8d314072843ed61f715278fa2ad9d1.webp)
 
 Source: Nvidia
 
@@ -285,7 +285,7 @@ We observe that network fabrics utilizing ConnectX-7 NICs perform the best. We s
 
 Even if a network is non-blocking, we see that networks with larger 1-hop rail optimized pods can achieve higher NCCL performance because less traffic will need to transit between rail pods, thus leading to less congestion. On GCP’s 8x400GbE a3-ultra, their 1-hop rail pod consists of just 4 nodes, whereas for OCI Ethernet and the InfiniBand reference architecture, the 1-hop rail pod is 32 servers in size. This is one of the reasons why OCI 4x400GbE offering has better NCCL performance than GCP’s latest 8x400GbE a3-ultra offering.
 
-![](https://substackcdn.com/image/fetch/$s_!jK1M!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb35cd7bc-15ad-4807-8a96-39efee590437_1024x549.png)
+![](z-images/859c036605d3bda7f64f5a1cf497be44.webp)
 
 Source: SemiAnalysis
 
@@ -299,13 +299,13 @@ Another consideration is if SHARP in-network reduction is enabled on the InfiniB
 
 Due to this difficulty, there are only five customers in the world across the GPU cloud industry that are using SHARP for production training and inference workloads, and out of these five customers, one is Nvidia itself. As such, we recommend that Nvidia make SHARP easier to set up for the GPU provider and enable SHARP by default, thereby improving the overall user experience when deploying and managing SHARP.
 
-![](https://substackcdn.com/image/fetch/$s_!JDCP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Febce5a24-b8d2-4a02-9a25-2a1daf2f02a8_1024x799.png)
+![](z-images/7d67d055a88119479b0f3d099e1971cf.webp)
 
 Source: SemiAnalysis
 
 Lastly, we see that the top 10% of GPU clouds are focused on developing [NCCL profiler plugins,](https://github.com/NVIDIA/nccl/tree/master/ext-profiler) enabling them to gain deep performance observability and let their customers gain more insights into the NCCL performance for debugging and optimization. GPU clouds that choose to deploy NCCL monitoring plugins into production environments will enable their customers to achieve faster performance and higher goodput, leading to a better overall customer experience and greater performance per dollar spent.
 
-![](https://substackcdn.com/image/fetch/$s_!_fs8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fca4f394a-acb6-446d-8f85-3cc1dc30a22d_1024x541.png)
+![](z-images/bd6342e7a51fabc526888206e70f171f.webp)
 
 Source: SemiAnalysis
 
@@ -321,7 +321,7 @@ We see top GPU clouds leverage specialized deployment teams for cluster burn-in 
 
 It is common for integration teams to pitch using LINPACK as their burn-in and acceptance process. Still, we don’t believe this is a very good test, as LINPACK does not utilize the network extensively, nor does it heavily utilize the GPU’s HBM memory; instead, it only utilizes and tests the GPU’s FP64 cores. ML Training, by contrast, is very network, HBM, and BF16/FP16/FP8 tensor core intensive, and as such, we believe that it is a burn-in and acceptance test that carries out a proper burn-in of critical components.
 
-![](https://substackcdn.com/image/fetch/$s_!gp_F!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc93f730e-bef6-4e0d-a2d8-3a683ae78930_1024x691.png)
+![](z-images/905ebfc23181c56100bd9b06a829cc06.webp)
 
 Source: SemiAnalysis
 
@@ -422,13 +422,13 @@ For their bare metal offering, which doesn’t include any CoreWeave-managed sof
 
 Although the rest of their customers have the option not to use the CoreWeave managed offering, all their customers decide to opt for it due to CoreWeave’s amazingly managed offering.
 
-![](https://substackcdn.com/image/fetch/$s_!oqO6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d253a51-251b-4801-b8eb-68ce142c00b0_1024x563.png)
+![](z-images/8f1a7f64de37636f6dde4124f092673b.webp)
 
 Source: CoreWeave
 
 Firstly, we will talk about CoreWeave’s automated node lifecycle controller that ensure that during cluster bring up nodes receive a full burn-in test and full cluster InfiniBand network high-temperature burn in with NCCL-tests and ib\_write\_bw. Not only does this bring up burn-in test for hard failures, but they also compare it to reference numbers and see when nodes do not meet the performance expectations or are running into silence data corruption (SDC) issues. Nodes that do not meet this comprehensive test will be automatically drained for investigation and will not proceed to the customer cluster till it is fully resolved.
 
-![](https://substackcdn.com/image/fetch/$s_!nAa2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F97d55d02-f36c-406c-a8f7-d3f36e7557eb_1024x454.png)
+![](z-images/323b7805e8a75d87656e3c71ac99abf2.webp)
 
 Source: CoreWeave
 
@@ -456,19 +456,19 @@ In addition to passive health checks, they automatically schedule on a weekly ba
 
 By automatically scheduling these tests during cluster bring up and continuously during the whole lifecycle of the customer cluster, they are able to ensure that the customer has high goodput by proactively removing unhealthy nodes to prevent customers from submitting jobs from unhealth nodes. Customers can see in the dashboard when was the last time their nodes have had an active health check ran called “verification”.
 
-![](https://substackcdn.com/image/fetch/$s_!Ujwq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe35561ef-6e1d-4b2b-a2d9-c8cf09775755_1024x392.png)
+![](z-images/d12138e6388555f3e617afc99e80f328.webp)
 
 Source: SemiAnalysis
 
 On their main dashboard, they also show events such as the classic common error of “GPUFallingoffthebus” and “LinkFlaps”. At the infra layer without any changes to application/end user code, they use "DCGM\_FI\_PROF\_PIPE\_TENSOR\_ACTIVE \* 1979" to track the current fp8 TFLOP/s (times 989 to bf16 TFLOP/s estimates) rough estimate and has a system to correlate which alerts causes a drop in cluster or job wide TFLOP/s. for example, you can clearly see that the drop in jobwide TFLOP/s is caused by PCIeFault and IBLink flapping Fault. While using DCGM\_FI\_PROF\_PIPE\_TENSOR\_ACTIVE isn’t the most accurate estimate of MFU, it does allow the customer and CoreWeave to view which events are relevant to the drop in MFU. In addition, the CoreWeave MFU infra layer estimates, customers can also calculate their MFU and TFLOP/s/GPU at their application layer for a more accurate absolute TFLOP/s/GPU.
 
-![](https://substackcdn.com/image/fetch/$s_!2Y4l!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff832c57d-6ea6-499b-9f82-b8a25860d440_1024x559.png)
+![](z-images/c00dacc876a0d25f88bba30e758f9660.webp)
 
 Source: CoreWeave
 
 CoreWeave has amazing out of the box dashboards to track InfiniBand and NVLink bandwidth and a whole host of other stats such as temperature and makes them all visible to the end user to help debug. As some are aware, the cold aisle temps change during the day and night and these temp changes may cause 2-3% difference in performance, CoreWeave provides the end user full visibility into the temp sensors of each node they are on.
 
-![](https://substackcdn.com/image/fetch/$s_!eMr_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F978d5ce0-8662-451f-b642-62e90b664e45_1024x265.png)
+![](z-images/9b9f060237b9a56ae79bfaf86a6c46cb.webp)
 
 Source: CoreWeave, SemiAnalysis
 
@@ -476,7 +476,7 @@ All of these active and passive metrics are collected to detect outliers, someth
 
 Furthermore, CoreWeave has improved their customer’s visibility into reliability and the state of each node by having a node controller overview that shows the state of each node from a healthy state to being triaged to being debugged or RMA’ed back to the OEM.
 
-![](https://substackcdn.com/image/fetch/$s_!lzsx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc3a0699f-7081-4401-8a43-a00bebf0cdf7_1024x635.png)
+![](z-images/747414821457acaaaff5ac556529afba.webp)
 
 Source: CoreWeave
 
@@ -512,13 +512,13 @@ We've been using Crusoe Cloud for the past seven months and have been consistent
 
 We had a very positive experience dealing with GPU bus errors on Crusoe servers. When we discovered the GPU bus error, Crusoe sent us an email to resolve the issue. In the email, Crusoe explained that it had automatically detected a GPU-fell-off-the-bus error, reserved a health spare node, and requested that we restart the node in the console to complete the migration. Crusoe automatically identified issues, proactively fixed them, and guided users on migration. This robust fault management improves user experience.
 
-![](https://substackcdn.com/image/fetch/$s_!MJRR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff46ded0d-c43e-4738-a02e-4bbc619251ac_1024x444.png)
+![](z-images/d218616ef4ef9818b8dc935b99f1849b.webp)
 
 Source: Crusoe, SemiAnalysis
 
 Initially, Crusoe lacked a fully managed Slurm solution, requiring customers to set up Slurm clusters through Terraform scripts manually. However, they offset this complexity with an exceptional white-glove service experience, where Crusoe engineers personally handled Slurm setup for most customers, ensuring smooth deployment and minimal friction. Last week at GTC, Crusoe recently addressed this gap by announcing their fully managed Slurm offering called " [Auto Clusters](https://static.rainfocus.com/nvidia/gtcs25/sess/1736564473769001z9Hl/FinalPresPDF/S74475_1743005927914001c0TT.pdf)," unveiled at GTC last week. This new service promises to simplify customer workflows further and remove previous manual deployment complexities. Their new “Auto Clusters” product will also come with [automatically generated Slurm topology](https://slurm.schedmd.com/topology.conf.html) to ensure optimized NCCL collectives and auto node replacement when detecting unhealthy nodes.
 
-![](https://substackcdn.com/image/fetch/$s_!Iiqj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9382f8df-9bc1-435c-bec3-50732f67e479_1024x578.png)
+![](z-images/6fc800984731da707f688f85eea3e8cf.webp)
 
 Source: Crusoe
 
@@ -526,7 +526,7 @@ Crusoe already provides a robust, fully managed Kubernetes offering, making it s
 
 Although they don’t do weekly scheduled active health checks, during cluster bring-up, they do burn-in and active health checks at the initial launch of the cluster; they do some level of testing and qualification. We recommend they investigate how CoreWeave does their cluster burn-in and advance their cluster burn-in to the same level as CoreWeave. CoreWeave has raised the industry bar for the most advanced cluster wide burn in.
 
-![](https://substackcdn.com/image/fetch/$s_!7msz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75a5c30f-516f-4c24-881c-fe2a2184f624_1024x538.png)
+![](z-images/6cbc45820c351ad02d140568a9e46328.webp)
 
 Source: Crusoe
 
@@ -544,7 +544,7 @@ Due to its roots as an ex-Russian cloud provider, it boasts an exceptionally tal
 
 Finally, Nebius currently offers a fully managed Kubernetes solution but does not yet provide fully automated managed Slurm clusters, a significant gap in their product portfolio. They are actively developing their "Soperator" Slurm solution, which includes foundational passive and active health checks. However, these checks still fall short of industry-leading standards set by providers like CoreWeave. To match competitors' reliability and observability, Nebius will need to invest more heavily in comprehensive, weekly scheduled active health checks and implement advanced out-of-the-box Grafana dashboards. Strengthening these operational aspects would further enhance their already compelling value proposition by increasing reliably to the level of CoreWeave and having automated node lifecycles.
 
-![](https://substackcdn.com/image/fetch/$s_!QtB3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c0b987e-85fb-4577-a4bb-df2e18481856_1024x793.png)
+![](z-images/885b4370e3c80e1d8f85328ae19c96af.webp)
 
 Source: Nebius
 
@@ -552,7 +552,7 @@ Source: Nebius
 
 From our testing, OCI's GPU experience is strong and consistently recognized as the most cost-effective among the four major Hyperscalers. Their GPU offerings come with a one-click UI deployment from the OCI marketplace called “ [OCI HPC stack](https://docs.oracle.com/en/solutions/deploy-nvidia-ai-on-oci-gvt-region/configure-hpc-cluster-stack-oracle-cloud-marketplace.html#GUID-DD03DBFF-0258-4669-9753-72930294287C) ” for both Slurm and monitoring. However, despite this impressive setup, OCI’s Slurm solution isn't fully managed—it currently operates as a co-managed offering supported by one or two of OCI’s solution architects. To remain competitive, especially against AWS's and CoreWeave's comprehensive managed Slurm solutions (the latter having an exceptional node lifecycle controller and automated active health checks), we strongly recommend OCI invest in a fully managed “Oracle Managed Slurm (OMS)” offering, which would benefit the gamut of Oracle customers (sans OpenAI, due to their AGI safety policies).
 
-![](https://substackcdn.com/image/fetch/$s_!7TYz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff42966cd-4297-441f-b36a-6daee007249c_1024x919.png)
+![](z-images/ac06f588156d0c23352fdb8409cc39ba.webp)
 
 Source: Oracle
 
@@ -586,7 +586,7 @@ Azure's Hyperscaler status ensures a unity of ecosystem - one doesn't need to st
 
 From our testing, Together AI stands out prominently in the GPU cloud provider market. While their cluster offering alone would typically qualify them as a ClusterMax™ Silver-level provider, what truly elevates them to ClusterMax™ Gold is their exceptional support and technical expertise. Together AI's team, led by Tri Dao—the inventor of Flash Attention—and their Together Kernel Collection (TKC), significantly boost customer performance. We estimate that roughly 30-40% of their GPU cloud customers leverage TKC. We don’t believe the value created by Together can be replicated elsewhere without cloning Tri Dao. From our testing, we have verified that TKC boosts real-world performance for training and inference and that the Tri Dao kernels are genuinely a performance boost.
 
-![](https://substackcdn.com/image/fetch/$s_!Z1n-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7b67fe87-6a49-4474-9bc2-28c8a7a51367_1024x548.png)
+![](z-images/cf913883bdbb5635208365eee71ab4d0.webp)
 
 Source: Together AI
 
@@ -594,7 +594,7 @@ Even those not utilizing TKC greatly benefit from Tri Dao's team's consulting ex
 
 Additionally, Together AI provides intuitive, user-friendly, managed Slurm and Kubernetes solutions directly accessible via their dashboard, [enabling deployment with just a few clicks](https://www.youtube.com/watch?v=J8vTTRi2GN4). As an NVIDIA portfolio company, Together AI also benefits from early access to new NVIDIA hardware, such as Blackwell GPUs, and collaborates closely with NVIDIA to develop optimized kernels tailored for next-generation GPUs.
 
-![](https://substackcdn.com/image/fetch/$s_!MFRp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F35adb7f3-ccfa-48a7-82a7-7a9edfb5fa1a_1024x621.png)
+![](z-images/dc2764fb1c38d044dbb1714d17b0d68c.webp)
 
 Source: Together AI
 
@@ -610,25 +610,25 @@ For training, they offer a Slurm similar method of submitting jobs. For our test
 
 In the LeptonAI platform, you can view the node lifecycle in their console dashboard and see what jobs and state each node is in. They have superior node lifecycle visualization, and the only company that has a better node lifecycle dashboard is CoreWeave.
 
-![](https://substackcdn.com/image/fetch/$s_!aINL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F97c319f9-40fe-47af-8689-7232ecb5781b_1024x423.png)
+![](z-images/a14d44beb43a78c4dc90e7fab6af4e49.webp)
 
 Source: LeptonAI
 
 For passive health checks, LeptonAI runs gpud which is [their open sourced solution](https://github.com/leptonai/gpud/tree/main/pkg) for passive GPU health checks. It provides a comprehensive passive health check coverage for most of the passive health checks. This passive GPU check is still improving but it is a strong solution.
 
-![](https://substackcdn.com/image/fetch/$s_!j_pO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd7668954-924d-43e9-b688-d0152eb96290_1024x469.png)
+![](z-images/41dc4435bd74383ec94f076a418ba6a2.webp)
 
 Source: LeptonAI
 
 LeptonAI also has manual active health checks such as DCGM diag and nccl-tests, but this is run manually through the UI dashboard, and it is not done automatically on a weekly scheduled basis like CoreWeave and LeptonAI do not provide reference numbers for what NCCL tests should be. We recommend that they implement an option for customers to opt-in to having automatically actively scheduled health checks. LeptonAI also does not have Megatron Loss convergence active health checks or have Nvidia TinyMeg2 SDC detector active health checks.
 
-![](https://substackcdn.com/image/fetch/$s_!2DKP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0424d2f9-3938-4d6b-ac45-ed00dcff35c0_1024x503.png)
+![](z-images/3659c0865b07e021a6d5ff771ea6ad91.webp)
 
 Source: LeptonAI
 
 LeptonAI also has some beta features such as a box zero-impact NCCL profiler, which a customer can click a checkbox, and they can gain the full advantage of their custom in-house NCCL profiler to visualize collective bottlenecks and help their customers optimize network bottlenecks.
 
-![](https://substackcdn.com/image/fetch/$s_!Rew6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F42c1cc45-b3db-4491-b8d7-2dbd6348f5ea_1024x488.png)
+![](z-images/766ae5d7a9bd3e936f4a2ad56a75c05a.webp)
 
 Source: LeptonAI
 
@@ -648,23 +648,23 @@ AWS is not just a pure GPU cloud but also has all the other services of a cloud,
 
 AWS also offers a managed Lustre parallel filesystem called FSX for posix cluster-wide networked storage. For object storage, they have their famous S3 object-managed storage services too.
 
-![](https://substackcdn.com/image/fetch/$s_!Mej_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fed00a7e4-500d-4b37-9bbd-03937cac2bb3_890x608.png)
+![](z-images/7c5de04577508c06875a56c4884232cf.webp)
 
 Source: AWS
 
 AWS provides a managed Slurm and Kubernetes offering named Hyperpod, which significantly simplifies cluster setup. They offer an UI dashboard for setup and easy-to-follow instructions for setting up their managed offering.
 
-![](https://substackcdn.com/image/fetch/$s_!3wKS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a94fb46-1715-416f-acee-c2e22e62e00a_1024x349.png)
+![](z-images/e48eb036d0670588dda0cbacd78360c7.webp)
 
 Source: AWS
 
 Hyperpod includes basic passive and basic active health checks, and it also integrates straightforward Grafana dashboards for monitoring system health. Unfortunately, out of the box they are missing automated active health checks such as nccl-tests and Nvidia’s tinymeg2 SDC detector and running Megatron convergence tests weekly.
 
-![](https://substackcdn.com/image/fetch/$s_!yUnp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fff021e49-f772-4b17-93d1-24f047243270_1024x355.png)
+![](z-images/0c9be1db95a6ec4070e82ba1f700ff12.webp)
 
 Source: AWS
 
-![](https://substackcdn.com/image/fetch/$s_!COcT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffcbc729c-6d46-4f23-83b4-66f485514815_1024x543.png)
+![](z-images/d58f07cde560ea761a6a17aa10502f38.webp)
 
 Source: AWS
 
@@ -676,17 +676,17 @@ Lambda Labs is highly regarded as a go-to provider for on-demand GPU instances, 
 
 Users have also expressed interest in broader base image choices beyond the standard Lambda stack base image for their on demand offering. Lots of users and SemiAnalysis's own testing have shown that the on-demand instance boot times are excessively long, typically around 30 minutes. For comparison, Crusoe’s H100 SXM instance offers a boot up in less than 90 seconds. This should be the bar that Lambda Labs aims for. Additionally, Lambda's default on-demand instances incorrectly set the CUDA toolkit and CLI tool paths to /usr/bin/nvcc instead of the industry-standard /usr/local/cuda/bin/nvcc, causing compatibility issues with many open-source repositories. We have spoken with the team at Lambda Labs, and they are committed to reducing the boot time of their on-demand instances.
 
-![](https://substackcdn.com/image/fetch/$s_!c-VL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcd5fe694-04ab-49f4-858c-9e7f1a4f48c2_1024x462.png)
+![](z-images/bd1d035b2f3ef2d505c52cdaec434cd1.webp)
 
 Source: Lambda Labs, SemiAnalysis
 
 Lambda Labs also provides managed Kubernetes services, greatly simplifying container orchestration for users. Their managed Kubernetes offering features an out-of-the-box console UI and Grafana monitoring dashboards for viewing node and GPU metrics. Furthermore, they provide out-of-the-box scripts for nccl-tests for end customers to verify their networking performance. They also offer Vast Data based high-speed parallel filesystem for networked storage.
 
-![](https://substackcdn.com/image/fetch/$s_!KaPP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2160bccd-72de-4dc3-a9ad-264891ed960c_1024x549.png)
+![](z-images/8444d674f193414e3fc45460e67925d0.webp)
 
 Source: Lambda Labs
 
-![](https://substackcdn.com/image/fetch/$s_!ueb3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd812b0eb-3a4d-4ced-8de2-a9c0f518aec7_1024x560.png)
+![](z-images/7ca8a1ab4e49ea3e4fdc92a24d71dc38.webp)
 
 Source: Lambda Labs
 
@@ -700,7 +700,7 @@ SMC is the AI cloud and GPU service provider of Australian-Singaporean sustainab
 
 In the MLPerf Training v4.0 benchmarks, SMC demonstrated impressive performance by training the GPT-3 175B model. Additionally, SMC has submitted verified MLPerf power consumption results, confirming that H100 immersion cooling consumes less power than comparable air-cooled GPU solutions. They claim that this savings of power translates to lower TCO, and they claim that due to their lower TCO, it translates to lower prices for their customers.
 
-![](https://substackcdn.com/image/fetch/$s_!dGW-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc29c80ab-d5e8-4a5d-8396-9fa83631a238_1600x1066.jpeg)
+![](z-images/c16f4b17fc479623c6d4a36084bc899e.webp)
 
 Source: SMC
 
@@ -718,7 +718,7 @@ From our testing, Scaleway offers robust Slurm and Kubernetes solutions, complem
 
 As a GDPR-compliant provider and an NVIDIA NCP partner, Scaleway emphasizes data privacy and leverages cutting-edge GPU technology. However, their use of gold-plated DGX Hopper chassis results in a higher total cost of ownership (TCO). This increased cost is often passed on to customers. We recommend that Scaleway explore OEM alternatives, such as Dell or Supermicro HGX SKUs, or consider ODM chassis options, which can deliver the same performance at a reduced cost. Note that it is not recommended to buy gold-plated chassis to be an NVIDIA NCP partner.
 
-![](https://substackcdn.com/image/fetch/$s_!efoK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6bce5065-47a0-48f9-9b41-c47d71263b56_640x354.png)
+![](z-images/df7d9e6c73cb36dd0a625046bada5386.webp)
 
 Source: Scaleway
 
@@ -758,7 +758,7 @@ A3-mega instances were also lacking LL128 protocol, which meant that their real-
 
 From talking to GCP customers, all of them complained about the activation energy needed to properly set NCCL environment variables and correctly link the GCP network/tuner plugin and debug it to ensure it hours. This wastes expensive GPU time while their customers debug their NCCL env vars versus on Azure and OCI; NCCL works out of the box. GCP acknowledged this feedback and is looking into how they can make this experience smoother. The next thing that customers have complained about is that GCP does not automatically use [slurm topology.conf](https://slurm.schedmd.com/topology.html) for Slurm topology-aware scheduling but instead makes the user do the topology ordering in their sbatch script instead. GCP has addressed this feedback and implemented the fix this year.
 
-![](https://substackcdn.com/image/fetch/$s_!wbOv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2caad321-412c-4726-80cb-5f27fd72eb0d_1024x537.png)
+![](z-images/e65e5946ee619c323d1b846175b296cd.webp)
 
 Source: GCP
 
@@ -780,7 +780,7 @@ Other providers land themselves in the ClusterMAX™ Bronze tier by not having n
 
 For what it's worth, for some of these providers, such as DataCrunch’s on-demand single-node offering, it is quite suitable for development work. We evaluated the DataCrunch on-demand single-node offering, and we quite enjoyed it. But unfortunately, their production cluster is not suitable for inferencing or training.
 
-![](https://substackcdn.com/image/fetch/$s_!b48c!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F51d2b8e4-4d15-4bc7-bcdf-9d5e57e0c9a6_1024x596.png)
+![](z-images/97aed238e8d49c04f077483439a2e7ab.webp)
 
 Source: Datacrunch
 
@@ -798,7 +798,7 @@ Some of these GPU providers even told us that they have lost potential sales due
 
 Some GPU Providers in this category even admit on their public website that there may be security and privacy concerns, and traffic between the GPU servers and the internet may be heavily logged by a 3 <sup>rd</sup> parties networking equipment.
 
-![](https://substackcdn.com/image/fetch/$s_!HkW8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbf758eb1-6ba6-4769-a6a9-dda697456b2a_1024x235.png)
+![](z-images/b80d6565967b3811f4fc18640ec8ab6f.webp)
 
 Source: SaladCloud
 
@@ -806,13 +806,13 @@ Some GPU providers such as Massed Compute land themselves in the **UnderPerform*
 
 For example, when searching for “H100 vs A100 L2 Cache” on Google, the Massed Compute AI generated junk article with incorrect information shows up first. They actively are spreading misleading information, which is a horrible starting point for a GPU provider.
 
-![](https://substackcdn.com/image/fetch/$s_!GLKe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff48da40c-3e17-447b-b5a4-aa6611bbd382_1024x537.png)
+![](z-images/648c31c16032225b9e4ee717c509a61f.webp)
 
 Source: Google Search
 
 If you click into the link, it starts the H100 L2 cache size is 256MB which is completely wrong. We recommend that Massed Compute stop spamming the internet with AI-generated junk.
 
-![](https://substackcdn.com/image/fetch/$s_!H0Ay!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F95d5a59e-af8a-4c6d-b48f-79d1e422b7e9_703x1024.jpeg)
+![](z-images/07ecf89a51c0ffa49ae6acaa68df8871.webp)
 
 Source: Massed Compute
 

@@ -12,7 +12,7 @@ Robots have powered manufacturing for decades, yet they stayed single-purpose an
 
 General-purpose robots that can accurately perform any task in any domain is now an inevitability, and mass labor replacement is on the horizon. However, these robots will arrive in levels, slowly adding more capabilities until all tasks are feasible. To provide a barometer for this progress, we introduce our industry-first “Robotics Levels of Autonomy,” which classifies robotics into 5 distinct Levels.
 
-![](https://substackcdn.com/image/fetch/$s_!PUjy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4446093a-6142-42ad-84c6-a76a608618cc_1629x957.png)
+![](z-images/b83676d2eec3f6dfca1a41cfe3bb3c9f.webp)
 
 Source: SemiAnalysis
 
@@ -26,7 +26,7 @@ We’ve talked extensively to top scientists, surveyed numerous companies, trave
 
 We deeply appreciate the invaluable contribution of our coauthors: industry practitioners Niko Ciminelli, Joe Ryu, and Robert Ghilduta. We take inspiration from coauthor Joe Ryu’s [framework](https://www.edgeofautomation.com/i/156509361/ii-five-levels-of-autonomy) to flesh out this classification. This project couldn’t be done without the help of outside experts.
 
-![](https://substackcdn.com/image/fetch/$s_!KA6n!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F791e56df-1bec-457a-a068-29aa31b488cb_1508x1010.png)
+![](z-images/d57c8f1a9080b82cb1eeb66ed95e463d.webp)
 
 Source: SemiAnalysis
 
@@ -36,7 +36,7 @@ We welcome feedback: Please reach out to discuss anything regarding our new Leve
 
 The path to full autonomy begins with accurate, single-purpose systems. But general-purpose robots must start anew, learning to **see**, **plan**, **interact**, and achieve exceptional **accuracy**. Along the way, their capabilities, applications, and challenges may vary widely. Each Level can be adequately explained across the two axes below, Agency and Dexterity:
 
-![](https://substackcdn.com/image/fetch/$s_!6xaZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fce9cedfb-16ff-42a6-b455-6e8d29a9776e_1024x510.png)
+![](z-images/a895908a7da0d2084a3b73a86e3b8cc1.webp)
 
 Source: SemiAnalysis
 
@@ -52,7 +52,7 @@ Currently, general-purpose robots are already working in early production phases
 - Capabilities: 24/7 Automation, High Throughput
 - Deployment and Use Cases (2025): Industry standard in automotive and electronics factories
 
-![](https://substackcdn.com/image/fetch/$s_!31st!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc4a1cd78-1ff3-465f-84d1-1af744eea36c_900x550.webp)
+![](z-images/3949734a5bed2fcab298e97683216e0b.webp)
 
 Source: Siemens
 
@@ -62,7 +62,7 @@ Source: Siemens
 - Capabilities: Stationary Pick and Place
 - Deployment and Use Cases (2025): Adopted in parcel logistics centers for pick and place sorting, increasing penetration in additional warehousing markets as capabilities and integrations improve
 
-![](https://substackcdn.com/image/fetch/$s_!vYeF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbd8a91e3-d37e-457f-8a52-ca7be804097a_1280x720.jpeg)
+![](z-images/5813e4cf79c4b07ff95b3e9a467a3c75.webp)
 
 Source: Covariant
 
@@ -72,7 +72,7 @@ Source: Covariant
 - Capabilities: Open world Navigation and Traversal
 - Deployment and Use Cases (2025): Early production phases for inspection and data collection roles, e.g. construction sites, oil & gas refineries, critical infrastructure, etc
 
-![](https://substackcdn.com/image/fetch/$s_!IA_h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc1e3f706-6ac9-4705-97a2-57473ca79802_1280x1083.jpeg)
+![](z-images/6bb3961a04a84fbd9e8459b3fbd3e06e.webp)
 
 Source: TechEBlog
 
@@ -82,7 +82,7 @@ Source: TechEBlog
 - Capabilities: Advanced Pick and Place, Mobile Manipulation
 - Deployment and Use Cases (2025): Early pilot stages in kitchens, laundromats, manufacturing, and logistics
 
-![](https://substackcdn.com/image/fetch/$s_!zyg-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3fe08a99-1961-4084-b0d9-c2421625ec5f_1200x675.webp)
+![](z-images/3697e6067973b0ec0fcbd1ba90c67e08.webp)
 
 Source: Interesting Engineering
 
@@ -92,13 +92,13 @@ Source: Interesting Engineering
 - Capabilities: Delicate, Force-dependent Tasks, Fine-grain Manipulation
 - Deployment and Use Cases (2025): In Research
 
-![](https://substackcdn.com/image/fetch/$s_!Iu0k!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc36f4948-7da1-4481-9289-379b2695b5fe_2302x583.png)
+![](z-images/dd9c2970097fb01f190e35bd45cf422d.webp)
 
 Source: Feel The Force
 
 ## Level 0 - Scripted Motion
 
-![](https://substackcdn.com/image/fetch/$s_!uNiz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e2ba8e2-bd65-4209-a357-82adaaa524e9_1657x565.png)
+![](z-images/e655a3058f795d5095a1e66cf7759d33.webp)
 
 Source: SemiAnalysis
 
@@ -108,7 +108,7 @@ To understand the shift in robotics, we must first look from where it’s depart
 
 ## Deployments and Considerations: Locked Away
 
-![](https://substackcdn.com/image/fetch/$s_!UzHW!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdc899cb2-0035-4f1c-97e8-82655608f10a_1645x889.png)
+![](z-images/b63499dae3c45c52757d445d5b9ee05a.webp)
 
 Source: SemiAnalysis
 
@@ -120,7 +120,7 @@ This leads to the core of Level 0 deployments: the **“cell.”** The robot liv
 2. The cell isolates the robots to limit external interference or perturbations that can alter their environment, their positioning, or any aspect of the task at hand
 3. Each cell is tailored to the robot and the location, making installation and programming of the task at hand simpler
 
-![](https://substackcdn.com/image/fetch/$s_!Lmbp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F987b138b-7d4f-4695-813a-ce36d041a11a_1200x606.jpeg)
+![](z-images/c1d9ecb7da0a41dab9d3872749018ddc.webp)
 
 Source: arm
 
@@ -130,13 +130,13 @@ This rigidity of Level 0 turns automation into an industrial engineering project
 
 Because retrofit costs vary widely, let’s ground this in a concrete scenario of a medium-scale automotive facility retrofitted with a brand new, unique body-in-white assembly line--assembling the welded frame.
 
-![](https://substackcdn.com/image/fetch/$s_!V1Ig!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3f2bf71a-bfc3-4287-b0c6-61994b719b56_1900x1069.avif)
+![](z-images/3f83e2616f83bedc2ef86a1277ccca40.webp)
 
 Source: KUKA, Body-in-white assembly line
 
 Typically, the same system integrator and robot brand+software will have to be used to ensure no chance of breaking the factory’s flow with new systems. The total integration can cost roughly 4x-6x the robots themselves in the end. Construction and deployment of cells, configuring related systems like (PLCs, conveyor/line tracks, MES, etc), and installation + testing racks up a big pricetag. A Proof of Principle (PoP), like a physical mockup of the line, can be built first to test out the system (which most *should* do), but most opt out of this unless it’s highly unique, like for pharmaceuticals. We remark that for standardized automotive solutions, this may run rather ~70% of the robot CapEx.
 
-![](https://substackcdn.com/image/fetch/$s_!7p-0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F344374de-c035-449c-87ed-920af28ee5bc_873x482.png)
+![](z-images/f57c1289597e3c41883fa78668b32aca.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -146,13 +146,13 @@ However, this immense cost and complexity is the reason automation has been hist
 
 At Level 0, robots have become widespread additions to a few industries. Automotive factories often use between 400-1000 industrial robots per factory, some even reporting use of up to [1650](https://mbusi.com/factory/body-shop). In electronics manufacturing robot usage is less, around 50-200 robots in a facility. These could be AMRs performing transport, SCARAs used for statically mounting parts onto circuit boards, CNC machines milling pieces of hardware, or cobots for machine tending.
 
-![](https://substackcdn.com/image/fetch/$s_!O47Q!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcf879b37-7cf6-4cfe-9d40-e5cd97d2cb87_1158x1009.png)
+![](z-images/e656a0f6955888a98cb02f04b3cf9333.webp)
 
 Source: SemiAnalysis
 
 The automotive line can pay for itself in under two years and afterward, operating costs are nearly ~75% cheaper. Industry representatives have said that after the payback period, these factories are **“printing money.”** Some facilities can even reach up to [2,000](https://www.fmamfg.org/blog/power-metering-empowers-toyota) cars per day, and warehouse arms can often do the work of ~10 people with no fatigue. The efficiency of robots executing Level 0 tasks warranted Amazon’s [hundreds of thousands](https://finance.yahoo.com/news/amazon-grows-over-750-000-153000967.html) of robots. For example, 50 robots might perform the large assembly and manipulation work of 200 laborers at ~73% lower costs per job.
 
-![](https://substackcdn.com/image/fetch/$s_!P9ss!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6c7a9307-4a7f-47eb-b787-b0048f212ecd_1281x926.png)
+![](z-images/32d44e79f492ef50907a7596d014e26c.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -164,7 +164,7 @@ The fundamental difficulty of Level 0 is the robot’s total lack of Autonomy. T
 
 - **Constant Oversight:** Human technicians must always be on-site (except in dark factories). Ratios may range from 20:1 robots:humans, and down toward 12-15:1 for demanding industrial settings. Most of the time, when humans take a lunch break or swap shifts, the robots have to be stopped as well. If these robots fail, downtime can be incredibly costly, like [$2M](https://assets.new.siemens.com/siemens/assets/api/uuid:3d606495-dbe0-43e4-80b1-d04e27ada920/dics-b10153-00-7600truecostofdowntime2022-144.pdf) per hour in automotive, or $50M/day in semiconductor fabs.
 
-![](https://substackcdn.com/image/fetch/$s_!79rf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F629c9778-4961-48ff-8325-50690e730a83_737x988.png)
+![](z-images/f3bbedc5d72b83369fe7ffd224b7b190.webp)
 
 Source: SemiAnalysis Wafer Fab Equipment Model
 
@@ -177,7 +177,7 @@ Source: SemiAnalysis Wafer Fab Equipment Model
 
 For Level 0, we see costs decreasing as a significant path forward. As real wages climb and industrial robots’ prices drop, they become even more attractive. This should continue over time. Robotics being a manufactured good means that as manufacturing processes improve, production increases, and economies of scale take over, the robots should become more cost-efficient.
 
-![](https://substackcdn.com/image/fetch/$s_!TuPP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d6c4963-a311-4571-9a2e-87fde977e554_1374x1065.png)
+![](z-images/29029543c04f67ddf34a2957f9954b46.webp)
 
 Source: Ark Invest, FRED
 
@@ -191,7 +191,7 @@ While these would improve scripted motion systems, the challenge lies in their p
 
 ## Level 1: Intelligent Pick and Place
 
-![](https://substackcdn.com/image/fetch/$s_!pqWZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39a586c6-2dee-4e8c-b6a3-aa1a35917cbd_1648x616.png)
+![](z-images/78bd2d4071fce906778ce6bfd8df1991.webp)
 
 Source: SemiAnalysis
 
@@ -199,7 +199,7 @@ Source: SemiAnalysis
 
 Robots first broke away from Level 0’s static tasks when they shifted into "pick and place," picking an item from area A and placing it in area B. Pick and place lives in a non-perfect domain where objects, configurations, and lighting may all change. The robot must generalize its perception to determine the object and its pose, and tweak its grasp accordingly-- a task impossible for Level 0 robots. Large-scale datasets, and smaller but vital grasping datasets, powered this attempt into Level 1 autonomy by unlocking a piece of **Dexterity**: **Generalization**, especially in perception. With enough data, the robot could recognize objects, sometimes novel, in various poses and angle its grasp for picking.
 
-![](https://substackcdn.com/image/fetch/$s_!miuO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1364add1-f105-4702-8bdf-52c5c117d966_2560x1271.png)
+![](z-images/ed8a9dd112fd3629ca2c4fda11a88036.webp)
 
 Source: Google Research
 
@@ -207,7 +207,7 @@ The commercialization attempts went toward warehouse and logistics “pick and p
 
 Nowadays, some companies have continued to reap the benefits of linear improvement, and advancements in AI models and deployment solutions have created a new viability for robots targeting Level 1’s pick and place. These robots are currently ironing out their remaining **Challenges** to become more capable than the original attempts.
 
-![](https://substackcdn.com/image/fetch/$s_!UKKv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e4a2b15-f7da-43e6-852e-732defb138dc_1280x720.jpeg)
+![](z-images/cc60c8a3273fe5da5814e76c7319501a.webp)
 
 Source: Covariant
 
@@ -219,7 +219,7 @@ While pick and place is simple for humans, the non-static nature was a massive h
 
 - **Problem 1: Seeing and Understanding -** Before Level 1, cameras on robots were mainly to verify that an action and task had been completed. However, autonomously picking an object from a cluttered bin requires generalizable perception --perception capable of adapting across novel scenarios. In Level 1’s pick and place, this is identifying an item, discerning it from the clutter, and estimating its shape and pose. Broad visual reasoning like this could come from today’s **Vision-Language-Models (VLMs),** but this 2015-2022 era mainly used neural networks that needed large, annotated datasets of application-specific images that didn’t quite exist for robotics applications.
 
-![](https://substackcdn.com/image/fetch/$s_!Mhge!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0514ce5c-6325-4492-b07a-fa06ecacc949_1024x1024.png)
+![](z-images/ff00a78f71d777fdceb3510035a69095.webp)
 
 Source: Sick
 
@@ -229,25 +229,25 @@ Source: Sick
 
 The first signs of a solution to these two problems came from the computer vision world, enabling generalizable perception. The creation of the large-scale ImageNet dataset (2009) and the success of neural networks like AlexNet (2012) showcased the potential for computer vision. This then sparked many new projects, like YOLOv1 (2015), which allowed for real-time object and bounding box detection for locating objects, Mask R-CNN (2017) then enabled shape estimations with “masks” to segment objects from the rest, and finally PoseCNN (2018), which tied it together with 6D pose estimation of objects with just a stereo camera. With these efforts, models had early generalizable perception, capable of understanding multiple objects in multiple contexts for the first time.
 
-![](https://substackcdn.com/image/fetch/$s_!Mo69!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67cc9139-71e0-4b85-bbaa-ff067cac3ee9_1666x469.png)
+![](z-images/d58e542cd2d8867b1e5b3ada03e12bc0.webp)
 
 Source: YOLO
 
 While perception was finally generalizable, it was **still brittle**. Systems were still easily confused by **novel** objects, reflective or transparent objects, shadows, or too much clutter. However, in this era of 2015-2022, many saw these advances as a chance to support perception in robotics; maybe the robot could now generalize perception to identify the object and its pose for picking.
 
-![](https://substackcdn.com/image/fetch/$s_!t0wk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faf7d06ad-73fc-4097-a9c5-3167eb972d4b_2109x1087.png)
+![](z-images/41d2db8964abc57277cffd77e193b2c2.webp)
 
 Source: PoseCNN
 
 This breakthrough in perceptual abilities fired up researchers to attempt amassing robotic grasping datasets, where some like [Pinto & Gupta (2015)](https://arxiv.org/abs/1509.06825) showed **700 hours** of robotic grasping attempts enabled their robot to reach **80% grasp accuracy.**
 
-![](https://substackcdn.com/image/fetch/$s_!zk-C!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb6c9840b-f11f-47a3-b950-c6690bb25683_1024x424.png)
+![](z-images/3961d93ba658d550dbc6daec0ef1148e.webp)
 
 Source: Arxiv
 
 While this “adaptive grasping” was monumental for robotics, 80% does **not** meet the threshold for most commercial applications. Each failed pick typically couldn’t be resolved by the robot due to its lack of autonomy, and 40% of the time required human intervention. Since these were often unsafe industrial arms, the human had to pause the whole warehouse line, solve the issue, and resume the process, leading to an average Mean Time to Recovery of ~6 minutes.
 
-![](https://substackcdn.com/image/fetch/$s_!V3US!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F847810a4-9a23-43bd-bc92-5f88378649ba_1541x856.png)
+![](z-images/69a437de9a9a1ce04cca03b61c60a035.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -255,19 +255,19 @@ More projects came out after scaling data showed promise in robot learning, like
 
 Even with the modern booms in robot data, the field is still tiny, and data was substantially less during this era.
 
-![](https://substackcdn.com/image/fetch/$s_!Kqxq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24289be4-f284-4afe-ac8d-bf6e61e3b341_1024x644.jpeg)
+![](z-images/09153bfefd695b6ac3d37651064ba8c1.webp)
 
 Source: Colossus, One of the largest current robot action datasets vs LLM common dataset
 
 In the end, some companies decided the best approach to learning grasping was generating massive data themselves via arm farms. They did gather huge datasets over several months, but often 99% success rates weren't enough. Worse, the jump to 99.99% is an **81x** improvement, larger than the initial 1%-80%. Some were able to reach even this, but it became a Sisyphean task as each novel item and botched grasp set the percentage back. However, their challenging integrations and low autonomy ultimately bottlenecked many companies the most, and still pose an issue today.
 
-![](https://substackcdn.com/image/fetch/$s_!a67R!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4fd86568-ed16-4897-a21e-44ad39fb5392_1280x720.jpeg)
+![](z-images/0dea30292c56c3fa5da1ac01553ba4e8.webp)
 
 Source: Google Research
 
 ### Deployments and Considerations: The Wild West
 
-![](https://substackcdn.com/image/fetch/$s_!vsFe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2f732c9-9716-479f-8a7a-4dab7c9fb583_1647x805.png)
+![](z-images/1463838b8ee40af51daadc75f5fcfa81.webp)
 
 Source: SemiAnalysis
 
@@ -275,13 +275,13 @@ During the 2015-2022 era, integrating these AI robots into the optimized, unforg
 
 Integration of these arms and cells into a warehouse line might cost $90K-$180K. But the robot also had a new custom API that had to complete a “handshake” with the facility’s Warehouse Management System (WMS) which coordinates all inventory and logistics. Oftentimes, the robot’s API was not built with a WMS in mind. As a result, the WMS had to update to accommodate this handshake gap, and a failed WMS update can cost [tens of millions of dollars](https://www.supplychaindive.com/news/asos-warehouse-technology-glitch-millions/559211/). As a workaround solution, a third party integrator might be used and charge up to hundreds of thousands for deployment. Most of the time stop-gap fixes were used to sync the systems instead, like GUI automation agents, a program that merely emulates a human clicking the right buttons.
 
-![](https://substackcdn.com/image/fetch/$s_!rEg8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F519a2b48-2403-42c5-9128-7c86357838e2_801x772.jpeg)
+![](z-images/57074f2b9a4017353a52fa5078c80b34.webp)
 
 Source: WAP
 
 Because the robots needed a full cell installation, integrators chose ideal, cheaper spots, such as a pick and place station between two horizontal conveyors. Difficult locations, like the vertical putwalls, were skipped, because most robots learned in horizontal applications, and reconfiguring the line to horizontal was costly. By screening proper locations, installations might only take up to 4 weeks.
 
-![](https://substackcdn.com/image/fetch/$s_!Wo0r!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F195e7fed-4b66-4b14-acf8-ac37f132df2b_1024x576.jpeg)
+![](z-images/db1d63d98a86a534dc2a4108e485abe1.webp)
 
 Source: YouTube
 
@@ -293,7 +293,7 @@ Nonetheless, the autonomy of these robots was still too low. Employees often wer
 
 The promise of Level 1 was enormous: the automation of low-skill, high-turnover pick-and-place jobs-- a new market for the robots. The task’s basic nature made it seem like a good fit for a robot that could do just that: Pick and place. Businesses had large incentives for automation, as wages were packed with “loaded costs.” For example, we’ve heard Amazon sees a turnover rate of 2%-4% **per week**. This means that for every 100 workers on the floor, by year’s end **104 workers** may have quit. Thus having to constantly hire, onboard, train, and ramp up productivity renders the wage **56%** higher than with no attrition in the workforce. In fact, Amazon currently has a crisis of having already cycled through *every* low-wage worker in some regions.
 
-![](https://substackcdn.com/image/fetch/$s_!Rc8_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F693cdb7f-adb3-41b7-ba6b-e0fde6d29353_915x737.png)
+![](z-images/5dbf63d1142cdee2a30a888b5ae03b78.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -301,25 +301,25 @@ Not only is the cost enormous, but the logistics of constantly hiring new employ
 
 Consider a high-mix, low-throughput task like e-commerce fulfillment, where a robot must pick a wide variety of items at a modest pace.
 
-![](https://substackcdn.com/image/fetch/$s_!r8XZ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe61ba6b1-c2ae-4097-9063-d246de02ea51_1152x727.png)
+![](z-images/7a9b1614efd6b7dd54776bbb3972dfe3.webp)
 
 Source: SemiAnalysis Estimates
 
 Dividing cumulative picks by cumulative cost, we show below how cost per pick evolves over time. In the e-commerce case, the cost per pick of the robot doesn’t drop below a human’s for **3.5 years**, and their effective pick-rate remains below a human's, with **11 robots doing the work of 9 humans**.
 
-![](https://substackcdn.com/image/fetch/$s_!vOdp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36e1e79e-62e3-43ea-9b4f-1a87fe5e52cd_1371x734.png)
+![](z-images/7abdfa7e473022b0c9a1f67955f537c8.webp)
 
 Source: SemiAnalysis Estimates
 
 E-commerce-like warehouse lines posed an interesting challenge for our intelligent pick and place robots: matching a human accurately picking multiple items. While a human may pick 5 items at once, these robots would likely pick one at a time, falling short of human throughput. Then, if the robot *could* pick fast enough, the surrounding conveyor and pre/post-processing systems would be locked at certain speeds, or clogged by the humans on either end, limiting throughput again. The warehouse could potentially make up for this by installing more robots, but the cost grows prohibitively. Worse, the “high-mix” of items is likely to bring **too novel** of an object/scene to grasp successfully, so many *had* to reach 99%+ to mitigate the six minute downtimes. All in all, this configuration of specifics made it difficult to justify the cost of intelligent pick and place robots.
 
-![](https://substackcdn.com/image/fetch/$s_!qfYP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ffcb20d-9d87-4be4-aeea-676849e0fbd5_1280x720.jpeg)
+![](z-images/cf2999df9ba840e7c40e562969fc5129.webp)
 
 Source: University of Bonn, an example of a high-mix bin in a lab
 
 However, Level 1 introduced a new upgrade: **retries**. If the task fails, the robot can detect the error and retry (a few times), whereas errors in Level 0 would freeze the process flow immediately. Let’s take for example “parcel” pick and place, where items arrive in parcels - uniform boxes and packages with labels.
 
-![](https://substackcdn.com/image/fetch/$s_!Cvq7!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa09bbc2e-6a9d-4cb6-82b4-4dd3fb2b106e_1919x1080.jpeg)
+![](z-images/93090558d248435e7caf91f60d60ed5c.webp)
 
 Source: DVZ
 
@@ -327,13 +327,13 @@ Parcel pick and place benefits intelligent pick and place robots two-fold: the p
 
 The robot can target 550 picks/hour, but even **95%** accuracy in this domain delivers an effective pick-rate of 520.
 
-![](https://substackcdn.com/image/fetch/$s_!BWs-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F19c4f8ef-9237-46b8-8fdd-d7a931efc5c4_1155x744.png)
+![](z-images/17e53ef521b1dc461065324f5df4b5c8.webp)
 
 Source: SemiAnalysis Estimates
 
 In this case, we see **10 robots doing the work of 23 human workers**. In these conditions, the robot cost per pick drops below human rates just after **one year**.
 
-![](https://substackcdn.com/image/fetch/$s_!5bdz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd449f551-4d28-4ba9-b34b-bcdc32768f97_1375x732.png)
+![](z-images/fd87f412d5ca96ba9c0ce134f0fa8dd4.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -347,7 +347,7 @@ For this pre-2023 time period, perception struggled. Some tried to skirt the fra
 
 While other tasks seem relatively simple and a mere variation of pick and place, they can introduce different challenges. Take for example folding a shirt, which might seem like an easy task for a robot. In reality, objects like shirts are deformable and **“high-dimensional.”** The robot’s neural network would begin by cataloguing **every** wrinkle, crease, fold, etc on the shirt to understand it. This is called the “state explosion” problem, and it’s specifically difficult for Reinforcement learning in which the model tries to verify steps in the process as good or bad decisions, as now there can be an incredible amount of combinations. **In Level 1, folding clothes became the “holy grail” for the era.**
 
-![](https://substackcdn.com/image/fetch/$s_!nYoL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00d43d0f-3380-470b-a0df-d28d1f757c09_1024x576.jpeg)
+![](z-images/2ac29e3430be413dc5008ba57b862ee4.webp)
 
 Source: Foldimate, instead, single-purpose machines were built for folding clothes
 
@@ -361,7 +361,7 @@ But importantly, many robots are utilizing **Foundation Models** for deep, gener
 
 ## Level 2 - Autonomous Mobility
 
-![](https://substackcdn.com/image/fetch/$s_!pWyD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F430f12d2-417a-43fb-8f6a-9560ecb7a647_1649x805.png)
+![](z-images/1f206494ce49f572e54ee86ebdcc8cde.webp)
 
 Source: SemiAnalysis
 
@@ -383,13 +383,13 @@ The central challenge of autonomous mobility is the **open world**, an environme
 
 The open world does not always provide a static path, and the robot must determine where its own position is in relation to the environment, otherwise it **may get lost**. This requires constant map updates, and small position errors in the updates compound over time, turning inches of error into feet and leaving the robot confused. This error could be the difference between a fully charged robot and a dead machine on the floor. Advanced players might solve this without extra measures, but most might still use **AprilTags**, QR code like stickers for robotic reorientation and calibration, placed at the charging station. These can set fixed, pre-programmed paths or behaviors for which to guide the robot.
 
-![](https://substackcdn.com/image/fetch/$s_!lDgl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F74f98576-13d3-4ba3-b505-73c603f6d06f_958x334.jpeg)
+![](z-images/357b076356dfa30951a26750b81a96b5.webp)
 
 Source: New Atlas
 
 - **First Solution: SLAM -** The main engineering solution to this is Simultaneous Localization and Mapping (SLAM). Using sensors and data, like LiDARs, velocity, time, etc, the SLAM algorithm allows the robot to build a “map” of its surroundings while simultaneously keeping track of its own location within the map. However, SLAM is still **limited** to geometric representations. Open-world environments are constantly shifting and demand a more “cognitive” understanding to lessen this drift or error potential. SLAM may not be substantial on its own, but rather a **complement**.
 
-![](https://substackcdn.com/image/fetch/$s_!DKPB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1792f20e-91b3-483d-a1ac-ac57935abb19_800x450.jpeg)
+![](z-images/36b871ac6ac32b5d9bc455baa69048fa.webp)
 
 Source: Geo Week News
 
@@ -405,7 +405,7 @@ Recent foundation models give robots the missing pieces for **reasoning** and **
 
 All of this constitutes the robot’s newfound **Agency**: generalizable planning, reasoning, and perception. The robot can now obey and follow instructions in many **novel** environments. For example, in the command "go to the stairs past the ladder," the VLM would identify objects and their relationships, then translate the scene to the foundation model for the plan "move left of the ladder, then right toward the stairs." This loop of “thinking” grants the robot the autonomy to perceive and navigate the open world on long time horizons
 
-![](https://substackcdn.com/image/fetch/$s_!vT_K!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F04cd4464-e7ed-4d69-b7a4-626791902512_480x270.gif)
+![](z-images/38a270521f4b1b701838182b9e6d5d15.gif)
 
 Source: Giphy
 
@@ -415,7 +415,7 @@ This **Agency** is complemented by a gain in locomotive **Dexterity**. Instead o
 
 These simulators improved enough that much of these learned locomotion skills transfer to real world deployment with enough fine-tuning, significantly mitigating the “ **sim2real** ” gap. Now, the robot can use their new locomotion **Dexterity** to robustly, and agilely, traverse uneven ground, inclines, unstable ground (rocks, sands, construction pallets), and even locomote with a [broken motor](https://arxiv.org/html/2402.08996v1). **With these unlocks, we see quadruped locomotion hitting its improvement inflection point in Level 2.**
 
-![](https://substackcdn.com/image/fetch/$s_!nx90!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F42a9f580-99cb-4f30-953c-7ef35915aad4_1024x576.jpeg)
+![](z-images/024fa0451987ed8e196a5f70488c2795.webp)
 
 Source: YouTube
 
@@ -425,19 +425,19 @@ Lastly, developments in **hardware** have enabled these robots’ autonomy by eq
 
 ## Deployment and Considerations: Agents In The Open World
 
-![](https://substackcdn.com/image/fetch/$s_!l45V!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F286ca549-98f6-4034-8e97-b521fffdfd8b_1471x815.png)
+![](z-images/e95f86cb3e44ecc01e335e2acdbe2e32.webp)
 
 Source: SemiAnalysis
 
 The robots of Level 2 may come in the following form factors:
 
-![](https://substackcdn.com/image/fetch/$s_!9ZUl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F683fd146-e42a-4165-946b-1f753d4af051_932x738.png)
+![](z-images/1678e4e9d9705dac0df1706f1827cefd.webp)
 
 Source: SemiAnalysis
 
 But notably, the quadruped is **unlocked**. Advancements in large-scale simulation platforms enable robust control of their four legs to traverse with **Dexterity**, and their **Agency** can determine the scene and plan, both challenging prior to Level 2’s unlocks.
 
-![](https://substackcdn.com/image/fetch/$s_!7Nky!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe07cfe3a-0d68-4387-a748-bc619da474f2_960x540.jpeg)
+![](z-images/2450f4f280b0f202a23d1e059fb828a4.webp)
 
 Source: Anybotics
 
@@ -449,7 +449,7 @@ This freedom introduces a new question in the workplace: safety. In the case of 
 - Speed and separation monitoring - tracking nearby humans allows them to maintain a safe distance
 - Operational guidelines and audible or visual cues to signal the robot’s presence or intentions to its human coworkers
 
-![](https://substackcdn.com/image/fetch/$s_!pQuG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc80ab326-8d6e-4f05-a792-f3c0e6f6375b_2560x1627.png)
+![](z-images/8153605e0b2ef45ebeaed8a56eda1421.webp)
 
 Source: Human–Machine Differentiation in Speed and Separation Monitoring for Improved Efficiency in Human–Robot Collaboration
 
@@ -467,13 +467,13 @@ Robots now add another portion of the labor market to their belt. Let’s see so
 
 Sometimes, less than half of what’s planned for a construction site in a week will get accomplished, and with multiple facets like plumbing, electrical, putting up walls, etc, respective progress can be lost in the mix. Oftentimes some **[40%](https://www.openspace.ai/blog/best-practices-for-construction-site-photo-documentation-what-to-capture-and-why-it-matters/)** of construction reworks stem from poor documentation, and this may cost up to **[20%](https://becht.com/becht-blog/entry/measuring-construction-rework-delays-in-sustaining-capital-projects/)** of the bill. A full inspection, or “capture,” of the site should resolve this, but for the construction company it means blocking an **8-hour workday** for their most senior superintendent, and lack of specialization or objectivity may still affect the capture.
 
-![](https://substackcdn.com/image/fetch/$s_!OxTJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F002747de-37eb-4184-bfb7-7fdb0406c93d_1000x666.jpeg)
+![](z-images/6dd76a8f8e2ad0787784ba1fe82e2c15.webp)
 
 Source: Adobe Stock
 
 Instead, many outsource this to external companies. For example, a 200-room hotel project might be sufficiently large under state regulations to **require** a civil engineer or licensed surveyor to perform the capture. These might happen every other week and exceed **$1M**. A robot with autonomous mobility can handle these captures itself, attaching the appropriate cameras/sensors/LiDARs for a more objective and detailed capture. Once finished, it can potentially locomote into a second site and perform another job that same day, something a human crew would struggle to match.
 
-![](https://substackcdn.com/image/fetch/$s_!A-o5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3fb5d6ab-175d-483f-b62f-2ee941b8946a_1045x708.png)
+![](z-images/e0434f3abdeb0a2bb073aab8a4246875.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -485,7 +485,7 @@ A mid-size refinery may invest **several million dollars over multiple years** o
 
 Inspecting windmills, electrical yards, and offshore rigs are all critical jobs, but they pose a great danger to humans and often require shutdowns to allow the human inspections to take place. For example, a legacy datacenter might shutdown in heavy rain and require substation inspection. Instead, we’ve heard quadrupeds have been able to automate this inspection without shutdown, saving the facility an estimated **$350K** in one year, and potentially human lives.
 
-![](https://substackcdn.com/image/fetch/$s_!Pobz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf5df073-169d-4c72-aa18-dd5528d1ff11_1024x534.jpeg)
+![](z-images/c0aa44cb83b02d57b841126823623c0d.webp)
 
 Source: Besten
 
@@ -499,7 +499,7 @@ Autonomy in robotics is currently seeing a number of difficulties that will affe
 
 **Compound error still remains an issue.** Robots still aren’t **highly** accurate in their navigation and positioning. Most might use **AprilTags** placed around points of interest--like a specific location to perform another task-- to ensure accurate positioning instead.
 
-![](https://substackcdn.com/image/fetch/$s_!3VrX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa9257e43-70a4-43aa-bcfe-9cc68d3fed8c_2525x1371.png)
+![](z-images/29b9a09f0d223787823142f87d027bc0.webp)
 
 Source: Boston Dynamics, AprilTags placed where the robot must go down stairs
 
@@ -519,7 +519,7 @@ Level 2 marks the beginning of general-purpose robotics. The leap into **Agency*
 
 ## Level 3 - Low-Skill Manipulation
 
-![](https://substackcdn.com/image/fetch/$s_!UcwL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3eacedb9-e476-478d-8deb-6c803b0fd6e1_1648x737.png)
+![](z-images/76dbceb55b3cefef0638586f73f8cc64.webp)
 
 Source: SemiAnalysis
 
@@ -529,7 +529,7 @@ We’ve seen in Level 0’s automation that scripted automation and manipulation
 
 A robot may perceive an object well, but this doesn’t mean the robot has the necessary skills to interact with it. In Level 3, robots now understand how an object affords manipulation, and now have the **Dexterity** to directly generalize the motions for this manipulation. Using the robot’s **Agency**, these manipulation capabilities can be longer-horizon with multiple steps of planning. Both capabilities are a departure from Level 1’s short-horizon, angled grasping. Combining this generalizable manipulation with the autonomous mobility gained from Level 2, we now see the introduction of **general-purpose** **mobile manipulation** in applications.
 
-![](https://substackcdn.com/image/fetch/$s_!DdtJ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3f23020e-6c2c-47d0-a910-f830e9b86c99_500x275.jpeg)
+![](z-images/b1ccf550d22bd106af983eb3e7b350a8.webp)
 
 Source: A brief review of affordance in robotic manipulation research
 
@@ -556,7 +556,7 @@ While Level 3 is still at a very early stage, we see meaningful results in gener
 
 In Level 1, we saw how challenging the data scarcity issue could be. Luckily, robotics has been experiencing a fortunate relative increase in data, with developments in low-cost teleoperation hardware, like GELLO (2023), enabling users around the world to collect and open source their robot action data. Many datasets have been released over the past few years, slowly amassing sufficient data for learning basic manipulation tasks. Now, if we train our VLM with this action data we arrive at a new type of model.
 
-![](https://substackcdn.com/image/fetch/$s_!tjgi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F72488cee-5274-4d9b-8a09-3c02a654e0ee_1213x720.png)
+![](z-images/0518e6abd090d7f89b4bf9cfdb01745f.webp)
 
 Source: GELLO
 
@@ -571,7 +571,7 @@ The model’s Agency understands “what” the task is and can plan accordingly
 
 Tasks that were once terribly complex from just a few years ago become tractable now. The **“holy grail”** from Level 1 of folding clothes is now **feasible**, no longer having to enumerate and calculate each wrinkle in the shirt. The VLA understands abstract concepts like a “sleeve” or a “collar” from the internet data, multimodally reasons over how the task is performed, and now **plans and outputs the desired manipulations**.
 
-![](https://substackcdn.com/image/fetch/$s_!fRpu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbd01bb2d-dc0a-42de-8afe-84f299ddf5f3_2560x1383.webp)
+![](z-images/12efff27fe9a34a90e005634dbfdd313.webp)
 
 Source: Physical Intelligence
 
@@ -579,7 +579,7 @@ Longer-horizon, abstract tasks can now be approached as well. In these models, t
 
 We acknowledge that Level 3 tasks don’t require incredible accuracy or force and weight understanding, leaving high accuracy constraints aside. Additionally, these robots will likely be slow, due to the delicate, meticulous nature of teleoperation demonstration data from which the model learns. Furthermore, the addition of manipulation/Action to the VLM significantly eats up context windows and reduces the time horizons we had in Level 2, currently making these tasks up to only a few minutes long.
 
-![](https://substackcdn.com/image/fetch/$s_!epcu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd638ceea-0e3d-406c-9e9e-9fb2dcc1fb41_792x449.png)
+![](z-images/9771e0c0436e4e2d175b35dc7de7bba3.webp)
 
 Source: Mobile ALOHA
 
@@ -589,13 +589,13 @@ This Level of Autonomy and the advent of mobile manipulators now propose a monum
 
 ## Deployments and Considerations: Robot Coworkers
 
-![](https://substackcdn.com/image/fetch/$s_!-Ert!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ac266b7-76b7-45f1-9683-265022b0aa09_1647x924.png)
+![](z-images/fff179ca9b570c36a822f3c37dd77675.webp)
 
 Source: SemiAnalysis
 
 The robots of Level 0 and 1 might require multi-million dollar engineering projects and custom software integrations like those for the Warehouse Management System (WMS). However, robots targeting Level 3 can be deployed **more like a human employee**. Some companies drop them into sites, let the teleoperator read the tablet, and perform the workflows to gather data and teach the model. Teleoperation amounts will vary by task complexity, but the teleoperation cost is low, typically outsourced to emerging markets and often backed by investor subsidies.
 
-![](https://substackcdn.com/image/fetch/$s_!8B09!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcc56fb5a-cc88-4eff-ab69-6372df3678c6_2560x1436.png)
+![](z-images/c319987a10f5dc2139aebfe2a0abb94b.webp)
 
 Source: Reflex Robotics
 
@@ -603,13 +603,13 @@ This ease of integration fundamentally changes the economic equation. The key me
 
 While mobile manipulation exists, it’s very early and still faces safety questions. It must reach the task site and know its positioning before acting, as any misalignment might damage property or injure people. Early deployments may likely stay in **fenced off zones** until these physical safety challenges are addressed.
 
-![](https://substackcdn.com/image/fetch/$s_!KKlz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F017ae8f1-731f-4337-bf97-7f56fc7c7a0a_2558x1307.png)
+![](z-images/b9e04ee0784a7378df70a13144addbd8.webp)
 
 Source: Agility Robotics
 
 Bipedal platforms are attractive to some because they enable a “bending” at the hips for tasks. However, bipedal locomotion, walking on two legs, is an **inherently unstable** act. It requires constantly shifting balance to ensure the next step is accurate. Carrying objects now adds a new mass that the locomotion must account for while it walks. Initial bipedal pilots, while maybe functional, could be substituted with **wheeled-base robots** instead.
 
-![](https://substackcdn.com/image/fetch/$s_!ED0U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc45e5f01-f88f-47de-9c20-a970dc12c4fd_1280x722.webp)
+![](z-images/c6f87c60f0295889c0c829d5aa4744ab.webp)
 
 Source: IoT World Today
 
@@ -627,31 +627,31 @@ While a primitive form of generalizable manipulation exists in Level 3, it’s s
 
 While our current conditions are unique traits for roles, they are sizable, and fairly costly. These robots gain an edge the same way Level 1 aimed to: mitigating the loaded costs. For example, restaurant turnover rates can reach up to 170% yearly in San Francisco, and the hiring, onboarding, training, missed shifts, and productivity ramp lead to a higher cost than just low-skill wages. Below are the current roles we see robots attempting in Level 3.
 
-![](https://substackcdn.com/image/fetch/$s_!cE8i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2b05537d-c914-40de-a591-245133a0e80f_651x808.png)
+![](z-images/71e9205ff32eca7c36e0f3b7f698afb4.webp)
 
 Source: SemiAnalysis Estimates
 
 - **Cooking in Restaurants or Food Service:** The ingredients are pre-portioned for the robot and it can perform the longer-horizon, lenient task of cooking them together with basic, chained manipulation. Restaurants tend to be the most labor intensive industry, requiring some 3x the employees of a hospital to generate the same $1m in revenue.
 
-![](https://substackcdn.com/image/fetch/$s_!kURz!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09c5836b-a4fc-4afb-ba24-1fc0a9c88f5e_876x498.gif)
+![](z-images/0e81e0987838e1a3005183289f79cf3a.gif)
 
 Source: CloudChef
 
 - **Industrial Laundry:** The once impossible task of manipulating deformable objects becomes a viable overnight job, currently folding repeated items, like towels, sheets, pillowcases, napkins, etc
 
-![](https://substackcdn.com/image/fetch/$s_!qZjz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45b3b53e-12a4-43da-aa69-f3c4a22b7d68_1200x660.avif)
+![](z-images/1f2a855b6ceabe7db1f0da35425c2cd9.webp)
 
 Source: Watney Robotics
 
 - **Logistics:** “Just-to-stock” workflows, like non-critical stocking of the warehouse line or setting up replenishment zones, both without time or space constraints. A robot may pick a variety of items in one location and place them in another, for example: replenishing shelves, rotating totes, or transportinggoods or bins across the facility.
 
-![](https://substackcdn.com/image/fetch/$s_!G4XI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ee7ab26-d15d-4aa5-98fd-53d28a8cd8eb_1020x681.jpeg)
+![](z-images/9cc6c01f7b8225091643fa82b1c06f72.webp)
 
 Source: Extensiv
 
 - **Manufacturing:** Performing line-side transference and replenishing the assembly line and stock on the side of the line. For example, [part sequencing](https://bostondynamics.com/blog/getting-real-with-humanoids/) and organizing materials for next day’s assembly.
 
-![](https://substackcdn.com/image/fetch/$s_!e4Id!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa65e995f-4ae7-4278-ba2f-d685970b9c6c_1440x1016.jpeg)
+![](z-images/1e1f533063e0c9a86334493da1b5a1d8.webp)
 
 Source: Boston Dynamics
 
@@ -663,13 +663,13 @@ Luckily, there are niche roles, as listed above, that only require low-skill man
 
 While Level 3 is in very early stages, there are still some difficulties in getting the robots working reliably. Memory architectures are not yet sufficient for generalizing past experiences, limiting how well the robots may perform tasks in new situations. **Localization and compound error** makes it hard for robots to precisely navigate toward their task and position themselves for the manipulation. Some might use AprilTags for this, employ analytical methods less subject to error, or tune the robot enough to reliably perform the task.
 
-![](https://substackcdn.com/image/fetch/$s_!mIXB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F11761d6c-a5d5-4c93-9d99-f0205ecba02f_1200x675.jpeg)
+![](z-images/a63f26459c763e38aabb97a629c96b75.webp)
 
 Source: Interesting Engineering
 
 While these capabilities exist, it’s not an easy or cheap feat. Teleoperators might be used for some time, the robots won’t be terribly fast, and adding new movements only increases the difficulty. Complex movements, like whole-body control--like twisting or bending-- add another layer of difficulty to the problem. Many of these problems for Level 3 could be approached with further data for learning, but mobile manipulators are very data hungry and still early.
 
-![](https://substackcdn.com/image/fetch/$s_!f9d6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd8aac51f-7f64-433f-8b08-599976431514_1000x562.jpeg)
+![](z-images/1aa1de7072249f88ea5e6f362d9af89f.webp)
 
 Source: The Fabricator
 
@@ -691,7 +691,7 @@ While capabilities may continue being refined and deployments accelerate, the la
 
 ## Level 4: Force-Dependent Tasks
 
-![](https://substackcdn.com/image/fetch/$s_!Zpg3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F743e4ca8-ca54-448b-aa7b-98c50cb01902_1657x631.png)
+![](z-images/bc83e3477081fad0c2466b8c6811f264.webp)
 
 Source: SemiAnalysis
 
@@ -727,7 +727,7 @@ There are many approaches, and likely more that are yet to be seen, that are bei
 
 ## Level 4 Implications: Mass Labor Replacement
 
-![](https://substackcdn.com/image/fetch/$s_!cHwK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdac6aa5a-ff9e-4451-9d7b-583cfc033d9e_1913x752.png)
+![](z-images/7120177840792e974c27b94d5052bda5.webp)
 
 Source: SemiAnalysis
 

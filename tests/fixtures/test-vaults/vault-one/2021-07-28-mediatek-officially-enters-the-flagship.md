@@ -8,7 +8,7 @@ description: "MediaTek has had a meteoric rise over the last couple of years as 
 
 MediaTek has had a meteoric rise over the last couple of years as their silicon teams get more competent, they ship more competitive products, and fledgling units like the custom ASIC, IOT, networking, and power IC divisions fledge into industry leaders. [All of this has led to their stock more than doubling since we called attention to MediaTek last year and called their stock a buy.](https://semianalysis.com/mediatek_stands_to_gain_the_most_from_the_new_cold_war/) Despite the rampant growth, they are still seen as a cheaper and lower end brand versus Qualcomm Snapdragon and Samsung Exynos.
 
-![](https://substackcdn.com/image/fetch/$s_!dKj5!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F73bc4fef-6624-4e5d-86c2-3107cea0602d_1024x508.jpeg)
+![](z-images/2ffc06aa360a4a927f173d2ad94f2038.webp)
 
 MediaTek started their push into the Premium/High-End Segment with the Dimensity 1000 line and further iterated with Dimensity 1100 and 1200. They were the first to utilize TSMC’s 6nm process node for these products. These chips are generally found in phones in the $300-$600 range. These aren’t cheap by any means, but they are not flagships.
 
@@ -22,7 +22,7 @@ They were the first company to ship AV1 decode, and by nearly 9 months. Intel re
 
 The successful engineering extends beyond AV1. Their 5G Sub-6GHz is comparable to Qualcomm and in some cases ahead. They currently lack mmWave, but they will solve this hole in the lineup very soon. They also ship the highest efficiency implementation of the standard ARM cores.
 
-![](https://substackcdn.com/image/fetch/$s_!p6pG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff66b778a-9bf2-480b-afbc-79c76b37a3cd_1024x283.png)
+![](z-images/31ca7c9d8866d6f47b5b0de76ec1dbd8.webp)
 
 Source: https://www.youtube.com/c/GoldenReviewer/
 

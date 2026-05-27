@@ -31,7 +31,7 @@ While drones, wheeled robots, tracked robots, and more [Level 2 Autonomous](http
 
 These cluttered and narrow areas are navigated with the quadruped’s dynamic walking, adjusting its position and bending its “knees.” This flexibility is essential in messy, obstacle-ridden environments, like chemical plants and construction sites.
 
-![](https://substackcdn.com/image/fetch/$s_!cwJ1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2560e11-fb6d-4e22-b455-d66aa7ef16bd_1372x684.jpeg)
+![](z-images/b75bcbebfade795dbb84aab8f6a21aa2.webp)
 
 Source: Unitree
 
@@ -47,7 +47,7 @@ Moreover, safely approaching inspection areas remains a [large challenge](https:
 
 One could alleviate this with more sensors but the drone battery is already short on life at ~30-45 minutes. Instead, quadrupeds hold up to hours of charge and are robust to collisions.
 
-![](https://substackcdn.com/image/fetch/$s_!kRHP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4aa8d1c2-823c-42a2-a083-25e41d43fc22_1920x1440.jpeg)
+![](z-images/2cae7c1cb2083b9e899e64e36b89a90b.webp)
 
 Source: Coptrz
 
@@ -59,13 +59,13 @@ Instead, quadrupeds resolve many challenges that bottlenecked wheeled/tracked ro
 
 **Lack of dynamic gait**: difficulty navigating narrow, confined spaces. For example, the [Argus](https://robot.martecsrl.it/download/argus.pdf) needs 2.5 meters of turning radius. This is exacerbated in cramped environments like chemical plants. Most quadrupeds are only about ~1m in length, granting them more flexibility to navigate.
 
-![](https://substackcdn.com/image/fetch/$s_!UcAx!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd47b4466-5677-47c3-8a2f-25e136911ceb_2452x1266.png)
+![](z-images/9a2c9cda39959ac9e95b6a2923135c27.webp)
 
 Source: ANYBotics, An ANYmal passing through a narrow corridor
 
 **Navigating clutter**: wheeled/tracked robots may roll over objects on the ground, either damaging the objects, themselves, and potentially getting stuck. For tracked robots the clearance may only be 4-6cm, while wheeled robots can go up to 12cm. However there are tradeoffs to increasing wheel radii: larger wheels sacrifice stability and increase vehicle size, leading to pivot radius challenges but may be required to get over the “breakover angle” at the peak of a ramp.
 
-![](https://substackcdn.com/image/fetch/$s_!n1Aw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F188f0e35-c3ec-4f55-820c-84bdba2862d3_1920x1920.jpeg)
+![](z-images/ef42baf538872db012c8b004bdf2d3f7.webp)
 
 Source: SuperDroidRobots
 
@@ -73,7 +73,7 @@ Source: SuperDroidRobots
 
 Tracked robots **can** sometimes climb [20cm](https://microwatt.com/wp-content/uploads/2021/08/exr-1-operating-guide.pdf) + stairs, and even up to [45 degrees](https://www.taurob.com/inspector/), making stairs possible, but with some risk of toppling. Furthermore, crossing too large a gap (i.e. larger than wheel diameter) may cause the robot to get stuck vs quadrupeds which can gap [~30cm](https://www.anybotics.com/anymal-technical-specifications.pdf).
 
-![](https://substackcdn.com/image/fetch/$s_!IOs6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5ad68578-981c-45cf-8b2d-95a2eb97d2b9_1024x683.jpeg)
+![](z-images/0c2f782703d33d54fe73a2392146c040.webp)
 
 ## Key Enablers of the Rise of Quadrupeds
 
@@ -102,25 +102,25 @@ Unitree, and DEEP Robotics, take a hardware-first approach of multiple humanoids
 
 **Boston Dynamics** helped pioneer humanoids, quadrupeds, and robust locomotion. Its quadruped, **Spot**, sees inspections in multiple environments. Boston Dynamics product line, including their warehouse arm “Stretch,” sees an annual revenue of $100M-$200M based on various reports.
 
-![](https://substackcdn.com/image/fetch/$s_!IPoc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6eac9662-528e-4467-892b-f36ab5ca6ec9_2560x1707.jpeg)
+![](z-images/03504bc7b2eb40746a42cb374f4f4779.webp)
 
 Source: Boston Dynamics
 
 **DEEP Robotics** with a similar IP rating (IP67), battery life, and payload capacity to the industrial-grade Unitrees at 30%+ the cost, DEEP Robotics is set on industrial applications. At the moment, the company is rising fast, seeing ~ [600 deployments around 40+ countries](https://www.morningstar.com/news/accesswire/1053303msn/deep-robotics-showcases-core-technologies-real-world-applications-of-embodied-intelligence-robots-at-waic-2025).
 
-![](https://substackcdn.com/image/fetch/$s_!chfI!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7ce2ef67-a1ae-4462-b685-a117e3ee7396_1200x472.jpeg)
+![](z-images/4b415032b1a60d93634e355043c8cc75.webp)
 
 Source: DEEP Robotics
 
 **ANYBotics** spun out of ETH Zurich in 2016, one of the world’s premier robotics labs known for its cutting-edge locomotion research. The company now fits dangerous and dirty environments for its inspection tasks, bringing in an annual < [$27M revenue](https://www.zoominfo.com/c/anybotics/401723840).
 
-![](https://substackcdn.com/image/fetch/$s_!kL5Y!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50e7e909-21d1-442a-bbaf-a4279255d981_2732x2049.jpeg)
+![](z-images/5cc9a2fe37fd04f7035ba77a3dde01d4.webp)
 
 Source: Siemens
 
 China’s **Unitree** dominates the quadruped market, holding an estimated [70%](https://news.qq.com/rain/a/20241005A03SNM00) share of global sales by volume in 2023. The company’s strong pricing and hardware captivates the research sector, and currently expands into industrial inspection markets. The company has surpassed annual revenues of [1B RMB](https://eu.36kr.com/en/p/3353252936479360) (~$140M).
 
-![](https://substackcdn.com/image/fetch/$s_!_Bfr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F39b7ea28-5b48-42ad-91fb-214c6325f93b_1200x1200.jpeg)
+![](z-images/ffb4b9b89d83d10fca348e99511bcb9e.webp)
 
 Source: Unitree Spain, Unitree B1
 
@@ -131,7 +131,7 @@ Unitree has a diverse product line, and their core manufacturing and assembly pr
 - The B2 (not waterproof) builds atop the B1, adding longer battery life and stronger joints for 40kg walking payload. Though for the B2, wheels are an option
 - The A2 (Stellar Hunter) is their newest quadruped, with less specs known, it exhibits impressive battery life, payload, and agility. Wheels are available as well.
 
-![](https://substackcdn.com/image/fetch/$s_!gqf-!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa12d527e-7ba5-4524-a5b3-b659f70e7220_1128x191.jpeg)
+![](z-images/0fbfd9404a572ffe0587a344312b126b.webp)
 
 Source: Unitree
 
@@ -139,7 +139,7 @@ Source: Unitree
 
 The quadruped market is early, but **Unitree in 2023 alone is already ~10x the total shipments of the next competitor.** The numbers are significantly higher now, but this is the last public statements.
 
-![](https://substackcdn.com/image/fetch/$s_!Jzv4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fce78bdac-667f-430f-bad6-d9b6faa913d5_1255x852.png)
+![](z-images/4792fdb46c298efd358a878d3869cce0.webp)
 
 Source: SemiAnalysis Estimates, GGII Report
 
@@ -147,7 +147,7 @@ This estimate includes Unitree’s lower-end Go2, **which they produce~ [200 Go2
 
 Western quadrupeds typically use Robot-as-a-service, charging ~$10K per month. But without the Chinese supply chain strengths, they **still** cost significantly more than Unitree.
 
-![](https://substackcdn.com/image/fetch/$s_!ghQH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fac7f1425-7ab0-42fd-b711-8928136810fb_1314x599.png)
+![](z-images/a872fab97946fd7538969afa55aa1cc8.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -183,7 +183,7 @@ The advent of [Level 2 Autonomy](https://semianalysis.com/2025/07/30/robotics-le
 
 FieldAI and Skild AI leverage state-of-the-art AI models to fill the quadruped autonomy gaps, dynamically adapting to reliably perform their tasks alone. While Boston Dynamics and ANYbotics are exploring AI models, they’re currently behind the specialists, and Unitree seems to facilitate AI research better (explored in the software section).
 
-![](https://substackcdn.com/image/fetch/$s_!uF5P!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fab672b8d-c7d1-45b5-8ec5-a3b8b3996e4e_500x507.jpeg)
+![](z-images/cc868e4e53107d5c8cdeb03ab484edb7.webp)
 
 Source: FieldAI
 
@@ -199,7 +199,7 @@ System integrators help businesses adopt automation by configuring the quadruped
 - [IntuitiveRobots](https://www.intuitive-robots.com/our-payload-integrations-with-spot-robot/) integrates Spot with payloads, like acoustic sensors, and translating the data into visual imaging
 - [SUPCON](https://en.people.cn/n3/2025/0219/c90000-20278525.html), a Chinese system integrator, successfully integrated quadrupeds into Saudi Arabian oil plant infrastructure
 
-![](https://substackcdn.com/image/fetch/$s_!mVPY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b262d6c-fe40-4938-b382-28d33e3c5fde_1280x800.jpeg)
+![](z-images/da53ed552b376b40d5ba9901849b3980.webp)
 
 Source: IntuitiveRobots
 
@@ -212,7 +212,7 @@ These companies complete the final layer of operations, either cementing mission
 - [Lattice](https://www.anduril.com/article/anduril-unveils-lattice-for-mission-autonomy) (Anduril) provides a robust orchestration and planning layer, especially for fleets of robots
 - [Formant](https://formant.io/resources/supported-devices/) provides optimized fleet management and telemetry, deployed in many cases with Spot, ANYmal, and **Unitree**.
 
-![](https://substackcdn.com/image/fetch/$s_!ffXS!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59010264-7a93-419f-9bce-5e8efe7fc883_768x432.webp)
+![](z-images/ea3b52a94846b2b882a5eb4360dfc6ae.webp)
 
 Source: Formant
 
@@ -234,19 +234,19 @@ Many factors drive the quadruped market, but Western economies demand quadrupeds
 
 **Datacenters:** In hyperscaler datacenters, downtime can cost ~ **[$1M per day](https://semianalysis.com/datacenter-industry-model/)**. These quadrupeds may inspect the electrical yards, determining on acoustic and thermal levels if the substation equipment is in order. For cooling infrastructure, ensuring no leakage, uneven coil temperatures, or unusual fan vibration could jeopardize the training/inferencing. The quadruped will likely be outside for much of its time, requiring a higher IP rating in harsh weather, or longer battery duration to inspect the massive sites.
 
-![](https://substackcdn.com/image/fetch/$s_!sI6O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F010b0159-50b9-4a35-8791-f4f42a3249ca_1529x1776.webp)
+![](z-images/8739260e8cb23b2353822ca5d84e27bd.webp)
 
 Source: FieldAI
 
 **Last-mile Delivery**: In contained areas like college campuses, smart cities, golf courses, etc, this is another promising application. In these environments, using a human courier at $18 per hour can cost up to $9 per delivery, while a robot can do the same for ~ [$2.50 per delivery.](https://www.campusidnews.com/ohio-state-and-avride-robots-get-food-to-students-faster-and-cheaper) Using cars for such small areas is expensive, and human couriers are inefficient. Quadrupeds, and especially those fitted with wheels, are perfectly suited for this role and can turn an inefficient service into a profitable one.
 
-![](https://substackcdn.com/image/fetch/$s_!3ilG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff92d4fd5-2753-43aa-a87c-08bb5168eaf3_1200x675.webp)
+![](z-images/a4e6d0cd72defd41603bdc45fc562081.webp)
 
 Source: InterestingEngineering
 
 **Security Patrol:** Unarmed security guards may patrol a facility 24/7, costing between $250K-$450K per year depending on wages and training. After keeping humans out of danger, quadrupeds also save the company significant money considering a RaaS monthly cost of $10K. In larger perimeters, wheels can be adopted for speedier patrol.
 
-![](https://substackcdn.com/image/fetch/$s_!bUac!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e451e80-b0a0-456c-ab28-286509ae45bd_1794x973.png)
+![](z-images/79a180497c19b2247fb47771702394cf.webp)
 
 Source: FieldAI
 
@@ -256,7 +256,7 @@ Source: FieldAI
 
 These facilities impose exacting standards; to qualify, a robot must be certified for low-particle compliance, a process that can take months. Once approved, however, the value is clear. A failed pipe can cost $30,000 to replace, but early repair after detection by a Spot robot can cost as little as $3,000.
 
-![](https://substackcdn.com/image/fetch/$s_!kYQu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3957a1b1-4f08-4b33-87d9-6636a2a92005_2560x1706.jpeg)
+![](z-images/e64c2cf6d99872c0e1ca60e2f08a9675.webp)
 
 Source: Intel
 
@@ -268,7 +268,7 @@ ANYbotics targets a different niche: environments requiring IP67 protection. Thi
 
 ANYbotics seems to be the only quadruped manufacturers developing an explosion-proof model, the ANYmal X, slated for 1H26. An ATEX (explosion-proof) rating would allow entry into Zone 1 areas with explosive gases, opening more of the oil and gas market.
 
-![](https://substackcdn.com/image/fetch/$s_!x0KX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F66929568-938e-4489-a003-d1f0e8963de9_1232x742.png)
+![](z-images/8dfd5484e96cffeba011771bd6bb0945.webp)
 
 Source: ANYBotics
 
@@ -280,7 +280,7 @@ We’ve heard system integrators discuss ANYBotics as the preferred option for c
 
 Conversations with DEEP Robotics elucidate their [strong performance](https://technode.com/2025/01/07/deep-robotics-delivers-x30-quadruped-robot-spock-for-singapore-power-inspections/) in [industrial inspection](https://www.digitaljournal.com/pr/news/accesswire/deep-robotics-leads-industrial-robot-1182802635.html), both domestically and [internationally](https://technode.com/2025/01/07/deep-robotics-delivers-x30-quadruped-robot-spock-for-singapore-power-inspections/), may foray into last-mile delivery. Using their robust wheeled robots and extensive network abroad, expansion seems feasible if Unitree’s cheaper wheeled quadrupeds stay away. While Unitree sees some industrial applications, Unitree seems more focused on a different market.
 
-![](https://substackcdn.com/image/fetch/$s_!BuTj!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1bc62664-4a9e-4dce-a154-3516e43d4dba_800x600.jpeg)
+![](z-images/85a84be360af97fc3d984e7a52316590.webp)
 
 Source: DEEP Robotics
 
@@ -288,13 +288,13 @@ Source: DEEP Robotics
 
 While its high-end quadrupeds are up to 50% cheaper than Western models and boast a fully waterproof IP68 rating, they are not yet common in Western industrial markets. They are sometimes deployed in Chinese state grids, chemical plants, and steel mills, often as teleoperated [machines rather than fully autonomous ones](https://prosmt.ai/wp-content/uploads/2025/07/B2inspection_compressed.pdf).
 
-![](https://substackcdn.com/image/fetch/$s_!oMdP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c825424-7fd9-4665-abf6-813f239e8ada_1170x406.png)
+![](z-images/6bcbc48292ab1cdf8876969eda37f3d0.webp)
 
 Source: Unitree, Inspecting a Petrochemical plant in Guangdong
 
 Unitree also has a unique advantage in its **wheeled quadrupeds**. Which could beat out other Western quadrupeds in applications requiring speed, like patrolling large perimeters.
 
-![](https://substackcdn.com/image/fetch/$s_!c6aD!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbe5e0e5c-7566-4792-9eba-42c26984f1bb_2402x1203.png)
+![](z-images/1d7757aa96a15b539ff60e1ea39faa11.webp)
 
 Source: YouTube
 
@@ -304,7 +304,7 @@ As the ecosystem continues to deploy Unitrees, they remain **dominant** in anoth
 
 Unitree excels in serving the research community. Spot and ANYmal are often too costly for most labs, especially when testing control policies that risk damaging hardware. Researchers instead choose the lower-cost Go2, enabling large-scale R&D on Unitree’s software development kit (SDK). This feeds back into Unitree, as projects from top universities help build robust software models tailored to its platform. This capture will continually expand as Unitree pummels their cost curve.
 
-![](https://substackcdn.com/image/fetch/$s_!rAQi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F70d33920-b62d-4915-8f83-8d1463aa69a7_1105x621.png)
+![](z-images/87fe807187794317d2849e6d183b6d48.webp)
 
 Source: NaVILA, a Unitree Go2 learning to navigate
 
@@ -318,7 +318,7 @@ Deploying RL policies adds new demands. Known as [sim2real](https://semianalysis
 
 - **The Control Loop:** In this paradigm, the policy takes a “state vector” as input - a complex snapshot including current motor positions, recent sensor data, and past actions - and outputs an “action vector” containing new commands for motor position and torque. The platform must maintain precise, real-time timing to ensure that state observations and action executions remain synchronized, as even minor discrepancies can cause a trained policy to fail.
 
-![](https://substackcdn.com/image/fetch/$s_!RwC2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F009c197d-9f71-4023-bd2a-ceabadcf9430_720x278.webp)
+![](z-images/1951eebed81eb668cdbb2462eadfc1d8.webp)
 
 Source: Binay Dhakal
 
@@ -327,7 +327,7 @@ The robotic software platform orchestrates this entire process by continuously r
 - Communication Buses: Quadruped designers typically use a combination of buses. Real-time components like actuators, IMUs (for positioning/movement in space), and position encoders often run on reliable buses like Controller Area Network (CAN) or RS-485. In contrast, high-bandwidth sensors that enable perception—such as cameras, LiDAR, and microphones—will usually run over a bus like USB.
 - Compute Architecture: The underlying compute architecture typically relies on general-purpose ARM processors for the main control board due to their power efficiency and strong embedded Linux support. These chips are often sufficient for executing locomotion policies and basic inference. However, for advanced applications requiring large [vision-language-action (VLA) models](https://semianalysis.com/2025/07/30/robotics-levels-of-autonomy/), system integrators are increasingly turning to NVIDIA’s embedded computing platforms, particularly the Jetson series and the recently released Thor, which provide the necessary tensor acceleration for running large neural networks at the edge.
 
-![](https://substackcdn.com/image/fetch/$s_!tGoT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f68a07e-0564-4171-8536-0f898e822929_1800x1200.webp)
+![](z-images/20dd63dc68baf9fc0e035a3e1c62cc89.webp)
 
 Source: Mehatronika, Nvidia Jetson Thor
 
@@ -335,7 +335,7 @@ Not all software architectures are equal. Most quadrupeds provide basic walking 
 
 This direct motor control is crucial for research, as learning is constrained under pre-set controllers. Rapid Motor Adaptation ([2020](https://ashish-kmr.github.io/rma-legged-robots/)), the first major paper on Unitree robots, showed real-time adaptation to difficult terrain—possible only through this openness. Since then, researchers have built some of the [first end-to-end locomotion systems](https://vision-locomotion.github.io/), from vision to motor control, with results that keep improving. This cutting-edge research is primarily performed with Unitree.
 
-![](https://substackcdn.com/image/fetch/$s_!EtGf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3a6747fe-2a70-41da-89a8-13e4bfa70764_2344x1105.png)
+![](z-images/9c474da854ae3ceb1fd7b4ddc33a8c08.webp)
 
 Source: RMA
 
@@ -351,7 +351,7 @@ With the quadruped market outlined, we now examine what makes Unitree quadrupeds
 
 Actuators drive quadruped motion and account for the largest share of the bill of materials, typically 50–70%. Yet companies take different design paths. Actuators are either rotary, producing circular motion, or linear, producing straight-line motion often paired with a leg mechanism. While a future piece will dive deeper into design, here we compare how Unitree approaches actuators across three factors: robustness, cost, and efficiency.
 
-![](https://substackcdn.com/image/fetch/$s_!yQey!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93c71fee-1c8b-4652-a897-b7d56b93a1e7_1985x309.png)
+![](z-images/8e0b3a86edfed342cb8194a3fd43f6f6.webp)
 
 Source: SemiAnalysis Estimates
 
@@ -359,7 +359,7 @@ Source: SemiAnalysis Estimates
 
 Unitree opts for a Quasi-direct-drive (QDD) style actuator, similar to the [MIT Cheetah 3 (2018).](https://dspace.mit.edu/bitstream/handle/1721.1/126619/iros.pdf?sequence=2) This sees strong efficiency and very low costs, but less robustness.
 
-![](https://substackcdn.com/image/fetch/$s_!hFVb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0500b065-75a3-45de-b382-780bb3a678f3_2608x1397.jpeg)
+![](z-images/32bf30d7c511fdf9860f9cb94ec3a647.webp)
 
 Source: Thomas Godden, QDD Actuator Design
 
@@ -372,19 +372,19 @@ QDDs low gear ratios reduce friction and enable backdrivability - the ability to
 
 Unitree’s QDDs often run below 10:1 ratios, lowering friction and cost. Since actuators make up over half of a robot’s bill of materials, these cheaper, compliant actuators give Unitree both adaptability and a major cost edge.
 
-![](https://substackcdn.com/image/fetch/$s_!5GdN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fee05eeb8-6d34-48b6-9e85-388895fa428a_4096x3072.jpeg)
+![](z-images/27e19ec303b8cbc4e10efc0f61c2b851.webp)
 
 Source: Takayuki Todo
 
 However, this low gear ratio introduces shortcomings of robustness. Planetary gears, commonly used in QDDs, wear down faster than other solutions, requiring frequent repair. Additionally, “backlash” is introduced, where reversing the gears creates a small error affecting precise movement. This can be compensated by stomping paws into the floor to regain positioning, but as the gears wear down, backlash only grows.
 
-![](https://substackcdn.com/image/fetch/$s_!Yubl!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85f05c63-b77d-48ee-a6ea-54438cf89f11_420x175.webp)
+![](z-images/4ab3baac9b6448d085df0afa87724253.webp)
 
 Source: OrientalMotor
 
 QDDs rely on torque-dense motors due to their low gear reduction, making larger robots significantly heavier. Unitree’s industrial B2, for instance, uses a motor 3x+ the weight of the Go2’s. Scaling with low ratios also reduces accuracy and robustness, leaving larger B1/B2 models prone to “wobbliness.”
 
-![](https://substackcdn.com/image/fetch/$s_!Cc-H!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F57f7faa4-a2c0-4ec4-8950-25168fe659c4_2537x1329.png)
+![](z-images/a674720bd50afe0886ab935e172751fc.webp)
 
 Source: YC’s Vlogs, Unitree B1 Leg
 
@@ -392,7 +392,7 @@ Source: YC’s Vlogs, Unitree B1 Leg
 
 To navigate the world, quadrupeds rely on a standard sensor setup: cameras on all sides for a full field of view, a central LiDAR for 360° coverage, and often Time-of-Flight sensors for depth perception. These can rack up to 20% of costs on a quadruped. While designs vary, like Unitree for example, omits side cameras and leans more on LiDAR, full coverage is **essential** for safety.
 
-![](https://substackcdn.com/image/fetch/$s_!htcd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F495f20dc-2863-404e-b29f-7e6fde81c770_1463x1035.png)
+![](z-images/8c33f66311bba47e44a88411fea1099f.webp)
 
 Source: Boston Dynamics
 
@@ -402,7 +402,7 @@ In this area, Unitree gains another cost edge. The company sources low-cost LiDA
 
 Battery life is a key constraint, ranging from 90 minutes to 5 hours. Unitree’s A2 ‘Stellar Hunter’ runs over 5 hours, or 3+ hours with a 25kg payload. But these numbers exclude onboard sensing and inference. Typical Western quadruped deployments add 1-3 Nvidia Jetson Orins (~50 W each) plus acoustic, thermal, and photogrammetry sensors. Even with these added loads, Unitree’s battery life remains ~ **twice** that of Western rivals.
 
-![](https://substackcdn.com/image/fetch/$s_!yyGv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb4f988a7-0035-490e-b5d4-f012cd3f8d5a_768x432.jpeg)
+![](z-images/a45c233cca53541e664a54d8661252ea.webp)
 
 Source: Boston Dynamics
 

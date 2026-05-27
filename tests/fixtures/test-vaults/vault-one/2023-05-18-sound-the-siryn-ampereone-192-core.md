@@ -8,7 +8,7 @@ description: "Chiplets, Advanced Packaging, and Disingenuous Performance Claims"
 
 Ampere Computing specializes in CPUs for the cloud datacenter market. The company had succeeded in attracting significant customer traction, with several major cloud providers, including Alibaba, Google, Microsoft, Tencent, and Oracle all buying varying amounts of Ampere's chips for their cloud operations. Furthermore, the Ampere chips can be found in Cruise self-driving cars as well. In 2022 alone, [SemiAnalysis estimates Ampere shipped over 300,000 CPUs](https://www.semianalysis.com/i/108660819/arm-at-aws).
 
-![](https://substackcdn.com/image/fetch/$s_!B50x!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcf264df7-7e8c-486b-bd36-b5f5f90b7554_4000x2250.png)
+![](z-images/933e5f4e5d25f6037645d295b53a14e2.webp)
 
 Today, Ampere Computing is announcing its 3 <sup>rd</sup> generation datacenter CPU, AmpereOne codenamed Siryn. This marks a big change for the firm as it is their first with a custom in-house architecture. Ampere Computing previously used Arm's Neoverse core, but they have now successfully shed the shackles of [Arm's costly and restrictive core licensing terms](https://www.semianalysis.com/p/arms-nuclear-option-qualcomm-must) and [embraced an Arm architecture license](https://www.semianalysis.com/p/arms-nuclear-option-qualcomm-must) which offers greater freedom.
 
@@ -18,7 +18,7 @@ Today we will be diving into the performance, competitive positioning, strategy,
 
 The main strategy of Ampere Computing is that they design and deliver CPUs purpose-built for cloud datacenters. This overarching strategy boils down to 2 words, “Cloud Native.” AMD and Intel must target their CPUs for a wide range of workloads ranging from various flavors of enterprise and cloud—these range from storage servers to web servers to accelerator-based AI systems. The CPU core designs for these applications from AMD and Intel CPU cores also tend to go into client computing applications like laptops with only a few modifications. Ampere’s claim is that they can laser focus on the fastest growing segment of the datacenter, cloud, and optimize their product for it.
 
-![](https://substackcdn.com/image/fetch/$s_!ES5j!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7fba4ff6-5826-407a-aae2-9565a8ab0c56_4000x2250.png)
+![](z-images/30201bf9bf16eaea68bf4e8efa37a49e.webp)
 
 They believe the future of computing will rely heavily on microservices, containerization, and [serverless](https://en.wikipedia.org/wiki/Serverless_computing) execution models. These concepts are generally about scaling performance out via a large amount small jobs and processes and not overly focusing on single-threaded CPU performance. Both AMD and Intel are releasing CPUs with similar strategies over the next year. Ampere believes there are 3 primary ways their CPUs are “cloud native.”
 
@@ -40,13 +40,13 @@ Ampere Computing eschews this in favor of increasing the predictability of perfo
 
 Many elements of the strategy of “cloud native” CPUs are being adopted by Intel and AMD with their upcoming Sierra Forest and Bergamo product architectures. Both target cloud workloads and will be released within the next year. The overarching goal of all these CPUs is to increase energy efficiency, increase performance, and reduce the total footprint of datacenters, which is needed as power consumption from datacenters continues to soar.
 
-![](https://substackcdn.com/image/fetch/$s_!LWfR!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4354808f-01fc-4c19-8b89-8982d38e1a9b_4000x2250.png)
+![](z-images/bd455b8c4781c1c80a2dc292ed97e97d.webp)
 
 ## AmpereOne – Siryn
 
 Moving on to today’s announcement, Ampere is continuing this journey with a new 192-core CPU with in-house CPU cores, up from 80/128 in the prior generation. Ampere moved to DDR5 memory and PCIe Gen 5, which massively improves IO throughput. In addition, Ampere has added a whole host of features to improve consistency and advanced fleet and lifecycle management features to assist cloud providers with deployments.
 
-![](https://substackcdn.com/image/fetch/$s_!R50h!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1db1547-0274-4c87-b708-2b025d479eb7_4000x2250.png)
+![](z-images/b5440bc90158b05b5b3474608ac3bb5e.webp)
 
 - Mesh congestion – attempt to reroute communications between cores and from cores to memory or IO through alternative, less congested paths on the mesh.
 - Nested virtualization support – allows the tenants of cloud vendors to also run virtual machines inside their already virtualized environments with little to no performance impact.
@@ -55,13 +55,13 @@ Moving on to today’s announcement, Ampere is continuing this journey with a ne
 
 The most interesting aspect of Ampere’s new design is its architecture. Ampere has moved to a chiplet-style architecture utilizing 5nm TSMC for the CPU cores and IO dies for memory controllers and PCIe controllers. The physical configuration is similar to that of Amazon’s Graviton3. It also uses AMBA CHI to connect to the chiplets.
 
-![](https://substackcdn.com/image/fetch/$s_!yYeS!,w_720,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F91058f37-37e6-4a99-94f1-028b9f8cb130_771x670.jpeg)
+![](z-images/b83aed4f57c141640e03a5077b733f13.webp)
 
 Ampere Altra Q80 die, monolithic TSMC N7. Delidded by Roman Hartung., Amazon’s Graviton3, showing a main core die surrounded by memory and PCIe IO chiplets.
 
 Ampere’s adoption of the chiplet style approach is one that enables them to make a new CPU core die and come with a refresh that has more than 192 cores next year.
 
-![](https://substackcdn.com/image/fetch/$s_!lwJP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7dd4234b-4e7c-4577-b713-fd44c5bba947_1953x2218.png)
+![](z-images/9dae5894463d90c55c0542dea1be5fd0.webp)
 
 We have done a mockup of the new AmpereOne A192 “Siryn” chiplet design using floorplans of Altra presented by the company at [ISSCC 2022](https://youtu.be/C5-gM5xVHSI?t=1730). Our mockup adopts the same chiplet layout as Graviton3, as both use a similar mesh and chiplet interconnect interface. Such a setup offers easy configurability and predictable performance over different sizes of VMs. CPU throughput of a 32-core VM would basically scale linearly compared to a 4-core VM. This is opposed to the chiplet design adopted by AMD, with multiple core chiplets surrounding a central IO die. Larger VMs that need to occupy multiple core chiplets suffer from performance inconsistencies compared to VMs that can stay in the same chiplet.
 
@@ -69,11 +69,11 @@ It is noteworthy that Ampere states they have been sampling this chip for a year
 
 ## Packaging & Thermal Design
 
-![](https://substackcdn.com/image/fetch/$s_!DNi_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Facf87bf3-1ac0-4f97-bb84-e373334b407a_624x590.png)
+![](z-images/512ce7c214bdfdaa495932e7c57b961a.webp)
 
 Ampere’s current Altra line with its large, monolithic die and relatively tame power levels did not require sophisticated packaging and thermal design. The die sat atop a regular organic substrate (LGA 4926), with a polymer thermal interface material (pTIM) sitting between the die and a large integrated heat spreader (IHS) to dissipate heat.
 
-![](https://substackcdn.com/image/fetch/$s_!50zY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7597d70d-635b-4985-8794-cb8ebb654cb3_1096x869.png)
+![](z-images/1fe9ddb1964250ef33c747f45eeffdb0.webp)
 
 This changes with AmpereOne. Gone is the IHS, with Ampere adopting a Direct Die contact design with a large, thick stiffener ring like what we see with GPUs and mobile CPUs. However, those are soldered BGA designs, whereas AmpereOne slots into LGA 5964 sockets. A direct die approach removes layers of thermal resistance by placing the cooler’s cold plate as close to the heat-producing silicon as possible, helping with temperatures.
 
@@ -85,17 +85,17 @@ This structural silicon above the chiplets not only provides additional structur
 
 Although this top silicon prevents us from viewing the die size of the actual chiplets, it does show just how large the package is. The top die should be near reticle limit, meaning the package would be roughly 90mm x 70mm. This is larger than any currently available datacenter CPU. LGA 5964 board schematics of their Mt. Mitchell platform revealed at OCP Summit 2022 also show just how large the socket is.
 
-![](https://substackcdn.com/image/fetch/$s_!JxAq!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9addad01-f93a-4122-a88c-33e137bbf3dc_868x913.jpeg)
+![](z-images/b41277b165fe295a5b22bf029192a9c2.webp)
 
 In addition, Mt. Mitchell also offers a 12-channel DDR5 variant of AmpereOne which is in the works, providing 50% more memory bandwidth per socket.
 
-![](https://substackcdn.com/image/fetch/$s_!Ggl8!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F671f5e02-a55c-4f13-afba-13dd656515c3_823x868.png)
+![](z-images/bf8931a3afd531b5cab1e2d780a0139e.webp)
 
 This 12-channel variant would match AMD’s Genoa and Bergamo in memory bandwidth. It is also growing past 192-cores.
 
 ## Performance – Disingenuous and Unfair Comparisons
 
-![](https://substackcdn.com/image/fetch/$s_!XCuv!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdcef04b3-18f6-4c11-9054-144bbba9d70c_4000x2250.png)
+![](z-images/26ae46f96cf53f6a9b13385e06bd0119.webp)
 
 Ampere never likes to talk about per-core or per-socket performance, instead preferring to stick to their metric of performance per rack. The majority of older datacenters are designed to power and cool about 14 to 20 kW per server rack. The racks vary in how many units they can hold but generally around 42 units (42U) with individual servers taking up 1U to 8U depending on the system architecture.
 
@@ -103,7 +103,7 @@ With CPU TDPs skyrocketing, these typical datacenter racks are now more power-co
 
 Ampere claims that in the industry standard SPEC CPU2017 Integer Rate workload, a single socket server of AmpereOne A192 draws 434W, AMD EPYC 9654 Genoa draws 624W, and Intel Xeon 8480+ Sapphire Rapids draws 534W. With a 16.5 kW power budget per rack, that means one rack can power 38 AmpereOne servers, 30 Intel servers or 26 AMD servers. Multiplying CPU cores per server with servers per rack, and assuming single-core VMs, we arrive at their claim of AmpereOne powering a whopping 2.92 times the VMs compared to the current best from the x86 world.
 
-![](https://substackcdn.com/image/fetch/$s_!-bSE!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e9c9c6c-2afb-4911-a321-945191862111_1438x574.png)
+![](z-images/bd9024ba592fb4f74277283ca3a17a06.webp)
 
 While this metric is useful for those seeking to cram as many VM clients per server rack as possible, it ignores the performance aspect, which is fine if clients just need a performance per core level that is ‘good enough’. We have extracted the submitted results of SPEC CPU2017 to show the stark difference in integer performance per core with the current Altras and CPUs on the market.
 
@@ -111,7 +111,7 @@ While AmpereOne should no doubt offer better Integer performance per core vs Alt
 
 Ampere did not disclose SPEC integer rate performance, but if we were to measure it as performance per rack, then AmpereOne would be much closer to the competition, especially with the upcoming 128-core Bergamo processor. Also, note the integer-weighted results of Ampere processors. The targeted cloud native workloads are primarily integer performance-focused, which is the polar opposite of HPC workloads where NVIDIA’s Grace Superchip should excel at.
 
-![](https://substackcdn.com/image/fetch/$s_!PJkz!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F896ab7e1-96a4-4348-8b02-8555ee375504_4000x2250.png)
+![](z-images/ca4091774ae04100daafc147d9ee6593.webp)
 
 It is here where the comparisons get really unfair. In the Stable Diffusion test, AmpereOne is configured with 160 cores, 512GB of DDR5 and Linux kernel 6.1.10, while AMD’s Genoa is hamstrung with half the memory at 256GB and only populating 8 of its 12-channel memory capability, on an older 5.18.11 kernel. Furthermore, they only spawned 96 threads for Genoa, while they spawned 160 threads for AmpereOne. Genoa generally requires all 12 channels of memory and 192 threads (utilizing SMT) to achieve maximum performance.
 
@@ -127,7 +127,7 @@ Ampere’s in-house core microarchitecture is an interesting mix of changes from
 
 From the 8 independent schedulers on N1, AmpereOne has 8 schedulers, of which 4 are for the integer side, 2 for the floating point and vector units, and 2 for the memory side. Looking at the [LLVM patches](https://github.com/llvm/llvm-project/blob/64816e68f4419a9e14c23be8aa96fa412bed7e12/llvm/lib/Target/AArch64/AArch64SchedAmpere1.td), this is what we think the scheduler layout looks like.
 
-![](https://substackcdn.com/image/fetch/$s_!4u68!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fba36c029-4465-4bdd-8b19-7da1fe9429b6_935x230.png)
+![](z-images/254fbac0302d422aacf8dad035f516a2.webp)
 
 Moving to the rest of the core, AmpereOne has a re-order buffer (ROB) of a reported 174 entries which, while very small for a modern high-performance core, is a nice bump from the 128 entry ROB N1 had. This allows AmpereOne to get better instruction level parallelism compared to N1 and will let the core deal with more operations at any one time.
 
@@ -141,7 +141,7 @@ The real interesting change here is the reduction from a 64KB 4-way L1 instructi
 
 On the latter point of the L1 being higher bandwidth than the L2, this is likely not the case with AmpereOne. Now we don’t know the bandwidth of either the L1i cache or the bandwidth between the L2 and the L1i, but it is likely that bandwidth from the L1i to the rest of the core is 16 bytes per cycle. Most ARM instructions are 4 bytes in length and AmpereOne has 4 wide decode. So, to keep the core fully fed with new instructions, AmpereOne likely has a fetch bandwidth of 16 bytes per cycle. The L2 cache also likely has a 16 byte per cycle link to the L1i because a 16 byte per cycle link to the L1i is quite common in modern CPU cores.
 
-![](https://substackcdn.com/image/fetch/$s_!KwMK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fae601fad-2f14-44af-9cd9-8703f4efb994_1300x971.png)
+![](z-images/c8755d0bb266c4149614e5f04f92f4e2.webp)
 
 But as for the former point, we don’t know why Ampere chose to cut the L1i but there are at least 2 reasons we can think of. The reduction in the L1i is for area saving because L1i uses very un-dense SRAM with high accessibility so cutting it to 16KB could save a lot of area. The other reason is that the workloads they profiled get significantly less performance as you go from 16KB to 32KB to 64KB such as SPEC INT 2017 which isn’t super heavy on the instruction side.
 

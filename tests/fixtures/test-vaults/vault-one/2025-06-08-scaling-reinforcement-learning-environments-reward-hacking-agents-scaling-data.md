@@ -10,7 +10,7 @@ description: "Infrastructure Bottlenecks and Changes, Distillation, Data is a Mo
 
 The test time scaling paradigm is thriving. Reasoning models continue to rapidly improve, and are becoming more effective and affordable. Evaluations measuring real world software engineering tasks, like SWE-Bench, are seeing higher scores at cheaper costs. Below is a chart showing how models are both getting cheaper and better.
 
-![](https://substackcdn.com/image/fetch/$s_!w8c2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5364998d-14d0-4d67-89be-15e96792906b_1604x866.png)
+![](z-images/0d345c59e3d732d9f69b2529861b8acf.webp)
 
 Source: SemiAnalysis
 
@@ -30,13 +30,13 @@ Reinforcement learning is not new. RL is an older technique and predates large l
 
 RL in LLMs worked best for areas with verifiable rewards. This means the task, like coding and math, have a clear reward definition required for RL. In areas where a reward function definition is less fuzzy, reasoning models struggled at getting better. When OpenAI conducted RL on GPT-4o to get o1, their greatest benefits were in domains with verifiable domains.
 
-![](https://substackcdn.com/image/fetch/$s_!-gTL!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F38dd2c98-c131-4b6b-95d8-a91f440dced1_1594x993.png)
+![](z-images/fde08296dab16f7304a2ff318aa236b8.webp)
 
 Source: OpenAI
 
 As the field has progressed, new areas like tool use are opening up. OpenAI’s o3 can zoom in on pictures, reason through what it sees, run some calculations, reason some more, then provide an answer. This unlocked a suite of tasks that models can now do well, such as identifying the location of where a picture is taken. Such a task is technically verifiable but was not explicitly trained for. Yet, despite the incredible gains, the amount of money labs are spending on RL is generally small, especially relative to the amount spent on pre-training. What are the bottlenecks to getting RL compute to match and exceed that of pretraining? Are non-verifiable domains going to be solved?
 
-![](https://substackcdn.com/image/fetch/$s_!YQee!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd00c6ead-aa9d-43ed-89eb-d3cca5c856a8_936x616.png)
+![](z-images/9e991cf2ed40b71c19dd49efd6599737.webp)
 
 Where the labs want to go. Source: Dan Roberts, OpenAI
 
@@ -48,7 +48,7 @@ In GRPO a model is asked to answer a question. The model generates multiple answ
 
 This makes RL inference heavy, as so many answers are generated per question. This is a point that has major implications as we will touch on at several points in the report.
 
-![](https://substackcdn.com/image/fetch/$s_!-uGo!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2c77912a-c2cb-40a4-b01d-6db896d0574e_1959x620.png)
+![](z-images/2b746576fd9ccbca573981676790b435.webp)
 
 Source: SemiAnalysis, TogetherAI, Nvidia
 
@@ -56,7 +56,7 @@ The models are then scored against a ground truth. In GRPO specifically, each an
 
 After the reward is calculated, the model is then updated through gradient descent to increase the probability of generating answers that are more likely to achieve answers that get positive rewards. GRPO is a variant of Proximal Policy Optimization (PPO) that eliminates the need for a critic model (which predicts future rewards in PPO), making it more memory efficient. Both PPO and GRPO can use either learned reward models or rule-based reward systems to judge answer quality. GRPO has seen high adoption in the open-source community due to its lower memory requirements, but we expect labs to continue using variants of PPO. PPO was invented at OpenAI, and the version available to labs internally is now materially different from the public version that GRPO is often compared to. Labs also face fewer compute constraints.
 
-![](https://substackcdn.com/image/fetch/$s_!SMYi!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36185df7-64bb-427b-8675-b8da6dd139c0_2560x1130.png)
+![](z-images/b5c2bdb741168bcecf9b3247046543fc.webp)
 
 Source: Shao et al.
 
@@ -70,7 +70,7 @@ Conceptually, a model’s primary goal under RL is to maximize the total reward.
 
 Defining the reward for less narrow tasks has been described as a “ [dark art](https://lilianweng.github.io/posts/2024-11-28-reward-hacking/) ” and this is because it is very difficult to get right. Setting the right reward function takes a lot of research, testing, and optimization, even in clear environments. One example of this is chip design. AlphaChip is a model Google designed to aid with designing chips and trained with RL. The model aided in the design of the TPUv6 chip Google uses, reducing the wirelength by 6.2% in the TPUv6. The reward function in this case was explicitly defined as:
 
-![](https://substackcdn.com/image/fetch/$s_!R0Wf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2de039de-6e7a-4b77-a438-a7ea5c340766_2389x253.png)
+![](z-images/e38b742b31ff8082d82e0c729f256c74.webp)
 
 Source: Mirhoseini et al.
 
@@ -86,7 +86,7 @@ OpenAI used RL to change model behavior, something less explicit than math. Open
 
 Being able to reason helps in not just doing math, but in many other tasks, including non-verifiable ones. As an example, there were many instances in which reasoning helped the model better delineate between instances where refusal was necessary or not. However, there is no denying that there are certain factors that also matter in non-verifiable domains more than others. For example, model personality heavily influences writing style.
 
-![](https://substackcdn.com/image/fetch/$s_!I_MA!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F961ea4b1-eae0-4b57-abc1-f34e7fd478e7_2560x1273.png)
+![](z-images/d39c5a65f7420e76bc3cace5dab2c978.webp)
 
 Source: OpenAI
 
@@ -102,7 +102,7 @@ Using LLMs as judges was also used to develop Alibaba's Qwen-3, which leveraged 
 
 We think the rubric opens up a large number of domains. In another example, OpenAI showcased model performance on a variety of healthcare tasks. OpenAI gathered 260+ physicians to write rubrics that judge models can use when assessing responses.
 
-![](https://substackcdn.com/image/fetch/$s_!OXO3!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F685bf464-3b9b-44de-a3f0-052bb9bd8921_2560x1281.png)
+![](z-images/cf1f8c3b0e6d82a12057bdb00fddc50a.webp)
 
 Source: OpenAI
 
@@ -138,13 +138,13 @@ It is important to bear in mind that most public RL environments focus on **sing
 
 As mentioned, setting up the right reward can be difficult as the model may misunderstand the goal and optimize in a way that is not ideal. Reward hacking occurs when a model exploits loopholes in the environment or reward structure to achieve high scores without genuinely completing the intended task. Reward hacking has long been recognized as a significant issue, notably [highlighted](https://arxiv.org/pdf/1606.06565) by researchers like Dario Amodei (now CEO of Anthropic) in 2016. As an example, a robot arm, rewarded for placing a red block high above a blue one, exploited the reward by flipping the red block upside-down rather than stacking it properly. This is because the reward was judged by the height of the bottom face of the block.
 
-![](https://substackcdn.com/image/fetch/$s_!Ab2G!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F97fc4de2-a289-46d8-a62e-c942fa79fa24_430x360.gif)
+![](z-images/2f07cd367f4819f54a8ea983e58c812c.gif)
 
 Source: Popov et al.
 
 Showcasing a different failure mode, an agent in a physics simulation designed to teach a robot to walk discovered a software glitch that allowed horizontal movement without taking actual steps.
 
-![](https://substackcdn.com/image/fetch/$s_!Wj7c!,w_1456,c_limit,f_webp,q_auto:good,fl_lossy/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F06e1e94d-65c8-46e2-a1f5-71acfb9eb508_616x342.gif)
+![](z-images/4e990997e87f844b3c7ab607f246c2f8.gif)
 
 Source: Code Bullet
 
@@ -156,7 +156,7 @@ Solving reward hacking is of top importance to all of the labs and will draw on 
 
 In the Claude 4 release, Anthropic significantly reduced reward hacking by improving environments, clarifying reward signals, and implementing proactive monitoring. This is not a trivial task and requires immense amounts of expertise and know-how.
 
-![](https://substackcdn.com/image/fetch/$s_!LM5o!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fea87c092-9642-4092-a225-63696fcbd431_2560x1254.png)
+![](z-images/7eec2e664b3ed3393c3fccbc8d4f8b60.webp)
 
 Source: Anthropic Claude 4 system card
 
@@ -172,7 +172,7 @@ These are not trivial requirements. Generating suitable synthetic data involves 
 
 Firms like ScaleAI, Mercor, and Handshake are now seeing huge amounts of business from AI labs to aid in this recruiting process.
 
-![](https://substackcdn.com/image/fetch/$s_!xhnR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffaaa0461-2629-4259-9475-f81c08959b66_2560x1465.png)
+![](z-images/ac4b4a824bf5dec85fa059163bd6de19.webp)
 
 Source: Mercor.
 
@@ -198,7 +198,7 @@ Models can now remain coherent for increasingly long periods. Longer tasks requi
 
 The graph below notes a doubling trend of 7 months for self-contained coding tasks, but we expect that tasks beyond coding to have a faster doubling time. OpenAI’s Deep Research was the first example of a model coherently working for more than a few minutes, and we expect the ceiling on this to rise significantly and quickly.
 
-![](https://substackcdn.com/image/fetch/$s_!eGif!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F67b2124e-f300-44d0-b98b-423f8dfd1aa0_2560x1392.png)
+![](z-images/667685ba86dbf7eec01198cdce9fd871.webp)
 
 Source: METR
 
@@ -230,7 +230,7 @@ Certain domains will take much longer for RL compute to impact while others will
 
 As a rough analogy, model evaluations, which are conceptually simpler, are also difficult to run. Docker images constantly fail, simple formatting changes in multiple choice questions(e.g., from (A) to (1)) can change the model’s eval performance by up to 5%. When eval infrastructure was just being scaled up, Anthropic [publicly talked](https://www.anthropic.com/research/evaluating-ai-systems) about the engineering challenges of evals. GPQA, a commonly used eval testing models on graduate level questions in physics, chemistry, and biology, seems to have a “noise ceiling”. While it shows models stalling out, it is impossible to get a 100% due to incorrectly labelled answers.
 
-![](https://substackcdn.com/image/fetch/$s_!r-_z!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03d927d7-2490-4dd9-a995-46d34948b280_2304x1357.png)
+![](z-images/e97281c840f3ffd1d94e12273dc0c841.webp)
 
 Source: SemiAnalysis
 
@@ -244,7 +244,7 @@ The Nvidia NVL72 system for the GB200 and GB300 enables key advancements in the 
 
 For RL, this added memory enables many different capabilities. First, it allows for more rollouts for a given problem. Additionally, it allows for much better handling of the long horizon agentic tasks. Third, it better accommodates larger or more reasoning model as judges and this is especially helpful for non-verifiable domains. Fourth, this paradigm is highly dependent on synthetic data generation and filtration, which depends on inference, which the NVL72 system is amazing at. Underutilization is a difficult part of the process
 
-![](https://substackcdn.com/image/fetch/$s_!FJxb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe35899d2-a1c2-44b1-8acd-3239e608a323_1959x620.png)
+![](z-images/0f81478013a09652b858990d088f74ec.webp)
 
 Source: SemiAnalysis, Nvidia
 
@@ -280,7 +280,7 @@ Beyond being slower to deploy new models, Chinese firms will face issues serving
 
 The ramifications of this cannot be overstated. China missed out on millions of chips due to this ban.
 
-![](https://substackcdn.com/image/fetch/$s_!0NbT!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fedfb9f08-67a9-4879-afae-29837afbb96c_1416x923.png)
+![](z-images/075a61142d4ce1e2f4c57551f6c66db4.webp)
 
 Source: SemiAnalysis Accelerator Model
 
@@ -302,7 +302,7 @@ We expect that Anthropic will issue many more updates to their Claude models rel
 
 We touched on self-improvement through better models becoming better judges during RL, but there is another important dimension to consider. The idea is that the model itself helps train and code the next model. The Claude 4 System card offers a concrete look into what the labs are thinking. Anthropic did evaluations on compiler development, kernel engineering, and even RL of a quadrupet.
 
-![](https://substackcdn.com/image/fetch/$s_!a1cY!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdd1bcdcc-81ad-43b3-a9eb-87b48f4854c3_2560x1258.png)
+![](z-images/953ae778587c8a7b3e846dcab370d816.webp)
 
 Source: Anthropic Claude 4 System Card
 
@@ -366,7 +366,7 @@ Sources: search result [0], search result [1].
 
 Another challenge is to select the right set of problems to train over. Even if the models has access to tools, it may chose to not use them at all if it does not need to. Training models effectively involves presenting questions difficult enough to require tools, ensuring the model learns to leverage external resources naturally. This is very difficult to get right, and requires a lot of testing to validate. However, excessive tool usage can degrade performance, complicating reward signals and reducing overall effectiveness.
 
-![](https://substackcdn.com/image/fetch/$s_!4BeX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0b194305-36b5-4a16-96ae-a44faa7e3424_2560x839.png)
+![](z-images/05576dd3c6647d9476534cbdc79c41b6.webp)
 
 Source: Wang et al.
 
@@ -382,7 +382,7 @@ We think this goes back to how these models are trained. Models are typically re
 
 For instance, a model might win at a simple board game despite misunderstanding its rules, incorrectly learning that its flawed reasoning is acceptable. This not only does not penalize for models for thinking incorrectly, but actively rewards them for it.
 
-![](https://substackcdn.com/image/fetch/$s_!6KC6!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F058b2cd7-44e9-4149-bee0-92ac7a3c16bc_1682x1772.png)
+![](z-images/013d04454141071c3c152948a49d1e0a.webp)
 
 Source: Wang et al.
 

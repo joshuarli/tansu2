@@ -22,7 +22,7 @@ Furthermore, many consumers also have poor internet connections or data caps, so
 
 Google is not alone in this space. Other firms such as Amazon’s Twitch, Meta’s Facebook Video and Instagram Reels, and ByteDance’s TikTok have also been exploding in user generated content. The amount of watch time per unit of content is significantly lower with user generated content. Furthermore, forms of content which have only 1 user per video stream are also developing at a rapid pace. These use cases include game streaming services, virtual desktops, and other remote interactive computing environments.
 
-![](https://substackcdn.com/image/fetch/$s_!9cxH!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F55b6d2d7-19d5-4170-a870-4ffb68590460_1558x791.png)
+![](z-images/4be16a8c74eef33034e85f4d8e8d5f62.webp)
 
 Even when video content comes from a more traditional studios and has a limited number of streaming options, the content delivery network may still need to do high volumes of additional processing and encoding on the fly. One such example is advertisement supported content. Many paid streaming services including Netflix are moving to offering ad supported content.
 
@@ -34,19 +34,19 @@ The on-demand ad market is highly dynamic and includes time-based and user-based
 
 The economics of the service provider are key to scaling capabilities of these content networks. Google needed specialized silicon to implement VP9 across YouTube, otherwise it would have taken [over 10 million CPUs](https://semianalysis.substack.com/p/google-new-custom-silicon-replaces). This is where Google’s homegrown solution and NETINT’s VPU solutions come into play. Google will only serve their own use cases, but NETINT has been working just as long if not longer on their products. They also serve a much larger market of firms. As such, NETINT has racked up a number of major wins including major names such as ByteDance, Baidu, Tencent, Alibaba, Kuaishou, and a similar sized US based global platform.
 
-![](https://substackcdn.com/image/fetch/$s_!W-Xf!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe34e9e55-6fd1-45b0-9107-0e4d8c5801e5_1521x750.png)
+![](z-images/1ca721a26ebebf9f9493685cd5516fc2.webp)
 
 The first-generation ASIC from NETINT was called Logan and was built on TSMC 28nm. The 2nd generation is called Quadra and is built on Samsung 14nm. They have a 2-year cycle and the 3rd generation Mt. Augusta will be shipping in 2024/2025. The Quarda ASIC has 4 lanes of PCIe 4.0, attached DRAM, and the hardware ASICs for video decoding/encoding, audio encoding/decoding, AI inference, RISC CPUs, and a 2D video engine. The biggest standout capabilities are AV1 and H265/HEVC. NETINT’s comparisons are generally using H265 and AV1 as those are the codecs where the TCO advantage is larger.
 
 In general ASICs need to provide an order of magnitude better capability in their target workload to be successful. While their chip would provide a meaningful advantage in H264, it truly shines when HEVC or AV1 is utilized. The amount of computation required for these codecs is significantly higher than that of H.264.
 
-![](https://substackcdn.com/image/fetch/$s_!5CCn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbbc1f504-d2b9-48fc-a545-4b91ab5b42e8_2888x1497.png)
+![](z-images/2cf5717bf50aab2a6dd26c9179516307.webp)
 
 The performance comparisons are very impressive. T432 is their first VPU product with 4 Logan chips. Quadra T4 is the 2nd generation VPU that is available in 1, 2, and 4 chip versions. Using the HEVC codec, NETINT crushes Nvidia’s last generation T4 (there are newer Ampere based GPUs) and Intel’s Skylake/Cascade Lake servers. The density and power consumption that can be achieved with a video ASIC is unmatched compared to CPUs and GPUs. The comparison using AV1 is even more powerful.
 
 NETINT even compares to Google Argos. That one is a bit unfair given we know the 2nd generation is in production. With that said, the power consumption and throughput comparison are only with stated specs, and real-world comparisons will likely vary. Google has not detailed that chip, so it is the best possible comparison NETINT could have done. The comparison is also pointless as Google is not looking to sell their VPU externally.
 
-![](https://substackcdn.com/image/fetch/$s_!dO6u!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd877ad99-3449-4e44-8fa2-9341ece0e604_3050x1488.png)
+![](z-images/ae369deebb14135faf91aaeae1b282cb.webp)
 
 The formfactor of the NETINT VPU is very interesting. They offer it as an NVMe device in the U.2 form factor. This is the formfactor a data center would use for an array of NAND based SSDs. This allows NETINT to easily slot their products into a chassis type and form factor that every datacenter already uses. It can also come as a standard PCIe card, but the U.2 form factor is higher density. It is sold through Supermicro and Inspur systems. The NETINT VPU also supports composable server architecture.
 
@@ -54,7 +54,7 @@ The software for the VPU is also highly configurable given there are a large var
 
 One example of the configurability is that a NETINT customer has been able to program the ASIC to preferentially encoding certain parts of the scene to higher quality and the other parts to power quality to maximize the end quality of a stream while minimizing file sizes. The built in AI processing allows backgrounds to be removed, filtering, identifying key areas or people to pay attention to. These techniques have allowed customer to reduced encoding cost by as much as 5x.
 
-![](https://substackcdn.com/image/fetch/$s_!47m2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8c4cd5f4-74ae-4039-964a-cf9f1d07b9e5_1427x722.png)
+![](z-images/7258cd64fe9bb272937cdf7242d07da5.webp)
 
 In a sense, the VPU is more flexible than other encoding methods. A CPU could target lower video qualities and bitrate efficiencies, but its performance wouldn’t improve enough to be worth it. Furthermore, that CPU would still consume too much power and space so that the TCO wouldn’t be worth it. With a GPU, running the driver stack is a complicated mess for some applications. Various versions of Linux or Windows do no work correctly. This sort of software issues has held Intel GPUs back including the cancelled Xe HP tiled GPU architecture which was very optimized and even marketed for the datacenter video market.
 

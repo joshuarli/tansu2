@@ -30,7 +30,7 @@ The improvements to memory are key for [OpenAI O3 style LLM Reasoning training a
 
 The chart below shows improvements to tokenomics through Nvidia's current generations of GPUs running on 1k input tokens, 19k output tokens, which is similar to a chain of thought in OpenAI's o1 and o3 models. This demonstrative roofline simulation is run on LLAMA 405B at FP8 as it is the best public model we can simulate, with H100 and H200 GPUs, the GPUs we have access to.
 
-![](https://substackcdn.com/image/fetch/$s_!mctw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5e584ba-53c6-419c-9998-fa7cd319510b_1024x862.jpeg)
+![](z-images/5f4adadb5500a79fedd22154deebbd02.webp)
 
 Source: SemiAnalysis
 
@@ -62,7 +62,7 @@ As such, the tokenomics with NVL72 are more than 10x better, especially on long 
 
 With GB300, the supply chain and content that Nvidia supplies drastically changes. For the [GB200 Nvidia provides the whole Bianca board](https://semianalysis.com/2024/07/17/gb200-hardware-architecture-and-component/) (including the Blackwell GPU, Grace CPU, 512GB of LPDDR5X, VRM content all integrated onto one PCB) as well as the switch tray and copper backplane.
 
-![](https://substackcdn.com/image/fetch/$s_!BfDc!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa422b320-32ee-4ce1-aaf4-1de769fb37ed_1024x819.png)
+![](z-images/a2e13e3c6ed800660946072c34f545b9.webp)
 
 Source: SemiAnalysis
 
@@ -72,7 +72,7 @@ End customers will now directly procure the remaining components on the compute 
 
 The switch tray and copper backplane stays the same with Nvidia supplying these components entirely.
 
-![](https://substackcdn.com/image/fetch/$s_!-D1_!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2addf1b-d59e-4cca-8948-622babbdca3c_1024x450.png)
+![](z-images/9d31591298c46c6a34b6ba728e953c42.webp)
 
 Source: SemiAnalysis
 

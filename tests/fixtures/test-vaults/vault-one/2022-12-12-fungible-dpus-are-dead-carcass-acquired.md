@@ -14,11 +14,11 @@ The moral of the story for anyone joining a startup is to think deeply about the
 
 Before we discuss the drama, first, a quick overview of the technology because the technology isn’t dead, the cloud player will continue the ASIC work here.
 
-![](https://substackcdn.com/image/fetch/$s_!AvdG!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7d3f57ee-5011-4755-86af-756ce769dc6a_3987x2250.png)
+![](z-images/5720860b8be608f859f52b35f0c15148.webp)
 
 The core need here is that networking and storage demands are growing faster than compute. Security is becoming much more complex. Commodity compute needs to be scaled out with networking that is fully programable. Programmability is necessary because unreliability and inflexibility of a network is a big issue for cloud hyperscalers.
 
-![](https://substackcdn.com/image/fetch/$s_!9THP!,w_474,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F66c44eed-7c34-4872-aeb3-1c1209eaa0ed_3987x2250.png)
+![](z-images/1a540992f2a1b5ef7e23bbbc36978f1b.webp)
 
 While Fungible was targeting everything from x86 compute nodes to GPU and machine learning analytics nodes, those are all canned. One point to mention about Fungible is that they used MIPS, which made developing many applications for it painful and running any external code basically impossible. The target for the major cloud is now only the storage aspect.
 

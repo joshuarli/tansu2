@@ -16,7 +16,7 @@ China on the other hand has no issues securing power infrastructure or datacente
 
 While the conventional wisdom is that China cannot build AI supercomputers due to chips limitations, this isn’t true. There are enough chips being shipped to China + manufactured domestically to create the world’s largest AI training cluster. For the most part, AI chips are decentralized in China with the largest known clusters 1/3 the size of the largest US ones, but a concentration of efforts could lead to cluster sizes that dwarf those in the US in less than a year.
 
-![](https://substackcdn.com/image/fetch/$s_!RAtm!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F682e786d-4765-49df-b3f3-fb2705f77e01_2024x634.png)
+![](z-images/e319cf1270ca33f67d1d418595d245f7.webp)
 
 Source: SemiAnalysis
 
@@ -26,7 +26,7 @@ But the U.S. also left loopholes that are routinely exploited. For example, Huaw
 
 Sanctions violations are egregious. SMIC produces 7nm-class chips including the Kirin 9000S mobile SoC and Ascend 910B AI accelerator. Two of their fabs are connected via wafer bridge, such that an automated overhead track can move wafers between them. For production purposes, this forms a continuous cleanroom and effectively one fab.
 
-![](https://substackcdn.com/image/fetch/$s_!MqTV!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0da49cdc-72d2-4450-bcd0-aa27eb97eaac_1982x1412.jpeg)
+![](z-images/a6ee535e89373b16393d621eb94bce61.webp)
 
 Source: SemiAnalysis
 
@@ -62,7 +62,7 @@ But this does not mean the regulations are perfect or will work ad infinitum wit
 3. **Rename & Reclassify**  
 	CXMT’s advanced DRAM with [18nm half pitch](https://www.semianalysis.com/i/140324030/future-of-memory-scaling-cxmt-d-dram-blatant-sanctions-violation) was subject to the original 2022 export controls. A new method of calculating half-pitch in the 2023 rules put them back above the minimum line for controls. Without changing the underlying process, they went from restricted to not. They also changed the node name from 17nm or 18.5nm to 19nm, to avoid any appearance of impropriety. The subtleties of the rule change that so specifically moved them from under to a literal nanometer or two over the restriction are, at least, very fortunate for CXMT. Lobbying efforts by giants such as Applied Materials who has made over $3 billion from CXMT may be noteworthy.
 
-![](https://substackcdn.com/image/fetch/$s_!5Ilw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc55626a9-9a90-4bfc-9d47-8cb3c2d85b20_1509x572.png)
+![](z-images/74311c027c127de48b865a5b97b22c7a.webp)
 
 ## Huawei Fab Network
 
@@ -70,7 +70,7 @@ Of all sanctions-evading schemes, Huawei’s fab network is the most alarming. I
 
 This was reported by [Nikkei Asia](https://asia.nikkei.com/Spotlight/Huawei-crackdown/Huawei-ramps-up-chip-investment-in-fight-for-survival), last year by [Bloomberg](https://www.bloomberg.com/graphics/2023-china-huawei-semiconductor/?sref=C6T0LtHS), and more recently in [a letter](https://selectcommitteeontheccp.house.gov/sites/evo-subsites/selectcommitteeontheccp.house.gov/files/evo-media-document/10.16.24%20Letter%20to%20Commerce%20on%20Clandestine%20Huawei%20Fabs.pdf) to the Secretary of Commerce from the U.S. House Select Committee on the CCP. But it hasn’t received enough attention.
 
-![](https://substackcdn.com/image/fetch/$s_!kPF1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F72b239d9-4435-4a18-910c-9180b4c1c045_2843x1794.png)
+![](z-images/7a0003175dca5529e82945ae63f828cf.webp)
 
 Source: SemiAnalysis
 
@@ -78,19 +78,19 @@ Looking at the incomplete corporate family tree, there is a clear gap in the U.S
 
 They are following the SMIC playbook: Pengjin High-Tech, a GaN startup that is not entity-listed, is building its cleanroom *across the street* from entity-listed advanced logic producer PXW. Pengjin is free to import nearly all advanced Western production equipment, including equipment critical to producing advanced logic at 7nm or below (again the exceptions are a small number of tools on the control list, including EUV). Yet again regulators are expected to believe that nothing will be shared with its neighbor.
 
-![](https://substackcdn.com/image/fetch/$s_!7Aj4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa0a1cf01-8857-4ba0-812c-f42d4f0487b8_1431x1132.jpeg)
+![](z-images/4ab86f9449dc403933f6aba78a915fe8.webp)
 
 Source: SkyWatch, SemiAnalysis
 
 And this happens over and over. Take the example of a new Shenzhen Pensun fab is located next to SMIC. Recall that SMIC is the advanced logic leader, at least for commercially available processes, in China. One is entity listed, the other not:
 
-![](https://substackcdn.com/image/fetch/$s_!jxeP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ec8d575-215e-42cc-811a-d34cf6e30796_1417x677.jpeg)
+![](z-images/262ef9984a5a29dcf718b718c621c26d.webp)
 
 Source: SkyWatch, SemiAnalysis
 
 In the race between shell entities and regulations, shells can be spun up faster than regulations are being updated. Huawei is clearly taking full advantage to the tune of $7.3B of WFE expenditure in 2024, up 27% year-on-year. They’ve gone from effectively zero in 2022 to the 4 <sup>th</sup> largest WFE customer globally in two years. If we add SMIC and CXMT, both of which are affiliated with Huawei, they become the 2nd largest customer globally.
 
-![](https://substackcdn.com/image/fetch/$s_!jZXh!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2dd97d2e-76f6-4e25-a552-d6fbe8584969_1123x625.png)
+![](z-images/941abfdeb5a665218b8c3d48b48f75bb.webp)
 
 Source: Company Reports, SemiAnalysis
 
@@ -115,31 +115,31 @@ The WFE majors outperformed SOX:
 
 Even during a semiconductor downturn, WFE suppliers maintained near all-time high revenues:
 
-![](https://substackcdn.com/image/fetch/$s_!Xtsp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1737af16-cd7d-4f72-a8a6-db10b5ddd7ce_1119x661.png)
+![](z-images/edcdbe151ebbd19007f9bcf4586eee1c.webp)
 
 Source: Company Reports, SemiAnalysis
 
 Gross margins expanded during this time period, not contracted…
 
-![](https://substackcdn.com/image/fetch/$s_!mixs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd8748628-4fb6-4930-9f08-a5489c2d8aad_1237x760.png)
+![](z-images/a13886219e78803a68b4e0f63e5772be.webp)
 
 Source: Company Reports, SemiAnalysis
 
 …And the primary reason is China.
 
-![](https://substackcdn.com/image/fetch/$s_!V_QN!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F730cc73f-ed95-47aa-9d38-019c50b42b39_1297x738.png)
+![](z-images/a79ef947eed2ac8f224bfb7265bd28e8.webp)
 
 Source: Company Reports, SemiAnalysis
 
 Once Chinese firms realized they could skirt the rules, they exploited loopholes to their benefit. Sales exploded in anticipation of gaps being closed in the future.
 
-![](https://substackcdn.com/image/fetch/$s_!sRNd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F54f8373c-31a7-4313-a09e-ea51e87e7135_1237x765.png)
+![](z-images/d53cbb411d138c0d25102e9578643102.webp)
 
 Source: Company Reports, SemiAnalysis
 
 Sen. Padilla and Rep. Lofgren claim the restrictions are strangling R&D spend. Clearly this is not the case:
 
-![](https://substackcdn.com/image/fetch/$s_!axSG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7804883e-e35e-488a-aaaf-338d65c58760_1217x707.png)
+![](z-images/8c10c3a9c34e76ba02e7f5e8723a5e6a.webp)
 
 Source: Company Reports, SemiAnalysis
 
@@ -176,7 +176,7 @@ More than six months after the 1 <sup>st</sup> round of export controls:
 
 And for 2025, the semicap majors are all guiding to their best year ever:
 
-![](https://substackcdn.com/image/fetch/$s_!ZOVO!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F01342290-226c-42de-be4a-54ab80e06c5b_1197x573.png)
+![](z-images/3b7a3bcafd20b7697e49712c854b51b8.webp)
 
 Source: Company Reports, SemiAnalysis
 
@@ -194,7 +194,7 @@ In this scenario, a multilateral restriction including the U.S. and allies is de
 
 Generally anything in the medium to hard categories shown below should not be unilaterally restricted when viable foreign competitors exist. This would lead to the lose-lose outcome described above. For technologies towards the easy end of the spectrum, Chinese firms will take market share in the short-term either way. Ideally: let Western companies compete in the easy categories while multilaterally restricting the medium and hard categories.
 
-![](https://substackcdn.com/image/fetch/$s_!UqQy!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F88c989f7-1adc-4f39-b566-5c2f318df743_2797x1053.png)
+![](z-images/c6374894fa4c2ad0b86cbe9567c9afd2.webp)
 
 Source: SemiAnalysis
 

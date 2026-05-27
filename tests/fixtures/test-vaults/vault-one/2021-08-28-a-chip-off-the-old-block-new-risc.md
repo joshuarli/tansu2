@@ -10,7 +10,7 @@ There's a new CPU startup, and it is stacked with talent. SemiAnalysis has found
 
 Still fresh on our minds is Nuvia, a firm whose leadership was ex-Apple. They rushed onto the scene and as soon as the product of their work was visible, they were snatched up by Qualcomm for $1.4B. Nuvia had multiple offers at or over $1B.
 
-![](https://substackcdn.com/image/fetch/$s_!-P-0!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F29476f44-43b9-4b84-a3fc-4a75f5c8b163_1024x640.png)
+![](z-images/442904cc3a46ba656f61227346de1488.webp)
 
 This firm may be even more stacked with talent then Nuvia was a few months into their journey. We will go through the executives as well as a brief summary of where the staff engineers have worked.
 
@@ -24,7 +24,7 @@ Tse-Yu Yeh is the VP of Silicon Engineering. He started at Intel. He also went t
 
 Ken Dockser is lead CPU Architect. He has gone from DEC to NexGen Microsystems to MIPS to VLSI to IBM. He was the Qualcomm Director of Datacenter where he led the Centriq server CPU product. This product was competitive and starting to get wins including at CloudFlare and Chinese hyperscalers. It was cut short when an aggressive takeover attempt meant Qualcomm had to cut teams which had yet to be profitable in order to appease shareholders. He moved on to become the director of R&D at Qualcomm where he headed the Cloud AI 100. This is Qualcomm’s AI Inference geared product that is [racking up wins in the edge and even has a hyperscaler win](https://semianalysis.com/qualcomm-hits-a-homerun-ai-100-powerful-ai-inference-acceleration-for-the-edge/). He also led Qualcomm’s RISC V effort and is on the RISC V Board of Directors!
 
-![](https://substackcdn.com/image/fetch/$s_!gHyp!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F52aeb8dd-f9bb-4a59-9fbb-b3c7c04c1427_1024x769.jpeg)
+![](z-images/7ba8ad282b5df2b849603d76b587833e.webp)
 
 Beyond these executives, we found another dozen employees. We will leave them out as we do not believe non-executives should have their privacy violated. We will list some of their successes though. Besides the senior staff from Apple, there are quite a few other seasoned Apple employees. Furthermore, they have a Google chip lead. Some folks from the Cavium/Marvell teams including the principal architect and director have joined up. They have veterans from other failed CPU attempts such as Xeon Phi. The list of expertise continues with a board member from JEDEC, the organization who sets standards for memory and much more. We were also able to find other leaders from Intel and AMD.
 

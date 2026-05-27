@@ -10,19 +10,19 @@ The smartphone landscape has slowed significantly in 2022 due to poor sales acro
 
 We wrote about this business [in detail last year](https://semianalysis.substack.com/p/qualcomm-rffe-business-continues) and focused in on their offerings of [UltraBAW filters](https://semianalysis.substack.com/p/qualcomm-rffe-business-continues). Qualcomm recently had some more new disclosures, so we want to update our readers on this business as well as provide some exclusive information regarding the Qualcomm Apple relationship for 5G modems as well as the competition with Broadcom on RFFE and WiFi for the 2023/2024 iPhone release.
 
-![](https://substackcdn.com/image/fetch/$s_!dXyB!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0d65758b-88b7-4163-83c8-3b14a3f4e2fa_1024x574.png)
+![](z-images/3ad52e61aac20e2c65f0d69f04cbcd4c.webp)
 
 First Qualcomm shared some details on last year’s performance and some assumptions going into the future. They achieved ~$4.16B revenue on a total statable addressable market of ~$17B. That would put Qualcomm at just a hair under 25% share for the markets they operate in the front end. The important thing to consider here is the mmWave adoption as globally, it is less than 20% of phones, but as China, South Korea, and Japan adopt mmWave, this could supercharge Qualcomm’s revenues. The Murata and Samsung mmWave front end solutions integrated with MediaTek’s next gen SoC are not competitive.
 
 Qualcomm also shared some assumptions surrounding their automotive RFFE TAM. They believe 70% of cars in 2024 will be “connected.” Furthermore, they stated the 5G RF content per car is up to $30. In total that means a RF TAM of $3B, but many of these cars will not go all out on a very high-end system. As such, the RF TAM is likely as low as a third of that number.
 
-![](https://substackcdn.com/image/fetch/$s_!fGvQ!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F2ca0de7a-e8d3-4352-b0b1-22d5c12ab915_1023x571.png)
+![](z-images/179d05cab1a8d573f434470a186b6a92.webp)
 
 Qualcomm is the only front-end solution provider that can offer the full gambit of IP including mmWave antennas, antenna tuners, envelope trackers, SAW and BAW filters, power amplifiers, low noise amplifiers, and switches. Having all this IP and being able to integrate it together in 1 cohesive stack is something no other RF company such as Qorvo, Skyworks, Murata, Akoustis or Broadcom can do.
 
 Qualcomm is happy to sell discrete parts as well, but the real advantage comes with leveraging their end to end solution from modem to antenna. They are able to provide entire solutions for 5G and WiFi 7 front end modules that are tested and verified with nearly every country’s regulator. This means their partners can hit the ground running and launch with the latest wireless technology on day 1. Companies who are integrating their own front-end stack require far more resources and risks having their products later on implementing the latest features compared to competitors using the Qualcomm vertical stack. This vertical solution also allows for co-engineering which can improve RF performance and reduce power.
 
-![](https://substackcdn.com/image/fetch/$s_!hxH9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc22fc24e-c604-4ccd-b26f-bfcbdf4c2ca8_1024x575.png)
+![](z-images/eac23b8c9adb54f185c50e8e6cf4558a.webp)
 
 While this has been a highly successful tactic in Android phones, it is an even stronger moat in Automotive. The capability shines for Qualcomm because they can provide vertical front end modules tested and verified to automotive standards, a feat no other front-end module provider can achieve. Qualcomm also claims their WiFi modules will be class leading in efficiency and even work with other firm’s basebands, but would be most optimized for their own.
 

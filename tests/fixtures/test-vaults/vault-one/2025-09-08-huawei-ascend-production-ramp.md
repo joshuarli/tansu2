@@ -26,7 +26,7 @@ Huawei is the key piece for China’s compute destiny. Huawei’s chip ecosystem
 
 Our previous investigation into Huawei’s fab network is a great example of their broad reaching network.
 
-![](https://substackcdn.com/image/fetch/$s_!pCNF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb7faa941-ca23-437e-a610-e1cf902f0f55_975x615.png)
+![](z-images/c490706248d0e7ddd77755cc45c0b6e5.webp)
 
 Source: SemiAnalysis
 
@@ -38,7 +38,7 @@ Huawei operating their own fabs will represent a material increase in Chinese pr
 
 Currently, all high volume chip production is outsourced to SMIC, the leading Chinese pure-play foundry. This includes the Ascend series of accelerator chips along with the Kirin mobile processors. Yields are poor for SMIC’s 7 nm-class processes due to a combination of immaturity, export controls, and the inherent difficulty in yielding large die such as the Ascend. Thus a relatively low percentage of SMIC’s overall capacity is allocated to producing Ascend die, since smaller mobile processors just make better business sense at this point. But this can change quickly. Let’s discuss what is possible for Huawei….
 
-![](https://substackcdn.com/image/fetch/$s_!3Asn!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a96a4af-220b-4517-b075-b813a3e86779_1024x289.png)
+![](z-images/cca123b6ff34046244d54ce3a8e3bb5d.webp)
 
 Source: SemiAnalysis
 
@@ -46,19 +46,19 @@ Source: SemiAnalysis
 
 Our data shows Huawei’s production is **507k Ascend units shipped in 2024**, the majority of which are 910Bs, **and 805k this year, 653k of those being 910C.** The 910C is the more advanced version. This includes die made by TSMC and SMIC.
 
-![](https://substackcdn.com/image/fetch/$s_!PEiR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd1097703-5af3-4945-abd3-d177e0e4cce3_1024x557.png)
+![](z-images/45559d04a3ab6e21522e14810f3a2497.webp)
 
 SMIC, hampered by export controls, struggled to get production off the ground. But Huawei got Ascend die fabricated at TSMC while SMIC ramped. This was a violation of export controls and Huawei ended up receiving **more than 2.9M Ascend die, which can be used for both 910B and 910C.** [We detailed this here.](https://semianalysis.com/2025/04/16/huawei-ai-cloudmatrix-384-chinas-answer-to-nvidia-gb200-nvl72/)
 
 It is specifically this “Die Bank” of foreign chips from TSMC that gets them through 2024 and 2025. Without this Die Bank, Huawei's Ascend production numbers would be much lower.
 
-![](https://substackcdn.com/image/fetch/$s_!iNqu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F24bd087c-5279-42ab-a2db-d4dede2327d4_943x625.png)
+![](z-images/5b82abc978e09988c79be0293a604690.webp)
 
 Source: SemiAnalysis
 
 We expect that the TSMC die bank to run out within the next 9 months. SMIC, however, now has more than enough capacity to produce meaningful volumes of chips. We forecast that SMIC will no longer be the bottleneck for Ascend production, as they will have sufficiently ramped capacity by end of year.
 
-![](https://substackcdn.com/image/fetch/$s_!lkeX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e2d7db4-ca8d-4708-8692-ff52f8abd9c3_1024x628.png)
+![](z-images/5e87d9aeb9d7d3714e9e214bcca1f3f9.webp)
 
 Source: SemiAnalysis
 
@@ -68,19 +68,19 @@ For reference, a conservative estimate of SMIC's total advanced node capacity (7
 
 If 100% of capacity was allocated to Ascend die, their production capability would be in the tens of millions per year. They are on track to be more than capable of supporting a large domestic demand for China-produced compute die.
 
-![](https://substackcdn.com/image/fetch/$s_!kQrF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe783043c-c608-41d9-9485-463efd574b0f_1024x647.png)
+![](z-images/8bf03d005aeec966429746cbd420df04.webp)
 
 Source: SemiAnalysis
 
 Our forecasts above use a conservative estimate for both yield and its rate of improvement in the future. It's very likely that SMIC can exceed these estimated as its 7nm nodes mature. Our estimates for yields are lower than TSMC, Intel, Samsung, ASE, Amkor, etc for front end wafers and packaging.
 
-![](https://substackcdn.com/image/fetch/$s_!iWv2!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fab82fa42-76b8-4cf1-861d-2561586f98e8_1024x554.png)
+![](z-images/ea76bfbfd08a43994c4cfc731af6e543.webp)
 
 Source: SemiAnalysis
 
 Indeed, yield is an important lever that can be pulled to increase production without giving up more allocation. With just small increases in yield beyond our forecast above, SMIC will be able to produce several million Ascend die at lower allocation amounts than they would otherwise. Every percentage counts and SMIC has their best engineers working on exactly this problem.
 
-![](https://substackcdn.com/image/fetch/$s_!nsfC!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6489670c-ac91-4620-9a21-94f4a554b74b_1024x301.png)
+![](z-images/f4e1798bf76eda5723d0990488782971.webp)
 
 Source: SemiAnalysis
 
@@ -108,7 +108,7 @@ This is due to timing differences in controls that they can take advantage of. F
 
 The problem, however, is that when new export controls come out, Japan and the Netherlands **do not immediately follow.** In many instances, matching controls are delayed by 6 months or never. Chinese companies can rush order years’ worth of equipment to stockpile, while American vendors are shut out of the process. Japanese WFE vendors are happy to sell into this gap with margins fattened by order expedites. Many key suppliers are seeing well above 40% revenue share from China:
 
-![](https://substackcdn.com/image/fetch/$s_!R786!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd375fbdb-a48c-4f70-8e46-74e42e8ad7e6_1024x382.png)
+![](z-images/42ac6f4a4336995cd9261f654ac2fd2a.webp)
 
 Source: SemiAnalysis
 
@@ -134,19 +134,19 @@ Much like how Huawei was able to stockpile TSMC logic wafer inventory, they were
 
 Specifically, on December 2 <sup>nd</sup> 2024, the Bureau of Industry and Security (BIS) announced controls on anything more advanced than HBM2E. Full compliance was required on December 31 <sup>st</sup> 2024. **Samsung exported as much as possible to China in that one quarter. This comprises the majority of China's HBM.** They were able to achieve this due to the US Government and media telecasting the restrictions for many months before they came out.
 
-![](https://substackcdn.com/image/fetch/$s_!zcAG!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd8177c30-85ab-4e0e-8589-5caf37fa2468_1024x716.png)
+![](z-images/810ee6431c8ed14753235a0c60f97b65.webp)
 
 Source: SemiAnalysis
 
 After the ruling, Samsung HBM still made it into China. [We previously detailed](https://semianalysis.com/2025/04/16/huawei-ai-cloudmatrix-384-chinas-answer-to-nvidia-gb200-nvl72/) how companies like CoAsia Electronics and Faraday supplied non-functional chips with HBM into China, though we believe due to our efforts in exposing this both privately in late January and publicly later that it has now stopped with revenue numbers returning to normal. This does not mean that HBM smuggling has stopped entirely, though. There could be other sources.
 
-![](https://substackcdn.com/image/fetch/$s_!FjCt!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feacc8e8d-f8b4-4504-8a6d-01c9526bcb06_1024x707.png)
+![](z-images/48970b14a73b3a692255935d901549cf.webp)
 
 Source: SemiAnalysis, Company Reports
 
 In sum, **China has procured 13M HBM stacks which is sufficient for 1.6M Ascend 910C packages**. Despite this, we expect that **China will be bottlenecked by HBM by the end of the year** as they run out of foreign HBM.
 
-![](https://substackcdn.com/image/fetch/$s_!ti8O!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0cd3fa39-d0d4-4cc2-80b7-239979c609ca_1024x509.png)
+![](z-images/bd8ae7597fde90215e0fcd8236c56069.webp)
 
 Source: SemiAnalysis
 
@@ -166,7 +166,7 @@ China's main DRAM player, CXMT, has caught up with the west rapidly. This is due
 
 CXMT is able to ship DDR5 memory, only a couple years behind SK Hynix, Micron, and Samsung, and is winding down profitable DDR4 production previously reserved for PCs and mobile. While they have not shipped much HBM, their roadmap is aggressive. By next year, their production capacity will rival that of Micron's, though not fast enough to save Huawei Ascend's production. In 2026, we expect them to be producing 257k WPM, which would be just under 15% of global DRAM production. In our estimates, this scales to 490k in 2030.
 
-![](https://substackcdn.com/image/fetch/$s_!4F5U!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3181910-0872-4be2-90ff-d0e55d4dc206_1024x875.png)
+![](z-images/facb2fe9e15af41a7550657cd6d72e47.webp)
 
 CXMT’s Hefei facility for DRAM and HBM production, one of the largest in the world. Source: SemiAnalysis.
 
@@ -184,19 +184,19 @@ This can play out in several ways, depending on how much wafer capacity is given
 
 Currently they have not built out the tooling required to convert standard DRAM production lines to HBM, but it is inevitable. Properly designed, targeted sanctions can slow this conversion massively.
 
-![](https://substackcdn.com/image/fetch/$s_!fXyP!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F99319b48-6c1d-41d4-9861-747155dadc24_1024x763.png)
+![](z-images/580c86b6d338b9204702be6ac6982410.webp)
 
 Source: SemiAnalysis
 
 Different scenarios lead to different amounts of Huawei Ascends produced. As noted, SMIC can produce the die needed to match the HBM.
 
-![](https://substackcdn.com/image/fetch/$s_!jr_a!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F42800f32-cc9b-4869-8ef9-2d1f176df486_1024x769.png)
+![](z-images/e6d852dcba35322dcb8c7b64ab92f73a.webp)
 
 To be clear, this could change. The rate of production for CXMT could increase if they continue stockpiling key tooling or significantly improve yields. The might of China’s manufacturing capability and capacity knows no bounds. This estimate is somewhat conservative, it is likely that CXMT is able to produce the significantly more capable HBM3e in 2026.
 
 **We believe CXMT will only be able to make ~2 million stacks of HBM next year, which is only sufficient for 250,000-300,000 Ascend 910C's.** Yields and capacity conversion will take some time to improve for CXMT to commit significant capacity.
 
-![](https://substackcdn.com/image/fetch/$s_!L5T4!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3db74357-492f-4ef2-86e7-d554edefa682_1024x563.png)
+![](z-images/c29811fe22b3ee151daa18076d16d361.webp)
 
 If all leading edge logic die capacity could be paired with HBM, Huawei production of Ascend would grow from 805k this year to 1,175k in 2025. More importantly, **production next year would grow from 300k to over 5 million Ascend 910C!**
 
@@ -220,7 +220,7 @@ We believe the networking equipment used, specifically the scale up switches, ar
 
 We believe Huawei has also been able to manufacture their datacenter CPU at TSMC. This showcases that current controls aimed to limit Huawei's access to TSMC are insufficient. The Ascend AI ASIC is 7nm, but because of poor screening, Huawei has been able to procure technology from the more advanced TSMC 5nm node.
 
-![](https://substackcdn.com/image/fetch/$s_!6nCe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37cae26b-6364-4944-b04b-907174bffdc8_1024x470.png)
+![](z-images/cfaa992571e6842ec47e5bddaf999917.webp)
 
 Huawei's KunPeng 930. Source: Kunal, SemiAnalysis
 
@@ -272,7 +272,7 @@ Claims that models trained on one chip must be inferenced on the same type are e
 
 DeepSeek, Alibaba, Moonshot, etc primarily train their models on Nvidia chips and we do not think this will change anytime soon. If the Blackwell version ships, gains across all levels will be more pronounced.
 
-![](https://substackcdn.com/image/fetch/$s_!AB67!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb8906e10-1743-4f4c-abb1-5d649fad9d3c_1024x661.png)
+![](z-images/97df8e0f8cbab68dbc8bbbb763a9ad04.webp)
 
 Source: SemiAnalysis
 
@@ -280,13 +280,13 @@ Source: SemiAnalysis
 
 With the H20 approved, this represents a material increase in the number of FLOPs and memory that China has access to. The 910C will be the first meaningful effort of indigenous production in China in terms of realized FLOPs and memory. We also expect some re-exportation into China by various bad actors, constituting meaningful volumes of H100 and low volumes of B200.
 
-![](https://substackcdn.com/image/fetch/$s_!zUhu!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0f265adf-6ec0-4a78-8ab9-da60971e32ce_1024x697.png)
+![](z-images/6ce39230670d2d4a87f7649cc9318e53.webp)
 
 Source: SemiAnalysis
 
 Should the Blackwell version ship, gains around FLOPs will be even more pronounced as the chip has significantly more FLOPs. China will end up having more FLOPs in that scenario, in addition to more memory.
 
-![](https://substackcdn.com/image/fetch/$s_!pMnr!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7efaeb9-6f42-45b4-8929-d028a9d45cdd_1024x694.png)
+![](z-images/6c849d1460631a7c5c88f056049869c6.webp)
 
 Source: SemiAnalysis
 
