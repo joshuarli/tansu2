@@ -1,3 +1,4 @@
+import { createRequestId, logClientEvent } from "./dev-log.ts";
 import {
   toVaultIndex,
   type AssetName,
@@ -125,14 +126,33 @@ async function apiFetch<T>(
   path: string,
   options: RequestInit & { vault?: number } = {},
 ): Promise<T> {
+  const started = performance.now();
+  const requestId = createRequestId();
   const headers = new Headers(options.headers);
   headers.set("Accept", "application/json");
   if (options.body !== undefined) {
     headers.set("Content-Type", "application/json");
   }
   headers.set("X-Tansu-Vault", String(options.vault ?? activeVault()));
+  headers.set("X-Tansu-Request-Id", requestId);
+  const method = options.method ?? "GET";
   const response = await fetch(path, { ...options, headers });
   const data = (await response.json().catch(() => null)) as T;
+  logClientEvent(
+    response.ok ? "info" : response.status >= 500 ? "error" : "warn",
+    "client.api",
+    {
+      http: {
+        method,
+        path,
+        status: response.status,
+        durationMs: Math.round(performance.now() - started),
+        vault: options.vault ?? activeVault(),
+      },
+      error: response.ok ? null : apiErrorPayload(data),
+    },
+    requestId,
+  );
   if (!response.ok) {
     throw new ApiError(`API request failed: ${response.status}`, response.status, data);
   }
@@ -281,16 +301,35 @@ export function saveSettings(settings: Settings, vault = activeVault()): Promise
 }
 
 export async function uploadImage(blob: Blob, vault = activeVault()): Promise<ImageUploadResponse> {
+  const started = performance.now();
+  const requestId = createRequestId();
   const response = await fetch("/api/images", {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "image/webp",
       "X-Tansu-Vault": String(vault),
+      "X-Tansu-Request-Id": requestId,
     },
     body: blob,
   });
   const data = (await response.json().catch(() => null)) as ImageUploadResponse;
+  logClientEvent(
+    response.ok ? "info" : response.status >= 500 ? "error" : "warn",
+    "client.api",
+    {
+      http: {
+        method: "POST",
+        path: "/api/images",
+        status: response.status,
+        durationMs: Math.round(performance.now() - started),
+        vault,
+        requestBytes: blob.size,
+      },
+      error: response.ok ? null : apiErrorPayload(data),
+    },
+    requestId,
+  );
   if (!response.ok) {
     throw new ApiError(`API request failed: ${response.status}`, response.status, data);
   }
@@ -310,6 +349,10 @@ export function setActiveVault(index: VaultIndex): void {
 }
 
 export function connectEvents(vault = activeVault()): EventSource {
+  logClientEvent("info", "system.event", {
+    system: { component: "sse", action: "connect_client" },
+    vault,
+  });
   return new EventSource(`/events?vault=${encodeURIComponent(String(vault))}`);
 }
 
@@ -345,3 +388,9 @@ function createApiClient(): ApiClient {
 }
 
 export const apiClient = createApiClient();
+
+function apiErrorPayload(data: unknown): unknown {
+  return data !== null && typeof data === "object" && "error" in data
+    ? (data as { error: unknown }).error
+    : null;
+}

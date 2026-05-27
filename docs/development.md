@@ -38,6 +38,8 @@ make dev
 runs the server on port `3000` with `XDG_CONFIG_HOME=.dev/config`. It does not
 read the user's real config.
 
+See [Logging](logging.md) for dev/e2e server, browser, and harness logs.
+
 ## Validate
 
 Use these first:

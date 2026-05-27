@@ -13,12 +13,13 @@ import {
   type Page,
   type Request,
 } from "playwright";
-import { expect, afterAll, describe, beforeAll, it } from "vitest";
+import { expect, afterAll, beforeEach, describe, beforeAll, it } from "vitest";
 
 let server: ChildProcess | undefined;
 let browser: Browser | undefined;
 let baseUrl = "";
 let vaultOnePath = "";
+const serverOutput: string[] = [];
 const e2eBrowser = browserTypeFromEnv();
 
 type TestFixture = {
@@ -38,6 +39,15 @@ type TestNoteDocument = {
   content: string;
 };
 
+type LogEvent = {
+  seq: number;
+  ts: number;
+  source: string;
+  level: string;
+  kind: string;
+  requestId?: string;
+} & Record<string, unknown>;
+
 describe("real server harness", () => {
   beforeAll(async () => {
     const root = await mkdtemp(join(tmpdir(), "tansu2-e2e-"));
@@ -52,11 +62,19 @@ describe("real server harness", () => {
     baseUrl = `http://127.0.0.1:${port}`;
     server = spawn("cargo", ["run", "--quiet", "--bin", "tansu2", "--", "--port", String(port)], {
       cwd: process.cwd(),
-      env: { ...process.env, XDG_CONFIG_HOME: fixture.configHome },
+      env: { ...process.env, TANSU2_LOGS: "buffer", XDG_CONFIG_HOME: fixture.configHome },
       stdio: ["ignore", "pipe", "pipe"],
     });
+    server.stdout?.on("data", (chunk: Buffer) => serverOutput.push(chunk.toString("utf8")));
+    server.stderr?.on("data", (chunk: Buffer) => serverOutput.push(chunk.toString("utf8")));
     await waitForReady(`${baseUrl}/api/health`);
     browser = await e2eBrowser.launch();
+  });
+
+  beforeEach((context) => {
+    context.onTestFailed(async () => {
+      await dumpUnifiedLogs(context.task.name);
+    }, 10_000);
   });
 
   afterAll(async () => {
@@ -99,7 +117,7 @@ describe("real server harness", () => {
     expect(sample.ok).toBeTruthy();
     expect((await sample.arrayBuffer()).byteLength).toBeGreaterThan(0);
 
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     const startupRequests: string[] = [];
     page.on("request", (request) => {
       const url = new URL(request.url());
@@ -126,7 +144,7 @@ describe("real server harness", () => {
   });
 
   it("locks in modal, search, toolbar, and note management UX", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     page.on("dialog", (dialog) => {
       throw new Error(`unexpected native dialog: ${dialog.type()} ${dialog.message()}`);
     });
@@ -235,7 +253,7 @@ describe("real server harness", () => {
   });
 
   it("keeps note bodies isolated when switching notes before saving", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
     const searchBefore = await openSeededDocument("search.md");
@@ -260,7 +278,7 @@ describe("real server harness", () => {
   });
 
   it("keeps immediate typing after Enter in the visual editor", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -298,7 +316,7 @@ describe("real server harness", () => {
   });
 
   it("preserves repeated blank lines across autosave", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -338,7 +356,7 @@ describe("real server harness", () => {
   });
 
   it("preserves blank lines inserted between typed paragraphs", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -378,7 +396,7 @@ describe("real server harness", () => {
   });
 
   it("places the visual cursor after a real blank line when pressing Enter twice", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -403,7 +421,7 @@ describe("real server harness", () => {
   });
 
   it("moves through visible blank lines with arrow keys", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -432,7 +450,7 @@ describe("real server harness", () => {
   });
 
   it("source mode round trip preserves repeated blank-line geometry and markdown", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -466,7 +484,7 @@ describe("real server harness", () => {
   });
 
   it("handles Enter at paragraph start, middle, and end through model transactions", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -510,7 +528,7 @@ describe("real server harness", () => {
   });
 
   it("handles Backspace and Delete across text and blank-line boundaries", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -553,7 +571,7 @@ describe("real server harness", () => {
   });
 
   it("applies visual block input syntax through model-backed rendering", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -576,7 +594,7 @@ describe("real server harness", () => {
     await expectSavedContent("heading-syntax.md", "# Heading Syntax\r\n# Heading");
     await page.close();
 
-    const listPage = await browser!.newPage();
+    const listPage = await newLoggedPage();
     await listPage.goto(baseUrl);
     await listPage.waitForSelector(".main");
     await createNote(listPage, "List Syntax");
@@ -599,7 +617,7 @@ describe("real server harness", () => {
     await expectSavedContent("list-syntax.md", "# List Syntax\r\n- item");
     await listPage.close();
 
-    const orderedPage = await browser!.newPage();
+    const orderedPage = await newLoggedPage();
     await orderedPage.goto(baseUrl);
     await orderedPage.waitForSelector(".main");
     await createNote(orderedPage, "Ordered Syntax");
@@ -622,7 +640,7 @@ describe("real server harness", () => {
     await expectSavedContent("ordered-syntax.md", "# Ordered Syntax\r\n1. ordered");
     await orderedPage.close();
 
-    const taskPage = await browser!.newPage();
+    const taskPage = await newLoggedPage();
     await taskPage.goto(baseUrl);
     await taskPage.waitForSelector(".main");
     await createNote(taskPage, "Task Syntax");
@@ -645,7 +663,7 @@ describe("real server harness", () => {
     await expectSavedContent("task-syntax.md", "# Task Syntax\r\n[ ] task");
     await taskPage.close();
 
-    const quotePage = await browser!.newPage();
+    const quotePage = await newLoggedPage();
     await quotePage.goto(baseUrl);
     await quotePage.waitForSelector(".main");
     await createNote(quotePage, "Quote Syntax");
@@ -668,7 +686,7 @@ describe("real server harness", () => {
     await expectSavedContent("quote-syntax.md", "# Quote Syntax\r\n> quote");
     await quotePage.close();
 
-    const hrPage = await browser!.newPage();
+    const hrPage = await newLoggedPage();
     await hrPage.goto(baseUrl);
     await hrPage.waitForSelector(".main");
     await createNote(hrPage, "Hr Syntax");
@@ -692,7 +710,7 @@ describe("real server harness", () => {
     await expectSavedContent("hr-syntax.md", "# Hr Syntax\r\n---\r\n");
     await hrPage.close();
 
-    const codePage = await browser!.newPage();
+    const codePage = await newLoggedPage();
     await codePage.goto(baseUrl);
     await codePage.waitForSelector(".main");
     await createNote(codePage, "Code Syntax");
@@ -718,7 +736,7 @@ describe("real server harness", () => {
   });
 
   it("preserves blank lines when pasting multiline plain text and sanitized HTML", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -750,7 +768,7 @@ describe("real server harness", () => {
   });
 
   it("adapts legacy editor typing and inline round-trip regressions", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -793,7 +811,7 @@ describe("real server harness", () => {
   });
 
   it("adapts legacy heading, list, and boundary regressions", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -839,7 +857,7 @@ describe("real server harness", () => {
   });
 
   it("adapts legacy autosave, reload, and double-newline loss regressions", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -877,7 +895,7 @@ describe("real server harness", () => {
   }, 90_000);
 
   it("adapts legacy save and shortcut integration coverage", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -920,7 +938,7 @@ describe("real server harness", () => {
   });
 
   it("sends exact delta save bodies without full note content", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -973,7 +991,7 @@ describe("real server harness", () => {
   });
 
   it("covers lists, tasks, and undoable structural editing across the exposed markdown surface", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -1026,7 +1044,7 @@ describe("real server harness", () => {
   });
 
   it("pastes and resizes images through model markdown", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -1041,7 +1059,7 @@ describe("real server harness", () => {
   });
 
   it("covers block gutter copy, range selection, replacement, delete, escape, and undo", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -1090,7 +1108,7 @@ describe("real server harness", () => {
   });
 
   it("restores markdown and cursor through undo and redo checkpoints", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
 
@@ -1168,7 +1186,7 @@ describe("real server harness", () => {
       body: JSON.stringify({ path: "stress-lag.md", content, source: null }),
     });
 
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
     await page.locator('.note-row[title="stress-lag.md"]').first().click();
@@ -1202,7 +1220,7 @@ describe("real server harness", () => {
   });
 
   it("streams vault-scoped note changes over SSE", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     const eventPromise = page.evaluate(
       () =>
@@ -1242,7 +1260,7 @@ describe("real server harness", () => {
   });
 
   it("reconciles external filesystem edits for the active vault", async () => {
-    const page = await browser!.newPage();
+    const page = await newLoggedPage();
     await page.goto(baseUrl);
     const eventPromise = page.evaluate(
       () =>
@@ -1365,6 +1383,65 @@ async function waitForReady(url: string): Promise<void> {
     await new Promise((resolve) => setTimeout(resolve, 100));
   }
   throw new Error(`server did not become ready: ${url}`);
+}
+
+async function dumpUnifiedLogs(testName: string): Promise<void> {
+  const lines: string[] = [`\n--- tansu2 unified logs for failed test: ${testName} ---`];
+  if (baseUrl !== "") {
+    try {
+      const snapshot = await fetch(`${baseUrl}/api/dev/logs`).then(
+        (response) => response.json() as Promise<{ events: LogEvent[] }>,
+      );
+      for (const event of snapshot.events) {
+        lines.push(JSON.stringify(event));
+      }
+    } catch (error) {
+      lines.push(`unable to fetch unified logs: ${error instanceof Error ? error.message : error}`);
+    }
+  }
+  if (serverOutput.length > 0) {
+    lines.push("--- server stdout/stderr fallback ---");
+    lines.push(serverOutput.join(""));
+  }
+  lines.push("--- end tansu2 unified logs ---");
+  console.error(lines.join("\n"));
+}
+
+async function newLoggedPage(): Promise<Page> {
+  const page = await browser!.newPage();
+  page.on("pageerror", (error) => {
+    void postHarnessLog("error", "client.error", {
+      page: { url: page.url() },
+      error: { name: error.name, message: error.message, stack: error.stack },
+    });
+  });
+  page.on("requestfailed", (request) => {
+    void postHarnessLog("warn", "http.request_failed", {
+      http: {
+        method: request.method(),
+        url: request.url(),
+        failure: request.failure()?.errorText,
+      },
+    });
+  });
+  return page;
+}
+
+async function postHarnessLog(
+  level: "debug" | "info" | "warn" | "error",
+  kind: string,
+  fields: Record<string, unknown>,
+): Promise<void> {
+  if (baseUrl === "") {
+    return;
+  }
+  await fetch(`${baseUrl}/api/dev/logs`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      events: [{ source: "harness", level, kind, ...fields }],
+    }),
+  }).catch(() => {});
 }
 
 async function openSeededDocument(path: string): Promise<TestNoteDocument> {

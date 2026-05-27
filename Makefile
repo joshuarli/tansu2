@@ -4,7 +4,7 @@ DEV_CONFIG_HOME := $(DEV_DIR)/config
 
 dev: types dev-config
 	pnpm run bundle-dev
-	XDG_CONFIG_HOME="$(DEV_CONFIG_HOME)" cargo run --bin $(NAME) -- --port 3000
+	TANSU2_LOGS=pretty XDG_CONFIG_HOME="$(DEV_CONFIG_HOME)" cargo run --bin $(NAME) -- --port 3000
 
 dev-config:
 	node scripts/test-fixture.mjs "$(DEV_DIR)"

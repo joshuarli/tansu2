@@ -17,6 +17,7 @@ use crate::api_types::{
 use crate::catalog::{Catalog, InsertNote, now_ms};
 use crate::config::VaultConfig;
 use crate::history;
+use crate::logging::{LogHub, LogLevel, fields};
 use crate::paths::{normalize_note_path, path_key, visible_path};
 use crate::reconcile::reconcile_vault;
 use crate::search::SearchIndex;
@@ -34,6 +35,7 @@ pub struct VaultRuntime {
     watcher: Mutex<Option<RecommendedWatcher>>,
     search_tx: Sender<SearchJob>,
     search_rx: Mutex<Option<Receiver<SearchJob>>>,
+    logs: LogHub,
 }
 
 enum SearchJob {
@@ -43,7 +45,7 @@ enum SearchJob {
 }
 
 impl VaultRuntime {
-    pub fn open(index: usize, config: &VaultConfig) -> Result<Self> {
+    pub fn open(index: usize, config: &VaultConfig, logs: LogHub) -> Result<Self> {
         fs::create_dir_all(&config.path)?;
         fs::create_dir_all(config.path.join(".tansu"))?;
         let mut catalog = Catalog::open(&config.path.join(".tansu").join("vault.db"))?;
@@ -60,6 +62,22 @@ impl VaultRuntime {
             catalog.set_search_dirty(true, true)?;
         }
         let (search_tx, search_rx) = mpsc::channel();
+        if logs.enabled() {
+            logs.server_event(
+                LogLevel::Info,
+                "system.event",
+                None,
+                fields([
+                    (
+                        "system",
+                        serde_json::json!({ "component": "vault", "action": "open" }),
+                    ),
+                    ("vault", serde_json::json!(index)),
+                    ("path", serde_json::json!(config.path.to_string_lossy())),
+                    ("notes", serde_json::json!(notes.len())),
+                ]),
+            );
+        }
         Ok(Self {
             index,
             name: config.name.clone(),
@@ -71,6 +89,7 @@ impl VaultRuntime {
             watcher: Mutex::new(None),
             search_tx,
             search_rx: Mutex::new(Some(search_rx)),
+            logs,
         })
     }
 
@@ -158,6 +177,7 @@ impl VaultRuntime {
             .ok_or_else(|| Error::NotFound(note_id.to_string()))?;
         let content = read_visible_or_snapshot(&self.root, &meta)?;
         catalog.touch_recent(note_id)?;
+        self.log_note_read("open", &meta, Some(content.len()));
         Ok(NoteDocument { meta, content })
     }
 
@@ -208,6 +228,7 @@ impl VaultRuntime {
         drop(catalog);
         self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
         self.broadcast(ServerEventKind::NoteChanged, Vec::new());
+        self.log_note_mutation("create", &meta, Some(content.len()));
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
                 meta: meta.clone(),
@@ -350,6 +371,7 @@ impl VaultRuntime {
         drop(catalog);
         self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
         self.broadcast(ServerEventKind::NoteChanged, Vec::new());
+        self.log_note_mutation("save", &meta, Some(content.len()));
         let document = if include_document {
             Some(NoteDocument {
                 meta: meta.clone(),
@@ -409,6 +431,7 @@ impl VaultRuntime {
         drop(catalog);
         self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
         self.broadcast(ServerEventKind::NoteChanged, Vec::new());
+        self.log_note_mutation("rename", &meta, Some(content.len()));
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
                 meta: meta.clone(),
@@ -435,6 +458,7 @@ impl VaultRuntime {
         drop(catalog);
         self.enqueue_search(SearchJob::Remove(note_id.to_string()));
         self.broadcast(ServerEventKind::NoteDeleted, vec![note_id.to_string()]);
+        self.log_note_mutation("delete", &meta, None);
         Ok(NoteMutationResponse {
             document: None,
             meta,
@@ -449,12 +473,50 @@ impl VaultRuntime {
             (catalog.live_notes()?, catalog.settings()?)
         };
         let search = self.search.lock().expect("search mutex poisoned");
-        Ok(search.search(query, &settings, &notes))
+        let hits = search.search(query, &settings, &notes);
+        if self.logs.enabled() {
+            self.logs.server_event(
+                LogLevel::Info,
+                "search.query",
+                None,
+                fields([
+                    (
+                        "search",
+                        serde_json::json!({
+                            "queryLength": query.len(),
+                            "hits": hits.len(),
+                            "notes": notes.len(),
+                        }),
+                    ),
+                    ("vault", serde_json::json!(self.index)),
+                ]),
+            );
+        }
+        Ok(hits)
     }
 
     pub fn save_session(&self, session: SessionState) -> Result<()> {
         let _op = self.lock_op();
-        self.lock_catalog().save_session(&session)
+        self.lock_catalog().save_session(&session)?;
+        if self.logs.enabled() {
+            self.logs.server_event(
+                LogLevel::Debug,
+                "session.save",
+                None,
+                fields([
+                    (
+                        "session",
+                        serde_json::json!({
+                            "openTabs": session.open_tabs.len(),
+                            "closedTabs": session.closed_tabs.len(),
+                            "activeNoteId": session.active_note_id,
+                        }),
+                    ),
+                    ("vault", serde_json::json!(self.index)),
+                ]),
+            );
+        }
+        Ok(())
     }
 
     pub fn settings(&self) -> Result<Settings> {
@@ -469,6 +531,25 @@ impl VaultRuntime {
         drop(catalog);
         self.enqueue_search(SearchJob::Rebuild);
         self.broadcast(ServerEventKind::SearchChanged, Vec::new());
+        if self.logs.enabled() {
+            self.logs.server_event(
+                LogLevel::Info,
+                "settings.save",
+                None,
+                fields([
+                    (
+                        "settings",
+                        serde_json::json!({
+                            "excludedFolders": settings.excluded_folders.len(),
+                            "autosaveDelayMs": settings.autosave_delay_ms,
+                            "undoStackMax": settings.undo_stack_max,
+                            "imageWebpQuality": settings.image_webp_quality,
+                        }),
+                    ),
+                    ("vault", serde_json::json!(self.index)),
+                ]),
+            );
+        }
         Ok(settings)
     }
 
@@ -479,8 +560,29 @@ impl VaultRuntime {
             return Err(Error::NotFound(note_id.to_string()));
         }
         catalog.set_pin(note_id, pinned)?;
+        let meta = catalog
+            .note_by_id(note_id)?
+            .ok_or_else(|| Error::NotFound(note_id.to_string()))?;
         drop(catalog);
         self.broadcast(ServerEventKind::VaultChanged, Vec::new());
+        if self.logs.enabled() {
+            self.logs.server_event(
+                LogLevel::Info,
+                "note.pin",
+                None,
+                fields([
+                    (
+                        "note",
+                        serde_json::json!({
+                            "id": meta.note_id,
+                            "path": meta.path,
+                            "vault": self.index,
+                        }),
+                    ),
+                    ("pin", serde_json::json!({ "pinned": pinned })),
+                ]),
+            );
+        }
         Ok(())
     }
 
@@ -508,6 +610,25 @@ impl VaultRuntime {
             .as_deref()
             .ok_or_else(|| Error::NotFound(format!("revision {event_id}")))?;
         let content = history::read_snapshot(&self.root, note_id, hash)?;
+        if self.logs.enabled() {
+            self.logs.server_event(
+                LogLevel::Info,
+                "revision.open",
+                None,
+                fields([
+                    (
+                        "revision",
+                        serde_json::json!({
+                            "eventId": event_id,
+                            "noteId": note_id,
+                            "contentHash": hash,
+                            "bytes": content.len(),
+                        }),
+                    ),
+                    ("vault", serde_json::json!(self.index)),
+                ]),
+            );
+        }
         Ok(RevisionDocument { revision, content })
     }
 
@@ -541,6 +662,7 @@ impl VaultRuntime {
         drop(catalog);
         self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
         self.broadcast(ServerEventKind::NoteChanged, Vec::new());
+        self.log_note_mutation("restore", &meta, Some(content.len()));
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
                 meta: meta.clone(),
@@ -598,6 +720,7 @@ impl VaultRuntime {
         drop(catalog);
         self.enqueue_search(SearchJob::Upsert(meta.clone(), content.clone()));
         self.broadcast(ServerEventKind::NoteChanged, Vec::new());
+        self.log_note_mutation("restore_conflict", &meta, Some(content.len()));
         Ok(NoteMutationResponse {
             document: Some(NoteDocument {
                 meta: meta.clone(),
@@ -622,6 +745,21 @@ impl VaultRuntime {
             fs::create_dir_all(parent)?;
         }
         history::write_bytes_atomic(&path, bytes)?;
+        if self.logs.enabled() {
+            self.logs.server_event(
+                LogLevel::Info,
+                "asset.upload",
+                None,
+                fields([(
+                    "asset",
+                    serde_json::json!({
+                        "name": name,
+                        "bytes": bytes.len(),
+                        "vault": self.index,
+                    }),
+                )]),
+            );
+        }
         Ok(crate::api_types::ImageUploadResponse {
             markdown: format!("![[{name}]]"),
             name,
@@ -689,6 +827,22 @@ impl VaultRuntime {
         if let Ok(mut catalog) = self.catalog.lock() {
             let _ = catalog.set_search_dirty(result.0, result.1);
         }
+        if result.1 && self.logs.enabled() {
+            self.logs.server_event(
+                LogLevel::Warn,
+                "system.event",
+                None,
+                fields([
+                    (
+                        "system",
+                        serde_json::json!({ "component": "search", "action": "degraded" }),
+                    ),
+                    ("vault", serde_json::json!(self.index)),
+                    ("dirty", serde_json::json!(result.0)),
+                    ("degraded", serde_json::json!(result.1)),
+                ]),
+            );
+        }
     }
 
     fn reconcile_from_watcher(&self) -> Result<()> {
@@ -710,7 +864,72 @@ impl VaultRuntime {
         drop(catalog);
         self.enqueue_search(SearchJob::Rebuild);
         self.broadcast(ServerEventKind::VaultChanged, deleted);
+        if self.logs.enabled() {
+            self.logs.server_event(
+                LogLevel::Info,
+                "system.event",
+                None,
+                fields([
+                    (
+                        "system",
+                        serde_json::json!({ "component": "watcher", "action": "reconcile" }),
+                    ),
+                    ("vault", serde_json::json!(self.index)),
+                    ("notes", serde_json::json!(notes.len())),
+                ]),
+            );
+        }
         Ok(())
+    }
+
+    fn log_note_mutation(&self, action: &str, meta: &NoteMeta, content_bytes: Option<usize>) {
+        if !self.logs.enabled() {
+            return;
+        }
+        self.logs.server_event(
+            LogLevel::Info,
+            "note.mutation",
+            None,
+            fields([
+                (
+                    "note",
+                    serde_json::json!({
+                        "id": meta.note_id,
+                        "path": meta.path,
+                        "vault": self.index,
+                        "contentHash": meta.content_hash,
+                        "seq": meta.seq,
+                    }),
+                ),
+                ("mutation", serde_json::json!({ "action": action })),
+                ("contentBytes", serde_json::json!(content_bytes)),
+            ]),
+        );
+    }
+
+    fn log_note_read(&self, action: &str, meta: &NoteMeta, content_bytes: Option<usize>) {
+        if !self.logs.enabled() {
+            return;
+        }
+        self.logs.server_event(
+            LogLevel::Info,
+            "note.read",
+            None,
+            fields([
+                (
+                    "note",
+                    serde_json::json!({
+                        "id": meta.note_id,
+                        "path": meta.path,
+                        "vault": self.index,
+                        "contentHash": meta.content_hash,
+                        "seq": meta.seq,
+                    }),
+                ),
+                ("read", serde_json::json!({ "action": action })),
+                ("contentBytes", serde_json::json!(content_bytes)),
+            ]),
+        );
     }
 
     fn server_event(
@@ -1288,6 +1507,7 @@ mod tests {
                 path: dir,
                 excluded_folders: Vec::new(),
             },
+            LogHub::new(crate::logging::LogMode::Off),
         )
         .unwrap()
     }

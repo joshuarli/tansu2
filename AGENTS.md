@@ -9,6 +9,7 @@ leak into each other.
 - [Architecture](docs/architecture.md): invariants, ownership, and change map.
 - [API](docs/api.md): generated DTOs, endpoints, and high-risk request examples.
 - [Development](docs/development.md): setup, commands, and validation.
+- [Logging](docs/logging.md): unified dev/e2e server, browser, and harness logs.
 - [Editor](docs/editor.md): editor model, rendering, selection, and extensions.
 - [Fixtures](docs/fixtures.md): shared dev/e2e test vaults.
 - [Migration](docs/migration.md): safe first run on an existing Markdown vault.

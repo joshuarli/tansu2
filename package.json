@@ -4,12 +4,12 @@
   "type": "module",
   "scripts": {
     "bundle": "node scripts/build-web.mjs production",
-    "bundle-dev": "node scripts/build-web.mjs production",
+    "bundle-dev": "node scripts/build-web.mjs development",
     "format:check": "oxfmt --check --config oxfmt.config.mjs",
     "lint": "oxlint",
     "playwright:install": "node scripts/install-playwright-browsers.mjs",
     "test": "vitest run",
-    "test-e2e": "pnpm run bundle-dev && vitest run --config vitest.e2e.config.ts"
+    "test-e2e": "TANSU2_LOGS=buffer pnpm run bundle-dev && vitest run --config vitest.e2e.config.ts"
   },
   "dependencies": {
     "defuddle": "^0.18.1"

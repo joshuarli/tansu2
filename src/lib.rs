@@ -17,6 +17,7 @@ pub mod catalog;
 pub mod config;
 pub mod history;
 pub mod http;
+pub mod logging;
 pub mod paths;
 pub mod reconcile;
 pub mod search;

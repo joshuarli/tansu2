@@ -3,9 +3,11 @@ use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
 use std::path::{Path, PathBuf};
 use std::thread;
+use std::time::Instant;
 
 use crate::api::{api_error_response, handle_api};
 use crate::app::App;
+use crate::logging::{IncomingLogBatch, LogLevel, fields};
 use crate::{Error, Result};
 
 const MAX_HEADER_BYTES: usize = 1024 * 1024;
@@ -114,6 +116,20 @@ impl HttpResponse {
 
 pub fn serve(app: App, port: u16) -> Result<()> {
     let listener = TcpListener::bind(("127.0.0.1", port))?;
+    if app.logs().enabled() {
+        app.logs().server_event(
+            LogLevel::Info,
+            "system.event",
+            None,
+            fields([
+                (
+                    "system",
+                    serde_json::json!({ "component": "startup", "action": "listen" }),
+                ),
+                ("address", serde_json::json!(format!("127.0.0.1:{port}"))),
+            ]),
+        );
+    }
     serve_listener(app, listener)
 }
 
@@ -133,14 +149,32 @@ pub fn serve_listener(app: App, listener: TcpListener) -> Result<()> {
 }
 
 fn handle_stream(app: App, mut stream: TcpStream) -> Result<()> {
+    let started = Instant::now();
     let response = match parse_request(&mut stream) {
+        Ok(request) if request.path.starts_with("/api/dev/logs/stream") => {
+            if let Err(error) = app.handle_log_stream(&mut stream) {
+                HttpResponse::text(500, &error.to_string()).write(&mut stream)?;
+            }
+            return Ok(());
+        }
         Ok(request) if request.path.starts_with("/events") => {
             if let Err(error) = app.handle_events(&request, &mut stream) {
                 HttpResponse::text(500, &error.to_string()).write(&mut stream)?;
             }
             return Ok(());
         }
-        Ok(request) => route(&app, &request),
+        Ok(request) => {
+            let request_id = request_id(&request);
+            let response = route(&app, &request);
+            log_request(
+                &app,
+                &request,
+                &response,
+                request_id,
+                started.elapsed().as_millis(),
+            );
+            response
+        }
         Err(error) => HttpResponse::text(400, &error.to_string()),
     };
     response.write(&mut stream)?;
@@ -148,6 +182,9 @@ fn handle_stream(app: App, mut stream: TcpStream) -> Result<()> {
 }
 
 fn route(app: &App, request: &HttpRequest) -> HttpResponse {
+    if request.path.starts_with("/api/dev/logs") {
+        return handle_dev_logs(app, request);
+    }
     if request.path.starts_with("/api/") {
         return handle_api(app, request).unwrap_or_else(api_error_response);
     }
@@ -158,6 +195,114 @@ fn route(app: &App, request: &HttpRequest) -> HttpResponse {
             HttpResponse::text(500, &error.to_string())
         }
     })
+}
+
+fn handle_dev_logs(app: &App, request: &HttpRequest) -> HttpResponse {
+    if !app.logs().enabled() {
+        return HttpResponse::text(404, "not found");
+    }
+    match (request.method.as_str(), request.path.as_str()) {
+        ("GET", "/api/dev/logs") => {
+            HttpResponse::json(200, &app.logs().snapshot()).unwrap_or_else(|error| {
+                HttpResponse::text(500, &format!("internal serialization error: {error}"))
+            })
+        }
+        ("POST", "/api/dev/logs") => {
+            match serde_json::from_slice::<IncomingLogBatch>(&request.body) {
+                Ok(batch) => {
+                    for event in batch.events {
+                        app.logs().ingest(event);
+                    }
+                    HttpResponse::json(200, &serde_json::json!({ "ok": true })).unwrap_or_else(
+                        |error| {
+                            HttpResponse::text(
+                                500,
+                                &format!("internal serialization error: {error}"),
+                            )
+                        },
+                    )
+                }
+                Err(error) => HttpResponse::text(400, &error.to_string()),
+            }
+        }
+        _ => HttpResponse::text(404, "not found"),
+    }
+}
+
+fn log_request(
+    app: &App,
+    request: &HttpRequest,
+    response: &HttpResponse,
+    request_id: Option<String>,
+    duration_ms: u128,
+) {
+    if !app.logs().enabled() || request.path.starts_with("/api/dev/logs") {
+        return;
+    }
+    let level = if response.status >= 500 {
+        LogLevel::Error
+    } else if response.status >= 400 {
+        LogLevel::Warn
+    } else {
+        LogLevel::Info
+    };
+    app.logs().server_event(
+        level,
+        "http.request",
+        request_id,
+        fields([
+            (
+                "http",
+                serde_json::json!({
+                    "method": request.method,
+                    "path": request.path,
+                    "status": response.status,
+                    "durationMs": duration_ms,
+                    "vault": request_vault(request),
+                    "requestBytes": request.body.len(),
+                    "responseBytes": response.body.len(),
+                }),
+            ),
+            ("error", api_error_field(response)),
+        ]),
+    );
+}
+
+fn request_id(request: &HttpRequest) -> Option<String> {
+    request
+        .headers
+        .iter()
+        .find(|(name, _)| name.eq_ignore_ascii_case("x-tansu-request-id"))
+        .map(|(_, value)| value.clone())
+        .or_else(|| Some(format!("srv-{:016x}", fastrand::u64(..))))
+}
+
+fn request_vault(request: &HttpRequest) -> Option<usize> {
+    request
+        .path
+        .split_once('?')
+        .and_then(|(_, query)| {
+            query
+                .split('&')
+                .find_map(|pair| pair.split_once("vault=")?.1.parse().ok())
+        })
+        .or_else(|| {
+            request
+                .headers
+                .iter()
+                .find(|(name, _)| name.eq_ignore_ascii_case("x-tansu-vault"))
+                .and_then(|(_, value)| value.parse().ok())
+        })
+}
+
+fn api_error_field(response: &HttpResponse) -> serde_json::Value {
+    if response.status < 400 || !response.content_type.starts_with("application/json") {
+        return serde_json::Value::Null;
+    }
+    serde_json::from_slice::<serde_json::Value>(&response.body)
+        .ok()
+        .and_then(|value| value.get("error").cloned())
+        .unwrap_or(serde_json::Value::Null)
 }
 
 fn parse_request(stream: &mut TcpStream) -> Result<HttpRequest> {
