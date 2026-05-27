@@ -57,6 +57,23 @@ describe("dev log client", () => {
     logClientEvent("warn", "system.event");
     flushLogs(false);
     await Promise.resolve();
+    await Promise.resolve();
+    logClientEvent("warn", "system.event");
+    flushLogs(false);
+
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it("disables sending after a rejected log response", async () => {
+    process.env["TANSU2_LOGS"] = "buffer";
+    const fetch = vi.fn(async () => ({ ok: false, status: 400 }));
+    vi.stubGlobal("fetch", fetch);
+    const { logClientEvent, flushLogs } = await import("./dev-log.ts");
+
+    logClientEvent("warn", "system.event", { client: { seq: 1 } });
+    flushLogs(false);
+    await Promise.resolve();
+    await Promise.resolve();
     logClientEvent("warn", "system.event");
     flushLogs(false);
 

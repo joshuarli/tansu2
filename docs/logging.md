@@ -4,6 +4,9 @@ Tansu2 has a unified dev/test log stream for debugging behavior that crosses the
 Rust server, browser client, and e2e harness. It is intentionally not a
 production observability system.
 
+This document describes the current logging architecture. Planned improvements
+and prioritization live in [LOGGING-TODO.md](../LOGGING-TODO.md).
+
 The server is the ordering authority. Server events are emitted directly into
 the log hub. Browser and harness events are posted to the server, where they are
 assigned the same global sequence as server events. This keeps failure dumps
@@ -17,7 +20,7 @@ Logging is controlled by `TANSU2_LOGS`:
 | -------- | --------------------------------------------- |
 | `off`    | Disable logging.                              |
 | `buffer` | Keep the in-memory log buffer only.           |
-| `pretty` | Keep the buffer and print compact text lines. |
+| `pretty` | Keep the buffer and print colored timestamped text lines. |
 | `json`   | Keep the buffer and print newline JSON.       |
 
 Defaults and commands:
@@ -45,7 +48,7 @@ type LogEvent = {
 } & Record<string, unknown>;
 ```
 
-- `seq` is the canonical order. Sort and read logs by `seq`.
+- `seq` is the canonical order. Sort and read snapshot logs by `seq`.
 - `ts` is the server-side millisecond timestamp when the event was accepted.
 - `source` identifies where the event originated.
 - `kind` is the stable event category, such as `http.request`,
@@ -60,7 +63,7 @@ put it inside that event's structured payload.
 
 Prefer stable structured fields over freeform messages. Common payload objects:
 
-- `http`: method, path or URL, status, duration, vault, request/response sizes.
+- `http`: method, path or URL, status, duration, and vault.
 - `note`: note id, path, vault, content hash, catalog sequence.
 - `mutation`: note mutation action, such as `create`, `save`, `rename`,
   `delete`, `restore`, or `restore_conflict`.
@@ -131,6 +134,11 @@ Snapshot responses use:
 { "events": [] }
 ```
 
+Pretty output prints one line per event: a standard UTC timestamp, colored
+level/source/kind, a short event-specific summary, and a low-contrast compact
+JSON payload. The sequence remains in JSON snapshots for deterministic ordering,
+but it is not the primary visual label in pretty output.
+
 ## Browser Logging
 
 The browser logger lives in `web/ts/dev-log.ts`.
@@ -158,8 +166,8 @@ Server logging is owned by `App` and `LogHub`:
 - `src/vault.rs` emits note read/mutation, pin, settings, session, revision,
   asset, watcher, search, and vault-open events.
 
-Request logs include method, path, vault, status, duration, byte counts, and API
-error payloads when available. They do not include request bodies.
+Request logs include method, path, vault, status, duration, and API error
+payloads when available. They do not include request or response bodies.
 
 ## E2E Failure Dumps
 

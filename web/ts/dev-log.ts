@@ -104,9 +104,15 @@ export function flushLogs(sync: boolean): void {
     headers: { "Content-Type": "application/json", "X-Tansu-Log": "1" },
     body,
     keepalive: sync,
-  }).catch(() => {
-    disabled = true;
-  });
+  })
+    .then((response) => {
+      if (!response.ok) {
+        disabled = true;
+      }
+    })
+    .catch(() => {
+      disabled = true;
+    });
 }
 
 function errorInfo(error: unknown, fallback: string): Record<string, unknown> {

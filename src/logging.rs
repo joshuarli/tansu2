@@ -66,7 +66,7 @@ pub struct LogEvent {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase", deny_unknown_fields)]
+#[serde(rename_all = "camelCase")]
 pub struct IncomingLogEvent {
     pub source: LogSource,
     pub level: LogLevel,
@@ -77,7 +77,7 @@ pub struct IncomingLogEvent {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase", deny_unknown_fields)]
+#[serde(rename_all = "camelCase")]
 pub struct IncomingLogBatch {
     pub events: Vec<IncomingLogEvent>,
 }
@@ -232,7 +232,6 @@ impl LogHub {
 
     #[cfg(debug_assertions)]
     fn push(&self, mut event: LogEvent) {
-        let bytes = serialized_len(&event);
         {
             let mut state = self.inner.state.lock().expect("log hub mutex poisoned");
             event.seq = state.next_seq;
@@ -255,7 +254,7 @@ impl LogHub {
                 .retain(|tx| tx.send(event.clone()).is_ok());
         }
         if self.inner.mode.prints() {
-            print_event(self.inner.mode, &event, bytes);
+            print_event(self.inner.mode, &event);
         }
     }
 }
@@ -328,7 +327,7 @@ fn serialized_len<T: Serialize>(value: &T) -> usize {
 }
 
 #[cfg(debug_assertions)]
-fn print_event(mode: LogMode, event: &LogEvent, bytes: usize) {
+fn print_event(mode: LogMode, event: &LogEvent) {
     match mode {
         LogMode::Json => {
             if let Ok(json) = serde_json::to_string(event) {
@@ -336,18 +335,304 @@ fn print_event(mode: LogMode, event: &LogEvent, bytes: usize) {
             }
         }
         LogMode::Pretty => {
+            let timestamp = format_timestamp(event.ts);
+            let level = format_level(event.level);
+            let source = color(source_color(event.source), log_source_label(event.source));
+            let kind = color(kind_color(event.level), &event.kind);
+            let summary = style_detail(event.level, &pretty_summary(event));
+            let payload = pretty_payload(event);
             let request = event
                 .request_id
                 .as_deref()
-                .map(|value| format!(" request={value}"))
+                .map(|value| format!(" {}", color(CYAN, &format!("req={value}"))))
                 .unwrap_or_default();
             println!(
-                "[{}] {:?} {:?} {}{} ({}b)",
-                event.seq, event.source, event.level, event.kind, request, bytes
+                "{} {} {} {}{}{}{}",
+                color(DIM, &timestamp),
+                level,
+                source,
+                kind,
+                request,
+                summary,
+                payload,
             );
         }
         LogMode::Off | LogMode::Buffer => {}
     }
+}
+
+#[cfg(debug_assertions)]
+const RESET: &str = "\x1b[0m";
+#[cfg(debug_assertions)]
+const BOLD: &str = "\x1b[1m";
+#[cfg(debug_assertions)]
+const DIM: &str = "\x1b[2m";
+#[cfg(debug_assertions)]
+const RED: &str = "\x1b[31m";
+#[cfg(debug_assertions)]
+const YELLOW: &str = "\x1b[33m";
+#[cfg(debug_assertions)]
+const BLUE: &str = "\x1b[34m";
+#[cfg(debug_assertions)]
+const MAGENTA: &str = "\x1b[35m";
+#[cfg(debug_assertions)]
+const CYAN: &str = "\x1b[36m";
+#[cfg(debug_assertions)]
+const GRAY: &str = "\x1b[90m";
+
+#[cfg(debug_assertions)]
+fn color(code: &str, text: &str) -> String {
+    format!("{code}{text}{RESET}")
+}
+
+#[cfg(debug_assertions)]
+fn format_level(level: LogLevel) -> String {
+    let (code, label) = match level {
+        LogLevel::Debug => (GRAY, "DEBUG"),
+        LogLevel::Info => (GRAY, "INFO "),
+        LogLevel::Warn => (YELLOW, "WARN "),
+        LogLevel::Error => (RED, "ERROR"),
+    };
+    color(code, label)
+}
+
+#[cfg(debug_assertions)]
+fn source_color(source: LogSource) -> &'static str {
+    match source {
+        LogSource::Server => BLUE,
+        LogSource::Client => MAGENTA,
+        LogSource::Harness => CYAN,
+    }
+}
+
+#[cfg(debug_assertions)]
+fn kind_color(level: LogLevel) -> &'static str {
+    match level {
+        LogLevel::Debug | LogLevel::Info => GRAY,
+        LogLevel::Warn | LogLevel::Error => BOLD,
+    }
+}
+
+#[cfg(debug_assertions)]
+fn style_detail(level: LogLevel, text: &str) -> String {
+    match level {
+        LogLevel::Debug | LogLevel::Info => color(DIM, text),
+        LogLevel::Warn | LogLevel::Error => text.to_string(),
+    }
+}
+
+#[cfg(debug_assertions)]
+fn log_source_label(source: LogSource) -> &'static str {
+    match source {
+        LogSource::Server => "server",
+        LogSource::Client => "client",
+        LogSource::Harness => "harness",
+    }
+}
+
+#[cfg(debug_assertions)]
+fn pretty_summary(event: &LogEvent) -> String {
+    let mut parts = Vec::new();
+    match event.kind.as_str() {
+        "http.request" | "client.api" | "http.request_failed" => {
+            if let Some(http) = object_field(event, "http") {
+                push_string(http, &mut parts, "method");
+                push_string(http, &mut parts, "path");
+                push_string(http, &mut parts, "url");
+                push_u64(http, &mut parts, "status");
+                push_u64_with_suffix(http, &mut parts, "durationMs", "ms");
+                push_u64_with_name(http, &mut parts, "vault", "vault");
+                push_string(http, &mut parts, "failure");
+            }
+        }
+        "note.mutation"
+        | "note.read"
+        | "note.pin"
+        | "note.create"
+        | "note.save"
+        | "note.rename"
+        | "note.delete"
+        | "note.apply_mutation" => {
+            if let Some(mutation) = object_field(event, "mutation") {
+                push_string_named(mutation, &mut parts, "action", "action");
+            }
+            if let Some(read) = object_field(event, "read") {
+                push_string_named(read, &mut parts, "action", "action");
+            }
+            if let Some(note) = object_field(event, "note") {
+                push_string_named(note, &mut parts, "path", "path");
+                push_string_named(note, &mut parts, "id", "note");
+                push_u64_with_name(note, &mut parts, "vault", "vault");
+            }
+        }
+        "client.command" => {
+            if let Some(command) = object_field(event, "command") {
+                push_string_named(command, &mut parts, "id", "cmd");
+                push_string_named(command, &mut parts, "action", "action");
+            }
+        }
+        "client.editor" => {
+            if let Some(editor) = object_field(event, "editor") {
+                push_string_named(editor, &mut parts, "action", "editor");
+                push_bool(editor, &mut parts, "sourceMode");
+                push_bool_named(editor, &mut parts, "reading", "reading");
+            }
+        }
+        "client.search" | "search.query" => {
+            if let Some(search) = object_field(event, "search") {
+                push_string_named(search, &mut parts, "surface", "surface");
+                push_string_named(search, &mut parts, "action", "action");
+                push_u64_with_name(search, &mut parts, "hits", "hits");
+                push_u64_with_name(search, &mut parts, "queryLength", "qlen");
+            }
+        }
+        "system.event" => {
+            if let Some(system) = object_field(event, "system") {
+                let component = string_value(system, "component");
+                let action = string_value(system, "action");
+                if let (Some(component), Some(action)) = (component, action) {
+                    parts.push(format!("{component}/{action}"));
+                }
+            }
+        }
+        "client.error" => {
+            if let Some(error) = object_field(event, "error") {
+                push_string_named(error, &mut parts, "name", "error");
+                push_string_named(error, &mut parts, "message", "msg");
+            }
+        }
+        _ => {}
+    }
+    if let Some(error) = event.fields.get("error")
+        && !error.is_null()
+    {
+        parts.push(format!("error={}", compact_value(error)));
+    }
+    if parts.is_empty() {
+        String::new()
+    } else {
+        format!(" {}", parts.join(" "))
+    }
+}
+
+#[cfg(debug_assertions)]
+fn pretty_payload(event: &LogEvent) -> String {
+    if event.fields.is_empty() {
+        return String::new();
+    }
+    let Ok(json) = serde_json::to_string(&event.fields) else {
+        return String::new();
+    };
+    format!(" {}", color(DIM, &json))
+}
+
+#[cfg(debug_assertions)]
+fn object_field<'a>(event: &'a LogEvent, key: &str) -> Option<&'a Map<String, Value>> {
+    event.fields.get(key)?.as_object()
+}
+
+#[cfg(debug_assertions)]
+fn string_value<'a>(object: &'a Map<String, Value>, key: &str) -> Option<&'a str> {
+    object.get(key)?.as_str()
+}
+
+#[cfg(debug_assertions)]
+fn push_string(object: &Map<String, Value>, parts: &mut Vec<String>, key: &str) {
+    if let Some(value) = string_value(object, key) {
+        parts.push(value.to_string());
+    }
+}
+
+#[cfg(debug_assertions)]
+fn push_string_named(object: &Map<String, Value>, parts: &mut Vec<String>, key: &str, name: &str) {
+    if let Some(value) = string_value(object, key) {
+        parts.push(format!("{name}={value}"));
+    }
+}
+
+#[cfg(debug_assertions)]
+fn push_u64(object: &Map<String, Value>, parts: &mut Vec<String>, key: &str) {
+    if let Some(value) = object.get(key).and_then(Value::as_u64) {
+        parts.push(value.to_string());
+    }
+}
+
+#[cfg(debug_assertions)]
+fn push_u64_with_name(object: &Map<String, Value>, parts: &mut Vec<String>, key: &str, name: &str) {
+    if let Some(value) = object.get(key).and_then(Value::as_u64) {
+        parts.push(format!("{name}={value}"));
+    }
+}
+
+#[cfg(debug_assertions)]
+fn push_u64_with_suffix(
+    object: &Map<String, Value>,
+    parts: &mut Vec<String>,
+    key: &str,
+    suffix: &str,
+) {
+    if let Some(value) = object.get(key).and_then(Value::as_u64) {
+        parts.push(format!("{value}{suffix}"));
+    }
+}
+
+#[cfg(debug_assertions)]
+fn push_bool(object: &Map<String, Value>, parts: &mut Vec<String>, key: &str) {
+    if let Some(value) = object.get(key).and_then(Value::as_bool) {
+        parts.push(format!("{key}={value}"));
+    }
+}
+
+#[cfg(debug_assertions)]
+fn push_bool_named(object: &Map<String, Value>, parts: &mut Vec<String>, key: &str, name: &str) {
+    if let Some(value) = object.get(key).and_then(Value::as_bool) {
+        parts.push(format!("{name}={value}"));
+    }
+}
+
+#[cfg(debug_assertions)]
+fn compact_value(value: &Value) -> String {
+    match value {
+        Value::Object(object) => {
+            if let Some(code) = object.get("code").and_then(Value::as_str) {
+                return code.to_string();
+            }
+            if let Some(message) = object.get("message").and_then(Value::as_str) {
+                return message.to_string();
+            }
+            serde_json::to_string(value).unwrap_or_default()
+        }
+        Value::String(value) => value.clone(),
+        other => serde_json::to_string(other).unwrap_or_default(),
+    }
+}
+
+#[cfg(debug_assertions)]
+fn format_timestamp(ms: u64) -> String {
+    let seconds = ms / 1000;
+    let millis = ms % 1000;
+    let days = (seconds / 86_400) as i64;
+    let seconds_of_day = seconds % 86_400;
+    let (year, month, day) = civil_from_days(days);
+    let hour = seconds_of_day / 3600;
+    let minute = (seconds_of_day % 3600) / 60;
+    let second = seconds_of_day % 60;
+    format!("{year:04}-{month:02}-{day:02}T{hour:02}:{minute:02}:{second:02}.{millis:03}Z")
+}
+
+#[cfg(debug_assertions)]
+fn civil_from_days(days_since_epoch: i64) -> (i64, u32, u32) {
+    let z = days_since_epoch + 719_468;
+    let era = if z >= 0 { z } else { z - 146_096 } / 146_097;
+    let doe = z - era * 146_097;
+    let yoe = (doe - doe / 1460 + doe / 36_524 - doe / 146_096) / 365;
+    let y = yoe + era * 400;
+    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
+    let mp = (5 * doy + 2) / 153;
+    let day = doy - (153 * mp + 2) / 5 + 1;
+    let month = mp + if mp < 10 { 3 } else { -9 };
+    let year = y + if month <= 2 { 1 } else { 0 };
+    (year, month as u32, day as u32)
 }
 
 #[cfg(test)]
@@ -401,5 +686,40 @@ mod tests {
         let mut events = hub.snapshot().events;
         let event = events.remove(0);
         assert!(event.fields["large"].as_str().unwrap().len() <= MAX_STRING_BYTES + 3);
+    }
+
+    #[test]
+    fn accepts_structured_client_payload_fields() {
+        let batch: IncomingLogBatch = serde_json::from_value(serde_json::json!({
+            "events": [
+                {
+                    "source": "client",
+                    "level": "info",
+                    "kind": "client.api",
+                    "requestId": "cli-1",
+                    "client": { "seq": 1, "url": "http://127.0.0.1:3000/" },
+                    "http": { "method": "GET", "path": "/api/bootstrap", "status": 200 }
+                }
+            ]
+        }))
+        .unwrap();
+
+        let hub = LogHub::new(LogMode::Buffer);
+        hub.ingest(batch.events.into_iter().next().unwrap());
+        let event = hub.snapshot().events.remove(0);
+
+        assert_eq!(event.source, LogSource::Client);
+        assert_eq!(event.request_id.as_deref(), Some("cli-1"));
+        assert_eq!(event.fields["client"]["seq"], Value::from(1));
+        assert_eq!(event.fields["http"]["path"], Value::from("/api/bootstrap"));
+    }
+
+    #[test]
+    fn formats_standard_utc_timestamps() {
+        assert_eq!(format_timestamp(0), "1970-01-01T00:00:00.000Z");
+        assert_eq!(
+            format_timestamp(1_717_777_777_123),
+            "2024-06-07T16:29:37.123Z"
+        );
     }
 }

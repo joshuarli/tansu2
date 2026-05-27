@@ -259,8 +259,6 @@ fn log_request(
                     "status": response.status,
                     "durationMs": duration_ms,
                     "vault": request_vault(request),
-                    "requestBytes": request.body.len(),
-                    "responseBytes": response.body.len(),
                 }),
             ),
             ("error", api_error_field(response)),
