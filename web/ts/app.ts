@@ -264,6 +264,7 @@ export class TansuApp {
       onChange: () => this.noteEditorChanged(),
       onSave: () => this.runAsync(this.manualSave(), "Save failed"),
       indentUnit: "  ",
+      resolveImageUrl: (src) => this.resolveMarkdownImageUrl(src),
     };
     const settings = this.state.boot?.settings;
     if (settings !== undefined) {
@@ -305,6 +306,13 @@ export class TansuApp {
       this.notify("Image upload failed");
       return null;
     }
+  }
+
+  private resolveMarkdownImageUrl(src: string): string {
+    const name = src.startsWith("/z-images/") ? src.slice(1) : src;
+    return name.startsWith("z-images/")
+      ? this.services.api.assetUrl(toAssetName(name), this.state.vault)
+      : src;
   }
 
   private destroyEditor(): void {

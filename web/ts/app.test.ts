@@ -246,6 +246,32 @@ describe("tansuApp note loading", () => {
     });
   });
 
+  it("resolves standard markdown z-images through the active vault asset route", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    noteCache.getCachedNoteBody.mockResolvedValue(cachedBody(note, "# Cached\n"));
+    api.openNote.mockResolvedValue({ meta: note, content: "# One" });
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+
+    const editor = editorMock.instances.at(-1)!;
+    const resolveImageUrl = editor.config["resolveImageUrl"] as (src: string) => string;
+    expect(resolveImageUrl("z-images/a b.webp")).toBe("/api/assets?name=z-images%2Fa%20b.webp");
+    expect(resolveImageUrl("/z-images/a.webp")).toBe("/api/assets?name=z-images%2Fa.webp");
+    expect(resolveImageUrl("https://example.com/a.webp")).toBe("https://example.com/a.webp");
+    expect(api.assetUrl).toHaveBeenCalledWith("z-images/a b.webp", 0);
+  });
+
   it("ignores stale cached bodies and keeps the loading state until openNote resolves", async () => {
     const note = noteMeta("note-1", "one.md", "One");
     api.bootstrap.mockResolvedValue(

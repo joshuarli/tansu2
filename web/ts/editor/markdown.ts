@@ -313,7 +313,11 @@ function sourceAttrs(start: number, end: number, contentStart = start, contentEn
   return ` data-md-source-start="${start}" data-md-source-end="${end}" data-md-content-start="${contentStart}" data-md-content-end="${contentEnd}"`;
 }
 
-function createRenderer(extensions: MarkdownExtension[], editorSourceSpans = false) {
+function createRenderer(
+  extensions: MarkdownExtension[],
+  editorSourceSpans = false,
+  resolveImageUrl: (src: string) => string = (src) => src,
+) {
   function renderLines(lines: string[]): string {
     const blocks = parseBlocks(lines);
     return blocks.map(renderBlock).join("\n");
@@ -461,11 +465,15 @@ function createRenderer(extensions: MarkdownExtension[], editorSourceSpans = fal
           const attrs = editorSourceSpans
             ? sourceAttrs(baseOffset + i, baseOffset + i + m[0].length)
             : "";
-          const src = safeUrlAttribute(m[2]!);
+          const rawSrc = m[2]!;
+          const resolvedSrc = resolveImageUrl(rawSrc);
+          const src = safeUrlAttribute(resolvedSrc);
+          const originalSrcAttr =
+            resolvedSrc === rawSrc ? "" : ` data-md-image-src="${escapeHtml(rawSrc)}"`;
           out +=
             src === null
               ? escapeHtml(m[1]!)
-              : `<img${attrs} src="${src}" alt="${escapeHtml(m[1]!)}">`;
+              : `<img${attrs} src="${src}" alt="${escapeHtml(m[1]!)}"${originalSrcAttr}>`;
           i += m[0].length;
           continue;
         }
@@ -671,14 +679,18 @@ function createRenderer(extensions: MarkdownExtension[], editorSourceSpans = fal
   };
 }
 
-type RenderOpts = { extensions?: MarkdownExtension[] };
+type RenderOpts = { extensions?: MarkdownExtension[]; resolveImageUrl?: (src: string) => string };
 
 export function renderMarkdown(src: string, opts?: RenderOpts): string {
-  return createRenderer(opts?.extensions ?? []).renderMarkdown(src);
+  return createRenderer(opts?.extensions ?? [], false, opts?.resolveImageUrl).renderMarkdown(src);
 }
 
 export function renderMarkdownWithCursor(src: string, offset: number, opts?: RenderOpts): string {
-  return createRenderer(opts?.extensions ?? []).renderMarkdownWithCursor(src, offset);
+  return createRenderer(
+    opts?.extensions ?? [],
+    false,
+    opts?.resolveImageUrl,
+  ).renderMarkdownWithCursor(src, offset);
 }
 
 /// Render markdown with selection markers inserted. Emits
@@ -690,9 +702,13 @@ export function renderMarkdownWithSelection(
   selEnd: number,
   opts?: RenderOpts,
 ): string {
-  return createRenderer(opts?.extensions ?? []).renderMarkdownWithSelection(src, selStart, selEnd);
+  return createRenderer(
+    opts?.extensions ?? [],
+    false,
+    opts?.resolveImageUrl,
+  ).renderMarkdownWithSelection(src, selStart, selEnd);
 }
 
 export function renderEditorMarkdown(src: string, opts?: RenderOpts): string {
-  return createRenderer(opts?.extensions ?? [], true).renderMarkdown(src);
+  return createRenderer(opts?.extensions ?? [], true, opts?.resolveImageUrl).renderMarkdown(src);
 }

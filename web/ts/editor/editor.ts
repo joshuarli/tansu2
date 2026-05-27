@@ -70,6 +70,7 @@ export type EditorConfig = {
   typingCheckpointMs?: number;
   imageWebpQuality?: number;
   indentUnit?: string;
+  resolveImageUrl?: (src: string) => string;
 };
 
 export type EditorHandle = {
@@ -136,7 +137,11 @@ export function createEditor(container: HTMLElement, config: EditorConfig = {}):
   } = domHelpers;
 
   let _isSourceMode = false;
-  const renderer = createEditorRenderer(contentEl, extensions);
+  const renderer = createEditorRenderer(
+    contentEl,
+    extensions,
+    (src) => cfg.resolveImageUrl?.(src) ?? src,
+  );
   const selection = createEditorSelectionController(contentEl);
   let domMap: DomMap = { lineToElement: new Map(), blockToElement: new Map() };
   let suppressNextInsertParagraph = false;

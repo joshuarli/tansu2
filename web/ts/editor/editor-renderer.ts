@@ -161,8 +161,12 @@ function findLineHosts(el: HTMLElement, block: EditorBlock): HTMLElement[] {
 export function createEditorRenderer(
   contentEl: HTMLElement,
   extensions: readonly MarkdownExtension[],
+  resolveImageUrl?: (src: string) => string,
 ): EditorRenderer {
-  const renderOpts = { extensions: [...extensions] };
+  const renderOpts = {
+    extensions: [...extensions],
+    ...(resolveImageUrl === undefined ? {} : { resolveImageUrl }),
+  };
 
   return {
     render(md) {

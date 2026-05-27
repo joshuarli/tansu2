@@ -367,6 +367,14 @@ describe("inline branches", () => {
     expect(html).toContain('src="http://example.com/img.png"');
   });
 
+  it("standard image can resolve vault-local asset URLs without changing source", () => {
+    const html = renderMarkdown("![alt text](z-images/photo.webp)", {
+      resolveImageUrl: (src) => `/api/assets?name=${encodeURIComponent(src)}&vault=1`,
+    });
+    expect(html).toContain('src="/api/assets?name=z-images%2Fphoto.webp&amp;vault=1"');
+    expect(html).toContain('data-md-image-src="z-images/photo.webp"');
+  });
+
   it("standard link renders anchor tag", () => {
     const html = renderMarkdown("[click here](http://example.com)");
     expect(html).toContain('<a href="http://example.com">click here</a>');

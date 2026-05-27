@@ -124,6 +124,16 @@ describe("serialize", () => {
     );
   });
 
+  it("image with resolved display URL serializes original source", () => {
+    expect(
+      domToMarkdown(
+        html(
+          '<p><img src="/api/assets?name=z-images%2Fphoto.webp&amp;vault=1" data-md-image-src="z-images/photo.webp" alt="desc"></p>',
+        ),
+      ),
+    ).toBe("![desc](z-images/photo.webp)");
+  });
+
   it("wiki-image", () => {
     expect(
       domToMarkdown(
