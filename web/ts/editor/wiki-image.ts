@@ -1,5 +1,5 @@
 import type { MarkdownExtension } from "./extension.js";
-import { escapeHtml } from "./util.js";
+import { escapeHtml, safeUrlAttribute } from "./util.js";
 
 export function createWikiImageExtension(opts: {
   resolveUrl: (name: string) => string;
@@ -14,9 +14,10 @@ export function createWikiImageExtension(opts: {
       const imageName = pipe !== -1 ? inner.slice(0, pipe).trim() : inner.trim();
       const widthStr = pipe !== -1 ? inner.slice(pipe + 1).trim() : "";
       const width = /^\d+$/.test(widthStr) ? widthStr : "";
-      const src = opts.resolveUrl(imageName);
+      const src = safeUrlAttribute(opts.resolveUrl(imageName));
       const widthAttr = width ? ` width="${width}"` : "";
-      const html = `<img src="${escapeHtml(src)}" alt="${escapeHtml(imageName)}" data-wiki-image="${escapeHtml(imageName)}"${widthAttr} loading="lazy">`;
+      const srcAttr = src === null ? "" : ` src="${src}"`;
+      const html = `<img${srcAttr} alt="${escapeHtml(imageName)}" data-wiki-image="${escapeHtml(imageName)}"${widthAttr} loading="lazy">`;
       return { html, consumed: end + 2 - i };
     },
 

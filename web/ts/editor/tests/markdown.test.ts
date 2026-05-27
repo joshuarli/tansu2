@@ -107,11 +107,29 @@ describe("links and images", () => {
   it("link", () => {
     expect(renderMarkdown("[text](http://url)")).toContain('<a href="http://url">text</a>');
   });
+  it("link strips unsafe schemes", () => {
+    const unsafeUrl = ["java", "script:alert(1)"].join("");
+    const html = renderMarkdown(`[text](${unsafeUrl})`);
+    expect(html).not.toContain(unsafeUrl);
+    expect(html).not.toContain("<a");
+  });
   it("image", () => {
     expect(renderMarkdown("![alt](src.png)")).toContain("<img");
   });
   it("image alt", () => {
     expect(renderMarkdown("![alt](src.png)")).toContain('alt="alt"');
+  });
+  it("image strips unsafe schemes", () => {
+    const unsafeUrl = ["java", "script:alert(1)"].join("");
+    expect(renderMarkdown(`![alt](${unsafeUrl})`)).not.toContain(unsafeUrl);
+  });
+  it("wiki-image strips unsafe resolved URLs", () => {
+    const unsafeUrl = ["java", "script:alert(1)"].join("");
+    const html = renderMarkdown("![[photo.webp]]", {
+      extensions: [createWikiImageExtension({ resolveUrl: () => unsafeUrl })],
+    });
+    expect(html).not.toContain(unsafeUrl);
+    expect(html).not.toContain("src=");
   });
 });
 

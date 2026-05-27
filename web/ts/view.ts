@@ -6,6 +6,10 @@ import {
   loadedDocument,
   loadedDraft,
   tabIsDirty,
+  toNoteId,
+  toRevisionEventId,
+  toVaultIndex,
+  type NoteId,
   type State,
   type Tab,
 } from "./state.ts";
@@ -55,7 +59,7 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
   const vaultLabel = span(vaultSelect.selectedOptions[0]?.textContent ?? "", "vault-label");
   vaultSelect.addEventListener("change", () => {
     vaultLabel.textContent = vaultSelect.selectedOptions[0]?.textContent ?? "";
-    actions.dispatch({ type: "vault.switch", index: Number(vaultSelect.value) });
+    actions.dispatch({ type: "vault.switch", index: toVaultIndex(Number(vaultSelect.value)) });
   });
   const vaultOptions = el("div", "vault-options");
   const vaultControl = el("div", "vault-control", vaultLabel, vaultSelect, vaultOptions);
@@ -72,7 +76,7 @@ function renderSidebar(state: State, actions: ViewActions): HTMLElement {
         if (vault.index !== Number(vaultSelect.value)) {
           vaultSelect.value = String(vault.index);
           vaultLabel.textContent = vault.name;
-          actions.dispatch({ type: "vault.switch", index: vault.index });
+          actions.dispatch({ type: "vault.switch", index: toVaultIndex(vault.index) });
         }
       },
       vault.index === state.vault ? "vault-option active" : "vault-option",
@@ -352,7 +356,11 @@ function renderRevisionsPanel(state: State, actions: ViewActions): HTMLElement {
       button(
         `${revision.kind}  seq ${revision.seq}`,
         `Revision ${revision.eventId}`,
-        () => actions.dispatch({ type: "revisions.select", eventId: revision.eventId }),
+        () =>
+          actions.dispatch({
+            type: "revisions.select",
+            eventId: toRevisionEventId(revision.eventId),
+          }),
         state.revisionDocument?.revision.eventId === revision.eventId
           ? "revision-row active"
           : "revision-row",
@@ -554,7 +562,7 @@ function renderContextMenu(state: State, actions: ViewActions): HTMLElement {
       "Rename",
       "Rename note",
       () => {
-        actions.dispatch({ type: "note.rename", noteId: context.noteId });
+        actions.dispatch({ type: "note.rename", noteId: toNoteId(context.noteId) });
         actions.dispatch({ type: "context.close" });
       },
       "context-menu-item",
@@ -563,7 +571,7 @@ function renderContextMenu(state: State, actions: ViewActions): HTMLElement {
       pinned ? "Unpin" : "Pin",
       pinned ? "Unpin note" : "Pin note",
       () => {
-        actions.dispatch({ type: "note.pin", noteId: context.noteId });
+        actions.dispatch({ type: "note.pin", noteId: toNoteId(context.noteId) });
         actions.dispatch({ type: "context.close" });
       },
       "context-menu-item",
@@ -572,7 +580,7 @@ function renderContextMenu(state: State, actions: ViewActions): HTMLElement {
       "Delete",
       "Delete note",
       () => {
-        actions.dispatch({ type: "note.delete", noteId: context.noteId });
+        actions.dispatch({ type: "note.delete", noteId: toNoteId(context.noteId) });
         actions.dispatch({ type: "context.close" });
       },
       "context-menu-item danger",
@@ -592,7 +600,7 @@ function searchNoteRow(
     path,
     () => {
       actions.dispatch({ type: "overlay.close" });
-      actions.dispatch({ type: "note.open", noteId });
+      actions.dispatch({ type: "note.open", noteId: toNoteId(noteId) });
     },
     "command-row search-result-row",
   );
@@ -747,14 +755,14 @@ function noteList(state: State, ids: string[], actions: ViewActions): HTMLElemen
     const row = button(
       note.title,
       note.path,
-      () => actions.dispatch({ type: "note.open", noteId: note.noteId }),
+      () => actions.dispatch({ type: "note.open", noteId: toNoteId(note.noteId) }),
       state.activeNoteId === note.noteId ? "note-row active" : "note-row",
     );
     row.addEventListener("contextmenu", (event) => {
       event.preventDefault();
       actions.dispatch({
         type: "context.open",
-        noteId: note.noteId,
+        noteId: toNoteId(note.noteId),
         x: event.clientX,
         y: event.clientY,
       });
@@ -773,7 +781,7 @@ function section(title: string, body: HTMLElement): HTMLElement {
   return el("section", "sidebar-section", el("h2", "section-title", title), body);
 }
 
-function closeButton(noteId: string, actions: ViewActions, beforeClose?: () => void): HTMLElement {
+function closeButton(noteId: NoteId, actions: ViewActions, beforeClose?: () => void): HTMLElement {
   return button(
     "×",
     "Close",
@@ -789,7 +797,7 @@ function closeButton(noteId: string, actions: ViewActions, beforeClose?: () => v
 function bindTabCloseHint(
   tabEl: HTMLButtonElement,
   closeHint: HTMLElement,
-  noteId: string,
+  noteId: NoteId,
   actions: ViewActions,
 ): () => void {
   let observer: MutationObserver | null = null;

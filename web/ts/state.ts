@@ -12,13 +12,37 @@ import type {
 
 declare const appBrand: unique symbol;
 
-type AppBrand<T, Name extends string> = T & { readonly [appBrand]?: Name };
+type AppBrand<T, Name extends string> = T & { readonly [appBrand]: Name };
 export type NoteId = AppBrand<string, "NoteId">;
 export type VaultIndex = AppBrand<number, "VaultIndex">;
 export type ContentHash = AppBrand<string, "ContentHash">;
 export type RevisionEventId = AppBrand<number, "RevisionEventId">;
 export type ConflictDraftId = AppBrand<number, "ConflictDraftId">;
 export type AssetName = AppBrand<string, "AssetName">;
+
+export function toNoteId(value: string): NoteId {
+  return value as NoteId;
+}
+
+export function toVaultIndex(value: number): VaultIndex {
+  return value as VaultIndex;
+}
+
+export function toContentHash(value: string): ContentHash {
+  return value as ContentHash;
+}
+
+export function toRevisionEventId(value: number): RevisionEventId {
+  return value as RevisionEventId;
+}
+
+export function toConflictDraftId(value: number): ConflictDraftId {
+  return value as ConflictDraftId;
+}
+
+export function toAssetName(value: string): AssetName {
+  return value as AssetName;
+}
 
 export type Tab = {
   noteId: NoteId;
@@ -37,12 +61,12 @@ export type Tab = {
 
 type NoteDialog =
   | { kind: "create"; title: string }
-  | { kind: "rename"; noteId: string; title: string }
+  | { kind: "rename"; noteId: NoteId; title: string }
   | { kind: "tag"; value: string }
-  | { kind: "delete"; noteId: string };
+  | { kind: "delete"; noteId: NoteId };
 
 type ContextMenuState = {
-  noteId: string;
+  noteId: NoteId;
   x: number;
   y: number;
 };
@@ -113,7 +137,7 @@ export function tabById(state: State, noteId: string): Tab | undefined {
 
 export function tabFromMeta(note: NoteMeta): Tab {
   return {
-    noteId: note.noteId,
+    noteId: toNoteId(note.noteId),
     title: note.title,
     path: note.path,
     doc: null,
@@ -132,7 +156,7 @@ export function tabFromDocument(document: NoteDocument): Tab {
   const content = normalizeMarkdownNewlines(document.content);
   const doc = content === document.content ? document : { ...document, content };
   return {
-    noteId: doc.meta.noteId,
+    noteId: toNoteId(doc.meta.noteId),
     title: doc.meta.title,
     path: doc.meta.path,
     doc,

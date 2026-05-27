@@ -7,13 +7,16 @@ import {
   tabById,
   tabFromDocument,
   tabFromMeta,
+  toNoteId,
+  toVaultIndex,
+  type NoteId,
 } from "./state.ts";
 import type { NoteDocument, NoteMeta } from "./types.generated.ts";
 
 describe("state helpers", () => {
   it("creates isolated state containers for vaults", () => {
-    const first = createState(1);
-    const second = createState(2);
+    const first = createState(toVaultIndex(1));
+    const second = createState(toVaultIndex(2));
 
     first.notes.set("n1", note("n1", "one.md", "One"));
     first.pinned.add("n1");
@@ -25,9 +28,9 @@ describe("state helpers", () => {
   });
 
   it("finds active and arbitrary tabs by note id", () => {
-    const state = createState(0);
+    const state = createState(toVaultIndex(0));
     state.tabs = [tabFromMeta(note("a", "a.md", "A")), tabFromMeta(note("b", "b.md", "B"))];
-    state.activeNoteId = "b";
+    state.activeNoteId = toNoteId("b");
 
     expect(activeTab(state)?.path).toBe("b.md");
     expect(tabById(state, "a")?.title).toBe("A");
@@ -35,7 +38,7 @@ describe("state helpers", () => {
   });
 
   it("converts note documents and current tabs to a persisted session", () => {
-    const state = createState(0);
+    const state = createState(toVaultIndex(0));
     const document: NoteDocument = {
       meta: note("n1", "one.md", "One"),
       content: "# One\n",
@@ -44,7 +47,7 @@ describe("state helpers", () => {
     tab.cursorOffset = 5;
     tab.sourceMode = true;
     state.tabs = [tab];
-    state.activeNoteId = "n1";
+    state.activeNoteId = toNoteId("n1");
     state.closedTabs = [
       { noteId: "old", title: "Old", path: "old.md", cursorOffset: null, sourceMode: false },
     ];
@@ -58,6 +61,11 @@ describe("state helpers", () => {
     });
   });
 });
+
+const plainNoteId = "plain";
+// @ts-expect-error note ids must be explicitly branded before entering app state.
+const brandedNoteId: NoteId = plainNoteId;
+void brandedNoteId;
 
 function note(noteId: string, path: string, title: string): NoteMeta {
   return {

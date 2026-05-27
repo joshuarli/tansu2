@@ -34,6 +34,29 @@ export function escapeHtml(s: string): string {
     .replaceAll('"', "&quot;");
 }
 
+export function safeUrlAttribute(url: string): string | null {
+  const trimmed = url.trim();
+  if (trimmed === "") {
+    return null;
+  }
+  if (
+    trimmed.startsWith("#") ||
+    trimmed.startsWith("/") ||
+    trimmed.startsWith("./") ||
+    trimmed.startsWith("../")
+  ) {
+    return escapeHtml(trimmed);
+  }
+  try {
+    const parsed = new URL(trimmed);
+    return ["http:", "https:", "mailto:", "tel:"].includes(parsed.protocol)
+      ? escapeHtml(trimmed)
+      : null;
+  } catch {
+    return /^[A-Za-z][A-Za-z\d+.-]*:/.test(trimmed) ? null : escapeHtml(trimmed);
+  }
+}
+
 export function stemFromPath(path: string): string {
   const name = path.split("/").pop() ?? path;
   return name.replace(/\.md$/i, "");

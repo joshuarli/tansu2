@@ -6,7 +6,13 @@
 import { CODE_FENCE_MARKER_LENGTH, LIST_INDENT_SPACES, MAX_HEADING_LEVEL } from "./constants.js";
 import type { MarkdownExtension } from "./extension.js";
 import { highlightCode } from "./highlight.js";
-import { escapeHtml, CURSOR_SENTINEL, SEL_START_SENTINEL, SEL_END_SENTINEL } from "./util.js";
+import {
+  escapeHtml,
+  safeUrlAttribute,
+  CURSOR_SENTINEL,
+  SEL_START_SENTINEL,
+  SEL_END_SENTINEL,
+} from "./util.js";
 
 type Block =
   | { type: "heading"; level: number; text: string; sourceStart: number }
@@ -455,7 +461,11 @@ function createRenderer(extensions: MarkdownExtension[], editorSourceSpans = fal
           const attrs = editorSourceSpans
             ? sourceAttrs(baseOffset + i, baseOffset + i + m[0].length)
             : "";
-          out += `<img${attrs} src="${escapeHtml(m[2]!)}" alt="${escapeHtml(m[1]!)}">`;
+          const src = safeUrlAttribute(m[2]!);
+          out +=
+            src === null
+              ? escapeHtml(m[1]!)
+              : `<img${attrs} src="${src}" alt="${escapeHtml(m[1]!)}">`;
           i += m[0].length;
           continue;
         }
@@ -474,7 +484,11 @@ function createRenderer(extensions: MarkdownExtension[], editorSourceSpans = fal
                 textStart + m[1]!.length,
               )
             : "";
-          out += `<a${attrs} href="${escapeHtml(m[2]!)}">${inline(m[1]!, textStart)}</a>`;
+          const href = safeUrlAttribute(m[2]!);
+          out +=
+            href === null
+              ? inline(m[1]!, textStart)
+              : `<a${attrs} href="${href}">${inline(m[1]!, textStart)}</a>`;
           i += m[0].length;
           continue;
         }

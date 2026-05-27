@@ -6,11 +6,15 @@ const defuddle = vi.hoisted(() => ({
   parseAsync: vi.fn(),
 }));
 
-vi.mock(import("defuddle/full"), () => ({
-  default: vi.fn(function () {
-    return defuddle;
-  }),
-}));
+vi.mock(
+  import("defuddle/full"),
+  () =>
+    ({
+      default: vi.fn(function () {
+        return defuddle;
+      }),
+    }) as never,
+);
 
 const { pickHtmlImport } = await import("./html-import.ts");
 

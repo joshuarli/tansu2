@@ -29,7 +29,13 @@ import {
   tabById,
   tabFromDocument,
   tabFromMeta,
+  toAssetName,
+  toConflictDraftId,
+  toContentHash,
+  toNoteId,
+  toRevisionEventId,
   type State,
+  type VaultIndex,
   type Tab,
 } from "./state.ts";
 import type { NoteMeta, NoteMutationResponse } from "./types.generated.ts";
@@ -44,15 +50,16 @@ export class TansuApp {
   private editor: EditorHandle | null = null;
   private editorNoteId: string | null = null;
   private captureTimer: number | undefined;
-  private autosaveTimer: number | undefined;
+  private readonly autosaveTimers = new Map<string, number>();
   private sessionTimer: number | undefined;
   private events: EventSource | null = null;
   private readonly noteLoads = new Map<string, Promise<void>>();
+  private bootSeq = 0;
   private searchRequestSeq = 0;
   private searchOverlayRequestSeq = 0;
   private readonly extensions = [
     createWikiImageExtension({
-      resolveUrl: (name) => this.services.api.assetUrl(name, this.state.vault),
+      resolveUrl: (name) => this.services.api.assetUrl(toAssetName(name), this.state.vault),
     }),
     createCalloutExtension(),
   ];
@@ -65,12 +72,19 @@ export class TansuApp {
   }
 
   async boot(): Promise<void> {
+    const bootSeq = ++this.bootSeq;
     this.destroyEditor();
     this.events?.close();
+    this.clearAutosaveTimers();
     this.noteLoads.clear();
-    this.state.vault = this.services.api.activeVault();
+    const vault = this.services.api.activeVault();
+    this.state.vault = vault;
     this.services.performance.markPerformance("tansu:bootstrap:start");
-    this.state.boot = await this.services.api.bootstrap(this.state.vault);
+    const boot = await this.services.api.bootstrap(vault);
+    if (bootSeq !== this.bootSeq || this.state.vault !== vault) {
+      return;
+    }
+    this.state.boot = boot;
     this.services.performance.markPerformance("tansu:bootstrap:response");
     this.state.notes = new Map(this.state.boot.notes.map((note) => [note.noteId, note]));
     this.state.pinned = new Set(this.state.boot.pinnedNoteIds);
@@ -78,7 +92,7 @@ export class TansuApp {
     this.state.tabs = this.state.boot.session.openTabs
       .filter((tab) => this.state.notes.has(tab.noteId))
       .map((tab) => ({
-        noteId: tab.noteId,
+        noteId: toNoteId(tab.noteId),
         title: tab.title,
         path: tab.path,
         doc: null,
@@ -97,7 +111,7 @@ export class TansuApp {
     this.state.activeNoteId =
       this.state.boot.session.activeNoteId &&
       this.state.notes.has(this.state.boot.session.activeNoteId)
-        ? this.state.boot.session.activeNoteId
+        ? toNoteId(this.state.boot.session.activeNoteId)
         : (this.state.tabs[0]?.noteId ?? null);
     this.connectSse();
     this.render();
@@ -133,7 +147,7 @@ export class TansuApp {
       }
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "s") {
         event.preventDefault();
-        void this.manualSave();
+        this.runAsync(this.manualSave(), "Save failed");
         return;
       }
       if (!inEditor && (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "e") {
@@ -157,7 +171,7 @@ export class TansuApp {
       }
       if (!inEditor && (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "n") {
         event.preventDefault();
-        void this.commandCreate();
+        this.runAsync(this.commandCreate(), "Create failed");
       }
     });
 
@@ -237,7 +251,7 @@ export class TansuApp {
       sourceClassName: "md-editor-source app-editor-source",
       onImagePaste: (blob) => this.uploadPastedImage(blob),
       onChange: () => this.noteEditorChanged(),
-      onSave: () => void this.manualSave(),
+      onSave: () => this.runAsync(this.manualSave(), "Save failed"),
       indentUnit: "  ",
     };
     const settings = this.state.boot?.settings;
@@ -267,7 +281,7 @@ export class TansuApp {
   private async uploadPastedImage(blob: Blob): Promise<string | null> {
     try {
       const uploaded = await this.services.api.uploadImage(blob, this.state.vault);
-      return `<img src="${this.services.api.assetUrl(uploaded.name, this.state.vault)}" alt="${uploaded.name}" data-wiki-image="${uploaded.name}" loading="lazy">`;
+      return `<img src="${this.services.api.assetUrl(toAssetName(uploaded.name), this.state.vault)}" alt="${uploaded.name}" data-wiki-image="${uploaded.name}" loading="lazy">`;
     } catch {
       this.notify("Image upload failed");
       return null;
@@ -382,9 +396,9 @@ export class TansuApp {
     return `${this.state.vault}:${noteId}`;
   }
 
-  private async loadNote(noteId: string, vault: number): Promise<void> {
+  private async loadNote(noteId: string, vault: VaultIndex): Promise<void> {
     this.services.performance.markPerformance("tansu:note:request:start");
-    const serverLoad = this.services.api.openNote(noteId, vault).then((document) => {
+    const serverLoad = this.services.api.openNote(toNoteId(noteId), vault).then((document) => {
       this.services.performance.markPerformance("tansu:note:request:response");
       return {
         ...document,
@@ -456,7 +470,7 @@ export class TansuApp {
 
   private async activateTab(noteId: string): Promise<void> {
     this.syncActiveDraft();
-    this.state.activeNoteId = noteId;
+    this.state.activeNoteId = toNoteId(noteId);
     this.touchRecent(noteId);
     this.render();
     await this.ensureActiveLoaded();
@@ -509,23 +523,60 @@ export class TansuApp {
       tab.savePending = true;
       return;
     }
-    window.clearTimeout(this.autosaveTimer);
+    this.clearAutosaveTimer(tab);
     await this.persistTab(tab);
   }
 
   private scheduleAutosave(): void {
-    window.clearTimeout(this.autosaveTimer);
-    this.autosaveTimer = window.setTimeout(() => {
+    const tab =
+      this.editorNoteId === null ? activeTab(this.state) : tabById(this.state, this.editorNoteId);
+    const noteId = tab?.noteId;
+    const vault = this.state.vault;
+    if (noteId === undefined) {
+      return;
+    }
+    const key = this.autosaveTimerKey(vault, noteId);
+    this.clearAutosaveTimerByKey(key);
+    const timer = window.setTimeout(() => {
+      this.autosaveTimers.delete(key);
       this.syncActiveDraft();
-      const tab = activeTab(this.state);
-      if (tab !== undefined && tab.dirty) {
-        if (tab.saving) {
-          tab.savePending = true;
+      if (this.state.vault !== vault) {
+        return;
+      }
+      const target = tabById(this.state, noteId);
+      if (target !== undefined && target.dirty) {
+        if (target.saving) {
+          target.savePending = true;
         } else {
-          void this.persistTab(tab);
+          this.runAsync(this.persistTab(target), "Save failed");
         }
       }
     }, this.state.boot?.settings.autosaveDelayMs ?? 900);
+    this.autosaveTimers.set(key, timer);
+  }
+
+  private autosaveTimerKey(vault: VaultIndex, noteId: string): string {
+    return `${vault}:${noteId}`;
+  }
+
+  private clearAutosaveTimer(tab: Tab): void {
+    this.clearAutosaveTimerByKey(this.autosaveTimerKey(this.state.vault, tab.noteId));
+  }
+
+  private clearAutosaveTimerByKey(key: string): void {
+    const timer = this.autosaveTimers.get(key);
+    if (timer === undefined) {
+      return;
+    }
+    window.clearTimeout(timer);
+    this.autosaveTimers.delete(key);
+  }
+
+  private clearAutosaveTimers(): void {
+    for (const timer of this.autosaveTimers.values()) {
+      window.clearTimeout(timer);
+    }
+    this.autosaveTimers.clear();
   }
 
   private async persistTab(tab: Tab): Promise<void> {
@@ -538,15 +589,20 @@ export class TansuApp {
     tab.saving = true;
     this.renderStatusOnly();
     try {
+      const request = await buildSaveNoteDeltaRequest(
+        tab.doc.content,
+        tab.draft,
+        tab.doc.meta.seq,
+        tab.doc.meta.contentHash,
+        false,
+      );
       const response = await this.services.api.saveNoteDelta(
         tab.noteId,
-        await buildSaveNoteDeltaRequest(
-          tab.doc.content,
-          tab.draft,
-          tab.doc.meta.seq,
-          tab.doc.meta.contentHash,
-          false,
-        ),
+        {
+          ...request,
+          baseHash: toContentHash(request.baseHash),
+          contentHash: toContentHash(request.contentHash),
+        },
         vault,
       );
       if (response.document !== null) {
@@ -590,14 +646,14 @@ export class TansuApp {
       }
       const conflict = saveConflictError(error);
       tab.conflict = conflict !== null;
-      tab.conflictDraftId = conflict?.draft.draftId ?? null;
+      tab.conflictDraftId = conflict === null ? null : toConflictDraftId(conflict.draft.draftId);
       this.notify(tab.conflict ? "Save conflict" : "Save failed");
     } finally {
       tab.saving = false;
       if (this.state.vault === vault) {
         if (tab.savePending && tab.dirty && tab.doc !== null) {
           tab.savePending = false;
-          void this.persistTab(tab);
+          this.runAsync(this.persistTab(tab), "Save failed");
         } else {
           this.render();
         }
@@ -684,7 +740,7 @@ export class TansuApp {
     if (note === undefined) {
       return;
     }
-    this.state.noteDialog = { kind: "rename", noteId, title: note.title };
+    this.state.noteDialog = { kind: "rename", noteId: toNoteId(noteId), title: note.title };
     this.render();
   }
 
@@ -692,7 +748,7 @@ export class TansuApp {
     if (noteId === undefined || !this.state.notes.has(noteId)) {
       return;
     }
-    this.state.noteDialog = { kind: "delete", noteId };
+    this.state.noteDialog = { kind: "delete", noteId: toNoteId(noteId) };
     this.render();
   }
 
@@ -701,7 +757,7 @@ export class TansuApp {
       return;
     }
     const pinned = !this.state.pinned.has(noteId);
-    await this.services.api.setPinned(noteId, pinned, this.state.vault);
+    await this.services.api.setPinned(toNoteId(noteId), pinned, this.state.vault);
     if (pinned) {
       this.state.pinned.add(noteId);
     } else {
@@ -826,11 +882,11 @@ export class TansuApp {
         return;
       }
       case "create": {
-        void this.commandCreate();
+        this.runAsync(this.commandCreate(), "Create failed");
         return;
       }
       case "save": {
-        void this.manualSave();
+        this.runAsync(this.manualSave(), "Save failed");
         return;
       }
       case "rename": {
@@ -842,11 +898,11 @@ export class TansuApp {
         return;
       }
       case "pin": {
-        void this.commandPin();
+        this.runAsync(this.commandPin(), "Pin failed");
         return;
       }
       case "reopen": {
-        void this.commandReopenClosed();
+        this.runAsync(this.commandReopenClosed(), "Reopen failed");
         return;
       }
       case "reading": {
@@ -859,11 +915,11 @@ export class TansuApp {
         return;
       }
       case "import": {
-        void this.commandImportHtml();
+        this.runAsync(this.commandImportHtml(), "Import failed");
         return;
       }
       case "revisions": {
-        void this.commandRevisions();
+        this.runAsync(this.commandRevisions(), "Revisions failed");
         return;
       }
       case "settings": {
@@ -879,10 +935,17 @@ export class TansuApp {
 
   private notify(message: string): void {
     this.state.notice = message;
+    this.render();
     window.setTimeout(() => {
       this.state.notice = null;
       this.render();
     }, 2400);
+  }
+
+  private runAsync(promise: Promise<unknown>, failureMessage: string): void {
+    void promise.catch(() => {
+      this.notify(failureMessage);
+    });
   }
 
   private closeOverlays(): void {
@@ -902,7 +965,7 @@ export class TansuApp {
   }
 
   private openNoteContextMenu(noteId: string, x: number, y: number): void {
-    this.state.contextMenu = { noteId, x, y };
+    this.state.contextMenu = { noteId: toNoteId(noteId), x, y };
     this.render();
   }
 
@@ -938,7 +1001,7 @@ export class TansuApp {
       }
       const path = renamedPath(note.path, title, this.state.notes.values(), dialog.noteId);
       const response = await this.services.api.renameNote(
-        dialog.noteId,
+        toNoteId(dialog.noteId),
         { path },
         this.state.vault,
       );
@@ -970,7 +1033,7 @@ export class TansuApp {
     this.state.noteDialog = null;
     this.render();
     try {
-      await this.services.api.deleteNote(noteId, vault);
+      await this.services.api.deleteNote(toNoteId(noteId), vault);
       void this.services.noteCache.deleteCachedNoteBodies(vault, noteId);
       if (this.state.vault !== vault) {
         return;
@@ -995,16 +1058,23 @@ export class TansuApp {
     if (this.state.boot === null) {
       return;
     }
+    const current = this.state.boot.settings;
     this.state.boot.settings = await this.services.api.saveSettings(
       {
-        ...this.state.boot.settings,
+        ...current,
         excludedFolders: settings.excludedFoldersText
           .split(",")
           .map((part) => part.trim())
           .filter((part) => part !== ""),
-        autosaveDelayMs: Math.max(150, settings.autosaveDelayMs),
-        undoStackMax: Math.max(20, settings.undoStackMax),
-        imageWebpQuality: Math.min(1, Math.max(0.1, settings.imageWebpQuality)),
+        autosaveDelayMs: Number.isFinite(settings.autosaveDelayMs)
+          ? Math.max(150, settings.autosaveDelayMs)
+          : current.autosaveDelayMs,
+        undoStackMax: Number.isFinite(settings.undoStackMax)
+          ? Math.max(20, settings.undoStackMax)
+          : current.undoStackMax,
+        imageWebpQuality: Number.isFinite(settings.imageWebpQuality)
+          ? Math.min(1, Math.max(0.1, settings.imageWebpQuality))
+          : current.imageWebpQuality,
       },
       this.state.vault,
     );
@@ -1025,7 +1095,7 @@ export class TansuApp {
     this.syncActiveDraft();
     this.state.revisionDocument = await this.services.api.openRevision(
       tab.noteId,
-      eventId,
+      toRevisionEventId(eventId),
       this.state.vault,
     );
     this.render();
@@ -1040,7 +1110,7 @@ export class TansuApp {
     const vault = this.state.vault;
     const response = await this.services.api.restoreRevision(
       tab.noteId,
-      revision.revision.eventId,
+      toRevisionEventId(revision.revision.eventId),
       vault,
     );
     if (this.state.vault !== vault) {
@@ -1060,7 +1130,7 @@ export class TansuApp {
     const vault = this.state.vault;
     const response = await this.services.api.restoreConflictDraft(
       tab.noteId,
-      tab.conflictDraftId,
+      toConflictDraftId(tab.conflictDraftId),
       vault,
     );
     if (this.state.vault !== vault) {
@@ -1078,7 +1148,7 @@ export class TansuApp {
     }
     this.state.conflictDraft = await this.services.api.openConflictDraft(
       tab.noteId,
-      tab.conflictDraftId,
+      toConflictDraftId(tab.conflictDraftId),
       this.state.vault,
     );
     this.render();
@@ -1110,7 +1180,7 @@ export class TansuApp {
       tab.conflictDraftId = null;
     }
     this.state.notes.set(response.meta.noteId, response.meta);
-    this.state.activeNoteId = response.meta.noteId;
+    this.state.activeNoteId = toNoteId(response.meta.noteId);
     this.touchRecent(response.meta.noteId);
     this.render();
   }
@@ -1129,12 +1199,12 @@ export class TansuApp {
     switch (event.type) {
       case "vault.switch": {
         this.services.api.setActiveVault(event.index);
-        void this.boot();
+        this.runAsync(this.boot(), "Load failed");
         return;
       }
       case "search.input": {
         this.state.searchQuery = event.query;
-        void this.updateSearch();
+        this.runAsync(this.updateSearch(), "Search failed");
         return;
       }
       case "search.open": {
@@ -1147,7 +1217,7 @@ export class TansuApp {
       }
       case "search.overlayInput": {
         this.state.searchOverlayQuery = event.query;
-        void this.updateSearchOverlay();
+        this.runAsync(this.updateSearchOverlay(), "Search failed");
         return;
       }
       case "command.open": {
@@ -1175,11 +1245,11 @@ export class TansuApp {
         return;
       }
       case "dialog.submit": {
-        void this.submitNoteDialog(event.value);
+        this.runAsync(this.submitNoteDialog(event.value), "Action failed");
         return;
       }
       case "settings.submit": {
-        void this.saveSettingsFromModal(event.settings);
+        this.runAsync(this.saveSettingsFromModal(event.settings), "Settings failed");
         return;
       }
       case "overlay.close": {
@@ -1195,7 +1265,7 @@ export class TansuApp {
         return;
       }
       case "tab.activate": {
-        void this.activateTab(event.noteId);
+        this.runAsync(this.activateTab(event.noteId), "Open failed");
         return;
       }
       case "tab.close": {
@@ -1203,7 +1273,7 @@ export class TansuApp {
         return;
       }
       case "note.open": {
-        void this.openInTab(event.noteId);
+        this.runAsync(this.openInTab(event.noteId), "Open failed");
         return;
       }
       case "note.rename": {
@@ -1215,11 +1285,11 @@ export class TansuApp {
         return;
       }
       case "note.pin": {
-        void this.commandPin(event.noteId);
+        this.runAsync(this.commandPin(event.noteId), "Pin failed");
         return;
       }
       case "note.addTag": {
-        void this.commandAddTag();
+        this.runAsync(this.commandAddTag(), "Tag failed");
         return;
       }
       case "tags.update": {
@@ -1235,23 +1305,23 @@ export class TansuApp {
         return;
       }
       case "revisions.open": {
-        void this.commandRevisions();
+        this.runAsync(this.commandRevisions(), "Revisions failed");
         return;
       }
       case "revisions.select": {
-        void this.selectRevision(event.eventId);
+        this.runAsync(this.selectRevision(event.eventId), "Revision failed");
         return;
       }
       case "revisions.restore": {
-        void this.restoreSelectedRevision();
+        this.runAsync(this.restoreSelectedRevision(), "Restore failed");
         return;
       }
       case "conflict.view": {
-        void this.viewActiveConflictDraft();
+        this.runAsync(this.viewActiveConflictDraft(), "Conflict draft failed");
         return;
       }
       case "conflict.restore": {
-        void this.restoreActiveConflictDraft();
+        this.runAsync(this.restoreActiveConflictDraft(), "Restore failed");
         return;
       }
       case "render.request": {
@@ -1296,7 +1366,7 @@ export class TansuApp {
         return;
       }
       case "save": {
-        void this.manualSave();
+        this.runAsync(this.manualSave(), "Save failed");
         return;
       }
     }
@@ -1356,5 +1426,7 @@ function slugifyTitle(title: string): string {
 export function startApp(root: HTMLElement): void {
   const app = new TansuApp(root);
   app.bindGlobalEvents();
-  void app.boot();
+  void app.boot().catch(() => {
+    root.replaceChildren(renderLoading());
+  });
 }

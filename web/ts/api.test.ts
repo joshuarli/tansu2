@@ -1,5 +1,13 @@
 import { it, vi, afterEach, expect, describe, beforeEach } from "vitest";
 
+import {
+  toAssetName,
+  toContentHash,
+  toConflictDraftId,
+  toNoteId,
+  toRevisionEventId,
+  toVaultIndex,
+} from "./state.ts";
 import type { ApiErrorResponse } from "./types.generated.ts";
 
 const {
@@ -17,6 +25,7 @@ const {
   renameNote,
   restoreConflictDraft,
   restoreRevision,
+  saveConflictError,
   saveNote,
   saveNoteDelta,
   saveSession,
@@ -56,7 +65,7 @@ describe("aPI client", () => {
   });
 
   it("persists the active vault and uses it by default", async () => {
-    setActiveVault(3);
+    setActiveVault(toVaultIndex(3));
 
     expect(activeVault()).toBe(3);
     await bootstrap();
@@ -66,26 +75,26 @@ describe("aPI client", () => {
   });
 
   it("builds note routes with encoded note ids and JSON bodies", async () => {
-    await openNote("space/id", 2);
-    await createNote({ path: "A.md", content: "# A\n", source: null }, 2);
+    await openNote(toNoteId("space/id"), toVaultIndex(2));
+    await createNote({ path: "A.md", content: "# A\n", source: null }, toVaultIndex(2));
     await saveNote(
-      "space/id",
-      { content: "# A\n", baseSeq: 1, baseHash: "h", checkpoint: true },
-      2,
+      toNoteId("space/id"),
+      { content: "# A\n", baseSeq: 1, baseHash: toContentHash("h"), checkpoint: true },
+      toVaultIndex(2),
     );
     await saveNoteDelta(
-      "space/id",
+      toNoteId("space/id"),
       {
         baseSeq: 1,
-        baseHash: "h",
-        contentHash: "sha256:abc",
+        baseHash: toContentHash("h"),
+        contentHash: toContentHash("sha256:abc"),
         edits: [{ start: { line: 0, character: 0 }, end: { line: 0, character: 0 }, text: "x" }],
         checkpoint: false,
       },
-      2,
+      toVaultIndex(2),
     );
-    await renameNote("space/id", { path: "Renamed.md" }, 2);
-    await deleteNote("space/id", 2);
+    await renameNote(toNoteId("space/id"), { path: "Renamed.md" }, toVaultIndex(2));
+    await deleteNote(toNoteId("space/id"), toVaultIndex(2));
 
     expect(fetchCall(0)[0]).toBe("/api/notes/space%2Fid");
     expect(fetchCall(1)[0]).toBe("/api/notes");
@@ -101,7 +110,7 @@ describe("aPI client", () => {
   it("throws an error with status and response body for failed JSON requests", async () => {
     vi.mocked(fetch).mockResolvedValueOnce(jsonResponse({ error: { code: "bad_request" } }, 400));
 
-    await expect(searchNotes("alpha", 1)).rejects.toMatchObject({
+    await expect(searchNotes("alpha", toVaultIndex(1))).rejects.toMatchObject({
       name: "ApiError",
       status: 400,
       response: { error: { code: "bad_request" } },
@@ -118,11 +127,34 @@ describe("aPI client", () => {
     } as unknown as Response);
 
     await expect(
-      saveSession({ openTabs: [], activeNoteId: null, closedTabs: [] }, 1),
+      saveSession({ openTabs: [], activeNoteId: null, closedTabs: [] }, toVaultIndex(1)),
     ).rejects.toMatchObject({
       status: 500,
       response: null,
     });
+  });
+
+  it("treats malformed API error payloads as non-conflict errors", async () => {
+    vi.mocked(fetch).mockResolvedValueOnce(jsonResponse({}, 409));
+
+    let thrown: unknown;
+    try {
+      await saveNoteDelta(
+        toNoteId("n/1"),
+        {
+          baseSeq: 1,
+          baseHash: toContentHash("h"),
+          contentHash: toContentHash("sha256:abc"),
+          edits: [],
+          checkpoint: false,
+        },
+        toVaultIndex(2),
+      );
+    } catch (error) {
+      thrown = error;
+    }
+
+    expect(saveConflictError(thrown)).toBeNull();
   });
 
   it("uploads images with webp headers and explicit vault", async () => {
@@ -130,7 +162,9 @@ describe("aPI client", () => {
       jsonResponse({ name: "z-images/a.webp", markdown: "![[a]]" }),
     );
 
-    await expect(uploadImage(new Blob(["x"], { type: "image/png" }), 4)).resolves.toStrictEqual({
+    await expect(
+      uploadImage(new Blob(["x"], { type: "image/png" }), toVaultIndex(4)),
+    ).resolves.toStrictEqual({
       name: "z-images/a.webp",
       markdown: "![[a]]",
     });
@@ -142,18 +176,20 @@ describe("aPI client", () => {
   });
 
   it("builds asset, settings, conflict, and event helper requests", async () => {
-    await saveSettings(settings(), 2);
-    await listRevisions("n/1", 2);
-    await openRevision("n/1", 10, 2);
-    await restoreRevision("n/1", 10, 2);
-    await openConflictDraft("n/1", 7, 2);
-    await restoreConflictDraft("n/1", 7, 2);
-    await setPinned("n/1", true, 2);
-    await setPinned("n/1", false, 2);
-    const source = connectEvents(9) as EventSource & { url: string };
+    await saveSettings(settings(), toVaultIndex(2));
+    await listRevisions(toNoteId("n/1"), toVaultIndex(2));
+    await openRevision(toNoteId("n/1"), toRevisionEventId(10), toVaultIndex(2));
+    await restoreRevision(toNoteId("n/1"), toRevisionEventId(10), toVaultIndex(2));
+    await openConflictDraft(toNoteId("n/1"), toConflictDraftId(7), toVaultIndex(2));
+    await restoreConflictDraft(toNoteId("n/1"), toConflictDraftId(7), toVaultIndex(2));
+    await setPinned(toNoteId("n/1"), true, toVaultIndex(2));
+    await setPinned(toNoteId("n/1"), false, toVaultIndex(2));
+    const source = connectEvents(toVaultIndex(9)) as EventSource & { url: string };
     const event = parseServerEvent(new MessageEvent("message", { data: '{"kind":"x"}' }));
 
-    expect(assetUrl("z-images/a b.webp", 2)).toBe("/api/assets?name=z-images%2Fa%20b.webp&vault=2");
+    expect(assetUrl(toAssetName("z-images/a b.webp"), toVaultIndex(2))).toBe(
+      "/api/assets?name=z-images%2Fa%20b.webp&vault=2",
+    );
     expect(fetchCall(0)[0]).toBe("/api/settings");
     expect(fetchCall(1)[0]).toBe("/api/notes/n%2F1/revisions");
     expect(fetchCall(2)[0]).toBe("/api/notes/n%2F1/revisions/10");
@@ -169,7 +205,7 @@ describe("aPI client", () => {
   it("throws upload errors with parsed response payloads", async () => {
     vi.mocked(fetch).mockResolvedValueOnce(jsonResponse({ error: { code: "internal" } }, 500));
 
-    await expect(uploadImage(new Blob(["x"]), 1)).rejects.toMatchObject({
+    await expect(uploadImage(new Blob(["x"]), toVaultIndex(1))).rejects.toMatchObject({
       status: 500,
       response: { error: { code: "internal" } },
     });

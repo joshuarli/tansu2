@@ -1,7 +1,15 @@
 import { vi, expect, describe, it } from "vitest";
 
 import type { CommandItem, ViewEvent } from "./app/events.ts";
-import { createState, tabFromDocument, tabFromMeta, type State } from "./state.ts";
+import {
+  createState,
+  tabFromDocument,
+  tabFromMeta,
+  toNoteId,
+  toRevisionEventId,
+  toVaultIndex,
+  type State,
+} from "./state.ts";
 import type { BootstrapResponse, NoteMeta, RevisionMeta } from "./types.generated.ts";
 import { renderApp, renderLoading, renderStatusBar, type ViewActions } from "./view.ts";
 
@@ -15,7 +23,7 @@ describe("view rendering", () => {
 
     const tab = tabFromMeta(note("n1", "one.md", "One"));
     state.tabs = [tab];
-    state.activeNoteId = "n1";
+    state.activeNoteId = toNoteId("n1");
     root = render(state);
     expect(root.textContent).toContain("Loading");
 
@@ -40,9 +48,9 @@ describe("view rendering", () => {
     active.dirty = true;
     active.conflict = true;
     state.tabs = [active, other];
-    state.activeNoteId = "n1";
+    state.activeNoteId = toNoteId("n1");
     state.pinned.add("n1");
-    state.contextMenu = { noteId: "n1", x: 12, y: 24 };
+    state.contextMenu = { noteId: toNoteId("n1"), x: 12, y: 24 };
     const actions = actionSpies();
     const root = render(state, actions);
 
@@ -80,15 +88,15 @@ describe("view rendering", () => {
     root.querySelector<HTMLButtonElement>('[title="Rename note"]')!.click();
     root.querySelector<HTMLButtonElement>('[title="Delete note"]')!.click();
 
-    expectDispatched(actions, { type: "vault.switch", index: 0 });
+    expectDispatched(actions, { type: "vault.switch", index: toVaultIndex(0) });
     expectDispatched(actions, { type: "search.input", query: "alpha" });
     expectDispatched(actions, { type: "search.open" });
     expectDispatched(actions, { type: "command.run", id: "create" });
-    expectDispatched(actions, { type: "tab.close", noteId: "n2" });
-    expectDispatched(actions, { type: "tab.activate", noteId: "n2" });
-    expectDispatched(actions, { type: "context.open", noteId: "n1", x: 3, y: 4 });
+    expectDispatched(actions, { type: "tab.close", noteId: toNoteId("n2") });
+    expectDispatched(actions, { type: "tab.activate", noteId: toNoteId("n2") });
+    expectDispatched(actions, { type: "context.open", noteId: toNoteId("n1"), x: 3, y: 4 });
     expectDispatched(actions, { type: "tags.update", tags: [] });
-    expectDispatched(actions, { type: "note.pin", noteId: "n1" });
+    expectDispatched(actions, { type: "note.pin", noteId: toNoteId("n1") });
     expectDispatched(actions, { type: "reading.toggle" });
     expectDispatched(actions, { type: "editor.toolbar", command: "bold" });
     expect(root.textContent).toContain("Save conflict");
@@ -111,7 +119,7 @@ describe("view rendering", () => {
     expect([...vaultOptions].map((option) => option.textContent)).toStrictEqual(["Work"]);
 
     vaultOptions[0]!.click();
-    expectDispatched(actions, { type: "vault.switch", index: 1 });
+    expectDispatched(actions, { type: "vault.switch", index: toVaultIndex(1) });
     expect(root.querySelector<HTMLElement>(".vault-label")!.textContent).toBe("Work");
     expect(vaultControl.classList.contains("open")).toBeFalsy();
   });
@@ -119,7 +127,7 @@ describe("view rendering", () => {
   it("renders reading mode with minimal editing chrome", () => {
     const state = baseState();
     state.tabs = [tabFromDocument({ meta: note("n1", "one.md", "One"), content: "# One\n" })];
-    state.activeNoteId = "n1";
+    state.activeNoteId = toNoteId("n1");
     state.readingMode = true;
     const actions = actionSpies();
     const root = render(state, actions);
@@ -136,7 +144,7 @@ describe("view rendering", () => {
   it("shows tab close hint and captures x before editor key handlers", () => {
     const state = baseState();
     state.tabs = [tabFromDocument({ meta: note("n1", "one.md", "One"), content: "# One\n" })];
-    state.activeNoteId = "n1";
+    state.activeNoteId = toNoteId("n1");
     const actions = actionSpies();
     const root = render(state, actions);
     document.body.append(root);
@@ -161,7 +169,7 @@ describe("view rendering", () => {
       expect(hint.style.top).toBe("34px");
 
       root.querySelector<HTMLButtonElement>(".tab-close")!.click();
-      expectDispatched(actions, { type: "tab.close", noteId: "n1" });
+      expectDispatched(actions, { type: "tab.close", noteId: toNoteId("n1") });
       expect(hint.parentElement).toBeNull();
       expect(hint.classList.contains("visible")).toBeFalsy();
       actions.dispatch.mockClear();
@@ -173,7 +181,7 @@ describe("view rendering", () => {
         cancelable: true,
       });
       editor.dispatchEvent(closeEvent);
-      expectDispatched(actions, { type: "tab.close", noteId: "n1" });
+      expectDispatched(actions, { type: "tab.close", noteId: toNoteId("n1") });
       expect(closeEvent.defaultPrevented).toBeTruthy();
       expect(editorKeydown).not.toHaveBeenCalled();
     } finally {
@@ -187,7 +195,7 @@ describe("view rendering", () => {
     const revision = revisionMeta(7);
     state.notes.set("n1", note("n1", "one.md", "One"));
     state.tabs = [tabFromDocument({ meta: note("n1", "one.md", "One"), content: "# One\n" })];
-    state.activeNoteId = "n1";
+    state.activeNoteId = toNoteId("n1");
     state.commandOpen = true;
     state.commandFilter = "open";
     state.searchOpen = true;
@@ -215,7 +223,7 @@ describe("view rendering", () => {
       },
       content: "# Draft\n",
     };
-    state.noteDialog = { kind: "rename", noteId: "n1", title: "One" };
+    state.noteDialog = { kind: "rename", noteId: toNoteId("n1"), title: "One" };
     state.notice = "Saved";
     const actions = actionSpies();
     const root = render(state, actions);
@@ -239,8 +247,8 @@ describe("view rendering", () => {
     expect(root.textContent).toContain("Saved");
     expect(actions.commandItems).toHaveBeenCalledWith();
     expectDispatched(actions, { type: "search.overlayInput", query: "beta" });
-    expectDispatched(actions, { type: "note.open", noteId: "n1" });
-    expectDispatched(actions, { type: "revisions.select", eventId: 7 });
+    expectDispatched(actions, { type: "note.open", noteId: toNoteId("n1") });
+    expectDispatched(actions, { type: "revisions.select", eventId: toRevisionEventId(7) });
     expectDispatched(actions, { type: "revisions.restore" });
     expectDispatched(actions, {
       type: "settings.submit",
@@ -261,12 +269,12 @@ describe("view rendering", () => {
     state.notes.set("n1", note("n1", "one.md", "One"));
     state.searchOpen = true;
     state.searchOverlayQuery = "";
-    state.noteDialog = { kind: "delete", noteId: "n1" };
+    state.noteDialog = { kind: "delete", noteId: toNoteId("n1") };
     let actions = actionSpies();
     let root = render(state, actions);
     root.querySelector<HTMLButtonElement>(".search-result-row")!.click();
     root.querySelector<HTMLButtonElement>(".danger-button")!.click();
-    expectDispatched(actions, { type: "note.open", noteId: "n1" });
+    expectDispatched(actions, { type: "note.open", noteId: toNoteId("n1") });
     expectDispatched(actions, { type: "dialog.submit" });
 
     state.noteDialog = { kind: "tag", value: "" };
@@ -304,7 +312,7 @@ function expectDispatched(actions: ViewActionSpies, event: ViewEvent): void {
 }
 
 function baseState(): State {
-  const state = createState(0);
+  const state = createState(toVaultIndex(0));
   const boot = bootstrapResponse([]);
   state.boot = boot;
   state.notes = new Map(boot.notes.map((item) => [item.noteId, item]));

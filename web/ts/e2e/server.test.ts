@@ -1103,7 +1103,7 @@ describe("real server harness", () => {
         page
           .locator(".app-editor")
           .textContent()
-          .then((text) => text.trim()),
+          .then((text) => (text ?? "").trim()),
       )
       .toBe("");
     await redoEditor(page);
@@ -1112,7 +1112,7 @@ describe("real server harness", () => {
         page
           .locator(".app-editor")
           .textContent()
-          .then((text) => text.trim()),
+          .then((text) => (text ?? "").trim()),
       )
       .toBe("alpha");
     await expect

@@ -1,10 +1,11 @@
-import type {
-  AssetName,
-  ConflictDraftId,
-  ContentHash,
-  NoteId,
-  RevisionEventId,
-  VaultIndex,
+import {
+  toVaultIndex,
+  type AssetName,
+  type ConflictDraftId,
+  type ContentHash,
+  type NoteId,
+  type RevisionEventId,
+  type VaultIndex,
 } from "./state.ts";
 import type {
   BootstrapResponse,
@@ -40,7 +41,10 @@ class ApiError extends Error {
 export type SaveConflictError = Extract<ApiErrorResponse["error"], { code: "save_conflict" }>;
 
 function apiErrorResponse(error: unknown): ApiErrorResponse | null {
-  return error instanceof ApiError ? (error.response as ApiErrorResponse | null) : null;
+  if (!(error instanceof ApiError) || !isApiErrorResponse(error.response)) {
+    return null;
+  }
+  return error.response;
 }
 
 export function saveConflictError(error: unknown): SaveConflictError | null {
@@ -48,62 +52,71 @@ export function saveConflictError(error: unknown): SaveConflictError | null {
   return response?.error.code === "save_conflict" ? response.error : null;
 }
 
+function isApiErrorResponse(value: unknown): value is ApiErrorResponse {
+  if (value === null || typeof value !== "object" || !("error" in value)) {
+    return false;
+  }
+  const error = (value as { error: unknown }).error;
+  return (
+    error !== null &&
+    typeof error === "object" &&
+    "code" in error &&
+    typeof (error as { code: unknown }).code === "string"
+  );
+}
+
 export type ApiClient = {
   bootstrap: (vault?: VaultIndex) => Promise<BootstrapResponse>;
-  openNote: (noteId: NoteId | string, vault?: VaultIndex) => Promise<NoteDocument>;
+  openNote: (noteId: NoteId, vault?: VaultIndex) => Promise<NoteDocument>;
   createNote: (request: CreateNoteRequest, vault?: VaultIndex) => Promise<NoteMutationResponse>;
   saveNote: (
-    noteId: NoteId | string,
-    request: SaveNoteRequest & { baseHash: ContentHash | string },
+    noteId: NoteId,
+    request: SaveNoteRequest & { baseHash: ContentHash },
     vault?: VaultIndex,
   ) => Promise<NoteMutationResponse>;
   saveNoteDelta: (
-    noteId: NoteId | string,
+    noteId: NoteId,
     request: SaveNoteDeltaRequest & {
-      baseHash: ContentHash | string;
-      contentHash: ContentHash | string;
+      baseHash: ContentHash;
+      contentHash: ContentHash;
     },
     vault?: VaultIndex,
   ) => Promise<NoteMutationResponse>;
   renameNote: (
-    noteId: NoteId | string,
+    noteId: NoteId,
     request: RenameNoteRequest,
     vault?: VaultIndex,
   ) => Promise<NoteMutationResponse>;
-  deleteNote: (noteId: NoteId | string, vault?: VaultIndex) => Promise<NoteMutationResponse>;
-  listRevisions: (noteId: NoteId | string, vault?: VaultIndex) => Promise<RevisionMeta[]>;
+  deleteNote: (noteId: NoteId, vault?: VaultIndex) => Promise<NoteMutationResponse>;
+  listRevisions: (noteId: NoteId, vault?: VaultIndex) => Promise<RevisionMeta[]>;
   openRevision: (
-    noteId: NoteId | string,
-    eventId: RevisionEventId | number,
+    noteId: NoteId,
+    eventId: RevisionEventId,
     vault?: VaultIndex,
   ) => Promise<RevisionDocument>;
   restoreRevision: (
-    noteId: NoteId | string,
-    eventId: RevisionEventId | number,
+    noteId: NoteId,
+    eventId: RevisionEventId,
     vault?: VaultIndex,
   ) => Promise<NoteMutationResponse>;
   openConflictDraft: (
-    noteId: NoteId | string,
-    draftId: ConflictDraftId | number,
+    noteId: NoteId,
+    draftId: ConflictDraftId,
     vault?: VaultIndex,
   ) => Promise<ConflictDraftDocument>;
   restoreConflictDraft: (
-    noteId: NoteId | string,
-    draftId: ConflictDraftId | number,
+    noteId: NoteId,
+    draftId: ConflictDraftId,
     vault?: VaultIndex,
   ) => Promise<NoteMutationResponse>;
-  setPinned: (
-    noteId: NoteId | string,
-    pinned: boolean,
-    vault?: VaultIndex,
-  ) => Promise<{ ok: true }>;
+  setPinned: (noteId: NoteId, pinned: boolean, vault?: VaultIndex) => Promise<{ ok: true }>;
   searchNotes: (query: string, vault?: VaultIndex) => Promise<SearchHit[]>;
   saveSession: (session: SessionState, vault?: VaultIndex) => Promise<{ ok: true }>;
   saveSettings: (settings: Settings, vault?: VaultIndex) => Promise<Settings>;
   uploadImage: (blob: Blob, vault?: VaultIndex) => Promise<ImageUploadResponse>;
-  assetUrl: (name: AssetName | string, vault?: VaultIndex) => string;
+  assetUrl: (name: AssetName, vault?: VaultIndex) => string;
   activeVault: () => VaultIndex;
-  setActiveVault: (index: VaultIndex | number) => void;
+  setActiveVault: (index: VaultIndex) => void;
   connectEvents: (vault?: VaultIndex) => EventSource;
   parseServerEvent: (event: MessageEvent<string>) => ServerEvent;
 };
@@ -130,7 +143,7 @@ export function bootstrap(vault = activeVault()): Promise<BootstrapResponse> {
   return apiFetch<BootstrapResponse>("/api/bootstrap", { vault });
 }
 
-export function openNote(noteId: string, vault = activeVault()): Promise<NoteDocument> {
+export function openNote(noteId: NoteId, vault = activeVault()): Promise<NoteDocument> {
   return apiFetch<NoteDocument>(`/api/notes/${encodeURIComponent(noteId)}`, { vault });
 }
 
@@ -146,8 +159,8 @@ export function createNote(
 }
 
 export function saveNote(
-  noteId: string,
-  request: SaveNoteRequest,
+  noteId: NoteId,
+  request: SaveNoteRequest & { baseHash: ContentHash },
   vault = activeVault(),
 ): Promise<NoteMutationResponse> {
   return apiFetch<NoteMutationResponse>(`/api/notes/${encodeURIComponent(noteId)}`, {
@@ -158,8 +171,8 @@ export function saveNote(
 }
 
 export function saveNoteDelta(
-  noteId: string,
-  request: SaveNoteDeltaRequest,
+  noteId: NoteId,
+  request: SaveNoteDeltaRequest & { baseHash: ContentHash; contentHash: ContentHash },
   vault = activeVault(),
 ): Promise<NoteMutationResponse> {
   return apiFetch<NoteMutationResponse>(`/api/notes/${encodeURIComponent(noteId)}`, {
@@ -170,7 +183,7 @@ export function saveNoteDelta(
 }
 
 export function renameNote(
-  noteId: string,
+  noteId: NoteId,
   request: RenameNoteRequest,
   vault = activeVault(),
 ): Promise<NoteMutationResponse> {
@@ -181,20 +194,20 @@ export function renameNote(
   });
 }
 
-export function deleteNote(noteId: string, vault = activeVault()): Promise<NoteMutationResponse> {
+export function deleteNote(noteId: NoteId, vault = activeVault()): Promise<NoteMutationResponse> {
   return apiFetch<NoteMutationResponse>(`/api/notes/${encodeURIComponent(noteId)}`, {
     method: "DELETE",
     vault,
   });
 }
 
-export function listRevisions(noteId: string, vault = activeVault()): Promise<RevisionMeta[]> {
+export function listRevisions(noteId: NoteId, vault = activeVault()): Promise<RevisionMeta[]> {
   return apiFetch<RevisionMeta[]>(`/api/notes/${encodeURIComponent(noteId)}/revisions`, { vault });
 }
 
 export function openRevision(
-  noteId: string,
-  eventId: number,
+  noteId: NoteId,
+  eventId: RevisionEventId,
   vault = activeVault(),
 ): Promise<RevisionDocument> {
   return apiFetch<RevisionDocument>(
@@ -204,8 +217,8 @@ export function openRevision(
 }
 
 export function restoreRevision(
-  noteId: string,
-  eventId: number,
+  noteId: NoteId,
+  eventId: RevisionEventId,
   vault = activeVault(),
 ): Promise<NoteMutationResponse> {
   return apiFetch<NoteMutationResponse>(
@@ -215,8 +228,8 @@ export function restoreRevision(
 }
 
 export function openConflictDraft(
-  noteId: string,
-  draftId: number,
+  noteId: NoteId,
+  draftId: ConflictDraftId,
   vault = activeVault(),
 ): Promise<ConflictDraftDocument> {
   return apiFetch<ConflictDraftDocument>(
@@ -226,8 +239,8 @@ export function openConflictDraft(
 }
 
 export function restoreConflictDraft(
-  noteId: string,
-  draftId: number,
+  noteId: NoteId,
+  draftId: ConflictDraftId,
   vault = activeVault(),
 ): Promise<NoteMutationResponse> {
   return apiFetch<NoteMutationResponse>(
@@ -237,7 +250,7 @@ export function restoreConflictDraft(
 }
 
 export function setPinned(
-  noteId: string,
+  noteId: NoteId,
   pinned: boolean,
   vault = activeVault(),
 ): Promise<{ ok: true }> {
@@ -284,15 +297,15 @@ export async function uploadImage(blob: Blob, vault = activeVault()): Promise<Im
   return data;
 }
 
-export function assetUrl(name: string, vault = activeVault()): string {
+export function assetUrl(name: AssetName, vault = activeVault()): string {
   return `/api/assets?name=${encodeURIComponent(name)}&vault=${encodeURIComponent(String(vault))}`;
 }
 
-export function activeVault(): number {
-  return Number(sessionStorage.getItem("tansu2.activeVault") ?? "0");
+export function activeVault(): VaultIndex {
+  return toVaultIndex(Number(sessionStorage.getItem("tansu2.activeVault") ?? "0"));
 }
 
-export function setActiveVault(index: number): void {
+export function setActiveVault(index: VaultIndex): void {
   sessionStorage.setItem("tansu2.activeVault", String(index));
 }
 

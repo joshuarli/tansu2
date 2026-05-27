@@ -51,7 +51,7 @@ const api = vi.hoisted(() => ({
   uploadImage: vi.fn(),
 }));
 
-vi.mock(import("./api.ts"), () => api);
+vi.mock(import("./api.ts"), () => api as never);
 
 const htmlImport = vi.hoisted(() => ({
   pickHtmlImport: vi.fn(),
@@ -75,6 +75,7 @@ const editorMock = vi.hoisted(() => ({
     focus: ReturnType<typeof vi.fn>;
     getCursorOffset: ReturnType<typeof vi.fn>;
     getSnapshot: ReturnType<typeof vi.fn>;
+    getSelectionOffsets: ReturnType<typeof vi.fn>;
     getValue: ReturnType<typeof vi.fn>;
     isReadOnly: boolean;
     isSourceMode: boolean;
@@ -90,49 +91,57 @@ const editorMock = vi.hoisted(() => ({
   }[],
 }));
 
-vi.mock(import("./editor/index.js"), () => ({
-  createCalloutExtension: vi.fn(() => ({})),
-  createEditor: vi.fn((_mount: HTMLElement, config: Record<string, unknown> = {}) => {
-    const instance = {
-      applyFormat: vi.fn(),
-      containsEditableTarget: vi.fn(() => false),
-      destroy: vi.fn(),
-      focus: vi.fn(),
-      getCursorOffset: vi.fn(() => null),
-      getSnapshot: vi.fn(() => ({
-        markdown: "# One",
-        cursorOffset: -1,
-        selection: null,
-        revision: 0,
-        sourceMode: false,
-      })),
-      getValue: vi.fn(() => "# One"),
-      isReadOnly: false,
-      isSourceMode: false,
-      redo: vi.fn(),
-      setConfig: vi.fn(),
-      setReadOnly: vi.fn(function setReadOnly(this: { isReadOnly: boolean }, readonly: boolean) {
-        this.isReadOnly = readonly;
+vi.mock(
+  import("./editor/index.js"),
+  () =>
+    ({
+      createCalloutExtension: vi.fn(() => ({})),
+      createEditor: vi.fn((_mount: HTMLElement, config: Record<string, unknown> = {}) => {
+        const instance = {
+          applyFormat: vi.fn(),
+          containsEditableTarget: vi.fn(() => false),
+          destroy: vi.fn(),
+          focus: vi.fn(),
+          getCursorOffset: vi.fn(() => null),
+          getSnapshot: vi.fn(() => ({
+            markdown: "# One",
+            cursorOffset: -1,
+            selection: null,
+            revision: 0,
+            sourceMode: false,
+          })),
+          getSelectionOffsets: vi.fn(() => null),
+          getValue: vi.fn(() => "# One"),
+          isReadOnly: false,
+          isSourceMode: false,
+          redo: vi.fn(),
+          setConfig: vi.fn(),
+          setReadOnly: vi.fn(function setReadOnly(
+            this: { isReadOnly: boolean },
+            readonly: boolean,
+          ) {
+            this.isReadOnly = readonly;
+          }),
+          setValue: vi.fn(),
+          toggleSourceMode: vi.fn(function toggleSourceMode(this: { isSourceMode: boolean }) {
+            this.isSourceMode = !this.isSourceMode;
+          }),
+          undo: vi.fn(),
+          config,
+          contentEl: document.createElement("div"),
+          sourceEl: document.createElement("textarea"),
+        };
+        editorMock.instances.push(instance);
+        return instance;
       }),
-      setValue: vi.fn(),
-      toggleSourceMode: vi.fn(function toggleSourceMode(this: { isSourceMode: boolean }) {
-        this.isSourceMode = !this.isSourceMode;
-      }),
-      undo: vi.fn(),
-      config,
-      contentEl: document.createElement("div"),
-      sourceEl: document.createElement("textarea"),
-    };
-    editorMock.instances.push(instance);
-    return instance;
-  }),
-  createWikiImageExtension: vi.fn(() => ({})),
-  toggleBold: vi.fn(),
-  toggleHeading: vi.fn(),
-  toggleHighlight: vi.fn(),
-  toggleItalic: vi.fn(),
-  toggleStrikethrough: vi.fn(),
-}));
+      createWikiImageExtension: vi.fn(() => ({})),
+      toggleBold: vi.fn(),
+      toggleHeading: vi.fn(),
+      toggleHighlight: vi.fn(),
+      toggleItalic: vi.fn(),
+      toggleStrikethrough: vi.fn(),
+    }) as never,
+);
 
 const { TansuApp, startApp } = await import("./app.ts");
 
@@ -177,6 +186,32 @@ describe("tansuApp note loading", () => {
     load.resolve({ meta: note, content: "# One" });
     await load.promise;
     await Promise.resolve();
+  });
+
+  it("ignores a stale boot response after switching vaults", async () => {
+    const oldNote = noteMeta("old-note", "old.md", "Old");
+    const newNote = noteMeta("new-note", "new.md", "New");
+    const oldBoot = deferred<BootstrapResponse>();
+    const newBoot = deferred<BootstrapResponse>();
+    api.bootstrap.mockImplementation((vault: number) =>
+      vault === 0 ? oldBoot.promise : newBoot.promise,
+    );
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    const firstBoot = app.boot();
+    api.activeVault.mockReturnValue(1);
+    const secondBoot = app.boot();
+
+    newBoot.resolve(bootstrapResponse([newNote]));
+    await secondBoot;
+    expect(root.textContent).toContain("New");
+
+    oldBoot.resolve(bootstrapResponse([oldNote]));
+    await firstBoot;
+    expect(root.textContent).toContain("New");
+    expect(root.textContent).not.toContain("Old");
+    expect(api.connectEvents).toHaveBeenLastCalledWith(1);
   });
 
   it("renders a restored active tab from a valid cached body before openNote resolves", async () => {
@@ -786,6 +821,65 @@ describe("tansuApp note loading", () => {
     );
   });
 
+  it("autosaves the dirty tab that scheduled the save after switching and editing another tab", async () => {
+    const first = noteMeta("note-1", "one.md", "One");
+    const second = noteMeta("note-2", "two.md", "Two");
+    const savedFirst = { ...first, seq: 2, contentHash: "saved" };
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([first, second], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+          { noteId: "note-2", title: "Two", path: "two.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    api.openNote.mockImplementation(async (noteId: string) =>
+      noteId === "note-1"
+        ? { meta: first, content: "# One\n" }
+        : { meta: second, content: "# Two\n" },
+    );
+    api.saveNoteDelta.mockResolvedValue({
+      document: { meta: savedFirst, content: "# Changed\n" },
+      meta: savedFirst,
+      syncVersion: 2,
+    });
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+    const firstEditor = editorMock.instances.at(-1)!;
+    firstEditor.getSnapshot.mockReturnValue({
+      markdown: "# Changed\n",
+      cursorOffset: -1,
+      selection: null,
+      revision: 1,
+      sourceMode: false,
+    });
+    (firstEditor.config["onChange"] as () => void)();
+
+    root.querySelector<HTMLButtonElement>('[title="Two"]')?.click();
+    await flushAsync();
+    const secondEditor = editorMock.instances.at(-1)!;
+    secondEditor.getSnapshot.mockReturnValue({
+      markdown: "# Two changed\n",
+      cursorOffset: -1,
+      selection: null,
+      revision: 1,
+      sourceMode: false,
+    });
+    (secondEditor.config["onChange"] as () => void)();
+    vi.advanceTimersByTime(900);
+    await flushUntil(() => api.saveNoteDelta.mock.calls.length > 0);
+
+    expect(api.saveNoteDelta).toHaveBeenCalledWith(
+      "note-1",
+      expect.objectContaining({ baseSeq: 1, baseHash: "hash", checkpoint: false }),
+      0,
+    );
+  });
+
   it("does not serialize editor content synchronously on every change", async () => {
     const note = noteMeta("note-1", "one.md", "One");
     api.bootstrap.mockResolvedValue(
@@ -943,6 +1037,37 @@ describe("tansuApp note loading", () => {
     root.querySelector<HTMLButtonElement>(".note-dialog-panel .primary-button")?.click();
     await flushAsync();
     expect(editorMock.instances.at(-1)?.setValue).toHaveBeenCalledWith("# One", undefined);
+  });
+
+  it("keeps existing numeric settings when settings form values are non-finite", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(bootstrapResponse([note]));
+    api.saveSettings.mockImplementation(async (settings) => settings);
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+
+    root.querySelector<HTMLButtonElement>('[title="Commands"]')?.click();
+    root.querySelector<HTMLInputElement>(".command-input")!.value = "settings";
+    root
+      .querySelector<HTMLInputElement>(".command-input")!
+      .dispatchEvent(new Event("input", { bubbles: true }));
+    root.querySelector<HTMLButtonElement>(".command-row")?.click();
+    root.querySelector<HTMLInputElement>('input[title="Autosave delay"]')!.value = "Infinity";
+    root.querySelector<HTMLInputElement>('input[title="Undo stack"]')!.value = "Infinity";
+    root.querySelector<HTMLInputElement>('input[title="Image quality"]')!.value = "Infinity";
+    root.querySelector<HTMLButtonElement>(".settings-panel .primary-button")?.click();
+    await flushAsync();
+
+    expect(api.saveSettings).toHaveBeenCalledWith(
+      expect.objectContaining({
+        autosaveDelayMs: 900,
+        undoStackMax: 100,
+        imageWebpQuality: 0.8,
+      }),
+      0,
+    );
   });
 
   it("handles import, reopen, source, formatting, autosave, and global shortcuts", async () => {
@@ -1121,6 +1246,32 @@ describe("tansuApp note loading", () => {
     root.querySelector<HTMLButtonElement>('[title="Import HTML"]')?.click();
     await vi.waitFor(() => expect(htmlImport.pickHtmlImport).toHaveBeenCalled());
     root.querySelector<HTMLButtonElement>(".overlay-backdrop")?.click();
+  });
+
+  it("reports async action failures launched from view events", async () => {
+    const note = noteMeta("note-1", "one.md", "One");
+    api.bootstrap.mockResolvedValue(
+      bootstrapResponse([note], {
+        openTabs: [
+          { noteId: "note-1", title: "One", path: "one.md", cursorOffset: null, sourceMode: false },
+        ],
+        activeNoteId: "note-1",
+        closedTabs: [],
+      }),
+    );
+    api.openNote.mockResolvedValue({ meta: note, content: "# One\n" });
+    api.setPinned.mockRejectedValue(new Error("offline"));
+
+    const root = mountRoot();
+    const app = new TansuApp(root);
+    await app.boot();
+
+    root
+      .querySelector<HTMLButtonElement>(".tab.active")
+      ?.dispatchEvent(new MouseEvent("contextmenu", { bubbles: true, clientX: 10, clientY: 20 }));
+    root.querySelectorAll<HTMLButtonElement>(".context-menu button")[1]?.click();
+
+    await vi.waitFor(() => expect(root.textContent).toContain("Pin failed"));
   });
 });
 

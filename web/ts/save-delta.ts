@@ -100,8 +100,8 @@ function retreatToCodePointBoundary(content: string, offset: number): number {
   if (
     offset > 0 &&
     offset < content.length &&
-    isHighSurrogate(content.codePointAt(offset - 1)) &&
-    isLowSurrogate(content.codePointAt(offset))
+    isHighSurrogate(content.charCodeAt(offset - 1)) &&
+    isLowSurrogate(content.charCodeAt(offset))
   ) {
     return offset - 1;
   }
@@ -124,10 +124,7 @@ function isCodePointBoundary(content: string, offset: number): boolean {
   return (
     offset <= 0 ||
     offset >= content.length ||
-    !(
-      isHighSurrogate(content.codePointAt(offset - 1)) &&
-      isLowSurrogate(content.codePointAt(offset))
-    )
+    !(isHighSurrogate(content.charCodeAt(offset - 1)) && isLowSurrogate(content.charCodeAt(offset)))
   );
 }
 
