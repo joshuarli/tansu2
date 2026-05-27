@@ -1,3 +1,5 @@
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 
 import { expect, afterAll, describe, beforeAll, test } from "vitest";
@@ -8,26 +10,18 @@ import { domToMarkdown } from "../serialize.ts";
 import { setupDOM } from "./test-helper.ts";
 
 const benchDescribe = process.env["MD_WYSIWYG_BENCH"] === "1" ? describe : describe.skip;
+const FIXTURE_VAULT = resolve(
+  import.meta.dirname,
+  "../../../../tests/fixtures/test-vaults/vault-one",
+);
+const RESULTS_DIR = resolve(import.meta.dirname, "../../../../bench/results");
 
-function makeLargeNote(sectionCount = 250): string {
-  const parts: string[] = [];
-  for (let i = 0; i < sectionCount; i++) {
-    parts.push(
-      `# Section ${i + 1}`,
-      "",
-      `This is a paragraph for section ${i + 1} with **bold**, *italic*, and [[Wiki Link ${i + 1}]].`,
-      "",
-      "- item one",
-      "- item two",
-      "- item three",
-      "",
-      "```ts",
-      `export const section${i + 1} = ${i + 1};`,
-      "```",
-      "",
-    );
-  }
-  return parts.join("\n");
+function fixtureCorpus(): string {
+  return readdirSync(FIXTURE_VAULT)
+    .filter((name) => name.endsWith(".md"))
+    .sort((a, b) => a.localeCompare(b))
+    .map((name) => readFileSync(resolve(FIXTURE_VAULT, name), "utf8"))
+    .join("\n\n");
 }
 
 benchDescribe("Tansu editor large note benchmark", () => {
@@ -42,7 +36,7 @@ benchDescribe("Tansu editor large note benchmark", () => {
   });
 
   test("reports render, serialize, and editor roundtrip timings", () => {
-    const markdown = makeLargeNote();
+    const markdown = fixtureCorpus();
 
     const renderStart = performance.now();
     const html = renderMarkdown(markdown);
@@ -67,16 +61,22 @@ benchDescribe("Tansu editor large note benchmark", () => {
     const roundtrip = editor.getValue();
     const getValueMs = performance.now() - getValueStart;
 
-    console.info(
-      JSON.stringify({
-        benchmark: "tansu-editor-large-note",
-        chars: markdown.length,
-        renderMs: Number(renderMs.toFixed(2)),
-        serializeMs: Number(serializeMs.toFixed(2)),
-        editorSetValueMs: Number(setValueMs.toFixed(2)),
-        editorGetValueMs: Number(getValueMs.toFixed(2)),
-      }),
+    const result = {
+      benchmark: "tansu-editor-large-note",
+      generatedAt: new Date().toISOString(),
+      chars: markdown.length,
+      renderMs: Number(renderMs.toFixed(2)),
+      serializeMs: Number(serializeMs.toFixed(2)),
+      editorSetValueMs: Number(setValueMs.toFixed(2)),
+      editorGetValueMs: Number(getValueMs.toFixed(2)),
+    };
+    mkdirSync(RESULTS_DIR, { recursive: true });
+    writeFileSync(
+      resolve(RESULTS_DIR, `editor-large-note-${Date.now()}.json`),
+      `${JSON.stringify(result, null, 2)}\n`,
+      "utf8",
     );
+    console.info(JSON.stringify(result));
 
     expect(serialized.length).toBeGreaterThan(0);
     expect(roundtrip.length).toBeGreaterThan(0);

@@ -1,5 +1,5 @@
 import { execFileSync, spawn } from "node:child_process";
-import { cp, mkdir, mkdtemp, readdir, stat, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, stat, writeFile } from "node:fs/promises";
 import net from "node:net";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -7,18 +7,11 @@ import { fileURLToPath } from "node:url";
 
 import { chromium, firefox, webkit } from "playwright";
 
+import { createTestFixture } from "../scripts/test-fixture.mjs";
+
 const REPO_ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const BENCH_DIR = join(REPO_ROOT, "bench");
 const RESULTS_DIR = join(BENCH_DIR, "results");
-const SAMPLE_IMAGE = join(
-  REPO_ROOT,
-  "tests",
-  "fixtures",
-  "test-vaults",
-  "vault-one",
-  "z-images",
-  "sample.webp",
-);
 
 const args = parseArgs(process.argv.slice(2));
 const warmups = Number(args.warmups ?? 2);
@@ -75,7 +68,7 @@ async function main() {
     results.metrics.productionBundleBytes = [
       await fileSize(join(REPO_ROOT, "web", "static", "app.js")),
     ];
-    results.metrics.catalogBytes = [await directorySize(join(fixture.mediumVault, ".tansu"))];
+    results.metrics.catalogBytes = [await directorySize(join(fixture.vaultOne, ".tansu"))];
     const rss = server.pid === undefined ? null : rssBytes(server.pid);
     if (rss !== null) {
       results.metrics.serverRssBytes = [rss];
@@ -97,7 +90,7 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
   const page = await browser.newPage();
   const out = {};
   try {
-    const bootstrap = await fetchJson(`${baseUrl}/api/bootstrap`, { vault: 1 });
+    const bootstrap = await fetchJson(`${baseUrl}/api/bootstrap`, { vault: 0 });
     const first = bootstrap.notes[0];
     const second = bootstrap.notes[1] ?? first;
 
@@ -105,7 +98,7 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       await fetchJson(`${baseUrl}/api/health`);
     });
     out.bootstrap = await measure(async () => {
-      await fetchJson(`${baseUrl}/api/bootstrap`, { vault: 1 });
+      await fetchJson(`${baseUrl}/api/bootstrap`, { vault: 0 });
     });
     out.firstEditorInteractive = await measure(async () => {
       await page.goto(baseUrl);
@@ -114,25 +107,22 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       await page.waitForSelector(".app-editor");
     });
     out.openNote = await measure(async () => {
-      await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, { vault: 1 });
+      await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, { vault: 0 });
     });
     out.switchNote = await measure(async () => {
       await page
         .locator(`.note-row[title="${cssEscape(second.path)}"]`)
         .first()
         .click();
-      await page.waitForFunction(
-        (path) => document.querySelector(".path-label")?.textContent === path,
-        second.path,
-      );
+      await page.locator(`.tab.active[title="${cssEscape(second.title)}"]`).waitFor();
     });
     out.editSave = await measure(async () => {
       const document = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
-        vault: 1,
+        vault: 0,
       });
       await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
         method: "PUT",
-        vault: 1,
+        vault: 0,
         body: {
           content: `${document.content}\nbench ${Date.now()}\n`,
           baseSeq: document.meta.seq,
@@ -142,15 +132,15 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       });
     });
     out.search = await measure(async () => {
-      await fetchJson(`${baseUrl}/api/search?q=alpha`, { vault: 1 });
+      await fetchJson(`${baseUrl}/api/search?q=GlobalFoundries`, { vault: 0 });
     });
     out.conflictRestore = await measure(async () => {
       const document = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
-        vault: 1,
+        vault: 0,
       });
       await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
         method: "PUT",
-        vault: 1,
+        vault: 0,
         body: {
           content: `${document.content}\ncurrent ${Date.now()}\n`,
           baseSeq: document.meta.seq,
@@ -160,7 +150,7 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       });
       const conflict = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
         method: "PUT",
-        vault: 1,
+        vault: 0,
         allowError: true,
         body: {
           content: `${document.content}\nstale ${Date.now()}\n`,
@@ -174,7 +164,7 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
         `${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}/conflicts/${draftId}/restore`,
         {
           method: "POST",
-          vault: 1,
+          vault: 0,
         },
       );
     });
@@ -182,7 +172,7 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       await page.evaluate(
         () =>
           new Promise((resolve, reject) => {
-            const source = new EventSource("/events?vault=1");
+            const source = new EventSource("/events?vault=0");
             const timer = setTimeout(() => {
               source.close();
               reject(new Error("SSE timeout"));
@@ -190,7 +180,7 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
             source.addEventListener("open", () => {
               void fetch("/api/notes", {
                 method: "POST",
-                headers: { "Content-Type": "application/json", "X-Tansu-Vault": "1" },
+                headers: { "Content-Type": "application/json", "X-Tansu-Vault": "0" },
                 body: JSON.stringify({
                   path: `sse-${Date.now()}.md`,
                   content: "# SSE\n\nbench\n",
@@ -210,16 +200,16 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       );
     });
     out.watcherExternalEdit = await measure(async () => {
-      const path = join(fixture.mediumVault, "external-bench.md");
+      const path = join(fixture.vaultOne, "external-bench.md");
       await writeFile(path, `# External\n\n${Date.now()}\n`, "utf8");
       await poll(async () => {
-        const latest = await fetchJson(`${baseUrl}/api/bootstrap`, { vault: 1 });
+        const latest = await fetchJson(`${baseUrl}/api/bootstrap`, { vault: 0 });
         return latest.notes.some((note) => note.path === "external-bench.md");
       });
     });
     out.imagePath = await measure(async () => {
       const response = await fetch(
-        `${baseUrl}/api/assets?name=${encodeURIComponent("z-images/sample.webp")}&vault=4`,
+        `${baseUrl}/api/assets?name=${encodeURIComponent("z-images/sample.webp")}&vault=0`,
       );
       if (!response.ok) {
         throw new Error(`asset request failed: ${response.status}`);
@@ -227,7 +217,7 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       const blob = await response.blob();
       const upload = await fetch(`${baseUrl}/api/images`, {
         method: "POST",
-        headers: { "Content-Type": "image/webp", "X-Tansu-Vault": "4" },
+        headers: { "Content-Type": "image/webp", "X-Tansu-Vault": "0" },
         body: blob,
       });
       if (!upload.ok) {
@@ -236,11 +226,11 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
     });
     out.revisionRestore = await measure(async () => {
       const document = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
-        vault: 1,
+        vault: 0,
       });
       const saved = await fetchJson(`${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}`, {
         method: "PUT",
-        vault: 1,
+        vault: 0,
         body: {
           content: `${document.content}\nrevision ${Date.now()}\n`,
           baseSeq: document.meta.seq,
@@ -250,14 +240,14 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       });
       const revisions = await fetchJson(
         `${baseUrl}/api/notes/${encodeURIComponent(first.noteId)}/revisions`,
-        { vault: 1 },
+        { vault: 0 },
       );
       const revision = revisions.find((item) => item.eventId > 0) ?? revisions[0];
       await fetchJson(
         `${baseUrl}/api/notes/${encodeURIComponent(saved.meta.noteId)}/revisions/${revision.eventId}/restore`,
         {
           method: "POST",
-          vault: 1,
+          vault: 0,
         },
       );
     });
@@ -281,50 +271,7 @@ async function measure(fn) {
 }
 
 async function createBenchmarkFixture(root) {
-  const configHome = join(root, "config");
-  await mkdir(join(configHome, "tansu"), { recursive: true });
-  const profiles = [
-    ["small", 12, 20],
-    ["medium", 120, 60],
-    ["large", 600, 90],
-    ["pathological", 40, 400],
-    ["asset-heavy", 80, 40],
-  ];
-  const vaults = [];
-  for (const [name, count, lines] of profiles) {
-    const vault = join(root, name);
-    await mkdir(vault, { recursive: true });
-    if (name === "asset-heavy") {
-      await mkdir(join(vault, "z-images"), { recursive: true });
-      await cp(SAMPLE_IMAGE, join(vault, "z-images", "sample.webp"));
-    }
-    for (let i = 0; i < count; i += 1) {
-      const content = noteContent(name, i, lines);
-      await writeFile(join(vault, `note-${String(i).padStart(4, "0")}.md`), content, "utf8");
-    }
-    vaults.push({ name, path: vault });
-  }
-  await writeFile(
-    join(configHome, "tansu", "config.toml"),
-    vaults
-      .map((vault) => `[[vaults]]\nname = "${vault.name}"\npath = "${vault.path}"\n`)
-      .join("\n"),
-    "utf8",
-  );
-  return {
-    configHome,
-    mediumVault: vaults[1].path,
-  };
-}
-
-function noteContent(profile, index, lines) {
-  const tags = index % 5 === 0 ? "---\ntags:\n  - bench\n  - alpha\n---\n\n" : "";
-  const image = profile === "asset-heavy" ? "\n![[z-images/sample.webp|132]]\n" : "";
-  const body = Array.from({ length: lines }, (_, line) => {
-    const token = line % 9 === 0 ? "alpha" : line % 13 === 0 ? "[[note-0001]]" : "body";
-    return `- ${profile} note ${index} line ${line} ${token}`;
-  }).join("\n");
-  return `${tags}# ${profile} ${index}\n\n${body}${image}\n`;
+  return await createTestFixture(root);
 }
 
 async function fetchJson(url, options = {}) {

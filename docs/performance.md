@@ -56,6 +56,10 @@ Use the note-cache benchmark for the cache-specific open paths:
 node bench/note-cache-bench.mjs --runs=9 --delay=200
 ```
 
+Both app-level benchmarks use the shared `vault-one` fixture, including the
+imported clipping corpus. The editor large-note benchmark also concatenates the
+fixture Markdown corpus instead of generating synthetic sections.
+
 The note-cache benchmark records both normal local-server timings and timings
 with a synthetic `openNote` delay. The synthetic delay is useful because local
 note opens can be so fast that IndexedDB overhead is larger than the server

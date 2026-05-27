@@ -9,6 +9,8 @@ import { chromium } from "playwright";
 
 const REPO_ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const RESULTS_DIR = join(REPO_ROOT, "bench", "results");
+const TARGET_NOTE_PATH = "GlobalFoundries Is A Leading-Edge Foundry Despite Claims Otherwise.md";
+const SEARCH_QUERY = "GlobalFoundries";
 const args = parseArgs(process.argv.slice(2));
 const runs = Number(args.runs ?? 9);
 const delayMs = Number(args.delay ?? 200);
@@ -83,9 +85,15 @@ async function measureMissOpen(browser, baseUrl, noteDelayMs) {
   try {
     await page.goto(baseUrl);
     await page.waitForSelector(".main");
-    return await measureEditorAfterAction(page, () => {
-      document.querySelector('.note-row[title="one.md"]')?.click();
-    });
+    return await measureEditorAfterAction(
+      page,
+      (notePath) => {
+        [...document.querySelectorAll(".note-row")]
+          .find((row) => row.getAttribute("title") === notePath)
+          ?.click();
+      },
+      TARGET_NOTE_PATH,
+    );
   } finally {
     await context.close();
   }
@@ -94,11 +102,17 @@ async function measureMissOpen(browser, baseUrl, noteDelayMs) {
 async function measureCachedRecent(browser, baseUrl, noteDelayMs) {
   const { context, page } = await newMeasuredPage(browser, noteDelayMs);
   try {
-    await prewarmOne(page, baseUrl);
+    await prewarmTarget(page, baseUrl);
     await closeActiveTab(page);
-    return await measureEditorAfterAction(page, () => {
-      document.querySelector('.note-row[title="one.md"]')?.click();
-    });
+    return await measureEditorAfterAction(
+      page,
+      (notePath) => {
+        [...document.querySelectorAll(".note-row")]
+          .find((row) => row.getAttribute("title") === notePath)
+          ?.click();
+      },
+      TARGET_NOTE_PATH,
+    );
   } finally {
     await context.close();
   }
@@ -107,15 +121,19 @@ async function measureCachedRecent(browser, baseUrl, noteDelayMs) {
 async function measureCachedSearch(browser, baseUrl, noteDelayMs) {
   const { context, page } = await newMeasuredPage(browser, noteDelayMs);
   try {
-    await prewarmOne(page, baseUrl);
+    await prewarmTarget(page, baseUrl);
     await closeActiveTab(page);
     await page.locator('.sidebar-controls [title="Search notes"]').click();
-    await page.locator(".search-panel input").fill("one");
+    await page.locator(".search-panel input").fill(SEARCH_QUERY);
     await page.waitForSelector(".search-result-row");
-    return await measureEditorAfterAction(page, () => {
-      const rows = [...document.querySelectorAll(".search-result-row")];
-      rows.find((row) => row.textContent?.includes("one.md"))?.click();
-    });
+    return await measureEditorAfterAction(
+      page,
+      (notePath) => {
+        const rows = [...document.querySelectorAll(".search-result-row")];
+        rows.find((row) => row.textContent?.includes(notePath))?.click();
+      },
+      TARGET_NOTE_PATH,
+    );
   } finally {
     await context.close();
   }
@@ -124,7 +142,7 @@ async function measureCachedSearch(browser, baseUrl, noteDelayMs) {
 async function measureClosedReopen(browser, baseUrl, noteDelayMs) {
   const { context, page } = await newMeasuredPage(browser, noteDelayMs);
   try {
-    await prewarmOne(page, baseUrl);
+    await prewarmTarget(page, baseUrl);
     await closeActiveTab(page);
     await page.locator('.sidebar-controls [title="Commands"]').click();
     await page.locator(".command-input").fill("reopen");
@@ -139,7 +157,7 @@ async function measureClosedReopen(browser, baseUrl, noteDelayMs) {
 async function measureRestoredActive(browser, baseUrl, noteDelayMs) {
   const { context, page } = await newMeasuredPage(browser, noteDelayMs);
   try {
-    await prewarmOne(page, baseUrl);
+    await prewarmTarget(page, baseUrl);
     await page.waitForTimeout(350);
     await page.reload();
     await page.waitForSelector(".app-editor");
@@ -152,31 +170,34 @@ async function measureRestoredActive(browser, baseUrl, noteDelayMs) {
   }
 }
 
-async function measureEditorAfterAction(page, action) {
-  return await page.evaluate(async (actionSource) => {
-    const action = new Function(`return (${actionSource})`)();
-    performance.clearMarks();
-    const start = performance.now();
-    const editorReady = waitForEditor();
-    action();
-    await editorReady;
-    return performance.now() - start;
+async function measureEditorAfterAction(page, action, actionArg = null) {
+  return await page.evaluate(
+    async ({ actionSource, actionArg }) => {
+      const action = new Function("arg", `return (${actionSource})(arg)`);
+      performance.clearMarks();
+      const start = performance.now();
+      const editorReady = waitForEditor();
+      action(actionArg);
+      await editorReady;
+      return performance.now() - start;
 
-    function waitForEditor() {
-      if (document.querySelector(".app-editor")) {
-        return Promise.resolve();
-      }
-      return new Promise((resolve) => {
-        const observer = new MutationObserver(() => {
-          if (document.querySelector(".app-editor")) {
-            observer.disconnect();
-            resolve(null);
-          }
+      function waitForEditor() {
+        if (document.querySelector(".app-editor")) {
+          return Promise.resolve();
+        }
+        return new Promise((resolve) => {
+          const observer = new MutationObserver(() => {
+            if (document.querySelector(".app-editor")) {
+              observer.disconnect();
+              resolve(null);
+            }
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
         });
-        observer.observe(document.body, { childList: true, subtree: true });
-      });
-    }
-  }, action.toString());
+      }
+    },
+    { actionSource: action.toString(), actionArg },
+  );
 }
 
 async function newMeasuredPage(browser, noteDelayMs) {
@@ -196,10 +217,13 @@ async function newMeasuredPage(browser, noteDelayMs) {
   return { context, page };
 }
 
-async function prewarmOne(page, baseUrl) {
+async function prewarmTarget(page, baseUrl) {
   await page.goto(baseUrl);
   await page.waitForSelector(".main");
-  await page.locator('.note-row[title="one.md"]').first().click();
+  await page
+    .locator(`.note-row[title="${cssEscape(TARGET_NOTE_PATH)}"]`)
+    .first()
+    .click();
   await page.waitForSelector(".app-editor");
   await page.waitForTimeout(50);
 }
@@ -268,6 +292,10 @@ function parseArgs(values) {
     parsed[key] = value;
   }
   return parsed;
+}
+
+function cssEscape(value) {
+  return value.replaceAll("\\", String.raw`\\`).replaceAll('"', String.raw`\"`);
 }
 
 function printSummary(results, output) {

@@ -8,6 +8,7 @@ tests/fixtures/test-vaults/
     one.md
     search.md
     visual.md
+    imported clipping notes
     z-images/sample.webp
   vault-two/
     two.md

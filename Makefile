@@ -74,10 +74,12 @@ build-linux-musl-docker:
 
 bench:
 	node bench/integrated-bench.mjs --browser=chromium --warmups=2 --runs=5
+	node bench/note-cache-bench.mjs --runs=9 --delay=200
 	MD_WYSIWYG_BENCH=1 pnpm exec vitest run web/ts/editor/tests/large-note-bench.test.ts
 
 bench-full:
 	node bench/integrated-bench.mjs --browser=chromium,firefox,webkit --warmups=5 --runs=20
+	node bench/note-cache-bench.mjs --runs=20 --delay=200
 	MD_WYSIWYG_BENCH=1 pnpm exec vitest run web/ts/editor/tests/large-note-bench.test.ts
 
 .PHONY: audit bench bench-full ci coverage coverage-html coverage-rs coverage-ts dev dev-config check lint types types-check ts test test-ts test-e2e test-rs
