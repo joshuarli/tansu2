@@ -1,4 +1,5 @@
-import { expect, describe, it } from 'vitest';
+import { expect, describe, it } from "vitest";
+
 import { matchPattern, patterns, type InlinePattern } from "../inline-patterns.ts";
 
 const bold = patterns[0]!;

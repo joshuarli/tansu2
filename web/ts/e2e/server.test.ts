@@ -1,4 +1,3 @@
-import { expect, afterAll, describe, beforeAll, it } from 'vitest';
 import { execFileSync, spawn, type ChildProcess } from "node:child_process";
 import { mkdtemp, writeFile } from "node:fs/promises";
 import net from "node:net";
@@ -14,6 +13,7 @@ import {
   type Page,
   type Request,
 } from "playwright";
+import { expect, afterAll, describe, beforeAll, it } from "vitest";
 
 let server: ChildProcess | undefined;
 let browser: Browser | undefined;
@@ -140,8 +140,12 @@ describe("real server harness", () => {
     await expect(page.locator('.toolbar [title="Save"] svg').count()).resolves.toBe(1);
     await expect(page.locator('.toolbar [title="Highlight"] svg').count()).resolves.toBe(1);
     await expect(page.locator('.toolbar [title="Strikethrough"] svg').count()).resolves.toBe(1);
-    await expect(page.locator('.toolbar [title="Highlight"] svg [fill="#ffe16a"]').count()).resolves.toBe(1);
-    await expect(page.evaluate(() => getComputedStyle(document.querySelector(".tabs")!).scrollbarWidth)).resolves.toBe("none");
+    await expect(
+      page.locator('.toolbar [title="Highlight"] svg [fill="#ffe16a"]').count(),
+    ).resolves.toBe(1);
+    await expect(
+      page.evaluate(() => getComputedStyle(document.querySelector(".tabs")!).scrollbarWidth),
+    ).resolves.toBe("none");
 
     await page.locator('.sidebar-controls [title="New note"]').click();
     await page.waitForSelector(".note-dialog-panel");
@@ -1151,12 +1155,10 @@ describe("real server harness", () => {
   });
 
   it("keeps rapid typing responsive in a large visual note", async () => {
-    const content =
-      `# Stress\n\n${ 
-      Array.from(
-        { length: 500 },
-        (_, i) => `paragraph ${i} with enough text to make DOM walks expensive`,
-      ).join("\n")}`;
+    const content = `# Stress\n\n${Array.from(
+      { length: 500 },
+      (_, i) => `paragraph ${i} with enough text to make DOM walks expensive`,
+    ).join("\n")}`;
     await fetch(`${baseUrl}/api/notes`, {
       method: "POST",
       headers: {
@@ -1202,36 +1204,39 @@ describe("real server harness", () => {
   it("streams vault-scoped note changes over SSE", async () => {
     const page = await browser!.newPage();
     await page.goto(baseUrl);
-    const eventPromise = page.evaluate(() => new Promise<string>((resolve) => {
-        const source = new EventSource("/events?vault=0");
-        source.addEventListener(
-          "open",
-          () => {
-            void fetch("/api/notes", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "X-Tansu-Vault": "0",
-              },
-              body: JSON.stringify({ path: "sse.md", content: "# SSE\n\nbody\n", source: null }),
-            });
-          },
-          { once: true },
-        );
-        source.addEventListener("message", (event) => {
-          const payload = JSON.parse((event as MessageEvent<string>).data) as {
-            kind: string;
-            notes: Array<{ title: string }>;
-          };
-          if (
-            payload.kind === "note_changed" &&
-            payload.notes.some((note) => note.title === "SSE")
-          ) {
-            source.close();
-            resolve(payload.kind);
-          }
-        });
-      }));
+    const eventPromise = page.evaluate(
+      () =>
+        new Promise<string>((resolve) => {
+          const source = new EventSource("/events?vault=0");
+          source.addEventListener(
+            "open",
+            () => {
+              void fetch("/api/notes", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "X-Tansu-Vault": "0",
+                },
+                body: JSON.stringify({ path: "sse.md", content: "# SSE\n\nbody\n", source: null }),
+              });
+            },
+            { once: true },
+          );
+          source.addEventListener("message", (event) => {
+            const payload = JSON.parse((event as MessageEvent<string>).data) as {
+              kind: string;
+              notes: { title: string }[];
+            };
+            if (
+              payload.kind === "note_changed" &&
+              payload.notes.some((note) => note.title === "SSE")
+            ) {
+              source.close();
+              resolve(payload.kind);
+            }
+          });
+        }),
+    );
     await expect(eventPromise).resolves.toBe("note_changed");
     await page.close();
   });
@@ -1239,22 +1244,25 @@ describe("real server harness", () => {
   it("reconciles external filesystem edits for the active vault", async () => {
     const page = await browser!.newPage();
     await page.goto(baseUrl);
-    const eventPromise = page.evaluate(() => new Promise<string>((resolve) => {
-        const source = new EventSource("/events?vault=0");
-        source.addEventListener("message", (event) => {
-          const payload = JSON.parse((event as MessageEvent<string>).data) as {
-            kind: string;
-            notes: Array<{ title: string }>;
-          };
-          if (
-            payload.kind === "vault_changed" &&
-            payload.notes.some((note) => note.title === "Outside")
-          ) {
-            source.close();
-            resolve(payload.kind);
-          }
-        });
-      }));
+    const eventPromise = page.evaluate(
+      () =>
+        new Promise<string>((resolve) => {
+          const source = new EventSource("/events?vault=0");
+          source.addEventListener("message", (event) => {
+            const payload = JSON.parse((event as MessageEvent<string>).data) as {
+              kind: string;
+              notes: { title: string }[];
+            };
+            if (
+              payload.kind === "vault_changed" &&
+              payload.notes.some((note) => note.title === "Outside")
+            ) {
+              source.close();
+              resolve(payload.kind);
+            }
+          });
+        }),
+    );
     await new Promise((resolve) => setTimeout(resolve, 900));
     await writeFile(join(vaultOnePath, "outside.md"), "# Outside\n\nedit\n", "utf8");
     await expect(eventPromise).resolves.toBe("vault_changed");
@@ -1926,7 +1934,9 @@ async function redoEditor(page: Page): Promise<void> {
 }
 
 async function selectedBlockCount(page: Page): Promise<number> {
-  return page.locator(".app-editor").evaluate((editor) => editor.querySelectorAll(".md-block-selected").length);
+  return page
+    .locator(".app-editor")
+    .evaluate((editor) => editor.querySelectorAll(".md-block-selected").length);
 }
 
 async function syntheticCopy(page: Page): Promise<string> {

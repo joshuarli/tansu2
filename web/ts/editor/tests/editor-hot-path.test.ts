@@ -1,4 +1,5 @@
-import { expect, describe, it, beforeEach, vi, afterAll, beforeAll, afterEach } from 'vitest';
+import { expect, describe, it, beforeEach, vi, afterAll, beforeAll, afterEach } from "vitest";
+
 import { setupDOM } from "./test-helper.ts";
 
 describe("editor hot paths", () => {
@@ -26,7 +27,7 @@ describe("editor hot paths", () => {
     const domToMarkdown = vi.fn(() => {
       throw new Error("domToMarkdown should not be called on editor hot paths");
     });
-    vi.doMock(import('../serialize.ts'), async (importOriginal) => ({
+    vi.doMock(import("../serialize.ts"), async (importOriginal) => ({
       ...((await importOriginal()) as object),
       domToMarkdown,
     }));

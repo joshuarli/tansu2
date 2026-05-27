@@ -1,4 +1,4 @@
-import { expect, afterAll, describe, beforeAll, it } from 'vitest';
+import { expect, afterAll, describe, beforeAll, it } from "vitest";
 /// Unit tests for getCursorMarkdownOffset.
 /// Verifies that cursor positions inside various DOM structures map to correct
 /// offsets in the serialized markdown string, especially for cursors inside

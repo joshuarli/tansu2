@@ -1,11 +1,12 @@
-import { beforeEach, vi, describe, expect, it } from 'vitest';
+import { beforeEach, vi, describe, expect, it } from "vitest";
+
 import type { NoteMeta } from "./types.generated.ts";
 
 const defuddle = vi.hoisted(() => ({
   parseAsync: vi.fn(),
 }));
 
-vi.mock(import('defuddle/full'), () => ({
+vi.mock(import("defuddle/full"), () => ({
   default: vi.fn(function () {
     return defuddle;
   }),
@@ -35,7 +36,9 @@ describe("HTML import", () => {
       contentMarkdown: "Body text",
     });
 
-    await expect(pickHtmlImport([note("saved-page.md"), note("Saved Page.md")])).resolves.toStrictEqual({
+    await expect(
+      pickHtmlImport([note("saved-page.md"), note("Saved Page.md")]),
+    ).resolves.toStrictEqual({
       path: "Saved Page 2.md",
       content:
         "# Saved Page\n\nTitle: Saved Page\nAuthor: Ada\nSite: Example\nPublished: 2026-05-20\nDescription: Imported description\n\nBody text\n",

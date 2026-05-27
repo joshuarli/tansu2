@@ -179,32 +179,35 @@ async function runBrowserBenchmarks(browser, baseUrl, fixture) {
       );
     });
     out.ssePropagation = await measure(async () => {
-      await page.evaluate(() => new Promise((resolve, reject) => {
-          const source = new EventSource("/events?vault=1");
-          const timer = setTimeout(() => {
-            source.close();
-            reject(new Error("SSE timeout"));
-          }, 5000);
-          source.addEventListener("open", () => {
-            void fetch("/api/notes", {
-              method: "POST",
-              headers: { "Content-Type": "application/json", "X-Tansu-Vault": "1" },
-              body: JSON.stringify({
-                path: `sse-${Date.now()}.md`,
-                content: "# SSE\n\nbench\n",
-                source: null,
-              }),
-            });
-          });
-          source.addEventListener("message", (event) => {
-            const payload = JSON.parse(event.data);
-            if (payload.kind === "note_changed") {
-              clearTimeout(timer);
+      await page.evaluate(
+        () =>
+          new Promise((resolve, reject) => {
+            const source = new EventSource("/events?vault=1");
+            const timer = setTimeout(() => {
               source.close();
-              resolve(null);
-            }
-          });
-        }));
+              reject(new Error("SSE timeout"));
+            }, 5000);
+            source.addEventListener("open", () => {
+              void fetch("/api/notes", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "X-Tansu-Vault": "1" },
+                body: JSON.stringify({
+                  path: `sse-${Date.now()}.md`,
+                  content: "# SSE\n\nbench\n",
+                  source: null,
+                }),
+              });
+            });
+            source.addEventListener("message", (event) => {
+              const payload = JSON.parse(event.data);
+              if (payload.kind === "note_changed") {
+                clearTimeout(timer);
+                source.close();
+                resolve(null);
+              }
+            });
+          }),
+      );
     });
     out.watcherExternalEdit = await measure(async () => {
       const path = join(fixture.mediumVault, "external-bench.md");

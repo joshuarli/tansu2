@@ -1,4 +1,5 @@
-import { beforeAll, afterAll, describe, expect, it } from 'vitest';
+import { beforeAll, afterAll, describe, expect, it } from "vitest";
+
 import { computeDiff, renderDiff, type DiffHunk } from "../diff.ts";
 import { setupDOM } from "./test-helper.ts";
 

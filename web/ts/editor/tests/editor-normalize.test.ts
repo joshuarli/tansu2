@@ -1,4 +1,5 @@
-import { expect, beforeAll, describe, afterAll, it } from 'vitest';
+import { expect, beforeAll, describe, afterAll, it } from "vitest";
+
 import { normalizeEditableContent } from "../editor-normalize.ts";
 import { setupDOM } from "./test-helper.ts";
 

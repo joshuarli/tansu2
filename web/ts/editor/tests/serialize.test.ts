@@ -1,4 +1,5 @@
-import { expect, beforeAll, describe, afterAll, it } from 'vitest';
+import { expect, beforeAll, describe, afterAll, it } from "vitest";
+
 import {
   createWikiLinkExtension,
   createWikiImageExtension,

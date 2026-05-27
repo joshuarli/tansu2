@@ -1,4 +1,5 @@
-import { it, vi, afterEach, expect, describe, beforeEach } from 'vitest';
+import { it, vi, afterEach, expect, describe, beforeEach } from "vitest";
+
 import type { CachedNoteBody } from "./note-cache.ts";
 import type {
   BootstrapResponse,
@@ -50,13 +51,13 @@ const api = vi.hoisted(() => ({
   uploadImage: vi.fn(),
 }));
 
-vi.mock(import('./api.ts'), () => api);
+vi.mock(import("./api.ts"), () => api);
 
 const htmlImport = vi.hoisted(() => ({
   pickHtmlImport: vi.fn(),
 }));
 
-vi.mock(import('./html-import.ts'), () => htmlImport);
+vi.mock(import("./html-import.ts"), () => htmlImport);
 
 const noteCache = vi.hoisted(() => ({
   cacheNoteBody: vi.fn(async () => {}),
@@ -64,7 +65,7 @@ const noteCache = vi.hoisted(() => ({
   getCachedNoteBody: vi.fn(async (): Promise<CachedNoteBody | null> => null),
 }));
 
-vi.mock(import('./note-cache.ts'), () => noteCache);
+vi.mock(import("./note-cache.ts"), () => noteCache);
 
 const editorMock = vi.hoisted(() => ({
   instances: [] as {
@@ -89,7 +90,7 @@ const editorMock = vi.hoisted(() => ({
   }[],
 }));
 
-vi.mock(import('./editor/index.js'), () => ({
+vi.mock(import("./editor/index.js"), () => ({
   createCalloutExtension: vi.fn(() => ({})),
   createEditor: vi.fn((_mount: HTMLElement, config: Record<string, unknown> = {}) => {
     const instance = {

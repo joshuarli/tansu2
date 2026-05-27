@@ -1,4 +1,14 @@
-import { expect, beforeAll, it, describe, vi, afterAll, beforeEach, afterEach, expectTypeOf } from 'vitest';
+import {
+  expect,
+  beforeAll,
+  it,
+  describe,
+  vi,
+  afterAll,
+  beforeEach,
+  afterEach,
+  expectTypeOf,
+} from "vitest";
 /// Tests for createEditor() wiring layer.
 
 import { createEditor } from "../editor.ts";

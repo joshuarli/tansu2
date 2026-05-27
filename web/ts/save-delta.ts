@@ -124,7 +124,10 @@ function isCodePointBoundary(content: string, offset: number): boolean {
   return (
     offset <= 0 ||
     offset >= content.length ||
-    !(isHighSurrogate(content.codePointAt(offset - 1)) && isLowSurrogate(content.codePointAt(offset)))
+    !(
+      isHighSurrogate(content.codePointAt(offset - 1)) &&
+      isLowSurrogate(content.codePointAt(offset))
+    )
   );
 }
 

@@ -1,4 +1,5 @@
-import { expect, describe, it } from 'vitest';
+import { expect, describe, it } from "vitest";
+
 import { buildSaveNoteDeltaRequest, canonicalContentHash, computeTextEdits } from "./save-delta.ts";
 
 describe("save delta", () => {

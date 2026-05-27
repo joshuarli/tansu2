@@ -1,4 +1,5 @@
-import { expect, describe, it } from 'vitest';
+import { expect, describe, it } from "vitest";
+
 import { merge3 } from "../merge.ts";
 
 describe("merge3", () => {

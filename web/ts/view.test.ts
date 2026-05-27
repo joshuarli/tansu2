@@ -1,4 +1,5 @@
-import { vi, expect, describe, it } from 'vitest';
+import { vi, expect, describe, it } from "vitest";
+
 import type { CommandItem, ViewEvent } from "./app/events.ts";
 import { createState, tabFromDocument, tabFromMeta, type State } from "./state.ts";
 import type { BootstrapResponse, NoteMeta, RevisionMeta } from "./types.generated.ts";

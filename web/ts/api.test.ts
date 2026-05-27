@@ -1,4 +1,5 @@
-import { it, vi, afterEach, expect, describe, beforeEach } from 'vitest';
+import { it, vi, afterEach, expect, describe, beforeEach } from "vitest";
+
 import type { ApiErrorResponse } from "./types.generated.ts";
 
 const {
